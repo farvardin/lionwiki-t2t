@@ -1,0 +1,392 @@
+!Changes for 3.2.9
+''Released on 11. 3. 2012''
+* Fixed bug in 3.2.8 which made ^{html} tag not working. Thanks to Jose David Cuartas Correa for reporting this bug.
+
+!Changes for 3.2.8
+''Released on 25. 1. 2012''
+* fixed a couple of security fixes - big thanks to Andreas Schamanek for reports, patches and consultation!
+* couple of bugfixes
+* this may be the last PHP4 supported version
+
+!Changes for 3.2.7
+''Released on 7. 5. 2011''
+* core: bugfix for image link generation (thanks to bvw)
+* new simplified chinese translation (thanks to lomatus)
+
+!Changes for 3.2.6
+''Released on 25. 1. 2011''
+* Bugfix in template substitution which could cause wrong html output (thanks to Andreas Schamanek for report)
+* Bugfix in ImageExt plugin which caused that generated (scaled etc.) images were not cached and were generated for every access. Thanks to Hans Zoons for report.
+* Small fixes for Russian and Ukrainian languages (again thanks to Oleksii Tsvietnov)
+
+
+!Changes for 3.2.5
+''Released on 12. 12. 2010''
+* One small bugfix in core
+* Updated Russian translation and new Ukrainian (thanks to Oleksii Tsvietnov)
+
+!Changes for 3.2.4a
+''Released on 18. 10. 2010''
+* Fixed a bug in RenameFix plugin. Renaming a page with digit being firt letter of the name caused wrong fixing of links. Thank to redisthecat for reporting!
+
+!Changes for 3.2.4
+''Released on 20. 9. 2010''
+* Fixes a couple of small bugs.
+
+!Changes for 3.2.3
+''Released on 30. 4. 2010''
+* Fixed bug which caused that login was impossible with $PROTECTED_READ = true. Thanks to Yen-Ting Chen for report!
+
+!Changes for 3.2.2
+''Released on 29. 4. 2010''
+* Estonian translation, contributed by Rivo Zängov, thanks!
+* RSS (both from pages and comments) should now work with different port number and https
+* RSS plugin used to display wrong modification times because of internal PHP caching of stat informations
+* Fixed some validity issues (but output is still not (X)HTML valid).
+
+!Changes for 3.2.1
+''Released on 16. 3. 2010''
+* Fixed bug when language code was not properly set
+** Core localization still took place but not plugins'
+* RSS plugin did not work because it relied on one variable removed in 3.2
+
+!Changes for 3.2
+''Released on 13. 3. 2010''
+* New russian translation - thanks to Oleksii Tsvietnov
+* Fixed bug in [ImageExt plugin|UserGuide: ImageExt plugin], which did not work when not in document root
+* PHP4 compatibility fixes
+* other small fixes
+
+
+!Changes for 3.2beta
+''Released on 1. 3. 2010''
+* New RenameFix plugin which fixes links after page move (rename)
+* Completely reworked image handling, more advanced operations can be made with [ImageExt plugin|UserGuide: ImageExt plugin].
+** This means you should check you galleries and adjust the syntax :(
+* Core is almost completely refactored, some limitations were removed (max level of lists etc.)
+* Captcha is often not displayed because it's not necessary - JavaScript can do it ...
+* Password hashes are stored in secured cookies on PHP 5.2 and higher and modern browsers. This greatly reduces possibility of XSS attack.
+* Like 100 other smaller and bigger changes I've already forgot
+
+!Changes for 3.1.2
+''Released on 9. 12. 2009''
+* There were some error warning when creating page on some windows installations
+* Fixed $PROTECTED_READ bug (introduced in 3.1.1) - it wasn't possible to pass the authentication
+
+
+!Changes for 3.1.1
+''Released on 28. 10. 2009''
+* Templates Wikiss, Terminal, Minimal and Red are on par with Dandelion
+* Maximum depth of lists was raised to 10 (from 3)
+* New ^{title} tag for changing title of a page
+* Handling of page versions was changed a little bit
+
+!Changes for 3.1.0
+''Released on 3. 10. 2009''
+* Ability to style, assign classes and id (see [Businesses #CSS_styles__classes__IDs])
+* Ability to configure plugins from config.php file (see [UserGuide: Plugins#Configuration_in_config_php])
+* removed support for ^{DATE} and ^{IP} - just eye candy with no relation to Wiki
+* removed read support for history compression (write support dropped in 3.0)
+* [Menu plugin|UserGuide: Menu plugin] now supports link to parent (for hierarchy of menus)
+* New Recent changes display format
+* other small changes
+
+
+!Changes for 3.0.11
+''Released on 3. 10. 2009''
+* bugfix in section editing
+
+![LatexImg plugin 1.0|UserGuide: LatexImg plugin]
+* initial release
+* big thanks to Matthew Leifer, matt@mattleifer.info
+
+!Changes for 3.0.10
+''Released on 1. 10. 2009''
+* $REAL_PATH is back. Proved to be useful for some things (e.g. new LatexImg plugin).
+* Fixed directory creation in Comments plugin. Did not work on some systems.
+
+!Changes for 3.0.9
+''Released on 16. 9. 2009''
+* On unix installation, it was possible to erase content of a page which is write protected in Admin plugin. It was also possible to erase it by mistake. History (including latest revision) was however preserved.
+
+
+!SyntaxHighlighter plugin 1.0
+''Released on 13. 9. 2009''
+* initial release
+* little configuration, may change dramatically in the future
+
+!Changes for 3.0.8
+''Released on 13. 9. 2009''
+* add support for regenerating tags from all pages at once
+* various (quite a lot) tweaks of core LionWiki
+
+!Changes for 3.0.7a
+''Released on 12. 9. 2009''
+* removed Upload and Script plugins due to security concerns.
+
+!Changes for 3.0.7
+''Released on 31. 8. 2009''
+* finnish translation (thanks to tsaarni)
+** "finnish" in finnish is Suomi and not Eesti, fixed in SelectLanguage and PageVersions plugins
+* fixed "local inclusion" for Comments plugin (thanks for report to Ondřej Profant)
+* removed wiki farming, was not tested since 1.0 and probably doesn't work
+* fix for section editing (including AjaxEditing plugin) in pages containing ^^^{html}
+
+!Changes for 3.0.6a
+''Released on 24. 8. 2009''
+* Improved Comments plugin
+** RSS
+** Deleting comments (needs Admin plugin)
+* Admin plugin now remembers login
+
+!Changes for 3.0.6
+''Released on 20. 8. 2009''
+* compatibility fixes for PHP 4.3 (thanks for report to perror) to and PHP 5.3
+* Hebrew translation, thanks to Yaron
+
+!Changes for 3.0.5
+''Released on 13. 8. 2009''
+* new [BetterEditor|UserGuide: BetterEditor plugin] and [Comments|UserGuide: Comments plugin] plugins (both beta)
+** Comments plugin does not have the possibility to delete comments, will be fixed in near future
+* important fix for AjaxEditing plugin - captcha was not displayed when editing which could prevent saving
+* shortened captcha questions
+* external links are marked with arrow (needs CSS2 capable browser)
+
+!Changes for 3.0.4a
+''Released on 4. 8. 2009''
+* includes new [Menu plugin|UserGuide: Menu plugin], no changes in core
+
+!Changes for 1.0.2, 2.0.1, 2.1.6, 2.2.4, 2.3.8 and 3.0.4
+''Released on 23. 7. 2009''
+* Fixes security vulnerability in core LionWiki
+* Fixes security vulnerability in Upload plugin in 3.0, plugin is entirely removed in older versions
+* Less serious security problems were fixed in older versions (especially 1.0 and 2.0)
+
+!Changes for 3.0.3
+''Released on 2. 7. 2009''
+* Croatian translation (thanks to AlexK)
+* Traditional Chinese translation (thanks to b4283)
+* Fixed bug "", see http://lionwiki.0o.cz/forum/index.php?action=vthread&forum=16&topic=119
+
+!Changes for 3.0.2
+''Released on 26. 5. 2009''
+* fixed bug in rendering lists, introduced somewhere in 2.3 series
+* fixed link to RSS
+* work around for strange behavior of fwrite() function (joins two adjacent backslashes into one)
+
+!Changes for 3.0.1
+''Released on 13. 5. 2009''
+* COOKIE life for PROTECTED_READ = true was in 3.0 same as for PROTECTED_READ = false, fixed
+* ported forgotten changes from template dandelion
+* syntax link now links to this website as LionWiki 3 does not contain Syntax reference anymore
+
+!Changes for 3.0
+''Released on 7. 5. 2009''
+* [LionWiki 3.0]
+* new directory structure
+** all "mutable" data are placed under new "var" directory
+** templates are placed under new directory "templates"
+* _config.php has been renamed to just config.php
+* install.sh was removed as it doesn't work with LionWiki 3.0 yet
+* mbstring conversion is not used, deemed unnecessary
+* not possible to write compressed history, reading is still supported
+* few more simplifications
+
+!Changes for 2.3.7
+''Released on 5. 5. 2009''
+* Fixed bad Slimbox behavior with default template, thanks to "hokej" for a fix
+* Simpler edit conflict detection
+* Footnotes plugin now links bi-directionally
+* Spanish and Esperanto translations of Upload plugin (thanks to Marco Cruz, besides other suggestions)
+* few more things I probably forgot
+
+!Changes for 2.3.6
+''Released on 25. 4. 2009''
+* updated Arabic translation (thanks to Mohamed Magdy)
+Thanks to Marcos Cruz for these:
+* fixed bug in substitution of tags 2009/05/05 21:21, 62.245.80.179 etc. in pages
+* fixed "rename revert"
+* new Esperanto translation
+* updated Spanish translation
+* some smaller changes
+
+!Changes for 2.3.5
+''Released on 15. 4. 2009''
+* new printing template and new template tag ^{PAGE_URL}
+
+!Changes for 2.3.4
+''Released on 13. 4. 2009''
+* fixed new handling of languages
+
+!Changes for 2.3.3
+''Released on 12. 4. 2009''
+* new translations:
+** Hungarian, thanks to plastik
+** Brazilian Portuguese, thanks to Redneko (redirected also from Portuguese)
+** Swiss-German, thanks to Sym
+* updated translations:
+** German (not updated since 1.0!), thanks to Martin Prochnow, nordlicht@martins-kabuff.de
+** Arabic, thanks to Zakaria Khanfri 
+* implemented support for language variants
+* new behavior with read only pages and Admin plugin - if you set some page read only, you can still edit it with admin password
+* fixed several minor problems with AjaxEditing plugins
+* two new plugins written by Swen Wetzel &lt;xanatoswetzel@web.de>. Thanks!
+** [Index plugin|UserGuide: Index plugin] - can insert list of all pages into page
+** [Script plugin|UserGuide: Script plugin] - inserting both inline and external JavaScript into pages
+* [Footnotes plugin|UserGuide: Footnotes plugin]
+* New event "subPagesLoaded"
+* probably (another :) final solution to the HTML tag problem
+* probably few other changes I can't recall now
+* This release contains quite a lot changes, so consider it to be of beta quality.
+
+!Changes for 2.3.2
+''Released on 31. 3. 2009''
+* Fixed small problem with revision restoring.
+
+!Changes for 2.3.1
+''Released on 29. 3. 2009''.
+* Fixed several problems with AjaxEditing
+* Fixed destructive problem with paragraph editing in core
+
+!Changes for 2.3
+''Released on 28. 3. 2009''.
+* (core) Paragraph editing - after every heading is displayed little edit link
+* (plugin) AJAX paragraph editing. By default this plugin hooks on the link mentioned earlier. See [AjaxEditing plugin|UserGuide: AjaxEditing plugin]. Plugin is considered to be of beta quality because it wasn't tested with a lot of browsers.
+* Merged "move" and "save" forms. This requires change in custom templates, see [Upgrading to LionWiki 2.3].
+* more exact parsing of emails
+* Spanish translation (thanks to Jerome Joy!)
+!Changes for 2.2.3
+''Released on 11. 3. 2009''.
+* fixed bug which caused false edit conflict alarms
+* default template dandelion now aligns images by default to the left (which is expected behavior)
+* history should be accessible even if page does not exist
+* french translation was slightly updated
+* new Dutch translation (thanks to Jeroen Lassche - Sjoer)
+
+!Changes for 2.2.2
+''Released on 13. 2. 2009''.
+* Security hole in Admin plugin (default password is not encoded)
+* Bug in TOC generating (introduced in 2.2.1 as fix for nonapache servers) - thanks to Pavel Vymetálek
+* Bug in PageVersions plugin (trim vs. basename - fucking stupid) - thanks to Jerome Joy
+* Upload plugin can't upload .htaccess - thanks to Russ Phillips
+
+!Changes for 2.2.1
+''Released on 8. 2. 2009''.
+* Captcha plugin didn't work right because of bad data path setting
+* comparing MD5 hashes is now case insensitive (don't confuse this with password, it's still case sensitive). Thanks for pointing this out to Vincent Cima
+* fix for certain servers (not apache) which don't translate ?action= into index.php?action= (for example). Thanks to Klaus Wulff
+* and big thanks to Russ Phillips for informing me of a huge problem which was fixed in 2.2.1 (but I'm not gonna tell what was it yet)
+
+!Changes for 2.2 final
+''Released on 3. 2. 2009''
+* updated Italian translation (thanks to Giacomo Margarito)
+* forgotten closing tag in template_dandelion.html
+* Upload plugin can now chmod' uploaded files and directories (thanks for these two to Pavel Vymetálek)
+* Forgotten shorttags in some language files
+
+!Changes for 2.2beta1
+''Released on 28. 1. 2009''
+* install shell script. If you have user account on the server or you're just running on localhost, you can run this little script which will take care of all permission things (including plugins)
+* Install plugin which will tell you what needs to be done
+* final solution for register_globals problem.
+* new InlineDiff plugin (from Text_Diff package) which produces way more usabled diffs than very simple builtin diff algorithm
+* probably a lot more but I don't remember it because I developed it over month ago
+
+!Changes for 2.1.5
+''Released on 6. 1. 2009''
+* updated French translation (thanks to Jerome Joy)
+*  was displayed as HTML in preview
+* LOCAL_HOUR didn't affect history files
+* Several bugs in Tags plugin
+* other small things I don't remember
+* SelectLanguage plugin didn't show new Arabic and Italian translations
+
+Thanks to Jerome Joy who is mainly responsible for this release, because he did quite a good at testing.
+
+!Changes for 2.1.4
+''Released on 2. 1. 2009''
+* Fixed minor bug forgotten to be included in 2.1.3 which causes problems (lists, headings and few others) on last line of a page
+
+!Changes for 2.1.3
+''Released on 27. 12. 2008''
+* Arabic translation, thanks to Mohamed Magdy, mohamedmk@gmail.com 
+* Fixed PHP4 compatibility bug in search form (use of stripos function available since PHP5)
+* LAST_CHANGED_TEXT is not displayed where it doesn't make sense
+* fixed minor problem in tags plugin
+
+!Changes for 2.1.2
+''Released on 24. 12. 2008''
+* fixed history bug when register_globals off
+* italian interface localization (thanks to Giacomo Margarito)
+* fixed Admin plugin bug
+* few more
+
+!Changes for 2.1
+''Released on 20. 12. 2008''
+* Edit conflict prevention (more like detection)
+* New [Tags plugin]
+* New template Dandelion, CSS derived from http://dandelion.sheep.art.pl/ Thanks to Radomir Dopieralski for releasing into under GNU GPL.
+* Full PHP4 (>= 4.3.0) compatibility, i.e. with plugins
+* Some usability tweaks
+* lots of bugfixes and small enhancements in plugins
+* nofollow in edit, history etc. links
+* optional XSS protection ($NO_HTML, by default turned off)
+
+!Changes for 2.0
+''Released on 14. 12. 2008''
+* some small changes and fixes
+
+!Changes for 2.0beta2
+''Released on 10. 12. 2008''
+* History fix - beta1 history didn't work at all
+* removed calls to obsolete warning function in Captcha and RSS
+
+!Changes for 2.0beta1
+''Released on 6. 12. 2008''
+* support for multilingual content, which means
+** Language is automatically set using browser information
+** LionWiki automatically chooses language variant of the page according to chosen language
+** supporting plugins - SelectLanguage and PageVersions
+* edit summary
+* subpage (also known as template) mechanism
+* redirects
+* page can be previewed before saving
+* history file names now contain also seconds which prevents version disappearing when saving page twice in one minute
+* more advanced substitution in graphic templates
+* secure way to store passwords in config files using MD5
+* fixed behavior of history backend which could cause troubles in some rare situations
+* several new syntactic features -- sup, sub indexes, mdash, properly recognized HTML entities, internal HTML-like comments
+* new way of handling linebreaks. However this breaks XHTML validation :/
+* New plugins:
+** File upload with support for localization
+** [Slimbox plugin]
+** [Admin panel]
+** Czech questions for Captcha plugin
+** Much improved ListPlugins plugin which now lists also plugin functions
+* New templates:
+** ''Red panel'' template which is set as default.
+** ''Terminal'' template is very similar to Minimal template, except for color theme. Inspired by GMail terminal theme.
+* (cosmetic) problem with mixed spaces is finally fixed
+* lots of other changes which I don't remember
+
+!Changes for 1.0.1
+''Released on 26. 11. 2008''
+* Fixed bug introduced in 1.0 final. Headings (and may be other) things didn't work well when placed at the top of the page.
+* Workaround for installation with magic_quotes_gpc on
+* Fixed "List of all pages"
+
+!Changes for 1.0
+''Released on 18. 11. 2008''
+* Corrected behavior of ^{html} tag in some situations - namely at the very beginning of the page and in situations with two adjacent ^{html} tags.
+
+!Changes for 1.0rc1
+''Released on 14. 11. 2008''
+* setting error reporting level to E_ERROR | E_WARNING | E_PARSE (silences some unwanted reporting on some machines)
+* fixed bug preventing from functioning with register_globals off
+* German translation - thanks to "dad"
+* Slovak translation - thanks to hikikomori82
+* improved French translation (experimental :) - thanks to Filip Mravec
+
+!Changes for 1.0beta1
+''Released on 13. 11. 2008''
+* First release, [Changes from WiKiss].
