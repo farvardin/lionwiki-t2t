@@ -1,4 +1,27 @@
-<?php // LionWiki 3.2.9, (c) Adam Zivner, licensed under GNU/GPL v2
+<?php // LionWiki-t2t 3.2.9d - 2013-08-14
+
+// This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.9 (c) Adam Zivner, licensed under GNU/GPL v2
+// and uses txt2tags.class.php to render the pages.
+// Don't forget to include txt2tags.class.php in the same folder as this file!
+
+
+// Use: Download and extract LionWiki from http://lionwiki.0o.cz/
+//      Add those files instead of the ones in the original installation.
+
+// If you set a password in this file, convert it to SHA1 first, or 
+//      if you use config.php, put your real password
+//      in plain text into $PASSWORD = sha1("password");
+//
+// <!> SECURITY WARNING: You should install this wiki in its current 
+//        configuration for personal webpages or notepad only.
+//        if you intend to use this wiki for a public wiki, with edit access
+//        for everyone, it could lead to some potential security gap:
+//          - Txt2tags allows to alter virtually everything with its pre
+//               and postproc feature. You can disable it in txt2tags.class.php
+//          - It's possible to include php code with this current lionwiki
+//               version. You should disable this in the part labelled 
+//               "security warning" below.
+
 foreach($_REQUEST as $k => $v)
 	unset($$k); // register_globals = off
 
@@ -158,7 +181,8 @@ if($action == 'save' && !$preview && authentified()) { // do we have page to sav
 		if(!$file = @fopen("$PG_DIR$page.txt", 'w'))
 			die("Could not write page $PG_DIR$page.txt!");
 
-		$content = str_replace("<", "&lt;", $content); // prevetion of php code inclusion
+		// Security warning: if you don't protect your wiki to public edition, people might be able to include php code. Uncomment the following line to prevent this:
+        //$content = str_replace("<", "&lt;", $content); // prevention of php code inclusion
 		
 		fwrite($file, $content); fclose($file);
 
@@ -305,6 +329,30 @@ if(!$action || $preview) { // page parsing
 		$CON = str_replace($m[0], "", $CON);
 	}
 
+
+	// This part will load the txt2tags class, and parse the txt file with it
+
+	require_once('txt2tags.class.php');
+	    $CON = preg_replace("/( *)= (.*) =/m", "= $2 =", $CON);
+	    $CON = preg_replace("/( *)== (.*) ==/m", "== $2 ==", $CON);
+		$CON = preg_replace("/=================(.*)/", "--------------------", $CON);
+		$CON = preg_replace("/=====(.*)=====/m", "!!!$1", $CON);
+		$CON = preg_replace("/====(.*)====/m", "!!!$1", $CON);
+		$CON = preg_replace("/===(.*)===/m", "!!$1", $CON);
+		$CON = preg_replace("/==(.*)==/m", "!$1", $CON);
+	// heading 1 = heading 2 here:
+		$CON = preg_replace("/=(.*)=/m", "!$1", $CON);
+		$CON = preg_replace("/%%toc/m", "{TOC}", $CON);
+		$stack = array();
+		$x = new T2T($CON);
+	// doesn't work yet, you have to enable it in the txt2tags.class.php:
+		$x->enableheaders = 0;
+		//$x->snippets['**'] = "<strong>%s</strong>"; # instead of <b>
+		$x->go();
+		$CON = $x->bodyhtml;
+		
+	// end txt2tags part
+					
 	// subpages
 	while(preg_match('/(?<!\^){include:([^}]+)}/Um', $CON, $m)) {
 		$includePage = clear_path($m[1]);
@@ -330,7 +378,8 @@ if(!$action || $preview) { // page parsing
 
 	$CON = preg_replace("/(?<!\^)<!--.*-->/U", "", $CON); // internal comments
 	$CON = preg_replace("/\^(.)/e", "'&#'.ord('$1').';'", $CON);
-	$CON = str_replace(array("<", "&"), array("&lt;", "&amp;"), $CON);
+	// we disable this replacement because the txt2tags class is handling this instead
+	//$CON = str_replace(array("<", "&"), array("&lt;", "&amp;"), $CON);
 	$CON = preg_replace("/&amp;([a-z]+;|\#[0-9]+;)/U", "&$1", $CON); // keep HTML entities
 	$CON = preg_replace("/(\r\n|\r)/", "\n", $CON); // unifying newlines to Unix ones
 
@@ -361,7 +410,8 @@ if(!$action || $preview) { // page parsing
 	$CON = preg_replace("/\{small\}(.*)\{\/small\}/U", "<small>$1</small>", $CON); // small
 	$CON = preg_replace("/\{su([bp])\}(.*)\{\/su([bp])\}/U", "<su$1>$2</su$3>", $CON); // sup and sub
 
-	$CON = preg_replace("/^([^!\*#\n][^\n]+)$/Um", '<p>$1</p>', $CON); // paragraphs
+	// txt2tags.class.php is already doing this part:
+	//$CON = preg_replace("/^([^!\*#\n][^\n]+)$/Um", '<p>$1</p>', $CON); // paragraphs
 
 	// images
 	preg_match_all("#\[((https?://|\./)[^|\]\"]+\.(jpeg|jpg|gif|png))(\|[^\]]+)?\]#", $CON, $imgs, PREG_SET_ORDER);
@@ -386,11 +436,12 @@ if(!$action || $preview) { // page parsing
 		$CON = str_replace($img[0], $tag, $CON);
 	}
 
-	$CON = preg_replace('#([0-9a-zA-Z\./~\-_]+@[0-9a-z/~\-_]+\.[0-9a-z\./~\-_]+)#i', '<a href="mailto:$0">$0</a>', $CON); // mail recognition
+	// txt2tags is already doing that so we remove this part:
+	//$CON = preg_replace('#([0-9a-zA-Z\./~\-_]+@[0-9a-z/~\-_]+\.[0-9a-z\./~\-_]+)#i', '<a href="mailto:$0">$0</a>', $CON); // mail recognition
 
 	// links
-	$CON = preg_replace("#\[([^\]\|]+)\|(\./([^\]]+)|(https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*))\]#U", '<a href="$2" class="external">$1</a>', $CON);
-	$CON = preg_replace("#(?<!\")https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*#i", '<a href="$0" class="external">$0</a>', $CON);
+	//$CON = preg_replace("#\[([^\]\|]+)\|(\./([^\]]+)|(https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*))\]#U", '<a href="$2" class="external">$1</a>', $CON);
+	//$CON = preg_replace("#(?<!\")https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*#i", '<a href="$0" class="external">$0</a>', $CON);
 
 	preg_match_all("/\[(?:([^|\]\"]+)\|)?([^\]\"#]+)(?:#([^\]\"]+))?\]/", $CON, $matches, PREG_SET_ORDER); // matching Wiki links
 
@@ -535,7 +586,8 @@ function get_paragraph($text, $par_id) {
 	$lines = explode("\n", $text);
 
 	foreach($lines as $l) {
-		if($l[0] == '!' && !$inside_html && !$inside_code) {
+		// t2t hack to be able to edit a single paragraph. We don't include the numbered heading (+)
+		if(($l[0] == '!' || $l[0] == '=') && !$inside_html && !$inside_code) {
 			for($excl = 1, $c = strlen($l); $excl < $c && $l[$excl] == '!'; $excl++);
 
 			if($count == $par_id) {
