@@ -1,0 +1,27 @@
+<?php
+$T_HOME = 'Pääsivu';
+$T_SYNTAX = 'Muotoilu';
+$T_DONE = 'Tallenna muutokset';
+$T_DISCARD_CHANGES = 'Hylkää muutokset';
+$T_PREVIEW = 'Esikatselu';
+$T_SEARCH = 'Etsi';
+$T_SEARCH_RESULTS = 'Haun tulokset';
+$T_LIST_OF_ALL_PAGES = 'Lista kaikista sivuista';
+$T_RECENT_CHANGES = 'Viimeisimmät muutokset';
+$T_LAST_CHANGED = 'Viimeksi muutettu';
+$T_HISTORY = 'Historia';
+$T_RESTORE = 'Palauta';
+$T_REV_DIFF = '<b>Muutokset revisioiden {REVISION1} ja {REVISION2} välillä.</b>';
+$T_REVISION = "'''Tämä revisio on päivätty {TIME}. Voit palauttaa sen.'''\n\n";
+$T_PASSWORD = 'Salasana';
+$T_EDIT = 'Muokkaa';
+$T_EDIT_SUMMARY = 'Muokkaa tiivistelmää';
+$T_EDIT_CONFLICT = 'Muokkauskonflikti: Joku tallensi uuden version tästä sivusta alettuasi editoimaan sitä. On suositeltavaa katsoa viimeisimmät {DIFF} ennen tallentamista. Käytyäsi läpi muutokset, voit tallentaa sivun painamalla Tallenna -nappia.';
+$T_SHOW_SOURCE = 'Näytä lähdekoodi';
+$T_SHOW_PAGE = 'Näytä sivu';
+$T_ERASE_COOKIE = 'Poista cookiet';
+$T_MOVE_TEXT = 'Uusi nimi';
+$T_DIFF = 'Muutokset';
+$T_CREATE_PAGE = 'Luo sivu';
+$T_PROTECTED_READ = 'Tarvitset salasanan selataksesi sisältöä sivulla: ';
+$T_WRONG_PASSWORD = 'Väärä salasana.';

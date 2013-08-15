@@ -1,0 +1,31 @@
+--
+Hlavní město Česka?
+Praha
+
+--
+Kolik je 4 sečteno s 2?
+6, šest, sest
+
+--
+Pravé poledne číselně?
+12, dvanáct, dvanact, 12:00
+
+--
+Vlastní jméno Havla
+Václav, Vaclav
+
+--
+Tekuté skupenství ledu?
+voda
+
+--
+Co má čtyři kola a motor?
+auto
+
+--
+Historická země Česka na M
+Morava
+
+--
+Strč prst skrz
+krk

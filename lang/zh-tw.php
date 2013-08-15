@@ -1,0 +1,27 @@
+<?php
+$T_HOME = "主頁";
+$T_SYNTAX = "語法";
+$T_DONE = "儲存";
+$T_DISCARD_CHANGES = "放棄更動";
+$T_PREVIEW = "預覽";
+$T_SEARCH = "搜尋";
+$T_SEARCH_RESULTS = "搜尋結果";
+$T_LIST_OF_ALL_PAGES = "所有頁面清單";
+$T_RECENT_CHANGES = "最近更動";
+$T_LAST_CHANGED = "最後改變";
+$T_HISTORY = "歷史";
+$T_RESTORE = "還原";
+$T_REV_DIFF = "<b>版本 {REVISION1} 和版本 {REVISION2} 之間的差異。</b>";
+$T_REVISION = "'''這個版本時間為 {TIME}，你可以{RESTORE}它。'''\n\n";
+$T_PASSWORD = "密碼";
+$T_EDIT = "編輯";
+$T_EDIT_SUMMARY = "編輯概要";
+$T_EDIT_CONFLICT = "版本衝突：已經有人更動了頁面，目前編輯的頁面在他人儲存前就已載入，這意味著你的版本不包含他人已經儲存的資料。強行儲存會造成資料的丟棄，建議先看看 {DIFF} 頁面，或者按下儲存鍵逕行儲存。";
+$T_SHOW_SOURCE = "顯示原始檔";
+$T_SHOW_PAGE = "顯示頁面";
+$T_ERASE_COOKIE = "清除 Cookie";
+$T_MOVE_TEXT = "新名字";
+$T_DIFF = "比較";
+$T_CREATE_PAGE = "新頁面";
+$T_PROTECTED_READ = "必須輸入密碼才能瀏覽: ";
+$T_WRONG_PASSWORD = "密碼不對";

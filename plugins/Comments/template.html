@@ -1,0 +1,49 @@
+<div style="text-align: center; margin: 0px;">
+	<a href="javascript:" onclick="toggleComments();" style="font-variant: small-caps;"><span id="plusminus"></span> {COMMENTS} ({NUMBER_OF_COMMENTS})</a>
+</div>
+
+<div id="commentWrap">
+	<br />
+<table class="commentList">
+	{item}
+	<tr id="{ID}" class="commentHeader">
+		<td>{NAME_TO_EMAIL} {IP}</td>
+		<td style="text-align: right;">
+			{DATE}
+			<a href="{DELETE_LINK}" title="{DELETE}" onclick="return confirm('{DELETE_CONFIRM}');">&#10005;</a>
+		</td>
+	</tr>
+	<tr class="commentItem">
+		<td colspan="2" class="commentContent">{CONTENT}</td>
+	</tr>
+	<tr class="commentPadding">
+		<td colspan="2"></td>
+	</tr>
+	{/item}
+</table>
+
+<form id="commentForm" action="{FORM_SELF}#commentForm" method="post">
+<input type="hidden" name="action" value="save-comment" />
+<input type="hidden" name="page" value="{FORM_PAGE}" />
+<table class="commentAdd">
+	<tr>
+		<td>{FORM_NAME}</td>
+		<td><input tabindex="1" type="text" size="30" name="name" value="{FORM_NAME_VALUE}" /></td>
+		<td>{FORM_EMAIL}</td>
+		<td><input tabindex="2" size="30" type="text" name="email" value="{FORM_EMAIL_VALUE}" /></td>
+		<td>&nbsp;</td>
+	</tr>
+	{<tr><td colspan="5"> plugin:TOOLBAR_TEXTAREA </td></tr>}
+	<tr>
+		<td colspan="5"><textarea name="content" tabindex="3" class="contentTextarea" style="width: 100%;" cols="100" rows="4">{FORM_CONTENT_VALUE}</textarea></td>
+	</tr>
+	<tr>
+		<td colspan="4" style="text-align: left;">
+			{plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT}
+			<input type="submit" value="{FORM_SUBMIT}" tabindex="4" />
+		</td>
+		<td style="text-align: right; vertical-align: top;" nowrap="nowrap">{plugin:RESIZE_TEXTAREA}</td>
+	</tr>
+</table>
+</form>
+</div>

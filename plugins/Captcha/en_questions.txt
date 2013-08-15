@@ -1,0 +1,46 @@
+# File for turing test questions. Structure of the file is very simple, first
+# line of a record is "--" which indicates new record (question). Second line
+# is question and third line is right answer. You can add more answers to third
+# separated by comma. Everything else is ignored, so you can use it as comments.
+# In that case, please use something like "#" or "//" to make it clear it
+# is comment. Comparing answers is case insensitive.
+
+--
+What color is lemon?
+Yellow
+
+--
+How much is 4 times 4?
+16, sixteen
+
+--
+cat - Tom, mouse -
+Jerry
+
+--
+Shortcut of World War 2?
+WW2, WWII
+
+--
+Correct spelling: univrsity
+University
+
+--
+Difference between 22 and 17?
+5, five
+
+--
+I think, therefore I...
+am
+
+--
+First name of Einstein?
+Albert
+
+--
+How many moons has the Earth?
+1, one
+
+--
+Name of partner of Eve of Eden?
+Adam

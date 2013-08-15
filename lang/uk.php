@@ -1,0 +1,29 @@
+<?php
+$T_HOME = "Початок";
+$T_SYNTAX = "Синтаксис";
+$T_DONE = "Зберегти";
+$T_DISCARD_CHANGES = "Відмовитися";
+$T_PREVIEW = "Передперегляд";
+$T_SEARCH = "Пошук";
+$T_SEARCH_RESULTS = "Результати пошуку";
+$T_LIST_OF_ALL_PAGES = "Усі сторінки";
+$T_RECENT_CHANGES = "Недавні зміни";
+$T_LAST_CHANGED = "Остання зміна";
+$T_HISTORY = "Історія";
+$T_RESTORE = "Відновити";
+$T_REV_DIFF = "<b>Різниця між версіями від {REVISION1} до {REVISION2}.</b>";
+$T_REVISION = "'''Ця версія датована {TIME}. Ви можете відновити її.'''\n\n";
+$T_PASSWORD = "Пароль";
+$T_EDIT = "Редагувати";
+$T_EDIT_SUMMARY = "Опис";
+$T_EDIT_CONFLICT = "Конфлікт редагування: хтось зберіг цю сторінку після того, як Ви почали редагувати. Після аналізу змін і виправлення при необхідності, Ви можете зберегти сторінку.";
+$T_SHOW_SOURCE = "Початковий код";
+$T_SHOW_PAGE = "Показати";
+$T_ERASE_COOKIE = "Видалити cookies";
+$T_MOVE_TEXT = "Нове им'я";
+$T_DIFF = "Різниця";
+$T_CREATE_PAGE = "Створити";
+$T_PROTECTED_READ = "Вам необхідно ввести пароль для перегляду сайту: ";
+$T_WRONG_PASSWORD = "Пароль не вірний.";
+
+$DATE_FORMAT = "d/m/Y H:i";

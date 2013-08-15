@@ -1,0 +1,27 @@
+<?php
+$T_HOME = "首页";
+$T_SYNTAX = "语法";
+$T_DONE = "保存";
+$T_DISCARD_CHANGES = "放弃";
+$T_PREVIEW = "预览";
+$T_SEARCH = "查找";
+$T_SEARCH_RESULTS = "查找结果";
+$T_LIST_OF_ALL_PAGES = "页面清单";
+$T_RECENT_CHANGES = "最近修改";
+$T_LAST_CHANGED = "最后修改";
+$T_HISTORY = "历史";
+$T_RESTORE = "还原";
+$T_REV_DIFF = "<b>版本 {REVISION1} 和版本 {REVISION2} 之间的差异。</b>";
+$T_REVISION = "'''这个版本时间为 {TIME}，你可以{RESTORE}它。'''\n\n";
+$T_PASSWORD = "密码";
+$T_EDIT = "编辑";
+$T_EDIT_SUMMARY = "编辑概要";
+$T_EDIT_CONFLICT = "版本冲突：已经有人更改了页面，目前编辑的页面在他人保存前就已加载，这意味着你的版本不包含他人已经保存的信息。强行保存会造成信息丢失，建议先看看 {DIFF} 页面，或者按下保存进行存储。";
+$T_SHOW_SOURCE = "显示原始页面";
+$T_SHOW_PAGE = "显示";
+$T_ERASE_COOKIE = "清除 Cookie";
+$T_MOVE_TEXT = "新名字";
+$T_DIFF = "比较";
+$T_CREATE_PAGE = "新页面";
+$T_PROTECTED_READ = "必须输入密码才能查看: ";
+$T_WRONG_PASSWORD = "密码错误";

@@ -1,0 +1,27 @@
+<?php
+$T_HOME = "הדף הראשי";
+$T_SYNTAX = "תחביר";
+$T_DONE = "שמירת השינויים";
+$T_DISCARD_CHANGES = "התעלמות מהשינויים";
+$T_PREVIEW = "תצוגה מקדימה";
+$T_SEARCH = "חיפוש";
+$T_SEARCH_RESULTS = "תוצאות החיפוש";
+$T_LIST_OF_ALL_PAGES = "רשימת כל הדפים";
+$T_RECENT_CHANGES = "שינויים אחרונים";
+$T_LAST_CHANGED = "השתנה לאחרונה";
+$T_HISTORY = "היסטוריה";
+$T_RESTORE = "שחזור";
+$T_REV_DIFF = "<b>השינויים בין המהדורות {REVISION1} ו־{REVISION2}.</b>";
+$T_REVISION = "'''מהדורה זו נערכה ב־{TIME}. ניתן {RESTORE} אותה.'''\n\n";
+$T_PASSWORD = "סיסמה";
+$T_EDIT = "עריכה";
+$T_EDIT_SUMMARY = "עריכת התקציר";
+$T_EDIT_CONFLICT = "התנגשות בעריכה: מישהו שמר את הדף הזה בזמן שערכת אותו. מומלץ לצפות ב־{DIFF} האחרונים בטרם השמירה. לאחר סקירה ומיזוג אפשרי של השינויים, ניתן לשמור את הדף על ידי לחיצה על לחצן השמירה.";
+$T_SHOW_SOURCE = "הצגת המקור";
+$T_SHOW_PAGE = "הצגת הדף";
+$T_ERASE_COOKIE = "מחיקת עוגיות";
+$T_MOVE_TEXT = "שם חדש";
+$T_DIFF = "הבדל";
+$T_CREATE_PAGE = "יצירת דף";
+$T_PROTECTED_READ = "יש להזין סיסמה כדי לצפות בתוכן האתר: ";
+$T_WRONG_PASSWORD = "הסיסמה שגויה.";
