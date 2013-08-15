@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+	<style type="text/css">
+*{margin:0;padding:0;}
+body{font-size:12px;line-height:16px;font-family:sans-serif;padding:10px 20px 20px 20px;}
+a{color:#CC3333;text-decoration:none;border-bottom:1px dotted #CC3333;}
+p{margin : 5px 0 5px 0;}
+a.pending{color:black;}
+a.external:after{content: "\2197";}
+pre{border:1px dotted #ccc;padding:4px;width:640px;overflow:auto;margin:3px;}
+img,a img{border:0px}
+h1,h2,h3,h4,h5,h6{letter-spacing:2px;font-weight:normal;margin:15px 0 15px 0px;color:#CC3333;font-variant:small-caps;}
+h1 a{border-bottom:none;}
+h2 span.par-edit, h3 span.par-edit, h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {visibility:hidden;font-size:x-small;}
+h2:hover span.par-edit, h3:hover span.par-edit, h4:hover span.par-edit, h5:hover span.par-edit, h6:hover span.par-edit {visibility:visible;}
+h1{margin:18px 0 15px 15px;font-size:22px;}
+hr{margin:10px 0 10px 0;height:0px;overflow:hidden;border:0px;border-top:1px solid #CC3333;}
+ul,ol{padding:5px 0px 5px 20px;}
+table{text-align:left;}
+.error{color:#F25A5A;font-weight:bold;}
+form{display:inline}
+#renameForm{display:block;margin-bottom:6px;}
+.contentTextarea{width:100%;}
+input,select,textarea{border:1px solid #CC3333;padding:2px;font-size:12px;}
+.submit{padding:1px;}
+textarea{padding:3px;}
+#toc{border:1px dashed #CC3333;margin:5px 0 5px 10px;padding:6px 5px 7px 0px;float:right;list-style:none;clear:right;}
+#toc ul{list-style:none;padding:3px 0 3px 10px;}
+#toc li{font-size:11px;padding-left:10px;}
+#rightPanel{width:5px;right:0px;position:fixed;_position:absolute;height:100%;top:0px;overflow:hidden;vertical-align:top;background-color:#CC3333;color:#CC3333;padding:0px;border-left:15px solid white;}
+#rightPanel:hover{width:180px;border-left:1px solid #CC3333;color:black;background-color:white;padding:5px 5px 5px 10px;}
+#rightPanel ul{padding-top:0px;}
+#mainContent{padding:10px;}
+#selectTemplate,#selectLanguage{width:140px;}
+#diff{padding:1em;white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%;}
+#diff ins{color:green;text-decoration:none;font-weight:bold;}
+#diff del{color:red;text-decoration:line-through;}
+#diff .orig{color:#666;font-size:90%;}
+/* Plugins */
+table.wikitable{border-collapse:collapse;border:1px solid #ccc;}
+table.wikitable td{border:1px solid #ccc;text-align:center;vertical-align:middle;padding:2px;}
+table.wikitable td.em{background:#ccc;font-weight:bold;}
+.tagList{padding:0.2em 0.4em 0.2em 0.4em;margin-top:0.5em;border:1px dashed #CC3333;clear:right;}
+.tagCloud{float:right;width:200px;padding:0.5em;margin:1em;border:1px dashed #CC3333;clear:right;}
+.pageVersionsList{letter-spacing:0px;font-variant:normal;font-size:12px;}
+.resizeTextarea a{border-bottom:none;}
+	</style>
+	{HEAD}
+</head>
+<body>
+<h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+<div id="mainContent">
+{<div class="error"> ERROR </div>}
+{CONTENT}
+{plugin:TAG_LIST}
+{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
+</div>
+<div id="rightPanel">
+	<h2 style="color:#CC3333;font-size:18px;font-style:smallcaps;">Menu</h2>
+	<ul>
+		<li>{HOME}</li>
+		<li>{RECENT_CHANGES}</li>
+	</ul>
+
+	Article:
+	<ul>
+		{<li> EDIT </li>}
+		{<li> HISTORY </li>}
+		{<li> SYNTAX </li>}
+		{<li> plugin:WHAT_LINKS_HERE </li>}
+	</ul>
+
+	Admin functions:
+	<ul>
+		{<li> plugin:ADMIN_BLOCKED_IPS </li>}
+		{<li> plugin:ADMIN_BLACKLIST </li>}
+		{<li> plugin:ADMIN_READONLY_PAGES </li>}
+		{<li> plugin:ADMIN_DISABLED_PLUGINS </li>}
+	</ul>
+
+	Other:
+	<ul>
+		{<li> plugin:UPLOAD </li>}
+		{<li> plugin:LIST_OF_PLUGINS </li>}
+		<li>{COOKIE}</li>
+	</ul>
+
+	<p>Search:</p>
+	<ul>
+		<li>{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}</li>
+	</ul>
+
+	<p>Language:</p>
+	<ul>
+		{<li> plugin:SELECT_LANGUAGE </li>}
+	</ul>
+
+	<p>Template:</p>
+	<ul>
+		{<li> plugin:SELECT_TEMPLATE </li>}
+	</ul>
+
+	<p style="position:absolute;bottom:20px;font-size:smaller;">Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a></p>
+</div>
+</body>
+</html>

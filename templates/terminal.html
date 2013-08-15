@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+	<style type="text/css">
+*{margin:0;padding:0;font-family:monospace;}
+body{color:#00CC00;background-color:black;font-size:12px;line-height:16px;padding:10px 20px 20px 20px;}
+a{font-weight:bold;color:#00CC00;}
+p{margin: 5px 0 5px 0;}
+a.pending{color:#990000;}
+a.external:after{content: "\2197";}
+pre{border:1px dotted #ccc;padding:4px;overflow:auto;margin:3px;}
+img,a img{border:0px}
+h1,h2,h3,h4,h5,h6{letter-spacing:2px;font-weight:normal;margin:15px 0 15px 0px;color:#00CC00;}
+h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{color:#00CC00;}
+h1 a{text-decoration:none;}
+h2 span.par-edit, h3 span.par-edit, h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {visibility:hidden;font-size:x-small;}
+h2:hover span.par-edit, h3:hover span.par-edit, h4:hover span.par-edit, h5:hover span.par-edit, h6:hover span.par-edit {visibility:visible;}
+h1{margin:18px 0 15px 15px;font-size : 22px;}
+hr{margin:10px 0 10px 0;height:0px;overflow:hidden;border:0px;border-top:1px solid #00CC00;}
+ul,ol{padding:5px 0px 5px 20px}
+table{text-align:left}
+.error{color:#F25A5A;font-weight:bold}
+form{display:inline}
+#renameForm{display:block;margin-bottom:6px;}
+.submit:hover{border:1px solid #00CC00;}
+.submit{padding:1px;border:1px dashed #00CC00;}
+.contentTextarea{width:100%;}
+input,select,textarea{border:1px solid #00CC00;padding:2px;font-size:12px;background-color:black;color:#00CC00;}
+.submit{padding:1px;}
+textarea{padding:3px;}
+#toc{border:1px dashed #00CC00;margin:5px 0 5px 10px;padding:6px 5px 7px 0px;float:right;padding-right:2em;list-style:none;}
+#toc ul{list-style:none;padding:3px 0 3px 10px;}
+#toc li{font-size:11px;padding-left:10px;}
+#diff{padding:1em;white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%;}
+#diff ins{color:green;text-decoration:none;font-weight:bold;}
+#diff del{color:red;text-decoration:line-through;}
+#diff .orig{color:#666;font-size:90%;}
+/* Plugins */
+.tagList{padding:0.2em 0.4em 0.2em 0.4em;margin-top:0.5em;border:1px dashed #00CC00;clear:right;}
+.tagCloud{float:right;width:200px;padding:0.5em;margin:1em;border:1px dashed #00CC00;clear:right;}
+.pageVersionsList{letter-spacing:0px;font-variant:normal;font-size:12px;}
+.resizeTextarea a{text-decoration:none;}
+	</style>
+	{HEAD}
+</head>
+<body>
+<table border="0" width="100%" cellpadding="4" cellspacing="0">
+	<tr id="headerLinks">
+		<td colspan="2">{HOME} {RECENT_CHANGES}</td>
+		<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
+	</tr>
+	<tr><th colspan="3"><hr /><h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1></th></tr>
+	<tr>
+		<td id="mainContent" colspan="3">
+			{<div class="error"> ERROR </div>}
+			{CONTENT}
+			{plugin:TAG_LIST}
+			{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+			{CONTENT_TEXTAREA}
+			<p style="float:right;margin:6px">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT}
+			{EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p>{/CONTENT_FORM}
+		</td>
+	</tr>
+	<tr><td colspan="3"><hr /></td></tr>
+	<tr>
+		<td><div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div></td>
+		<td>Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a>. {LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}</td>
+		<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
+	</tr>
+</table>
+</body>
+</html>

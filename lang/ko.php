@@ -1,0 +1,27 @@
+<?php
+$T_HOME = '첫 페이지';
+$T_SYNTAX = '문법';
+$T_DONE = '변경사항 저장하기';
+$T_DISCARD_CHANGES = '변경 취소하기';
+$T_PREVIEW = '미리보기';
+$T_SEARCH = '검색';
+$T_SEARCH_RESULTS = '검색 결과';
+$T_LIST_OF_ALL_PAGES = '모든 페이지 목록';
+$T_RECENT_CHANGES = '최근 변경한 문서';
+$T_LAST_CHANGED = '마지막 변경';
+$T_HISTORY = '이력';
+$T_RESTORE = '복구';
+$T_REV_DIFF = '<b>{REVISION1} 판과 {REVISION2}판의 차이점</b>';
+$T_REVISION = "'''현재 보고있는 판은 {TIME} 입니다. {RESTORE} 하실 수 있습니다.'''\n\n";
+$T_PASSWORD = '비밀번호';
+$T_EDIT = '수정';
+$T_EDIT_SUMMARY = '변경 사항 모아보기';
+$T_EDIT_CONFLICT = '수정 문제 발생 : 당신이 수정하는 사이에 파일이 변경되었습니다. 마지막 {DIFF}를 확인하여 당신이 변경하기 전에 저장되었는지 확인하세요.';
+$T_SHOW_SOURCE = '소스 보기';
+$T_SHOW_PAGE = '페이지 보기';
+$T_ERASE_COOKIE = '쿠키 지우기';
+$T_MOVE_TEXT = '새 이름';
+$T_DIFF = '차이점';
+$T_CREATE_PAGE = '페이지 생성';
+$T_PROTECTED_READ = '사이트 내용을 보기 위해서는 비밀번호를 입력하셔야 합니다 : ';
+$T_WRONG_PASSWORD = '비밀번호가 틀렸습니다.';
