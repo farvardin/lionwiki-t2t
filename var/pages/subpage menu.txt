@@ -1,0 +1,11 @@
+{menu test
+  [Home|Main page]
+  [Installation|UserGuide: Installation]
+  [Appearance]
+  [Plugins|UserGuide: Plugins]
+  [UserGuide]
+  [Syntax reference]
+  [Forum|./newforum/index.php/board,1.0.html]
+  [Old archived forum|./forum/]
+  [About LionWiki]
+}

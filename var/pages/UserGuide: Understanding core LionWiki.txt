@@ -1,0 +1,57 @@
+This page should explain some basic things from source code of LionWiki.
+
+Core LionWiki is basically non-procedural source code as there are very few functions and procedures. This means that code is executed from top to bottom, this is a good thing for reading and understanding!
+
+'''register_globals'''
+
+First thing in index.php is cleaning the global variables. register_globals can't be programatically turned off (in a way like "set_register_globals(false);") so we need to do this manually. This ensures that LionWiki will behave more consistently on different installations.
+
+'''config values'''
+There are some config values, they are actually identical to the ones in config.php. The reason for them is to have: 
+* default values (if some setting is ommited in config.php) 
+* possibility to work from just one file
+
+Then we have some things to set, like:
+* magic_quotes_runtime - this thing turns off automatical quoting when reading files
+* error_reporting - this is quite controversial, but LionWiki doesn't usually check if some variable exists before reading or writing to it, because it knows its default value. So, we need to silent those E_NOTICE warnings.
+
+We try to detect if magic_quotes_gpc (gpc stands for GET, POST, COOKIE) is turned on. If it is, it strip slashes of all content of $_GET, $_POST, $_COOKIE, $_REQUEST. Used code is a little bit cryptic, sorry :)
+
+FIXME: BASE_DIR things to describe ...
+
+'''default translations'''
+
+Then there's default language translation. It's similar thing as with config.php file, this is identical to lang/en.php, we want to have default values (in case some translations aren't complete) and we want to keep the ability to work from just one file.
+
+'''choosing interface language'''
+If $USE_AUTOLANG is set to true (it is by default), LionWiki tries to detect visitor's language from browser identification string.
+
+Browser identification string can contain a lot of languages (with different priorities), but this is ignored by LionWiki, which takes into consideration only the first one. It tries to find an interface translation, in case it doesn't succeed, it uses translation specified in $LANG variable.
+
+In case that user language is detected as a variant (e.g. british english - en-gb) and this particular language variant is not found, LionWiki tries to find language, without this variant, in this case just english, "en".
+
+'''installation attempt'''
+
+For functioning, four directories are necessary:
+
+*var
+*var/pages/
+*var/history/
+*var/plugins/
+
+These are so called "mutable" directories, because they contain mutable content. If they doesn't exists, LionWiki tries to create them. This means that in most cases, it's enough to have created "var" directory which is set as writable.
+
+'''cookie erasing'''
+With erasecookie=1 in URL, you can erase all LionWiki related cookies, which usually means signing off. Because this is done almost at the beginning, no reload is necessary. It basically removes all cookies with prefix "LW_".
+
+'''plugins loading'''
+FIXME: again BASE_DIR things ...
+At this point, LionWiki tries to load plugins from plugins folder. As plugins are considered files with prefix "wkp_" and suffix ".php". More on writing plugins is on the page [How to write a plugin|UserGuide: How to write a plugin]. LionWiki doesn't take into consideration Admin plugin list of forbidden plugins, this is taken care of in following plugin call "pluginsLoaded".
+
+'''exporting variables to global'''
+All the GET and POST parameters used by LionWiki are "exported" from $_REQUEST array to global namespace.
+
+'''setting title'''
+quite complicated to describe though code is quite simple, take a look.
+
+'''protected read'''

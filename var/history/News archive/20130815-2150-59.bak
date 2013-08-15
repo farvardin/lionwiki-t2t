@@ -1,0 +1,58 @@
+* 2011/01/25 LionWiki 3.2.6 was released. Couple of small bugfixes, see [Changelog].
+* 2010/12/12 LionWiki 3.2.5 was released. Contains one small bugfix in core, updated Russian translation and new Ukrainian (thanks to Oleksii Tsvietnov)
+* 2010/10/18 LionWiki 3.2.4a was released. Fixes a bug in RenameFix plugin when renaming pages starting with a digit
+* 2010/09/20 LionWiki 3.2.4 was released. Fixes a couple of small bugs.
+* 2010/04/30 LionWiki 3.2.3 was released. Fixed bug which caused that login was impossible with $PROTECTED_READ = true.
+* 2010/04/29 LionWiki 3.2.2 was released. Few small bugs fixed, see [Changelog].
+* 2010/03/16 LionWiki 3.2.1 was released. Few small bugs fixed, see [Changelog].
+* 2010/03/13 LionWiki 3.2 final was released. Few small bugs fixed.
+* 2010/03/01 LionWiki 3.2beta was released. See [Changelog] for details. It's not recommended for production yet.
+* 2009/12/09 LionWiki 3.1.2 fixes two bugs. Meanwhile 3.2 is on the way.
+* 2009/10/28 LionWiki 3.1.1 - updated templates and few other things, see [Changelog].
+* 2009/10/03 LionWiki 3.1.0 - few things added, few dropped, see [Changelog].
+* 2009/10/03 LionWiki 3.0.11 - bugfix in section editing
+* 2009/10/01 LionWiki 3.0.10 and new standalone '''[LatexImg|UserGuide: LatexImg plugin]''' (big thanks to Matthew Leifer!)
+* 2009/09/16 LionWiki 3.0.9. Minor security bug fixed (see [Changelog]).
+* 2009/09/13 LionWiki 3.0.8 and separate '''[SyntaxHighlighter plugin|UserGuide: SyntaxHighlighter plugin]''' were released.
+* 2009/09/12 LionWiki 3.0.7a. The only change is exclusion of Upload and Script plugins from official distribution due to security concerns.
+* 2009/08/31 LionWiki 3.0.7. Few bugfixes, finnish translation (thanks to tsaarni) and removed wiki farming.
+* 2009/08/24 LionWiki 3.0.6a. Improved Comments plugin - ability to delete and RSS.
+* 2009/08/20 LionWiki 3.0.6. Contains small compatibility fixes for PHP 4 (thanks for report to perror) and PHP 5.3 and new Hebrew translation (thanks to Yaron).
+* 2009/08/13 LionWiki version 3.0.5 was released. Contains brand new [BetterEditor|UserGuide: BetterEditor plugin] and [Comments|UserGuide: Comments plugin] plugins.
+* 2009/08/04 LionWiki version 3.0.4a contains much requested [Menu plugin|UserGuide: Menu plugin].
+* 2009/07/23 LionWiki versions [1.0.2|http://lionwiki.0o.cz/download/1.0.2/lionwiki-1.0.2.tar.bz2], [2.0.1|http://lionwiki.0o.cz/download/2.0.1/lionwiki-2.0.1.tar.bz2], [2.1.6|http://lionwiki.0o.cz/download/2.1.6/lionwiki-2.1.6.tar.bz2], [2.2.4|http://lionwiki.0o.cz/download/2.2.4/lionwiki-2.2.4.tar.bz2], [2.3.8|http://lionwiki.0o.cz/download/2.3.8/lionwiki-2.3.8.tar.bz2] and [3.0.4|http://lionwiki.0o.cz/download/3.0.4/lionwiki-3.0.4.tar.bz2] have been released. These releases fix serious security bugs in core and upload plugin. '''All users are strongly advised to upgrade!'''
+* 2009/07/02 LionWiki 3.0.3 was released. Thanks to b4283 and AlexK for translations in Traditional Chinese and Croatian, respectively.
+* 2009/05/26 LionWiki 3.0.2 was released. See [Changelog] for details.
+* 2009/05/13 LionWiki 3.0.1 was released. Contains some small bugfixes, see [Changelog] for details.
+* 2009/05/07 LionWiki 3.0 was released. It's not meant for upgrading, just for new installations. Read [LionWiki 3.0] for details.
+* 2009/05/05 LionWiki 2.3.7 has been released! Contains bunch of small fixes and changes. See [Changelog] for details.
+* 2009/04/25 - LionWiki 2.3.6 fixes few smaller bugs and updates translations. Thanks to Marcos Cruz for suggestions and Esperanto translation!
+* 2009/04/15 - LionWiki 2.3.5 adds print template.
+* 2009/04/13 - LionWiki 2.3.4 fixes problem in language handling.
+* 2009/04/12 - LionWiki 2.3.3 released. New translations, new plugins, a lot of bugfixes. Read [Changelog].
+* 2009/03/31 - Call for translators!. Do you miss translation of user interface in your native language? Help LionWiki and other users by writing it! It's just about 20 items.
+* 2009/03/30 - LionWiki 2.3.2 released. Fixed small problem with revision restoring.
+* 2009/03/29 - LionWiki 2.3.1 released. Fixed several problems with AjaxEditing plugin.
+* 2009/03/28 - LionWiki 2.3 released. Adds support for paragraph editing and AJAX editing. Read [Changelog] before upgrading.
+* 2009/03/28 - Vincent Cima developed automatic backuping script - [http://github.com/vincentcima/lionwikiautobackup/tree/master]. Big thanks to him!
+* 2009/03/11 - LionWiki 2.2.3 released. This release contains new Dutch translation (thanks to Jeroen Lassche - Sjoer) and fixes few bugs. See [Changelog] for details.
+* 2009/03/09 - Thanks to Giacomo Margarito, we have [Italian translation|Syntax reference.it] of Syntax reference page. Right now, I'm quite busy so work on LionWiki 2.3 is a little bit slow but is definitely advancing. Stay tuned!
+* 2009/02/14 - Brand new LionWiki [UserGuide] was released. As always, it's work in progress :) At the same time, I've received French translation of Syntax reference. Big thanks to Jeff Fortin!
+* 2009/02/13 - LionWiki 2.2.2 released. See [Changelog].
+* 2009/02/08 - LionWiki 2.2.1 released. See [Changelog].
+* 2009/02/03 - LionWiki 2.2 final released! [Changelog].
+* 2009/01/28 - LionWiki 2.2beta1 released. See [Changelog].
+* 2009/01/06 - LionWiki 2.1.5 was released. Quite a lot of minor bugs were fixed. See [Changelog].
+* 2009/01/02 - LionWiki 2.1.4 was released.
+* 2008/12/27 - LionWiki 2.1.3 was released. See [Changelog].
+* 2008/12/24 - LionWiki 2.1.2 was released. Fixes important bugs, read in [Changelog].
+* 2008/12/21 - LionWiki 2.1.1 was released. Changes are small and upgrade from 2.1 is not necessary.
+* 2008/12/20 - LionWiki 2.1 final was released. Changes are describe in [Changelog]. There's also [page on upgrading|Upgrading to LionWiki 2.1].
+* 2008/12/14 - LionWiki 2.0 final was released. Just small fixes, upgrade is not necessary.
+* 2008/12/10 - LionWiki 2.0beta2 was released. History in beta1 was not functional.
+* 2008/12/06 - LionWiki 2.0beta1 was released. This release brings huge amount of changes described in [Changelog#Changes for 2.0]. You can also take a look at [How to upgrade to 2.0].
+* 2008/11/26 - LionWiki 1.0.1 was released. There are three bugfixes described in [Changelog#Changes for 1.0.1].
+* 2008/11/18 - LionWiki 1.0 was released! The only change from rc1 is corrected behavior of ^{html} tag in some situations
+* 2008/11/14 - LionWiki 1.0rc1 was released. Read [Changelog#Changes for 1.0rc1] for details.
+* 2008/11/13 - LionWiki forum was created at http://lionwiki.0o.cz/forum/
+* 2008/11/13 - First public release of LionWiki, 1.0beta1 was released.
