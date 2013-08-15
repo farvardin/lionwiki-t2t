@@ -4,3 +4,7 @@ About LionWiki
 LionWiki
 Syntax reference
 syntax
+UserGuide: How to write a plugin
+plugin,userguide
+UserGuide: Admin plugin
+spam,plugin,userguide

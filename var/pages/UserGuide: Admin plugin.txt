@@ -1,0 +1,24 @@
+{include:subpage plugins}
+'''Admin''' plugin provides advanced administration functions. It's useful for sites attacked by vandalism or spam. Because these functions are quite sensitive, they are protected by password (different from password needed to save pages). Password is required and must be set.
+
+!Installation
+The only thing needed is to set admin password in config.php file:
+
+{{$Admin["PASSWORD"] = sha1("my_password");}}
+
+xxx
+!Features
+*'''Blocked IPs''' is a list of IP which are prohibited from writing pages, usually because they erase content of pages, insert inappropriate content etc.
+** Access with index.php?action=admin-blockip
+*'''Blacklist''' is a list of prohibited words (or generally expressions). If page content contains one of these expressions, page will not be saved.
+** Access with index.php?action=admin-blacklist
+*'''Read-only pages''' is again list of pages which are set to be read-only. It's useful for important content which may be target of vandalism (e.g. Main page).
+** Access with index.php?action=admin-pages
+** Since LionWiki 2.3.3 it is possible to edit even this pages, but only with Admin password.
+*'''Disabled plugins''' is a list of plugins which are present in plugins directory, but you want them to be disabled (may be temporary)
+** Access with index.php?action=admin-plugins
+
+!History of changes
+Admin plugin was introduced in LionWiki 2.0.
+
+{tags:spam, plugin, userguide}

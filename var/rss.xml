@@ -6,6 +6,155 @@
 <language>fr-fr</language>
 
 	<item>
+	  <title>UserGuide: Admin plugin</title>
+	  <pubDate>Thu, 15 Aug 2013 22:09:05 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=UserGuide%3A+Admin+plugin</link>
+	  <description><pre id="diff"><ins>{include:subpage plugins}
+'''Admin''' plugin provides advanced administration functions. It's useful for sites attacked by vandalism or spam. Because these functions are quite sensitive, they are protected by password (different from password needed to save pages). Password is required and must be set.
+
+!Installation
+The only thing needed is to set admin password in config.php file:
+
+{{$Admin[&quot;PASSWORD&quot;] = sha1(&quot;my_password&quot;);}}
+
+xxx
+!Features
+*'''Blocked IPs''' is a list of IP which are prohibited from writing pages, usually because they erase content of pages, insert inappropriate content etc.
+** Access with index.php?action=admin-blockip
+*'''Blacklist''' is a list of prohibited words (or generally expressions). If page content contains one of these expressions, page will not be saved.
+** Access with index.php?action=admin-blacklist
+*'''Read-only pages''' is again list of pages which are set to be read-only. It's useful for important content which may be target of vandalism (e.g. Main page).
+** Access with index.php?action=admin-pages
+** Since LionWiki 2.3.3 it is possible to edit even this pages, but only with Admin password.
+*'''Disabled plugins''' is a list of plugins which are present in plugins directory, but you want them to be disabled (may be temporary)
+** Access with index.php?action=admin-plugins
+
+!History of changes
+Admin plugin was introduced in LionWiki 2.0.
+
+{tags:spam, plugin, userguide}</ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>UserGuide: How to write a plugin</title>
+	  <pubDate>Thu, 15 Aug 2013 22:08:15 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=UserGuide%3A+How+to+write+a+plugin</link>
+	  <description><pre id="diff"><ins>Do you miss some feature and have the ability to write one? Go ahead, writing plugins for LionWiki is very simple. This page will tell you everything you need to know (from LionWiki view, of course). If you're tired of reading and keen on programming, close this page and take a look on some plugins in LionWiki, they are mostly self-explanatory.
+
+!File, class, etc.
+Plugins are stored in plugins folder. They are all named &quot;wkp_MyNewPlugin.php&quot;, this is not just convention but neccesity - LionWiki accepts only plugins with prefix &quot;wkp_&quot; and extension &quot;.php&quot;.
+
+Your plugin should contain at least one class, and must be named similarly as file - in this case MyNewPlugin. Again, this is neccessary.
+
+!Description of a plugin
+''This is not at all neccessary, just recommended if you want to distribute your plugin to other LionWiki users.''
+
+If you take a look at some plugin in LionWiki, you'll see, that one of the first lines is something like this:
+{{var $desc = array(
+  array(&quot;Admin plugin&quot;, &quot;provides advanced administration functions protected by password&quot;),
+  array(
+	array(&quot;&amp;lt;a href=\&quot;?action=admin-blockip\&quot; rel=\&quot;nofollow\&quot;&gt;IP blocking&amp;lt;/a&gt;&quot;, 
+			&quot;Blocks specified addresses from editing&quot;),
+	array(&quot;&amp;lt;a href=\&quot;?action=admin-blacklist\&quot; rel=\&quot;nofollow\&quot;&gt;Black list&amp;lt;/a&gt;&quot;, 
+			&quot;List of expressions forbidden in pages&quot;),
+	array(&quot;&amp;lt;a href=\&quot;?action=admin-pages\&quot; rel=\&quot;nofollow\&quot;&gt;Read-only pages&amp;lt;/a&gt;&quot;, 
+			&quot;Can set certain pages as unwritable&quot;),
+	array(&quot;&amp;lt;a href=\&quot;?action=admin-plugins\&quot; rel=\&quot;nofollow\&quot;&gt;Disabled plugins&amp;lt;/a&gt;&quot;, 
+			&quot;List of disabled plugins&quot;)
+  )
+);}}
+
+What does this mean? This array is intended for use in ''ListPlugins'' plugin. This plugin takes a look on all loaded plugins and gets this array and displays it. Its purpose is to be simple interface to all functionality of all plugins.
+
+$desc array again contains array(s). This array can contain either an array(s) (starts to be confusing, right?) or tuple consisting of:
+# Name of function, if possible with link
+# Short explanation or usage of function
+
+$desc array is actually tree with all leaves containing this tuple. Take a look at [here|./?action=listplugins] how it is displayed.
+
+This example was actually the most complicated $desc present in current LionWiki plugins, other plugins have something like this:
+
+{{var $desc = array(
+	array(&quot;Captcha plugin&quot;, &quot;is a spam filtering plugin asking simple questions.&quot;)
+);}}
+
+!Events
+In general, plugins usually works one of these two ways:
+# Plugins register themselves to some events. These events then trigger plugins registered to this event
+# Main program calls all plugins when some event occur, plugins then can choose to take action or do nothing
+
+LionWiki plugin system is of type 2). List of events:
+
+* pluginsLoaded is triggered immediately after all plugins are instantiated, this is specifically intended for Admin plugin, so it can delete unwanted plugins
+* pluginsLoaded2 is called immediately after pluginsLoaded
+* actionBegin - triggered before &quot;actions&quot; (like saving a page or loading an old revision) are treated
+* writingPage - right before writing page to the file, used by spam checking plugins
+* pageWritten - right after page was written to file, used by RSS plugin
+* formatBegin - before substituting wiki syntax (Tables plugin)
+* pageLoaded - right after page (or revision) was loaded into $CON variable
+* subPagesLoaded - triggered after all subpages were inserted into the page
+* formatEnd - after substituting wiki syntax
+* formatFinished - right after formatEnd
+* template - substituting template
+* finished - right before outputting content to the browser (and therefore right before terminating the process)
+* diff - used by alternative diff plugins
+* any unknown action parameter (in URL) is triggered as event
+
+Event is served by simply creating method with name of the event in your plugin class.
+
+If this method returns false, LionWiki thinks that no such method exists (plugin does not want to treat this event for some reason).
+
+Events were added to LionWiki on demand - I didn't create any events with no current use. If you're programming new plugin and miss some event, tell me, and if it's sensible, I'll add it into core LionWiki.
+
+For almost any meaningful plugin, you'll need to know at least few things from LionWiki source. You can take a look at [Understanding core LionWiki|UserGuide: Understanding core LionWiki].
+
+!PHP5 vs. PHP4 objects
+LionWiki tries to be PHP4 compatible. If you want to distribute your &quot;MyNewPlugin&quot; to other LionWiki users, it would be good to be too PHP4 compatible. These are two simple things to keep in mind to write PHP4 compatible plugins:
+
+# Name of the constructor is not ''__construct()'', but ''MyNewPlugin''
+# Don't use ''public'', ''private'' and ''protected'' in your class, declare your member variables with ''var $variable'' (synonym of ''public'')
+
+{tags: plugin, userguide}</ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>UserGuide: How to use PROTECTED_READ</title>
+	  <pubDate>Thu, 15 Aug 2013 22:07:18 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=UserGuide%3A+How+to+use+PROTECTED_READ</link>
+	  <description><pre id="diff"><ins>If you want to keep your pages (content) private, you can use [config|UserGuide: Configuration] option $PROTECTED_READ. If you use Apache server and have enabled .htaccess files, you don't need to read on, it will be secure without any modifications.
+
+!How does it work
+
+Very simply. LionWiki just denies every access to the pages unless user entered password. However, because LionWiki doesn't use database and it stores all the pages in plain text files, one can access pages without invoking LionWiki (e.g. you can insert something like this in browser: [http://lionwiki.0o.cz/pages/Main+page.txt].
+
+How to solve this security hole?
+
+!Solutions
+
+!!Apache + .htaccess
+In default distributions, directories pages, history and plugins/data contains .htaccess with following content:
+{{deny from all}}
+This causes that every browser request to any file, directory or files in directories (and so on) are denied. This works for every Apache installation with .htaccess support enabled (absolute majority of sites I guess). As far as I know, Microsoft IIS has some support for .htaccess too, but I don't have any installation to test this.
+
+!!!Test
+Try to load this in your web browser: http://url_to_your_new_wiki/var/pages/Main+page.txt
+
+If &quot;Forbidden&quot; page is displayed then .htaccess works fine and content is secure. If page is displayed, htaccess does not work and you have to find some other way to make it secure.
+
+
+!!Renaming pages and history dirs to something unpredictable
+If you just rename these directories to something like &quot;history%$^*&amp;()4564&quot; then attacker won't be able to guess right path to the pages and history dir and therefore your data will be secure. This is not as secure as two options mentioned above, but it's quite easy.
+
+Of course, you must change $PAGES_DIR and $HISTORY_DIR in your config file to the right values.
+
+!!Other ways
+There are other ways to fix this problem (e.g. with right file permissions) but I'm too tired to describe them all.</ins>
+</pre></description>
+	</item>
+
+	<item>
 	  <title>Syntax reference</title>
 	  <pubDate>Thu, 15 Aug 2013 22:02:26 +0200</pubDate>
 	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=Syntax+reference</link>
@@ -896,6 +1045,9 @@ LionWiki was created by Adam Živnéř, adam.zivner@gmail.com, http://adam.zivne
 {NO_COMMENTS}</ins>
 </pre></description>
 	</item>
+
+
+
 
 
 
