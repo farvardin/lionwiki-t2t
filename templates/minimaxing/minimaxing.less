@@ -1,0 +1,1069 @@
+
+
+/* This CSS file was generated from the .less template. 
+ See http://lesscss.org/
+ */
+
+
+@all-background-colors: "#7B8AA8,#56A3B5,#B1494D,#465E7C,#549136";
+
+.generateColor() { /* define mixin */
+@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
+}
+.generateColor(); /* call the mixin which sets the variable once */
+
+
+
+/*@MainColor: #088;*/
+@MainColor: @background-color;
+/*#465E7C;*/
+
+@MainFontColor: (#878e83 - #111);
+@MainFontSize: (14pt - 2);
+
+@RedBrick: #7F4736;
+
+@BackgroundMain: #e3e9dc;
+@Bg-dark: (@BackgroundMain - #121212);
+@Bg-light: (@BackgroundMain + #121212);
+
+
+
+@MainColor-light: (@MainColor + #111);
+
+@Main2Color: @MainColor;
+
+@LinkColor: (@MainColor-light + #010101);
+
+@BackgroundHead: @MainColor-light;
+@Background2Head: @MainColor;
+
+@Background3Head: @MainColor-light;
+@Background4Head: @MainColor;
+
+@BackgroundNav: @Background2Head;
+
+/*
+@MainColor: #007897;
+@Main2Color: #008EAD;
+@LinkColor: #5d93a2;
+@BackgroundHead: #007294;
+@Background2Head: #008dab;
+@Background3Head: #008ead;
+@Background4Head: #007b9d;
+@BackgroundNav: #007b99;
+*/
+
+
+/*@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
+*/
+
+
+
+@font-face {
+  font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(../fonts/ubuntu-condensed-regular.woff.woff) format('woff');
+}
+
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(../fonts/OpenSans-Light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(../fonts/OpenSans.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(../fonts/OpenSans-Semibold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/OpenSans-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(../fonts/OpenSans-Extrabold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(../fonts/OpenSansLight-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(../fonts/OpenSans-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(../fonts/OpenSans-SemiboldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(../fonts/OpenSans-BoldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(../fonts/OpenSans-ExtraboldItalic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(../fonts/OpenSans-CondensedBold.woff) format('woff');
+}  
+  
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(../fonts/OpenSans-CondensedLight.woff) format('woff');
+}
+ 
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Cond Light Italic'), local('OpenSans-CondensedLightItalic'), url(../fonts/OpenSans-CondensedLightItalic.woff) format('woff');
+}
+
+
+
+
+
+/*
+	Minimaxing 1.0 by nodethirtythree design
+	http://nodethirtythree.com | @nodethirtythree
+	Released under the Creative Commons Attribution 3.0 license (nodethirtythree.com/license)
+	* http://html5up.net/minimaxing/
+	
+	Based also on the work from http://wiki.lapetitesissone.fr/index.php?page=Lionwiki
+*/
+
+
+/* LionWiki specific */
+
+
+
+a.pending{color:@RedBrick;}
+h2 span.par-edit, h3 span.par-edit, h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {
+float:right;
+display: none;
+
+		
+}
+
+h2:hover span.par-edit, h3:hover span.par-edit, h4:hover span.par-edit, h5:hover span.par-edit, h6:hover span.par-edit {
+display: inline;
+font-size:small;
+}
+
+.pageLinks{
+padding-left:1em;
+padding-right:1em;
+margin-top:0;
+margin-bottom:0;
+
+}
+
+.pageLinks a{
+font-weight:bold;
+text-decoration:none;
+}
+
+#headerLinks td{border-bottom:1px dashed #ccc !important;}
+#footerLinks td{border-top:1px dashed #ccc !important;}
+#mainContent{padding:1em;background-color:white;}
+#mainContent h2:first-child{margin-top:0px;}
+
+.error{color:#F25A5A;font-weight:bold;}
+
+.contentTextarea{width:100%;}
+
+#diff {white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%;}
+#diff ins{color:green;text-decoration:none;font-weight:bold;}
+#diff del{color:red;text-decoration:line-through;}
+#diff .orig{color:#666;}
+
+#toc{border:1px dashed #11141A;padding:5px 5px 5px 5px;float:right;padding-right:2em;list-style:none;background:#eee;clear:right;}
+#toc ul{list-style:none;padding-left:10px;}
+#toc li{font-size:11px;padding-left:10px;}
+
+/* Plugins LionWiki*/
+
+.tagList{padding:0.2em 0.4em 0.2em 0.4em;margin-top:0.5em;border:1px dashed #31343A;background:#eee;clear:right;}
+.tagCloud{float:right;width:200px;padding:0.5em;margin:1em;border:1px dashed #31343A;background:#eee;clear:right;}
+.pageVersionsList{letter-spacing:0px;font-variant:normal;font-size:12px;}
+
+table.wikitable{border-collapse:collapse;border:1px solid #ccc;}
+table.wikitable td{border:1px solid #ccc;text-align:center;vertical-align:middle;padding:2px;}
+table.wikitable td.em{background:#ccc;font-weight:bold;}
+
+
+table {
+    border-collapse: collapse;
+    empty-cells: show;
+    border-spacing: 0;
+    border: 1px solid #999;
+}
+
+.form table {
+    border-collapse: collapse;
+    empty-cells: hide;
+    border-spacing: 0;
+    border: 0px solid #fff;
+}
+
+th,
+td {
+    padding: .3em .5em;
+    margin: 0;
+    vertical-align: top;
+    border: 1px solid #999;
+    text-align: left;
+}
+
+.form th,
+td {
+    padding: .3em .5em;
+    margin: 0;
+    vertical-align: top;
+    border: 0px solid #999;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+    background-color: #ddd;
+}
+[dir=rtl] td,
+[dir=rtl] th {
+    text-align: right;
+}
+
+.resizeTextarea a{text-decoration:none;}
+
+/*********************************************************************************/
+/* Global                                                                        */
+/*********************************************************************************/
+
+
+	body {
+		font-size: @MainFontSize;
+		font-family: sans-serif;
+		background-color: @BackgroundMain;
+		font-family: 'Open Sans', sans-serif;
+		color: @MainFontColor;
+	}
+#header  h1 {margin:0;padding:0;border:none;}
+
+#main h1, #main h2, #main h3, #main h4, #main h5, #main p {margin-bottom:20px;}
+
+	h1,h2,h3,h4 {
+			font-family: 'Open Sans Condensed', sans-serif;
+			text-transform: uppercase;
+			color: @MainColor;
+			font-weight: bold;
+	}
+
+	h1,h2 {
+	border-bottom:1px solid grey;
+	}
+	
+	h1 {		font-size:155%;}
+	
+	#header-wrapper h1 {
+				color: #fff;
+				font-size: 2.0em;
+				line-height: 1.3em;
+			}
+
+
+	h2 {
+	font-size:1.6em;
+		letter-spacing: -1px;
+		margin-bottom: 1em;
+	}
+
+	h3,h4 {
+		color: #283121;
+		margin-bottom: 0.5em;
+	}
+
+	h3 {
+		font-size: 1.2em;
+		margin-bottom: 0.8em;
+	}
+
+	h4 {
+		font-size: 1em;
+	}
+
+	p, ul {
+		margin-bottom: 1.25em;
+	}
+
+	p {
+		line-height: 1.8em;
+			margin-bottom:10px;
+			margin-top:10px;
+
+	}
+
+	strong {
+		color: #474e43;
+	}
+
+	pre, code, blockquote, dt {
+		background-color: @Bg-light;
+		line-height: 1.1em;
+		font-family: mono;
+	}
+	
+	dd {
+		line-height: 1.3em;
+		font-family: mono;
+		font-size:0.9em;
+	}
+	
+	pre, blockquote {padding-left: 20px;}
+
+	img.left {
+		float: left;
+		margin: 2px 1.25em 0 0;
+	}
+
+	img.top {
+		margin: 4px 0 2.25em 0;
+	}
+
+		ol, ul , li{
+		list-style:square inside;
+
+		}
+
+	li {line-height: 28px;
+
+	}
+
+	a {
+		color: @LinkColor;
+		text-decoration: none;
+
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	* > p:last-child {
+	}
+
+	article.blog-post {
+		position: relative;
+	}
+
+		article.blog-post .comments {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 32px;
+			line-height: 24px;
+			padding-left: 40px;
+			background: url('images/icon-bubble.png') no-repeat;
+		}
+
+	ul.small-image-list {
+	}
+
+		ul.small-image-list li {
+			
+			margin-bottom: 1.5em;
+		}
+
+	ul.big-image-list {
+	}
+
+		ul.big-image-list li {
+			
+			margin-bottom: 2em;
+		}
+
+	ul.link-list {
+	}
+
+		ul.link-list li {
+			border-top: solid 1px #ced0b7;
+			padding: 0.75em 0 0 0;
+			margin: 0.75em 0 0 0;
+		}
+		
+		ul.link-list li:first-child {
+			padding-top: 0;
+			margin-top: 0;
+			border-top: 0;
+		}
+
+	.button, a.toolbarTextareaItem {
+		display: inline-block;
+		padding: 5px 10px 5px 10px;
+		background-color: @Background2Head;
+		background-image: -moz-linear-gradient(top, @MainColor-light, @Background2Head);
+		background-image: -webkit-linear-gradient(top, @MainColor-light, @Background2Head);
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@MainColor-light), to(@Background2Head));
+		background-image: -ms-linear-gradient(top, @MainColor-light, @Background2Head);
+		background-image: -o-linear-gradient(top, @MainColor-light, @Background2Head);
+		background-image: linear-gradient(top, @MainColor-light, @Background2Head);
+		border-radius: 10px;
+		text-transform: lowercase;
+		text-decoration: none;
+		color: #fff;
+		font-size: 1.0em;
+		letter-spacing: -1px;
+		border: solid 1px @MainColor;
+		box-shadow: inset 0px 0px 0px 1px @MainColor-light;
+	}
+
+	.button:hover {
+		background-color: @MainColor;
+		background-image: -moz-linear-gradient(top, @MainColor-light, @MainColor);
+		background-image: -webkit-linear-gradient(top, @MainColor-light, @MainColor);
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@MainColor-light), to(@MainColor));
+		background-image: -ms-linear-gradient(top, @MainColor-light, @MainColor);
+		background-image: -o-linear-gradient(top, @MainColor-light, @MainColor);
+		background-image: linear-gradient(top, @MainColor-light, @MainColor);
+		box-shadow: inset 0px 0px 0px 1px #3ecceb;
+	}
+
+/*********************************************************************************/
+/* 1200px (>= 1200px)                                                            */
+/*********************************************************************************/
+
+	@media only screen and (min-width: 1000px) {
+
+		section, article {
+			margin: 0 0 60px 0;
+		}
+		
+		section:last-child, article:last-child {
+			margin-bottom: 0;
+		}
+		
+		section.left-content {
+			padding-right: 30px;
+		}
+
+		section.right-content {
+			padding-left: 30px;
+		}
+
+		section.middle-content {
+			padding: 0 30px 0 30px;
+		}
+
+		ul.small-image-list img {
+			width: 78px;
+		}
+
+		ul.big-image-list img {
+			width: 178px;
+		}
+
+		.blog-post-image {
+			width: 588px;
+		}
+
+		
+		#header-wrapper {
+			background-color: @BackgroundHead;
+			background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
+			background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
+		}
+		
+		#header-wrapper h1 {margin-top:0;color: #fff;text-decoration: none;  border-bottom:0px ;}
+
+		#header {
+			position: relative;
+			margin: 2.5% 0 2.5% 0;
+			margin-top: 40px;
+			padding: 0 40px 0 40px;
+			border-radius: 10px;
+			border: solid 1px @MainColor;
+			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,0.10);
+			background-color: @Background4Head;
+			background-image: -moz-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: -webkit-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundHead), to(@Background4Head));
+			background-image: -ms-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: -o-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: linear-gradient(top, @Background3Head, @Background4Head);
+			height: 66px;
+		}
+
+			#header h1 {
+				position: absolute;
+				left: 10px;
+				top: -28px;
+				color: #fff;
+				font-size: 2.4em;
+				letter-spacing: 2px;
+				line-height: 6px;
+			}
+
+			#header h1 a {
+				color: #fff;
+				text-decoration: none;
+			}
+			
+		
+			
+			#header nav {
+				position: absolute;
+				right: 40px;
+				top: 1px;
+				line-height: 64px;
+				text-transform: lowercase;
+				font-size: 1.3em;
+				letter-spacing: -1px;
+			}
+			
+				#header nav a {
+					display: inline-block;
+					text-decoration: none;
+					color: #fff;
+					padding: 0 25px 0 25px;
+				}
+				
+				#header nav a.current-page-item {
+					background-color: @MainColor;
+					background-image: -moz-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -webkit-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundNav), to(@MainColor));
+					background-image: -ms-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -o-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: linear-gradient(top, @BackgroundNav, @MainColor);
+					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.1), 0px 0px 5px 1px rgba(255,255,255,0.1);
+				}
+
+				#header nav a:hover {
+					background-color: @MainColor;
+					background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
+					background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
+					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.05), 0px 0px 5px 1px rgba(255,255,255,0.05);
+				}
+#banner-wrapper h2 {border-bottom:none;color:white;font-size:2.0em;text-align:center}
+#banner-wrapper a {border-bottom:none;color:white}
+
+		#banner-wrapper {
+			background: @Bg-dark url(images/bg1.png);
+			margin-top: -20px;
+			margin-bottom: -20px;
+		}
+
+		#banner-wrapper h1 {
+				text-align: center;
+				font-size: 2.1em;
+				letter-spacing: 0px;
+				text-decoration:none;
+				border-bottom:none;
+				/*line-height: 6px;*/
+			}
+		#banner {
+			position: relative;
+			width: 1160px;
+			height: 240px;
+			margin: 2% 0 2% 0;
+			box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
+			border-radius: 10px;
+			padding: 20px;
+			background: #fff url(images/banner.jpg) no-repeat 20px 20px;
+			background-size: 1160px 265px;
+		}
+
+			#banner h2 {
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				top: 100px;
+				left: 0;
+				font-size: 3.3em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -2px;
+			}
+			
+			#banner span {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				bottom: 105px;
+				left: 0;
+				font-size: 1.6em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -1px;
+				text-transform: lowercase;
+				opacity: 0.8;
+			}
+
+		#main {
+			background: #fff;
+			padding: 2% 0 2% 0;
+			padding-top: -20px;
+		}
+
+			#main .controls {
+			}
+
+			#main .main-row {
+				margin: 2% 0 2% 0;
+				overflow: hidden;
+				margin-top: -10px;
+			}
+
+		#footer-wrapper {
+			padding: 3% 0 3% 0;
+		}
+
+		#copyright {
+			font-size: 0.6em;
+			text-align: center;
+			color: #A6A88F;
+			border-top: solid 1px #ced0b7;
+			line-height: 1.1em;
+			padding: 3em 0 0 0;
+			margin: 1% 0 0 0;
+		}
+
+			#copyright a {
+				color: #A6A88F;
+			}
+	
+	}
+	
+/*********************************************************************************/
+/* 1000px (> 600px && < 1000px)                                                  */
+/*********************************************************************************/
+
+	@media only screen and (max-width: 999px) and (min-width: 601px) {
+
+		section, article {
+			margin: 10px 10px 50px 10px;
+		}
+		
+		
+		section:last-child, article:last-child {
+			margin-bottom: 0;
+		}
+		
+		section.left-content {
+			padding-right: 15px;
+		}
+
+		section.right-content {
+			padding-left: 15px;
+		}
+
+		section.middle-content {
+			padding: 0 15px 0 15px;
+		}
+
+		ul.small-image-list img {
+			width: 50px;
+		}
+
+		ul.big-image-list img {
+			width: 75px;
+		}
+
+		.blog-post-image {
+			width: 490px;
+		}
+
+		#header-wrapper {
+			background-color: @BackgroundHead;
+			background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
+			background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
+		}
+		
+		#header-wrapper h1 {margin-top:0;color: #fff;text-decoration: none;  border-bottom:0px ;}
+		
+		#header {
+			position: relative;
+			margin: 3.5% 0 1.5% 0;
+			margin-top: 40px;
+			padding: 0 40px 0 40px;
+			border-radius: 10px;
+			border: solid 1px @MainColor-light;
+			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,0.10);
+			background-color: @Background4Head;
+			background-image: -moz-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: -webkit-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background3Head), to(@Background4Head));
+			background-image: -ms-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: -o-linear-gradient(top, @Background3Head, @Background4Head);
+			background-image: linear-gradient(top, @Background3Head, @Background4Head);
+			height: 66px;
+		}
+
+			#header h1 {
+				position: absolute;
+				left: 10px;
+				top: -28px;
+				color: #fff;
+				font-size: 2.4em;
+				letter-spacing: 1px;
+				line-height: 6px;
+			}
+
+			#header h1 a {
+				color: #fff;
+				text-decoration: none;
+			}
+			
+			#header nav {
+				position: absolute;
+				right: 40px;
+				top: 1px;
+				line-height: 64px;
+				text-transform: lowercase;
+				font-size: 1.1em;
+				letter-spacing: -1px;
+			}
+			
+				#header nav a {
+					display: inline-block;
+					text-decoration: none;
+					color: #fff;
+					padding: 0 20px 0 20px;
+				}
+				
+				#header nav a.current-page-item {
+					background-color: @MainColor;
+					background-image: -moz-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -webkit-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundNav), to(@MainColor));
+					background-image: -ms-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -o-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: linear-gradient(top, @BackgroundNav, @MainColor);
+					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.1), 0px 0px 5px 1px rgba(255,255,255,0.1);
+				}
+
+				#header nav a:hover {
+					background-color: @MainColor;
+					background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
+					background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
+					background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
+					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.05), 0px 0px 5px 1px rgba(255,255,255,0.05);
+				}
+
+		#banner-wrapper {
+			/*background: @Bg-dark url(images/bg1.png);*/
+			/*display: none;*/
+			background: #fff ;
+			margin-bottom: -40px;
+		}
+		
+		#banner-wrapper h1 {
+				font-size: 2.1em;
+				letter-spacing: 0px;
+				/*line-height: 6px;*/
+			}
+
+		#banner {
+			position: relative;
+			width: 60px;
+			height: 140px;
+			margin: 2% 0 2% 0;
+			box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
+			border-radius: 10px;
+			padding: 20px;
+			background: #fff url(images/banner.jpg) no-repeat 20px 20px;
+			background-size: 960px 220px;
+		}
+		
+			
+			#banner h2 {
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				top: 80px;
+				left: 0;
+				font-size: 3em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -2px;
+			}
+			
+			#banner span {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				bottom: 85px;
+				left: 0;
+				font-size: 1.4em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -1px;
+				text-transform: lowercase;
+				opacity: 0.8;
+			}
+
+		#main {
+			background: #fff;
+			padding: 3% 0 3% 0;
+		}
+
+			#main .controls {
+			}
+
+			#main .main-row {
+				margin: 2% 0 2% 0;
+				overflow: hidden;
+				margin-top: -10px;
+			}
+
+		#footer-wrapper {
+			padding: 5% 0 5% 0;
+		}
+
+		#copyright {
+			font-size: 0.7em;
+			text-align: center;
+			color: #A6A88F;
+			border-top: solid 1px #ced0b7;
+			padding: 2em 0 0 0;
+			margin: 1em 0 0 0;
+			line-height: 1.1em;
+		}
+
+			#copyright a {
+				color: #A6A88F;
+			}
+	
+	}
+	
+/*********************************************************************************/
+/* Mobile (<= 800px)                                                             */
+/*********************************************************************************/
+
+	@media only screen and (max-width: 600px) {
+
+		body {
+			font-size: 15pt;
+		}
+
+		h2 {
+			font-size: 1.4em;
+		}
+
+		h3 {
+			font-size: 1.2em;
+		}
+
+		h4 {
+			font-size: 1em;
+		}
+
+		ul.small-image-list img {
+			width: 75px;
+		}
+
+		ul.big-image-list img {
+			width: 75px;
+		}
+
+		ul.link-list {
+			margin: 0 0 2em 0;
+		}
+
+		section, article {
+			padding: 40px 20px 40px 20px;
+		}
+
+		#main section, #main article {
+			background: #fff;
+		}
+
+		article.blog-post .comments {
+			display: block;
+			position: relative;
+			top: -0.5em;
+			margin: 0 0 0.5em 0;
+		}
+
+		article.blog-post h2 {
+		}
+
+		.button {
+			font-size: 1em;
+		}
+
+		.blog-post-image {
+			width: 100%;
+		}
+
+		#header-wrapper {
+			background-color: @BackgroundHead;
+			background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
+			background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
+			background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
+		}
+
+	#header-wrapper h1 {margin-top:0px;color: #fff;text-decoration: none; font-size: 2.0em;text-align: center; border-bottom:0px ;}
+	
+		#header {
+			text-align: center;
+			padding: 5px 0 5px 0;
+		}
+
+			#header h1 {
+				color: #fff;
+				font-size: 2.4em;
+				text-align: center;
+				margin: 0 0 20px 0;
+			}
+
+			#header h1 a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+			#header nav {
+				text-transform: lowercase;
+				font-size: 1em;
+				margin: 0 auto;
+			}
+			
+				#header nav a {
+					display: inline-block;
+					text-decoration: none;
+					color: #fff;
+					padding: 10px 15px 10px 15px;
+					margin: 3px 0 3px 0;
+				}
+				
+				#header nav a.current-page-item {
+					background-color: @MainColor;
+					background-image: -moz-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -webkit-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundNav), to(@MainColor));
+					background-image: -ms-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: -o-linear-gradient(top, @BackgroundNav, @MainColor);
+					background-image: linear-gradient(top, @BackgroundNav, @MainColor);
+					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.1), 0px 0px 5px 1px rgba(255,255,255,0.1);
+					border-radius: 10px;
+				}
+
+		#banner-wrapper {
+			background: @MainColor url(images/bg1.png);
+			display: none;
+		}
+
+		#banner {
+			position: relative;
+			width: 100%;
+			height: 240px;
+			background: #fff url(images/banner.jpg) no-repeat;
+			background-size: 100% 100%;
+		}	
+
+		#banner {
+			position: relative;
+		}
+			
+			#banner h2 {
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				bottom: 80px;
+				left: 0;
+				font-size: 2em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -2px;
+			}
+			
+			#banner span {
+				display: block;
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				top: 135px;
+				left: 0;
+				font-size: 1em;
+				color: #fff;
+				text-align: center;
+				letter-spacing: -1px;
+				text-transform: lowercase;
+				opacity: 0.8;
+			}
+
+		#footer-wrapper section, #footer-wrapper article {
+			border-bottom: solid 1px #ced0b7;
+		}
+			
+		#copyright {
+			font-size: 0.5em;
+			text-align: center;
+			color: #A6A88F;
+			padding: 40px;
+			font-size: 0.8em;
+			line-height: 1.5em;
+		}
+
+			#copyright a {
+				color: #A6A88F;
+			}
+	
+	}
+
