@@ -1,5 +1,3 @@
-Main page
-LionWiki
 About LionWiki
 LionWiki
 Syntax reference
@@ -8,3 +6,5 @@ UserGuide: How to write a plugin
 plugin,userguide
 UserGuide: Admin plugin
 spam,plugin,userguide
+Original Main page
+LionWiki
