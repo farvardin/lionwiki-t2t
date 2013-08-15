@@ -1,1057 +1,954 @@
 <rss version="2.0">
 <channel>
-<title>My new wiki</title>
-<link>http://localhost:80/lionwiki-3.2.9/index.php</link>
-<description>RSS feed from My new wiki</description>
-<language>fr-fr</language>
+<title>LionWiki and txt2tags sample</title>
+<link>http://192.168.0.4:80/lionwiki-t2t/index.php</link>
+<description>RSS feed from LionWiki and txt2tags sample</description>
+<language>fr-FR</language>
 
 	<item>
-	  <title>UserGuide: Admin plugin</title>
-	  <pubDate>Thu, 15 Aug 2013 22:09:05 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=UserGuide%3A+Admin+plugin</link>
-	  <description><pre id="diff"><ins>{include:subpage plugins}
-'''Admin''' plugin provides advanced administration functions. It's useful for sites attacked by vandalism or spam. Because these functions are quite sensitive, they are protected by password (different from password needed to save pages). Password is required and must be set.
+	  <title>sandbox</title>
+	  <pubDate>Thu, 15 Aug 2013 10:33:26 +0200</pubDate>
+	  <link>http://192.168.0.4:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff"><ins>== Edit me ==
 
-!Installation
-The only thing needed is to set admin password in config.php file:
+This is the __sandbox__ page.
 
-{{$Admin[&quot;PASSWORD&quot;] = sha1(&quot;my_password&quot;);}}
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
 
-xxx
-!Features
-*'''Blocked IPs''' is a list of IP which are prohibited from writing pages, usually because they erase content of pages, insert inappropriate content etc.
-** Access with index.php?action=admin-blockip
-*'''Blacklist''' is a list of prohibited words (or generally expressions). If page content contains one of these expressions, page will not be saved.
-** Access with index.php?action=admin-blacklist
-*'''Read-only pages''' is again list of pages which are set to be read-only. It's useful for important content which may be target of vandalism (e.g. Main page).
-** Access with index.php?action=admin-pages
-** Since LionWiki 2.3.3 it is possible to edit even this pages, but only with Admin password.
-*'''Disabled plugins''' is a list of plugins which are present in plugins directory, but you want them to be disabled (may be temporary)
-** Access with index.php?action=admin-plugins
 
-!History of changes
-Admin plugin was introduced in LionWiki 2.0.
+== Warning ==
 
-{tags:spam, plugin, userguide}</ins>
+All those //demos// websites will be automatically reset every day.
+
+
+ </ins>
 </pre></description>
 	</item>
 
 	<item>
-	  <title>UserGuide: How to write a plugin</title>
-	  <pubDate>Thu, 15 Aug 2013 22:08:15 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=UserGuide%3A+How+to+write+a+plugin</link>
-	  <description><pre id="diff"><ins>Do you miss some feature and have the ability to write one? Go ahead, writing plugins for LionWiki is very simple. This page will tell you everything you need to know (from LionWiki view, of course). If you're tired of reading and keen on programming, close this page and take a look on some plugins in LionWiki, they are mostly self-explanatory.
+	  <title>Sample Page</title>
+	  <pubDate>Wed, 14 Aug 2013 23:08:03 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
+	  <description><pre id="diff"><ins>= TXT2TAGS SAMPLE = 
+== Aurelio Jargas ==
+=== %%mtime(%m/%d/%Y) ===
+</ins>
+%!encoding: UTF-8
 
-!File, class, etc.
-Plugins are stored in plugins folder. They are all named &quot;wkp_MyNewPlugin.php&quot;, this is not just convention but neccesity - LionWiki accepts only plugins with prefix &quot;wkp_&quot; and extension &quot;.php&quot;.
+This text is before the introduction.
 
-Your plugin should contain at least one class, and must be named similarly as file - in this case MyNewPlugin. Again, this is neccessary.
+But it's OK.
 
-!Description of a plugin
-''This is not at all neccessary, just recommended if you want to distribute your plugin to other LionWiki users.''
+<del>=</del><ins>                  =</ins>  Introduction  =
 
-If you take a look at some plugin in LionWiki, you'll see, that one of the first lines is something like this:
-{{var $desc = array(
-  array(&quot;Admin plugin&quot;, &quot;provides advanced administration functions protected by password&quot;),
-  array(
-	array(&quot;&amp;lt;a href=\&quot;?action=admin-blockip\&quot; rel=\&quot;nofollow\&quot;&gt;IP blocking&amp;lt;/a&gt;&quot;, 
-			&quot;Blocks specified addresses from editing&quot;),
-	array(&quot;&amp;lt;a href=\&quot;?action=admin-blacklist\&quot; rel=\&quot;nofollow\&quot;&gt;Black list&amp;lt;/a&gt;&quot;, 
-			&quot;List of expressions forbidden in pages&quot;),
-	array(&quot;&amp;lt;a href=\&quot;?action=admin-pages\&quot; rel=\&quot;nofollow\&quot;&gt;Read-only pages&amp;lt;/a&gt;&quot;, 
-			&quot;Can set certain pages as unwritable&quot;),
-	array(&quot;&amp;lt;a href=\&quot;?action=admin-plugins\&quot; rel=\&quot;nofollow\&quot;&gt;Disabled plugins&amp;lt;/a&gt;&quot;, 
-			&quot;List of disabled plugins&quot;)
-  )
-);}}
+Welcome to the txt2tags sample file.
 
-What does this mean? This array is intended for use in ''ListPlugins'' plugin. This plugin takes a look on all loaded plugins and gets this array and displays it. Its purpose is to be simple interface to all functionality of all plugins.
+Here you have examples and a brief explanation of all
+marks.
 
-$desc array again contains array(s). This array can contain either an array(s) (starts to be confusing, right?) or tuple consisting of:
-# Name of function, if possible with link
-# Short explanation or usage of function
+The first 3 lines of this file are used as headers,
+on the following format:
+```
+line1: document title
+line2: author name, email
+line3: date, version
+```
 
-$desc array is actually tree with all leaves containing this tuple. Take a look at [here|./?action=listplugins] how it is displayed.
+Lines with balanced equal signs = around are titles.
 
-This example was actually the most complicated $desc present in current LionWiki plugins, other plugins have something like this:
+% a secret comment!
+%TODO link to program site http://txt2tags.org
 
-{{var $desc = array(
-	array(&quot;Captcha plugin&quot;, &quot;is a spam filtering plugin asking simple questions.&quot;)
-);}}
 
-!Events
-In general, plugins usually works one of these two ways:
-# Plugins register themselves to some events. These events then trigger plugins registered to this event
-# Main program calls all plugins when some event occur, plugins then can choose to take action or do nothing
+              =  Fonts and Beautifiers  =
 
-LionWiki plugin system is of type 2). List of events:
+We have two sets of fonts:
 
-* pluginsLoaded is triggered immediately after all plugins are instantiated, this is specifically intended for Admin plugin, so it can delete unwanted plugins
-* pluginsLoaded2 is called immediately after pluginsLoaded
-* actionBegin - triggered before &quot;actions&quot; (like saving a page or loading an old revision) are treated
-* writingPage - right before writing page to the file, used by spam checking plugins
-* pageWritten - right after page was written to file, used by RSS plugin
-* formatBegin - before substituting wiki syntax (Tables plugin)
-* pageLoaded - right after page (or revision) was loaded into $CON variable
-* subPagesLoaded - triggered after all subpages were inserted into the page
-* formatEnd - after substituting wiki syntax
-* formatFinished - right after formatEnd
-* template - substituting template
-* finished - right before outputting content to the browser (and therefore right before terminating the process)
-* diff - used by alternative diff plugins
-* any unknown action parameter (in URL) is triggered as event
+The NORMAL type that can be improved with beautifiers.
 
-Event is served by simply creating method with name of the event in your plugin class.
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
 
-If this method returns false, LionWiki thinks that no such method exists (plugin does not want to treat this event for some reason).
+We will now enter on a subtitle...
 
-Events were added to LionWiki on demand - I didn't create any events with no current use. If you're programming new plugin and miss some event, tell me, and if it's sensible, I'll add it into core LionWiki.
 
-For almost any meaningful plugin, you'll need to know at least few things from LionWiki source. You can take a look at [Understanding core LionWiki|UserGuide: Understanding core LionWiki].
+                  ==  Beautifiers  ==
 
-!PHP5 vs. PHP4 objects
-LionWiki tries to be PHP4 compatible. If you want to distribute your &quot;MyNewPlugin&quot; to other LionWiki users, it would be good to be too PHP4 compatible. These are two simple things to keep in mind to write PHP4 compatible plugins:
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
 
-# Name of the constructor is not ''__construct()'', but ''MyNewPlugin''
-# Don't use ''public'', ''private'' and ''protected'' in your class, declare your member variables with ''var $variable'' (synonym of ''public'')
+We use double *, /, - and _ to represent **bold**,
+//italic//, --strike-- and __underline__.
 
-{tags: plugin, userguide}</ins>
+The **//bold italic//** style is also supported as a
+combination.
+
+
+              ==  Pre-Formatted Text  ==
+
+We can put a code sample or other pre-formatted text:
+```
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+```
+
+And also, it's easy to put a one line pre-formatted
+text:
+``` prompt$ ls /etc
+
+Or use ``pre-formatted`` inside sentences.
+
+
+                ==  More Cosmetics  ==
+
+Special entities like email (duh@somewhere.com) and
+URL (http://www.duh.com) are detected automagically,
+as long as the horizontal line:
+
+--------------------------------------------------------
+^ thin or large v
+<del>% ========================================================</del><ins>========================================================</ins>
+
+You can also specify an [explicit link http://duh.org]
+or an [explicit email duh@somewhere.com] with label.
+
+And remember,
+	A TAB in front of the line does a quotation.
+		More TABs, more depth (if allowed).
+Nice.
+
+
+                      =  Lists  =
+
+A list of items is natural, just putting a **dash** or
+a **plus** at the beginning of the line.
+
+
+                  ==  Plain List  ==
+
+The dash is the default list identifier. For sublists,
+just add **spaces** at the beginning of the line. More
+spaces, more sublists.
+
+- Earth
+  - America
+    - South America
+      - Brazil
+        - How deep can I go?
+  - Europe
+    - Lots of countries
+- Mars
+  - Who knows?
+
+
+The list ends with **two** consecutive blank lines.
+
+
+                 ==  Numbered List  ==
+
+The same rules as the plain list, just a different
+identifier (plus).
+
++ one
++ two
++ three
+  - mixed lists!
+  - what a mess
+    + counting again
+    + ...
++ four
+
+
+                ==  Definition List  ==
+
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+: orange
+  a yellow fruit
+: apple
+  a green or red fruit
+: other fruits
+  - wee!
+  - mixing lists
+    + again!
+    + and again!
+
+
+                     =  Tables  =
+
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3 |
+  | cell 2.1  |  cell 2.2   |   cell 2.3 |
+  | cell 3.1  |  cell 3.2   |   cell 3.3 |
+
+|| heading 1 |  heading 2  |  heading 3 |
+ | cell 1.1  |  cell 1.2   |   cell 1.3 |
+ | cell 2.1  |  cell 2.2   |   cell 2.3 |
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2 |
+  | heading 2 |  cell 2.1   |   cell 2.2 |
+  | heading 3 |  cell 3.1   |   cell 3.2 |
+
+|/ heading   |  heading 1  |  heading 2 |
+ | heading 1 |  cell 1.1   |   cell 1.2 |
+ | heading 2 |  cell 2.1   |   cell 2.2 |
+
+Without the last pipe, no border:
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3
+  | cell 2.1  |  cell 2.2   |   cell 2.3
+  | cell 3.1  |  cell 3.2   |   cell 3.3
+
+|| heading 1 |  heading 2  |  heading 3
+ | cell 1.1  |  cell 1.2   |   cell 1.3
+ | cell 2.1  |  cell 2.2   |   cell 2.3
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2
+  | heading 2 |  cell 2.1   |   cell 2.2
+  | heading 3 |  cell 3.1   |   cell 3.2
+
+|/ heading   |  heading 1  |  heading 2
+ | heading 1 |  cell 1.1   |   cell 1.2
+ | heading 2 |  cell 2.1   |   cell 2.2
+
+                =  Special Entities  =
+
+Because things were too simple.
+
+
+                    ==  Images  ==
+
+The image mark is as simple as it can be: ``[filename]``.
+
+                      [img/photo.jpg]  
+
+And with some targets the image is linkable :
+
+                      [[img/photo.jpg] http://www.txt2tags.org]  
+
+- The filename must end in PNG, JPG, GIF, or similar.
+- No spaces inside the brackets!
+
+
+                     ==  Other  ==
+When the target needs, special chars like &lt;, &gt; and &amp;
+are escaped.
+
+The handy ``%%date`` macro expands to the current date.
+
+So today is %%date on the ISO ``YYYYMMDD`` format.
+
+You can also specify the date format with the %? flags,
+as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
+
+That's all for now.
+
+-------------------------------------------------------
+%%% TRANSLATOR: Uncomment and translate the next two lines
+%Translated by John Smith.
+%-------------------------------------------------------
+[img/t2tpowered.png] ([%%infile %%infile])
+
+% vim: tw=55
+
 </pre></description>
 	</item>
 
 	<item>
-	  <title>UserGuide: How to use PROTECTED_READ</title>
-	  <pubDate>Thu, 15 Aug 2013 22:07:18 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=UserGuide%3A+How+to+use+PROTECTED_READ</link>
-	  <description><pre id="diff"><ins>If you want to keep your pages (content) private, you can use [config|UserGuide: Configuration] option $PROTECTED_READ. If you use Apache server and have enabled .htaccess files, you don't need to read on, it will be secure without any modifications.
+	  <title>Sample Page</title>
+	  <pubDate>Wed, 14 Aug 2013 23:06:18 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
+	  <description><pre id="diff"><del></del>
+%!encoding: UTF-8
 
-!How does it work
+This text is before the introduction.
 
-Very simply. LionWiki just denies every access to the pages unless user entered password. However, because LionWiki doesn't use database and it stores all the pages in plain text files, one can access pages without invoking LionWiki (e.g. you can insert something like this in browser: [http://lionwiki.0o.cz/pages/Main+page.txt].
+But it's OK.
 
-How to solve this security hole?
+<del>                  =</del><ins>=</ins>  Introduction  =
 
-!Solutions
+Welcome to the txt2tags sample file.
 
-!!Apache + .htaccess
-In default distributions, directories pages, history and plugins/data contains .htaccess with following content:
-{{deny from all}}
-This causes that every browser request to any file, directory or files in directories (and so on) are denied. This works for every Apache installation with .htaccess support enabled (absolute majority of sites I guess). As far as I know, Microsoft IIS has some support for .htaccess too, but I don't have any installation to test this.
+Here you have examples and a brief explanation of all
+marks.
 
-!!!Test
-Try to load this in your web browser: http://url_to_your_new_wiki/var/pages/Main+page.txt
+The first 3 lines of this file are used as headers,
+on the following format:
+```
+line1: document title
+line2: author name, email
+line3: date, version
+```
 
-If &quot;Forbidden&quot; page is displayed then .htaccess works fine and content is secure. If page is displayed, htaccess does not work and you have to find some other way to make it secure.
+Lines with balanced equal signs = around are titles.
+
+% a secret comment!
+%TODO link to program site http://txt2tags.org
 
 
-!!Renaming pages and history dirs to something unpredictable
-If you just rename these directories to something like &quot;history%$^*&amp;()4564&quot; then attacker won't be able to guess right path to the pages and history dir and therefore your data will be secure. This is not as secure as two options mentioned above, but it's quite easy.
+              =  Fonts and Beautifiers  =
 
-Of course, you must change $PAGES_DIR and $HISTORY_DIR in your config file to the right values.
+We have two sets of fonts:
 
-!!Other ways
-There are other ways to fix this problem (e.g. with right file permissions) but I'm too tired to describe them all.</ins>
+The NORMAL type that can be improved with beautifiers.
+
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+
+We will now enter on a subtitle...
+
+
+                  ==  Beautifiers  ==
+
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+
+We use double *, /, - and _ to represent **bold**,
+//italic//, --strike-- and __underline__.
+
+The **//bold italic//** style is also supported as a
+combination.
+
+
+              ==  Pre-Formatted Text  ==
+
+We can put a code sample or other pre-formatted text:
+```
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+```
+
+And also, it's easy to put a one line pre-formatted
+text:
+``` prompt$ ls /etc
+
+Or use ``pre-formatted`` inside sentences.
+
+
+                ==  More Cosmetics  ==
+
+Special entities like email (duh@somewhere.com) and
+URL (http://www.duh.com) are detected automagically,
+as long as the horizontal line:
+
+--------------------------------------------------------
+^ thin or large v
+% ========================================================
+
+You can also specify an [explicit link http://duh.org]
+or an [explicit email duh@somewhere.com] with label.
+
+And remember,
+	A TAB in front of the line does a quotation.
+		More TABs, more depth (if allowed).
+Nice.
+
+
+                      =  Lists  =
+
+A list of items is natural, just putting a **dash** or
+a **plus** at the beginning of the line.
+
+
+                  ==  Plain List  ==
+
+The dash is the default list identifier. For sublists,
+just add **spaces** at the beginning of the line. More
+spaces, more sublists.
+
+- Earth
+  - America
+    - South America
+      - Brazil
+        - How deep can I go?
+  - Europe
+    - Lots of countries
+- Mars
+  - Who knows?
+
+
+The list ends with **two** consecutive blank lines.
+
+
+                 ==  Numbered List  ==
+
+The same rules as the plain list, just a different
+identifier (plus).
+
++ one
++ two
++ three
+  - mixed lists!
+  - what a mess
+    + counting again
+    + ...
++ four
+
+
+                ==  Definition List  ==
+
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+: orange
+  a yellow fruit
+: apple
+  a green or red fruit
+: other fruits
+  - wee!
+  - mixing lists
+    + again!
+    + and again!
+
+
+                     =  Tables  =
+
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3 |
+  | cell 2.1  |  cell 2.2   |   cell 2.3 |
+  | cell 3.1  |  cell 3.2   |   cell 3.3 |
+
+|| heading 1 |  heading 2  |  heading 3 |
+ | cell 1.1  |  cell 1.2   |   cell 1.3 |
+ | cell 2.1  |  cell 2.2   |   cell 2.3 |
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2 |
+  | heading 2 |  cell 2.1   |   cell 2.2 |
+  | heading 3 |  cell 3.1   |   cell 3.2 |
+
+|/ heading   |  heading 1  |  heading 2 |
+ | heading 1 |  cell 1.1   |   cell 1.2 |
+ | heading 2 |  cell 2.1   |   cell 2.2 |
+
+Without the last pipe, no border:
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3
+  | cell 2.1  |  cell 2.2   |   cell 2.3
+  | cell 3.1  |  cell 3.2   |   cell 3.3
+
+|| heading 1 |  heading 2  |  heading 3
+ | cell 1.1  |  cell 1.2   |   cell 1.3
+ | cell 2.1  |  cell 2.2   |   cell 2.3
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2
+  | heading 2 |  cell 2.1   |   cell 2.2
+  | heading 3 |  cell 3.1   |   cell 3.2
+
+|/ heading   |  heading 1  |  heading 2
+ | heading 1 |  cell 1.1   |   cell 1.2
+ | heading 2 |  cell 2.1   |   cell 2.2
+
+                =  Special Entities  =
+
+Because things were too simple.
+
+
+                    ==  Images  ==
+
+The image mark is as simple as it can be: ``[filename]``.
+
+                      [img/photo.jpg]  
+
+And with some targets the image is linkable :
+
+                      [[img/photo.jpg] http://www.txt2tags.org]  
+
+- The filename must end in PNG, JPG, GIF, or similar.
+- No spaces inside the brackets!
+
+
+                     ==  Other  ==
+When the target needs, special chars like &lt;, &gt; and &amp;
+are escaped.
+
+The handy ``%%date`` macro expands to the current date.
+
+So today is %%date on the ISO ``YYYYMMDD`` format.
+
+You can also specify the date format with the %? flags,
+as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
+
+That's all for now.
+
+-------------------------------------------------------
+%%% TRANSLATOR: Uncomment and translate the next two lines
+%Translated by John Smith.
+%-------------------------------------------------------
+[img/t2tpowered.png] ([%%infile %%infile])
+
+% vim: tw=55
+
 </pre></description>
 	</item>
 
 	<item>
-	  <title>Syntax reference</title>
-	  <pubDate>Thu, 15 Aug 2013 22:02:26 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=Syntax+reference</link>
-	  <description><pre id="diff"><ins>{include:subpage menu}
-''This is a [Wiki|http://en.wikipedia.org/wiki/Wiki], so feel free to correct any factual or grammatical error.''
+	  <title>Sample Page</title>
+	  <pubDate>Wed, 14 Aug 2013 23:05:59 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
+	  <description><pre id="diff"><del></del>
 
-This document explains all syntax features of core LionWiki. Syntax of tables (provided by plugin) is on separate page: [Tables plugin|UserGuide: Tables plugin].
+%!encoding: UTF-8
 
-!Headings
-Example:
-{{!Heading H2
-!!Heading H3
-!!!Heading H4}}
+This text is before the introduction.
 
+But it's OK.
 
-!Heading H2
-!!Heading H3
-!!!Heading H4
+                  =  Introduction  =
 
-More exclamation marks you use, the smaller the heading will be (up to 5 exclamation marks). Exclamation marks has to be exactly at the beginning of the line.
+Welcome to the txt2tags sample file.
 
+Here you have examples and a brief explanation of all
+marks.
 
+The first 3 lines of this file are used as headers,
+on the following format:
+```
+line1: document title
+line2: author name, email
+line3: date, version
+```
 
-!Lists
-!!Unordered list
+Lines with balanced equal signs = around are titles.
 
-{{* Fruit
-** Apple
-*** Granny smith
-** Orange
-* Vegetables
-** Garlic
-** Onion}}
-
-* Fruit
-** Apple
-*** Granny smith
-** Orange
-* Vegetables
-** Garlic
-** Onion
+% a secret comment!
+%TODO link to program site http://txt2tags.org
 
 
-!!Ordered list
+              =  Fonts and Beautifiers  =
 
-{{# First item 
-## First subitem 
-### First subsubitem
-## Second subitem}}
+We have two sets of fonts:
 
-# First item 
-## First subitem 
-### First subsubitem
-## Second subitem 
+The NORMAL type that can be improved with beautifiers.
 
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
 
-!Text styles
-^''^'Bold^''^' --&gt; '''Bold''' (three apostrophes)
-^''Italic^'' --&gt; ''Italic'' (two apostrophes)
-^''^''^'Bold and italic^''^''^' --&gt; '''''Bold and italic''''' (five apostrophes)
-^'--Strikethrough--' --&gt; '--Strikethrough--'
-^'__Underlined__' --&gt; '__Underlined__'
-^{small}Small text^{/small} --&gt; {small}Small text{/small}
-x^{sup}10^{/sup} --&gt; x{sup}10{/sup}
-x^{sub}i^{/sub} --&gt; x{sub}i{/sub}
-
-!!CSS styles, classes, IDs
-''Since LionWiki 3.1''
-{{{.first.second#id color: blue; font-size: large}Styled text span with ID and two classes{/} }}
-{.first.second#id color: blue; font-size: large}Styled text span with ID and two classes{/}
-
-Classes begins with dot, ID with hash sign. Everything after first space is considered to be CSS style, so there can't be any space between or inside classes and ID. Few other possibilities:
-
-{{{. display: block;}Text{/} - neither class, nor id, just style
-{.citation}Text{/if} - just class}}
-
-The enclosing element is &amp;lt;span&gt;.
+We will now enter on a subtitle...
 
 
-!Emails, links, images
-Links to other pages can be created like this:
-^[Main page] --&gt; [Main page]
+                  ==  Beautifiers  ==
 
-or 
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
 
-^[Main project page|Main page] --&gt; [Main project page|Main page]
+We use double *, /, - and _ to represent **bold**,
+//italic//, --strike-- and __underline__.
 
-or
-
-^[Features header on Main page|Main page#Features] --&gt; [Features header on Main page|Main page#Features]
-
-{br}
-Emails and web links are automatically recognized:
-
-^http://lionwiki.0o.cz --&gt; http://lionwiki.0o.cz
-lionwiki^@example.com --&gt; lionwiki@example.com
-{br}
-You can use also relative links, but they have to start with ./ (otherwise it will be interpreted as Wiki page). So if you want to link some HTML page in the same directory, you use:
-
-^[Interesting page|./SomeWebPage.html] --&gt; [Interesting page|./SomeWebPage.html]
-
-Or to use a relative path to a file on the same server but in a higher directory, you can use:
-^[Interesting File In Parent Directory|./../SomeWebPage.html] --&gt; [Interesting File In Parent Directory|./../SomeWebPage.html]
-
-!!Images
-Image handling was changed a lot in the 3.2 release, see [older version|http://lionwiki.0o.cz/index.php?page=Syntax+reference.en&amp;action=rev&amp;f1=20100108-2008-04.bak#Images] of this page if you use older version.
-
-If you need a way to upload images (or other files), check [Upload plugin|UserGuide: Upload plugin].
-^[^http://lionwiki.0o.cz/lion.jpg] --&gt; [http://lionwiki.0o.cz/lion.jpg]
-
-You can use your image as your link: ^[^http://lionwiki.0o.cz/lion.jpg|^link=^http://lionwiki.0o.cz/] --&gt; 
-[http://lionwiki.0o.cz/lion.jpg|link=http://lionwiki.0o.cz/]
-
-You can also place your image to the left or right, possibly combined with other features:
-^[^http://lionwiki.0o.cz/lion.jpg|^link=^http://lionwiki.0o.cz/|center|title=Big Lion|alt=Alt text]
-
-[http://lionwiki.0o.cz/lion.jpg|link=http://lionwiki.0o.cz/|center|title=Big Lion|alt=Alt text]
-[http://lionwiki.0o.cz/lion.jpg|link=http://lionwiki.0o.cz/|right|title=Big Lion|alt=Alt text]
-{br}
-More complex operations with images can be done with [ImageExt plugin|UserGuide: ImageExt plugin].
-
-!Subpages
-Subpages are useful when you need to insert some common content into multiple pages, example could be a navigational menu (by the way, we have [Menu plugin|UserGuide: Menu plugin].
-
-Syntax: ^{include:page_to_be_included}.
-
-You can use the same syntax to include page in template (i.e. not in page content), but in this case, whole content of this subpage must be in HTML (you can, but not have to enclose it in ^{html} and ^{/html}).
+The **//bold italic//** style is also supported as a
+combination.
 
 
-!Multilingual content
-Let's say you have page named &quot;Biography&quot; in German and you would like to make French variant. Rename page Biography to Biography.de and create page named Biography.fr and insert French translation there. Then visitors whose browser identifies primary language as French will see Biography.fr. It's recommended to create a redirect from page Biography to default language variant. The obvious limitation is that page name has to stay the same in every language variant. That's not such a big problem with &quot;Biography&quot;, but it can be worse with other names. 
+              ==  Pre-Formatted Text  ==
 
-This is recommended way to create multilingual content, there are more ways to do it.
+We can put a code sample or other pre-formatted text:
+```
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+```
 
-!Redirects
-If you want to redirect from some page to other, put ^{redirect:page} at the very beginning of the page. It's not straightforward to edit page containing redirect because every visit will cause redirecting. The only way to edit such page is from search results (as it provides direct edit links), or possibly by manually altering URL.
+And also, it's easy to put a one line pre-formatted
+text:
+``` prompt$ ls /etc
 
-!Other
-{TOC}
-!!Table of contents
-Automatically generated table of contents can be inserted with ^{TOC} (see demo on the right). It can be used in both pages and templates.
+Or use ``pre-formatted`` inside sentences.
 
-!!Characters
-Some sequences of characters are automatically replaced:
-* Arrows : &amp;lt;^-- : &amp;lt;--, ^--&gt; : --&gt;, &amp;lt;^--&gt; : &amp;lt;--&gt;
-* Dash : ^-- : --
-* Copyrights : ^(c) or ^(C) : (c), ^(r) or ^(R) : (r)
 
-!!Code
-Code syntax is useful when you need to keep original spacing and layout of text, especially for programming source code.
+                ==  More Cosmetics  ==
 
-^{{import sys
-if len(sys.argv) == 2:
-   print &quot;Hello&quot;,sys.argv^[1]}}
-does:
-{{import sys
-if len(sys.argv) == 2:
-   print &quot;Hello&quot;,sys.argv[1]}}
+Special entities like email (duh@somewhere.com) and
+URL (http://www.duh.com) are detected automagically,
+as long as the horizontal line:
 
-We also have a [plugin for syntax highlighting|UserGuide: SyntaxHighlighter plugin].
+--------------------------------------------------------
+^ thin or large v
+<del>========================================================</del><ins>% ========================================================</ins>
 
-!!Horizontal line
-----
-by '''^--^--'''
+You can also specify an [explicit link http://duh.org]
+or an [explicit email duh@somewhere.com] with label.
 
-!!Suppressing wiki syntax
-By using ^^ character before syntax keyword or using ^{{something}}. If you still don't know how, take a look on wiki code of this page, there are plenty of examples. If you want to insert ^^ character, you have to double it, i.e. ^^^^
+And remember,
+	A TAB in front of the line does a quotation.
+		More TABs, more depth (if allowed).
+Nice.
 
-!!HTML code
-Do you want to insert youtube video to your site? Or any other HTML code? Just insert it between ^{html}some html code{/html}. This does not have to work if config value $NO_HTML is set to true. Note that it is serious security risk if you allow users to post HTML code in your wiki.
 
-!!!HTML entities
-HTML entities are automatically recognized and left without modification. 
+                      =  Lists  =
 
-!!Newline
-LionWiki joins adjacent newlines together, if you need more than one newline, use ^{br}.
+A list of items is natural, just putting a **dash** or
+a **plus** at the beginning of the line.
 
-!!Internal comments
-You can insert internal comments not intended to be displayed using HTML-like syntax ^&amp;lt;!^-- text not intended to be displayed ^--&gt;
 
-{tags:syntax}</ins>
+                  ==  Plain List  ==
+
+The dash is the default list identifier. For sublists,
+just add **spaces** at the beginning of the line. More
+spaces, more sublists.
+
+- Earth
+  - America
+    - South America
+      - Brazil
+        - How deep can I go?
+  - Europe
+    - Lots of countries
+- Mars
+  - Who knows?
+
+
+The list ends with **two** consecutive blank lines.
+
+
+                 ==  Numbered List  ==
+
+The same rules as the plain list, just a different
+identifier (plus).
+
++ one
++ two
++ three
+  - mixed lists!
+  - what a mess
+    + counting again
+    + ...
++ four
+
+
+                ==  Definition List  ==
+
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+: orange
+  a yellow fruit
+: apple
+  a green or red fruit
+: other fruits
+  - wee!
+  - mixing lists
+    + again!
+    + and again!
+
+
+                     =  Tables  =
+
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3 |
+  | cell 2.1  |  cell 2.2   |   cell 2.3 |
+  | cell 3.1  |  cell 3.2   |   cell 3.3 |
+
+|| heading 1 |  heading 2  |  heading 3 |
+ | cell 1.1  |  cell 1.2   |   cell 1.3 |
+ | cell 2.1  |  cell 2.2   |   cell 2.3 |
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2 |
+  | heading 2 |  cell 2.1   |   cell 2.2 |
+  | heading 3 |  cell 3.1   |   cell 3.2 |
+
+|/ heading   |  heading 1  |  heading 2 |
+ | heading 1 |  cell 1.1   |   cell 1.2 |
+ | heading 2 |  cell 2.1   |   cell 2.2 |
+
+Without the last pipe, no border:
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3
+  | cell 2.1  |  cell 2.2   |   cell 2.3
+  | cell 3.1  |  cell 3.2   |   cell 3.3
+
+|| heading 1 |  heading 2  |  heading 3
+ | cell 1.1  |  cell 1.2   |   cell 1.3
+ | cell 2.1  |  cell 2.2   |   cell 2.3
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2
+  | heading 2 |  cell 2.1   |   cell 2.2
+  | heading 3 |  cell 3.1   |   cell 3.2
+
+|/ heading   |  heading 1  |  heading 2
+ | heading 1 |  cell 1.1   |   cell 1.2
+ | heading 2 |  cell 2.1   |   cell 2.2
+
+                =  Special Entities  =
+
+Because things were too simple.
+
+
+                    ==  Images  ==
+
+The image mark is as simple as it can be: ``[filename]``.
+
+                      [img/photo.jpg]  
+
+And with some targets the image is linkable :
+
+                      [[img/photo.jpg] http://www.txt2tags.org]  
+
+- The filename must end in PNG, JPG, GIF, or similar.
+- No spaces inside the brackets!
+
+
+                     ==  Other  ==
+When the target needs, special chars like &lt;, &gt; and &amp;
+are escaped.
+
+The handy ``%%date`` macro expands to the current date.
+
+So today is %%date on the ISO ``YYYYMMDD`` format.
+
+You can also specify the date format with the %? flags,
+as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
+
+That's all for now.
+
+-------------------------------------------------------
+%%% TRANSLATOR: Uncomment and translate the next two lines
+%Translated by John Smith.
+%-------------------------------------------------------
+[img/t2tpowered.png] ([%%infile %%infile])
+
+% vim: tw=55
+
 </pre></description>
 	</item>
 
 	<item>
-	  <title>Page List</title>
-	  <pubDate>Thu, 15 Aug 2013 21:58:09 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=Page+List</link>
-	  <description><pre id="diff"><ins>{INDEX_LIST}</ins>
-</pre></description>
-	</item>
+	  <title>Sample Page</title>
+	  <pubDate>Wed, 14 Aug 2013 23:05:28 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
+	  <description><pre id="diff"><ins>
 
-	<item>
-	  <title>Installation and configuration</title>
-	  <pubDate>Thu, 15 Aug 2013 21:53:04 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=Installation+and+configuration</link>
-	  <description><pre id="diff"><ins>{include:subpage menu}
-The only software requirement for LionWiki is PHP installation. Recommended is PHP5, but LionWiki (without plugins) works also on PHP4 (tested on PHP 4.3.4).
+%!encoding: UTF-8
 
-!Download
-Download LionWiki from [Home page|Main page]. You have to options -- either core LionWiki (just one file) or full featured LionWiki with plugins.
+This text is before the introduction.
 
-!Installation
-Copy all the files in the archive to some directory on your FTP account. On this account, change permissions of directories &quot;history&quot; and &quot;pages&quot; (and create them if they don't exist yet) so that everybody can write into them (&quot;0777&quot;). And that's it. Just try if it's working in your web browser.
+But it's OK.
 
-!Configuration
-Configuration options are located in file _config.php. If you don't have _config.php file, edit index.php, configuration options are same there.
+                  =  Introduction  =
 
-* $WIKI_TITLE is the name of your Wiki site
-* $PASSWORD is the password needed to write to pages (optionally to see pages). If left blank, no password is required to write (or read) pages.
-* $USE_AUTOLANG is set true, LionWiki tries to detect default language from visitor's browser
-* $LANG is language code of language you want to use. Not all languages are supported, take a look into lang/ directory and see if your is supported. In case of some problem, english is used.
-* $TEMPLATE is path to template
+Welcome to the txt2tags sample file.
 
-You should change all of the options above.  The options below are mostly for tweaking purposes:
-* $PASSWORD_MD5 is secure way to store password with MD5 one way encryption. If not set $PASSWORD is used. 
-* $PROTECTED_READ - if you want to protect pages not only from editing but also from seeing by unwanted visitors, you can set this variable to true. It's particularly useful when writing your private notebook or journal.
-* $HISTORY_COMPRESSION - can contain three possible values - &quot;plain&quot; (no compression), &quot;gzip&quot; and &quot;bzip2&quot;. Default is gzip because it's in every PHP installation and has reasonable compression ratio. Best results can be achieved with &quot;bzip2&quot; but it's not provided in every PHP installation. You can switch values anytime, LionWiki has no problem working with mixed history (one revision compressed, second not compressed etc.).
-* $NO_HTML - optional XSS protection, prohibits use of ^{html} tag. Default is off, it's useful only when site is protected by password.
-* $USE_META - if set false, LionWiki doesn't use Edit summary and IP info, i.e. no meta.dat files are saved and if they exist, they're not used
-* $USE_HISTORY - if you want to disable history tracking (it's enabled by default), you do it by setting this variable to false
-* $START_PAGE is page used as a starting point.
-* $HELP_PAGE is page containing informations on syntax of LionWiki
-* $COOKIE_LIFE_WRITE - contains time in seconds during which is user &quot;logged on&quot; and doesn't have to enter password. Default value is 1 year.
-* $COOKIE_LIFE_READ - same as with $COOKIE_LIFE_WRITE, but this applies when $PROTECTED_READ is true. Default value is 4 hours.
+Here you have examples and a brief explanation of all
+marks.
 
-And that's all. Further configuration options can be found in [Plugins].
+The first 3 lines of this file are used as headers,
+on the following format:
+```
+line1: document title
+line2: author name, email
+line3: date, version
+```
 
-!Plugins
-There are some plugins in default installation, you can see list of them and their description [here|Plugins]. They are located (by default) in directory &quot;plugins&quot;. The only way to activate/deactivate them is to copy them there/delete them, that means that all the plugins located in this directory are active.
+Lines with balanced equal signs = around are titles.
 
-Some plugins need to write to some files -- these are located in plugins/data, this directory should be kept writable (chmod 777).
-
-!Stripping your installation
-To run LionWiki you need only index.php (core LionWiki file) and directory &quot;pages&quot; (with properly set permissions). All the other files and directories can be deleted. index.php contains minimal template which isn't very pretty, but is functional, so you can delete template file(s) if you want. If you delete directory &quot;history&quot;, you won't be able to see past revisions of pages, obviously. The same goes with plugins directory. If you want to get rid of _config.php file, just delete it and set the default values in index.php (they are comfortably placed at the beginning of the file). English is built-in in index.php too, so you can delete whole lang directory.
-
-!!Playing with data files
-So, there are too many revisions and it's just too big. How to delete some very old revisions? Go to history/Name_of_page/ and delete whichever revisions you want. Or delete whole history/Name_of_page/ (but not history directory!). Wanna do some changes to the page using your FTP editor? Just edit it, no problem (remember it's in UTF-8, as everything else). You can do almost anything, &quot;database&quot; stays always consistent.
-
-!Wiki farming
-''Wiki farming is known to work only on some very early versions. It was completely removed as of 3.0''
-
-You have a lot of subdomains and you would like to serve all of them (or some of them) from one LionWiki installation to avoid redundancy. The easiest way to do this is to create symlink (or hardlink) in every subdirectory (subdomain). But you need to access to shell to do this. LionWiki provides another way to do this by using mod_rewrite. Let's say we have this directory structure:
-
-root (example.com)
-    first (first.example.com)
-    second (second.example.com)
-    wwww (www.example.com)
-
-Place index.php to the root directory. Then insert this in your .htacces in root directory (or something similar) for every subdomain you want to be served by LionWiki:
-
-{{RewriteCond %{HTTP_HOST} ^first\.example\.com
-RewriteRule ^index.php(.*)$ index.php?basedir=first ^[L,QSA]
-RewriteCond %{HTTP_HOST} ^first\.example\.com
-RewriteRule ^$ index.php?basedir=first ^[L,QSA]}}
-
-As you can see, the key thing is that this rewrite rules pass the directory (first) as the parameter to index.php, so LionWiki knows where to look for needed files.
-
-Placing of directories and files is a little bit more complicated here. Language directory (if any) should always be placed in the root directory, as it is common for all the subdomains. There can be also plugins directory, where will be located common plugins for all the subdomains. If you want to have some plugins just for some subdomains, create plugins directory (&quot;plugins&quot;) in subdomains directory (&quot;first&quot;) = &quot;first/plugins&quot; and place them there. They will be used only for first.example.com. It's similar with config files and templates. Config file has in the root directory contains common values for all subdomains which can be overriden by config files placed in the subdomains directories. Template file placed in the root directory is used when no template is placed in subdomains directory. It's all quite logical, so it should behave the way you expect.</ins>
-</pre></description>
-	</item>
-
-	<item>
-	  <title>About LionWiki</title>
-	  <pubDate>Thu, 15 Aug 2013 21:51:49 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=About+LionWiki</link>
-	  <description><pre id="diff"><ins>{include:subpage menu}
-!Design principles
-* Doesn't use database. Databases complicate installation and backup procedures. 
-* Doesn't create any own metadata, on the other hand uses filesystem metadata to the maximum extent.
-* &quot;Keep it simple, stupid,&quot; both on source and user level.
-* Include only basic features, everything else should be implemented in plugins.
-* Keep LionWiki usable from just one file.
+% a secret comment!
+%TODO link to program site http://txt2tags.org
 
 
-!History
-LionWiki was created as a fork from french-only [WiKiss|http://wikiss.tuxfamily.org/] 0.3 which is itself fork from TigerWiki (hence the name) which is again fork of roWiki. There are many forks and descendants of roWiki, CB (author of TigerWiki) composed awesome graph of its evolution - download [here|http://pages.videotron.com/chabot/archives/rowiki-history.pdf] or local copy [here|./download/genesis/rowiki-history.pdf].
+              =  Fonts and Beautifiers  =
 
-Oldest LionWiki ascendant is '''roWiki''', small 9KB script (in its latest version) which supported wiki markup, recent changes and history. roWiki author is Marc Rohlfing rowiki@rowlff.de . Project is now dead and original website inaccessible (archived [here|http://maintained.by.noone.org/rowiki/]). If you would like to see roWiki, you can download it from [here|./download/genesis/roWiki-1.05.tar.gz] (version 1.05, latest version known to me).
+We have two sets of fonts:
 
-'''TigerWiki''' is fork (or successor) of roWiki, written by CB. It's probably the most known software of these four &quot;relatives&quot; and is still used on many websites. Its website used to be on chabel.org, but this domain is now unregistered. Apparently, there used to be several language branches - English, French and German. Latest version is probably 2.22 (some websites report this version) but I couldn't find it anywhere. So, if you are interested, you can download version 2.21 EN from [here|./download/genesis/TigerWiki-2.21.tar.gz].
+The NORMAL type that can be improved with beautifiers.
 
-'''WiKiss''' is again fork (or successor) of TigerWiki written by JJL, probably French branch as it is completely in French language (even source code comments and variable names). Its current version is 0.3 released sometimes in 2007. Its status is unknown, probably dead now. Website is at http://wikiss.tuxfamily.org/
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
 
-'''WiKissMe''' is a derivative of WiKiss, a modified version, that's why the Me in the end, also influenced a little by TigerWiki. Developed by Neven Boyanov and friends. WiKissMe is a wiki content management system that stores its data in flat text file. It is written in PHP 5. It has flexible plugins and modules architecture featuring blog, comments, captcha and others. Supports themes with templates as well. Website is http://www.wikissme.org/ hosted at SourceForge (http://sourceforge.net/projects/wikissme).
+We will now enter on a subtitle...
 
 
-!Author
-LionWiki was created by Adam Živnéř, adam.zivner@gmail.com, http://adam.zivner.cz . Homepage of LionWiki is at http://lionwiki.0o.cz
+                  ==  Beautifiers  ==
 
-{tags:LionWiki}</ins>
-</pre></description>
-	</item>
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
 
-	<item>
-	  <title>UserGuide: Understanding core LionWiki</title>
-	  <pubDate>Thu, 15 Aug 2013 21:51:26 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=UserGuide%3A+Understanding+core+LionWiki</link>
-	  <description><pre id="diff"><ins>This page should explain some basic things from source code of LionWiki.
+We use double *, /, - and _ to represent **bold**,
+//italic//, --strike-- and __underline__.
 
-Core LionWiki is basically non-procedural source code as there are very few functions and procedures. This means that code is executed from top to bottom, this is a good thing for reading and understanding!
+The **//bold italic//** style is also supported as a
+combination.
 
-'''register_globals'''
 
-First thing in index.php is cleaning the global variables. register_globals can't be programatically turned off (in a way like &quot;set_register_globals(false);&quot;) so we need to do this manually. This ensures that LionWiki will behave more consistently on different installations.
+              ==  Pre-Formatted Text  ==
 
-'''config values'''
-There are some config values, they are actually identical to the ones in config.php. The reason for them is to have: 
-* default values (if some setting is ommited in config.php) 
-* possibility to work from just one file
+We can put a code sample or other pre-formatted text:
+```
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+```
 
-Then we have some things to set, like:
-* magic_quotes_runtime - this thing turns off automatical quoting when reading files
-* error_reporting - this is quite controversial, but LionWiki doesn't usually check if some variable exists before reading or writing to it, because it knows its default value. So, we need to silent those E_NOTICE warnings.
+And also, it's easy to put a one line pre-formatted
+text:
+``` prompt$ ls /etc
 
-We try to detect if magic_quotes_gpc (gpc stands for GET, POST, COOKIE) is turned on. If it is, it strip slashes of all content of $_GET, $_POST, $_COOKIE, $_REQUEST. Used code is a little bit cryptic, sorry :)
+Or use ``pre-formatted`` inside sentences.
 
-FIXME: BASE_DIR things to describe ...
 
-'''default translations'''
+                ==  More Cosmetics  ==
 
-Then there's default language translation. It's similar thing as with config.php file, this is identical to lang/en.php, we want to have default values (in case some translations aren't complete) and we want to keep the ability to work from just one file.
+Special entities like email (duh@somewhere.com) and
+URL (http://www.duh.com) are detected automagically,
+as long as the horizontal line:
 
-'''choosing interface language'''
-If $USE_AUTOLANG is set to true (it is by default), LionWiki tries to detect visitor's language from browser identification string.
+--------------------------------------------------------
+^ thin or large v
+========================================================
 
-Browser identification string can contain a lot of languages (with different priorities), but this is ignored by LionWiki, which takes into consideration only the first one. It tries to find an interface translation, in case it doesn't succeed, it uses translation specified in $LANG variable.
+You can also specify an [explicit link http://duh.org]
+or an [explicit email duh@somewhere.com] with label.
 
-In case that user language is detected as a variant (e.g. british english - en-gb) and this particular language variant is not found, LionWiki tries to find language, without this variant, in this case just english, &quot;en&quot;.
+And remember,
+	A TAB in front of the line does a quotation.
+		More TABs, more depth (if allowed).
+Nice.
 
-'''installation attempt'''
 
-For functioning, four directories are necessary:
+                      =  Lists  =
 
-*var
-*var/pages/
-*var/history/
-*var/plugins/
+A list of items is natural, just putting a **dash** or
+a **plus** at the beginning of the line.
 
-These are so called &quot;mutable&quot; directories, because they contain mutable content. If they doesn't exists, LionWiki tries to create them. This means that in most cases, it's enough to have created &quot;var&quot; directory which is set as writable.
 
-'''cookie erasing'''
-With erasecookie=1 in URL, you can erase all LionWiki related cookies, which usually means signing off. Because this is done almost at the beginning, no reload is necessary. It basically removes all cookies with prefix &quot;LW_&quot;.
+                  ==  Plain List  ==
 
-'''plugins loading'''
-FIXME: again BASE_DIR things ...
-At this point, LionWiki tries to load plugins from plugins folder. As plugins are considered files with prefix &quot;wkp_&quot; and suffix &quot;.php&quot;. More on writing plugins is on the page [How to write a plugin|UserGuide: How to write a plugin]. LionWiki doesn't take into consideration Admin plugin list of forbidden plugins, this is taken care of in following plugin call &quot;pluginsLoaded&quot;.
+The dash is the default list identifier. For sublists,
+just add **spaces** at the beginning of the line. More
+spaces, more sublists.
 
-'''exporting variables to global'''
-All the GET and POST parameters used by LionWiki are &quot;exported&quot; from $_REQUEST array to global namespace.
+- Earth
+  - America
+    - South America
+      - Brazil
+        - How deep can I go?
+  - Europe
+    - Lots of countries
+- Mars
+  - Who knows?
 
-'''setting title'''
-quite complicated to describe though code is quite simple, take a look.
 
-'''protected read'''
+The list ends with **two** consecutive blank lines.
+
+
+                 ==  Numbered List  ==
+
+The same rules as the plain list, just a different
+identifier (plus).
+
++ one
++ two
++ three
+  - mixed lists!
+  - what a mess
+    + counting again
+    + ...
++ four
+
+
+                ==  Definition List  ==
+
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+: orange
+  a yellow fruit
+: apple
+  a green or red fruit
+: other fruits
+  - wee!
+  - mixing lists
+    + again!
+    + and again!
+
+
+                     =  Tables  =
+
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3 |
+  | cell 2.1  |  cell 2.2   |   cell 2.3 |
+  | cell 3.1  |  cell 3.2   |   cell 3.3 |
+
+|| heading 1 |  heading 2  |  heading 3 |
+ | cell 1.1  |  cell 1.2   |   cell 1.3 |
+ | cell 2.1  |  cell 2.2   |   cell 2.3 |
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2 |
+  | heading 2 |  cell 2.1   |   cell 2.2 |
+  | heading 3 |  cell 3.1   |   cell 3.2 |
+
+|/ heading   |  heading 1  |  heading 2 |
+ | heading 1 |  cell 1.1   |   cell 1.2 |
+ | heading 2 |  cell 2.1   |   cell 2.2 |
+
+Without the last pipe, no border:
+
+  | cell 1.1  |  cell 1.2   |   cell 1.3
+  | cell 2.1  |  cell 2.2   |   cell 2.3
+  | cell 3.1  |  cell 3.2   |   cell 3.3
+
+|| heading 1 |  heading 2  |  heading 3
+ | cell 1.1  |  cell 1.2   |   cell 1.3
+ | cell 2.1  |  cell 2.2   |   cell 2.3
+
+ |_ heading 1 |  cell 1.1   |   cell 1.2
+  | heading 2 |  cell 2.1   |   cell 2.2
+  | heading 3 |  cell 3.1   |   cell 3.2
+
+|/ heading   |  heading 1  |  heading 2
+ | heading 1 |  cell 1.1   |   cell 1.2
+ | heading 2 |  cell 2.1   |   cell 2.2
+
+                =  Special Entities  =
+
+Because things were too simple.
+
+
+                    ==  Images  ==
+
+The image mark is as simple as it can be: ``[filename]``.
+
+                      [img/photo.jpg]  
+
+And with some targets the image is linkable :
+
+                      [[img/photo.jpg] http://www.txt2tags.org]  
+
+- The filename must end in PNG, JPG, GIF, or similar.
+- No spaces inside the brackets!
+
+
+                     ==  Other  ==
+When the target needs, special chars like &lt;, &gt; and &amp;
+are escaped.
+
+The handy ``%%date`` macro expands to the current date.
+
+So today is %%date on the ISO ``YYYYMMDD`` format.
+
+You can also specify the date format with the %? flags,
+as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
+
+That's all for now.
+
+-------------------------------------------------------
+%%% TRANSLATOR: Uncomment and translate the next two lines
+%Translated by John Smith.
+%-------------------------------------------------------
+[img/t2tpowered.png] ([%%infile %%infile])
+
+% vim: tw=55
 </ins>
 </pre></description>
 	</item>
-
-	<item>
-	  <title>News archive</title>
-	  <pubDate>Thu, 15 Aug 2013 21:50:59 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=News+archive</link>
-	  <description><pre id="diff"><ins>* 2011/01/25 LionWiki 3.2.6 was released. Couple of small bugfixes, see [Changelog].
-* 2010/12/12 LionWiki 3.2.5 was released. Contains one small bugfix in core, updated Russian translation and new Ukrainian (thanks to Oleksii Tsvietnov)
-* 2010/10/18 LionWiki 3.2.4a was released. Fixes a bug in RenameFix plugin when renaming pages starting with a digit
-* 2010/09/20 LionWiki 3.2.4 was released. Fixes a couple of small bugs.
-* 2010/04/30 LionWiki 3.2.3 was released. Fixed bug which caused that login was impossible with $PROTECTED_READ = true.
-* 2010/04/29 LionWiki 3.2.2 was released. Few small bugs fixed, see [Changelog].
-* 2010/03/16 LionWiki 3.2.1 was released. Few small bugs fixed, see [Changelog].
-* 2010/03/13 LionWiki 3.2 final was released. Few small bugs fixed.
-* 2010/03/01 LionWiki 3.2beta was released. See [Changelog] for details. It's not recommended for production yet.
-* 2009/12/09 LionWiki 3.1.2 fixes two bugs. Meanwhile 3.2 is on the way.
-* 2009/10/28 LionWiki 3.1.1 - updated templates and few other things, see [Changelog].
-* 2009/10/03 LionWiki 3.1.0 - few things added, few dropped, see [Changelog].
-* 2009/10/03 LionWiki 3.0.11 - bugfix in section editing
-* 2009/10/01 LionWiki 3.0.10 and new standalone '''[LatexImg|UserGuide: LatexImg plugin]''' (big thanks to Matthew Leifer!)
-* 2009/09/16 LionWiki 3.0.9. Minor security bug fixed (see [Changelog]).
-* 2009/09/13 LionWiki 3.0.8 and separate '''[SyntaxHighlighter plugin|UserGuide: SyntaxHighlighter plugin]''' were released.
-* 2009/09/12 LionWiki 3.0.7a. The only change is exclusion of Upload and Script plugins from official distribution due to security concerns.
-* 2009/08/31 LionWiki 3.0.7. Few bugfixes, finnish translation (thanks to tsaarni) and removed wiki farming.
-* 2009/08/24 LionWiki 3.0.6a. Improved Comments plugin - ability to delete and RSS.
-* 2009/08/20 LionWiki 3.0.6. Contains small compatibility fixes for PHP 4 (thanks for report to perror) and PHP 5.3 and new Hebrew translation (thanks to Yaron).
-* 2009/08/13 LionWiki version 3.0.5 was released. Contains brand new [BetterEditor|UserGuide: BetterEditor plugin] and [Comments|UserGuide: Comments plugin] plugins.
-* 2009/08/04 LionWiki version 3.0.4a contains much requested [Menu plugin|UserGuide: Menu plugin].
-* 2009/07/23 LionWiki versions [1.0.2|http://lionwiki.0o.cz/download/1.0.2/lionwiki-1.0.2.tar.bz2], [2.0.1|http://lionwiki.0o.cz/download/2.0.1/lionwiki-2.0.1.tar.bz2], [2.1.6|http://lionwiki.0o.cz/download/2.1.6/lionwiki-2.1.6.tar.bz2], [2.2.4|http://lionwiki.0o.cz/download/2.2.4/lionwiki-2.2.4.tar.bz2], [2.3.8|http://lionwiki.0o.cz/download/2.3.8/lionwiki-2.3.8.tar.bz2] and [3.0.4|http://lionwiki.0o.cz/download/3.0.4/lionwiki-3.0.4.tar.bz2] have been released. These releases fix serious security bugs in core and upload plugin. '''All users are strongly advised to upgrade!'''
-* 2009/07/02 LionWiki 3.0.3 was released. Thanks to b4283 and AlexK for translations in Traditional Chinese and Croatian, respectively.
-* 2009/05/26 LionWiki 3.0.2 was released. See [Changelog] for details.
-* 2009/05/13 LionWiki 3.0.1 was released. Contains some small bugfixes, see [Changelog] for details.
-* 2009/05/07 LionWiki 3.0 was released. It's not meant for upgrading, just for new installations. Read [LionWiki 3.0] for details.
-* 2009/05/05 LionWiki 2.3.7 has been released! Contains bunch of small fixes and changes. See [Changelog] for details.
-* 2009/04/25 - LionWiki 2.3.6 fixes few smaller bugs and updates translations. Thanks to Marcos Cruz for suggestions and Esperanto translation!
-* 2009/04/15 - LionWiki 2.3.5 adds print template.
-* 2009/04/13 - LionWiki 2.3.4 fixes problem in language handling.
-* 2009/04/12 - LionWiki 2.3.3 released. New translations, new plugins, a lot of bugfixes. Read [Changelog].
-* 2009/03/31 - Call for translators!. Do you miss translation of user interface in your native language? Help LionWiki and other users by writing it! It's just about 20 items.
-* 2009/03/30 - LionWiki 2.3.2 released. Fixed small problem with revision restoring.
-* 2009/03/29 - LionWiki 2.3.1 released. Fixed several problems with AjaxEditing plugin.
-* 2009/03/28 - LionWiki 2.3 released. Adds support for paragraph editing and AJAX editing. Read [Changelog] before upgrading.
-* 2009/03/28 - Vincent Cima developed automatic backuping script - [http://github.com/vincentcima/lionwikiautobackup/tree/master]. Big thanks to him!
-* 2009/03/11 - LionWiki 2.2.3 released. This release contains new Dutch translation (thanks to Jeroen Lassche - Sjoer) and fixes few bugs. See [Changelog] for details.
-* 2009/03/09 - Thanks to Giacomo Margarito, we have [Italian translation|Syntax reference.it] of Syntax reference page. Right now, I'm quite busy so work on LionWiki 2.3 is a little bit slow but is definitely advancing. Stay tuned!
-* 2009/02/14 - Brand new LionWiki [UserGuide] was released. As always, it's work in progress :) At the same time, I've received French translation of Syntax reference. Big thanks to Jeff Fortin!
-* 2009/02/13 - LionWiki 2.2.2 released. See [Changelog].
-* 2009/02/08 - LionWiki 2.2.1 released. See [Changelog].
-* 2009/02/03 - LionWiki 2.2 final released! [Changelog].
-* 2009/01/28 - LionWiki 2.2beta1 released. See [Changelog].
-* 2009/01/06 - LionWiki 2.1.5 was released. Quite a lot of minor bugs were fixed. See [Changelog].
-* 2009/01/02 - LionWiki 2.1.4 was released.
-* 2008/12/27 - LionWiki 2.1.3 was released. See [Changelog].
-* 2008/12/24 - LionWiki 2.1.2 was released. Fixes important bugs, read in [Changelog].
-* 2008/12/21 - LionWiki 2.1.1 was released. Changes are small and upgrade from 2.1 is not necessary.
-* 2008/12/20 - LionWiki 2.1 final was released. Changes are describe in [Changelog]. There's also [page on upgrading|Upgrading to LionWiki 2.1].
-* 2008/12/14 - LionWiki 2.0 final was released. Just small fixes, upgrade is not necessary.
-* 2008/12/10 - LionWiki 2.0beta2 was released. History in beta1 was not functional.
-* 2008/12/06 - LionWiki 2.0beta1 was released. This release brings huge amount of changes described in [Changelog#Changes for 2.0]. You can also take a look at [How to upgrade to 2.0].
-* 2008/11/26 - LionWiki 1.0.1 was released. There are three bugfixes described in [Changelog#Changes for 1.0.1].
-* 2008/11/18 - LionWiki 1.0 was released! The only change from rc1 is corrected behavior of ^{html} tag in some situations
-* 2008/11/14 - LionWiki 1.0rc1 was released. Read [Changelog#Changes for 1.0rc1] for details.
-* 2008/11/13 - LionWiki forum was created at http://lionwiki.0o.cz/forum/
-* 2008/11/13 - First public release of LionWiki, 1.0beta1 was released.</ins>
-</pre></description>
-	</item>
-
-	<item>
-	  <title>Changelog</title>
-	  <pubDate>Thu, 15 Aug 2013 21:49:41 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=Changelog</link>
-	  <description><pre id="diff"><ins>!Changes for 3.2.9
-''Released on 11. 3. 2012''
-* Fixed bug in 3.2.8 which made ^{html} tag not working. Thanks to Jose David Cuartas Correa for reporting this bug.
-
-!Changes for 3.2.8
-''Released on 25. 1. 2012''
-* fixed a couple of security fixes - big thanks to Andreas Schamanek for reports, patches and consultation!
-* couple of bugfixes
-* this may be the last PHP4 supported version
-
-!Changes for 3.2.7
-''Released on 7. 5. 2011''
-* core: bugfix for image link generation (thanks to bvw)
-* new simplified chinese translation (thanks to lomatus)
-
-!Changes for 3.2.6
-''Released on 25. 1. 2011''
-* Bugfix in template substitution which could cause wrong html output (thanks to Andreas Schamanek for report)
-* Bugfix in ImageExt plugin which caused that generated (scaled etc.) images were not cached and were generated for every access. Thanks to Hans Zoons for report.
-* Small fixes for Russian and Ukrainian languages (again thanks to Oleksii Tsvietnov)
-
-
-!Changes for 3.2.5
-''Released on 12. 12. 2010''
-* One small bugfix in core
-* Updated Russian translation and new Ukrainian (thanks to Oleksii Tsvietnov)
-
-!Changes for 3.2.4a
-''Released on 18. 10. 2010''
-* Fixed a bug in RenameFix plugin. Renaming a page with digit being firt letter of the name caused wrong fixing of links. Thank to redisthecat for reporting!
-
-!Changes for 3.2.4
-''Released on 20. 9. 2010''
-* Fixes a couple of small bugs.
-
-!Changes for 3.2.3
-''Released on 30. 4. 2010''
-* Fixed bug which caused that login was impossible with $PROTECTED_READ = true. Thanks to Yen-Ting Chen for report!
-
-!Changes for 3.2.2
-''Released on 29. 4. 2010''
-* Estonian translation, contributed by Rivo Zängov, thanks!
-* RSS (both from pages and comments) should now work with different port number and https
-* RSS plugin used to display wrong modification times because of internal PHP caching of stat informations
-* Fixed some validity issues (but output is still not (X)HTML valid).
-
-!Changes for 3.2.1
-''Released on 16. 3. 2010''
-* Fixed bug when language code was not properly set
-** Core localization still took place but not plugins'
-* RSS plugin did not work because it relied on one variable removed in 3.2
-
-!Changes for 3.2
-''Released on 13. 3. 2010''
-* New russian translation - thanks to Oleksii Tsvietnov
-* Fixed bug in [ImageExt plugin|UserGuide: ImageExt plugin], which did not work when not in document root
-* PHP4 compatibility fixes
-* other small fixes
-
-
-!Changes for 3.2beta
-''Released on 1. 3. 2010''
-* New RenameFix plugin which fixes links after page move (rename)
-* Completely reworked image handling, more advanced operations can be made with [ImageExt plugin|UserGuide: ImageExt plugin].
-** This means you should check you galleries and adjust the syntax :(
-* Core is almost completely refactored, some limitations were removed (max level of lists etc.)
-* Captcha is often not displayed because it's not necessary - JavaScript can do it ...
-* Password hashes are stored in secured cookies on PHP 5.2 and higher and modern browsers. This greatly reduces possibility of XSS attack.
-* Like 100 other smaller and bigger changes I've already forgot
-
-!Changes for 3.1.2
-''Released on 9. 12. 2009''
-* There were some error warning when creating page on some windows installations
-* Fixed $PROTECTED_READ bug (introduced in 3.1.1) - it wasn't possible to pass the authentication
-
-
-!Changes for 3.1.1
-''Released on 28. 10. 2009''
-* Templates Wikiss, Terminal, Minimal and Red are on par with Dandelion
-* Maximum depth of lists was raised to 10 (from 3)
-* New ^{title} tag for changing title of a page
-* Handling of page versions was changed a little bit
-
-!Changes for 3.1.0
-''Released on 3. 10. 2009''
-* Ability to style, assign classes and id (see [Businesses #CSS_styles__classes__IDs])
-* Ability to configure plugins from config.php file (see [UserGuide: Plugins#Configuration_in_config_php])
-* removed support for ^{DATE} and ^{IP} - just eye candy with no relation to Wiki
-* removed read support for history compression (write support dropped in 3.0)
-* [Menu plugin|UserGuide: Menu plugin] now supports link to parent (for hierarchy of menus)
-* New Recent changes display format
-* other small changes
-
-
-!Changes for 3.0.11
-''Released on 3. 10. 2009''
-* bugfix in section editing
-
-![LatexImg plugin 1.0|UserGuide: LatexImg plugin]
-* initial release
-* big thanks to Matthew Leifer, matt@mattleifer.info
-
-!Changes for 3.0.10
-''Released on 1. 10. 2009''
-* $REAL_PATH is back. Proved to be useful for some things (e.g. new LatexImg plugin).
-* Fixed directory creation in Comments plugin. Did not work on some systems.
-
-!Changes for 3.0.9
-''Released on 16. 9. 2009''
-* On unix installation, it was possible to erase content of a page which is write protected in Admin plugin. It was also possible to erase it by mistake. History (including latest revision) was however preserved.
-
-
-!SyntaxHighlighter plugin 1.0
-''Released on 13. 9. 2009''
-* initial release
-* little configuration, may change dramatically in the future
-
-!Changes for 3.0.8
-''Released on 13. 9. 2009''
-* add support for regenerating tags from all pages at once
-* various (quite a lot) tweaks of core LionWiki
-
-!Changes for 3.0.7a
-''Released on 12. 9. 2009''
-* removed Upload and Script plugins due to security concerns.
-
-!Changes for 3.0.7
-''Released on 31. 8. 2009''
-* finnish translation (thanks to tsaarni)
-** &quot;finnish&quot; in finnish is Suomi and not Eesti, fixed in SelectLanguage and PageVersions plugins
-* fixed &quot;local inclusion&quot; for Comments plugin (thanks for report to Ondřej Profant)
-* removed wiki farming, was not tested since 1.0 and probably doesn't work
-* fix for section editing (including AjaxEditing plugin) in pages containing ^^^{html}
-
-!Changes for 3.0.6a
-''Released on 24. 8. 2009''
-* Improved Comments plugin
-** RSS
-** Deleting comments (needs Admin plugin)
-* Admin plugin now remembers login
-
-!Changes for 3.0.6
-''Released on 20. 8. 2009''
-* compatibility fixes for PHP 4.3 (thanks for report to perror) to and PHP 5.3
-* Hebrew translation, thanks to Yaron
-
-!Changes for 3.0.5
-''Released on 13. 8. 2009''
-* new [BetterEditor|UserGuide: BetterEditor plugin] and [Comments|UserGuide: Comments plugin] plugins (both beta)
-** Comments plugin does not have the possibility to delete comments, will be fixed in near future
-* important fix for AjaxEditing plugin - captcha was not displayed when editing which could prevent saving
-* shortened captcha questions
-* external links are marked with arrow (needs CSS2 capable browser)
-
-!Changes for 3.0.4a
-''Released on 4. 8. 2009''
-* includes new [Menu plugin|UserGuide: Menu plugin], no changes in core
-
-!Changes for 1.0.2, 2.0.1, 2.1.6, 2.2.4, 2.3.8 and 3.0.4
-''Released on 23. 7. 2009''
-* Fixes security vulnerability in core LionWiki
-* Fixes security vulnerability in Upload plugin in 3.0, plugin is entirely removed in older versions
-* Less serious security problems were fixed in older versions (especially 1.0 and 2.0)
-
-!Changes for 3.0.3
-''Released on 2. 7. 2009''
-* Croatian translation (thanks to AlexK)
-* Traditional Chinese translation (thanks to b4283)
-* Fixed bug &quot;&quot;, see http://lionwiki.0o.cz/forum/index.php?action=vthread&amp;forum=16&amp;topic=119
-
-!Changes for 3.0.2
-''Released on 26. 5. 2009''
-* fixed bug in rendering lists, introduced somewhere in 2.3 series
-* fixed link to RSS
-* work around for strange behavior of fwrite() function (joins two adjacent backslashes into one)
-
-!Changes for 3.0.1
-''Released on 13. 5. 2009''
-* COOKIE life for PROTECTED_READ = true was in 3.0 same as for PROTECTED_READ = false, fixed
-* ported forgotten changes from template dandelion
-* syntax link now links to this website as LionWiki 3 does not contain Syntax reference anymore
-
-!Changes for 3.0
-''Released on 7. 5. 2009''
-* [LionWiki 3.0]
-* new directory structure
-** all &quot;mutable&quot; data are placed under new &quot;var&quot; directory
-** templates are placed under new directory &quot;templates&quot;
-* _config.php has been renamed to just config.php
-* install.sh was removed as it doesn't work with LionWiki 3.0 yet
-* mbstring conversion is not used, deemed unnecessary
-* not possible to write compressed history, reading is still supported
-* few more simplifications
-
-!Changes for 2.3.7
-''Released on 5. 5. 2009''
-* Fixed bad Slimbox behavior with default template, thanks to &quot;hokej&quot; for a fix
-* Simpler edit conflict detection
-* Footnotes plugin now links bi-directionally
-* Spanish and Esperanto translations of Upload plugin (thanks to Marco Cruz, besides other suggestions)
-* few more things I probably forgot
-
-!Changes for 2.3.6
-''Released on 25. 4. 2009''
-* updated Arabic translation (thanks to Mohamed Magdy)
-Thanks to Marcos Cruz for these:
-* fixed bug in substitution of tags 2009/05/05 21:21, 62.245.80.179 etc. in pages
-* fixed &quot;rename revert&quot;
-* new Esperanto translation
-* updated Spanish translation
-* some smaller changes
-
-!Changes for 2.3.5
-''Released on 15. 4. 2009''
-* new printing template and new template tag ^{PAGE_URL}
-
-!Changes for 2.3.4
-''Released on 13. 4. 2009''
-* fixed new handling of languages
-
-!Changes for 2.3.3
-''Released on 12. 4. 2009''
-* new translations:
-** Hungarian, thanks to plastik
-** Brazilian Portuguese, thanks to Redneko (redirected also from Portuguese)
-** Swiss-German, thanks to Sym
-* updated translations:
-** German (not updated since 1.0!), thanks to Martin Prochnow, nordlicht@martins-kabuff.de
-** Arabic, thanks to Zakaria Khanfri 
-* implemented support for language variants
-* new behavior with read only pages and Admin plugin - if you set some page read only, you can still edit it with admin password
-* fixed several minor problems with AjaxEditing plugins
-* two new plugins written by Swen Wetzel &amp;lt;xanatoswetzel@web.de&gt;. Thanks!
-** [Index plugin|UserGuide: Index plugin] - can insert list of all pages into page
-** [Script plugin|UserGuide: Script plugin] - inserting both inline and external JavaScript into pages
-* [Footnotes plugin|UserGuide: Footnotes plugin]
-* New event &quot;subPagesLoaded&quot;
-* probably (another :) final solution to the HTML tag problem
-* probably few other changes I can't recall now
-* This release contains quite a lot changes, so consider it to be of beta quality.
-
-!Changes for 2.3.2
-''Released on 31. 3. 2009''
-* Fixed small problem with revision restoring.
-
-!Changes for 2.3.1
-''Released on 29. 3. 2009''.
-* Fixed several problems with AjaxEditing
-* Fixed destructive problem with paragraph editing in core
-
-!Changes for 2.3
-''Released on 28. 3. 2009''.
-* (core) Paragraph editing - after every heading is displayed little edit link
-* (plugin) AJAX paragraph editing. By default this plugin hooks on the link mentioned earlier. See [AjaxEditing plugin|UserGuide: AjaxEditing plugin]. Plugin is considered to be of beta quality because it wasn't tested with a lot of browsers.
-* Merged &quot;move&quot; and &quot;save&quot; forms. This requires change in custom templates, see [Upgrading to LionWiki 2.3].
-* more exact parsing of emails
-* Spanish translation (thanks to Jerome Joy!)
-!Changes for 2.2.3
-''Released on 11. 3. 2009''.
-* fixed bug which caused false edit conflict alarms
-* default template dandelion now aligns images by default to the left (which is expected behavior)
-* history should be accessible even if page does not exist
-* french translation was slightly updated
-* new Dutch translation (thanks to Jeroen Lassche - Sjoer)
-
-!Changes for 2.2.2
-''Released on 13. 2. 2009''.
-* Security hole in Admin plugin (default password is not encoded)
-* Bug in TOC generating (introduced in 2.2.1 as fix for nonapache servers) - thanks to Pavel Vymetálek
-* Bug in PageVersions plugin (trim vs. basename - fucking stupid) - thanks to Jerome Joy
-* Upload plugin can't upload .htaccess - thanks to Russ Phillips
-
-!Changes for 2.2.1
-''Released on 8. 2. 2009''.
-* Captcha plugin didn't work right because of bad data path setting
-* comparing MD5 hashes is now case insensitive (don't confuse this with password, it's still case sensitive). Thanks for pointing this out to Vincent Cima
-* fix for certain servers (not apache) which don't translate ?action= into index.php?action= (for example). Thanks to Klaus Wulff
-* and big thanks to Russ Phillips for informing me of a huge problem which was fixed in 2.2.1 (but I'm not gonna tell what was it yet)
-
-!Changes for 2.2 final
-''Released on 3. 2. 2009''
-* updated Italian translation (thanks to Giacomo Margarito)
-* forgotten closing tag in template_dandelion.html
-* Upload plugin can now chmod' uploaded files and directories (thanks for these two to Pavel Vymetálek)
-* Forgotten shorttags in some language files
-
-!Changes for 2.2beta1
-''Released on 28. 1. 2009''
-* install shell script. If you have user account on the server or you're just running on localhost, you can run this little script which will take care of all permission things (including plugins)
-* Install plugin which will tell you what needs to be done
-* final solution for register_globals problem.
-* new InlineDiff plugin (from Text_Diff package) which produces way more usabled diffs than very simple builtin diff algorithm
-* probably a lot more but I don't remember it because I developed it over month ago
-
-!Changes for 2.1.5
-''Released on 6. 1. 2009''
-* updated French translation (thanks to Jerome Joy)
-*  was displayed as HTML in preview
-* LOCAL_HOUR didn't affect history files
-* Several bugs in Tags plugin
-* other small things I don't remember
-* SelectLanguage plugin didn't show new Arabic and Italian translations
-
-Thanks to Jerome Joy who is mainly responsible for this release, because he did quite a good at testing.
-
-!Changes for 2.1.4
-''Released on 2. 1. 2009''
-* Fixed minor bug forgotten to be included in 2.1.3 which causes problems (lists, headings and few others) on last line of a page
-
-!Changes for 2.1.3
-''Released on 27. 12. 2008''
-* Arabic translation, thanks to Mohamed Magdy, mohamedmk@gmail.com 
-* Fixed PHP4 compatibility bug in search form (use of stripos function available since PHP5)
-* LAST_CHANGED_TEXT is not displayed where it doesn't make sense
-* fixed minor problem in tags plugin
-
-!Changes for 2.1.2
-''Released on 24. 12. 2008''
-* fixed history bug when register_globals off
-* italian interface localization (thanks to Giacomo Margarito)
-* fixed Admin plugin bug
-* few more
-
-!Changes for 2.1
-''Released on 20. 12. 2008''
-* Edit conflict prevention (more like detection)
-* New [Tags plugin]
-* New template Dandelion, CSS derived from http://dandelion.sheep.art.pl/ Thanks to Radomir Dopieralski for releasing into under GNU GPL.
-* Full PHP4 (&gt;= 4.3.0) compatibility, i.e. with plugins
-* Some usability tweaks
-* lots of bugfixes and small enhancements in plugins
-* nofollow in edit, history etc. links
-* optional XSS protection ($NO_HTML, by default turned off)
-
-!Changes for 2.0
-''Released on 14. 12. 2008''
-* some small changes and fixes
-
-!Changes for 2.0beta2
-''Released on 10. 12. 2008''
-* History fix - beta1 history didn't work at all
-* removed calls to obsolete warning function in Captcha and RSS
-
-!Changes for 2.0beta1
-''Released on 6. 12. 2008''
-* support for multilingual content, which means
-** Language is automatically set using browser information
-** LionWiki automatically chooses language variant of the page according to chosen language
-** supporting plugins - SelectLanguage and PageVersions
-* edit summary
-* subpage (also known as template) mechanism
-* redirects
-* page can be previewed before saving
-* history file names now contain also seconds which prevents version disappearing when saving page twice in one minute
-* more advanced substitution in graphic templates
-* secure way to store passwords in config files using MD5
-* fixed behavior of history backend which could cause troubles in some rare situations
-* several new syntactic features -- sup, sub indexes, mdash, properly recognized HTML entities, internal HTML-like comments
-* new way of handling linebreaks. However this breaks XHTML validation :/
-* New plugins:
-** File upload with support for localization
-** [Slimbox plugin]
-** [Admin panel]
-** Czech questions for Captcha plugin
-** Much improved ListPlugins plugin which now lists also plugin functions
-* New templates:
-** ''Red panel'' template which is set as default.
-** ''Terminal'' template is very similar to Minimal template, except for color theme. Inspired by GMail terminal theme.
-* (cosmetic) problem with mixed spaces is finally fixed
-* lots of other changes which I don't remember
-
-!Changes for 1.0.1
-''Released on 26. 11. 2008''
-* Fixed bug introduced in 1.0 final. Headings (and may be other) things didn't work well when placed at the top of the page.
-* Workaround for installation with magic_quotes_gpc on
-* Fixed &quot;List of all pages&quot;
-
-!Changes for 1.0
-''Released on 18. 11. 2008''
-* Corrected behavior of ^{html} tag in some situations - namely at the very beginning of the page and in situations with two adjacent ^{html} tags.
-
-!Changes for 1.0rc1
-''Released on 14. 11. 2008''
-* setting error reporting level to E_ERROR | E_WARNING | E_PARSE (silences some unwanted reporting on some machines)
-* fixed bug preventing from functioning with register_globals off
-* German translation - thanks to &quot;dad&quot;
-* Slovak translation - thanks to hikikomori82
-* improved French translation (experimental :) - thanks to Filip Mravec
-
-!Changes for 1.0beta1
-''Released on 13. 11. 2008''
-* First release, [Changes from WiKiss].</ins>
-</pre></description>
-	</item>
-
-	<item>
-	  <title>subpage menu</title>
-	  <pubDate>Thu, 15 Aug 2013 21:48:07 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=subpage+menu</link>
-	  <description><pre id="diff"><ins>{menu test
-  [Home|Main page]
-  [Installation|UserGuide: Installation]
-  [Appearance]
-  [Plugins|UserGuide: Plugins]
-  [UserGuide]
-  [Syntax reference]
-  [Forum|./newforum/index.php/board,1.0.html]
-  [Old archived forum|./forum/]
-  [About LionWiki]
-}</ins>
-</pre></description>
-	</item>
-
-	<item>
-	  <title>Main page</title>
-	  <pubDate>Thu, 15 Aug 2013 21:45:15 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-3.2.9/index.php?page=Main+page</link>
-	  <description><pre id="diff"><ins>{include:subpage menu}
-'''LionWiki''' is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function. It is suitable for small websites, personal notebooks or journals. 
- 
-!News
-* 2012/03/11 LionWiki 3.2.9 was released. Fixed bug in 3.2.8 which made ^{html} tag not working.
-* 2012/01/25 LionWiki 3.2.8 was released. '''This is important security release! All users are urged to upgrade ASAP!'''
-* 2011/05/07 LionWiki 3.2.7 was released, see [Changelog].
-
-Older news can be found in [News archive].
-
-!Features
-LionWiki provides essential Wiki functionality like Wiki syntax, page history, last changes, renaming pages, password protection (both read and write) etc. More features are provided by [plugins|UserGuide: Plugins].
-
-You can try all the features of LionWiki right on this website, preferably on [Sandbox].
-
-{TAG_CLOUD}
-
-!Download
-Current version of LionWiki is 3.2.9. You can choose from two downloads:
-* [Full featured LionWiki|http://lionwiki.0o.cz/download/3.2.9/lionwiki-3.2.9.tar.bz2] consisting of core file, templates, configuration file, language files and plugins.
-* [Core LionWiki|http://lionwiki.0o.cz/download/3.2.9/index.txt] consisting of just one file which contains everything needed for basic functions. It is exactly the same as index.php from full featured LionWiki.
-
-Older versions can be found [here|./download/].
-
-The only software requirement is PHP installation with version greater or equal to 4.3. See [page on installation|UserGuide: Installation] for details.
-
-
-!Development
-LionWiki is considered to be finished and is not actively developed. It is however maintained and it's possible that development will be revived in the future. Help is very appreciated, especially bug reports, localizations and templates.
-
-!!Disclaimer for developers
-LionWiki was designed from the beginning to be very small and simple. It's architecture is trivial which means that it's core is quite hard to extend. It's also not suitable for studying purposes - there are a lot of examples of generally bad programming practices and PHP hacks which were used solely for sake of minimalism (to keep it as small as possible). Though, writing plugins which do not interfere with core's functionality is quite easy.
-
-
-!Author
-LionWiki was created by Adam Živnéř, adam.zivner@gmail.com, http://adam.zivner.cz . The Homepage of LionWiki is at http://lionwiki.0o.cz. It was created as a fork of [WiKiss|http://wikiss.tuxfamily.org/] 0.3 ([Changes from WiKiss]) which is itself fork of TigerWiki (hence the name) which is a fork of roWiki (See [About LionWiki] for details).
-
-{tags:LionWiki}
-
-{description:LionWiki is minimalist, file based, templatable wiki engine}
-{keywords:LionWiki, wiki engine, wiki software, minimalist, minimalism, WiKiss, TigerWiki}
-
-{NO_COMMENTS}</ins>
-</pre></description>
-	</item>
-
-
-
-
-
-
-
 
 
 

@@ -2,7 +2,7 @@
 The only software requirement for LionWiki is PHP installation. Recommended is PHP5, but LionWiki (without plugins) works also on PHP4 (tested on PHP 4.3.4).
 
 !Download
-Download LionWiki from [Home page|Main page]. You have to options -- either core LionWiki (just one file) or full featured LionWiki with plugins.
+Download LionWiki from [Original Main page]. You have to options -- either core LionWiki (just one file) or full featured LionWiki with plugins.
 
 !Installation
 Copy all the files in the archive to some directory on your FTP account. On this account, change permissions of directories "history" and "pages" (and create them if they don't exist yet) so that everybody can write into them ("0777"). And that's it. Just try if it's working in your web browser.

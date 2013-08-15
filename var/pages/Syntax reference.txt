@@ -76,15 +76,15 @@ The enclosing element is &lt;span>.
 
 !Emails, links, images
 Links to other pages can be created like this:
-^[Main page] --> [Main page]
+^[Original Main page] --> [Original Main page]
 
 or 
 
-^[Main project page|Main page] --> [Main project page|Main page]
+^[Original Main page] --> [Original Main page]
 
 or
 
-^[Features header on Main page|Main page#Features] --> [Features header on Main page|Main page#Features]
+^[Original Main page#Features] --> [Original Main page#Features]
 
 {br}
 Emails and web links are automatically recognized:

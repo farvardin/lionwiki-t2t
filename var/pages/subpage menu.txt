@@ -1,5 +1,5 @@
 {menu test
-  [Home|Main page]
+  [Original Main page]
   [Installation|UserGuide: Installation]
   [Appearance]
   [Plugins|UserGuide: Plugins]
