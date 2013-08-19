@@ -8,3 +8,5 @@ UserGuide: Admin plugin
 spam,plugin,userguide
 Original Main page
 LionWiki
+Menu
+
