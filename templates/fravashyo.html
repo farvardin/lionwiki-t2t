@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<link rel="icon" href="templates/favicon.png" type="image/png" />
-	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+	<title>{WIKI_TITLE} - {PAGE_TITLE_HEAD}</title>
 	<link href="templates/fravashyo/fravashyo.css" rel="stylesheet" type="text/css" title="fravashyo" />
 	{HEAD}
 </head>
@@ -17,12 +17,15 @@
 		{<li><i> EDIT </i></li>}
 	</ul>
 {SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}
-	<br/><br/></div>
+	<br/><br/>
+	{TOC}
+	</div>
 <div id="mainContent">
 {<div class="error"> ERROR </div>}
 {CONTENT}
 {plugin:TAG_LIST}
 {CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+{plugin:TOOLBAR_TEXTAREA}
 {CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
 </div>
 <div id="rightPanel">
@@ -68,7 +71,7 @@
 	<p>Template:</p>
 	<ul>
 		{<li> plugin:SELECT_TEMPLATE </li>}
-	</ul>
+	</ul> 
 
 	<p style="position:absolute;bottom:20px;font-size:smaller;">Powered by <a href="https://bitbucket.org/farvardin/lionwiki-t2t/">LionWiki-t2t</a></p>
 </div>

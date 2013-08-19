@@ -5,7 +5,14 @@
  */
 
 
+
 @all-background-colors: "#7B8AA8,#56A3B5,#B1494D,#465E7C,#549136";
+
+/*
+ #8B9AB8 : blue
+ * 847457
+ */
+
 
 .generateColor() { /* define mixin */
 @background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
@@ -16,6 +23,9 @@
 
 /*@MainColor: #088;*/
 @MainColor: @background-color;
+/* if you wish to cycle background color, just comment out the next line */
+/*@MainColor: #549136;*/
+/*@MainColor: #8B9AB8;*/
 /*#465E7C;*/
 
 @MainFontColor: (#878e83 - #111);
@@ -207,7 +217,7 @@ text-decoration:none;
 
 .error{color:#F25A5A;font-weight:bold;}
 
-.contentTextarea{width:100%;}
+.contentTextarea{width:90%;}
 
 #diff {white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%;}
 #diff ins{color:green;text-decoration:none;font-weight:bold;}
@@ -291,7 +301,8 @@ th {
 	h1,h2,h3,h4 {
 			font-family: 'Open Sans Condensed', sans-serif;
 			text-transform: uppercase;
-			color: @MainColor;
+			color: (#ffffff - @MainColor - (#ffffff - @MainColor)/3);
+			/*color: (#ffffff - @MainColor);*/
 			font-weight: bold;
 	}
 
@@ -465,7 +476,7 @@ th {
 	}
 
 /*********************************************************************************/
-/* 1200px (>= 1200px)                                                            */
+/* 1000px (>= 1000px)                                                            */
 /*********************************************************************************/
 
 	@media only screen and (min-width: 1000px) {
@@ -473,7 +484,26 @@ th {
 		section, article {
 			margin: 0 0 60px 0;
 		}
-		
+
+        section p + p {
+            margin-top: 2em;
+        }
+
+      /* h2 { column-span: none;break-before:column; }
+ 
+        .par-div p  {
+            text-align: justify;
+            line-height: 1.4em;
+            -moz-column-count: 2;
+            -moz-column-gap: 2.6em;
+            -moz-column-rule: 1px solid #ddd;
+    
+            -webkit-column-count: 2;
+            -webkit-column-gap: 3em;
+            -webkit-column-rule: 1px solid black;
+        }		
+		*/
+
 		section:last-child, article:last-child {
 			margin-bottom: 0;
 		}
@@ -648,7 +678,9 @@ th {
 			background: #fff;
 			padding: 2% 0 2% 0;
 			padding-top: -20px;
+			
 		}
+
 
 			#main .controls {
 			}
@@ -890,7 +922,7 @@ th {
 	}
 	
 /*********************************************************************************/
-/* Mobile (<= 800px)                                                             */
+/* Mobile (<= 600px)                                                             */
 /*********************************************************************************/
 
 	@media only screen and (max-width: 600px) {
