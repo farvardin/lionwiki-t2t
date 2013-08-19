@@ -17,6 +17,7 @@
 
 @MainColor: #0078CF; /* blue */
 @MainColor: #49AE77; /* green */
+@MainColor: #792424; /* red */
 
 /* webfont */
 
@@ -332,11 +333,11 @@ h1 {font-size: 4.1em;
 	letter-spacing: -0.075em; 
 	text-transform: uppercase; 
 	line-height: 0.9; 
-	color: (@MainColor - #777);
+	 color: (#ffffff - @MainColor - (#ffffff - @MainColor)/4);
 	margin: 0 0 0.5em; 
 	font-weight: normal; }
-h2 { font-size: 2.5em; margin: 0 0 20px; letter-spacing: -0.05em; color: (@MainColor - #777); line-height: 1; }
-h3 { font-size: 1.75em; }
+h2 { font-size: 2.5em; margin: 0 0 20px; letter-spacing: -0.05em; color: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); line-height: 1; }
+h3 { font-size: 1.75em;  color: (#ffffff - @MainColor - (#ffffff - @MainColor)/2); }
 h4 { font-size: 1.5em; }
 h5 { font-size: 1.17em; text-transform: uppercase; margin: 0; color: #555; }
 h6 { font-size: 1em; margin-bottom: 2px; font-weight: 700; }

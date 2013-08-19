@@ -1,9 +1,106 @@
 <rss version="2.0">
 <channel>
 <title>LionWiki and txt2tags sample</title>
-<link>http://192.168.0.4:80/lionwiki-t2t/index.php</link>
+<link>http://localhost:80/lionwiki-t2t/index.php</link>
 <description>RSS feed from LionWiki and txt2tags sample</description>
-<language>en-US</language>
+<language>fr</language>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Tue, 20 Aug 2013 00:30:21 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+<ins>=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.</ins>
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Menu</title>
+	  <pubDate>Tue, 20 Aug 2013 00:18:56 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Menu</link>
+	  <description><pre id="diff">- [Main|Main page]
+- [Admin plugin|UserGuide: Admin plugin]
+- [Recent|./?action=recent]
+<ins>- test
+[bla]</ins>
+ 
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Menu</title>
+	  <pubDate>Tue, 20 Aug 2013 00:17:35 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Menu</link>
+	  <description><pre id="diff"><del>{menu
+  parent=[Main|Main</del><ins>- [Main|Main</ins> page]<del>
+  [Admin</del><ins>
+- [Admin</ins> plugin|UserGuide: Admin plugin]<del>
+  [Recent|./?action=recent]
+} </del><ins>
+- [Recent|./?action=recent]
+ </ins>
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Menu</title>
+	  <pubDate>Tue, 20 Aug 2013 00:15:52 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Menu</link>
+	  <description><pre id="diff"></pre></description>
+	</item>
+
+	<item>
+	  <title>menu</title>
+	  <pubDate>Tue, 20 Aug 2013 00:00:06 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=menu</link>
+	  <description><pre id="diff"><ins>{menu
+  parent=[Main|Main page]
+  [Admin plugin|UserGuide: Admin plugin]
+  [Recent|./?action=recent]
+} 
+</ins>
+</pre></description>
+	</item>
 
 	<item>
 	  <title>sandbox</title>
@@ -1031,6 +1128,11 @@ That's all for now.
 </ins>
 </pre></description>
 	</item>
+
+
+
+
+
 
 
 
