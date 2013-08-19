@@ -8,6 +8,7 @@ $PASSWORD = sha1("demo");
 $TEMPLATE = 'templates/dandelion.html'; // presentation template
 $TEMPLATE = 'templates/fravashyo.html';
 //$TEMPLATE = 'templates/sissou.html';
+$TEMPLATE = 'templates/blazekiss.html'; 
 $TEMPLATE = 'templates/minimaxing.html';
 // $TEMPLATE = 'templates/minimal.html';
 

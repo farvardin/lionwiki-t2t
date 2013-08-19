@@ -341,7 +341,7 @@ if(!$action || $preview) { // page parsing
 		$CON = preg_replace("/===(.*)===/m", "!!$1", $CON);
 		$CON = preg_replace("/==(.*)==/m", "!$1", $CON);
 	// heading 1 = heading 2 here:
-		$CON = preg_replace("/=(.*)=/m", "!$1", $CON);
+		$CON = preg_replace("/= (.*) =/m", "!$1", $CON);
 		$CON = preg_replace("/%%toc/m", "{TOC}", $CON);
 		$stack = array();
 		$x = new T2T($CON);

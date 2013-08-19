@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="author" content="based on work by Sylvain Lafitte, Web Designer, sylvainlafitte.com">
+	<link rel="shortcut icon" type="image/png" href="templates/favicon.png">
+	<title>{WIKI_TITLE} - {PAGE_TITLE_HEAD}</title>
+	
+	<link rel="stylesheet/less" href="templates/blazekiss/blazekiss.less" type="text/css" title="blazekiss" />
+	
+	<script src="templates/js/less.js" type="text/javascript"></script>
+	
+<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	-->
+{HEAD}
+</head>
+<body>
+
+<h1 id="page-title">{<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+
+<div class="container">
+
+	<header id="navtop">
+		<a href="./?page=Main+page" class="logo fleft">
+			<img src="templates/blazekiss/logo.png" alt="BlazeKiss">
+		</a>
+		
+		<nav class="fright" style="margin-top:10px;">
+
+			
+			<ul>
+				<li><a href="./?page=Main+page">Accueil</a></li>
+			</ul>
+			<ul>
+				<li><a href="./?page=sandbox">Sandbox</a></li>
+			</ul>
+            <ul>
+				<li><a href="./?page=Sample+Page">Sample</a></li>
+			</ul>
+		</nav>
+	</header>
+
+
+	<div class="services-page main grid-wrap">
+
+		<header class="grid col-full">
+			<hr>
+		
+		</header>
+
+
+
+		<aside class="grid col-one-quarter mq2-col-full">
+		
+			
+			<menu>
+            <div id="menu">
+            <ul>
+				<li>{HOME}</li>
+				<li>{RECENT_CHANGES}</li>
+				{<li><i> EDIT </i></li>}
+			</ul>
+				{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}
+				<br/><br/>
+			{TOC}
+			</div>
+			</menu>
+			
+			
+		</aside>
+		
+		<section class="grid col-three-quarters mq2-col-full">
+		
+			<div class="grid-wrap">
+			<article id="navbutton" class="grid col-full">
+
+
+{<div class="error"> ERROR </div>}
+{CONTENT}
+{plugin:TAG_LIST}
+{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+{plugin:TOOLBAR_TEXTAREA}
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
+			
+
+			</article>
+			</div> <!-- 100%articles-->
+
+		 <br/>
+         <hr/>
+         {PAGE_TITLE} | <!--{LAST_CHANGE} {TIME}--> {RECENT_CHANGES} | {EDIT} | <!--{(HELP)}--> {HISTORY}
+		</section>	
+		
+		<!--
+		{SEARCH}
+        -->
+
+
+       
+	</div> <!--main-->
+
+<div class="divide-top">
+	<footer class="grid-wrap">
+	
+		<nav class="grid col-full ">
+            	<p>Powered by <a href="https://bitbucket.org/farvardin/lionwiki-t2t/">LionWiki-t2t</a>. <br/>Theme inspired by <a href="http://projet.idleman.fr/blazekiss">BlazeKiss</a></p>
+			<ul>
+				<li><a href="./var/rss.xml">Flux RSS</a></li>
+			</ul>
+		</nav>
+	</footer>
+</div>
+
+</div>
+
+
+</body>
+</html>
+
