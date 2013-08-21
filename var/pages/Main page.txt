@@ -27,5 +27,10 @@ Its php implementation can only convert to HTML but you can use it with several 
 
 == About txt2tags and lionwiki ==
 
-txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- [Logout index.php?erasecookie=1]
+
+
 

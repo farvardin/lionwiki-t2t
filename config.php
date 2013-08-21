@@ -9,7 +9,7 @@ $TEMPLATE = 'templates/dandelion.html'; // presentation template
 $TEMPLATE = 'templates/fravashyo.html';
 //$TEMPLATE = 'templates/sissou.html';
 $TEMPLATE = 'templates/blazekiss.html'; 
-//$TEMPLATE = 'templates/minimaxing.html';
+$TEMPLATE = 'templates/minimaxing.html';
 // $TEMPLATE = 'templates/minimal.html';
 
 // if true, you need to fill password for reading pages too
