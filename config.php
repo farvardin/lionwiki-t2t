@@ -10,6 +10,7 @@ $TEMPLATE = 'templates/fravashyo.html';
 //$TEMPLATE = 'templates/sissou.html';
 $TEMPLATE = 'templates/blazekiss.html'; 
 $TEMPLATE = 'templates/minimaxing.html';
+//$TEMPLATE = 'templates/literature.html';
 // $TEMPLATE = 'templates/minimal.html';
 
 // if true, you need to fill password for reading pages too

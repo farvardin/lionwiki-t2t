@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20130814";
+<?php $T2TVersion = "20130911";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -81,7 +81,7 @@ class T2T {
   var $bodyhtml = '';     # the innerHTML of the body of the output, no <html>...<head>
   var $fullhtml = '';     # the full <html>...</html> output
   var $enabletoc = 0;     # automatically enabled if %%toc or %!options: --toc
-  var $enableinclude = 0; # allow file inclusions
+  var $enableinclude = 1; # allow file inclusions 
   var $maxtoclevels = 5;  # h1-h? titles go into toc, same as %!options: --toc-level 1
   var $mtime;             # last modified timestamp of the input file
   var $date;              # timestamp of the current date
@@ -814,6 +814,16 @@ class T2T {
         continue;
       }
       if($mlcomment) continue;
+      
+      # now we can also use %!includeconf OUTSIDE of the header:
+      if(preg_match('/^%!\\s*includeconf\\s*:\\s*(.+)$/', $line, $m)) {
+        $f = trim($m[1]);
+        if($f{0}!='/') $f =  $this->infile['%d'] . DIRECTORY_SEPARATOR . $f;
+        $r = $this->head_conf_body($this->read($f, $this->enableinclude));
+        for($i=count($r['config'])-1; $i>=0; $i--)
+          array_unshift($lines, $r['config'][$i]); 
+        continue;
+      }
       
       if(preg_match('/^%!\\s*include(?:\\(x?html\\))?\\s*:\\s*(``|\'\'|""|)(.+)\\1\\s*$/', $line, $m)) {
       

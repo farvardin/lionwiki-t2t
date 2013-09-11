@@ -1,18 +1,18 @@
- 
-
 
 - //See the [full sample page index.php?page=Sample+Page]//
 
-- //Go to the [sandbox index.php?page=sandbox]//
+- //Go to the [sandbox]//
 
 - //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
 
 
 == About LionWiki ==
  
 **LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
 
-Its homepage is located at http://lionwiki.0o.cz/
+Its original homepage is located at http://lionwiki.0o.cz/
+
 
 
 
@@ -30,7 +30,7 @@ Its php implementation can only convert to HTML but you can use it with several 
 Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
 
 - [List all the pages index.php?page=Page+List]
-- [Logout index.php?erasecookie=1]
+- //[Logout index.php?erasecookie=1]//
 
 
 

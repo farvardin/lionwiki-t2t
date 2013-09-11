@@ -3,7 +3,1562 @@
 <title>LionWiki and txt2tags sample</title>
 <link>http://localhost:80/lionwiki-t2t/index.php</link>
 <description>RSS feed from LionWiki and txt2tags sample</description>
-<language>fr</language>
+<language>fr-fr</language>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:37:56 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+Here is [[the description | your_page]].
+<ins>Here is [[the main page | Main+page]].</ins>
+Here is [[your_page]].
+<ins></ins>
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+<ins></ins>
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:35:40 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff"></pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:32:26 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+<del>[[the</del><ins>Here is [[the</ins> description | <del>your_page]]</del><ins>your_page]].</ins>
+
+<del>[[your_page]]</del><ins>Here is [[your_page]].</ins>
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:22:38 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+<del>- [[the</del><ins>[[the</ins> description | your_page]]<del>
+- [[your_page]]</del><ins>
+
+[[your_page]]</ins>
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:20:22 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+<del>
+</del>
+
+- [[the description | your_page]]
+- [[your_page]]
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:18:43 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+<del>- [[the description | your+page]] 
+- [[the description | your_page]]</del>
+
+<ins>- [[the description | your_page]]</ins>
+- [[your_page]]
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:16:47 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+<del>- [[the description | your_page]]</del>
+- [[the description | your+page]] 
+<ins>- [[the description | your_page]]
+</ins>
+- [[your_page]]
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:16:26 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+- [[the description | your_page]]
+- [[the description | your+page]]<ins> </ins>
+- [[your_page]]
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:16:01 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff"></pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:15:28 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff"><del></del>
+== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+- [[the description | your_page]]
+<ins>- [[the description | your+page]]</ins>
+- [[your_page]]
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>your_page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:13:17 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=your_page</link>
+	  <description><pre id="diff"><del>test</del><ins>
+test </ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>your_page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:12:48 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=your_page</link>
+	  <description><pre id="diff"><ins>test</ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:12:09 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">
+== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+<del>[[the</del><ins>- [[the</ins> description | your_page]]
+
+<del>[[your_page]]</del><ins>- [[your_page]]</ins>
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+<ins></ins>
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:09:38 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff"><del></del>
+
+== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+[[the description | your_page]]
+
+<ins>[[your_page]]</ins>
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:09:23 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">
+<del>
+[[the description | your_page]]</del>
+
+== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+[[the description | your_page]]
+
+
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:08:59 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff"><ins>
+
+[[the description | your_page]]
+</ins>
+== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+[[the description | your_page]]
+
+
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:08:11 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+[[the description | your_page]]
+
+<del>[[your_page]]</del><ins>
+</ins>
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:07:50 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff"><del></del>
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+<del>[[the description | your_page]]</del>
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:07:36 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff"><del>[[the description | your_page]]</del>
+
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+<ins>
+[[the description | your_page]]</ins>
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:07:15 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff">[[the description | your_page]]
+<ins></ins>
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:07:04 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff"></pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:06:59 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff"><del>
+</del><ins>[[the description | your_page]]</ins>
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:06:18 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+<del></del>
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+[[the description | your_page]]
+
+[[your_page]]
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 14:04:41 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+<del>
+</del>
+
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+<ins>
+
+[[the description | your_page]]
+
+[[your_page]]</ins>
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 14:03:44 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff">
+
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its<ins> original</ins> homepage is located at http://lionwiki.0o.cz/<ins>
+</ins>
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 13:54:26 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff"><del>%!includeconf: config.t2t
+[[An amazing page | amazing_page]]</del><ins>
+</ins>
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the <del>[sandbox index.php?page=sandbox]//</del><ins>[sandbox]//</ins>
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its homepage is located at http://lionwiki.0o.cz/
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Wed, 11 Sep 2013 13:53:30 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff"><del> 
+</del><ins>%!includeconf: config.t2t
+[[An amazing page | amazing_page]]</ins>
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox index.php?page=sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its homepage is located at http://lionwiki.0o.cz/
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Sun, 01 Sep 2013 15:26:07 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+<del>
+\
+
+\
+
+</del>
+
+
+
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Sun, 01 Sep 2013 15:25:55 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+<ins>
+\
+
+\
+
+
+
+
+
+</ins>
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main page</title>
+	  <pubDate>Mon, 26 Aug 2013 00:45:08 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main+page</link>
+	  <description><pre id="diff"> 
+
+
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox index.php?page=sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its homepage is located at http://lionwiki.0o.cz/
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, Lout, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- <del>[Logout index.php?erasecookie=1]</del><ins>//[Logout index.php?erasecookie=1]//</ins>
+
+
+
+
+</pre></description>
+	</item>
 
 	<item>
 	  <title>sandbox</title>
@@ -1275,6 +2830,36 @@ That's all for now.
 </ins>
 </pre></description>
 	</item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
