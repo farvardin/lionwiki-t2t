@@ -5,12 +5,19 @@ This is the __sandbox__ page.
 You can [edit index.php?page=sandbox&action=edit] it using the **txt2tags** markup. The password is simply "__demo__".
 
 
+
 == Warning ==
 
 All those //demos// websites will be automatically reset every day.
 
 
 == Sample ==
+
+Here is [[the description | your_page]].
+Here is [[the main page | Main+page]].
+Here is [[your_page]].
+
+
 
 
 - list
@@ -33,6 +40,8 @@ Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato
 Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
 
 Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
 
 
 

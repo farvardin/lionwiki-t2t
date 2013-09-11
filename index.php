@@ -4,7 +4,6 @@
 // and uses txt2tags.class.php to render the pages.
 // Don't forget to include txt2tags.class.php in the same folder as this file!
 
-
 // Use: Download and extract LionWiki from http://lionwiki.0o.cz/
 //      Add those files instead of the ones in the original installation.
 
@@ -34,7 +33,9 @@ $PROTECTED_READ = false; // if true, you need to fill password for reading pages
 $NO_HTML = true; // XSS protection
 
 $START_PAGE = 'Main page'; // Which page should be default (start page)?
-$SYNTAX_PAGE = 'http://lionwiki.0o.cz/?page=Syntax+reference';
+// $SYNTAX_PAGE = 'http://lionwiki.0o.cz/?page=Syntax+reference';
+$SYNTAX_PAGE = '?page=Syntax+reference';
+
 
 $DATE_FORMAT = 'Y/m/d H:i';
 $LOCAL_HOUR = 0;
@@ -333,6 +334,7 @@ if(!$action || $preview) { // page parsing
 	// This part will load the txt2tags class, and parse the txt file with it
 
 	require_once('txt2tags.class.php');
+		$CON = "\n\n\n%!includeconf: config.t2t\n".$CON ;
 	    $CON = preg_replace("/( *)= (.*) =/m", "= $2 =", $CON);
 	    $CON = preg_replace("/( *)== (.*) ==/m", "== $2 ==", $CON);
 		$CON = preg_replace("/=================(.*)/", "--------------------", $CON);
@@ -345,8 +347,9 @@ if(!$action || $preview) { // page parsing
 		$CON = preg_replace("/%%toc/m", "{TOC}", $CON);
 		$stack = array();
 		$x = new T2T($CON);
-	// doesn't work yet, you have to enable it in the txt2tags.class.php:
+	// doesn't work yet for enableheaders and enableinclude, you have to enable them in the txt2tags.class.php:
 		$x->enableheaders = 0;
+		$x->enableinclude = 1;
 		//$x->snippets['**'] = "<strong>%s</strong>"; # instead of <b>
 		$x->go();
 		$CON = $x->bodyhtml;
@@ -739,7 +742,7 @@ input,select,textarea{border:1px solid #AAA;padding:2px;font-size:12px}
 <tr><td colspan="3"><hr/></td></tr>
 <tr>
 	<td><div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div></td>
-	<td>Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a>. {LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}</td>
+	<td>Powered by <a href="https://bitbucket.org/farvardin/lionwiki-t2t/">LionWiki-t2t</a>. {LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}</td>
 	<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
 </tr>
 </table>

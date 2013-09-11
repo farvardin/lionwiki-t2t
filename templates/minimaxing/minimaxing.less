@@ -6,11 +6,18 @@
 
 
 
-@all-background-colors: "#7B8AA8,#56A3B5,#B1494D,#465E7C,#549136";
+@all-background-colors: "#7B8AA8,#56A3B5,#B1494D,#465E7C,#549136,#D07732,#754496,#847457";
 
 /*
- #8B9AB8 : blue
- * 847457
+ #8B9AB8 : lighter grey blue
+ #7B8AA8 : light grey blue
+ #56A3B5 : turquoise blue
+ #B1494D : brick red 
+ #465E7C : dark blue
+ #549136 : green 
+ #D07732 : orange
+ #754496 : purple
+ #847457 : brown
  */
 
 
@@ -20,13 +27,22 @@
 .generateColor(); /* call the mixin which sets the variable once */
 
 
+/* This line will use a random main color: */
+/* @MainColor: @background-color; */
 
-/*@MainColor: #088;*/
-@MainColor: @background-color;
-/* if you wish to cycle background color, just comment out the next line */
-/*@MainColor: #549136;*/
-/*@MainColor: #8B9AB8;*/
-/*#465E7C;*/
+/* if you prefer to select a fixed background color, just select one color from below */
+/* @MainColor: #549136; */
+ @MainColor: #B1494D; 
+
+/* Header color */
+
+/* You can use a shade of MainColor: */
+@HeaderColor: (@MainColor - #111); 	
+
+/* or a complementary color: */
+ @HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); 
+
+
 
 @MainFontColor: (#878e83 - #111);
 @MainFontSize: (14pt - 2);
@@ -301,8 +317,7 @@ th {
 	h1,h2,h3,h4 {
 			font-family: 'Open Sans Condensed', sans-serif;
 			text-transform: uppercase;
-			color: (#ffffff - @MainColor - (#ffffff - @MainColor)/3);
-			/*color: (#ffffff - @MainColor);*/
+			color: @HeaderColor;
 			font-weight: bold;
 	}
 
