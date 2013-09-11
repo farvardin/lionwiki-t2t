@@ -1,0 +1,9 @@
+
+% You can put below those lines the pre or proc rules you may need in your lionwiki-t2t
+
+% use [[the description | your_page]] syntax
+%!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 index.php?page=\2]'
+
+% use [[your_page]] syntax
+%!preproc: '\[\[(.*?)\]\]' '[\1]'
+
