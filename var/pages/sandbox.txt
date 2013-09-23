@@ -18,6 +18,9 @@ Here is [[the main page | Main+page]].
 Here is [[your_page]].
 
 
+% Here is a random number: %%rand(1,6) //(doesn't work yet)//
+
+
 
 
 - list

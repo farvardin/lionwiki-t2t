@@ -16,8 +16,8 @@ class BetterEditor
 		array("BetterEditor", "provides toolbar and resizing of textareas.")
 	);
 
-	var $step_up = -200;
-	var $step_down = 200;
+	var $step_up = -100;
+	var $step_down = 100;
 
 	var $resize_html;
 	var $basic_toolbar_html; // used for comments

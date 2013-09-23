@@ -7,3 +7,19 @@
 % use [[your_page]] syntax
 %!preproc: '\[\[(.*?)\]\]' '[\1]'
 
+%-!postproc: '&lt;\?' '<?'
+%-!postproc: '\?&gt;' '?>'
+
+%-!postproc: '<!--\?' '<?'
+%-!postproc: '\?-->' '?>'
+
+
+%% Textallion
+
+%!preproc: '\{ \*\* \}'   'CONVERTboldBEGIN'
+%!preproc: '\{\/\*\* \}'  'CONVERTboldEND'
+    
+%!postproc: 'CONVERTboldBEGIN'    '<span class="bold"><b>'
+%!postproc: 'CONVERTboldEND'      '</b></span>'
+
+
