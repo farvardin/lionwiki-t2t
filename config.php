@@ -18,3 +18,5 @@ $TEMPLATE = 'templates/minimaxing.html';
 $PROTECTED_READ = false;
 
 $NO_HTML = true; // XSS protection
+
+$START_PAGE = 'main'; // Which page should be default (start page)?

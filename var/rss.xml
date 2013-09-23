@@ -6,6 +6,662 @@
 <language>fr-fr</language>
 
 	<item>
+	  <title>main</title>
+	  <pubDate>Fri, 20 Sep 2013 11:16:30 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=main</link>
+	  <description><pre id="diff">- //See the [full sample page index.php?page=sample]//
+
+- //Go to the [sandbox]//
+
+- //Read the [[help | help.en]]//
+
+- //**Download** an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
+
+- [List all the pages <del>index.php?page=page.list]</del><ins>index.php?page=page_list]</ins>
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>main</title>
+	  <pubDate>Fri, 20 Sep 2013 11:14:03 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=main</link>
+	  <description><pre id="diff"><ins>- //See the [full sample page index.php?page=sample]//
+
+- //Go to the [sandbox]//
+
+- //Read the [[help | help.en]]//
+
+- //**Download** an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
+
+- [List all the pages index.php?page=page.list]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+</ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:58:31 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff">- //See the [full sample page index.php?page=sample]//
+
+- //Go to the [sandbox]//
+
+- //Read the <del>[[help.en</del><ins>[[help</ins> | <del>help]]//</del><ins>help.en]]//</ins>
+
+- //**Download** an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:58:16 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff">- //See the [full sample page index.php?page=sample]//
+
+- //Go to the [sandbox]//
+
+- //Read the <del>[[help]]//</del><ins>[[help.en | help]]//</ins>
+
+- //**Download** an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>help.fr</title>
+	  <pubDate>Fri, 20 Sep 2013 10:57:48 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=help.fr</link>
+	  <description><pre id="diff">//Read this [[help in English | <del>help]].//</del><ins>help.en]].//</ins>
+
+**En construction**
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>help.fr</title>
+	  <pubDate>Fri, 20 Sep 2013 10:57:03 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=help.fr</link>
+	  <description><pre id="diff"><ins>//Read this [[help in English | help]].//
+
+**En construction**
+
+</ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>help</title>
+	  <pubDate>Fri, 20 Sep 2013 10:55:31 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=help</link>
+	  <description><pre id="diff"><ins>
+//Read this [[help in French | help.fr]]. Lire cette aide [[en français | help.fr]].//
+
+
+**In construction**
+
+</ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:53:45 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff">- //See the [full sample page index.php?page=sample]//
+
+- //Go to the [sandbox]//
+
+- //Read the <del>[[help]]</del><ins>[[help]]//</ins>
+
+- <del>//Download</del><ins>//**Download**</ins> an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:53:13 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff"><del>
+-</del><ins>-</ins> //See the [full sample page <del>index.php?page=Sample+Page]//</del><ins>index.php?page=sample]//</ins>
+
+- //Go to the [sandbox]//
+<ins>
+- //Read the [[help]]</ins>
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:37:59 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff">
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to <del>use, extendable, customisable...</del><ins>use and extendable.</ins>
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:37:02 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff">
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such as //html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...//
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation <del>can</del><ins>targets</ins> only<del> convert to</del> HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:30:05 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff">
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such <del>a html,</del><ins>as //html,</ins> docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, <del>AsciiDoc, ASCII Art...</del><ins>AsciiDoc...//</ins>
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: <del>Wordpress,</del><ins>//Wordpress,</ins> Drupal, Dotclear, Dokuwiki, <del>LionWiki...</del><ins>LionWiki//...</ins>
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>Main</title>
+	  <pubDate>Fri, 20 Sep 2013 10:28:41 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Main</link>
+	  <description><pre id="diff"><ins>
+- //See the [full sample page index.php?page=Sample+Page]//
+
+- //Go to the [sandbox]//
+
+- //Download an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+
+
+
+== About LionWiki ==
+ 
+**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+
+Its original homepage is located at http://lionwiki.0o.cz/
+
+
+
+
+== About txt2tags ==
+
+**[Txt2tags http://www.txt2tags.org]** is a document generator and a lightweight markup.
+
+It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``. Its python implementation can convert to several formats such a html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, ASCII Art...
+
+It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
+
+Its php implementation can only convert to HTML but you can use it with several CMS, Blog and wiki engines: Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki...
+
+
+
+== About txt2tags and lionwiki ==
+
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, extendable, customisable...
+
+- [List all the pages index.php?page=Page+List]
+- //[Logout index.php?erasecookie=1]//
+
+
+
+</ins>
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Fri, 20 Sep 2013 09:53:03 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+Here is [[the description | your_page]].
+Here is [[the main page | Main+page]].
+Here is [[your_page]].
+
+<del>Here</del><ins>
+% Here</ins> is a random number: %%rand(1,6)<ins> //(doesn't work yet)//</ins>
+
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
+	  <title>sandbox</title>
+	  <pubDate>Wed, 11 Sep 2013 23:17:29 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
+	  <description><pre id="diff">== Edit me ==
+
+This is the __sandbox__ page.
+
+You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
+
+
+
+== Warning ==
+
+All those //demos// websites will be automatically reset every day.
+
+
+== Sample ==
+
+Here is [[the description | your_page]].
+Here is [[the main page | Main+page]].
+Here is [[your_page]].
+<ins>
+Here is a random number: %%rand(1,6)</ins>
+
+
+
+
+- list
+- list 2
+ - sublist
+ - sublist 
+
+
++ ord list
++ ord 2
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
+
+
+
+Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+
+
+
+
+== Sample 2 ==
+
+Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+=== Sample 3 ===
+
+Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
+
+ 
+</pre></description>
+	</item>
+
+	<item>
 	  <title>sandbox</title>
 	  <pubDate>Wed, 11 Sep 2013 14:37:56 +0200</pubDate>
 	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
@@ -1767,1112 +2423,5 @@ Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut 
 
 </pre></description>
 	</item>
-
-	<item>
-	  <title>Menu</title>
-	  <pubDate>Tue, 20 Aug 2013 00:17:35 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Menu</link>
-	  <description><pre id="diff"><del>{menu
-  parent=[Main|Main</del><ins>- [Main|Main</ins> page]<del>
-  [Admin</del><ins>
-- [Admin</ins> plugin|UserGuide: Admin plugin]<del>
-  [Recent|./?action=recent]
-} </del><ins>
-- [Recent|./?action=recent]
- </ins>
-
-</pre></description>
-	</item>
-
-	<item>
-	  <title>Menu</title>
-	  <pubDate>Tue, 20 Aug 2013 00:15:52 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Menu</link>
-	  <description><pre id="diff"></pre></description>
-	</item>
-
-	<item>
-	  <title>menu</title>
-	  <pubDate>Tue, 20 Aug 2013 00:00:06 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-t2t/index.php?page=menu</link>
-	  <description><pre id="diff"><ins>{menu
-  parent=[Main|Main page]
-  [Admin plugin|UserGuide: Admin plugin]
-  [Recent|./?action=recent]
-} 
-</ins>
-</pre></description>
-	</item>
-
-	<item>
-	  <title>sandbox</title>
-	  <pubDate>Fri, 16 Aug 2013 21:40:54 +0200</pubDate>
-	  <link>http://192.168.0.4:80/lionwiki-t2t/index.php?page=sandbox</link>
-	  <description><pre id="diff">== Edit me ==
-
-This is the __sandbox__ page.
-
-You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
-
-
-== Warning ==
-
-All those //demos// websites will be automatically reset every day.
-
-
-== Sample ==
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
-
-
-
-Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
-
-Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
-
-Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
-
-
-<ins>
-== Sample 2 ==
-
-Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
-
-Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.</ins>
-
-
-
-
- 
-</pre></description>
-	</item>
-
-	<item>
-	  <title>sandbox</title>
-	  <pubDate>Fri, 16 Aug 2013 21:40:06 +0200</pubDate>
-	  <link>http://192.168.0.4:80/lionwiki-t2t/index.php?page=sandbox</link>
-	  <description><pre id="diff">== Edit me ==
-
-This is the __sandbox__ page.
-
-You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
-
-
-== Warning ==
-
-All those //demos// websites will be automatically reset every day.
-<ins>
-
-== Sample ==
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
-
-
-
-Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
-
-Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
-
-Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
-
-
-
-</ins>
-
-
- 
-</pre></description>
-	</item>
-
-	<item>
-	  <title>sandbox</title>
-	  <pubDate>Thu, 15 Aug 2013 10:33:26 +0200</pubDate>
-	  <link>http://192.168.0.4:80/lionwiki-t2t/index.php?page=sandbox</link>
-	  <description><pre id="diff"><ins>== Edit me ==
-
-This is the __sandbox__ page.
-
-You can [edit index.php?page=sandbox&amp;action=edit] it using the **txt2tags** markup. The password is simply &quot;__demo__&quot;.
-
-
-== Warning ==
-
-All those //demos// websites will be automatically reset every day.
-
-
- </ins>
-</pre></description>
-	</item>
-
-	<item>
-	  <title>Sample Page</title>
-	  <pubDate>Wed, 14 Aug 2013 23:08:03 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
-	  <description><pre id="diff"><ins>= TXT2TAGS SAMPLE = 
-== Aurelio Jargas ==
-=== %%mtime(%m/%d/%Y) ===
-</ins>
-%!encoding: UTF-8
-
-This text is before the introduction.
-
-But it's OK.
-
-<del>=</del><ins>                  =</ins>  Introduction  =
-
-Welcome to the txt2tags sample file.
-
-Here you have examples and a brief explanation of all
-marks.
-
-The first 3 lines of this file are used as headers,
-on the following format:
-```
-line1: document title
-line2: author name, email
-line3: date, version
-```
-
-Lines with balanced equal signs = around are titles.
-
-% a secret comment!
-%TODO link to program site http://txt2tags.org
-
-
-              =  Fonts and Beautifiers  =
-
-We have two sets of fonts:
-
-The NORMAL type that can be improved with beautifiers.
-
-The TYPEWRITER type that uses monospaced font for
-pre-formatted text.
-
-We will now enter on a subtitle...
-
-
-                  ==  Beautifiers  ==
-
-The text marks for beautifiers are simple, just as you
-type on a plain text email message.
-
-We use double *, /, - and _ to represent **bold**,
-//italic//, --strike-- and __underline__.
-
-The **//bold italic//** style is also supported as a
-combination.
-
-
-              ==  Pre-Formatted Text  ==
-
-We can put a code sample or other pre-formatted text:
-```
-  here    is     pre-formatted
-//marks// are  **not**  ``interpreted``
-```
-
-And also, it's easy to put a one line pre-formatted
-text:
-``` prompt$ ls /etc
-
-Or use ``pre-formatted`` inside sentences.
-
-
-                ==  More Cosmetics  ==
-
-Special entities like email (duh@somewhere.com) and
-URL (http://www.duh.com) are detected automagically,
-as long as the horizontal line:
-
---------------------------------------------------------
-^ thin or large v
-<del>% ========================================================</del><ins>========================================================</ins>
-
-You can also specify an [explicit link http://duh.org]
-or an [explicit email duh@somewhere.com] with label.
-
-And remember,
-	A TAB in front of the line does a quotation.
-		More TABs, more depth (if allowed).
-Nice.
-
-
-                      =  Lists  =
-
-A list of items is natural, just putting a **dash** or
-a **plus** at the beginning of the line.
-
-
-                  ==  Plain List  ==
-
-The dash is the default list identifier. For sublists,
-just add **spaces** at the beginning of the line. More
-spaces, more sublists.
-
-- Earth
-  - America
-    - South America
-      - Brazil
-        - How deep can I go?
-  - Europe
-    - Lots of countries
-- Mars
-  - Who knows?
-
-
-The list ends with **two** consecutive blank lines.
-
-
-                 ==  Numbered List  ==
-
-The same rules as the plain list, just a different
-identifier (plus).
-
-+ one
-+ two
-+ three
-  - mixed lists!
-  - what a mess
-    + counting again
-    + ...
-+ four
-
-
-                ==  Definition List  ==
-
-The definition list identifier is a colon, followed by
-the term. The term contents is placed on the next line.
-
-: orange
-  a yellow fruit
-: apple
-  a green or red fruit
-: other fruits
-  - wee!
-  - mixing lists
-    + again!
-    + and again!
-
-
-                     =  Tables  =
-
-Use pipes to compose table rows and cells.
-Double pipe at the line beginning starts a heading row.
-Natural spaces specify each cell alignment.
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3 |
-  | cell 2.1  |  cell 2.2   |   cell 2.3 |
-  | cell 3.1  |  cell 3.2   |   cell 3.3 |
-
-|| heading 1 |  heading 2  |  heading 3 |
- | cell 1.1  |  cell 1.2   |   cell 1.3 |
- | cell 2.1  |  cell 2.2   |   cell 2.3 |
-
- |_ heading 1 |  cell 1.1   |   cell 1.2 |
-  | heading 2 |  cell 2.1   |   cell 2.2 |
-  | heading 3 |  cell 3.1   |   cell 3.2 |
-
-|/ heading   |  heading 1  |  heading 2 |
- | heading 1 |  cell 1.1   |   cell 1.2 |
- | heading 2 |  cell 2.1   |   cell 2.2 |
-
-Without the last pipe, no border:
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3
-  | cell 2.1  |  cell 2.2   |   cell 2.3
-  | cell 3.1  |  cell 3.2   |   cell 3.3
-
-|| heading 1 |  heading 2  |  heading 3
- | cell 1.1  |  cell 1.2   |   cell 1.3
- | cell 2.1  |  cell 2.2   |   cell 2.3
-
- |_ heading 1 |  cell 1.1   |   cell 1.2
-  | heading 2 |  cell 2.1   |   cell 2.2
-  | heading 3 |  cell 3.1   |   cell 3.2
-
-|/ heading   |  heading 1  |  heading 2
- | heading 1 |  cell 1.1   |   cell 1.2
- | heading 2 |  cell 2.1   |   cell 2.2
-
-                =  Special Entities  =
-
-Because things were too simple.
-
-
-                    ==  Images  ==
-
-The image mark is as simple as it can be: ``[filename]``.
-
-                      [img/photo.jpg]  
-
-And with some targets the image is linkable :
-
-                      [[img/photo.jpg] http://www.txt2tags.org]  
-
-- The filename must end in PNG, JPG, GIF, or similar.
-- No spaces inside the brackets!
-
-
-                     ==  Other  ==
-When the target needs, special chars like &lt;, &gt; and &amp;
-are escaped.
-
-The handy ``%%date`` macro expands to the current date.
-
-So today is %%date on the ISO ``YYYYMMDD`` format.
-
-You can also specify the date format with the %? flags,
-as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
-
-That's all for now.
-
--------------------------------------------------------
-%%% TRANSLATOR: Uncomment and translate the next two lines
-%Translated by John Smith.
-%-------------------------------------------------------
-[img/t2tpowered.png] ([%%infile %%infile])
-
-% vim: tw=55
-
-</pre></description>
-	</item>
-
-	<item>
-	  <title>Sample Page</title>
-	  <pubDate>Wed, 14 Aug 2013 23:06:18 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
-	  <description><pre id="diff"><del></del>
-%!encoding: UTF-8
-
-This text is before the introduction.
-
-But it's OK.
-
-<del>                  =</del><ins>=</ins>  Introduction  =
-
-Welcome to the txt2tags sample file.
-
-Here you have examples and a brief explanation of all
-marks.
-
-The first 3 lines of this file are used as headers,
-on the following format:
-```
-line1: document title
-line2: author name, email
-line3: date, version
-```
-
-Lines with balanced equal signs = around are titles.
-
-% a secret comment!
-%TODO link to program site http://txt2tags.org
-
-
-              =  Fonts and Beautifiers  =
-
-We have two sets of fonts:
-
-The NORMAL type that can be improved with beautifiers.
-
-The TYPEWRITER type that uses monospaced font for
-pre-formatted text.
-
-We will now enter on a subtitle...
-
-
-                  ==  Beautifiers  ==
-
-The text marks for beautifiers are simple, just as you
-type on a plain text email message.
-
-We use double *, /, - and _ to represent **bold**,
-//italic//, --strike-- and __underline__.
-
-The **//bold italic//** style is also supported as a
-combination.
-
-
-              ==  Pre-Formatted Text  ==
-
-We can put a code sample or other pre-formatted text:
-```
-  here    is     pre-formatted
-//marks// are  **not**  ``interpreted``
-```
-
-And also, it's easy to put a one line pre-formatted
-text:
-``` prompt$ ls /etc
-
-Or use ``pre-formatted`` inside sentences.
-
-
-                ==  More Cosmetics  ==
-
-Special entities like email (duh@somewhere.com) and
-URL (http://www.duh.com) are detected automagically,
-as long as the horizontal line:
-
---------------------------------------------------------
-^ thin or large v
-% ========================================================
-
-You can also specify an [explicit link http://duh.org]
-or an [explicit email duh@somewhere.com] with label.
-
-And remember,
-	A TAB in front of the line does a quotation.
-		More TABs, more depth (if allowed).
-Nice.
-
-
-                      =  Lists  =
-
-A list of items is natural, just putting a **dash** or
-a **plus** at the beginning of the line.
-
-
-                  ==  Plain List  ==
-
-The dash is the default list identifier. For sublists,
-just add **spaces** at the beginning of the line. More
-spaces, more sublists.
-
-- Earth
-  - America
-    - South America
-      - Brazil
-        - How deep can I go?
-  - Europe
-    - Lots of countries
-- Mars
-  - Who knows?
-
-
-The list ends with **two** consecutive blank lines.
-
-
-                 ==  Numbered List  ==
-
-The same rules as the plain list, just a different
-identifier (plus).
-
-+ one
-+ two
-+ three
-  - mixed lists!
-  - what a mess
-    + counting again
-    + ...
-+ four
-
-
-                ==  Definition List  ==
-
-The definition list identifier is a colon, followed by
-the term. The term contents is placed on the next line.
-
-: orange
-  a yellow fruit
-: apple
-  a green or red fruit
-: other fruits
-  - wee!
-  - mixing lists
-    + again!
-    + and again!
-
-
-                     =  Tables  =
-
-Use pipes to compose table rows and cells.
-Double pipe at the line beginning starts a heading row.
-Natural spaces specify each cell alignment.
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3 |
-  | cell 2.1  |  cell 2.2   |   cell 2.3 |
-  | cell 3.1  |  cell 3.2   |   cell 3.3 |
-
-|| heading 1 |  heading 2  |  heading 3 |
- | cell 1.1  |  cell 1.2   |   cell 1.3 |
- | cell 2.1  |  cell 2.2   |   cell 2.3 |
-
- |_ heading 1 |  cell 1.1   |   cell 1.2 |
-  | heading 2 |  cell 2.1   |   cell 2.2 |
-  | heading 3 |  cell 3.1   |   cell 3.2 |
-
-|/ heading   |  heading 1  |  heading 2 |
- | heading 1 |  cell 1.1   |   cell 1.2 |
- | heading 2 |  cell 2.1   |   cell 2.2 |
-
-Without the last pipe, no border:
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3
-  | cell 2.1  |  cell 2.2   |   cell 2.3
-  | cell 3.1  |  cell 3.2   |   cell 3.3
-
-|| heading 1 |  heading 2  |  heading 3
- | cell 1.1  |  cell 1.2   |   cell 1.3
- | cell 2.1  |  cell 2.2   |   cell 2.3
-
- |_ heading 1 |  cell 1.1   |   cell 1.2
-  | heading 2 |  cell 2.1   |   cell 2.2
-  | heading 3 |  cell 3.1   |   cell 3.2
-
-|/ heading   |  heading 1  |  heading 2
- | heading 1 |  cell 1.1   |   cell 1.2
- | heading 2 |  cell 2.1   |   cell 2.2
-
-                =  Special Entities  =
-
-Because things were too simple.
-
-
-                    ==  Images  ==
-
-The image mark is as simple as it can be: ``[filename]``.
-
-                      [img/photo.jpg]  
-
-And with some targets the image is linkable :
-
-                      [[img/photo.jpg] http://www.txt2tags.org]  
-
-- The filename must end in PNG, JPG, GIF, or similar.
-- No spaces inside the brackets!
-
-
-                     ==  Other  ==
-When the target needs, special chars like &lt;, &gt; and &amp;
-are escaped.
-
-The handy ``%%date`` macro expands to the current date.
-
-So today is %%date on the ISO ``YYYYMMDD`` format.
-
-You can also specify the date format with the %? flags,
-as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
-
-That's all for now.
-
--------------------------------------------------------
-%%% TRANSLATOR: Uncomment and translate the next two lines
-%Translated by John Smith.
-%-------------------------------------------------------
-[img/t2tpowered.png] ([%%infile %%infile])
-
-% vim: tw=55
-
-</pre></description>
-	</item>
-
-	<item>
-	  <title>Sample Page</title>
-	  <pubDate>Wed, 14 Aug 2013 23:05:59 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
-	  <description><pre id="diff"><del></del>
-
-%!encoding: UTF-8
-
-This text is before the introduction.
-
-But it's OK.
-
-                  =  Introduction  =
-
-Welcome to the txt2tags sample file.
-
-Here you have examples and a brief explanation of all
-marks.
-
-The first 3 lines of this file are used as headers,
-on the following format:
-```
-line1: document title
-line2: author name, email
-line3: date, version
-```
-
-Lines with balanced equal signs = around are titles.
-
-% a secret comment!
-%TODO link to program site http://txt2tags.org
-
-
-              =  Fonts and Beautifiers  =
-
-We have two sets of fonts:
-
-The NORMAL type that can be improved with beautifiers.
-
-The TYPEWRITER type that uses monospaced font for
-pre-formatted text.
-
-We will now enter on a subtitle...
-
-
-                  ==  Beautifiers  ==
-
-The text marks for beautifiers are simple, just as you
-type on a plain text email message.
-
-We use double *, /, - and _ to represent **bold**,
-//italic//, --strike-- and __underline__.
-
-The **//bold italic//** style is also supported as a
-combination.
-
-
-              ==  Pre-Formatted Text  ==
-
-We can put a code sample or other pre-formatted text:
-```
-  here    is     pre-formatted
-//marks// are  **not**  ``interpreted``
-```
-
-And also, it's easy to put a one line pre-formatted
-text:
-``` prompt$ ls /etc
-
-Or use ``pre-formatted`` inside sentences.
-
-
-                ==  More Cosmetics  ==
-
-Special entities like email (duh@somewhere.com) and
-URL (http://www.duh.com) are detected automagically,
-as long as the horizontal line:
-
---------------------------------------------------------
-^ thin or large v
-<del>========================================================</del><ins>% ========================================================</ins>
-
-You can also specify an [explicit link http://duh.org]
-or an [explicit email duh@somewhere.com] with label.
-
-And remember,
-	A TAB in front of the line does a quotation.
-		More TABs, more depth (if allowed).
-Nice.
-
-
-                      =  Lists  =
-
-A list of items is natural, just putting a **dash** or
-a **plus** at the beginning of the line.
-
-
-                  ==  Plain List  ==
-
-The dash is the default list identifier. For sublists,
-just add **spaces** at the beginning of the line. More
-spaces, more sublists.
-
-- Earth
-  - America
-    - South America
-      - Brazil
-        - How deep can I go?
-  - Europe
-    - Lots of countries
-- Mars
-  - Who knows?
-
-
-The list ends with **two** consecutive blank lines.
-
-
-                 ==  Numbered List  ==
-
-The same rules as the plain list, just a different
-identifier (plus).
-
-+ one
-+ two
-+ three
-  - mixed lists!
-  - what a mess
-    + counting again
-    + ...
-+ four
-
-
-                ==  Definition List  ==
-
-The definition list identifier is a colon, followed by
-the term. The term contents is placed on the next line.
-
-: orange
-  a yellow fruit
-: apple
-  a green or red fruit
-: other fruits
-  - wee!
-  - mixing lists
-    + again!
-    + and again!
-
-
-                     =  Tables  =
-
-Use pipes to compose table rows and cells.
-Double pipe at the line beginning starts a heading row.
-Natural spaces specify each cell alignment.
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3 |
-  | cell 2.1  |  cell 2.2   |   cell 2.3 |
-  | cell 3.1  |  cell 3.2   |   cell 3.3 |
-
-|| heading 1 |  heading 2  |  heading 3 |
- | cell 1.1  |  cell 1.2   |   cell 1.3 |
- | cell 2.1  |  cell 2.2   |   cell 2.3 |
-
- |_ heading 1 |  cell 1.1   |   cell 1.2 |
-  | heading 2 |  cell 2.1   |   cell 2.2 |
-  | heading 3 |  cell 3.1   |   cell 3.2 |
-
-|/ heading   |  heading 1  |  heading 2 |
- | heading 1 |  cell 1.1   |   cell 1.2 |
- | heading 2 |  cell 2.1   |   cell 2.2 |
-
-Without the last pipe, no border:
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3
-  | cell 2.1  |  cell 2.2   |   cell 2.3
-  | cell 3.1  |  cell 3.2   |   cell 3.3
-
-|| heading 1 |  heading 2  |  heading 3
- | cell 1.1  |  cell 1.2   |   cell 1.3
- | cell 2.1  |  cell 2.2   |   cell 2.3
-
- |_ heading 1 |  cell 1.1   |   cell 1.2
-  | heading 2 |  cell 2.1   |   cell 2.2
-  | heading 3 |  cell 3.1   |   cell 3.2
-
-|/ heading   |  heading 1  |  heading 2
- | heading 1 |  cell 1.1   |   cell 1.2
- | heading 2 |  cell 2.1   |   cell 2.2
-
-                =  Special Entities  =
-
-Because things were too simple.
-
-
-                    ==  Images  ==
-
-The image mark is as simple as it can be: ``[filename]``.
-
-                      [img/photo.jpg]  
-
-And with some targets the image is linkable :
-
-                      [[img/photo.jpg] http://www.txt2tags.org]  
-
-- The filename must end in PNG, JPG, GIF, or similar.
-- No spaces inside the brackets!
-
-
-                     ==  Other  ==
-When the target needs, special chars like &lt;, &gt; and &amp;
-are escaped.
-
-The handy ``%%date`` macro expands to the current date.
-
-So today is %%date on the ISO ``YYYYMMDD`` format.
-
-You can also specify the date format with the %? flags,
-as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
-
-That's all for now.
-
--------------------------------------------------------
-%%% TRANSLATOR: Uncomment and translate the next two lines
-%Translated by John Smith.
-%-------------------------------------------------------
-[img/t2tpowered.png] ([%%infile %%infile])
-
-% vim: tw=55
-
-</pre></description>
-	</item>
-
-	<item>
-	  <title>Sample Page</title>
-	  <pubDate>Wed, 14 Aug 2013 23:05:28 +0200</pubDate>
-	  <link>http://localhost:80/lionwiki-t2t/index.php?page=Sample+Page</link>
-	  <description><pre id="diff"><ins>
-
-%!encoding: UTF-8
-
-This text is before the introduction.
-
-But it's OK.
-
-                  =  Introduction  =
-
-Welcome to the txt2tags sample file.
-
-Here you have examples and a brief explanation of all
-marks.
-
-The first 3 lines of this file are used as headers,
-on the following format:
-```
-line1: document title
-line2: author name, email
-line3: date, version
-```
-
-Lines with balanced equal signs = around are titles.
-
-% a secret comment!
-%TODO link to program site http://txt2tags.org
-
-
-              =  Fonts and Beautifiers  =
-
-We have two sets of fonts:
-
-The NORMAL type that can be improved with beautifiers.
-
-The TYPEWRITER type that uses monospaced font for
-pre-formatted text.
-
-We will now enter on a subtitle...
-
-
-                  ==  Beautifiers  ==
-
-The text marks for beautifiers are simple, just as you
-type on a plain text email message.
-
-We use double *, /, - and _ to represent **bold**,
-//italic//, --strike-- and __underline__.
-
-The **//bold italic//** style is also supported as a
-combination.
-
-
-              ==  Pre-Formatted Text  ==
-
-We can put a code sample or other pre-formatted text:
-```
-  here    is     pre-formatted
-//marks// are  **not**  ``interpreted``
-```
-
-And also, it's easy to put a one line pre-formatted
-text:
-``` prompt$ ls /etc
-
-Or use ``pre-formatted`` inside sentences.
-
-
-                ==  More Cosmetics  ==
-
-Special entities like email (duh@somewhere.com) and
-URL (http://www.duh.com) are detected automagically,
-as long as the horizontal line:
-
---------------------------------------------------------
-^ thin or large v
-========================================================
-
-You can also specify an [explicit link http://duh.org]
-or an [explicit email duh@somewhere.com] with label.
-
-And remember,
-	A TAB in front of the line does a quotation.
-		More TABs, more depth (if allowed).
-Nice.
-
-
-                      =  Lists  =
-
-A list of items is natural, just putting a **dash** or
-a **plus** at the beginning of the line.
-
-
-                  ==  Plain List  ==
-
-The dash is the default list identifier. For sublists,
-just add **spaces** at the beginning of the line. More
-spaces, more sublists.
-
-- Earth
-  - America
-    - South America
-      - Brazil
-        - How deep can I go?
-  - Europe
-    - Lots of countries
-- Mars
-  - Who knows?
-
-
-The list ends with **two** consecutive blank lines.
-
-
-                 ==  Numbered List  ==
-
-The same rules as the plain list, just a different
-identifier (plus).
-
-+ one
-+ two
-+ three
-  - mixed lists!
-  - what a mess
-    + counting again
-    + ...
-+ four
-
-
-                ==  Definition List  ==
-
-The definition list identifier is a colon, followed by
-the term. The term contents is placed on the next line.
-
-: orange
-  a yellow fruit
-: apple
-  a green or red fruit
-: other fruits
-  - wee!
-  - mixing lists
-    + again!
-    + and again!
-
-
-                     =  Tables  =
-
-Use pipes to compose table rows and cells.
-Double pipe at the line beginning starts a heading row.
-Natural spaces specify each cell alignment.
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3 |
-  | cell 2.1  |  cell 2.2   |   cell 2.3 |
-  | cell 3.1  |  cell 3.2   |   cell 3.3 |
-
-|| heading 1 |  heading 2  |  heading 3 |
- | cell 1.1  |  cell 1.2   |   cell 1.3 |
- | cell 2.1  |  cell 2.2   |   cell 2.3 |
-
- |_ heading 1 |  cell 1.1   |   cell 1.2 |
-  | heading 2 |  cell 2.1   |   cell 2.2 |
-  | heading 3 |  cell 3.1   |   cell 3.2 |
-
-|/ heading   |  heading 1  |  heading 2 |
- | heading 1 |  cell 1.1   |   cell 1.2 |
- | heading 2 |  cell 2.1   |   cell 2.2 |
-
-Without the last pipe, no border:
-
-  | cell 1.1  |  cell 1.2   |   cell 1.3
-  | cell 2.1  |  cell 2.2   |   cell 2.3
-  | cell 3.1  |  cell 3.2   |   cell 3.3
-
-|| heading 1 |  heading 2  |  heading 3
- | cell 1.1  |  cell 1.2   |   cell 1.3
- | cell 2.1  |  cell 2.2   |   cell 2.3
-
- |_ heading 1 |  cell 1.1   |   cell 1.2
-  | heading 2 |  cell 2.1   |   cell 2.2
-  | heading 3 |  cell 3.1   |   cell 3.2
-
-|/ heading   |  heading 1  |  heading 2
- | heading 1 |  cell 1.1   |   cell 1.2
- | heading 2 |  cell 2.1   |   cell 2.2
-
-                =  Special Entities  =
-
-Because things were too simple.
-
-
-                    ==  Images  ==
-
-The image mark is as simple as it can be: ``[filename]``.
-
-                      [img/photo.jpg]  
-
-And with some targets the image is linkable :
-
-                      [[img/photo.jpg] http://www.txt2tags.org]  
-
-- The filename must end in PNG, JPG, GIF, or similar.
-- No spaces inside the brackets!
-
-
-                     ==  Other  ==
-When the target needs, special chars like &lt;, &gt; and &amp;
-are escaped.
-
-The handy ``%%date`` macro expands to the current date.
-
-So today is %%date on the ISO ``YYYYMMDD`` format.
-
-You can also specify the date format with the %? flags,
-as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
-
-That's all for now.
-
--------------------------------------------------------
-%%% TRANSLATOR: Uncomment and translate the next two lines
-%Translated by John Smith.
-%-------------------------------------------------------
-[img/t2tpowered.png] ([%%infile %%infile])
-
-% vim: tw=55
-</ins>
-</pre></description>
-	</item>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </channel>
 </rss>

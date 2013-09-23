@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20130911";
+<?php $T2TVersion = "20130916";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -290,7 +290,7 @@ class T2T {
         continue;
       }
       
-      if($line!='' && $line{0}=='%' && ! preg_match('/^%%(infile|outfile|date|mtime|toc\\s*$)/i', $line) )
+      if($line!='' && $line{0}=='%' && ! preg_match('/^%%(infile|outfile|date|mtime|rand|toc\\s*$)/i', $line) )
         continue; # remove comment lines
         
       # special lines raw, tagged, verbatim
@@ -372,7 +372,7 @@ class T2T {
         $lines2[] = "\032\032".$this->Keep(sprintf($snippets['hrule'], $class));
         continue;
       }
-      if(preg_match("/^ +\\[([\034\\w_,.+%$#@!?+~\\/-]+\\.(?:png|jpe?g|gif|bmp))\\] +$/i", $line)) {
+      if(preg_match("/^ +\\[([\034\\w_,.+%$#@!?+~\\/-]+\\.(?:png|jpe?g|gif|bmp|svg))\\] +$/i", $line)) {
         $lines2[] = "\033\033". $this->Keep(sprintf($snippets['center'], $this->run_inline($line)));
         continue;
       }
@@ -676,6 +676,10 @@ class T2T {
     $line = preg_replace('/%%outfile(?:\\((.*?)\\))?/ie', 
       '"$1" ? str_replace(array_keys($this->outfile), array_values($this->outfile), "$1")
       : $this->outfile["%f"]', $line);
+    /*$line = preg_replace_callback('/%%rand\([0-9]+,[0-9]+\)/',  'create_function(return(rand($1,$2);))', $line);
+     $line = preg_replace('/%%rand\([0-9]+,[0-9]+\)/i', '<? rand($1,$2); ?>', $line);
+    $line = preg_replace_callback('/%%rand\\(([0-9]+),([0-9]+)\\)/',  'return(rand($1,$2);)', $line);
+*/
     return $line;
   }
   
@@ -797,7 +801,7 @@ class T2T {
         continue;
       }
       
-      if($line{0} != '%' || preg_match('/^%(%(date|mtime|toc|infile|outfile)|! *include)/i', $line)) {
+      if($line{0} != '%' || preg_match('/^%(%(date|mtime|toc|infile|outfile|rand)|! *include)/i', $line)) {
         array_unshift($lines, $line); 
         break;
       }
@@ -814,16 +818,6 @@ class T2T {
         continue;
       }
       if($mlcomment) continue;
-      
-      # now we can also use %!includeconf OUTSIDE of the header:
-      if(preg_match('/^%!\\s*includeconf\\s*:\\s*(.+)$/', $line, $m)) {
-        $f = trim($m[1]);
-        if($f{0}!='/') $f =  $this->infile['%d'] . DIRECTORY_SEPARATOR . $f;
-        $r = $this->head_conf_body($this->read($f, $this->enableinclude));
-        for($i=count($r['config'])-1; $i>=0; $i--)
-          array_unshift($lines, $r['config'][$i]); 
-        continue;
-      }
       
       if(preg_match('/^%!\\s*include(?:\\(x?html\\))?\\s*:\\s*(``|\'\'|""|)(.+)\\1\\s*$/', $line, $m)) {
       

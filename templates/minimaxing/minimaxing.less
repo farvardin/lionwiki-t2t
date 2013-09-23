@@ -1,11 +1,11 @@
 
 
-/* This CSS file was generated from the .less template. 
+/* This CSS file was generated from the minimaxing.less template. 
  See http://lesscss.org/
  */
 
 
-
+/* we use this for random theme color. You can also choose only one color below. */
 @all-background-colors: "#7B8AA8,#56A3B5,#B1494D,#465E7C,#549136,#D07732,#754496,#847457";
 
 /*
@@ -20,6 +20,7 @@
  #847457 : brown
  */
 
+@button-radius: 6px;
 
 .generateColor() { /* define mixin */
 @background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
@@ -27,12 +28,12 @@
 .generateColor(); /* call the mixin which sets the variable once */
 
 
-/* This line will use a random main color: */
-/* @MainColor: @background-color; */
+/* This line below will use a random main color: */
+ /* @MainColor: @background-color; */
 
-/* if you prefer to select a fixed background color, just select one color from below */
+/* if you prefer to select a fixed background color, just uncomment one color from below */
 /* @MainColor: #549136; */
- @MainColor: #B1494D; 
+@MainColor: #555; 
 
 /* Header color */
 
@@ -40,7 +41,7 @@
 @HeaderColor: (@MainColor - #111); 	
 
 /* or a complementary color: */
- @HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); 
+@HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); 
 
 
 
@@ -49,9 +50,11 @@
 
 @RedBrick: #7F4736;
 
-@BackgroundMain: #e3e9dc;
+/* used in max-width (should be renamed) */
+@BackgroundMain: (#999 + (@MainColor/6));  
 @Bg-dark: (@BackgroundMain - #121212);
 @Bg-light: (@BackgroundMain + #121212);
+@Bg-extra-light: (@BackgroundMain + #343434);
 
 
 
@@ -62,12 +65,25 @@
 @LinkColor: (@MainColor-light + #010101);
 
 @BackgroundHead: @MainColor-light;
-@Background2Head: @MainColor;
 
+/* This part is for the button-like heading */
+@Background2Head: @MainColor;
 @Background3Head: @MainColor-light;
 @Background4Head: @MainColor;
-
 @BackgroundNav: @Background2Head;
+@shadow: #3ecceb;
+
+/* if you don't like this, uncomment the part below and it will look flater */
+
+/*
+@Background2Head: @MainColor;
+@Background3Head: @MainColor;
+@Background4Head: @MainColor;
+@BackgroundNav: @MainColor;
+@MainColor-light: @MainColor;
+@shadow: @MainColor;
+*/
+
 
 /*
 @MainColor: #007897;
@@ -213,6 +229,10 @@ display: inline;
 font-size:small;
 }
 
+h1 a:hover, h2 a:hover , h3 a:hover , h4 a:hover , h5 a:hover , h6 a:hover  {
+background-color:transparent;
+}
+
 .pageLinks{
 padding-left:1em;
 padding-right:1em;
@@ -233,7 +253,7 @@ text-decoration:none;
 
 .error{color:#F25A5A;font-weight:bold;}
 
-.contentTextarea{width:90%;}
+.contentTextarea{width:90%; font-family: 'Open Sans', sans-serif; font-size:105%;}
 
 #diff {white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%;}
 #diff ins{color:green;text-decoration:none;font-weight:bold;}
@@ -306,19 +326,22 @@ th {
 	body {
 		font-size: @MainFontSize;
 		font-family: sans-serif;
-		background-color: @BackgroundMain;
+		background-color: (@Bg-extra-light/1.1 + #111);
 		font-family: 'Open Sans', sans-serif;
 		color: @MainFontColor;
 	}
 #header  h1 {margin:0;padding:0;border:none;}
 
-#main h1, #main h2, #main h3, #main h4, #main h5, #main p {margin-bottom:20px;}
+/*#main h1, #main h2, #main h3, #main h4, #main h5, #main p {margin-bottom:20px;}*/
+
+
 
 	h1,h2,h3,h4 {
 			font-family: 'Open Sans Condensed', sans-serif;
 			text-transform: uppercase;
 			color: @HeaderColor;
 			font-weight: bold;
+			
 	}
 
 	h1,h2 {
@@ -337,17 +360,18 @@ th {
 	h2 {
 	font-size:1.6em;
 		letter-spacing: -1px;
-		margin-bottom: 1em;
+		margin-bottom: 0.0em;
+		margin-top: 1.8em;
 	}
 
 	h3,h4 {
 		color: #283121;
-		margin-bottom: 0.5em;
+		margin-bottom: 0.0em;
+		margin-top: 1.4em;
 	}
 
 	h3 {
 		font-size: 1.2em;
-		margin-bottom: 0.8em;
 	}
 
 	h4 {
@@ -355,13 +379,13 @@ th {
 	}
 
 	p, ul {
-		margin-bottom: 1.25em;
+		margin-bottom: 1.0em;
 	}
 
 	p {
 		line-height: 1.8em;
-			margin-bottom:10px;
-			margin-top:10px;
+		/*margin-bottom:10px;
+		margin-top:10px;*/
 
 	}
 
@@ -370,7 +394,7 @@ th {
 	}
 
 	pre, code, blockquote, dt {
-		background-color: @Bg-light;
+		background-color: (@Bg-extra-light + #121212);
 		line-height: 1.1em;
 		font-family: mono;
 	}
@@ -397,9 +421,13 @@ th {
 
 		}
 
-	li {line-height: 28px;
+	ul:hover {background-color: (@Bg-extra-light + #343434);	} 
 
+	ul li:hover,ul li:active {
+		background-color: (@Bg-light + #343434);
 	}
+	
+	li {line-height: 24px;	}
 
 	a {
 		color: @LinkColor;
@@ -409,7 +437,10 @@ th {
 
 	a:hover {
 		text-decoration: none;
+		background-color: (@Bg-light + #232323);
 	}
+	
+	
 
 	* > p:last-child {
 	}
@@ -469,7 +500,7 @@ th {
 		background-image: -ms-linear-gradient(top, @MainColor-light, @Background2Head);
 		background-image: -o-linear-gradient(top, @MainColor-light, @Background2Head);
 		background-image: linear-gradient(top, @MainColor-light, @Background2Head);
-		border-radius: 10px;
+		border-radius: @button-radius;
 		text-transform: lowercase;
 		text-decoration: none;
 		color: #fff;
@@ -487,7 +518,7 @@ th {
 		background-image: -ms-linear-gradient(top, @MainColor-light, @MainColor);
 		background-image: -o-linear-gradient(top, @MainColor-light, @MainColor);
 		background-image: linear-gradient(top, @MainColor-light, @MainColor);
-		box-shadow: inset 0px 0px 0px 1px #3ecceb;
+		box-shadow: inset 0px 0px 0px 1px @shadow;
 	}
 
 /*********************************************************************************/
@@ -501,7 +532,7 @@ th {
 		}
 
         section p + p {
-            margin-top: 2em;
+            margin-top: 1.5em;
         }
 
       /* h2 { column-span: none;break-before:column; }
@@ -565,7 +596,7 @@ th {
 			margin: 2.5% 0 2.5% 0;
 			margin-top: 40px;
 			padding: 0 40px 0 40px;
-			border-radius: 10px;
+			border-radius: @button-radius;
 			border: solid 1px @MainColor;
 			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,0.10);
 			background-color: @Background4Head;
@@ -633,11 +664,12 @@ th {
 					background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
 					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.05), 0px 0px 5px 1px rgba(255,255,255,0.05);
 				}
-#banner-wrapper h2 {border-bottom:none;color:white;font-size:2.0em;text-align:center}
-#banner-wrapper a {border-bottom:none;color:white}
+
+		#banner-wrapper h2 {border-bottom:none;color:white;font-size:2.0em;text-align:center}
+		#banner-wrapper a {border-bottom:none;color:white}
 
 		#banner-wrapper {
-			background: @Bg-dark url(images/bg1.png);
+			background: @Bg-light url(images/bg1.png);
 			margin-top: -20px;
 			margin-bottom: -20px;
 		}
@@ -656,7 +688,7 @@ th {
 			height: 240px;
 			margin: 2% 0 2% 0;
 			box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
-			border-radius: 10px;
+			border-radius: @button-radius;
 			padding: 20px;
 			background: #fff url(images/banner.jpg) no-repeat 20px 20px;
 			background-size: 1160px 265px;
@@ -713,7 +745,7 @@ th {
 		#copyright {
 			font-size: 0.6em;
 			text-align: center;
-			color: #A6A88F;
+			color: (@Bg-light - #121212);
 			border-top: solid 1px #ced0b7;
 			line-height: 1.1em;
 			padding: 3em 0 0 0;
@@ -721,7 +753,12 @@ th {
 		}
 
 			#copyright a {
-				color: #A6A88F;
+				color: (@Bg-light - #232323);
+			}
+			
+			#copyright a:hover {
+				color: (@Bg-extra-light + #343434);
+				background-color: (@Bg-light);
 			}
 	
 	}
@@ -782,7 +819,7 @@ th {
 			margin: 3.5% 0 1.5% 0;
 			margin-top: 40px;
 			padding: 0 40px 0 40px;
-			border-radius: 10px;
+			border-radius: @button-radius;
 			border: solid 1px @MainColor-light;
 			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,0.10);
 			background-color: @Background4Head;
@@ -868,7 +905,7 @@ th {
 			height: 140px;
 			margin: 2% 0 2% 0;
 			box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
-			border-radius: 10px;
+			border-radius: @button-radius;
 			padding: 20px;
 			background: #fff url(images/banner.jpg) no-repeat 20px 20px;
 			background-size: 960px 220px;
@@ -1039,6 +1076,15 @@ th {
 					margin: 3px 0 3px 0;
 				}
 				
+				#header nav a:hover {
+					display: inline-block;
+					text-decoration: none;
+					color: @MainColor;
+					padding: 10px 15px 10px 15px;
+					margin: 3px 0 3px 0;
+					border-radius: 3px;
+				}
+				
 				#header nav a.current-page-item {
 					background-color: @MainColor;
 					background-image: -moz-linear-gradient(top, @BackgroundNav, @MainColor);
@@ -1048,7 +1094,7 @@ th {
 					background-image: -o-linear-gradient(top, @BackgroundNav, @MainColor);
 					background-image: linear-gradient(top, @BackgroundNav, @MainColor);
 					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.1), 0px 0px 5px 1px rgba(255,255,255,0.1);
-					border-radius: 10px;
+					border-radius: @button-radius;
 				}
 
 		#banner-wrapper {
@@ -1111,6 +1157,16 @@ th {
 			#copyright a {
 				color: #A6A88F;
 			}
+		
+		.contentTextarea{
+		width:96%; 
+		font-family: 'Open Sans', sans-serif; font-size:105%;
+		padding: 0px;
+		margin-left: -15px;
+		/*margin-right: -15px;*/
+		}
+	
 	
 	}
+
 
