@@ -18,17 +18,18 @@
 	<body>
 	<!-- ********************************************************* -->
 		<div id="header-wrapper">
+			<div style="text-align:right">{EDIT} - {HISTORY} - { RECENT_CHANGES}</div>			
 			<!--<h1>{WIKI_TITLE}</h1>-->
 			<div class="5grid">
 				<div class="12u-first">
 					<header id="header">
 					<h1>{WIKI_TITLE}</h1>
 						
-						<nav>
-							{HOME}
-							{&nbsp;&nbsp; EDIT}
-							{&nbsp;&nbsp; HISTORY}
-							{&nbsp;&nbsp; RECENT_CHANGES}
+						<nav><!--{HOME}-->
+							<ul>
+								<li>{HOME}</li>
+								{MENU}
+							</ul>
 						</nav>
 					</header>
 				
@@ -68,7 +69,7 @@
 				<td colspan="3">{CONTENT_TEXTAREA}</td>
 			</tr>
 			<tr>
-				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
 				<td style="text-align: right; vertical-align: top;">{plugin:RESIZE_TEXTAREA}</td>
 			</tr>
 		</table>

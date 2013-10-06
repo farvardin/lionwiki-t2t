@@ -33,7 +33,8 @@
 
 /* if you prefer to select a fixed background color, just uncomment one color from below */
 /* @MainColor: #549136; */
-@MainColor: #555; 
+@MainColor: #D07732; 
+/*@MainColor: #549136;*/
 
 /* Header color */
 
@@ -66,23 +67,27 @@
 
 @BackgroundHead: @MainColor-light;
 
-/* This part is for the button-like heading */
+/* This part is for the button-like heading. We disable it for now */
+/* 
 @Background2Head: @MainColor;
 @Background3Head: @MainColor-light;
 @Background4Head: @MainColor;
 @BackgroundNav: @Background2Head;
 @shadow: #3ecceb;
+@buttonboxshadow: 0.1;
+*/
 
-/* if you don't like this, uncomment the part below and it will look flater */
+/* if you don't like the buttons, uncomment the part below and they will be flat */
 
-/*
+
 @Background2Head: @MainColor;
 @Background3Head: @MainColor;
 @Background4Head: @MainColor;
 @BackgroundNav: @MainColor;
 @MainColor-light: @MainColor;
 @shadow: @MainColor;
-*/
+@buttonboxshadow: 0.0;
+
 
 
 /*
@@ -103,6 +108,13 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
 */
 
+
+@font-face {
+  font-family: LoveYaLikeASister;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/LoveYaLikeASister-Regular.woff) format('woff');
+}
 
 
 @font-face {
@@ -220,8 +232,6 @@ a.pending{color:@RedBrick;}
 h2 span.par-edit, h3 span.par-edit, h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {
 float:right;
 display: none;
-
-		
 }
 
 h2:hover span.par-edit, h3:hover span.par-edit, h4:hover span.par-edit, h5:hover span.par-edit, h6:hover span.par-edit {
@@ -337,6 +347,7 @@ th {
 
 
 	h1,h2,h3,h4 {
+			/*font-family: LoveYaLikeASister, sans-serif;*/
 			font-family: 'Open Sans Condensed', sans-serif;
 			text-transform: uppercase;
 			color: @HeaderColor;
@@ -356,6 +367,46 @@ th {
 				line-height: 1.3em;
 			}
 
+	#header-wrapper {
+				color: (@MainColor-light + #111);
+			}
+
+	#header-wrapper a {
+				color: (@MainColor-light + #222);
+			}
+
+	#header-wrapper a:hover {
+				color: (@MainColor - #444);
+				border-radius: (@button-radius - 3) ;
+			}
+	
+
+	#header nav {
+				color: #111 ;
+				text-transform: lowercase;
+			}
+
+
+
+	/*#header nav li {
+				float: left;
+				list-style: none;
+				position: relative;
+				}*/
+
+
+
+	#header nav a, #header nav li a {
+					display: inline-block;
+					text-decoration: none;
+					color: #fff;
+
+				}
+
+	#header nav li a:hover {
+					border-radius: @button-radius;
+					color: #111;
+				}
 
 	h2 {
 	font-size:1.6em;
@@ -407,6 +458,14 @@ th {
 	
 	pre, blockquote {padding-left: 20px;}
 
+	img {
+		float: center;
+		margin: 2px 1.25em 0 0;
+		display: block;
+		margin: 0 auto; 
+	}
+
+
 	img.left {
 		float: left;
 		margin: 2px 1.25em 0 0;
@@ -421,11 +480,17 @@ th {
 
 		}
 
-	ul:hover {background-color: (@Bg-extra-light + #343434);	} 
+	#main ul:hover {
+		background-color: (@Bg-extra-light + #343434);	
+		/*color: #111;*/
+	} 
 
-	ul li:hover,ul li:active {
+	#main ul li:hover,ul li:active {
 		background-color: (@Bg-light + #343434);
+		/*color: #111;*/
 	}
+
+
 	
 	li {line-height: 24px;	}
 
@@ -445,7 +510,7 @@ th {
 	* > p:last-child {
 	}
 
-	article.blog-post {
+/*	article.blog-post {
 		position: relative;
 	}
 
@@ -458,7 +523,7 @@ th {
 			padding-left: 40px;
 			background: url('images/icon-bubble.png') no-repeat;
 		}
-
+*/
 	ul.small-image-list {
 	}
 
@@ -490,16 +555,11 @@ th {
 			border-top: 0;
 		}
 
+
 	.button, a.toolbarTextareaItem {
 		display: inline-block;
 		padding: 5px 10px 5px 10px;
 		background-color: @Background2Head;
-		background-image: -moz-linear-gradient(top, @MainColor-light, @Background2Head);
-		background-image: -webkit-linear-gradient(top, @MainColor-light, @Background2Head);
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@MainColor-light), to(@Background2Head));
-		background-image: -ms-linear-gradient(top, @MainColor-light, @Background2Head);
-		background-image: -o-linear-gradient(top, @MainColor-light, @Background2Head);
-		background-image: linear-gradient(top, @MainColor-light, @Background2Head);
 		border-radius: @button-radius;
 		text-transform: lowercase;
 		text-decoration: none;
@@ -510,16 +570,31 @@ th {
 		box-shadow: inset 0px 0px 0px 1px @MainColor-light;
 	}
 
-	.button:hover {
-		background-color: @MainColor;
-		background-image: -moz-linear-gradient(top, @MainColor-light, @MainColor);
-		background-image: -webkit-linear-gradient(top, @MainColor-light, @MainColor);
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@MainColor-light), to(@MainColor));
-		background-image: -ms-linear-gradient(top, @MainColor-light, @MainColor);
-		background-image: -o-linear-gradient(top, @MainColor-light, @MainColor);
-		background-image: linear-gradient(top, @MainColor-light, @MainColor);
-		box-shadow: inset 0px 0px 0px 1px @shadow;
+
+	.button:hover, a.toolbarTextareaItem:hover {
+		background-color: (@MainColor + #111);
+		color: #444;
 	}
+
+
+	#copyright {
+			font-size: 0.6em;
+			text-align: center;
+			color: (@Bg-light - #121212);
+			border-top: solid 1px #ced0b7;
+			line-height: 1.1em;
+			padding: 3em 0 0 0;
+			margin: 1% 0 0 0;
+		}
+
+	#copyright a {
+				color: (@Bg-light - #232323);
+			}
+			
+	#copyright a:hover {
+				color: (@Bg-extra-light + #343434);
+				background-color: (@Bg-light);
+			}
 
 /*********************************************************************************/
 /* 1000px (>= 1000px)                                                            */
@@ -550,45 +625,17 @@ th {
         }		
 		*/
 
-		section:last-child, article:last-child {
-			margin-bottom: 0;
-		}
-		
-		section.left-content {
-			padding-right: 30px;
-		}
 
-		section.right-content {
-			padding-left: 30px;
-		}
 
-		section.middle-content {
-			padding: 0 30px 0 30px;
-		}
+		/*.img {
+			max-width: 588px;
+		}*/
 
-		ul.small-image-list img {
-			width: 78px;
-		}
-
-		ul.big-image-list img {
-			width: 178px;
-		}
-
-		.blog-post-image {
-			width: 588px;
-		}
-
-		
+	
 		#header-wrapper {
 			background-color: @BackgroundHead;
-			background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
-			background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
 		}
-		
+	
 		#header-wrapper h1 {margin-top:0;color: #fff;text-decoration: none;  border-bottom:0px ;}
 
 		#header {
@@ -598,14 +645,8 @@ th {
 			padding: 0 40px 0 40px;
 			border-radius: @button-radius;
 			border: solid 1px @MainColor;
-			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,0.10);
-			background-color: @Background4Head;
-			background-image: -moz-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: -webkit-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundHead), to(@Background4Head));
-			background-image: -ms-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: -o-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: linear-gradient(top, @Background3Head, @Background4Head);
+			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,@buttonboxshadow);
+			/*background-color: @Background4Head;*/
 			height: 66px;
 		}
 
@@ -625,51 +666,48 @@ th {
 			}
 			
 		
-			
 			#header nav {
 				position: absolute;
-				right: 40px;
+				float: left;
+				clear: both;
+				right: 0px;
 				top: 1px;
 				line-height: 64px;
-				text-transform: lowercase;
 				font-size: 1.3em;
 				letter-spacing: -1px;
 			}
-			
-				#header nav a {
-					display: inline-block;
-					text-decoration: none;
-					color: #fff;
-					padding: 0 25px 0 25px;
-				}
-				
-				#header nav a.current-page-item {
-					background-color: @MainColor;
-					background-image: -moz-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -webkit-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundNav), to(@MainColor));
-					background-image: -ms-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -o-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: linear-gradient(top, @BackgroundNav, @MainColor);
-					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.1), 0px 0px 5px 1px rgba(255,255,255,0.1);
+
+
+
+			#header nav li {
+				float: left;
+				list-style: none;
+				position: relative;
 				}
 
-				#header nav a:hover {
-					background-color: @MainColor;
-					background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
-					background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
-					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.05), 0px 0px 5px 1px rgba(255,255,255,0.05);
+
+
+			#header nav a, #header nav li a {
+					/*display: inline-block;
+					text-decoration: none;*/
+					/*color: #fff;*/
+					border: 0 none;
+					padding: 10px 35px 10px 35px;
+
 				}
+
+			/*#header nav li a:hover {
+					border-radius: @button-radius;
+					color: #111;
+				}*/
+
+
 
 		#banner-wrapper h2 {border-bottom:none;color:white;font-size:2.0em;text-align:center}
 		#banner-wrapper a {border-bottom:none;color:white}
 
 		#banner-wrapper {
-			background: @Bg-light url(images/bg1.png);
+			/*background: @Bg-light url(images/bg1.png);*/
 			margin-top: -20px;
 			margin-bottom: -20px;
 		}
@@ -690,7 +728,7 @@ th {
 			box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
 			border-radius: @button-radius;
 			padding: 20px;
-			background: #fff url(images/banner.jpg) no-repeat 20px 20px;
+			/*background: #fff url(images/banner.jpg) no-repeat 20px 20px;*/
 			background-size: 1160px 265px;
 		}
 
@@ -729,9 +767,6 @@ th {
 		}
 
 
-			#main .controls {
-			}
-
 			#main .main-row {
 				margin: 2% 0 2% 0;
 				overflow: hidden;
@@ -742,24 +777,7 @@ th {
 			padding: 3% 0 3% 0;
 		}
 
-		#copyright {
-			font-size: 0.6em;
-			text-align: center;
-			color: (@Bg-light - #121212);
-			border-top: solid 1px #ced0b7;
-			line-height: 1.1em;
-			padding: 3em 0 0 0;
-			margin: 1% 0 0 0;
-		}
 
-			#copyright a {
-				color: (@Bg-light - #232323);
-			}
-			
-			#copyright a:hover {
-				color: (@Bg-extra-light + #343434);
-				background-color: (@Bg-light);
-			}
 	
 	}
 	
@@ -804,12 +822,6 @@ th {
 
 		#header-wrapper {
 			background-color: @BackgroundHead;
-			background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
-			background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
 		}
 		
 		#header-wrapper h1 {margin-top:0;color: #fff;text-decoration: none;  border-bottom:0px ;}
@@ -821,14 +833,8 @@ th {
 			padding: 0 40px 0 40px;
 			border-radius: @button-radius;
 			border: solid 1px @MainColor-light;
-			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,0.10);
+			box-shadow: inset 0px 0px 0px 1px @MainColor-light, 0px 1px 4px 0px rgba(0,0,0,@buttonboxshadow);
 			background-color: @Background4Head;
-			background-image: -moz-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: -webkit-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background3Head), to(@Background4Head));
-			background-image: -ms-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: -o-linear-gradient(top, @Background3Head, @Background4Head);
-			background-image: linear-gradient(top, @Background3Head, @Background4Head);
 			height: 66px;
 		}
 
@@ -849,46 +855,34 @@ th {
 			
 			#header nav {
 				position: absolute;
-				right: 40px;
+				float: left;
+				clear: both;
+				right: 20px;
 				top: 1px;
 				line-height: 64px;
-				text-transform: lowercase;
-				font-size: 1.1em;
+				font-size: 1.3em;
 				letter-spacing: -1px;
 			}
-			
-				#header nav a {
-					display: inline-block;
-					text-decoration: none;
-					color: #fff;
-					padding: 0 20px 0 20px;
-				}
-				
-				#header nav a.current-page-item {
-					background-color: @MainColor;
-					background-image: -moz-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -webkit-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundNav), to(@MainColor));
-					background-image: -ms-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -o-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: linear-gradient(top, @BackgroundNav, @MainColor);
-					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.1), 0px 0px 5px 1px rgba(255,255,255,0.1);
+
+			#header nav li {
+				float: left;
+				list-style: none;
+				position: relative;
 				}
 
-				#header nav a:hover {
-					background-color: @MainColor;
-					background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
-					background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
-					background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
-					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.05), 0px 0px 5px 1px rgba(255,255,255,0.05);
+
+
+			#header nav a, #header nav li a {
+					border: 0 none;
+					padding: 10px 35px 10px 35px;
+
 				}
+
+				
+				
+				
 
 		#banner-wrapper {
-			/*background: @Bg-dark url(images/bg1.png);*/
-			/*display: none;*/
 			background: #fff ;
 			margin-bottom: -40px;
 		}
@@ -957,19 +951,7 @@ th {
 			padding: 5% 0 5% 0;
 		}
 
-		#copyright {
-			font-size: 0.7em;
-			text-align: center;
-			color: #A6A88F;
-			border-top: solid 1px #ced0b7;
-			padding: 2em 0 0 0;
-			margin: 1em 0 0 0;
-			line-height: 1.1em;
-		}
 
-			#copyright a {
-				color: #A6A88F;
-			}
 	
 	}
 	
@@ -978,194 +960,158 @@ th {
 /*********************************************************************************/
 
 	@media only screen and (max-width: 600px) {
+	  body {
+		font-size: 15pt;
+	  }
+	  h2 {
+		font-size: 1.4em;
+	  }
+	  h3 {
+		font-size: 1.2em;
+	  }
+	  h4 {
+		font-size: 1em;
+	  }
+	  ul.small-image-list img {
+		width: 75px;
+	  }
+	  ul.big-image-list img {
+		width: 75px;
+	  }
+	  ul.link-list {
+		margin: 0 0 2em 0;
+	  }
+	  section,
+	  article {
+		padding: 40px 20px 40px 20px;
+	  }
+	  #main section,
+	  #main article {
+		background: #fff;
+	  }
+	  article.blog-post .comments {
+		display: block;
+		position: relative;
+		top: -0.5em;
+		margin: 0 0 0.5em 0;
+	  }
+	  .button {
+		font-size: 1em;
+	  }
+	  .blog-post-image {
+		width: 100%;
+	  }
+	  #header-wrapper {
+		background-color: @BackgroundHead;
+	  }
+	  #header-wrapper h1 {
+		margin-top: 0px;
+		color: #fff;
+		text-decoration: none;
+		font-size: 2.0em;
+		text-align: center;
+		border-bottom: 0px ;
+	  }
+	  #header {
+		text-align: center;
+		padding: 5px 0 5px 0;
+	  }
+	  #header h1 {
+		color: #fff;
+		font-size: 2.4em;
+		text-align: center;
+		margin: 0 0 20px 0;
+	  }
+	  #header h1 a {
+		color: #fff;
+		text-decoration: none;
+	  }
 
-		body {
-			font-size: 15pt;
-		}
-
-		h2 {
-			font-size: 1.4em;
-		}
-
-		h3 {
-			font-size: 1.2em;
-		}
-
-		h4 {
-			font-size: 1em;
-		}
-
-		ul.small-image-list img {
-			width: 75px;
-		}
-
-		ul.big-image-list img {
-			width: 75px;
-		}
-
-		ul.link-list {
-			margin: 0 0 2em 0;
-		}
-
-		section, article {
-			padding: 40px 20px 40px 20px;
-		}
-
-		#main section, #main article {
-			background: #fff;
-		}
-
-		article.blog-post .comments {
-			display: block;
-			position: relative;
-			top: -0.5em;
-			margin: 0 0 0.5em 0;
-		}
-
-		article.blog-post h2 {
-		}
-
-		.button {
-			font-size: 1em;
-		}
-
-		.blog-post-image {
-			width: 100%;
-		}
-
-		#header-wrapper {
-			background-color: @BackgroundHead;
-			background-image: -moz-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -webkit-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@Background2Head), to(@BackgroundHead));
-			background-image: -ms-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: -o-linear-gradient(top, @Background2Head, @BackgroundHead);
-			background-image: linear-gradient(top, @Background2Head, @BackgroundHead);
-		}
-
-	#header-wrapper h1 {margin-top:0px;color: #fff;text-decoration: none; font-size: 2.0em;text-align: center; border-bottom:0px ;}
-	
-		#header {
-			text-align: center;
-			padding: 5px 0 5px 0;
-		}
-
-			#header h1 {
-				color: #fff;
-				font-size: 2.4em;
-				text-align: center;
-				margin: 0 0 20px 0;
-			}
-
-			#header h1 a {
-				color: #fff;
-				text-decoration: none;
-			}
-
-			#header nav {
-				text-transform: lowercase;
-				font-size: 1em;
-				margin: 0 auto;
-			}
-			
-				#header nav a {
-					display: inline-block;
-					text-decoration: none;
-					color: #fff;
-					padding: 10px 15px 10px 15px;
-					margin: 3px 0 3px 0;
-				}
-				
-				#header nav a:hover {
-					display: inline-block;
-					text-decoration: none;
-					color: @MainColor;
-					padding: 10px 15px 10px 15px;
-					margin: 3px 0 3px 0;
-					border-radius: 3px;
-				}
-				
-				#header nav a.current-page-item {
-					background-color: @MainColor;
-					background-image: -moz-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -webkit-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@BackgroundNav), to(@MainColor));
-					background-image: -ms-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: -o-linear-gradient(top, @BackgroundNav, @MainColor);
-					background-image: linear-gradient(top, @BackgroundNav, @MainColor);
-					box-shadow: inset 0px 1px 5px 1px rgba(0,0,0,0.1), 0px 0px 5px 1px rgba(255,255,255,0.1);
-					border-radius: @button-radius;
-				}
-
-		#banner-wrapper {
-			background: @MainColor url(images/bg1.png);
-			display: none;
-		}
-
-		#banner {
-			position: relative;
-			width: 100%;
-			height: 240px;
-			background: #fff url(images/banner.jpg) no-repeat;
-			background-size: 100% 100%;
-		}	
-
-		#banner {
-			position: relative;
-		}
-			
-			#banner h2 {
-				position: absolute;
-				z-index: 1;
-				width: 100%;
-				bottom: 80px;
-				left: 0;
-				font-size: 2em;
-				color: #fff;
-				text-align: center;
-				letter-spacing: -2px;
-			}
-			
-			#banner span {
-				display: block;
-				position: absolute;
-				z-index: 1;
-				width: 100%;
-				top: 135px;
-				left: 0;
-				font-size: 1em;
-				color: #fff;
-				text-align: center;
-				letter-spacing: -1px;
-				text-transform: lowercase;
-				opacity: 0.8;
-			}
-
-		#footer-wrapper section, #footer-wrapper article {
-			border-bottom: solid 1px #ced0b7;
-		}
-			
-		#copyright {
-			font-size: 0.5em;
-			text-align: center;
-			color: #A6A88F;
-			padding: 40px;
-			font-size: 0.8em;
-			line-height: 1.5em;
-		}
-
-			#copyright a {
-				color: #A6A88F;
-			}
+	  #header nav {
+		font-size: 1em;
+		margin: 0 auto;
 		
-		.contentTextarea{
-		width:96%; 
-		font-family: 'Open Sans', sans-serif; font-size:105%;
+	  }
+
+	  #header nav ul {
+		float: center;
+		list-style: none;
+		position: relative;
+		right: 25px;
+	  }
+
+
+	  #header nav li {
+		/*float: center;*/
+		display: inline-block;
+	  }
+
+	  #header nav li:hover {	  
+		text-decoration: none;
+	  }
+	  
+
+
+	#header nav a, #header nav li a {
+		border: 0 none;
+		padding: 10px 25px 10px 25px;
+
+				}
+	  #banner-wrapper {
+		background: @MainColor url(images/bg1.png);
+		display: none;
+	  }
+	  #banner {
+		position: relative;
+		width: 100%;
+		height: 240px;
+		background: #fff url(images/banner.jpg) no-repeat;
+		background-size: 100% 100%;
+	  }
+	  #banner {
+		position: relative;
+	  }
+	  #banner h2 {
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		bottom: 80px;
+		left: 0;
+		font-size: 2em;
+		color: #fff;
+		text-align: center;
+		letter-spacing: -2px;
+	  }
+	  #banner span {
+		display: block;
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		top: 135px;
+		left: 0;
+		font-size: 1em;
+		color: #fff;
+		text-align: center;
+		letter-spacing: -1px;
+		text-transform: lowercase;
+		opacity: 0.8;
+	  }
+	  #footer-wrapper section,
+	  #footer-wrapper article {
+		border-bottom: solid 1px #ced0b7;
+	  }
+
+	  
+	  
+	  .contentTextarea {
+		width: 96%;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 105%;
 		padding: 0px;
 		margin-left: -15px;
 		/*margin-right: -15px;*/
-		}
-	
+	  
+	  }
 	
 	}
 
