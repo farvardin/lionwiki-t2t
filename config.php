@@ -4,12 +4,14 @@ $WIKI_TITLE = 'LionWiki and txt2tags sample'; // name of the site
 // SHA1 hash of password. If empty (or commented out), no password is required
 
 $PASSWORD = sha1("demo");
+$Admin["PASSWORD"] = sha1("demo");
 
 $TEMPLATE = 'templates/dandelion.html'; // presentation template
 $TEMPLATE = 'templates/fravashyo.html';
 //$TEMPLATE = 'templates/sissou.html';
 $TEMPLATE = 'templates/blazekiss.html'; 
 $TEMPLATE = 'templates/minimaxing.html';
+//$TEMPLATE = 'templates/ElectricObsidian/ElectricObsidian.html';
 //$TEMPLATE = 'templates/literature.html';
 // $TEMPLATE = 'templates/minimal.html';
 

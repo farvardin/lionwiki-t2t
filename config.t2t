@@ -14,6 +14,7 @@
 %-!postproc: '\?-->' '?>'
 
 
+
 %% Textallion
 
 %!preproc: '\{ \*\* \}'   'CONVERTboldBEGIN'
@@ -22,4 +23,25 @@
 %!postproc: 'CONVERTboldBEGIN'    '<span class="bold"><b>'
 %!postproc: 'CONVERTboldEND'      '</b></span>'
 
+%!preproc: '\{\/\/\.\.\}'          'LINEBREAK'
+%!preproc: "\\\\"                  'LINEBREAK'
+%!postproc: "LINEBREAK" '<br/> '
+%!postproc: "LINEBREAK" '<br/> '
+
+%!preproc: '---' 'QUADRATINDASH'
+%!postproc: 'QUADRATINDASH' '&mdash;'
+
+%% other things
+
+% we use this for writing docs in lionwiki
+%!postproc: 'CONVERT-1EQUAL'      '='
+%!postproc: 'CONVERT-2EQUAL'      '=='
+%!postproc: 'CONVERT-3EQUAL'      '==='
+%!postproc: 'CONVERT-4EQUAL'      '===='
+
+%!postproc: 'CONVERT-TOC'      '%%toc'
+
+%!preproc: '-->' '⇨'
+%!postproc: 'CONVERT-BRACKET-START'      '&#91;'
+%!postproc: 'CONVERT-BRACKET-END'      '&#93;'
 

@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20130916";
+<?php $T2TVersion = "20130924";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -68,14 +68,15 @@
 
 class T2T {
   # these variables could be read or forced
-  var $title = '';        # the document title
-  var $content = '';      # the content of the t2t file
-  var $headers = '';      # the first 3 lines of the t2t file
-  var $enableheaders = 0; # enables the first 3 lines headers    (default=1)
-  var $enableproc = 1;    # enables the pre and post processor   (default=1)
-  var $enabletagged = 1;  # enables the tagged mark (''tagged'') (default=1)
-  var $enableraw = 1;     # enables the raw mark (""raw"")       (default=1)
-  var $enableverbatim = 1;# enables the verbatim mark (``raw``)  (default=1)
+  var $title = '';         # the document title
+  var $content = '';       # the content of the t2t file
+  var $headers = '';       # the first 3 lines of the t2t file
+  var $enableheaders = 0;  # enables the first 3 lines headers    (default=1)
+  var $enableproc = 1;     # enables the pre and post processor   (default=1)
+  var $enabletagged = 1;   # enables the tagged mark (''tagged'') (default=1)
+  var $enableraw = 1;      # enables the raw mark (""raw"")       (default=1)
+  var $enableverbatim = 1; # enables the verbatim mark (``raw``)  (default=1)
+  var $enablehotlinks = 1; # enables hotlinks [http://www.externalserver.com/images.jpg]  (default=1) (note: it's not enabled in the python implementation of txt2tags)
   var $config = '';       # the full config area, including ext.ref.
   var $bodytext = '';     # the full body text after inclusions
   var $bodyhtml = '';     # the innerHTML of the body of the output, no <html>...<head>
@@ -616,12 +617,21 @@ class T2T {
     $UEX = '<>"{}|\\\\^`()\\[\\]\''; # UrlExcludeChars
     $PRT = '(?:https?|ftp|news|telnet|gopher|wais|mailto):';
     
-    $Links = array(
-      "{$PRT}[^\\s$UEX]+" =>'',
-      "www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links
-      "ftp\\d?\\.[^\\s$UEX]+" =>'ftp://',  # lazy links
-      "\\w[\\w.-]+@[\\w-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
-    ); # 
+    if ($this->enablehotlinks == 0) {
+		$Links = array(
+		  "{$PRT}[^\\s$UEX]+" =>'',
+		  "www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links
+		  "ftp\\d?\\.[^\\s$UEX]+" =>'ftp://',  # lazy links
+		  "\\w[\\w.-]+@[\\w-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
+			); #     
+    }
+    else {
+		$Links = array(
+		  "www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links
+		  "ftp\\d?\\.[^\\s$UEX]+" =>'ftp://',  # lazy links
+		  "\\w[\\w.-]+@[\\w-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
+			); #  
+	}
     
     # [txt link], [txt #anchor]
     foreach($Links as $k=>$v) {
@@ -638,9 +648,10 @@ class T2T {
         $line = preg_replace("/\\b({$k}[^\\s.,?!$UEX])/ei",
           "\$this->Keep('&lt;' . str_replace(array('@', '.'), array(' (a) ', ' '), '$1') . '&gt;$2')", $line);
       }
-      else
+      else {
         $line = preg_replace("/\\b({$k}[^\\s.,?!$UEX])/ei", 
           "\$this->Keep(sprintf(\$snippets['link'], \$this->esc('$v$1'), \$this->esc('$1')))", $line);
+	  }
     }
     
     $line = $this->esc($line);

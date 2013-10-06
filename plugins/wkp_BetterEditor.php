@@ -54,6 +54,7 @@ class BetterEditor
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'``\', \'``\', \''.$this->TP_CODE[2].'\');" title="'.$this->TP_CODE[1].'">'.$this->TP_CODE[0].'</a>
 ' . ($GLOBALS["NO_HTML"] ? "" : '<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'{html}\', \'{/html}\', \''.$this->TP_HTML[2].'\');" title="'.$this->TP_HTML[1].'">'.$this->TP_HTML[0].'</a>') . '
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\n- \', \'\', \''.$this->TP_ULIST[2].'\');" title="'.$this->TP_ULIST[1].'">'.$this->TP_ULIST[0].'</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'|| \', \' |\', \''.$this->TP_TABLE[2].'\');" title="'.$this->TP_TABLE[1].'">'.$this->TP_TABLE[0].'</a>
 </span>';
 	}
 
@@ -89,7 +90,7 @@ class BetterEditor
 		array("TP_H2", array("h2", "h2", "Heading level 2")),
 		array("TP_H3", array("h3", "h3", "Heading level 3")),
 		array("TP_LINK", array("link", "Wiki/Web odkaz", "http://")),
-		array("TP_IMAGE", array("obr", "Obrázek", "http://path/to/image")),
+		array("TP_IMAGE", array("obr", "Obrázek", "var/upload/your-image.jpg")),
 		array("TP_CODE", array("kód", "Kód", "kód")),
 		array("TP_HTML", array("HTML", "HTML", 'HTML kód')),
 		array("TP_ULIST", array("list", "Odrážkový seznam", 'první položka\\n - podpoložka první položky\\n- druhá položka'))
@@ -105,7 +106,7 @@ class BetterEditor
 		array("TP_H2", array("h2", "h2", "Heading level 2")),
 		array("TP_H3", array("h3", "h3", "Heading level 3")),
 		array("TP_LINK", array("link", "Wiki/Web link", "http://")),
-		array("TP_IMAGE", array("image", "Image", "http://path/to/image")),
+		array("TP_IMAGE", array("image", "Image", "var/upload/your-image.jpg")),
 		array("TP_CODE", array("code", "Code", "code")),
 		array("TP_HTML", array("HTML", "HTML", 'HTML code')),
 		array("TP_ULIST", array("list", "Unordered list", 'first item\\n - subitem\\n- second item'))
@@ -121,10 +122,11 @@ class BetterEditor
 		array("TP_H2", array("h2", "h2", "Titre niveau 2")),
 		array("TP_H3", array("h3", "h3", "Titre niveau 3")),
 		array("TP_LINK", array("lien", "Lien Web/Wiki", "http://")),
-		array("TP_IMAGE", array("image", "Insérer une image", "http://path/to/image")),
+		array("TP_IMAGE", array("image", "Insérer une image", "var/upload/your-image.jpg")),
 		array("TP_CODE", array("code", "Insérer un paragraphe en mode Code", "code")),
 		array("TP_HTML", array("HTML", "Insérer du code HTML", 'code HTML')),
-		array("TP_ULIST", array("list", "Liste non ordonnée", 'premier élément\\n - sous-élément\\n- second élément'))
+		array("TP_ULIST", array("list", "Liste non ordonnée", 'premier élément\\n - sous-élément\\n- second élément')),
+		array("TP_TABLE", array("table", "Table", 'title 1 | title 2 |\\n| item 1 | item 2 |\\n| item 3 | item 4'))
 	);
 
 	function localize()

@@ -1,97 +1,118 @@
-{include:subpage menu}
-''This is a [Wiki|http://en.wikipedia.org/wiki/Wiki], so feel free to correct any factual or grammatical error.''
+This document explains all syntax features of LionWiki-t2t, which is based on [txt2tags http://www.txt2tags.org].
 
-This document explains all syntax features of core LionWiki. Syntax of tables (provided by plugin) is on separate page: [Tables plugin|UserGuide: Tables plugin].
+This syntax is quite easy to learn, but it's also quite strict: if what you write differ a bit from the rules, the results might be unpredicable and deceptive. Try to especially take care of the spaces used in the syntax. To master the txt2tags markup efficiently, you are adviced to read [the manual which can be found there http://www.txt2tags.org/docs.html]
 
-!Headings
+
+== Headings ==
+
 Example:
-{{!Heading H2
-!!Heading H3
-!!!Heading H4}}
+
+```
+CONVERT-2EQUAL Heading H2 ==
+CONVERT-3EQUAL Heading H3 ===
+CONVERT-4EQUAL Heading H4 CONVERT-4EQUAL
+```
 
 
-!Heading H2
-!!Heading H3
-!!!Heading H4
-
-More exclamation marks you use, the smaller the heading will be (up to 5 exclamation marks). Exclamation marks has to be exactly at the beginning of the line.
+No extra characted, except spaces (even if I personnally  advice to avoid them, and instead to start writing the markup at the beginning of the line), are allowed before the heading markup. Spaces are not required around the part to be marked as heading, but it might be more readable this way.
 
 
-
-!Lists
-!!Unordered list
-
-{{* Fruit
-** Apple
-*** Granny smith
-** Orange
-* Vegetables
-** Garlic
-** Onion}}
-
-* Fruit
-** Apple
-*** Granny smith
-** Orange
-* Vegetables
-** Garlic
-** Onion
+== Heading H2 ==
+=== Heading H3 ===
+==== Heading H4 ====
 
 
-!!Ordered list
-
-{{# First item 
-## First subitem 
-### First subsubitem
-## Second subitem}}
-
-# First item 
-## First subitem 
-### First subsubitem
-## Second subitem 
 
 
-!Text styles
-^''^'Bold^''^' --> '''Bold''' (three apostrophes)
-^''Italic^'' --> ''Italic'' (two apostrophes)
-^''^''^'Bold and italic^''^''^' --> '''''Bold and italic''''' (five apostrophes)
-^'--Strikethrough--' --> '--Strikethrough--'
-^'__Underlined__' --> '__Underlined__'
-^{small}Small text^{/small} --> {small}Small text{/small}
-x^{sup}10^{/sup} --> x{sup}10{/sup}
-x^{sub}i^{/sub} --> x{sub}i{/sub}
+== Lists ==
 
-!!CSS styles, classes, IDs
-''Since LionWiki 3.1''
-{{{.first.second#id color: blue; font-size: large}Styled text span with ID and two classes{/} }}
-{.first.second#id color: blue; font-size: large}Styled text span with ID and two classes{/}
+=== Unordered list ===
 
-Classes begins with dot, ID with hash sign. Everything after first space is considered to be CSS style, so there can't be any space between or inside classes and ID. Few other possibilities:
+```
+- Fruit
+ - Apple
+   - Granny smith
+ - Orange
+- Vegetables
+ - Garlic
+ - Onion
+```
 
-{{{. display: block;}Text{/} - neither class, nor id, just style
-{.citation}Text{/if} - just class}}
+You must add exactly one space after each dash to enable the list.
 
-The enclosing element is &lt;span>.
+- Fruit
+ - Apple
+   - Granny smith
+ - Orange
+- Vegetables
+ - Garlic
+ - Onion
 
 
-!Emails, links, images
-Links to other pages can be created like this:
-^[Original Main page] --> [Original Main page]
+=== Ordered list ===
 
-or 
+```
++ First item 
+ + First subitem 
+  + First subsubitem
+  + Second subsubitem
+  + Third subsubitem
+ + Second subitem
+```
 
-^[Original Main page] --> [Original Main page]
++ First item 
+ + First subitem 
+  + First subsubitem
+  + Second subsubitem
+  + Third subsubitem
+ + Second subitem
 
-or
 
-^[Original Main page#Features] --> [Original Main page#Features]
+== Text styles ==
 
-{br}
+- ``**``Bold``**`` --> **Bold** (two stars)
+- ``//``Italic``//`` --> //Italic// (two slash)
+- ``**//``Bold and italic``//**`` --> **//Bold and italic//** (combination of the above)
+- ``--``Strikethrough``--`` --> --Strikethrough--
+- ``__``Underlined``__`` --> __Underlined__
+
+You can't add extra spaces at the boundaries of the part you want to mark with the styles above. This part can contain spaces (if it's a sentence), but not after the first mark, and not before the last mark : the marks must be glued with the contents.
+
+
+== Tables ==
+
+```
+|| title 1  | title 2 |
+|  item 1 | item 2 |
+|  item 3 | item 4 |
+```
+
+{//..}
+
+|| title 1 | title 2 |
+| item 1 | item 2 |
+| item 3 | item 4 |
+
+
+http://www.txt2tags.org/userguide/Table.html
+
+
+== Emails, links, images ==
+
+Links to other local wiki pages can be created like this:
+CONVERT-BRACKET-STARTCONVERT-BRACKET-STARTmainCONVERT-BRACKET-ENDCONVERT-BRACKET-END --> [[main]]
+
+
+
+
 Emails and web links are automatically recognized:
 
-^http://lionwiki.0o.cz --> http://lionwiki.0o.cz
-lionwiki^@example.com --> lionwiki@example.com
-{br}
+
+- ``http://www.homepage.td`` --> http://www.homepage.td
+- ``lionwiki@example.com`` --> lionwiki@example.com
+
+TODO
+
 You can use also relative links, but they have to start with ./ (otherwise it will be interpreted as Wiki page). So if you want to link some HTML page in the same directory, you use:
 
 ^[Interesting page|./SomeWebPage.html] --> [Interesting page|./SomeWebPage.html]
@@ -99,8 +120,7 @@ You can use also relative links, but they have to start with ./ (otherwise it wi
 Or to use a relative path to a file on the same server but in a higher directory, you can use:
 ^[Interesting File In Parent Directory|./../SomeWebPage.html] --> [Interesting File In Parent Directory|./../SomeWebPage.html]
 
-!!Images
-Image handling was changed a lot in the 3.2 release, see [older version|http://lionwiki.0o.cz/index.php?page=Syntax+reference.en&action=rev&f1=20100108-2008-04.bak#Images] of this page if you use older version.
+== Images ==
 
 If you need a way to upload images (or other files), check [Upload plugin|UserGuide: Upload plugin].
 ^[^http://lionwiki.0o.cz/lion.jpg] --> [http://lionwiki.0o.cz/lion.jpg]
@@ -133,28 +153,25 @@ This is recommended way to create multilingual content, there are more ways to d
 If you want to redirect from some page to other, put ^{redirect:page} at the very beginning of the page. It's not straightforward to edit page containing redirect because every visit will cause redirecting. The only way to edit such page is from search results (as it provides direct edit links), or possibly by manually altering URL.
 
 !Other
-{TOC}
-!!Table of contents
-Automatically generated table of contents can be inserted with ^{TOC} (see demo on the right). It can be used in both pages and templates.
 
-!!Characters
+
+== Table of contents ==
+Automatically generated table of contents can be inserted with ``CONVERT-TOC`` 
+
+
+== Characters ==
+
 Some sequences of characters are automatically replaced:
-* Arrows : &lt;^-- : &lt;--, ^--> : -->, &lt;^--> : &lt;-->
-* Dash : ^-- : --
-* Copyrights : ^(c) or ^(C) : (c), ^(r) or ^(R) : (r)
 
-!!Code
-Code syntax is useful when you need to keep original spacing and layout of text, especially for programming source code.
+- Arrows : ""--""> : -->
+- Dash :  ""--""-  : ---
 
-^{{import sys
-if len(sys.argv) == 2:
-   print "Hello",sys.argv^[1]}}
-does:
-{{import sys
-if len(sys.argv) == 2:
-   print "Hello",sys.argv[1]}}
 
-We also have a [plugin for syntax highlighting|UserGuide: SyntaxHighlighter plugin].
+== Code ==
+
+Code syntax is useful when you need to keep original spacing and layout of text
+
+
 
 !!Horizontal line
 ----
@@ -173,6 +190,6 @@ HTML entities are automatically recognized and left without modification.
 LionWiki joins adjacent newlines together, if you need more than one newline, use ^{br}.
 
 !!Internal comments
-You can insert internal comments not intended to be displayed using HTML-like syntax ^&lt;!^-- text not intended to be displayed ^-->
+You can insert internal comments not intended to be displayed using HTML-like syntax ^<!^-- text not intended to be displayed ^-->
 
 {tags:syntax}

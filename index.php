@@ -40,6 +40,12 @@ $SYNTAX_PAGE = '?page=Syntax+reference';
 $DATE_FORMAT = 'Y/m/d H:i';
 $LOCAL_HOUR = 0;
 
+
+// Loading menu.
+$CON_MENU = @file_get_contents("menu.php");
+
+
+
 @error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @ini_set('default_charset', 'UTF-8');
 set_magic_quotes_runtime(0);
@@ -379,15 +385,15 @@ if(!$action || $preview) { // page parsing
 			$hc = str_replace("&lt;", "<", $hc);
 	}
 
-	$CON = preg_replace("/(?<!\^)<!--.*-->/U", "", $CON); // internal comments
-	$CON = preg_replace("/\^(.)/e", "'&#'.ord('$1').';'", $CON);
+	//$CON = preg_replace("/(?<!\^)<!--.*-->/U", "", $CON); // internal comments
+	//$CON = preg_replace("/\^(.)/e", "'&#'.ord('$1').';'", $CON);
 	// we disable this replacement because the txt2tags class is handling this instead
 	//$CON = str_replace(array("<", "&"), array("&lt;", "&amp;"), $CON);
-	$CON = preg_replace("/&amp;([a-z]+;|\#[0-9]+;)/U", "&$1", $CON); // keep HTML entities
+	//$CON = preg_replace("/&amp;([a-z]+;|\#[0-9]+;)/U", "&$1", $CON); // keep HTML entities
 	$CON = preg_replace("/(\r\n|\r)/", "\n", $CON); // unifying newlines to Unix ones
 
-	preg_match_all("/{{(.+)}}/Ums", $CON, $codes, PREG_PATTERN_ORDER);
-	$CON = preg_replace("/{{(.+)}}/Ums", "<pre>{CODE}</pre>", $CON);
+	//preg_match_all("/{{(.+)}}/Ums", $CON, $codes, PREG_PATTERN_ORDER);
+	//$CON = preg_replace("/{{(.+)}}/Ums", "<pre>{CODE}</pre>", $CON);
 
 	// spans
 	preg_match_all("/\{([\.#][^\s\"\}]*)(\s([^\}\"]*))?\}/m", $CON, $spans, PREG_SET_ORDER);
@@ -405,13 +411,14 @@ if(!$action || $preview) { // page parsing
 		$CON = str_replace($m[0], '<span'.($id ? " id=\"$id\"" : '').($class ? " class=\"$class\"" : '').($m[3] ? " style=\"$m[3]\"" : '').'>', $CON);
 	}
 
-	$CON = str_replace('{/}', '</span>', $CON);
+	//$CON = str_replace('{/}', '</span>', $CON);
 
 	plugin('formatBegin');
 
-	$CON = strtr($CON, array('&lt;-->' => '&harr;', '-->' => '&rarr;', '&lt;--' => '&larr;', "(c)" => '&copy;', "(r)" => '&reg;'));
-	$CON = preg_replace("/\{small\}(.*)\{\/small\}/U", "<small>$1</small>", $CON); // small
-	$CON = preg_replace("/\{su([bp])\}(.*)\{\/su([bp])\}/U", "<su$1>$2</su$3>", $CON); // sup and sub
+	// t2t: we don't need those replacements (people can use unicode symbols or config.t2t) :
+	//$CON = strtr($CON, array('&lt;-->' => '&harr;', '-->' => '&rarr;', '&lt;--' => '&larr;', "(c)" => '&copy;', "(r)" => '&reg;'));
+	//$CON = preg_replace("/\{small\}(.*)\{\/small\}/U", "<small>$1</small>", $CON); // small
+	// $CON = preg_replace("/\{su([bp])\}(.*)\{\/su([bp])\}/U", "<su$1>$2</su$3>", $CON); // sup and sub
 
 	// txt2tags.class.php is already doing this part:
 	//$CON = preg_replace("/^([^!\*#\n][^\n]+)$/Um", '<p>$1</p>', $CON); // paragraphs
@@ -443,8 +450,9 @@ if(!$action || $preview) { // page parsing
 	//$CON = preg_replace('#([0-9a-zA-Z\./~\-_]+@[0-9a-z/~\-_]+\.[0-9a-z\./~\-_]+)#i', '<a href="mailto:$0">$0</a>', $CON); // mail recognition
 
 	// links
-	//$CON = preg_replace("#\[([^\]\|]+)\|(\./([^\]]+)|(https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*))\]#U", '<a href="$2" class="external">$1</a>', $CON);
-	//$CON = preg_replace("#(?<!\")https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*#i", '<a href="$0" class="external">$0</a>', $CON);
+	// t2t: we must keep those lines
+	$CON = preg_replace("#\[([^\]\|]+)\|(\./([^\]]+)|(https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*))\]#U", '<a href="$2" class="external">$1</a>', $CON);
+	$CON = preg_replace("#(?<!\")https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*#i", '<a href="$0" class="external">$0</a>', $CON);
 
 	preg_match_all("/\[(?:([^|\]\"]+)\|)?([^\]\"#]+)(?:#([^\]\"]+))?\]/", $CON, $matches, PREG_SET_ORDER); // matching Wiki links
 
@@ -456,11 +464,12 @@ if(!$action || $preview) { // page parsing
 		$CON = str_replace($m[0], '<a href="'.$self.'?page='.u($m[2]).$attr.'">'.$m[1].'</a>', $CON);
 	}
 
-	for($i = 10; $i >= 1; $i--) { // Lists, ordered, unordered
+	// t2t is already doing this
+	/*for($i = 10; $i >= 1; $i--) { // Lists, ordered, unordered
 		$CON = preg_replace('/^'.str_repeat('\*', $i)."(.*)(\n?)/m", str_repeat('<ul>', $i).'<li>$1</li>'.str_repeat('</ul>', $i).'$2', $CON);
 		$CON = preg_replace('/^'.str_repeat('\#', $i)."(.*)(\n?)/m", str_repeat('<ol>', $i).'<li>$1</li>'.str_repeat('</ol>', $i).'$2', $CON);
 		$CON = preg_replace("#(</ol>\n?<ol>|</ul>\n?<ul>)#", '', $CON);
-	}
+	}*/
 
 	// headings
 	preg_match_all('/^(!+)(.*)$/m', $CON, $matches, PREG_SET_ORDER);
@@ -488,13 +497,14 @@ if(!$action || $preview) { // page parsing
 	$TOC = '<ul id="toc">' . preg_replace(array_fill(0, 5, "#</ul>\n*<ul>#"), array_fill(0, 5, ''), $TOC) . '</ul>';
 	$TOC = str_replace(array('</li><ul>', '</ul><li>', '</ul></ul>', '<ul><ul>'), array('<ul>', '</ul></li><li>', '</ul></li></ul>', '<ul><li><ul>'), $TOC);
 
-	$CON = preg_replace("/'--(.*)--'/Um", '<del>$1</del>', $CON); // strikethrough
-	$CON = preg_replace("/'__(.*)__'/Um", '<u>$1</u>', $CON); // underlining
-	$CON = preg_replace("/'''(.*)'''/Um", '<strong>$1</strong>', $CON); // bold
-	$CON = preg_replace("/''(.*)''/Um", '<em>$1</em>', $CON); // italic
-	$CON = str_replace('{br}', '<br style="clear:both"/>', $CON); // new line
-	$CON = preg_replace('/-----*/', '<hr/>', $CON); // horizontal line
-	$CON = str_replace('--', '&mdash;', $CON); // --
+	// t2t is already doing this
+	//$CON = preg_replace("/'--(.*)--'/Um", '<del>$1</del>', $CON); // strikethrough
+	//$CON = preg_replace("/'__(.*)__'/Um", '<u>$1</u>', $CON); // underlining
+	//$CON = preg_replace("/'''(.*)'''/Um", '<strong>$1</strong>', $CON); // bold
+	//$CON = preg_replace("/''(.*)''/Um", '<em>$1</em>', $CON); // italic
+	//$CON = str_replace('{br}', '<br style="clear:both"/>', $CON); // new line
+	//$CON = preg_replace('/-----*/', '<hr/>', $CON); // horizontal line
+	//$CON = str_replace('--', '&mdash;', $CON); // dash
 
 	$CON = preg_replace(array_fill(0, count($codes[1]) + 1, '/{CODE}/'), $codes[1], $CON, 1); // put HTML and "normal" codes back
 	$CON = preg_replace(array_fill(0, count($htmlcodes[1]) + 1, '/{HTML}/'), $htmlcodes[1], $CON, 1);
@@ -550,7 +560,8 @@ $tpl_subs = array(
 	'EDIT_SUMMARY_TEXT' => $EDIT_SUMMARY_TEXT,
 	'EDIT_SUMMARY_INPUT' => $EDIT_SUMMARY,
 	'FORM_PASSWORD' => $FORM_PASSWORD,
-	'FORM_PASSWORD_INPUT' => $FORM_PASSWORD_INPUT
+	'FORM_PASSWORD_INPUT' => $FORM_PASSWORD_INPUT,
+	'MENU' => $CON_MENU,
 );
 
 foreach($tpl_subs as $tpl => $rpl) // substituting values

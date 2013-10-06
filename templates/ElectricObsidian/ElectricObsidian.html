@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+		
+		<!--//// ELECTRIC-OBSIDIAN - a LIONWIKI template \\\
+		===========================================================
+		/TEMPLATE VERSION: 	1.0 - (September 2013) - by Jeabo
+		/using LIONWIKI:	Made by Adam Zivner - http://lionwiki.0o.cz
+		/FONT: 				"Lato" - By Lukasz Dziedzic - http://www.latofonts.com
+		/BACKGROUND IMAGE: 	"Blach Orchid" - By Hybridixstudio - http://subtlepatterns.com/blach-orchid/
+		/ICON:				"System Logout Icon" - By VisualPharm - http://www.visualpharm.com/
+		===========================================================
+		/MODIFICATIONS IN INDEX FOR PARAGRAPH INDENTATION :
+		index.php line 423:	$ret .= "<div class=\"par-div par-div$excl\" id=\"par-$h_id\"><h$excl id=\"$hash\">$m[2]";
+		index.php line 426:	$ret .= "<span class=\"par-edit\">&nbsp;&nbsp;&nbsp;(<a href=\"$self?action=edit&amp;page=".u($page)."&amp;par=$h_id\">$T_EDIT</a>)</span>";
+		===========================================================
+		/PAGE LIST LINK :	Create a page named "pagelist" with the following content:		{INDEX_LIST}
+		===========================================================
+		/PLUGINS USED:		wkp_AjaxEditing, wkp_BetterEditor, wkp_Index, wkp_RenameFix, wkp_WhatLinksHere
+		===========================================================
+		/UNUSED ELEMENTS:	{EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {HISTORY} {plugin:TAG_LIST} {COOKIE} ...
+		-->
+		
+        <title>{PAGE_TITLE_HEAD - } {WIKI_TITLE}</title>
+		{HEAD}
+		<style>
+			@font-face {font-family: 'Lato';src: url('templates/ElectricObsidian/Lato-Bol.woff') format('woff');}
+		    
+			/*-------COLOR and ASPECT-------*/
+			body{color:#C8C8C8; background-color:#0c0c0c; background-image:url('templates/ElectricObsidian/BG_BlachOrchid.png'); font-family:Trebuchet,"Trebuchet MS",sans-serif; font-size:0.9em;}
+			article{background-color:#1A1A1A;}				
+			a{color:#38A2CF; text-decoration:none;}
+			a.pending{color:#4C6670;}
+			a:hover{color:#31C1F9; text-decoration:underline;}
+			header{border-bottom: 1px solid #1A1A1A;}
+			header p,h1,h2,h3,h4,h5,h6{color:white; font-family:Lato,"Futura Condensed",Futura,sans-serif;font-weight:bolder;}
+			h1{font-size:2.2em;}
+			h2{font-size:1.8em;}
+			h3{font-size:1.4em;}
+			h4{font-size:1.2em;}
+			h5{font-size:1.1em;}
+			h6{font-size:1.0em;}
+			header p{font-size:0.8em;font-weight:bolder;}
+			li{list-style-type:square;}
+			li li{list-style-type:disc;}
+			li li li{list-style-type:circle;}
+			h2 span.par-edit, h3 span.par-edit, h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {visibility:hidden;font-weight:lighter; padding-left: px; font-size:0.8em;}
+			h2:hover span.par-edit, h3:hover span.par-edit, h4:hover span.par-edit, h5:hover span.par-edit, h6:hover span.par-edit {visibility:visible;}
+			nav{font-size: 0.85em;}
+			header img{opacity:0.2;}
+			header img:hover{opacity:1;}			
+			pre{border:0px dotted black;background:black;color:#969696;font-size:1em;}			
+			nav form input, .button{color:white;background-color:transparent;border:1px solid #38A2CF;}
+			nav form .submit, .button{color:#38A2CF;background-color:#1A1A1A;}
+			#toc, hr, article input,article textarea{color:#C8C8C8;background-color:#131313;border:1px solid #404040;}
+			#toc a{color:#C8C8C8;}
+			#toc a:hover{color:#31C1F9;text-decoration:none;}
+			article p input{color:black;background-color:#404040;border:1px solid #131313;}
+			nav form .submit:hover, .button:hover, article p input:hover{color:#1A1A1A;background-color:#31C1F9;}
+			footer{opacity:0.1;}
+			footer:hover{opacity:0.7;}		    
+			.par-div3, .par-div4, .par-div5, .par-div6{border-left:2px dotted #121212;}
+			
+			/*-------SIZE and POSITION-------*/
+			section{width:80%; margin:30px auto 0px auto;}
+			form input, nav span, article .submit{display:inline-block;}
+			h1{padding-top:8px;padding-bottom:0px;margin-top:0;margin-bottom:0;}
+			header{margin-bottom:8px;}
+			header p{padding-top:0px;margin-top:0;margin-bottom:14px;padding-left:3em;}
+			header img, nav form, #toc, .button, footer{float:right;}
+			header img{margin-top:14px;}
+			nav{margin:10px 0px 14px 0;}
+			article{margin-top:20px;padding:12px 40px 17px 40px;}
+			ul{padding-left:16px;}
+			#toc{margin:22px 0 0 10px;padding:12px 12px 12px 25px;}
+			pre{padding:4px;overflow:auto;margin:3px;}
+			nav form input{margin-left:6px;padding:3px 3px 1px 3px;}
+			nav form .submit{padding:2px 2px 0px 2px;}
+			nav span{padding-top:8px;}
+			article textarea{padding-left:3px;margin-top:12px;}
+			article input{padding:3px;}
+			.par-div3, .par-div4, .par-div5, .par-div6{padding-left:20px;}
+		</style>
+    </head> 
+    <body>
+		<section>
+			<header>
+				<a href="?page=home&action=&erasecookie=1"><img src="templates/ElectricObsidian/logout.png" alt="Logout" /></a>
+				<h1>{WIKI_TITLE} <em>/ {PAGE_TITLE}</em></h1>
+				<p>{LAST_CHANGED_TEXT :} {LAST_CHANGED}
+				
+				</p>
+			</header>
+			<nav>
+				<span>{HOME} / <a href="?page=pagelist">Page List</a>  / {RECENT_CHANGES} {/  SYNTAX} {/  EDIT}</span>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}
+			</nav>
+			<article>
+					{TOC}
+					{ERROR}
+					{CONTENT}
+					{CONTENT_FORM}
+					{RENAME_TEXT}
+					{RENAME_INPUT}
+					{CONTENT_TEXTAREA}
+					<p>{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {CONTENT_PREVIEW} {CONTENT_SUBMIT}</p>
+					{/CONTENT_FORM}
+			</article>
+			<footer>
+				<p>Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a></p>
+			</footer>		
+		</section>
+    </body>
+</html>
