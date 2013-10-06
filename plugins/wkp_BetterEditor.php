@@ -109,7 +109,8 @@ class BetterEditor
 		array("TP_IMAGE", array("image", "Image", "var/upload/your-image.jpg")),
 		array("TP_CODE", array("code", "Code", "code")),
 		array("TP_HTML", array("HTML", "HTML", 'HTML code')),
-		array("TP_ULIST", array("list", "Unordered list", 'first item\\n - subitem\\n- second item'))
+		array("TP_ULIST", array("list", "Unordered list", 'first item\\n - subitem\\n- second item')),
+		array("TP_TABLE", array("table", "Table", 'title 1 | title 2 |\\n| item 1 | item 2 |\\n| item 3 | item 4'))
 	);
 
 	var $fr_strings = array(
@@ -126,7 +127,7 @@ class BetterEditor
 		array("TP_CODE", array("code", "Insérer un paragraphe en mode Code", "code")),
 		array("TP_HTML", array("HTML", "Insérer du code HTML", 'code HTML')),
 		array("TP_ULIST", array("list", "Liste non ordonnée", 'premier élément\\n - sous-élément\\n- second élément')),
-		array("TP_TABLE", array("table", "Table", 'title 1 | title 2 |\\n| item 1 | item 2 |\\n| item 3 | item 4'))
+		array("TP_TABLE", array("table", "Table", 'titre 1 | titre 2 |\\n| élément 1 | élément 2 |\\n| élément 3 | élément 4'))
 	);
 
 	function localize()
