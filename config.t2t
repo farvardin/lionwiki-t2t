@@ -28,8 +28,12 @@
 %!postproc: "LINEBREAK" '<br/> '
 %!postproc: "LINEBREAK" '<br/> '
 
+%!preproc: '--------(-+)---------' 'SIMPLELINE'
 %!preproc: '---' 'QUADRATINDASH'
 %!postproc: 'QUADRATINDASH' '&mdash;'
+
+%!postproc: 'SIMPLELINE' '<hr/>'
+
 
 %% other things
 
