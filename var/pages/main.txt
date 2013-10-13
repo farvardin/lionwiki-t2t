@@ -1,6 +1,6 @@
 - //See the [full sample page index.php?page=sample]//
 
-- //Go to the [sandbox]//
+- //Play in the [sandbox]//
 
 - //Read the [[help | help.en]]//
 
