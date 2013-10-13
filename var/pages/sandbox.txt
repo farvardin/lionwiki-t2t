@@ -1,5 +1,3 @@
-
-
 == Edit me ==
 
 This is the __sandbox__ page.
@@ -33,6 +31,18 @@ Here is [[your_page]].
 
 + ord list
 + ord 2
+
+
+
+
+
+
+[var/upload/text-x-txt2tags-icon-alone.png] Left aligned image
+
+Center [var/upload/text-x-txt2tags-icon-alone.png] aligned
+
+Right aligned [var/upload/text-x-txt2tags-icon-alone.png]
+
 
 
 

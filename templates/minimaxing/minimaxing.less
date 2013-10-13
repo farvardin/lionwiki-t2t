@@ -359,7 +359,7 @@ body {
     font-family: 'Open Sans',sans-serif;
     color: @MainFontColor;
 }
-#headerh1 {
+#header h1 {
     color: #fff;
     margin: 0;
     padding: 0;
@@ -391,7 +391,7 @@ h1 a {
 #header-wrapper a {
     color: (@MainColor-light + #222);
 }
-#header-wrapper a:hover {
+#header-wrapper a:hover, #header-wrapper a:hover{
     background-color: @MainColor-light;
     color: (@MainColor - #444);
 }
@@ -404,7 +404,7 @@ h1 a {
     text-decoration: none;
     color: #fff;
 }
-#header nav li a:hover {
+#header nav li a:hover, #header nav li a:active {
     background-color: #fff;
     border-radius: @button-radius;
     color: #111;
@@ -449,10 +449,11 @@ pre, blockquote {
     padding-left: 20px;
 }
 img {
-    float: center;
-    margin: 2px 1.25em 0 0;
-    display: block;
-    margin: 0 auto;
+    /*float: center;*/ /* note: we can already center with txt2tags, just add a space before the image */
+    /*float: left;*/
+    /*margin: 2px 1.25em 0 0;*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
 }
 img.left {
     float: left;
@@ -463,6 +464,8 @@ img.top {
 }
 ol, ul, li {
 }
+
+/* If you don't like color highlight when you're over a list, comment the next 2 entries */
 #main ul:hover {
     background-color: (@Bg-extra-light + #343434);
 }
@@ -747,7 +750,7 @@ ul.link-list li:first-child {
         padding: 10px 35px 10px 35px;
     }
     #banner-wrapper {
-        background: #fff;
+        /*background: #fff;*/
         margin-bottom: -40px;
     }
     #banner-wrapper h1 {
@@ -762,7 +765,7 @@ ul.link-list li:first-child {
         box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
         border-radius: @button-radius;
         padding: 20px;
-        background: #fff url(images/banner.jpg) no-repeat 20px 20px;
+        /*background: #fff url(images/banner.jpg) no-repeat 20px 20px;*/
         background-size: 960px 220px;
     }
     #banner h2 {
@@ -899,7 +902,7 @@ ul.link-list li:first-child {
         position: relative;
         width: 100%;
         height: 240px;
-        background: #fff url(images/banner.jpg) no-repeat;
+        /*background: #fff url(images/banner.jpg) no-repeat;*/
         background-size: 100% 100%;
     }
     #banner {

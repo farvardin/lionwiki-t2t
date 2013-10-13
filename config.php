@@ -11,6 +11,8 @@ $TEMPLATE = 'templates/fravashyo.html';
 //$TEMPLATE = 'templates/sissou.html';
 $TEMPLATE = 'templates/blazekiss.html'; 
 $TEMPLATE = 'templates/minimaxing.html';
+$TEMPLATE = 'templates/bootstrap.html';
+
 //$TEMPLATE = 'templates/ElectricObsidian/ElectricObsidian.html';
 //$TEMPLATE = 'templates/literature.html';
 // $TEMPLATE = 'templates/minimal.html';
