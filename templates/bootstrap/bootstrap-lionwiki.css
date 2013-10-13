@@ -1,0 +1,26 @@
+/* LionWiki specific */
+
+a.pending {
+    color: @RedBrick;
+}
+h2 span.par-edit, h3 span.par-edit, h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {
+    float: right;
+    display: none;
+}
+h2:hover span.par-edit, h3:hover span.par-edit, h4:hover span.par-edit, h5:hover span.par-edit, h6:hover span.par-edit {
+    display: inline;
+    font-size: small;
+}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    background-color: transparent;
+}
+.pageLinks {
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.pageLinks a {
+    font-weight: bold;
+    text-decoration: none;
+}
