@@ -337,6 +337,24 @@ a.createlink { text-decoration: none; padding-left: 1px; position:relative; top:
 #rightPanel a.createlink { display: none; }
 
 
+
+#nav {
+        position: absolute;
+        margin:5px;
+        clear: both;
+        right: 20px;
+        top: 10px;
+        /*line-height: 64px;*/
+        font-size: 1.3em;
+        letter-spacing: 2px;
+    }
+
+#nav li {
+        float: left;
+        list-style: none;
+        position: relative; /*width: 10%; */
+    }
+
 /* SMALL */
 @media all and (min-width: 00px) and (max-width: 800px)
 {
@@ -383,6 +401,7 @@ body { font-family:  sans-serif;
 	border-left: 3px solid #dd8800;
 	background: url(fravashyo_background.jpg) no-repeat right -150px;
 }
+
 
 
 
