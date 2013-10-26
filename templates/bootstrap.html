@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {HEAD}
-    <link rel="shortcut icon" href="templates/bootstrap/favicon.png">
+    <link rel="shortcut icon" href="templates/favicon.png">
 
     <title>{WIKI_TITLE  - }{PAGE_TITLE_HEAD}</title>
 
@@ -38,14 +38,16 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-{MENU}
+			<li>{HOME}</li>
+			{MENU}
           </ul>
+          
           <ul class="nav navbar-nav">
-          <li>{HOME}</li>
+          
 		<li>{RECENT_CHANGES}</li>
 		{<li> EDIT </li>}
 		</ul>
-        <div id='searchbox' class="nav navbar-nav">{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}</div>     
+        <div class="navbar-form navbar-right">{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}</div>     
         </div><!--/.nav-collapse -->
         
       </div>
@@ -62,8 +64,8 @@
    
 <h1 id="page-title">{<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>    
 <div id='header'>
-
-<div id="title">{WIKI_TITLE}</div>
+<br/><br/>
+<!--<div id="title">{WIKI_TITLE}</div>-->
 
 	<div id="menu02">
 	
@@ -73,7 +75,7 @@
 
     
 <!--PageHeaderFmt-->
- <div id='wikilogo'><a href='index.php'><img src='templates/bootstrap/logo.png' alt='{WIKI_TITLE}' border='0' /></a>
+<br/> <div id='wikilogo'><a href='index.php'><img src='templates/logo.png' alt='{WIKI_TITLE}' border='0' /></a>
 
  </div>
 
