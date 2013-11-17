@@ -1,0 +1,88 @@
+%%                                  %%
+%% txt2cyoa module for lionwiki-efo %%
+%%                                  %%
+
+%% Include this module in your lionwiki-efo website 
+%%    (https://bitbucket.org/farvardin/lionwiki-t2t/)
+%%    and you'll be able to create CYOA ("choose your own adventure") with it!
+%% Then you can import your creating into textallion (http://textallion.googlecode.com/)
+%%    and be able to export to several formats: epub, pdf, static html
+
+%% The syntax is easy:
+%%
+%% Your chapters / sections will be created using a level 2 heading, this way:
+%% == z ==
+%%
+%% add spaces around the number to create the anchor
+%%
+%% To create a choice, use either :
+%% - Description of the choice (starting with a dash "-"): number
+%% - Description of the choice: [#number]. More words afterwards.
+%%
+%% (It's not possible to use words instead of number for choices, but in textallion it is possible.)
+%%
+
+
+%!--preproc: '== (\d+) =='  '== \1 ==[\1]' %% not working because of lionwiki titles
+%!--preproc: '\! (\d+)'  == \1 ==[\1]   %% not used because we need to edit individual parts
+%!preproc: '\! (\d+)'  '\n\n<br/>\n!! @CHAPITRE@ \n\n<a name="\1"></a>\n== \1 =='
+%--!postproc: '<h2 id="_(\d+)_">' '\2'
+
+%!postproc: 'FIN' '\n'
+
+%!postproc: '&lt;' '<'
+%!postproc: '&gt;' '>'
+%!postproc: '@CHAPITRE@' '<center> ☙ ❧ </center>'
+
+
+% (in textallion only:)
+% allow to use this syntax: [dark forest|#forest-ref-01]
+ 
+%!preproc: '\[([^ ].*?)[ ]*\|[ ]*#([^ ].*?)\]'  '[\1 #\2]' 
+
+% (in textallion only:)
+%% understand short names like [#named_link] for links (especially for twine) 
+
+%!preproc: '\[\#([^ ].*?)\]'  '[\1 #\1]'
+
+
+
+% normal t2t links, in bold 
+%!preproc: '\[([^ ].*?) #([^ ].*?)\]'  '**[\1 #\2]**'
+
+ 
+%% understand "turn to #4 if you want" or "... to [#4]..." as "turn to [4 #4] if you want"
+%% [#4] is the recommended form.
+%!preproc: '\[\#(\d+?)\]'  '**[\1 #\1]**'  
+%!preproc: ' \#(\d+?) '  ' **[\1 #\1]** ' 
+
+
+
+%% number at end of the line = link
+%% bold for named links and normal links too      
+
+%!preproc: '(\d+)\.$'  '**[\1 #\1].**'  
+%!preproc: '(\d+)$'  '**[\1 #\1]**'  
+% we also allow spaces at the end
+%!preproc: '(\d+)[ ]*$'  '**[\1 #\1]**'  
+
+
+%% French shortcut: (rendez-vous au ##)
+
+%!preproc: '\(rdv au (\d+)\)'  '(rendez-vous au **[\1 #\1]**)'  
+%!preproc: '\(rendez-vous au (\d+)\)'  '(rendez-vous au **[\1 #\1]**)'  
+
+% Transforme l'abréviation 'rdv au' en 'rendez-vous au' (french only)
+%!postproc: 'rv au' 'rendez-vous au'
+%!postproc: 'rdv au' 'rendez-vous au'
+%!postproc: 'Rv au' 'Rendez-vous au'
+%!postproc: 'Rdv au' 'Rendez-vous au'
+
+%!preproc: 'TESTLUCK'  'Tentez votre chance'
+
+%% disable unknown textallion syntax
+%!preproc: '\{.{4}\}'  ''
+
+
+
+
