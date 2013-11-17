@@ -627,7 +627,8 @@ class T2T {
     }
     else {
 		$Links = array(
-		  "www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links
+		  //"{$PRT}[^\\s$UEX]+" =>'',  # allows hotlinks by disabling this part
+		  //"www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links won't work here
 		  "ftp\\d?\\.[^\\s$UEX]+" =>'ftp://',  # lazy links
 		  "\\w[\\w.-]+@[\\w-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
 			); #  

@@ -50,7 +50,7 @@ class BetterEditor
 
     // advanced toolbar is used in both regular editing textarea and AjaxEditing plugin
 		$this->advanced_toolbar_html = $common_toolbar . '
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[\', \']\', \''.$this->TP_IMAGE[2].'\');" title="'.$this->TP_IMAGE[1].'">'.$this->TP_IMAGE[0].'</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \' [\', \'] \', \''.$this->TP_IMAGE[2].'\');" title="'.$this->TP_IMAGE[1].'">'.$this->TP_IMAGE[0].'</a>
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'``\', \'``\', \''.$this->TP_CODE[2].'\');" title="'.$this->TP_CODE[1].'">'.$this->TP_CODE[0].'</a>
 ' . ($GLOBALS["NO_HTML"] ? "" : '<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'{html}\', \'{/html}\', \''.$this->TP_HTML[2].'\');" title="'.$this->TP_HTML[1].'">'.$this->TP_HTML[0].'</a>') . '
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\n- \', \'\', \''.$this->TP_ULIST[2].'\');" title="'.$this->TP_ULIST[1].'">'.$this->TP_ULIST[0].'</a>
