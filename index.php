@@ -30,7 +30,7 @@ $PASSWORD = ''; // SHA1 hash
 
 $TEMPLATE = 'templates/dandelion.html'; // presentation template
 $PROTECTED_READ = false; // if true, you need to fill password for reading pages too
-$NO_HTML = false; // XSS protection
+$NO_HTML = true; // XSS protection
 
 $START_PAGE = 'Main page'; // Which page should be default (start page)?
 // $SYNTAX_PAGE = 'http://lionwiki.0o.cz/?page=Syntax+reference';
@@ -484,8 +484,9 @@ if(!$action || $preview) { // page parsing
 		$excl = strlen($m[1]) + 1;
 		$hash = preg_replace('/[^\da-z]/i', '_', $m[2]);
 
-		//for($ret = ''; end($stack) >= $excl; $ret .= '</div>', array_pop($stack)); // we disable it below because it adds an extra /div :
-		for($ret = ''; end($stack) >= $excl; $ret .= '', array_pop($stack));
+		for($ret = ''; end($stack) >= $excl; $ret .= '</div>', array_pop($stack)); 
+		// we could disable it below because it adds an extra /div, but we won't because in turn it would mixed up the individual part edition :
+		//for($ret = ''; end($stack) >= $excl; $ret .= '', array_pop($stack));
 
 		$stack[] = $excl;
 
