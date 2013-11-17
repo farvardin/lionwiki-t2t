@@ -33,10 +33,11 @@ Its php implementation targets only HTML but you can use it with several CMS, Bl
 
 Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
 
-- [Admin plugin index.php?action=admin-plugins]
-     index.php?action=admin-blockip
- index.php?action=admin-blacklist
- index.php?action=admin-pages
+//[Read more... index.php?page=help.en]//
+
+
+------------------------------------------
+- [[admin]]
 - [Upload content index.php?action=upload]
 - [List all the pages index.php?page=page_list]
 - //[Logout index.php?erasecookie=1]//

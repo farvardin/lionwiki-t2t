@@ -34,6 +34,16 @@ Here is [[your_page]].
 
 
 
+test image hotlink:
+[http://txt2tags.org/img/photo.jpg]
+
+
+test url link:
+[txt2tags website http://txt2tags.org/]
+
+test simple link : http://txt2tags.org/
+
+test lazy link : www.txt2tags.org
 
 
 
@@ -55,6 +65,7 @@ Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato
 Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
 
 Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
+
 
 
 

@@ -34,7 +34,7 @@
 
 /* if you prefer to select a fixed background color, just uncomment one color from below */
 /* @MainColor: #549136; */
-@MainColor: #799037; 
+@MainColor: #555; 
 /*@MainColor: #549136;*/
 
 /* Header color */
@@ -359,6 +359,7 @@ body {
     font-family: 'Open Sans',sans-serif;
     color: @MainFontColor;
 }
+
 #header h1 {
     color: #fff;
     margin: 0;
@@ -430,18 +431,35 @@ p, ul {
     margin-bottom: 1.0em;
 }
 p {
-    line-height: 1.8em;
+    line-height: 1.7em;
 }
-strong {
-    color: #474e43;
+
+strong, b {
+    color: #555;
 }
+
+
+s {
+    color: #aaa;
+}
+
+::selection {
+	background: @MainColor; 
+	color: #fff;
+	}
+	
+::-moz-selection {
+	background: @MainColor; 
+	color: #fff;
+}
+
 pre, code, blockquote, dt {
     background-color: (@Bg-extra-light + #121212);
-    line-height: 1.1em;
+    line-height: 1.5em;
     font-family: mono;
 }
 dd {
-    line-height: 1.3em;
+    line-height: 1.5em;
     font-family: mono;
     font-size: 0.9em;
 }
@@ -462,7 +480,13 @@ img.left {
 img.top {
     margin: 4px 0 2.25em 0;
 }
-ol, ul, li {
+
+ol, ul {
+
+}
+
+li {
+    line-height: 1.5em;
 }
 
 /* If you don't like color highlight when you're over a list, comment the next 2 entries */
@@ -472,9 +496,7 @@ ol, ul, li {
 #main ul li:hover, ul li:active {
     background-color: (@Bg-light + #343434);
 }
-li {
-    line-height: 24px;
-}
+
 a {
     color: @LinkColor;
     text-decoration: none;
@@ -549,6 +571,11 @@ ul.link-list li:first-child {
 
 
 @media only screen and (min-width:1000px) {
+
+	body {
+		font-size: (@MainFontSize + 0);
+	}
+	
     section, article {
         margin: 0 0 60px 0;
     }
@@ -579,7 +606,7 @@ ul.link-list li:first-child {
         top: -28px;
         font-size: 2.4em;
         letter-spacing: 2px;
-        line-height: 6px;
+        /*line-height: 6px;*/ /* pb in konqueror*/
     }
     #header h1 a {
         text-decoration: none;
@@ -681,6 +708,11 @@ ul.link-list li:first-child {
 
 
 @media only screen and (max-width:999px) and (min-width:601px) {
+
+	body {
+		font-size: (@MainFontSize + 1);
+	}
+    
     section, article {
         margin: 10px 10px 50px 10px;
     }
@@ -725,7 +757,7 @@ ul.link-list li:first-child {
         top: -28px;
         font-size: 2.4em;
         letter-spacing: 1px;
-        line-height: 6px;
+        /*line-height: 6px;*/ /* pb in konqueror*/
     }
     #header h1 a {
         text-decoration: none;
@@ -750,8 +782,8 @@ ul.link-list li:first-child {
         padding: 10px 35px 10px 35px;
     }
     #banner-wrapper {
-        /*background: #fff;*/
-        margin-bottom: -40px;
+        background: #fff;
+        margin-bottom: -20px;
     }
     #banner-wrapper h1 {
         font-size: 2.1em;
@@ -814,9 +846,11 @@ ul.link-list li:first-child {
 /*********************************************************************************/
 
 @media only screen and (max-width:600px) {
-    body {
-        font-size: 15pt;
-    }
+
+	body {
+		font-size: (@MainFontSize + 1);
+	}
+	
     h2 {
         font-size: 1.4em;
     }

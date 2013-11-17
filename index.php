@@ -30,7 +30,7 @@ $PASSWORD = ''; // SHA1 hash
 
 $TEMPLATE = 'templates/dandelion.html'; // presentation template
 $PROTECTED_READ = false; // if true, you need to fill password for reading pages too
-$NO_HTML = true; // XSS protection
+$NO_HTML = false; // XSS protection
 
 $START_PAGE = 'Main page'; // Which page should be default (start page)?
 // $SYNTAX_PAGE = 'http://lionwiki.0o.cz/?page=Syntax+reference';
@@ -322,7 +322,12 @@ if($action == 'edit' || $preview) {
 			fclose($meta);
 		}
 
-		$recent .= "<tr><td class=\"rc-diff\"><a href=\"$self?page=".u($f)."&amp;action=diff\">$T_DIFF</a></td><td class=\"rc-date\" nowrap>".date($DATE_FORMAT, $ts + $LOCAL_HOUR * 3600)."</td><td class=\"rc-ip\">$m[1]</td><td class=\"rc-page\"><a href=\"$self?page=".u($f)."&amp;redirect=no\">".h($f)."</a> <span class=\"rc-size\">($m[2] B)</span><i class=\"rc-esum\"> ".h($m[3])."</i></td></tr>";
+		$recent .= "<tr>
+		<td class=\"rc-date\" nowrap>".date($DATE_FORMAT, $ts + $LOCAL_HOUR * 3600)."</td>
+		<td class=\"rc-page\"><a href=\"$self?page=".u($f)."&amp;redirect=no\">".h($f)."</a> <span class=\"rc-size\">($m[2] B)</span><i class=\"rc-esum\"> ".h($m[3])."</i></td>
+		<td class=\"rc-diff\"><a href=\"$self?page=".u($f)."&amp;action=diff\">$T_DIFF</a></td>
+		<td class=\"rc-ip\">$m[1]</td>
+		</tr>";
 	}
 
 	$CON = "<table>$recent</table>";
@@ -479,7 +484,8 @@ if(!$action || $preview) { // page parsing
 		$excl = strlen($m[1]) + 1;
 		$hash = preg_replace('/[^\da-z]/i', '_', $m[2]);
 
-		for($ret = ''; end($stack) >= $excl; $ret .= '</div>', array_pop($stack));
+		//for($ret = ''; end($stack) >= $excl; $ret .= '</div>', array_pop($stack)); // we disable it below because it adds an extra /div :
+		for($ret = ''; end($stack) >= $excl; $ret .= '', array_pop($stack));
 
 		$stack[] = $excl;
 
