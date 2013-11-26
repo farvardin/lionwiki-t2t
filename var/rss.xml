@@ -1,1 +1,253 @@
+<rss version="2.0">
+<channel>
+<title>LionWiki and txt2tags sample</title>
+<link>http://localhost:80/lionwiki-t2t/index.php</link>
+<description>RSS feed from LionWiki and txt2tags sample</description>
+<language>fr-fr</language>
 
+	<item>
+	  <title>help.fr</title>
+	  <pubDate>Tue, 26 Nov 2013 14:16:19 +0100</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=help.fr</link>
+	  <description><pre id="diff">//Read this [[help in English | help.en]].//
+
+%%toc 
+
+== Installation ==
+
+Lionwiki s'installe très simplement : pas besoin de base de données sql, un serveur web (type Apache, Lighttpd ou Nginx) + php seront donc suffisants.
+
+Voici une procédure possible pour son installation :
+
+- installer serveur web + lionwiki (``apt-get install php5-sqlite apache2 libapache2-mod-php5``) 
+ - cd /var/www 
+ - wget http://wiki.txt2tags.org/demos/lionwiki-t2t-minimal.zip
+ - unzip lionwiki-t2t-minimal.zip
+
+
+Pour son utilisation dans un contexte multi-appareils, il est possible de rajouter ceci :
+
+- (optionnel) installer owncloud : http://owncloud.org/
+- (optionnel) partager un des sous-dossier contenant l'installation de lionwiki dans owncloud
+- installer [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] sur l'appareil android et synchronisez vos fichiers textes dans ``var/pages/`` entre votre serveur et votre appareil mobile (tablette, téléphone), en utilisant soit ssh (recommandé) ou owncloud.
+- installer [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] sur l'appareil android et éditez les pages de votre site directement depuis votre appareil mobile !
+
+
+
+== Utilisation ==
+
+
+
+- menu du haut (top menu) : vous pouvez le customiser en éditant le fichier menu.php à la racine du site. Je n'ai pas pu rendre cela éditable en ligne, désolé, peut-être pour une prochaine version.
+- configuration générale : éditez config.php
+- configuration spécifique, rajout de regex, customisation avancée etc : vous pouvez rajouter tout cela dans le fichier config.t2t qui utilise la syntaxe de txt2tags, et qui sera appelé par lionwiki-t2t.
+ - Vous pouvez regarder la page [[sandbox_cyoa]] et son fichier de configuration cyoa.t2t pour un exemple de ce qu'il est possible de faire en utilisant cette fonctionalité.
+- Vous pouvez également choisir d'avoir la possibilité d'éditer le wiki complet (y compris les fichiers de configuration, les css etc) en décompressant le fichier editor.zip à la racine du site. Attention, cela rajoute un risque de faille de sécurité non négligeable, c'est pour cette raison qu'il n'est pas installé par défaut. Au moins, essayez de renommer ce dossier sous un autre nom pour limiter les risques. Il faudra peut-être ajuster certains chemins dans sa source en fonction de votre hébergeur pour rendre votre wiki éditable.
+
+
+
+__Quelques avantages__ de ce système :
+
+- thème par défaut (minimaxing), simple et sobre. Design CSS Responsive. Changement de la couleur de base facilitée par l'utilisation de [less http://lesscss.org/].
+- autre thème optionnel utilisant [bootstrap http://getbootstrap.com], pouvant servir de base pour un autre type de thème.
+
+
+
+== Astuces ==
+
+
+- Si vous souhaitez aligner vos images, retenez ceci :
+ - pour aligner à gauche, rajoutez un espace supplémentaire (ou du texte) après la marque de l'image
+ - pour centrer, rajouter un espace supplémentaire avant et après la marque de l'image
+ - pour aligner à gauche, rajoutez un espace supplémentaire (ou du texte) avant la marque de l'image
+
+- Si  vous avez besoin de retravailler le design du css minimaxing, renommez l'appel à minimaxing.css en minimaxing.less, dans le modèle minimaxing.html
+<ins>
+
+- On linux or mac os x, it shouldn't be a problem to double-click on a word and only highlight that word, while on windows it would select also the white space after it, so you can't properly add the syntax. So on windows: 
+ - either single click after the last character of the word and press CTRL + SHIFT + LEFT ARROW
+ - or if you're on mozilla firefox, in ``about:config``, just set ``layout.word_select.eat_space_to_next_word`` to ``False``.
+
+</ins>
+
+
+== Bogues connus ==
+
+ - si on édite une partie du document au lieu de sa globalité, que l'on sauvegarde, il faut recharger la page (F5) pour éditer une nouvelle partie une nouvelle fois.
+ - les regex de txt2tags avec caractères de remplacement spécifiques ont des problèmes (lionwiki mange les \). À la place, veuillez utiliser un fichier de configuration t2t à la racine du site, et appelez-le avec includeconf. (voir example de [[sandbox_cyoa]] qui utilise cela)
+
+
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>help.en</title>
+	  <pubDate>Tue, 26 Nov 2013 14:15:56 +0100</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=help.en</link>
+	  <description><pre id="diff">//Read this [[help in French | help.fr]]. Lire cette aide [[en français | help.fr]].//
+
+%%toc
+
+
+
+== Installation ==
+
+Lionwiki is easy to install, no need to setup a sql database: a webserver (Apache, Lighttpd or Nginx) + php will be enough.
+
+Here is what is possible to do:
+
+- install web server + lionwiki (``apt-get install php5-sqlite apache2 libapache2-mod-php5``) 
+ - cd /var/www 
+ - wget http://wiki.txt2tags.org/demos/lionwiki-t2t-minimal.zip
+ - unzip lionwiki-t2t-minimal.zip
+
+
+You can also install this in addition:
+
+- (optionnal) install owncloud : http://owncloud.org/
+- (optionnal) share a subfolder containing your lionwiki install into owncloud
+- install [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] on an android device and synchronise the text files into var/pages/ between your server and your device (tablet, smartphone), using either ssh (recommended) or owncloud.
+- install for example the [920 text editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] on android and edit the pages of your website from your mobile device!
+
+
+
+
+== Use ==
+
+- top menu: you can customise your menu by editing the menu.php file in the root. Sorry we couldn't make it editable online. Maybe later.
+- general configuration: see config.php
+- special configurations, regex etc: you can add extra customisation in your wiki by using the config.t2t file
+ - you can have a look at [[sandbox_cyoa]] and its configuration file cyoa.t2t for an example of a special customisation using this feature. 
+- you can edit the whole wiki (including conf files and index.php) by extracting the editor.zip in the root. Beware, it might be a security breach so you'd better at least rename the folder to something not obvious.
+
+
+__Some advantages__:
+
+- simple and sober default theme (minimaxing). CSS using responsive design. You can easily customise colors using [less http://lesscss.org/].
+- Another option theme is using [bootstrap http://getbootstrap.com], so you can use it as a basis for your website.
+
+
+
+
+
+== Tips ==
+
+- if you need to make your image left, right or centered aligned, keep this in mind:
+ - for left align, add an extra space (and/or some text) after the image mark
+ - for center align, add an extra space (and/or some text) before and after the image mark
+ - for right align, add an extra space (and/or some text) before the image mark
+
+- if you need to work further on the minimaxing design, rename in the template minimaxing.html the call to minimaxing.css to minimaxing.less
+
+- On linux or mac os x, it shouldn't be a problem to double-click on a word and only highlight that word, while on windows it would select also the white space after it, so you can't properly add the syntax. So on windows: 
+ - either single click after the last character of the word and press CTRL + SHIFT + LEFT ARROW
+ - or if you're on mozilla firefox, in ``about:config``, just set ``layout.word_select.eat_space_to_next_word`` to <del>&quot;``False``&quot;.</del><ins>``False``.</ins>
+
+
+
+
+== Known bugs ==
+
+- if you edit a part of the document, after saving you might need to reload the page if you want to edit a new part, otherwise the edit field will remain blank.
+- regex have problems with some replacements (lionwiki doesn't keep the \ in regex). Instead include a t2t file using includeconf
+
+
+
+
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>help.en</title>
+	  <pubDate>Tue, 26 Nov 2013 14:15:43 +0100</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=help.en</link>
+	  <description><pre id="diff"></pre></description>
+	</item>
+
+	<item>
+	  <title>help.en</title>
+	  <pubDate>Tue, 26 Nov 2013 14:15:09 +0100</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=help.en</link>
+	  <description><pre id="diff">//Read this [[help in French | help.fr]]. Lire cette aide [[en français | help.fr]].//
+
+%%toc
+
+
+
+== Installation ==
+
+Lionwiki is easy to install, no need to setup a sql database: a webserver (Apache, Lighttpd or Nginx) + php will be enough.
+
+Here is what is possible to do:
+
+- install web server + lionwiki (``apt-get install php5-sqlite apache2 libapache2-mod-php5``) 
+ - cd /var/www 
+ - wget http://wiki.txt2tags.org/demos/lionwiki-t2t-minimal.zip
+ - unzip lionwiki-t2t-minimal.zip
+
+
+You can also install this in addition:
+
+- (optionnal) install owncloud : http://owncloud.org/
+- (optionnal) share a subfolder containing your lionwiki install into owncloud
+- install [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] on an android device and synchronise the text files into var/pages/ between your server and your device (tablet, smartphone), using either ssh (recommended) or owncloud.
+- install for example the [920 text editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] on android and edit the pages of your website from your mobile device!
+
+
+
+
+== Use ==
+
+- top menu: you can customise your menu by editing the menu.php file in the root. Sorry we couldn't make it editable online. Maybe later.
+- general configuration: see config.php
+- special configurations, regex etc: you can add extra customisation in your wiki by using the config.t2t file
+ - you can have a look at [[sandbox_cyoa]] and its configuration file cyoa.t2t for an example of a special customisation using this feature. 
+- you can edit the whole wiki (including conf files and index.php) by extracting the editor.zip in the root. Beware, it might be a security breach so you'd better at least rename the folder to something not obvious.
+
+
+__Some advantages__:
+
+- simple and sober default theme (minimaxing). CSS using responsive design. You can easily customise colors using [less http://lesscss.org/].
+- Another option theme is using [bootstrap http://getbootstrap.com], so you can use it as a basis for your website.
+
+
+
+
+
+== Tips ==
+
+- if you need to make your image left, right or centered aligned, keep this in mind:
+ - for left align, add an extra space (and/or some text) after the image mark
+ - for center align, add an extra space (and/or some text) before and after the image mark
+ - for right align, add an extra space (and/or some text) before the image mark
+
+- if you need to work further on the minimaxing design, rename in the template minimaxing.html the call to minimaxing.css to minimaxing.less
+<ins>
+- On linux or mac os x, it shouldn't be a problem to double-click on a word and only highlight that word, while on windows it would select also the white space after it, so you can't properly add the syntax. So on windows: 
+ - either single click after the last character of the word and press CTRL + SHIFT + LEFT ARROW
+ - or if you're on mozilla firefox, in ``about:config``, just set ``layout.word_select.eat_space_to_next_word`` to &quot;``False``&quot;.
+
+</ins>
+
+
+== Known bugs ==
+
+- if you edit a part of the document, after saving you might need to reload the page if you want to edit a new part, otherwise the edit field will remain blank.
+- regex have problems with some replacements (lionwiki doesn't keep the \ in regex). Instead include a t2t file using includeconf
+
+
+
+
+
+</pre></description>
+	</item>
+
+
+
+</channel>
+</rss>
