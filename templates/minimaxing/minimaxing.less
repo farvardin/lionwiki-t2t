@@ -96,7 +96,7 @@
     font-family: 'Ubuntu Condensed';
     font-style: normal;
     font-weight: 400;
-    src: local('Ubuntu Condensed'),local('UbuntuCondensed-Regular'),url(../fonts/ubuntu-condensed-regular.woff.woff) format('woff');
+    src: local('Ubuntu Condensed'),local('UbuntuCondensed-Regular'),url(../fonts/ubuntu-condensed-regular.woff) format('woff');
 }
 @font-face {
     font-family: 'Open Sans';
@@ -434,9 +434,15 @@ p {
     line-height: 1.7em;
 }
 
-strong, b {
+
+
+#main-row strong, b {
     color: #555;
 }
+
+
+
+
 
 
 s {
@@ -470,6 +476,8 @@ img {
     /*float: center;*/ /* note: we can already center with txt2tags, just add a space before the image */
     /*float: left;*/
     /*margin: 2px 1.25em 0 0;*/
+    margin: 0.5em;
+    max-width: 50%;
     /*display: block;*/
     /*margin: 0 auto;*/
 }
@@ -545,8 +553,13 @@ ul.link-list li:first-child {
 }
 .button:hover, a.toolbarTextareaItem:hover {
     background-color: (@MainColor + #111);
-    color: #444;
+    color: #fff;
 }
+
+a.toolbarTextareaItem b  {
+    color: #fff;
+}
+
 #copyright {
     font-size: 0.6em;
     text-align: center;

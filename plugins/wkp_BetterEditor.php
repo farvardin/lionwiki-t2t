@@ -43,6 +43,8 @@ class BetterEditor
 	
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'=== \', \' ===\', \''.$this->TP_H3[2].'\');" title="'.$this->TP_H3[1].'"><span style="font-variant: small-caps;">'.$this->TP_H3[0].'</span></a>
 	
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[[\', \']]\', \''.$this->TP_INLINK[2].'\');" title="'.$this->TP_INLINK[1].'" style="text-decoration: none;">'.$this->TP_INLINK[0].'</a>
+
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[\', \' http:\/\/]\', \''.$this->TP_LINK[2].'\');" title="'.$this->TP_LINK[1].'" style="text-decoration: underline;">'.$this->TP_LINK[0].'</a>';
 
     // basic toolbar is used in comments plugin
@@ -89,7 +91,8 @@ class BetterEditor
 		array("TP_STRIKETHROUGH", array("S", "Přeškrtnutí", "přeškrtnutí")),
 		array("TP_H2", array("h2", "h2", "Heading level 2")),
 		array("TP_H3", array("h3", "h3", "Heading level 3")),
-		array("TP_LINK", array("link", "Wiki/Web odkaz", "description")),
+		array("TP_INLINK", array("[[local link]]", "Wiki odkaz", "description")),
+		array("TP_LINK", array("link", "Web odkaz", "description")),
 		array("TP_IMAGE", array("obr", "Obrázek", "var/upload/your-image.jpg")),
 		array("TP_CODE", array("kód", "Kód", "kód")),
 		array("TP_HTML", array("HTML", "HTML", 'HTML kód')),
@@ -105,12 +108,13 @@ class BetterEditor
 		array("TP_STRIKETHROUGH", array("S", "Strikethrough", "strikethrough")),
 		array("TP_H2", array("h2", "h2", "Heading level 2")),
 		array("TP_H3", array("h3", "h3", "Heading level 3")),
-		array("TP_LINK", array("link", "Wiki/Web link", "description")),
+		array("TP_INLINK", array("local link", "[[local Wiki link]]", "description")),
+		array("TP_LINK", array("link", "Web link", "description")),
 		array("TP_IMAGE", array("image", "Image", "var/upload/your-image.jpg")),
 		array("TP_CODE", array("code", "Code", "code")),
 		array("TP_HTML", array("HTML", "HTML", 'HTML code')),
 		array("TP_ULIST", array("list", "Unordered list", 'first item\\n - subitem\\n- second item')),
-		array("TP_TABLE", array("table", "Table", 'title 1 | title 2 |\\n| item 1 | item 2 |\\n| item 3 | item 4'))
+		array("TP_TABLE", array("table", "Table", 'title01 | title02 |\\n| item01 | item02 |\\n| item03 | item04'))
 	);
 
 	var $fr_strings = array(
@@ -122,12 +126,13 @@ class BetterEditor
 		array("TP_STRIKETHROUGH", array("B", "Caractère barré", "barré")),
 		array("TP_H2", array("h2", "h2", "Titre niveau 2")),
 		array("TP_H3", array("h3", "h3", "Titre niveau 3")),
-		array("TP_LINK", array("lien", "Lien Web/Wiki", "description")),
+		array("TP_INLINK", array("[[lien local]]", "Lien Wiki local", "description")),
+		array("TP_LINK", array("lien", "Lien Web", "description")),
 		array("TP_IMAGE", array("image", "Insérer une image", "var/upload/your-image.jpg")),
 		array("TP_CODE", array("code", "Insérer un paragraphe en mode Code", "code")),
 		array("TP_HTML", array("HTML", "Insérer du code HTML", 'code HTML')),
 		array("TP_ULIST", array("list", "Liste non ordonnée", 'premier élément\\n - sous-élément\\n- second élément')),
-		array("TP_TABLE", array("table", "Table", 'titre 1 | titre 2 |\\n| élément 1 | élément 2 |\\n| élément 3 | élément 4'))
+		array("TP_TABLE", array("table", "Table", 'titre01 | titre02 |\\n| élément01 | élément02 |\\n| élément03 | élément04'))
 	);
 
 	function localize()
