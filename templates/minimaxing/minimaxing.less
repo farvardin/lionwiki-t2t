@@ -5,6 +5,17 @@
  */
 
 
+
+@MainFontFamily:  Open Sans,MyManuscript,MyFont, Ubuntu, sans-serif;
+@MainFontFamilyHeader: Open Sans Condensed,MyManuscript,MyFont,LoveYaLikeASister,Ubuntu Condensed, sans-serif;
+@MainFontCode: Monospace,Courier;
+@MainFontFamilyEdit: Open Sans,MyManuscript,MyFont,Ubuntu,sans-serif;
+
+/*
+Use the part above to customise your fonts.
+You can create your own manuscript / handwriting font on http://www.myscriptfont.com/ or http://www.paintfont.com/
+*/
+
 /* we use this for random theme color. You can also choose only one color below. */
 @all-background-colors: "#7B8AA8,#56A3B5,#B1494D,#465E7C,#549136,#D07732,#754496,#847457";
 
@@ -86,6 +97,18 @@
 */
 
 
+@font-face {
+    font-family: MyFont;
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/MyFont.ttf) format('truetype');
+}
+@font-face {
+    font-family: MyManuscript;
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/MyManuscript.ttf) format('truetype');
+}
 @font-face {
     font-family: LoveYaLikeASister;
     font-style: normal;
@@ -232,7 +255,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 }
 .contentTextarea {
     width: 90%;
-    font-family: 'Open Sans',sans-serif;
+    font-family: @MainFontFamilyEdit;
     font-size: 105%;
 }
 #diff {
@@ -356,7 +379,7 @@ body {
     font-size: @MainFontSize;
     font-family: sans-serif;
     background-color: (@Bg-extra-light/1.1 + #111);
-    font-family: 'Open Sans',sans-serif;
+    font-family: @MainFontFamily;
     color: @MainFontColor;
 }
 
@@ -367,7 +390,7 @@ body {
     border: none;
 }
 h1, h2, h3, h4 {
-    font-family: 'Open Sans Condensed',sans-serif;
+    font-family: @MainFontFamilyHeader;
     text-transform: uppercase;
     color: @HeaderColor;
     font-weight: bold;
@@ -462,11 +485,11 @@ s {
 pre, code, blockquote, dt {
     background-color: (@Bg-extra-light + #121212);
     line-height: 1.5em;
-    font-family: mono;
+    font-family: @MainFontCode;
 }
 dd {
     line-height: 1.5em;
-    font-family: mono;
+    font-family: @MainFontCode;
     font-size: 0.9em;
 }
 pre, blockquote {
@@ -985,7 +1008,7 @@ a.toolbarTextareaItem b  {
     }
     .contentTextarea {
         width: 96%;
-        font-family: 'Open Sans',sans-serif;
+        font-family: @MainFontFamily;
         font-size: 105%;
         padding: 0px;
         margin-left: -15px;

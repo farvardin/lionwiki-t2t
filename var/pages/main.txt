@@ -25,7 +25,8 @@ It reads a text file with minimal markup such as ``**bold**`` and ``//italic//``
 
 It is __very__ **extensible** and **customisable**, by using regex and preprocessors.
 
-Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, LionWiki//...
+Its php implementation targets only HTML but you can use it with several CMS, Blog and wiki engines: //Wordpress, Drupal, Dotclear, Dokuwiki, **LionWiki**//...
+
 
 
 
