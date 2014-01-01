@@ -1,0 +1,7 @@
+
+- [Admin plugins index.php?action=admin-plugins]
+- [Admin-blockip index.php?action=admin-blockip]
+- [Admin-blacklist index.php?action=admin-blacklist]
+- [Admin-pages index.php?action=admin-pages]
+
+- [Logout index.php?erasecookie=1]
