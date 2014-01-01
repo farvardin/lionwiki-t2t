@@ -121,12 +121,12 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
     font-weight: 400;
     src: local('Ubuntu Condensed'),local('UbuntuCondensed-Regular'),url(../fonts/ubuntu-condensed-regular.woff) format('woff');
 }
-@font-face {
+/*@font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 300;
     src: local('Open Sans Light'),local('OpenSans-Light'),url(../fonts/OpenSans-Light.woff) format('woff');
-}
+}*/
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
@@ -730,7 +730,7 @@ a.toolbarTextareaItem b  {
     }
     #main .main-row {
         margin: 2% 0 2% 0;
-        overflow: hidden;
+        /*overflow: hidden;*/
         margin-top: -10px;
     }
     #footer-wrapper {
@@ -869,7 +869,7 @@ a.toolbarTextareaItem b  {
     }
     #main .main-row {
         margin: 2% 0 2% 0;
-        overflow: hidden;
+        /*overflow: hidden;*/
         margin-top: -10px;
     }
     #footer-wrapper {
@@ -1013,4 +1013,9 @@ a.toolbarTextareaItem b  {
         padding: 0px;
         margin-left: -15px;
     }
+    
+     #main {
+        /*overflow: auto;*/
+    }
+    
 }
