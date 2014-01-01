@@ -1,0 +1,167 @@
+//Read this [[help in English | help.en]].//
+
+
+Lionwiki-t2t est un système de type wiki pour la création et l'entretien collectif de sites Internet.
+
+Les pages Lionwiki-t2t ont le même aspect et fonctionnent comme des pages Internet ordinaires, sauf qu'elles possèdent un lien pour « Éditer » ce qui permet de modifier ou d'ajouter facilement des pages à un site, en utilisant les règles d'édition de base (tout comme le fait le site http://fr.wikipedia.org)
+
+//Basé sur Lionwiki-t2t, ce système contient quelques-unes des extensions les plus pratiques et une syntaxe simplifiée.//
+
+ 
+%%toc
+ 
+
+== Présentation ==
+
+L'édition des pages peut être réalisée par plusieurs auteurs. Pour éditer une page, cliquez simplement sur « Éditer » qui existe quelque part dans la page, habituellement dans l'en-tête ou le pied de page. Quelques pages peuvent être protégées par mot de passe, en fonction de la politique de sécurité, mais beaucoup de sites permettent la libre édition de pages.
+
+Le mot de passe par défaut de cette version du wiki est « demo ». Il est conseillé de le modifier par la suite, après installation (voir plus bas).
+
+Lorsque vous éditez une page, vous voyez les balises qui décrivent le contenu de la page. Le rendu final, avec le formatage choisi, ne s'affiche que lorsque la page en enregistrée.
+
+
+== Règles d'édition ==
+
+//note : à cause de certains particularismes de lionwiki, toute la syntaxe ne s'affiche pas forcément correctement//
+
+Les règles de base pour le balisage de la page sont très simples :
+
+- Mettez une ligne vide entre chaque paragraphe.
+
+- Pour créer une liste d'éléments, commencez chaque ligne avec ``-`` pour une liste avec des puces ou ``+`` pour une liste numérotée.
+
+- Pour faire des titres de sections, entourez ce titre par des =.
+
+- Pour mettre en valeur du texte, procédez ainsi : ``""//texte//""`` pour la mise en italique ou ``""**texte**""`` pour la mise en gras.
+
+- Pour créer un lien vers une autre page, entourez son nom par des crochets doubles ; par exemple ``""[[nouvelle page]]""`` crée un lien vers cette page. Un lien vers une [[page inexistante]] est affiché de façon différente, pour inviter d'autres à créer la page.
+
+- Pour faire un lien vers un autre site, tapez directement son adresse, comme http://www.unsite.fr
+
+ - Et pour faire un lien sur une portion de texte existante, c'est ``""[description du site http://www.site.com]""``
+
+- Pour faire un lien vers un fichier local, par exemple se trouvant dans le dossier /docs à la racine de l'installation de Lionwiki-t2t, c'est :
+
+``""[fichier pdf var/upload/votre-fichier.pdf]""``
+
+Ce qui donne : 
+ - [fichier pdf var/upload/votre-fichier.pdf]
+
+
+Mais le plus simple, est d'utiliser la fonction d'attachement de fichiers (voir plus bas)
+
+
+De façon générale, vous pouvez également sélectionner votre texte à formater, et utiliser la barre d'outil pour vous aider dans la rédaction.
+
+- Pour rajouter une table des matières, rajoutez à l'emplacement souhaité le code ``""%% toc""`` (sans l'espace)
+
+- Attacher un fichier :
+ + cliquer sur [Upload content index.php?action=upload]
+ + ou rajouter ``""?action=upload""`` à la fin de n'importe quelle page
+
+
+
+
+//les images peuvent être mises en place soit en les copiant dans le dossier uploads, soit en les téléchargeant individuellement avec la méthode du dessus.//
+
+
+
+== Syntaxe complète ==
+
+- ""**gras**""      :  **gras**
+- ""//italique//""   :  //italique//
+- ""__soulignage__"" :  __soulignage__
+- ""--barré--""      :  --barré--
+- titres avec différents ``=`` entourant ce titre, suivant le niveau hiérarchique
+- ""- liste""
+- ""+ liste numérotée""
+- ""``code``""
+- ""% commentaire"" (ce qui suivra le % ne sera pas affiché)
+- ""[http://www.site.org/image.jpg]"" : [http://www.pmwiki.org/pmwiki/pub/skins/pmwiki/pmwiki-32.gif]
+- ""[lien vers un site http://www.site.com]"" :  [lien vers un site http://www.site.com]
+- ""| tableau | cellule 2 | cellule 3 |"" :  fonctionne, à condition d'avoir un nombre pair de ``|``
+
+| table | cellule 2 | cellule 3 |
+| table | cellule 2 | cellule 3 |
+
+| table | cellule 2 | cellule 3 | cellule 4 ||
+| table | cellule 2 | cellule 3 | cellule 4 ||
+
+- Visitez [le site de txt2tags http://txt2tags.sourceforge.net/markup.html] pour apprendre la syntaxe ou utilisez les boutons pour une mise en forme rapide.
+
+
+
+
+== Installation ==
+
+Lionwiki s'installe très simplement : pas besoin de base de données sql, un serveur web (type Apache, Lighttpd ou Nginx) + php seront donc suffisants.
+
+Voici une procédure possible pour son installation :
+
+- installer serveur web + lionwiki (``apt-get install php5-sqlite apache2 libapache2-mod-php5``) 
+ - cd /var/www 
+ - wget http://wiki.txt2tags.org/demos/lionwiki-t2t-minimal.zip
+ - unzip lionwiki-t2t-minimal.zip
+
+
+Pour son utilisation dans un contexte multi-appareils, il est possible de rajouter ceci :
+
+- (optionnel) installer owncloud : http://owncloud.org/
+- (optionnel) partager un des sous-dossier contenant l'installation de lionwiki dans owncloud
+- installer [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] sur l'appareil android et synchronisez vos fichiers textes dans ``var/pages/`` entre votre serveur et votre appareil mobile (tablette, téléphone), en utilisant soit ssh (recommandé) ou owncloud.
+- installer [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] sur l'appareil android et éditez les pages de votre site directement depuis votre appareil mobile !
+
+
+
+== Utilisation ==
+
+
+
+- menu du haut (top menu) : vous pouvez le customiser en éditant le fichier menu.php à la racine du site. Je n'ai pas pu rendre cela éditable en ligne, désolé, peut-être pour une prochaine version.
+- configuration générale : éditez config.php
+- configuration spécifique, rajout de regex, customisation avancée etc : vous pouvez rajouter tout cela dans le fichier config.t2t qui utilise la syntaxe de txt2tags, et qui sera appelé par lionwiki-t2t.
+ - Vous pouvez regarder la page [[sandbox_cyoa]] et son fichier de configuration cyoa.t2t pour un exemple de ce qu'il est possible de faire en utilisant cette fonctionalité.
+- Vous pouvez également choisir d'avoir la possibilité d'éditer le wiki complet (y compris les fichiers de configuration, les css etc) en décompressant le fichier editor.zip à la racine du site. Attention, cela rajoute un risque de faille de sécurité non négligeable, c'est pour cette raison qu'il n'est pas installé par défaut. Au moins, essayez de renommer ce dossier sous un autre nom pour limiter les risques. Il faudra peut-être ajuster certains chemins dans sa source en fonction de votre hébergeur pour rendre votre wiki éditable.
+
+
+== Avantages ==
+
+__Quelques avantages__ de ce système :
+
+- base de données textuelle, lisible et compréhensible par l'utilisateur et facilement éditable depuis un autre logiciel.
+- thème par défaut (minimaxing), simple et sobre. Design CSS Responsive (s'adapte aux smartphones et tablettes). Changement des couleurs de base et des polices de caractères  facilité par l'utilisation de [less http://lesscss.org/].
+- autre thème optionnel utilisant [bootstrap http://getbootstrap.com], pouvant servir de base pour un autre type de thème moderne.
+
+
+
+
+== Astuces ==
+
+
+- Si vous souhaitez aligner vos images, retenez ceci :
+ - pour aligner à gauche, rajoutez un espace supplémentaire (ou du texte) après la marque de l'image
+ - pour centrer, rajouter un espace supplémentaire avant et après la marque de l'image
+ - pour aligner à gauche, rajoutez un espace supplémentaire (ou du texte) avant la marque de l'image
+
+- Si  vous avez besoin de retravailler le design du css minimaxing, renommez l'appel à minimaxing.css en minimaxing.less, dans le modèle minimaxing.html
+
+- you can use you own handwriting font, just name it MyManuscript.ttf, put it in the templates/fonts folder (replace the existing one) and change the css/less file so it will be called before the other fonts.
+
+- You can also use your favorite font, rename if MyFont.ttf and put it in the templates/fonts folder (replace the existing one).
+
+- On linux or mac os x, it shouldn't be a problem to double-click on a word and only highlight that word, while on windows it would select also the white space after it, so you can't properly add the syntax. So on windows: 
+ - either single click after the last character of the word and press CTRL + SHIFT + LEFT ARROW
+ - or if you're on mozilla firefox, in ``about:config``, just set ``layout.word_select.eat_space_to_next_word`` to ``False``.
+
+
+
+
+== Bogues connus ==
+
+ - si on édite une partie du document au lieu de sa globalité, que l'on sauvegarde, il faut recharger la page (F5) pour éditer une nouvelle partie une nouvelle fois.
+ - les regex de txt2tags avec caractères de remplacement spécifiques ont des problèmes (lionwiki mange les \). À la place, veuillez utiliser un fichier de configuration t2t à la racine du site, et appelez-le avec includeconf. (voir example de [[sandbox_cyoa]] qui utilise cela)
+
+
+
+
+
