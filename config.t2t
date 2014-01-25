@@ -13,7 +13,8 @@
 %-!postproc: '<!--\?' '<?'
 %-!postproc: '\?-->' '?>'
 
-
+% center tables
+%-!postproc: '<table' '<table align="center"'
 
 %% Textallion
 

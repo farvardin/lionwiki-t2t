@@ -499,8 +499,12 @@ img {
     /*float: center;*/ /* note: we can already center with txt2tags, just add a space before the image */
     /*float: left;*/
     /*margin: 2px 1.25em 0 0;*/
-    margin: 0.5em;
+    margin: 1.5em;
+    
     max-width: 50%;
+    max-height: 500px;
+    padding:1px;
+    border: solid 1px (@MainColor + #222);
     /*display: block;*/
     /*margin: 0 auto;*/
 }
@@ -1017,5 +1021,12 @@ a.toolbarTextareaItem b  {
      #main {
         /*overflow: auto;*/
     }
+
+    /* from 5grid/core.css */
+    
+   .\35 grid {
+			/*overflow: hidden;*/  /* prevent horizontal scroll */
+			overflow: visible;  
+		}
     
 }

@@ -44,7 +44,7 @@
 	/* 5grid */
 
 		.\35 grid {
-			overflow: hidden;
+			overflow: hidden;  /* prevent horizontal scroll */
 		}
 
 		.\35 grid .\31 2u { width: 100%; } .\35 grid .\31 1u { width: 91.5%; } .\35 grid .\31 0u { width: 83%; } .\35 grid .\39 u { width: 74.5%; } .\35 grid .\38 u { width: 66%; } .\35 grid .\37 u { width: 57.5%; } .\35 grid .\36 u { width: 49%; } .\35 grid .\35 u { width: 40.5%; } .\35 grid .\34 u { width: 32%; } .\35 grid .\33 u { width: 23.5%; } .\35 grid .\32 u { width: 15%; } .\35 grid .\31 u { width: 6.5%; }
@@ -89,6 +89,8 @@
 /*********************************************************************************/
 
 	@media only screen and (max-width: 600px) {
+	
+		
 		.\35 grid .\31 u, .\35 grid .\32 u, .\35 grid .\33 u, .\35 grid .\34 u, .\35 grid .\35 u, .\35 grid .\36 u, .\35 grid .\37 u, .\35 grid .\38 u, .\35 grid .\39 u, .\35 grid .\31 0u, .\35 grid .\31 1u, .\35 grid .\31 2u, .\35 grid .\31 u-first, .\35 grid .\32 u-first, .\35 grid .\33 u-first, .\35 grid .\34 u-first, .\35 grid .\35 u-first, .\35 grid .\36 u-first, .\35 grid .\37 u-first, .\35 grid .\38 u-first, .\35 grid .\39 u-first, .\35 grid .\31 0u-first, .\35 grid .\31 1u-first, .\35 grid .\31 2u-first {
 			float: none;
 			width: 100%;
