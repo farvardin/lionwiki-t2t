@@ -482,11 +482,20 @@ s {
 	color: #fff;
 }
 
-pre, code, blockquote, dt {
+pre {
     background-color: (@Bg-extra-light + #121212);
     line-height: 1.5em;
-    font-family: @MainFontCode;
+    font-family: mono;
+    margin: 1.0em;
 }
+
+code, blockquote, dt {
+    background-color: (@Bg-extra-light + #121212);
+    line-height: 1.5em;
+    font-family: mono;
+    /*margin: 1.0em;*/
+}
+
 dd {
     line-height: 1.5em;
     font-family: @MainFontCode;
@@ -652,8 +661,8 @@ a.toolbarTextareaItem b  {
         text-decoration: none;
     }
     #header nav {
-        position: absolute;
-        float: left;
+        /*position: absolute;*/
+        float: right;
         clear: both;
         right: 0px;
         top: 1px;
@@ -803,8 +812,8 @@ a.toolbarTextareaItem b  {
         text-decoration: none;
     }
     #header nav {
-        position: absolute;
-        float: left;
+        /*position: absolute;*/
+        float: right;
         clear: both;
         right: 20px;
         top: 1px;

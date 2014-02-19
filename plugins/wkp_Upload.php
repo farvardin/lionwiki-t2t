@@ -82,6 +82,42 @@ class Upload
 				} elseif($_SERVER['REQUEST_METHOD'] == 'POST')
 					$error = $T_WRONG_PASSWORD;
 
+$CON .= '
+	<h2>Upload</h2>
+
+	<div id="upload-form">
+	  <form method="post" action="'.$self.'?action=' . $action . '" enctype= "multipart/form-data">
+	  <input type="hidden" name="curdir" value="' . $rel_dir . '" />
+	';
+				$CON .= "$this->TP_FILE: <input type=\"file\" name=\"file\" />\n";
+
+				if(!authentified())
+					$CON .= "$T_PASSWORD: <input type=\"password\" name=\"sc\" />\n";
+
+				$CON .= "<input type=\"submit\" value=\"$this->TP_UPLOAD\" />";
+
+				$CON .= "</form>";
+
+				$CON .= "<p><em>$this->TP_MAXIMUM_SIZE_IS " . ini_get('upload_max_filesize') . "</em></p>";
+
+				$CON .= '
+		<form method="post" action="'.$self.'?action=' . $action . '" enctype= "multipart/form-data">
+	  <input type="hidden" name="curdir" value="' . $rel_dir . '" />';
+
+				$CON .= "$this->TP_CREATE_DIRECTORY: <input type=\"text\" name=\"dir2create\" />\n";
+
+				if(!authentified())
+					$CON .= "$T_PASSWORD: <input type=\"password\" name=\"sc\" />\n";
+
+				$CON .= "<input type=\"submit\" value=\"$this->TP_CREATE\" />";
+
+				$CON .= "</form></div>";
+
+			} else
+				$CON = "<div class=\"error\">$this->TP_NO_DATA_DIR ($this->datadir).</div>";
+
+			//
+
 				// list of files
 				if($opening_dir = @opendir($abs_dir)) {
 					$CON .= '<h2>' . $this->TP_DIRECTORY . " " . $rel_dir . '</h2><table id="fileTable" style="min-width : 600px;"><col span="2" style="color : red;" /><col /><col style="text-align : right;" /><col style="text-align : center;" /><tr><th>' . $this->TP_FILE_NAME . '</th><th>' . $this->TP_FILE_TYPE . '</th><th>' . $this->TP_FILE_SIZE . '</th><th>' . $this->TP_DELETE . '</th></tr>';
@@ -128,41 +164,8 @@ class Upload
 					$CON .= "</table>";
 				}
 
-				$CON .= '
-	<h2>Upload</h2>
-
-	<div id="upload-form">
-	  <form method="post" action="'.$self.'?action=' . $action . '" enctype= "multipart/form-data">
-	  <input type="hidden" name="curdir" value="' . $rel_dir . '" />
-	';
-				$CON .= "$this->TP_FILE: <input type=\"file\" name=\"file\" />\n";
-
-				if(!authentified())
-					$CON .= "$T_PASSWORD: <input type=\"password\" name=\"sc\" />\n";
-
-				$CON .= "<input type=\"submit\" value=\"$this->TP_UPLOAD\" />";
-
-				$CON .= "</form>";
-
-				$CON .= "<p><em>$this->TP_MAXIMUM_SIZE_IS " . ini_get('upload_max_filesize') . "</em></p>";
-
-				$CON .= '
-		<form method="post" action="'.$self.'?action=' . $action . '" enctype= "multipart/form-data">
-	  <input type="hidden" name="curdir" value="' . $rel_dir . '" />';
-
-				$CON .= "$this->TP_CREATE_DIRECTORY: <input type=\"text\" name=\"dir2create\" />\n";
-
-				if(!authentified())
-					$CON .= "$T_PASSWORD: <input type=\"password\" name=\"sc\" />\n";
-
-				$CON .= "<input type=\"submit\" value=\"$this->TP_CREATE\" />";
-
-				$CON .= "</form></div>";
-
-			} else
-				$CON = "<div class=\"error\">$this->TP_NO_DATA_DIR ($this->datadir).</div>";
-
-			return true;
+				// 
+				return true;
 		}
 
 		return false;
@@ -247,7 +250,7 @@ class Upload
 	);
 
 	var $fr_strings = array(
-		array("TP_FILE_UPLOAD", "File upload"),
+		array("TP_FILE_UPLOAD", "Téléversement de fichiers (upload)"),
 		array("TP_FILE_NAME", "Nom du fichier/dossier"),
 		array("TP_FILE_TYPE", "Type"),
 		array("TP_FILE_SIZE", "Taille"),
@@ -256,7 +259,7 @@ class Upload
 		array("TP_FILE", "Fichier"),
 		array("TP_DIRECTORY", "Dossier"),
 		array("TP_CREATE_DIRECTORY", "Créer un dossier"),
-		array("TP_UPLOAD", "Upload"),
+		array("TP_UPLOAD", "Envoyer"),
 		array("TP_MAXIMUM_SIZE_IS", "Si vous avez besoin d'un dossier dans lequel vous voulez déposer un fichier, vous devez d'abord créer le dossier dans un premier temps puis téléverser le fichier.<br />La taille maximum à utiliser pour un fichier transféré est de"),
 		array("TP_NO_DATA_DIR", "Cet élément n'existe pas"),
 		array("TP_NO_EXECUTABLE", "Le téléversement de fichiers éxécutables n'est pas autorisé.")
