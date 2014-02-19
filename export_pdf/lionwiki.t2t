@@ -1,0 +1,88 @@
+Lionwiki
+
+
+
+%% DEF DOCUMENT METADATA. Use your own. Remplace the second part only, don't modify the xx DOCUMENT ## xx 
+
+%!postproc(tex): 'xx DOCUMENT TITLE xx' 'lionwiki'
+%!postproc(tex): 'xx DOCUMENT AUTHOR xx' 'lionwiki'
+%!postproc(tex): 'xx DOCUMENT TAGS xx' ''
+
+
+%!style(tex): lionwiki.sty
+%!style(xhtml): lionwiki.css
+
+%!includeconf: /usr/share/textallion//core/textallion.t2t
+
+
+%!postproc(tex): 'TEXTALLIONPATH' '/usr/share/textallion/'
+
+%!postproc: 'oeuvre' 'œuvre'
+%-!postproc: 'pagebreak' 'nopagebreak'
+%!postproc: '\{book\}' '{article}'
+%!postproc: 'documentclass\[openany\]\{article\}' 'documentclass[openany,twoside]{article}'
+%!postproc: 'section' 'subsection'
+%!postproc: 'chapter' 'section'
+%!postproc(tex): '\\part{' '\\part*{'
+
+
+%% image background 
+
+%-!postproc(tex): '\\begin\{document\}' 'MYBACKGROUND\n\\begin{document}\nMYBACKGROUN2'
+%-!postproc(tex): 'MYBACKGROUND' '\\usepackage{watermark}'
+
+
+%-!postproc(tex): 'MYBACKGROUN2' \\leftwatermark{\\put(-65,-810.7){\\includegraphics[height=297mm]{background_even.png}}}\\rightwatermark{\put(-45,-810.7){\\includegraphics[height=297mm]{background_odd.png}}}
+
+
+%-!postproc(tex): '\\thispagestyle{empty}' '\\thispagestyle{empty}\\thiswatermark{}'
+
+% various images tricks
+
+%!preproc(tex): '\[var' ' [/var/www/mylionwikisite/var'
+%!preproc(tex): '\[\[images([^ ].*?)\] ([^ ].*?)\]' '[/var/www/myothersite/images\1]'
+
+%!preproc(tex): '\[images([^ ].*?)\]' '[/var/www/myothersite/images\1]'
+
+%!preproc(tex): '\[\/var([^ ].*?)\]' 'BEGINCENTER[/var\1]ENDCENTER'
+%--DISABLEIMAGES-%!preproc(tex): '\[\/var([^ ].*?)\]' ''
+
+%!postproc(tex): 'BEGINCENTER' '\\begin{center}'
+%!postproc(tex): 'ENDCENTER' '\\end{center}'
+
+%-!postproc(tex):'\\includegraphics\[height=297mm\]' '\MyImages'
+
+%!preproc: '.gif' '.png'
+
+%!postproc(tex):'\\includegraphics{' '\MyImages{'
+
+
+
+
+%- \includegraphics[height=297mm]
+%!--postproc(tex): 'MYBACKGROUN2' \\watermark{\\put(-55,-810.7){\\includegraphics[height=297mm]{background.png}}}
+
+%%toc
+
+
+//This document includes only the main page and sandbox from your lionwiki installation//
+
+
+
+%!include:../var/pages/main.txt
+%!include:../var/pages/sandbox.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
