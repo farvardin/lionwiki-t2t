@@ -1,0 +1,127 @@
+/* =========== SAMPLE STYLE FOR TEXTALLION ===========================*/
+
+/*Inspired by http://code.google.com/p/better-web-readability-project/ */
+
+body { 
+	margin:50px;
+	padding:0px;
+    font:1.1em/1.625em Georgia, serif; background-color:#FFFEF0;  
+    font-size-adjust:none;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    color:#333;
+}
+
+/*"Palatino Linotype", "Book Antiqua", Palatino*/
+
+	
+/*p { padding:0 0  0.8125em 0; color:#111; font-weight:300;}
+
+p + p { text-indent:1.625em;}*/
+
+p { 
+  font:1.1em/1.625em Georgia, serif; background-color:#FFFEF0; 
+  text-indent:1.625em;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+  /*text-indent: 1.0em;*/
+  text-align: justify;
+}
+
+p.initial { 
+  text-indent:0.05em;
+}
+
+p.initial:first-letter {
+    position: relative;
+    padding-top:8px;
+    display: block;
+    float: left;
+    font-weight: normal;
+    font-size: 3.4em;
+    line-height: 2.5em;
+}
+
+
+
+	
+/*p img       { float: left; margin: 0.5em 0.8125em 0.8125em 0; padding: 0; }*/
+/*p img.right { float: right; margin: 0.5em  0 0.8125em 0.8125em }*/
+
+img { margin: 0.5em  0.5em 0.5em 0.5em }*/
+
+blockquote p, li p {
+  text-indent: 0.0em;
+  text-align: left;}
+
+/*ul {
+  text-indent: 0.4em;
+  margin-left: 4.2em;
+  text-align: left;}  */
+  
+ 
+h1,h2{ font-weight:normal; color: #333; font-family:Georgia, serif;  }
+h3,h4,h5,h6 { font-weight: normal; color: #333; font-family:Georgia, serif; }
+
+
+h1 { font-size: 2.125em; margin-bottom: 0.765em; }
+h2 { font-size: 1.9em;  margin-bottom: 0.855em; }
+h3 { font-size: 1.7em;  margin-bottom: 0.956em; }
+h4 { font-size: 1.4em;  margin-bottom: 1.161em; }
+h5,h6 { font-size: 1.313em;  margin-bottom: 1.238em; }
+
+
+
+
+a {
+	color:#09c;
+	text-decoration:none;
+	font-weight:500;
+	font-family:font-family:Georgia, serif;
+	}
+	
+a:link {color:#057;}
+a:visited {color:#046;}
+a:hover {background-color:#eee; text-decoration: none; border-bottom: 1px solid #ccc }
+
+.center {
+text-indent:0em;
+text-align:center;margin-right:auto;margin-left:auto;
+margin-top:0em;
+margin-bottom:-0.5em;
+}
+
+
+div.column2 {
+	-moz-column-count: 2;
+	-moz-column-gap: 3em;
+	-moz-column-rule: 1px solid black;
+	
+	-webkit-column-count: 2;
+	-webkit-column-gap: 3em;
+	-webkit-column-rule: 1px solid black;
+}
+
+div.column3 {
+	-moz-column-count: 3;
+	-moz-column-gap: 3em;
+	-moz-column-rule: 1px solid black;
+	
+	-webkit-column-count: 3;
+	-webkit-column-gap: 3em;
+	-webkit-column-rule: 1px solid black;
+}
+
+div.column4 {
+	-moz-column-count: 4;
+	-moz-column-gap: 3em;
+	-moz-column-rule: 1px solid black;
+	
+	-webkit-column-count: 4;
+	-webkit-column-gap: 3em;
+	-webkit-column-rule: 1px solid black;
+}
+
+
+

@@ -25,3 +25,7 @@ $PROTECTED_READ = false;
 $NO_HTML = true; // XSS protection
 
 $START_PAGE = 'main'; // Which page should be default (start page)?
+
+
+// if needed (if autodetection doesn't work), force language 
+//$LANG = fr;
