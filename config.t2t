@@ -35,6 +35,11 @@
 
 %!postproc: 'SIMPLELINE' '<hr/>'
 
+%% remove textallion special markup
+%!preproc: '\{.{4}\}'   ''
+%!preproc: '\{.{3}\}'   ''
+
+
 
 %% other things
 
