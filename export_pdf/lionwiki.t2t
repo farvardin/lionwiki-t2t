@@ -39,10 +39,10 @@ Lionwiki
 
 % various images tricks
 
-%!preproc(tex): '\[var' ' [/var/www/mylionwikisite/var'
-%!preproc(tex): '\[\[images([^ ].*?)\] ([^ ].*?)\]' '[/var/www/myothersite/images\1]'
+%-!preproc(tex): '\[var' ' [/var/www/mylionwikisite/var'
+%-!preproc(tex): '\[\[images([^ ].*?)\] ([^ ].*?)\]' '[/var/www/myothersite/images\1]'
 
-%!preproc(tex): '\[images([^ ].*?)\]' '[/var/www/myothersite/images\1]'
+%-!preproc(tex): '\[images([^ ].*?)\]' '[/var/www/myothersite/images\1]'
 
 %!preproc(tex): '\[\/var([^ ].*?)\]' 'BEGINCENTER[/var\1]ENDCENTER'
 %--DISABLEIMAGES-%!preproc(tex): '\[\/var([^ ].*?)\]' ''
@@ -65,12 +65,15 @@ Lionwiki
 %%toc
 
 
-//This document includes only the main page and sandbox from your lionwiki installation//
+% //This document includes only the textallion, main and sandbox pages from your lionwiki installation. Edit the lines below to suit your needs and add or remove more pages. In the default installation, main and sandbox are disabled (notice the - after the %)//
 
 
+----------------------
 
-%!include:../var/pages/main.txt
-%!include:../var/pages/sandbox.txt
+
+%-!include:../var/pages/main.txt
+%-!include:../var/pages/sandbox.txt
+%!include:../var/pages/textallion.txt
 
 
 

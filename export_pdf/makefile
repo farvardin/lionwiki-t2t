@@ -29,13 +29,6 @@ ifdef TEXTALLIONDOC
 else
 #  DOCUMENT = exemple_lettre
   DOCUMENT = lionwiki
-  #DOCUMENT = the_blue_death
-  #DOCUMENT = la_mort_bleue
-  #DOCUMENT = template
-  #DOCUMENT = un_nouveau_monde
-  #DOCUMENT = un_nouveau_monde_gbl
-  #DOCUMENT = who_are_you
-  #DOCUMENT = sample
 endif
 
 DOCUMENT_TITLE = Lionwiki
@@ -102,8 +95,10 @@ endif
 	# (the compilation of the latex document is duplicated so the TOC generated the first time will be included the second time)
 	-pdflatex -interaction batchmode $(DOCUMENT).tex
 	# and one again because of makeindex
-	-pdfjoin --fitpaper false  --rotateoversize 'false' --paper a4paper --no-landscape  cover.pdf lionwiki.pdf 
-	-mv lionwiki-joined.pdf lionwiki.pdf
+	#    pdfjoin is part of pdfjam. We disable this for now, it's only
+	#     for adding a special cover.pdf to our document.
+	#   -pdfjoin --fitpaper false  --rotateoversize 'false' --paper a4paper --no-landscape  cover.pdf lionwiki.pdf 
+	#   -mv lionwiki-joined.pdf lionwiki.pdf
 
 xetex:
 	$(TXT2TAGS) -T $(TEXTALLIONFOLDER)/templates/xetex.tex -t tex --toc --outfile $(DOCUMENT).tex $(DOCUMENT).t2t

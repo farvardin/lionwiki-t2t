@@ -77,9 +77,9 @@ De façon générale, vous pouvez également sélectionner votre texte à format
 - ""+ liste numérotée""
 - ""``code``""
 - ""% commentaire"" (ce qui suivra le % ne sera pas affiché)
-- ""[http://www.site.org/image.jpg]"" : [http://www.pmwiki.org/pmwiki/pub/skins/pmwiki/pmwiki-32.gif]
+- ""[http://www.site.org/image.jpg]"" : [http://wiki.txt2tags.org/demos/lionwiki-t2t/var/upload/text-x-txt2tags-icon-alone.png]
 - ""[lien vers un site http://www.site.com]"" :  [lien vers un site http://www.site.com]
-- ""| tableau | cellule 2 | cellule 3 |"" :  fonctionne, à condition d'avoir un nombre pair de ``|``
+- ""| tableau | cellule 2 | cellule 3 |""
 
 | table | cellule 2 | cellule 3 |
 | table | cellule 2 | cellule 3 |
@@ -87,12 +87,14 @@ De façon générale, vous pouvez également sélectionner votre texte à format
 | table | cellule 2 | cellule 3 | cellule 4 ||
 | table | cellule 2 | cellule 3 | cellule 4 ||
 
-- Visitez [le site de txt2tags http://txt2tags.sourceforge.net/markup.html] pour apprendre la syntaxe ou utilisez les boutons pour une mise en forme rapide.
+- Visitez [le site de txt2tags http://txt2tags.org/markup.html] pour apprendre la syntaxe ou utilisez les boutons pour une mise en forme rapide.
 
 
 
 
 == Installation ==
+
+=== Linux / Unix ===
 
 Lionwiki s'installe très simplement : pas besoin de base de données sql, un serveur web (type Apache, Lighttpd ou Nginx) + php seront donc suffisants.
 
@@ -103,14 +105,21 @@ Voici une procédure possible pour son installation :
  - wget http://wiki.txt2tags.org/demos/lionwiki-t2t-minimal.zip
  - unzip lionwiki-t2t-minimal.zip
 
+=== Android ===
+
+If you're on Android and you wish to use your tablet / phone / androidtv as a server, you can use [this app https://play.google.com/store/apps/details?id=de.fun2code.android.pawserver] which is a free webserver.  Install the php plugin, and copy the files of the wiki into /sdcard/paw/html. Then visit http://localhost:8080/lionwiki-t2t from your android system.
+
+== Synchronize ==
 
 Pour son utilisation dans un contexte multi-appareils, il est possible de rajouter ceci :
 
 - (optionnel) installer owncloud : http://owncloud.org/
 - (optionnel) partager un des sous-dossier contenant l'installation de lionwiki dans owncloud
 - installer [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] sur l'appareil android et synchronisez vos fichiers textes dans ``var/pages/`` entre votre serveur et votre appareil mobile (tablette, téléphone), en utilisant soit ssh (recommandé) ou owncloud.
-- installer [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] sur l'appareil android et éditez les pages de votre site directement depuis votre appareil mobile !
+- installer [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] ou [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] sur l'appareil android et éditez les pages de votre site directement depuis votre appareil mobile !
 
+
+- __Bonus__: if you're using [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], create a new page and start your first line with either ``####`` or ``DENKZETTEL``, then enable in the option "checklist on". This way you'll be able to use your wiki as a shopping list: Items are created by the application with a + before them, and disabled with a -, and with some preprocessing in the config.t2t we are able to display it correctly in lionwiki-t2t. Check [this page to see a sample in action index.php?page=sample_shopping%23L%23%23CY%23]. (The ## characters are automatically added by denkzettel for adding a background color to the note).
 
 
 == Utilisation ==
@@ -122,6 +131,13 @@ Pour son utilisation dans un contexte multi-appareils, il est possible de rajout
 - configuration spécifique, rajout de regex, customisation avancée etc : vous pouvez rajouter tout cela dans le fichier config.t2t qui utilise la syntaxe de txt2tags, et qui sera appelé par lionwiki-t2t.
  - Vous pouvez regarder la page [[sandbox_cyoa]] et son fichier de configuration cyoa.t2t pour un exemple de ce qu'il est possible de faire en utilisant cette fonctionalité.
 - Vous pouvez également choisir d'avoir la possibilité d'éditer le wiki complet (y compris les fichiers de configuration, les css etc) en décompressant le fichier editor.zip à la racine du site. Attention, cela rajoute un risque de faille de sécurité non négligeable, c'est pour cette raison qu'il n'est pas installé par défaut. Au moins, essayez de renommer ce dossier sous un autre nom pour limiter les risques. Il faudra peut-être ajuster certains chemins dans sa source en fonction de votre hébergeur pour rendre votre wiki éditable.
+
+
+== Exporter en tant que PDF ==
+
+Vous pouvez exporter certaines des pages de votre wiki en pdf, et ainsi l'utiliser comment un traitement de texte ou un générateur de documents. Nous utilisons [textallion https://bitbucket.org/farvardin/textallion] pour cela. Install textallion in your server (installed by default in /usr/share/textallion/), copy the content of ``/usr/share/textallion/contrib/latexlib/*`` into ``/var/www/lionwiki-t2t/export_pdf/``. Uncomment in ``/var/www/lionwiki-t2t/menu.php`` the part related to "Generate pdf". If textallion is correctly setup, you should be able to render a pdf document from the content of the "[[textallion]]" page from your wiki. You can edit ``/var/www/lionwiki-t2t/export_pdf/lionwiki.t2t`` to add more pages.
+
+If it doesn't work as expected, run /var/www/lionwiki-t2t/export_pdf/run.php and trace the errors from there. When it's correctly set up, you should be able to do this from any browser which can access your lionwiki-t2t installation.
 
 
 == Avantages ==
@@ -153,6 +169,7 @@ __Quelques avantages__ de ce système :
  - either single click after the last character of the word and press CTRL + SHIFT + LEFT ARROW
  - or if you're on mozilla firefox, in ``about:config``, just set ``layout.word_select.eat_space_to_next_word`` to ``False``.
 
+- the ``var/pages`` folder is protected by .htaccess. Don't forget to enable it in both your ``/etc/apache2/sites-available/default`` and ``/etc/apache2/sites-available/default-ssl`` configurations!
 
 
 
