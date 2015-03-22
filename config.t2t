@@ -2,6 +2,7 @@
 % You can put below those lines the pre or proc rules you may need in your lionwiki-t2t
 
 % use [[the description | your_page]] syntax
+%!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 index.php?page=\2]'
 %!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 index.php?page=\2]'
 
 % use [[your_page]] syntax
@@ -13,6 +14,19 @@
 %-!postproc: '<!--\?' '<?'
 %-!postproc: '\?-->' '?>'
 
+
+% for use with https://play.google.com/store/apps/details?id=com.silli.notizen
+
+%!preproc: "\+ ####" "+ DENKZETTEL"
+%!preproc: "\+ DENKZETTEL" "''<style type=\"text/css\">ul{text-decoration:line-through;list-style-type:disc;color:#aaa;} ul li{padding-left:1em;} ol{list-style-type:disc;} ul, ol, li {margin-bottom:1.0em;}</style>''"
+
+%-!postproc: "<title>(.*?)#L##CY#" "<title>\1"
+% note: doesn't work: we can't alter with txt2tags titles and head, only body
+
+%--!preproc: '\+ Denkzettel' '%!preproc: "^- (.*?)" "- DELETELINE "\n%-!preproc: "^\+ " "- "\n%!postproc: "DELETELINE(.*?)$" "&nbsp; <s>\1</s>"'
+
+%-!preproc: 'DELETELINE (.*?)' '--\1--' 
+
 % center tables
 %-!postproc: '<table' '<table align="center"'
 
@@ -20,7 +34,7 @@
 
 %!preproc: '\{ \*\* \}'   'CONVERTboldBEGIN'
 %!preproc: '\{\/\*\* \}'  'CONVERTboldEND'
-    
+
 %!postproc: 'CONVERTboldBEGIN'    '<span class="bold"><b>'
 %!postproc: 'CONVERTboldEND'      '</b></span>'
 
@@ -35,10 +49,12 @@
 
 %!postproc: 'SIMPLELINE' '<hr/>'
 
-%% remove textallion special markup
+%% remove textallion special markup if it's not recognized like above
+%!preproc: '\{TOC\}'   '{LIONWIKITOC}'
 %!preproc: '\{.{4}\}'   ''
 %!preproc: '\{.{3}\}'   ''
 
+%!postproc: '\{LIONWIKITOC\}'   '{TOC}'
 
 
 %% other things

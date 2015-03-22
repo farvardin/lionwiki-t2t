@@ -22,6 +22,12 @@
 				case "pdf":
 					system("make pdf");
 					break;
+				case "lettre":
+					system("make lettre");
+					break;
+				case "cyoa-pdf":
+					system("make cyoa-pdf");
+					break;
 				case "clean":
 					system("make clean");
 					break;

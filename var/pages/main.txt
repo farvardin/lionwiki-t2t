@@ -2,7 +2,7 @@
 
 - //Play in the [sandbox]//
 
-- //Read the [[help | help.en]]//
+- //Read the [[help|help.en]]//
 
 - //**Download** an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
 

@@ -1,4 +1,6 @@
-//Read this [[help in French | help.fr]]. Lire cette aide [[en français | help.fr]].//
+%%toc 
+
+//Read this [[help in French|help.fr]]. Lire cette aide [[en français|help.fr]].//
 
 Lionwiki-t2t is a wiki system for the creation and maintenance of websites. 
 
@@ -8,19 +10,15 @@ Based on Lionwiki-t2t, this present system has some ready to use extensions and 
 
 
 
-%%toc 
-
-
-
 == Presentation ==
 
 The pages on this site are wiki-based pages, which means that pages can be created and edited by multiple authors. To edit a page, click on the "edit" link which exists somewhere on the page (generally at the top or in the footer). Some pages may be protected by a password.
 
-In this wiki, the default password is "demo". It is adviced to modify it after the installation (see below).
+In this wiki, the default password is "//demo//". It is adviced to modify it after the installation (see below).
 
 When you edit a page, you see the markup which describe the content of the page. The final rendering, with the choosen formatting, will be displayed only after the page is saved.
 
-Lionwiki-t2t and txt2tags are not [[(Wikipedia:)WYSIWYG]] - When editing a page, you see the //markup text// that describes the content of the page.  The basic rules for page markup are simple (you will find them below).
+Lionwiki-t2t and txt2tags are not [WYSIWYG https://en.wikipedia.org/wiki/WYSIWYG] - When editing a page, you see the //markup text// that describes the content of the page.  The basic rules for page markup are simple (you will find them below).
 
 
 == Editing rules (syntax) ==
@@ -43,9 +41,9 @@ The idea is you should be able to paste here your txt2tags documents without man
 - ""+ numbered list""
 - ""``code``""
 - ""% comment"" (after % won't be interpreted)
-- ``[http://www.website.org/image.jpg]`` : [http://www.pmwiki.org/pmwiki/pub/skins/pmwiki/pmwiki-32.gif]
+- ``[http://www.website.org/image.jpg]`` : [http://wiki.txt2tags.org/demos/lionwiki-t2t/var/upload/text-x-txt2tags-icon-alone.png]
 - ""[link to an external site http://www.site.com]"" :  [link to an external site http://www.site.com]
-- ""| tableau | cell 2 | cell 3 |"" :  will work in condition there is an even number of ``|``
+- ""| tableau | cell 2 | cell 3 |"" 
 
 | table | cell 2 | cell 3 |
 | table | cell 2 | cell 3 |
@@ -54,10 +52,12 @@ The idea is you should be able to paste here your txt2tags documents without man
 | table | cell 2 | cell 3 | cell 4 ||
 
 
-- Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the buttons for quick formatting.
+- Visit [txt2tags' website http://txt2tags.org/markup.html] to learn more about the syntax, or use the buttons for quick formatting.
 
 
 == Installation ==
+
+=== Linux / Unix ===
 
 Lionwiki is easy to install, no need to setup a sql database: a webserver (Apache, Lighttpd or Nginx) + php will be enough.
 
@@ -69,6 +69,11 @@ Here is what is possible to do:
  - unzip lionwiki-t2t-minimal.zip
 
 
+=== Android ===
+
+If you're on Android and you wish to use your tablet / phone / androidtv as a server, you can use [this app https://play.google.com/store/apps/details?id=de.fun2code.android.pawserver] which is a free webserver.  Install the php plugin, and copy the files of the wiki into /sdcard/paw/html. Then visit http://localhost:8080/lionwiki-t2t from your android system.
+
+
 == Synchronize ==
 
 To synchronise your wiki with your mobile devices, install this in addition:
@@ -77,8 +82,9 @@ To synchronise your wiki with your mobile devices, install this in addition:
 - (optionnal) share a subfolder containing your lionwiki install into owncloud
 - install [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] on an android device and synchronise the text files into var/pages/ between your server and your device (tablet, smartphone), using either ssh (recommended) or owncloud.
  - Alternatively, you can try http://git-annex.branchable.com/assistant/ instead of foldersync
-- install for example the [920 text editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] on android and edit the pages of your website from your mobile device!
+- install for example the [920 text editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] or [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] on android and edit the pages of your website from your mobile device!
 
+- __Bonus__: if you're using [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], create a new page and start your first line with either ``####`` or ``DENKZETTEL``, then enable in the option "checklist on". This way you'll be able to use your wiki as a shopping list: Items are created by the application with a + before them, and disabled with a -, and with some preprocessing in the config.t2t we are able to display it correctly in lionwiki-t2t. Check [this page to see a sample in action index.php?page=sample_shopping%23L%23%23CY%23]. (The ## characters are automatically added by denkzettel for adding a background color to the note).
 
 
 
@@ -89,6 +95,18 @@ To synchronise your wiki with your mobile devices, install this in addition:
 - special configurations, regex etc: you can add extra customisation in your wiki by using the config.t2t file
  - you can have a look at [[sandbox_cyoa]] and its configuration file cyoa.t2t for an example of a special customisation using this feature. 
 - you can edit the whole wiki (including conf files and index.php) by extracting the editor.zip in the root. Beware, it might be a security breach so you'd better at least rename the folder to something not obvious.
+
+
+== Export as PDF ==
+
+You can also export some of your pages in pdf and use your wiki as a word processor / document generator. We use [textallion https://bitbucket.org/farvardin/textallion] for this. Install textallion on your server (installed by default in /usr/share/textallion/), copy the content of ``/usr/share/textallion/contrib/latexlib/*`` into ``/var/www/lionwiki-t2t/export_pdf/``. Uncomment in ``/var/www/lionwiki-t2t/menu.php`` the part related to "Generate pdf". If textallion is correctly setup, you should be able to render a pdf document from the content of the "[[textallion]]" page from your wiki. You can edit ``/var/www/lionwiki-t2t/export_pdf/lionwiki.t2t`` to add more pages.
+
+If it doesn't work as expected, run /var/www/lionwiki-t2t/export_pdf/run.php and trace the errors from there. When it's correctly set up, you should be able to do this from any browser which can access your lionwiki-t2t installation.
+
+
+
+
+
 
 
 == Avantages ==

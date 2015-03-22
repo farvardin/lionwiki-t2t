@@ -89,8 +89,6 @@
 /*********************************************************************************/
 
 	@media only screen and (max-width: 600px) {
-	
-		
 		.\35 grid .\31 u, .\35 grid .\32 u, .\35 grid .\33 u, .\35 grid .\34 u, .\35 grid .\35 u, .\35 grid .\36 u, .\35 grid .\37 u, .\35 grid .\38 u, .\35 grid .\39 u, .\35 grid .\31 0u, .\35 grid .\31 1u, .\35 grid .\31 2u, .\35 grid .\31 u-first, .\35 grid .\32 u-first, .\35 grid .\33 u-first, .\35 grid .\34 u-first, .\35 grid .\35 u-first, .\35 grid .\36 u-first, .\35 grid .\37 u-first, .\35 grid .\38 u-first, .\35 grid .\39 u-first, .\35 grid .\31 0u-first, .\35 grid .\31 1u-first, .\35 grid .\31 2u-first {
 			float: none;
 			width: 100%;
