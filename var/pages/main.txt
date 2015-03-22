@@ -1,3 +1,9 @@
+
+
+
+%!target: rst
+%!options: --outfile ../../ReadMe.rst
+
 - //See the [full sample page index.php?page=sample]//
 
 - //Play in the [sandbox]//
