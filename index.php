@@ -1,4 +1,4 @@
-<?php // LionWiki-t2t 3.2.9d - 2013-09-20
+<?php // LionWiki-t2t 3.2.9e - 2015-03-22
 
 // This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.9 (c) Adam Zivner, licensed under GNU/GPL v2
 // and uses txt2tags.class.php to render the pages.
@@ -43,6 +43,10 @@ $LOCAL_HOUR = 0;
 
 // Loading menu.
 $CON_MENU = @file_get_contents("menu.php");
+$MENU_TOP = @file_get_contents("menu_top.php");
+$MENU_SIDE = @file_get_contents("menu_side.php");
+$CONTACT_FORM = @file_get_contents("contact_form.php");
+$CONTACT_SENT = @file_get_contents("contact_sent.php");
 
 
 
@@ -569,6 +573,10 @@ $tpl_subs = array(
 	'FORM_PASSWORD' => $FORM_PASSWORD,
 	'FORM_PASSWORD_INPUT' => $FORM_PASSWORD_INPUT,
 	'MENU' => $CON_MENU,
+	'MENU_SIDE' => $MENU_SIDE,
+	'MENU_TOP' => $MENU_TOP,
+    'CONTACT_FORM' => $CONTACT_FORM,
+    'CONTACT_SENT' => $CONTACT_SENT,
 );
 
 foreach($tpl_subs as $tpl => $rpl) // substituting values

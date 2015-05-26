@@ -6,8 +6,8 @@ $WIKI_TITLE = 'LionWiki and txt2tags sample'; // name of the site
 $PASSWORD = sha1("demo");
 $Admin["PASSWORD"] = sha1("demo");
 
-$TEMPLATE = 'templates/dandelion.html'; // presentation template
-$TEMPLATE = 'templates/fravashyo.html';
+//$TEMPLATE = 'templates/dandelion.html'; // presentation template
+//$TEMPLATE = 'templates/fravashyo.html';
 //$TEMPLATE = 'templates/sissou.html';
 //$TEMPLATE = 'templates/red.html';
 //$TEMPLATE = 'templates/blazekiss.html'; 

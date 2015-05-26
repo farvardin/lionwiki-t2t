@@ -76,7 +76,7 @@ class T2T {
   var $enabletagged = 1;   # enables the tagged mark (''tagged'') (default=1)
   var $enableraw = 1;      # enables the raw mark (""raw"")       (default=1)
   var $enableverbatim = 1; # enables the verbatim mark (``raw``)  (default=1)
-  var $enablehotlinks = 1; # enables hotlinks [http://www.externalserver.com/images.jpg]  (default=1) (note: it's not enabled in the python implementation of txt2tags)
+  var $enablehotlinks = 0; # enables hotlinks [http://www.externalserver.com/images.jpg]  (default=1) (note: it's not enabled in the python implementation of txt2tags)
   var $config = '';       # the full config area, including ext.ref.
   var $bodytext = '';     # the full body text after inclusions
   var $bodyhtml = '';     # the innerHTML of the body of the output, no <html>...<head>
