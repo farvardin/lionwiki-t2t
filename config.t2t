@@ -54,6 +54,9 @@
 %!preproc: '\{.{4}\}'   ''
 %!preproc: '\{.{3}\}'   ''
 
+%!preproc: '\{\*~~~\}'    'CONVERTlettrine' 
+%!postproc: 'CONVERTlettrine(.)' '</p><p class="initial">\1'
+
 %!postproc: '\{LIONWIKITOC\}'   '{TOC}'
 
 

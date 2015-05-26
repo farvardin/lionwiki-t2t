@@ -6,7 +6,7 @@ $WikiTitle = "Lionwiki-t2t" ;
 ?>
 
 	<head>
-		<title><? echo "$WikiTitle"; ?></title>
+		<title><?php echo "$WikiTitle"; ?></title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width" />
@@ -104,7 +104,7 @@ Your name:     &nbsp; &nbsp; &nbsp;
 <br/><br/>Your email address: &nbsp; 
 <input name="email" style="border: 1px solid rgb(150, 150, 150); background-color: rgb(240, 240, 240); color: rgb(0, 0, 0); font-family: Verdana; font-size: 10pt;" size="26" maxlength="35">
 
-<?
+<?php
 $guessword="";
 $hasard=rand(1,5);
 /* entrées à rajouter également dans le fichier contact_send */
@@ -128,7 +128,7 @@ case 5:
 ?>
 
 <br/><br/>
-<? echo "Word verification: Please enter this word in the field <i>$guessword</i> " 
+<?php echo "Word verification: Please enter this word in the field <i>$guessword</i> " 
 ?>
 <input name="verif" style="border: 1px solid rgb(150, 150, 150); background-color: rgb(240, 240, 240); color: rgb(0, 0, 0); font-family: Verdana; font-size: 10pt;" size="26" maxlength="35">
 </p>

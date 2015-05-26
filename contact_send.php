@@ -3,11 +3,11 @@
 <META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<?
+<?php
 $WikiTitle = "Lionwiki-t2t" ;
 ?>
 
-<title><? echo "$WikiTitle"; ?></title>
+<title><?php echo "$WikiTitle"; ?></title>
 
 		<link rel="stylesheet/less" href="templates/minimaxing/minimaxing.less" />
 		
@@ -24,7 +24,7 @@ $WikiTitle = "Lionwiki-t2t" ;
 <br/>
 <br/>
 
-<?
+<?php
 $email=$_POST['email'];
 $message=$_POST['message'];
 $sujet=$_POST['sujet'];
@@ -32,7 +32,7 @@ $name=$_POST['name'];
 $verif=$_POST['verif'];
 ?>
 
-<?
+<?php
 
  $Jour = date("d/m/Y H:i:s");
  
