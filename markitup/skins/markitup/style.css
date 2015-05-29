@@ -32,6 +32,10 @@
 	clear:both;
 	line-height:18px;
 	overflow:auto;
+   
+    width: 100%;
+    font-family: @MainFontFamilyEdit;
+    /*font-size: 100%;*/
 }
 .markItUpPreviewFrame	{
 	overflow:auto;
