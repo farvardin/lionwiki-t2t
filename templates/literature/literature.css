@@ -1,0 +1,460 @@
+/* Literature skin */
+
+/* By Eric Forgeot */
+/* Free Art licence http://artlibre.org/ */
+
+/* inspired by http://paulgiacherio.kodingen.com/pmwiki/pmwiki-2.2.30/pmwiki.php?n=PmWiki.DocumentationIndex  
+
+ */
+
+
+    /* optionnal */
+    /* see http://code.google.com/webfonts */
+    /* example with http://www.google.com/webfonts/family?family=Goudy+Bookletter+1911&subset=latin#code  */
+
+@font-face {
+    font-family: "MySerif";
+    font-style: normal;
+	font-weight: 400;
+    src: local('☺'), url('SortsMillGoudy-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: "MySerif";
+    font-style: italic;
+	font-weight: 400;
+    src: local('☺'), url('SortsMillGoudy-Italic.woff') format('woff');
+}
+
+
+
+
+body {
+	font-size:10px;
+	background:#fff url('background.jpg') repeat-x 0 0;
+
+/*
+	background:#FEFAF4;
+	background-image: url('background.jpg'), url('dropshadow.png');
+	background-repeat: no-repeat, no-repeat;
+	background-position: 0px 0px, 0px 119px; 
+*/
+
+}
+
+/* font-size-adjust is not supported on webkit https://bugs.webkit.org/show_bug.cgi?id=15257*/
+
+a { color: #1A8DCD; text-decoration:none;}
+a:visited { color: #5959C3; text-decoration:none;}
+a:hover { color: #16AFCD; text-decoration:underline; }
+
+
+	
+h1,h2,h3,h4,h5,h6{
+	/*font-family:MySansSerif, sans-serif;*/
+	font-family:MySerif, Georgia, serif;
+	/*font-weight:normal;*/
+	color:#555;
+}
+	
+
+
+
+#title{
+	/*position:relative;*/
+	margin-top:25px;
+	margin-left:57.5px;
+	font-size:3.2em;
+}
+
+
+#wikilogo{
+	/*position:relative;*/
+	margin-top:15px;
+	margin-left:20px;
+	font-size:3.2em;
+}
+
+
+/* 
+Page container
+*/ 
+
+#wrap{
+	margin: 0 auto;
+	text-align: justify;
+	float: center;
+	font-size:1em;
+	max-width:980px;
+	background: #FFF; /*#FEFAF4;	*/
+}
+
+/* These affect the main content area. */
+
+
+#content p {
+	text-indent:0.625em;	
+	font-size:1.06em; 
+	font-size:1.22em; 
+	line-height:1.5em;
+}
+
+#content table, dl { 
+	font-size:1.16em; 
+	line-height:1.5em;
+}
+
+#content ul li { 
+	font-size:1.16em; 
+	line-height:1.5em;
+}
+
+#content ul li li { 
+	font-size: 0.96em; 
+}
+
+#content ol li { 
+	font-size:1.16em; 
+	line-height:1.5em;
+}
+
+#content ol li li { 
+	font-size: 0.96em; 
+}
+
+#content code { 
+	font-size:0.80em; 
+	line-height:1.5em;
+    background-color:#F7F7E7;
+}
+
+
+
+#content h1{
+	font-family:MySerif, Georgia, serif;
+	font-size:2em;
+	margin:0 0 1em 0;
+	line-height:1em;
+	font-weight:bold;
+	color:#555;
+}
+#content h2{
+	font-family:MySerif, Georgia, serif;
+	font-size:1.625em;
+	margin:0 0 1em 0;
+	font-weight:bold;
+	color:#555;
+}
+#content h3{
+	font-family:MySerif, Georgia, serif;
+	/*text-transform:uppercase;*/
+	font-size:1.35em;
+	font-weight:bold;
+	color:#555;
+}
+#content h4{
+	font-family:MySerif, Georgia, serif;
+	font-size:1.25em;font-weight:bold;
+	color:#555;
+}
+
+
+#wikititle { 
+	padding-top: 00px;
+	/* use 0 otherwise will move the layout when notitle is used */
+	font-size:1em; 
+}
+
+
+
+
+
+
+/*
+ * additional menu
+ * 
+ * */
+ 
+
+#menu02 {
+	position:absolute;
+	right:10px;
+	top:5px;
+	float:left;
+	clear: both;
+	margin: 0;
+	padding: 0 0 1em 0;
+	border-bottom:1px solid #ccc;	
+}
+
+
+#menu02 {
+	font: 2.1em MySerif, Georgia, serif;
+}
+
+#menu02 li {
+	float: left;
+	list-style: none;
+	opacity:1;
+}
+
+#menu02 li a {
+	padding: 0.5em 1.5em;
+	text-decoration: none;opacity:0.8;
+	text-shadow: 1px 1px 2px black, 0 0 1em #444;
+	color: white;
+	/*font: 1.2em Georgia, serif;*/
+	font-style: italic; 
+}
+
+#menu02 li a:hover {
+	padding: 0.5em 1.5em;
+	text-decoration: underline;opacity:1;
+	text-shadow: 1px 1px 3px black, 0 0 1em black;
+	color: white;
+	/*font: 1.2em Georgia, serif;*/
+	font-style: italic; 
+}
+  
+
+
+	
+/*
+Action Nav
+*/
+
+
+
+#wikicmds {	
+	float:center;
+    margin-top:25px;
+	margin-right:10px;
+}
+
+#wikicmds ul {	
+    float:right;
+	background:#eee;	
+	font-size:1.5em;
+	padding:0.2em;
+	margin-left:10px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	list-style:none;
+	border:1px solid #ddd;
+	}
+
+#wikicmds li {
+    float:left;
+	margin-left:0;
+}
+
+#wikicmds li a {
+    display:block;
+    line-height: 3em;
+    text-decoration:none;
+    padding: 0em 2em;
+	font-family:MySansSerif, Sans-serif;
+	font-size: 0.6em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+	color: #555;
+	border:1px solid #eee;
+	/*font-size-adjust:0.50;	*/
+	}
+	
+
+#wikicmds li a:hover{
+	background:rgba(0,0,0,.12);
+    color:#000;
+    text-decoration:none;
+    -moz-border-radius:3px;
+	-webkit-border-radius:3px;
+    }
+
+
+/*
+ * search box */	
+	
+
+#searchbox {
+	float:right;
+    margin-top:40px;
+	margin-right:10px;
+	padding:0.2em;
+	font-family:MySerif, Georgia, serif;
+	color:#333;
+	width:280px;
+	border: 1px solid #eee;
+	background: #ccc;
+	opacity:0.6;
+	/*z-index:99;*/
+	}
+
+#searchbox .button {
+	float:right;
+	border: 0px ;
+	color: #777 ;
+}
+
+#searchbox .button:hover {
+	border: 0px ;
+	color: #222 ;
+}
+	
+#searchbox input {
+	float: left;
+	height:1.5em;
+	font-family:MySerif, Georgia, serif; 	
+	font-style:italic;
+	font-size:1.7em;
+	border: 1px solid #777;
+	background: #ccc;
+	color:#555;	
+}
+
+#searchbox input:focus {
+	background: #eee;
+	border: 1px solid #777;
+	color:#000;
+}
+
+
+/* footer */
+
+
+#footer {
+	/*clear:both;*/
+	margin-left: 0em;
+	font-family:MySansSerif, sans-serif;
+	font-size:0.7em;
+	border-top:1px solid #ddd;
+	padding-top:1.1em;
+	color:#888;
+	}
+
+#footer p {
+	margin-left: 0em;
+	font-family:MySansSerif, sans-serif;
+	font-size:1.2em;
+	border-top:1px solid #ddd;
+	padding-top:1.1em;
+	color:#888;
+	}
+	
+#footer a{
+	color:#377;
+}
+
+
+textarea {
+	width:90%;
+	padding:0.5em;
+	/*border:1px solid #ddd;
+	outline:0;*/
+	margin-bottom:1.2em;
+}
+
+
+/*
+Editing
+*/
+#wikiedit textarea {
+	width:90%;
+	padding:0.5em;
+	height:25em;
+	border:1px solid #ddd;
+	outline:0;
+	margin-bottom:1.2em;
+}
+	
+#wikiedit textarea:focus {
+	border:1px solid #afd7e3;
+}
+
+	
+
+#wikitext sectionedit sectionhead {
+	/*clear: none;*/
+	/* if it doesn't work, edit cookbook/sectionedit.php => div.sectionedit */
+}
+
+
+	
+/* These affect the printed appearance of the web view (not the separate
+** print view) of pages.  The sidebar and action links aren't printed. */
+@media print {
+  body { width:auto; margin:0px; padding:0.5em; }
+  #header, #menu01, #menu02, #wikicmds, .footnav, .blogit-comment-form, .blogit-comment-count h5 { display:none; }
+  #footer { padding:2px; }
+  #content { margin-left: 20px;	margin-top: 20px;
+	/*padding: 5px 40px 20px 5px;*/
+	font-family:MySerif, Georgia, serif;
+	font-size:1.4em; }
+
+}
+
+.sidehead {
+color:#444;
+}
+
+.lastmod {
+color:#444;
+}
+
+
+
+#commentblock {
+	color:#777;
+}
+
+.commenttext {
+	color:#4D5C49
+}
+
+
+.blogit-meta-data-head {
+	font-family:MySerif, Georgia, serif; 	
+	font-size:0.5em;
+	color:#777;
+}
+
+.blogit-meta-data-head > h5 {
+    color: #999999;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.blogit-tags, .blogit-comment-count {
+    color: #999999;
+    font-size:0.9em;
+}
+
+
+
+.initial { 
+    text-indent:0.20em;
+	font-size: 3.5em;
+	float:left;
+	padding: 0.3em 0.0em 0 0;
+}
+
+.initial:first-letter {
+    /*position: relative;*/
+    padding-top:0.1em;
+    display: block;
+    font-weight: normal;
+}
+
+
+@media screen and (max-width: 1280px)
+{
+    /* Rédigez vos propriétés CSS ici */
+}
+
+
+
+/* lionwiki */
+
+h2 span.par-edit,h3 span.par-edit,h4 span.par-edit,h5 span.par-edit,h6 span.par-edit{display:none}
+h2:hover span.par-edit,h3:hover span.par-edit,h4:hover span.par-edit,h5:hover span.par-edit,h6:hover span.par-edit{display:inline;font-size:small}

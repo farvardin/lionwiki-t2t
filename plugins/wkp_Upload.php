@@ -43,9 +43,10 @@ class Upload
 	{
 		global $CON, $TITLE, $editable, $T_PASSWORD, $T_WRONG_PASSWORD, $error;
 
+		
 		if($action == "upload") {
+			
 			$CON = "";
-
 			$TITLE = $this->TP_FILE_UPLOAD;
 
 			if(is_dir($this->datadir)) {
@@ -116,9 +117,9 @@ $CON .= '
 			} else
 				$CON = "<div class=\"error\">$this->TP_NO_DATA_DIR ($this->datadir).</div>";
 
-			//
-
-				// list of files
+		
+			// list of files
+				
 				if($opening_dir = @opendir($abs_dir)) {
 					$CON .= '<h2>' . $this->TP_DIRECTORY . " " . $rel_dir . '</h2><table id="fileTable" style="min-width : 600px;"><col span="2" style="color : red;" /><col /><col style="text-align : right;" /><col style="text-align : center;" /><tr><th>' . $this->TP_FILE_NAME . '</th><th>' . $this->TP_FILE_TYPE . '</th><th>' . $this->TP_FILE_SIZE . '</th><th>' . $this->TP_DELETE . '</th></tr>';
 
@@ -128,7 +129,7 @@ $CON .= '
 						if(strcasecmp($filename, '.htaccess') && $filename != '.' && ($filename != '..' || $rel_dir != ""))
 							$files[] = array($filename, is_dir($abs_dir . "/" . $filename));
 
-
+/*
 					function cmp_files($a, $b) // sort directories first, then files.
 					{
 						if($a[1] == $b[1])
@@ -136,7 +137,7 @@ $CON .= '
 						else
 							return $b[1];
 					}
-
+*/
 					if($files)
 						usort($files, "cmp_files");
 
@@ -163,17 +164,15 @@ $CON .= '
 
 					$CON .= "</table>";
 				}
-
-				// 
-				return true;
+			// 
+			return true;
 		}
-
 		return false;
 	}
 
 	function template()
 	{
-		global $html;
+		global $html, $CON;
 
 		$html = template_replace("plugin:UPLOAD", "<a href=\"$self?action=upload\" rel=\"nofollow\">Upload</a>", $html);
 	}

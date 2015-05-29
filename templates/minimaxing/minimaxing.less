@@ -45,7 +45,7 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 
 /* if you prefer to select a fixed background color, just uncomment one color from below */
 /* @MainColor: #549136; */
-@MainColor: #555; 
+@MainColor: #549136; 
 /*@MainColor: #549136;*/
 
 /* Header color */
@@ -254,9 +254,9 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     font-weight: bold;
 }
 .contentTextarea {
-    width: 90%;
+    width: 100%;
     font-family: @MainFontFamilyEdit;
-    font-size: 105%;
+    font-size: 100%;
 }
 #diff {
     white-space: pre-wrap;
@@ -333,7 +333,7 @@ table.wikitable td.em {
     background: #ccc;
     font-weight: bold;
 }
-table {
+table, #previewPane table {
     border-collapse: collapse;
     empty-cells: show;
     border-spacing: 0;
@@ -345,7 +345,7 @@ table {
     border-spacing: 0;
     border: 0px solid #fff;
 }
-th, td {
+th, td, #previewPane th, #previewPane td {
     padding: .3em .5em;
     margin: 0;
     vertical-align: top;
@@ -359,7 +359,7 @@ th, td {
     border: 0px solid #999;
     text-align: left;
 }
-th {
+th, thead, #previewPane th, #previewPane thead {
     font-weight: bold;
     background-color: #ddd;
 }
@@ -613,6 +613,37 @@ a.toolbarTextareaItem b  {
     background-color: (@Bg-light);
 }
 
+.txt2tagsMenu {
+	background-color: (@Bg-extra-light/1.1);
+}
+.txt2tagsMenu:hover {
+	background-color: (@Bg-extra-light/1.1 + #111);
+}
+
+.button_txt2tags_true {
+	background-color: @MainColor;
+	color: #fff;
+}
+.button_txt2tags_true:hover {
+	background-color: (@MainColor + #222);
+}
+
+.button_txt2tags_false {
+	background-color: @HeaderColor;
+	color: #fff;
+}
+.button_txt2tags_false:hover {
+	background-color: (@HeaderColor + #222);
+}
+
+.valide {
+	color: @MainColor;
+	background-color: (@Bg-extra-light/1.1);
+}
+.refuse {
+	color: @HeaderColor;
+	background-color: (@Bg-extra-light/1.1);
+}
 
 /********************************/
 /* 1000px (>= 1000px)           */
@@ -1020,9 +1051,9 @@ a.toolbarTextareaItem b  {
         border-bottom: solid 1px #ced0b7;
     }
     .contentTextarea {
-        width: 96%;
+        width: 100%;
         font-family: @MainFontFamily;
-        font-size: 105%;
+        font-size: 100%;
         padding: 0px;
         margin-left: -15px;
     }
