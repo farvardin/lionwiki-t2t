@@ -24,14 +24,20 @@
 	font:11px Verdana, Arial, Helvetica, sans-serif;
 }
 .markItUpEditor {
-	font:12px 'Courier New', Courier, monospace;
+	/*font:12px 'Courier New', Courier, monospace;*/
 	padding:5px;
 	/*width:690px;*/
 	width:96%;
 	/*height:320px;*/
 	clear:both;
-	line-height:18px;
+	/*line-height:18px;*/
+    line-height:1.3em;
 	overflow:auto;
+    
+    width: 100%;
+    font-family: 1.2em @MainFontFamilyEdit;
+    color: #444;
+    /*font-size: 100%;*/
 }
 .markItUpPreviewFrame	{
 	overflow:auto;
