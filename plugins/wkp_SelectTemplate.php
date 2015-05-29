@@ -23,6 +23,8 @@ class SelectTemplate
 		"templates/red.html" => "Red panel",
 		"templates/minimal.html" => "Minimal",
 		"templates/terminal.html" => "Green terminal",
+		"templates/light.html" => "Light",
+		"templates/upload.html" => "Upload",
 		"templates/wikiss.html" => "WiKiss"
 	);
 
