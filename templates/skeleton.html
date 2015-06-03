@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>{WIKI_TITLE  - }{PAGE_TITLE_HEAD}</title>
+	{HEAD}
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="templates/skeleton/base.css">
+	<link rel="stylesheet" href="templates/skeleton/skeleton.css">
+	<link rel="stylesheet" href="templates/skeleton/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="templates/favicon.png">
+	
+
+</head>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+
+
+	 <div class="container">
+        
+      <div class="three columns sidebar">
+		<nav>
+          <ul>
+			{MENU}
+
+          <li>{HOME}</li>
+		<li>{RECENT_CHANGES}</li>
+		{<li> EDIT </li>}
+		</ul>
+        {SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}
+        </nav>
+      </div>
+        
+     
+   
+
+
+<div class="twelve columns offset-by-one content">
+
+
+   
+<h1 id="page-title">{<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>    
+<!--<div id='header'>-->
+<br/><br/>
+<!--<div id="title">{WIKI_TITLE}</div>-->
+
+	<div id="menu02"></div>
+    
+
+
+    
+<!--PageHeaderFmt-->
+<br/> <div id='wikilogo'><a href='index.php'><img src='lionwiki-t2t_logo.png' alt='{WIKI_TITLE}' border='0' /></a> </div>
+
+
+
+
+<!--</div>-->
+
+
+<!--/PageHeaderFmt-->
+<!--<div id="wrap">
+
+<div id='menu01'>-->
+
+
+<!--{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}-->
+	<br/><br/>
+	{TOC}
+<!--</div>    -->
+
+   
+     <!--PageActionFmt-->
+ 
+ <div id='wikicmds'><!--wiki:{$Group}.PageActions {$SiteGroup}.PageActions--></div>
+ 
+ <!--  <div id='content'>-->
+
+    
+<!--PageTitleFmt-->
+        <div id='wikititle'>
+          <!--<h1><a href='{$ScriptUrl}/{$Group}'>{$Group}</a> / {$Title}</h1>       -->
+          </div>
+
+
+{<div class="error"> ERROR </div>}
+{CONTENT}
+{plugin:TAG_LIST}
+{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+{plugin:TOOLBAR_TEXTAREA}
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
+
+
+<br/>  
+<hr/>
+<!--PageFooterFmt-->
+  <div id='footer'>
+    <div class='footnav'>
+  {EDIT} &nbsp;&nbsp; {HISTORY} &nbsp;&nbsp; {RECENT_CHANGES}</div>
+      </div>
+      <!--wiki:{$Group}.SiteFooter {$SiteGroup}.SiteFooter-->
+     <br/>  
+	<!--</div>-->
+<!--HTMLFooter-->
+<!--</div>-->
+</div>
+
+
+<!--</div>-->
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
