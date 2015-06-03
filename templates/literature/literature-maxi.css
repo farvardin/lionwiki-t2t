@@ -1,0 +1,118 @@
+
+/* MAXI */
+
+@media all and (min-width: 800px) and (max-width: 5080px)
+{
+
+#content { 
+	margin-left: 180px;
+	margin-right: 40px;
+	/* use same width as menu01 - 20 */
+	margin-top: -20px;
+	padding: 5px 60px 20px 5px;
+	font-family:MySerif, Georgia, serif;
+	font-size:1.6em; 
+}
+
+	#menu02 ul {
+		/*font: bolder 1.4em sans-serif;*/
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		display: inline;
+		float: left; 
+		border-radius-bottomleft: 0px; 
+		display: block;
+	}
+
+
+#header{
+	font-size:1em;
+	line-height:1em;
+	font-family:MySerif, Georgia, serif;
+	text-shadow: 1px 1px 2px black, 0 0 1em black;
+	color:#ddd;
+	float:none;
+}
+
+/*
+Sidebar
+*/	
+	#menu01 {
+		/*display: none;*/
+		float: left;
+		clear: both;
+		margin-top: -15px;
+		text-align: left;
+		width:180px; 
+		/* use same width as in content */
+		border-right:0px #eee solid; 
+		line-height:1.3em;
+		font-size:1.1em; 
+		/* background-color:#F7F7F7; */
+		font-family:MySansSerif, sans-serif;
+		/*font-size-adjust:0.56;*/
+		}
+	
+	#menu01 ul {
+		list-style:none;
+		font-size:1.3em;
+		padding-left:0.5em;
+		margin-right:1.2em;
+		margin-left: 0.5em;
+		margin-top: 0.2em;
+		margin-bottom: 0.5em;
+		border-top: 0px solid #eee;
+	}
+	
+
+	#menu01 li {
+		margin-left:0;
+	}
+
+ 
+    
+	#menu01 li a {
+		display:block;
+		color:#888;
+		line-height:3em;
+		border-bottom:1px solid #eee;
+	
+		padding: 0em 0em 0em 0.9em;
+		font-size: 1em;
+		/*letter-spacing: 0.1em;*/
+	}
+	
+	#menu01 li a:hover{
+		background:#eee;
+		color:#555;
+		opacity:0.7;
+	}
+	
+	#menu01 h1, h2, h3, h4, h5 {
+		margin-left: 0.25em;
+		font-family:MySansSerif, sans-serif;
+		font-size:1.7em;
+		color:#777;
+	}
+
+/*#menu01 h2:before {white-space:pre; content:"\A \A \A";  display: block;}*/
+#menu01 ul:after {white-space:pre; content:"\A";  display: block;}
+
+
+	#menu01 p {
+		font-size:1.4em;
+	}
+
+
+	
+}
+
+#wrap {
+    margin-top: 0px;
+}
+
+
+
+
+

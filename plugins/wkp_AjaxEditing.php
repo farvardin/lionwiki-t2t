@@ -53,8 +53,7 @@ class AjaxEditing
 		$CON_FORM_BEGIN = "<form action=\"$self\" class=\"ajaxForm\" method=\"post\"><input type=\"hidden\" name=\"action\" value=\"save\" /><input class=\"ajaxShowSource\" type=\"hidden\" name=\"showsource\" value=\"$showsource\" />";
 
 		$CON_FORM_END = "</form>";
-
-		$CON_TEXTAREA = "<textarea name=\"content\" class=\"ajaxContentTextarea contentTextarea\" cols=\"83\" rows=\"$rows\">" . h($content ? $content : $CON) . "</textarea><input type=\"hidden\" id=\"ajaxPage\" name=\"page\" value=\"".h($page)."\" />";
+		$CON_TEXTAREA = "<textarea name=\"content\" class=\"ajaxContentTextarea contentTextarea\">" . h($content ? $content : $CON) . "</textarea><input type=\"hidden\" id=\"ajaxPage\" name=\"page\" value=\"".h($page)."\" />";
 
 		if(!$showsource) {
 			$CON_SUBMIT = "<input class=\"submit ajaxContentSubmit\" onclick=\"ajaxAction('save', this);return false;\" type=\"submit\" value=\"$T_DONE\" />";
