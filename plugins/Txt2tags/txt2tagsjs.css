@@ -1,0 +1,144 @@
+textarea {
+			font-family: monospace;
+			resize: vertical;
+		}
+
+dl {
+	padding: 5px;
+	background-color: #ccc;
+}
+
+
+#tabSize table tr,th,td ,thead{
+	border: 1px solid #999;
+}
+#tabSize table {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+}
+#tabSize thead {
+	font-weight: bold;
+}
+
+.txt2tagsMenu {
+	padding: 0 10px;
+	display: inline-block;
+	color: black;
+	border: solid #999 1px;
+	height: 24px;
+	margin-bottom: 0.4em;
+	background-color: #dacccc;
+	vertical-align: middle;
+	transition: background 300ms;
+	cursor: pointer;
+	font-size: 0.8em;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+.txt2tagsMenu:hover {
+	background-color: #ebdddd;
+}
+		
+#switchButton  img {
+	max-width: 20px;
+	max-height: 20px;
+}
+		
+#headerContainer {
+	display: block;
+	width: 95%;
+	margin: 1% 2.5%;
+	vertical-align: middle;
+	line-height: 24px;
+}
+
+#inputPane {
+	background-color: #fff;
+	padding: 5px;
+}
+
+#previewPane {
+	background-color: #fff;
+	padding: 5px;
+}
+
+#previewPane > * {
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+#previewPane > :first-child {
+	margin-top: 4px; /* pane padding */
+}
+
+#previewPane * {
+	line-height: 1.4em;
+}
+
+#previewPane pre code {
+	margin-left: 0em;
+	font-size: 1.0em;
+}
+
+#previewPane code {
+	background-color: #dedede;
+	font-size: 1.3em;
+}
+
+#previewPane blockquote {
+	background-color: #dedede;
+	margin-left: 3em;
+	font-size: 1.0em;
+	/*font-family:monospace;*/
+}
+
+#previewPane pre {
+	background-color: #dedede;
+	margin-left: 3em;
+	font-size: 1.4em;
+}
+
+#panesContainer {
+	width: 95%;
+	margin: 0 2.5%;
+	position: relative;
+}
+
+#leftContainer, #rightContainer {
+	display: block;
+	position: absolute;
+	width: 100%;
+}
+
+.switch {
+	-webkit-animation: changeOpacity 500ms; /* Chrome, Safari, Opera */
+	animation: changeOpacity 500ms;
+	transition : top 500ms, left 500ms;
+}
+
+.contentTextarea {
+	padding: 2px;
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid rgb(60, 118, 157);
+	overflow: auto;
+	/* note: the panes get their height set with
+	   javascript; see sizeTextAreas(). */
+
+	/* for now, set a height so things look nice
+	   if the user has javascript disabled */
+	/*height: 200px;*/
+}
+
+@keyframes changeOpacity {
+    0% {opacity: 1;}
+    50% {opacity: 0.3;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes changeOpacity {
+    0% {opacity: 1;}
+    50% {opacity: 0.3;}
+    100% {opacity: 1;}
+}

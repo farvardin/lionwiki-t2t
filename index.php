@@ -241,9 +241,21 @@ if($action == 'save' && !$preview && authentified()) { // do we have page to sav
 if($action == 'edit' || $preview) {
 	$CON_FORM_BEGIN = "<form action=\"$self\" method=\"post\"><input type=\"hidden\" name=\"action\" value=\"save\"/><input type=\"hidden\" name=\"last_changed\" value=\"$last_changed_ts\"/><input type=\"hidden\" name=\"showsource\" value=\"$showsource\"/><input type=\"hidden\" name=\"par\" value=\"".h($par)."\"/><input type=\"hidden\" name=\"page\" value=\"".h($page)."\"/>";
 	$CON_FORM_END = '</form>';
-	$CON_TEXTAREA = '<textarea class="contentTextarea" name="content" style="width:100%" cols="100" rows="15">'.h(str_replace("&lt;", "<", $CON)).'</textarea>';
+	$CON_TEXTAREA =
+		'<div id="panesContainer">
+		
+			<div id="leftContainer">
+				<textarea id="inputPane" class="contentTextarea" name="content" onscroll="sync(true)">'.h(str_replace("&lt;", "<", $CON)).'</textarea>
+			</div>
+			
+			<div id="rightContainer">
+				<div id="previewPane" class="contentTextarea" onscroll="sync(false);"></div>
+			</div>
+			
+		</div>';
+		
 	$CON_PREVIEW = '<input class="submit" type="submit" name="preview" value="'.$T_PREVIEW.'"/>';
-
+	
 	if(!$showsource) {
 		$CON_SUBMIT = '<input class="submit" type="submit" value="'.$T_DONE.'"/>';
 		$EDIT_SUMMARY_TEXT = $T_EDIT_SUMMARY;

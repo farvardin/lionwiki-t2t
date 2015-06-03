@@ -1,0 +1,289 @@
+/* Literature skin */
+
+/* By Eric Forgeot */
+/* Free Art licence http://artlibre.org/ */
+
+/* inspired by http://paulgiacherio.kodingen.com/pmwiki/pmwiki-2.2.30/pmwiki.php?n=PmWiki.DocumentationIndex  
+
+ */
+
+
+    /* optionnal */
+    /* see http://code.google.com/webfonts */
+    /* example with http://www.google.com/webfonts/family?family=Goudy+Bookletter+1911&subset=latin#code  */
+
+
+
+/* MINI */
+
+@media all and (min-width: 00px) and (max-width: 800px)
+{
+
+#content { 
+	margin-left: 40px;
+	margin-right: 20px;
+	/* use same width as menu01 - 20 */
+	padding: 5px 60px 20px 5px;
+	font-family:MySerif, Georgia, serif;
+	font-size:1.9em; 
+}
+
+#content { 
+	margin-left: 20px;
+	margin-right: 20px;
+	/* use same width as menu01 - 20 */
+	margin-top: -70px;
+	padding: 5px 5px 5px 5px;
+	font-family:MySerif, Georgia, serif;
+	font-size:1.9em; 
+}
+
+p
+    {
+        font-size: 1em;
+    }
+    
+#content p {
+	line-height:1.3em;
+}
+
+    
+#header{
+	font-size:1em;
+	line-height:1em;
+	font-family:MySerif, Georgia, serif;
+	text-shadow: 1px 1px 2px black, 0 0 1em black;
+	color:#ddd;
+	float:none;
+}
+
+/*
+Sidebar
+*/	
+
+
+#menu01 {
+	/*display: none;*/
+	margin:auto;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	padding-bottom: 45px;
+	border-right:0px #eee solid; 
+	line-height:1.0em;
+	font-size:1.4em; 
+	/*font-family:MySansSerif, sans-serif;*/
+	float: center;
+	font-family:MySerif, Georgia, serif;
+	}
+	
+#menu01 ul {
+	 padding:0;
+ margin:auto;
+ list-style-type:none;
+ float:center;
+	}
+
+
+
+
+#menu01 li {	
+/*	background:#eee;	
+	padding:0.2em;
+	margin-left:1em;
+	border-radius:5px;
+	border:1px solid #ddd;
+    height:2.5em;*/
+    width:auto;
+    float:left;
+    display:block;
+}
+
+
+
+/* button style */
+/* http://www.htmldrive.net/items/show/854/Simple-CSS3-Button-Navigation */
+
+#menu01 .wikilink  {
+height:1.1em;
+  outline: 0;
+    padding: 7px 4px;
+    display: block;
+    color: #444;
+    font-weight: bold;
+    /*text-shadow: 1px 1px #1f272b;*/
+    border:1px solid #ddd;
+    border-radius: 3px;
+    background: #eee; /* old browsers */
+/*    background: -moz-linear-gradient(top, #3D4850 3%, #313d45 4%, #F1F2D1 100%); /* firefox */
+/*    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3D4850), color-stop(4%,#313d45), color-stop(100%,#232B30)); /* webkit */
+   /* box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */
+    }
+
+
+#menu01 .selflink, .blogit-admin-link {
+height:1.1em;
+  outline: 0;
+    padding: 7px 4px;
+    display: block;
+    color: #333;
+    font-weight: bold;
+    /*text-shadow: 1px 1px #1f272b;*/
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: #ccc; /* old browsers */
+    /*background: -moz-linear-gradient(top, #3D4850 3%, #313d45 4%, #38576A 100%); /* firefox */
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#F1F2D1), color-stop(4%,#E8E8E8), color-stop(100%,#F1F1F1)); /* webkit */
+   /* box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */
+}
+
+
+
+#menu01 .wikilink:hover{
+   color: #fff;
+    background: #4C5A64; /* old browsers */
+    background: -moz-linear-gradient(top, #4C5A64 3%, #404F5A 4%, #2E3940 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4C5A64', endColorstr='#2E3940',GradientType=0 ); /* ie */
+}
+	
+
+#menu01 .wikilink:active {
+/* button style */
+   background-position: 0 top;
+    position: relative;
+    top: 1px;
+    color: #fff;
+    padding: 7px 4px 4px;
+    background: #20282D; /* old browsers */
+    background: -moz-linear-gradient(top, #20282D 3%, #252E34 51%, #222A30 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */
+    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */
+}
+
+
+/* end button style */
+
+#menu01 li {
+color:#777;
+ margin-left:2px;
+ float:left; 
+}
+
+ 
+ /* buttons */   
+#menu01 ul li a {
+ display:block;
+ float:center;   
+ /*width:90px;*/
+ text-decoration:none;
+ text-align:center;
+ vertical-align:middle;
+ padding:5px;
+font-size:1.3em;
+}
+	
+#menu01 li a:hover{
+/*display:block;
+	/*background:#eee;*/
+	/*color:#334;*/
+	opacity:0.7;*/
+}
+
+
+
+#menu01 h1, h2, h3, h4, h5 {
+	margin-left: 0.25em;
+	font-family:MySansSerif, sans-serif;
+	font-size:1.7em;
+	color:#777;
+}
+
+
+
+/*#menu01 h2:before {white-space:pre; content:"\A \A \A";  display: block;}*/
+#menu01 ul:after {white-space:pre; content:"\A \A \A";  display: block;}
+
+/* doesn't work yet
+#menu01 {
+text-replace: "À propos" "❦ ?";
+}
+* */
+
+
+
+
+#menu01 p {
+	font-size:1.4em;
+}
+
+
+
+/*
+ * additional menu
+ * 
+ * */
+ 
+
+#menu02 {
+    display: none;
+}
+
+
+#wikilogo{
+	/*position:relative;*/
+	/*display: none;*/
+	margin-top:-10px;
+	margin-left:20px;
+}
+
+
+
+
+#searchbox {
+	float:right;
+    margin-top:20px;
+	margin-right:10px;
+	padding:0.2em;
+	font-family:MySerif, Georgia, serif;
+	color:#333;
+	width:230px;
+	border: 1px solid #eee;
+	background: #ccc;
+	opacity:0.6;
+	/*z-index:99;*/
+	}
+
+#searchbox .button {
+	float:right;
+	border: 0px ;
+	color: #777 ;
+}
+
+#searchbox .button:hover {
+	border: 0px ;
+	color: #222 ;
+}
+	
+#searchbox input {
+	float: left;
+	height:1.5em;
+	font-family:MySerif, Georgia, serif; 	
+	font-style:italic;
+	font-size:1.5em;
+	border: 1px solid #777;
+	background: #ccc;
+	color:#555;	
+}
+
+#searchbox input:focus {
+	background: #eee;
+	border: 1px solid #777;
+	color:#000;
+}
+
+
+
+
+}
+
+

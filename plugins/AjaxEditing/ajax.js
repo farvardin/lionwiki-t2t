@@ -88,6 +88,8 @@ function ajaxAction(action, obj)
 		renumberParagraphs();
 
 		registerAjax(document.getElementById("par-" + getNearestParId(div)));
+		
+		if(action == "save") window.location.reload();
 	});
 }
 
@@ -152,11 +154,11 @@ function registerEditor(node)
 if(typeof wons == "undefined")
 	wons = new Array();
 
-wons.push("registerAjax()");
+wons.push(registerAjax);
 
 window.onload = function() {
 	for(var i = 0; i < wons.length; i++)
-		eval(wons[i]);
+		wons[i]();
 }
 
 /**
