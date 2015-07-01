@@ -256,7 +256,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 .contentTextarea {
     width: 100%;
     font-family: @MainFontFamilyEdit;
-    /*font-size: 100%;*/
+    font-size: 100%;
 }
 #diff {
     white-space: pre-wrap;
@@ -525,6 +525,14 @@ img.top {
     margin: 4px 0 2.25em 0;
 }
 
+img.noborder {
+		display: block;
+		margin: 0.1em;
+		border: 0;
+		position: absolute;
+		z-index: 10;
+	}
+	
 ol, ul {
 
 }
@@ -613,18 +621,18 @@ a.toolbarTextareaItem b  {
     background-color: (@Bg-light);
 }
 
-.txt2tagsMenu {
+.txt2tagsMenu, input {
 	background-color: (@Bg-extra-light/1.1);
 }
-.txt2tagsMenu:hover {
+.txt2tagsMenu:hover, input.submit:hover {
 	background-color: (@Bg-extra-light/1.1 + #111);
 }
 
-.button_txt2tags_true {
+.button_txt2tags_true, input.submit {
 	background-color: @MainColor;
 	color: #fff;
 }
-.button_txt2tags_true:hover {
+.button_txt2tags_true:hover, input.submit:hover {
 	background-color: (@MainColor + #222);
 }
 

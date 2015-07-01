@@ -95,6 +95,7 @@ $T_DIFF = 'diff';
 $T_CREATE_PAGE = 'Create page';
 $T_PROTECTED_READ = 'You need to enter password to view content of site: ';
 $T_WRONG_PASSWORD = 'Password is incorrect.';
+$T_ALREADY_LOGGED_IN = 'You are already logged in!';
 
 if($_GET['lang']) {
 	$LANG = clear_path($_GET['lang']);
@@ -255,7 +256,7 @@ if($action == 'edit' || $preview) {
 		</div>';
 		
 	$CON_PREVIEW = '<input class="submit" type="submit" name="preview" value="'.$T_PREVIEW.'"/>';
-	
+
 	if(!$showsource) {
 		$CON_SUBMIT = '<input class="submit" type="submit" value="'.$T_DONE.'"/>';
 		$EDIT_SUMMARY_TEXT = $T_EDIT_SUMMARY;

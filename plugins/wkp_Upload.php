@@ -155,7 +155,7 @@ $CON .= '
 							$CON = $CON . '<td><a href="' . $this->datadir . $path . '">' . $file[0] . '</a></td><td>' . $this->TP_FILE . '</td><td>' . @number_format(@filesize($this->datadir . $path), 0, ".", " ") . ' B</td>';
 
 						if((authentified()) && ($file[0] != '..'))
-							$CON .= '<td><a title="delete" href="'.$self.'?action=upload&del=' . u($path) . "&curdir=" . u($rel_dir) . '">&times;</a></td>';
+							$CON .= '<td><a title="delete" onclick="return(confirm(\'Voulez-vous supprimer ce fichier/dossier ?\'))" href="'.$self.'?action=upload&del=' . u($path) . "&curdir=" . u($rel_dir) . '">&times;</a></td>';
 						else
 							$CON .= "<td>&nbsp;</td>";
 
