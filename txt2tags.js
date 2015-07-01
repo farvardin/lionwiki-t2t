@@ -170,13 +170,13 @@ this.makeHtml = function(text) {
     //text = text.replace(/[^(ht|f)tps?:]\/\/([^\s](.*?[^\s])?)\/\//g, ' <i>$1</i>');
 	text = text.replace(/(?!``)\/\/([^\s](.*?[^\s])?)\/\/(?!``)/g, '<i>$1</i>');  
     // ------ linked images (note: first before links)
-    text = text.replace(/\s*\[\[(.+?).jpg\] (.+)?\]/gm, '<a href="$2"><img src="$1.jpg"></img></a>');
-    text = text.replace(/\s*\[\[(.+?).png\] (.+)?\]/gm, '<a href="$2"><img src="$1.png"></img></a>');
-    text = text.replace(/\s*\[\[(.+?).gif\] (.+)?\]/gm, '<a href="$2"><img src="$1.gif"></img></a>');
+    text = text.replace(/\[\[(.+?).jpg\] (.+)?\]/gm, '<a href="$2"><img src="$1.jpg"></img></a>');
+    text = text.replace(/\[\[(.+?).png\] (.+)?\]/gm, '<a href="$2"><img src="$1.png"></img></a>');
+    text = text.replace(/\[\[(.+?).gif\] (.+)?\]/gm, '<a href="$2"><img src="$1.gif"></img></a>');
     // ------ images       [image.png]
-    text = text.replace(/\s*\[(.+?).jpg\]/gm, '<img src="$1.jpg"></img>');
-    text = text.replace(/\s*\[(.+?).png\]/gm, '<img src="$1.png"></img>');
-    text = text.replace(/\s*\[(.+?).gif\]/gm, '<img src="$1.gif"></img>');
+    text = text.replace(/\[(.+?).jpg\]/gm, '<img src="$1.jpg"></img>');
+    text = text.replace(/\[(.+?).png\]/gm, '<img src="$1.png"></img>');
+    text = text.replace(/\[(.+?).gif\]/gm, '<img src="$1.gif"></img>');
     
     // ------ normal link   [item http://url] 
     text = text.replace(/\[(.*?) MYSFTP(.*?)\]/g, '<a href="MYSFTP$2">$1</a>');
@@ -185,6 +185,11 @@ this.makeHtml = function(text) {
     text = text.replace(/\[(.*?) MYHTTPS(.*?)\]/g, '<a href="MYHTTPS$2">$1</a>');
     text = text.replace(/\[(.*?) MYHTTP(.*?)\]/g, '<a href="MYHTTP$2">$1</a>');
 
+    // lionwiki links [[desc | local.link]]
+    text = text.replace(/\[\[(.*)[ ]*\|[ ]*(.*?)\]\]/g, '<a href="index.php?page=$2">$1</a>');
+    
+    text = text.replace(/\[\[(.*?)\]\]/g, '<a href="index.php?page=$1">$1</a>');
+    
     // local links
     text = text.replace(/\[(.*) ([^ ].*?)\]/g, '<a href="$2">$1</a>');
     
@@ -201,7 +206,7 @@ this.makeHtml = function(text) {
     //text = text.replace(/[^(href=")](www(.*?[^\s])\s+)/gi,"<a href=\"http://www$1\">http://www.$1</a>");
         
     // ------ auto link     http://url
-    text = text.replace(/[^(href=")]((https|http|ftps|sftp|dict):\/\/[^'"\s]+)/gi,"<a href=\"$1\">$1</a>");
+    text = text.replace(/[^(href=")]((https|http|ftps|sftp|dict):\/\/[^'"\s]+)/gi," <a href=\"$1\">$1</a>");
     
 
     // ------ lists etc
@@ -216,13 +221,13 @@ this.makeHtml = function(text) {
     text = text.replace(/^:\s(.+)$/gm, '<dl><dt>$1</dt></dl>');/* for definition lists */
     //text = text.replace(/<dl>/gm, '</dd><dl>');/* for definition lists */
     
-	// ------ tableau
+	// ------ tables
 	text = text.replace(/^[ ]*\|_(.+)/gm, '<table><tr><td>$1');
-	text = text.replace(/^[ ]*\|\|(.+)\|$/gm, '<table><thead><td>$1</thead>');
+	text = text.replace(/^[ ]*\|\|(.+)\|[ ]*$/gm, '<table><thead><td>$1</thead>');
 	text = text.replace(/^[ ]*\|\/(.+)/gm, '<table><tr><th>$1');
-	text = text.replace(/(.+)\|\n^(?![ |])/gm, '$1</table>');
+	text = text.replace(/(.+)\|[ ]*\n^(?![ |])/gm, '$1</table>');
 	text = text.replace(/^[ ]*\|{1}/gm, '<tr><td>');
-	text = text.replace(/\|{1}$/gm, '');
+	text = text.replace(/\|{1}[ ]*$/gm, '');
 	//text = text.replace(/^([ ]*\|\/.+)\|{1}/gm, '<th>');
 	text = text.replace(/\|{1}/gm, '<td>');
         // ------ // end of txt2tags to html

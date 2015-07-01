@@ -188,27 +188,13 @@
 							if(button.name == "Table") {
 								$('#tabSize').css({'left': event.pageX, 'top': event.pageY, 'display': 'block'});
 							} else if(button.name == "Picture") {
-								$("#blackScreen").append($("<form></form>").attr("id", "pictureForm"));
-								$("#pictureForm").append($("<div></div>").attr("id", "iframeUpload"));
-								$("#iframeUpload").append($("<iframe></iframe>").attr("src", "index.php?page=main&template=templates/upload.html"));
-								$("#iframeUpload").append($("<div></div>").attr("id", "reload").click(function() {
-									$("#iframeUpload iframe").attr("src", "index.php?page=main&template=templates/upload.html");
-								}));
-								$("#pictureForm").append($("<div></div>").attr("id", "nameImg").bind('DOMSubtreeModified',function() {
-									if(regexBlacklist.test($("#nameImg").html()) || !/.png$|.jpg$|.gif$/.test($("#nameImg").html())) {
-										$("#nameImg").attr("class", "refuse");
-										$("#valideImg").attr("class", "button_txt2tags_false");
-									} else {
-										$("#nameImg").attr("class", "valide");
-										$("#valideImg").attr("class", "button_txt2tags_true");
-									}
-								}));
+								appendStructure(true);
 								$("#pictureForm").append($("<button type='button' id='valideImg' class='button_txt2tags_false'>Valider</button>").click(function() {
 									var path = $('#nameImg').html();
 									if(regexBlacklist.test(path)) {
-										alert("Le format de fichier n'est pas accepter par le site.");
+										alert("File format not accepted on this website.");
 									} else if(path == "") {
-										alert("Aucun fichier n'est choisi");
+										alert("No file chosen.");
 									} else if(/.png$|.jpg$|.gif$/.test(path)) {
 										img = build(path);
 										var start = caretPosition + defaultUploadPath.length + path.length + img.closeWith.length;
@@ -219,39 +205,20 @@
 										$('#pictureForm').replaceWith();
 										convertText();
 									} else {
-										alert("Le fichier n'est pas une image");
+										alert("The file is not a picture.");
 									}
 								}));
-								$("#pictureForm").append($("<button type='button' class='button_txt2tags_false'>Fermer</button>").click(function() {
-									$("#blackScreen").css("display", "none");
-									$('#pictureForm').replaceWith();
-									get();
-								}));
-								$('#blackScreen').css('display','block');
+								closeStructure();
 							} else if(button.name == "Document") {
-								$("#blackScreen").append($("<form></form>").attr("id", "pictureForm"));
-								$("#pictureForm").append($("<div></div>").attr("id", "iframeUpload"));
-								$("#iframeUpload").append($("<iframe></iframe>").attr("src", "index.php?page=main&template=templates/upload.html"));
-								$("#iframeUpload").append($("<div title='Rechargement de la page'></div>").attr("id", "reload").click(function() {
-									$("#iframeUpload iframe").attr("src", "index.php?page=main&template=templates/upload.html");
-								}));
-								$("#pictureForm").append($("<div></div>").attr("id", "nameImg").bind('DOMSubtreeModified',function() {
-									if(regexBlacklist.test($("#nameImg").html()) || /.png$|.jpg$|.gif$/.test($("#nameImg").html())) {
-										$("#nameImg").attr("class", "refuse");
-										$("#valideImg").attr("class", "button_txt2tags_false");
-									} else {
-										$("#nameImg").attr("class", "valide");
-										$("#valideImg").attr("class", "button_txt2tags_true");
-									}
-								}));
-								$("#pictureForm").append($("<button type='button' id='valideImg' class='button_txt2tags_false'>Valider</button>").click(function() {
+								appendStructure(false);
+								$("#pictureForm").append($("<button type='button' id='valideImg' class='button_txt2tags_false'>OK</button>").click(function() {
 									var path = $('#nameImg').html();
 									if(regexBlacklist.test(path)) {
-										alert("Le format de fichier n'est pas accepter par le site.");
+										alert("Le format de fichier n'est pas accepté par le site.");
 									} else if(/.png$|.jpg$|.gif$/.test(path)) {
-										alert("Le fichier doit être un document et non une image.");
+										alert("File must be a document and not a picture.");
 									} else if (path == "") {
-										alert("Aucun fichier n'est choisi");
+										alert("No file chosen");
 									} else {
 										var placeHolderPath = path.split("/");
 										insert(placeHolderPath[placeHolderPath.length -1] + " " + defaultUploadPath + path);
@@ -262,12 +229,7 @@
 										convertText();
 									}
 								}));
-								$("#pictureForm").append($("<button type='button' class='button_txt2tags_false'>Fermer</button>").click(function() {
-									$("#blackScreen").css("display", "none");
-									$('#pictureForm').replaceWith();
-									get();
-								}));
-								$('#blackScreen').css('display','block');
+								closeStructure();
 							}
 							return false;
 						}).bind("focusin", function() {
@@ -296,6 +258,37 @@
 				}); 
 				levels.pop();
 				return ul;
+			}
+			
+			function appendStructure(img) {
+				$("#blackScreen").append($("<form></form>").attr("id", "pictureForm"));
+				$("#pictureForm").append($("<div></div>").attr("id", "iframeUpload"));
+				$("#iframeUpload").append($("<iframe></iframe>").attr("src", "index.php?page=main&template=templates/upload.html"));
+				$("#iframeUpload").append($("<div></div>").attr("id", "reload").click(function() {
+					$("#iframeUpload iframe").attr("src", "index.php?page=main&template=templates/upload.html");
+				}));
+				
+				$("#pictureForm").append($("<div></div>").attr("id", "nameImg").bind('DOMSubtreeModified',function() {
+					var regexImg;
+					if(img) regexImg = !/.png$|.jpg$|.gif$/.test($("#nameImg").html());
+					else regexImg = /.png$|.jpg$|.gif$/.test($("#nameImg").html())
+					if(regexBlacklist.test($("#nameImg").html()) || regexImg) {
+						$("#nameImg").attr("class", "refuse");
+						$("#valideImg").attr("class", "button_txt2tags_false");
+					} else {
+						$("#nameImg").attr("class", "valide");
+						$("#valideImg").attr("class", "button_txt2tags_true");
+					}
+				}));
+			}
+			
+			function closeStructure() {
+				$("#pictureForm").append($("<button type='button' class='button_txt2tags_false'>Close</button>").click(function() {
+					$("#blackScreen").css("display", "none");
+					$('#pictureForm').replaceWith();
+					get();
+				}));
+				$('#blackScreen').css('display','block');
 			}
 
 			// markItUp! markups
@@ -830,9 +823,13 @@
 				var scrollPos = inputPane.scrollTop;
 				var pos = Math.max(inputPane.selectionStart, inputPane.selectionEnd);
 				var selection = "\n|";
-				for(var i = 0; i < event.data.line; i++) {
+				for(var i = 0; i < event.data.col; i++) {
+					(i == 0) ? selection += "| title" : selection += " | title";
+				}
+				selection += " |\n";
+				for(var i = 1; i < event.data.line; i++) {
 					for(var j = 0; j < event.data.col; j++) {
-						(i == 0 && j == 0) ? selection += "| item" : selection += " | item";
+						selection += " | item";
 					}
 					selection += " |\n";
 				}

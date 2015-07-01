@@ -2,14 +2,14 @@
 // showdown-gui.js
 //
 // A sample application for Showdown, a javascript port
-// of Markdown.
+// of --Markdown-- txt2tags.
 //
 // Copyright (c) 2007 John Fraser.
 //
 // Redistributable under a BSD-style open source license.
 // See license.txt for more information.
 //
-// The full source distribution is at:
+// The full source distribution was at:
 //
 //				A A L
 //				T C A
@@ -423,8 +423,6 @@ function switchDisplay(display) {
 
 function previewCache() {
 	panesContainer = document.getElementById('panesContainer');
-	changeButton = document.getElementById('changeButton');
-	displayPane = document.getElementById('displayPane');
 	if(previewPane.parentNode.id == "leftContainer") switchPlace();
 	if(displayPreview) {
 		previewPane.style.display = typeDisplay;
@@ -433,12 +431,9 @@ function previewCache() {
 			document.getElementById("rightContainer").style.width = "49%";
 		} else inputPane.style.height = parseInt(inputPane.style.height)/2 + "px";
 		document.getElementById('displayPreview').setAttribute("class", "txt2tagsMenu button_txt2tags_true");
-		changeButton.setAttribute("onclick", "switchPlace()");
-		changeButton.setAttribute("class", "txt2tagsMenu");
-		changeButton.style.cursor = "pointer";
-		displayPane.setAttribute("onclick", "switchDisplay()");
-		displayPane.setAttribute("class", "txt2tagsMenu");
-		displayPane.style.cursor = "pointer";
+		document.getElementById('changeButton').style.display = "inline-block";
+		document.getElementById('displayPane').style.display = "inline-block";
+		document.getElementById('synchronizeButton').style.display = "inline-block";
 	} else {
 		previewPane.style.display = "none";
 		if(typeDisplay == "inline-block") {
@@ -446,12 +441,9 @@ function previewCache() {
 			document.getElementById("rightContainer").style.width = "100%";
 		} else inputPane.style.height = parseInt(inputPane.style.height)*2 + "px";
 		document.getElementById('displayPreview').setAttribute("class", "txt2tagsMenu button_txt2tags_false");
-		changeButton.setAttribute("onclick", "");
-		changeButton.setAttribute("class", "txt2tagsMenu button_txt2tags_false");
-		changeButton.style.cursor = "default";
-		displayPane.setAttribute("onclick", "");
-		displayPane.setAttribute("class", "txt2tagsMenu button_txt2tags_false");
-		displayPane.style.cursor = "default";
+		document.getElementById('changeButton').style.display = "none";
+		document.getElementById('displayPane').style.display = "none";
+		document.getElementById('synchronizeButton').style.display = "none";
 	}
 	displayPreview = !displayPreview;
 }

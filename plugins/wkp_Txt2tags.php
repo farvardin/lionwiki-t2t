@@ -15,8 +15,8 @@ class Txt2Tags
 		'<div id="headerContainer">
 		
 			<a href="#" class="toggle"><span class="txt2tagsMenu" id="markItUp" title="MarkItUp">MarkItUp</span></a>
-			<span class="txt2tagsMenu" id="synchronizeButton" onclick="switchSync()" title="'.h($this->TXT_SCROLL).'">'.h($this->TXT_SCROLL).'</span>
 			<span class="txt2tagsMenu" id="displayPreview" onclick="previewCache()" title="'.h($this->TXT_PREVIEW).'">'.h($this->TXT_PREVIEW).'</span>
+			<span class="txt2tagsMenu" id="synchronizeButton" onclick="switchSync()" title="'.h($this->TXT_SCROLL).'">'.h($this->TXT_SCROLL).'</span>
 			<span class="txt2tagsMenu" id="displayPane" onclick="switchDisplay()" title="'.h($this->TXT_DISPLAY).'">'.h($this->TXT_DISPLAY).'</span>
 			<span class="txt2tagsMenu" id="changeButton" onclick="switchPlace()" title="'.h($this->TXT_EXCHANGE).'">'.h($this->TXT_EXCHANGE).'</span>
 			

@@ -67,7 +67,7 @@ class UploadJS
 				} elseif($_FILES['file']['error'] != UPLOAD_ERR_OK)
 					$error = "$this->TP_ERROR_UPLOADING ($_FILES[file][error])";
 
-				if(isset($_GET['del'])) { // delete file/directory
+				if(isset($_GET['del'])) { // delete file/directory					
 					$file = clear_path($_GET['del']);
 
 					$ret = is_dir($this->datadir . $file) ? @rmdir($this->datadir . $file) : @unlink($this->datadir . $file);
@@ -113,7 +113,6 @@ $this->uploadjs .= '
 		// list of files
 			
 			if($opening_dir = @opendir($abs_dir)) {
-				$this->uploadjs .= '<h2>' . $this->TP_DIRECTORY . " " . $rel_dir . '</h2><table id="fileTable" style="min-width : 600px;"><col span="2" style="color : red;" /><col /><col style="text-align : right;" /><col style="text-align : center;" /><tr><th>' . $this->TP_FILE_NAME . '</th><th>' . $this->TP_FILE_TYPE . '</th><th>' . $this->TP_FILE_SIZE . '</th><th>' . $this->TP_FILE_SELECT . '</th><th>' . $this->TP_DELETE . '</th></tr>';
 
 				$files = array();
 
@@ -133,6 +132,21 @@ $this->uploadjs .= '
 				if($files)
 					usort($files, "cmp_files");
 
+				$morerecent = [0, ""];
+				foreach($files as $file) {
+					if($file[0] == '..') $path = substr($rel_dir, 0, strrpos($rel_dir, '/'));
+					else $path = (empty($rel_dir) ? '' : $rel_dir . '/') . $file[0];
+					$filetime = filemtime($this->datadir . $path);
+					if(!$file[1] && $filetime > $morerecent[0]) $morerecent = [$filetime, $file[0]];
+				}
+				
+				$this->uploadjs .= '<h2>' . $this->TP_LAST_UPLOAD . '</h2><span style="cursor: pointer; font-weight: bold;" onclick="parent.document.getElementById(\'nameImg\').innerHTML = \''. (empty($rel_dir) ? '' : $rel_dir . '/') . $morerecent[1] .'\';"><tr><td>'.$morerecent[1].'</span>';
+				
+				
+				//var_dump(strftime("%d %m %Y ", filemtime($this->datadir . $files[0][0])), $files[0][0]);
+				
+				$this->uploadjs .= '<h2>' . $this->TP_DIRECTORY . " " . $rel_dir . '</h2><table id="fileTable" style="min-width : 600px;"><col span="2" style="color : red;" /><col /><col style="text-align : right;" /><col style="text-align : center;" /><tr><th>' . $this->TP_SELECT . '</th><th>' . $this->TP_FILE_NAME . '</th><th>' . $this->TP_FILE_TYPE . '</th><th>' . $this->TP_FILE_SIZE . '</th><th>' . $this->TP_DELETE . '</th></tr>';
+				
 				foreach($files as $file) {
 					if($file[0] == '..')
 						$path = substr($rel_dir, 0, strrpos($rel_dir, '/'));
@@ -141,15 +155,20 @@ $this->uploadjs .= '
 
 					$this->uploadjs .= "<tr>";
 
+					if((authentified()) && ($file[0] != '..'))
+						$this->uploadjs .= '<td><span style="cursor: pointer" onclick="parent.document.getElementById(\'nameImg\').innerHTML = \''. $path .'\';">&times;</span></td>';
+					else
+						$this->uploadjs .= "<td>&nbsp;</td>";
+					
 					if(is_dir($this->datadir . $path))
 						$this->uploadjs = $this->uploadjs . '<td><a href="'.$self.$templateUpload . '&curdir=' . u($path) . '">[' . $file[0] . ']</a></td><td>' . $this->TP_DIRECTORY . '</td><td>-</td>';
 					else
-						$this->uploadjs = $this->uploadjs . '<td><a href="' . $this->datadir . $path . '">' . $file[0] . '</a></td><td>' . $this->TP_FILE . '</td><td>' . @number_format(@filesize($this->datadir . $path), 0, ".", " ") . ' B</td>';
+						$this->uploadjs = $this->uploadjs . '<td><a onclick="parent.document.getElementById(\'nameImg\').innerHTML = \''. $path .'\';" href="' . $this->datadir . $path . '">' . $file[0] . '</a></td><td>' . $this->TP_FILE . '</td><td>' . @number_format(@filesize($this->datadir . $path), 0, ".", " ") . ' B</td>';
 
 					if((authentified()) && ($file[0] != '..'))
-						$this->uploadjs .= '<td><span style="cursor: pointer" onclick="parent.document.getElementById(\'nameImg\').innerHTML = \''. $path .'\';">'. $this->TP_FILE_CHOOSE .'</span></td><td><a title="delete" href="'.$self.$templateUpload.'&del=' . u($path) . "&curdir=" . u($rel_dir) . '">&times;</a></td>';
+						$this->uploadjs .= '<td><a title="delete" onclick="return(confirm(\'Voulez-vous supprimer ce fichier/dossier ?\'))" href="'.$self.$templateUpload.'&del=' . u($path) . "&curdir=" . u($rel_dir) . '">&times;</a></td>';
 					else
-						$this->uploadjs .= "<td>&nbsp;</td><td>&nbsp;</td>";
+						$this->uploadjs .= "<td>&nbsp;</td>";
 
 					$this->uploadjs .= "</tr>\n";
 				}
@@ -193,11 +212,12 @@ $this->uploadjs .= '
 		array("TP_FILE_TYPE", "Type"),
 		array("TP_FILE_SIZE", "Size"),
 		array("TP_DELETE", "Delete"),
+		array("TP_SELECT", "Select"),
 		array("TP_ERROR_UPLOADING", "Error ocurred during uploading file"),
 		array("TP_FILE", "File"),
-		array("TP_FILE_SELECT", "Select"),
 		array("TP_FILE_CHOOSE", "Choose"),
 		array("TP_DIRECTORY", "Directory"),
+		array("TP_LAST_UPLOAD", "Last Upload"),
 		array("TP_CREATE_DIRECTORY", "Create directory"),
 		array("TP_CREATE", "Create"),
 		array("TP_UPLOAD", "Upload"),
@@ -246,11 +266,12 @@ $this->uploadjs .= '
 		array("TP_FILE_TYPE", "Type"),
 		array("TP_FILE_SIZE", "Taille"),
 		array("TP_DELETE", "Supprimer"),
-		array("TP_FILE_SELECT", "Selectionner"),
+		array("TP_SELECT", "Sélectionner"),
 		array("TP_FILE_CHOOSE", "Choisir"),
 		array("TP_ERROR_UPLOADING", "Une erreur a empêché le téléversement du fichier"),
 		array("TP_FILE", "Fichier"),
 		array("TP_DIRECTORY", "Dossier"),
+		array("TP_LAST_UPLOAD", "Dernier Upload"),
 		array("TP_CREATE_DIRECTORY", "Créer un dossier"),
 		array("TP_UPLOAD", "Envoyer"),
 		array("TP_MAXIMUM_SIZE_IS", "Si vous avez besoin d'un dossier dans lequel vous voulez déposer un fichier, vous devez d'abord créer le dossier dans un premier temps puis téléverser le fichier.<br />La taille maximum à utiliser pour un fichier transféré est de"),
