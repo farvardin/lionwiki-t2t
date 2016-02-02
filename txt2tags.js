@@ -139,6 +139,13 @@ this.makeHtml = function(text) {
 // _EscapeSpecialCharsWithinTagAttributes(), so that any *'s or _'s in the <a>
 // and <img> tags get encoded.
 //
+	
+		//------------ Textallion and txt2cyoa
+	text = text.replace(/==(.+)==$/gm, '==$1==');
+	//text = text.replace(/<h3>(.*?)<\/h3>$/gm, '<h3>$1</h3><a name="$1">');
+	text = text.replace(/ (\d+)$/gm, ' **[$1 #$1]**');
+	text = text.replace(/ \[#(\d+)\]/gm, ' **[$1 #$1]**');
+	
 
       // ------- TXT2TAGS to html //
     
@@ -156,7 +163,7 @@ this.makeHtml = function(text) {
     text = text.replace(/\s*=====\s*(.+)\s*=====/gm,"\n<h5>$1</h5>\n");
     text = text.replace(/\s*====\s*(.+)\s*====/gm,"\n<h4>$1</h4>\n");
     text = text.replace(/\s*===\s*(.+)\s*===/gm,"\n<h3>$1</h3>\n");
-    text = text.replace(/\s*==\s*(.+)\s*==/gm,"\n<h2>$1</h2>\n");
+	text = text.replace(/\s*==\s*(.+)\s*==/gm,"\n<a name=\"$1\">\n<h2>$1</h2>\n");
     text = text.replace(/^\s*=\s*(.+)\s*=/gm,"\n<h1>$1</h1>\n");
     // ------ bold / strong **item** (we disable them for ``code``)
     // by using negative lookahead see http://www.regular-expressions.info/lookaround.html
@@ -231,6 +238,9 @@ this.makeHtml = function(text) {
 	//text = text.replace(/^([ ]*\|\/.+)\|{1}/gm, '<th>');
 	text = text.replace(/\|{1}/gm, '<td>');
         // ------ // end of txt2tags to html
+		
+	
+	//--------------end of textallion and txt2cyoa
 
 	// Clear the global hashes. If we don't clear these, you get conflicts
 	// from other articles when generating a page which contains more than
