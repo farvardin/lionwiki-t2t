@@ -1,5 +1,8 @@
 <?php
 
+// developped for lionwiki-t2t
+// updated 2016-01-27
+
 class UploadJS
 {
 	var $desc = array(
@@ -132,12 +135,14 @@ $this->uploadjs .= '
 				if($files)
 					usort($files, "cmp_files");
 
-				$morerecent = [0, ""];
+				// use this only after php5.4: $morerecent = [0, ""];
+				$morerecent = array(0, "");
 				foreach($files as $file) {
 					if($file[0] == '..') $path = substr($rel_dir, 0, strrpos($rel_dir, '/'));
 					else $path = (empty($rel_dir) ? '' : $rel_dir . '/') . $file[0];
 					$filetime = filemtime($this->datadir . $path);
-					if(!$file[1] && $filetime > $morerecent[0]) $morerecent = [$filetime, $file[0]];
+					// if(!$file[1] && $filetime > $morerecent[0]) $morerecent = [$filetime, $file[0]];
+					if(!$file[1] && $filetime > $morerecent[0]) $morerecent = array($filetime, $file[0]);
 				}
 				
 				$this->uploadjs .= '<h2>' . $this->TP_LAST_UPLOAD . '</h2><span style="cursor: pointer; font-weight: bold;" onclick="parent.document.getElementById(\'nameImg\').innerHTML = \''. (empty($rel_dir) ? '' : $rel_dir . '/') . $morerecent[1] .'\';"><tr><td>'.$morerecent[1].'</span>';
