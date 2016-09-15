@@ -2,8 +2,8 @@
 % You can put below those lines the pre or proc rules you may need in your lionwiki-t2t
 
 % use [[the description | your_page]] syntax
-%!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 index.php?page=\2]'
 %!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 index.php?page=\2]'
+%!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 index.php?page=\2]'
 
 % use [[your_page]] syntax
 %!preproc: '\[\[(.*?)\]\]' '[\1]'
@@ -40,11 +40,13 @@
 
 %!preproc: '\{\/\/\.\.\}'          'LINEBREAK'
 %!preproc: "\\\\"                  'LINEBREAK'
+%!preproc: "\{LB\}"	 'LINEBREAK'
 %!postproc: "LINEBREAK" '<br/> '
 %!postproc: "LINEBREAK" '<br/> '
 
 %!preproc: '--------(-+)---------' 'SIMPLELINE'
 %!preproc: '---' 'QUADRATINDASH'
+%!postproc: '^QUADRATINDASH' '<br/>&mdash;'
 %!postproc: 'QUADRATINDASH' '&mdash;'
 
 %!postproc: 'SIMPLELINE' '<hr/>'
