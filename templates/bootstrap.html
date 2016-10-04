@@ -10,9 +10,17 @@
 
     <title>{WIKI_TITLE  - }{PAGE_TITLE_HEAD}</title>
 
+<link rel="stylesheet" href="templates/minimaxing/5grid/core.css" />
     <!-- Bootstrap core CSS -->
     <link href="templates/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="templates/bootstrap/bootstrap-lionwiki.css" rel="stylesheet">
+    
+    <!-- for txt2tagsjs --> 
+	<script type="text/javascript" src="txt2tags.js"></script>
+	<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
+	<script type="text/javascript" src="textallion.js"></script>
+		
+		
 
     <!-- Custom styles for this template -->
 
@@ -25,6 +33,58 @@
   </head>
 
   <body>
+
+		<script type="text/javascript" src="markitup/jquery-1.6.2.min.js"></script>
+
+		<!--<script type="text/javascript" src="markitup/jquery.markitup-fr.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set-fr.js"></script>-->
+
+		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css" />
+		<link rel="stylesheet" type="text/css" href="markitup/sets/txt2tags/style.css" />
+		<script type="text/javascript" >
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('#inputPane').markItUp(mySettings);
+	$("#markItUp").removeClass("button_txt2tags_false");
+	$("#markItUp").addClass("button_txt2tags_true");
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );	
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+	
+	// And you can add/remove markItUp! whenever you want
+	// $(textarea).markItUpRemove();
+	$('.toggle').click(function() {
+		if ($("#inputPane.markItUpEditor").length === 1) {
+ 			$("#inputPane").markItUpRemove();
+			$("#markItUp").removeClass("button_txt2tags_true");
+			$("#markItUp").addClass("button_txt2tags_false");
+		} else {
+			$('#inputPane').markItUp(mySettings);
+			$("#markItUp").removeClass("button_txt2tags_false");
+			$("#markItUp").addClass("button_txt2tags_true");
+		}
+ 		return false;
+	});
+});
+-->
+</script>
+
+		<noscript> <h3>JavaScript should be enabled to use this site, otherwise you won't see the graphic styles or be able to use some effects. Please enable or unblock JavaScript in your browser and refresh the page. Alternatively, for the author of this website, you can compile the .less file and use a .css file instead.</h3> </noscript>
+	<!-- ********************************************************* -->
+
+
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -113,9 +173,32 @@
 {<div class="error"> ERROR </div>}
 {CONTENT}
 {plugin:TAG_LIST}
-{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+{CONTENT_FORM}
+
+
+
+<!-- old version -->
+<!--
 {plugin:TOOLBAR_TEXTAREA}
-{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> -->
+
+<!-- new version for MarkitUp -->
+		<table style="width: 100%; border:5px;" class="form" >
+			<tr>
+				<td>{RENAME_TEXT } {RENAME_INPUT }<br/>{plugin:TXT2TAGS_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" >{SHOW_PAGE}<br/>{SYNTAX}</td>
+			</tr>
+			<tr>
+				<td colspan="3">{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>	
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;">{plugin:RESIZE_TEXTAREA}</td>
+			</tr>
+		</table>
+ <!-- end new version for markitup-->
+
+{/CONTENT_FORM}
 
 
 <br/>  
@@ -140,8 +223,15 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="templates/bootstrap/assets/js/jquery.js"></script>
+    <!-- jquery already loaded by markitup, this one causes problems: <script src="templates/bootstrap/assets/js/jquery.js"></script>-->
     <script src="templates/bootstrap/js/bootstrap.min.js"></script>
+
+<div id="copyright">
+					{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} 
+					<br />
+						Design CC-BY-SA inspired by Bootstrap. Powered by <a href="https://bitbucket.org/farvardin/lionwiki-t2t/">LionWiki-t2t</a> 
+					</div>
+
   </body>
 </html>
 
