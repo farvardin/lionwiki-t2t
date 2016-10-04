@@ -1,0 +1,1011 @@
+/* This CSS file was generated from the minimaxing.less template. 
+ See http://lesscss.org/
+*/
+/*
+Use the part above to customise your fonts.
+You can create your own manuscript / handwriting font on http://www.myscriptfont.com/ or http://www.paintfont.com/
+*/
+/* we use this for random theme color. You can also choose only one color below. */
+/*
+ #8B9AB8 : lighter grey blue
+ #7B8AA8 : light grey blue
+ #56A3B5 : turquoise blue
+ #B1494D : brick red 
+ #465E7C : dark blue
+ #549136 : green 
+ #799037 : grass green
+ #D07732 : orange
+ #754496 : purple
+ #847457 : brown
+ */
+/* define mixin */
+/* call the mixin which sets the variable once */
+/* This line below will use a random main color: */
+/* @MainColor: @background-color; */
+/* if you prefer to select a fixed background color, just uncomment one color from below */
+/* @MainColor: #549136; */
+/*@MainColor: #549136;*/
+/* Header color */
+/* You can use a shade of MainColor: */
+/* or a complementary color: */
+/* used in max-width (should be renamed) */
+/*@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
+*/
+@font-face {
+  font-family: MyFont;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MyFont.ttf) format('truetype');
+}
+@font-face {
+  font-family: MyManuscript;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MyManuscript.ttf) format('truetype');
+}
+@font-face {
+  font-family: LoveYaLikeASister;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/LoveYaLikeASister-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(../fonts/ubuntu-condensed-regular.woff) format('woff');
+}
+/*@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'),local('OpenSans-Light'),url(../fonts/OpenSans-Light.woff) format('woff');
+}*/
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(../fonts/OpenSans.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(../fonts/OpenSans-Semibold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/OpenSans-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(../fonts/OpenSans-Extrabold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(../fonts/OpenSansLight-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(../fonts/OpenSans-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(../fonts/OpenSans-SemiboldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(../fonts/OpenSans-BoldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(../fonts/OpenSans-ExtraboldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(../fonts/OpenSans-CondensedBold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(../fonts/OpenSans-CondensedLight.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Cond Light Italic'), local('OpenSans-CondensedLightItalic'), url(../fonts/OpenSans-CondensedLightItalic.woff) format('woff');
+}
+/*
+	Minimaxing 1.0 by nodethirtythree design
+	http://nodethirtythree.com | @nodethirtythree
+	Released under the Creative Commons Attribution 3.0 license (nodethirtythree.com/license)
+	* http://html5up.net/minimaxing/
+	
+	Based also on the work from http://wiki.lapetitesissone.fr/index.php?page=Lionwiki
+*/
+/* LionWiki specific */
+a.pending {
+  color: #7f4736;
+}
+h2 span.par-edit,
+h3 span.par-edit,
+h4 span.par-edit,
+h5 span.par-edit,
+h6 span.par-edit {
+  float: right;
+  display: none;
+}
+h2:hover span.par-edit,
+h3:hover span.par-edit,
+h4:hover span.par-edit,
+h5:hover span.par-edit,
+h6:hover span.par-edit {
+  display: inline;
+  font-size: small;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  background-color: transparent;
+}
+.pageLinks {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.pageLinks a {
+  font-weight: bold;
+  text-decoration: none;
+}
+#headerLinks td {
+  border-bottom: 1px dashed #ccc !important;
+}
+#footerLinks td {
+  border-top: 1px dashed #ccc !important;
+}
+#mainContent {
+  padding: 1em;
+  background-color: white;
+}
+#mainContent h2:first-child {
+  margin-top: 0px;
+}
+.error {
+  color: #F25A5A;
+  font-weight: bold;
+}
+.contentTextarea {
+  width: 100%;
+  font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
+  /*font-size: 100%;*/
+
+}
+#diff {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  width: 97%;
+}
+#diff ins {
+  color: green;
+  text-decoration: none;
+  font-weight: bold;
+}
+#diff del {
+  color: red;
+  text-decoration: line-through;
+}
+#diff .orig {
+  color: #666;
+}
+#toc {
+  border: 1px dashed #11141A;
+  padding: 5px 5px 5px 5px;
+  float: right;
+  padding-right: 2em;
+  list-style: none;
+  background: #eee;
+  clear: right;
+}
+#toc ul {
+  list-style: none;
+  padding-left: 10px;
+}
+#toc li {
+  font-size: 11px;
+  padding-left: 10px;
+}
+/* Plugins LionWiki*/
+.tagList {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  margin-top: 0.5em;
+  border: 1px dashed #31343A;
+  background: #eee;
+  clear: right;
+}
+.tagCloud {
+  float: right;
+  width: 200px;
+  padding: 0.5em;
+  margin: 1em;
+  border: 1px dashed #31343A;
+  background: #eee;
+  clear: right;
+}
+.pageVersionsList {
+  letter-spacing: 0px;
+  font-variant: normal;
+  font-size: 12px;
+}
+table.wikitable {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+table.wikitable td {
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px;
+}
+table.wikitable td.em {
+  background: #ccc;
+  font-weight: bold;
+}
+table,
+#previewPane table {
+  border-collapse: collapse;
+  empty-cells: show;
+  border-spacing: 0;
+  border: 1px solid #999;
+}
+.form table {
+  border-collapse: collapse;
+  empty-cells: hide;
+  border-spacing: 0;
+  border: 0px solid #fff;
+}
+th,
+td,
+#previewPane th,
+#previewPane td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+.form th,
+td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 0px solid #999;
+  text-align: left;
+}
+th,
+thead,
+#previewPane th,
+#previewPane thead {
+  font-weight: bold;
+  background-color: #ddd;
+}
+[dir=rtl] td,
+[dir=rtl] th {
+  text-align: right;
+}
+.resizeTextarea a {
+  text-decoration: none;
+}
+/******************************************************************/
+/* Global                                                         */
+/******************************************************************/
+body {
+  font-size: 12pt;
+  font-family: sans-serif;
+  background-color: #d8e1d4;
+  font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
+  color: #767d72;
+}
+#header h1 {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: Open Sans Condensed, MyManuscript, MyFont, LoveYaLikeASister, Ubuntu Condensed, sans-serif;
+  text-transform: uppercase;
+  color: #724986;
+  font-weight: bold;
+}
+h1,
+h2 {
+  border-bottom: 1px solid grey;
+}
+h1 {
+  font-size: 155%;
+}
+h1 a {
+  color: #724986;
+}
+#header-wrapper h1 {
+  color: #fff;
+  line-height: 1.3em;
+  border-bottom: none;
+}
+#header-wrapper {
+  color: #65a247;
+}
+#header-wrapper a {
+  color: #76b358;
+}
+#header-wrapper a:hover,
+#header-wrapper a:hover {
+  background-color: #549136;
+  color: #104d00;
+}
+#header nav {
+  color: #111;
+  text-transform: lowercase;
+}
+#header nav a,
+#header nav li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+}
+#header nav li a:hover,
+#header nav li a:active {
+  background-color: #fff;
+  border-radius: 6px;
+  color: #111;
+}
+h2 {
+  font-size: 1.6em;
+  letter-spacing: -1px;
+  margin-bottom: 0.0em;
+  margin-top: 1.8em;
+}
+h3,
+h4 {
+  color: #283121;
+  margin-bottom: 0.0em;
+  margin-top: 1.4em;
+}
+h3 {
+  font-size: 1.2em;
+}
+h4 {
+  font-size: 1em;
+}
+p,
+ul {
+  margin-bottom: 1.0em;
+}
+p {
+  line-height: 1.7em;
+}
+#main-row strong,
+b {
+  color: #555;
+}
+s {
+  color: #aaa;
+}
+::selection {
+  background: #549136;
+  color: #fff;
+}
+::-moz-selection {
+  background: #549136;
+  color: #fff;
+}
+pre {
+  background-color: #edf7e8;
+  line-height: 1.5em;
+  font-family: mono;
+  margin: 1.0em;
+}
+code,
+blockquote,
+dt {
+  background-color: #edf7e8;
+  line-height: 1.5em;
+  font-family: mono;
+  /*margin: 1.0em;*/
+
+}
+dd {
+  line-height: 1.5em;
+  font-family: Monospace, Courier;
+  font-size: 0.9em;
+}
+pre,
+blockquote {
+  padding-left: 20px;
+}
+img {
+  /*float: center;*/
+  /* note: we can already center with txt2tags, just add a space before the image */
+
+  /*float: left;*/
+
+  /*margin: 2px 1.25em 0 0;*/
+
+  margin: 1.5em;
+  max-width: 50%;
+  max-height: 500px;
+  padding: 1px;
+  border: solid 1px #76b358;
+  /*display: block;*/
+
+  /*margin: 0 auto;*/
+
+}
+img.left {
+  float: left;
+  margin: 2px 1.25em 0 0;
+}
+img.top {
+  margin: 4px 0 2.25em 0;
+}
+li {
+  line-height: 1.5em;
+}
+/* If you don't like color highlight when you're over a list, comment the next 2 entries */
+#main ul:hover {
+  background-color: #ffffff;
+}
+#main ul li:hover,
+ul li:active {
+  background-color: #edf7e8;
+}
+a {
+  color: #559237;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  background-color: #dce6d7;
+  border-radius: 4px;
+}
+ul.small-image-list li {
+  margin-bottom: 1.5em;
+}
+ul.big-image-list li {
+  margin-bottom: 2em;
+}
+ul.link-list li {
+  border-top: solid 1px #ced0b7;
+  padding: 0.75em 0 0 0;
+  margin: 0.75em 0 0 0;
+}
+ul.link-list li:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: 0;
+}
+.button,
+a.toolbarTextareaItem {
+  display: inline-block;
+  padding: 5px 10px 5px 10px;
+  background-color: #549136;
+  border-radius: 6px;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.0em;
+  letter-spacing: -1px;
+  border: solid 1px #549136;
+  box-shadow: inset 0px 0px 0px 1px #549136;
+}
+.button:hover,
+a.toolbarTextareaItem:hover {
+  background-color: #65a247;
+  color: #fff;
+}
+a.toolbarTextareaItem b {
+  color: #fff;
+}
+#copyright {
+  font-size: 0.6em;
+  text-align: center;
+  color: #a7b1a2;
+  border-top: solid 1px #ced0b7;
+  line-height: 1.1em;
+  padding: 3em 0 0 0;
+  margin: 1% 0 0 0;
+}
+#copyright a {
+  color: #96a091;
+}
+#copyright a:hover {
+  color: #ffffff;
+  background-color: #b9c3b4;
+}
+.txt2tagsMenu {
+  background-color: #c7d0c3;
+}
+.txt2tagsMenu:hover {
+  background-color: #d8e1d4;
+}
+.button_txt2tags_true {
+  background-color: #549136;
+  color: #fff;
+}
+.button_txt2tags_true:hover {
+  background-color: #76b358;
+}
+.button_txt2tags_false {
+  background-color: #724986;
+  color: #fff;
+}
+.button_txt2tags_false:hover {
+  background-color: #946ba8;
+}
+.valide {
+  color: #549136;
+  background-color: #c7d0c3;
+}
+.refuse {
+  color: #724986;
+  background-color: #c7d0c3;
+}
+/********************************/
+/* 1000px (>= 1000px)           */
+/********************************/
+@media only screen and (min-width: 1000px) {
+  body {
+    font-size: 12pt;
+  }
+  section,
+  article {
+    margin: 0 0 60px 0;
+  }
+  section p + p {
+    margin-top: 1.5em;
+  }
+  #header-wrapper {
+    background-color: #549136;
+  }
+  #header-wrapper h1 {
+    margin-top: 0;
+    text-decoration: none;
+    border-bottom: 0px;
+  }
+  #header {
+    position: relative;
+    margin: 2.5% 0 2.5% 0;
+    margin-top: 40px;
+    padding: 0 40px 0 40px;
+    border-radius: 6px;
+    border: solid 1px #549136;
+    box-shadow: inset 0px 0px 0px 1px #549136, 0px 1px 4px 0px rgba(0, 0, 0, 0);
+    height: 66px;
+  }
+  #header h1 {
+    position: absolute;
+    left: 10px;
+    top: -28px;
+    font-size: 2.4em;
+    letter-spacing: 2px;
+    /*line-height: 6px;*/
+    /* pb in konqueror*/
+  
+  }
+  #header h1 a {
+    text-decoration: none;
+  }
+  #header nav {
+    /*position: absolute;*/
+  
+    float: right;
+    clear: both;
+    right: 0px;
+    top: 1px;
+    line-height: 64px;
+    font-size: 1.3em;
+    letter-spacing: -1px;
+  }
+  #header nav li {
+    float: left;
+    list-style: none;
+    position: relative;
+  }
+  #header nav a,
+  #header nav li a {
+    border: 0 none;
+    padding: 10px 35px 10px 35px;
+  }
+  #banner-wrapper h2 {
+    border-bottom: none;
+    color: white;
+    font-size: 2.0em;
+    text-align: center;
+  }
+  #banner-wrapper a {
+    border-bottom: none;
+    color: #724986;
+  }
+  #banner-wrapper {
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+  #banner-wrapper h1 {
+    text-align: center;
+    font-size: 2.2em;
+    letter-spacing: 0px;
+    text-decoration: none;
+    border-top: 0px;
+    border-bottom: 15px;
+  }
+  #banner {
+    position: relative;
+    width: 1160px;
+    height: 240px;
+    margin: 2% 0 2% 0;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 20px;
+    background-size: 1160px 265px;
+  }
+  #banner h2 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 100px;
+    left: 0;
+    font-size: 3.3em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -2px;
+  }
+  #banner span {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 105px;
+    left: 0;
+    font-size: 1.6em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    opacity: 0.8;
+  }
+  #main {
+    background: #fff;
+    padding: 2% 0 2% 0;
+    padding-top: -20px;
+  }
+  #main .main-row {
+    margin: 2% 0 2% 0;
+    /*overflow: hidden;*/
+  
+    margin-top: -10px;
+  }
+  #footer-wrapper {
+    padding: 3% 0 3% 0;
+  }
+}
+/*********************************************************************************/
+/* 1000px (> 600px && < 1000px)                                                  */
+/*********************************************************************************/
+@media only screen and (max-width: 999px) and (min-width: 601px) {
+  body {
+    font-size: 13pt;
+  }
+  section,
+  article {
+    margin: 10px 10px 50px 10px;
+  }
+  section:last-child,
+  article:last-child {
+    margin-bottom: 0;
+  }
+  section.left-content {
+    padding-right: 15px;
+  }
+  section.right-content {
+    padding-left: 15px;
+  }
+  section.middle-content {
+    padding: 0 15px 0 15px;
+  }
+  ul.small-image-list img {
+    width: 50px;
+  }
+  ul.big-image-list img {
+    width: 75px;
+  }
+  .blog-post-image {
+    width: 490px;
+  }
+  #header-wrapper {
+    background-color: #549136;
+  }
+  #header {
+    position: relative;
+    margin: 3.5% 0 1.5% 0;
+    margin-top: 40px;
+    padding: 0 40px 0 40px;
+    border-radius: 6px;
+    border: solid 1px #549136;
+    box-shadow: inset 0px 0px 0px 1px #549136, 0px 1px 4px 0px rgba(0, 0, 0, 0);
+    background-color: #549136;
+    height: 66px;
+  }
+  #header h1 {
+    position: absolute;
+    left: 10px;
+    top: -28px;
+    font-size: 2.4em;
+    letter-spacing: 1px;
+    /*line-height: 6px;*/
+    /* pb in konqueror*/
+  
+  }
+  #header h1 a {
+    text-decoration: none;
+  }
+  #header nav {
+    /*position: absolute;*/
+  
+    float: right;
+    clear: both;
+    right: 20px;
+    top: 1px;
+    line-height: 64px;
+    font-size: 1.3em;
+    letter-spacing: -1px;
+  }
+  #header nav li {
+    float: left;
+    list-style: none;
+    position: relative;
+  }
+  #header nav a,
+  #header nav li a {
+    border: 0 none;
+    padding: 10px 35px 10px 35px;
+  }
+  #banner-wrapper {
+    background: #fff;
+    margin-bottom: -20px;
+  }
+  #banner-wrapper h1 {
+    font-size: 2.1em;
+    letter-spacing: 0px;
+  }
+  #banner {
+    position: relative;
+    width: 60px;
+    height: 140px;
+    margin: 2% 0 2% 0;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 20px;
+    /*background: #fff url(images/banner.jpg) no-repeat 20px 20px;*/
+  
+    background-size: 960px 220px;
+  }
+  #banner h2 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 80px;
+    left: 0;
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -2px;
+  }
+  #banner span {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 85px;
+    left: 0;
+    font-size: 1.4em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    opacity: 0.8;
+  }
+  #main {
+    background: #fff;
+    padding: 3% 0 3% 0;
+  }
+  #main .main-row {
+    margin: 2% 0 2% 0;
+    /*overflow: hidden;*/
+  
+    margin-top: -10px;
+  }
+  #footer-wrapper {
+    padding: 5% 0 5% 0;
+  }
+}
+/*********************************************************************************/
+/* Mobile (<= 600px)                                                             */
+/*********************************************************************************/
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 13pt;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+  h4 {
+    font-size: 1em;
+  }
+  ul.small-image-list img {
+    width: 75px;
+  }
+  ul.big-image-list img {
+    width: 75px;
+  }
+  ul.link-list {
+    margin: 0 0 2em 0;
+  }
+  section,
+  article {
+    padding: 40px 20px 40px 20px;
+  }
+  #main section,
+  #main article {
+    background: #fff;
+  }
+  article.blog-post .comments {
+    display: block;
+    position: relative;
+    top: -0.5em;
+    margin: 0 0 0.5em 0;
+  }
+  .button {
+    font-size: 1em;
+  }
+  .blog-post-image {
+    width: 100%;
+  }
+  #header-wrapper {
+    background-color: #549136;
+  }
+  #header-wrapper h1 {
+    margin-top: 0px;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 0px;
+  }
+  #header {
+    text-align: center;
+    padding: 5px 0 5px 0;
+  }
+  #header h1 {
+    font-size: 2.4em;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+  #header h1 a {
+    text-decoration: none;
+  }
+  #header nav {
+    font-size: 1em;
+    margin: 0 auto;
+  }
+  #header nav ul {
+    float: center;
+    list-style: none;
+    position: relative;
+    right: 25px;
+  }
+  #header nav li {
+    display: inline-block;
+  }
+  #header nav li:hover {
+    text-decoration: none;
+  }
+  #header nav a,
+  #header nav li a {
+    border: 0 none;
+    padding: 10px 25px 10px 25px;
+  }
+  #banner-wrapper {
+    background: #549136 url(images/bg1.png);
+    display: none;
+  }
+  #banner {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    /*background: #fff url(images/banner.jpg) no-repeat;*/
+  
+    background-size: 100% 100%;
+  }
+  #banner {
+    position: relative;
+  }
+  #banner h2 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 80px;
+    left: 0;
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -2px;
+  }
+  #banner span {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 135px;
+    left: 0;
+    font-size: 1em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    opacity: 0.8;
+  }
+  #footer-wrapper section,
+  #footer-wrapper article {
+    border-bottom: solid 1px #ced0b7;
+  }
+  .contentTextarea {
+    width: 100%;
+    font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
+    font-size: 100%;
+    padding: 0px;
+    margin-left: -15px;
+  }
+  #main {
+    /*overflow: auto;*/
+  
+  }
+  /* from 5grid/core.css */
+  .\35 grid {
+    /*overflow: hidden;*/
+    /* prevent horizontal scroll */
+  
+    overflow: visible;
+  }
+}
