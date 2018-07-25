@@ -35,7 +35,7 @@ mySettings = {
 		{name:'Image', key:'P', openWith:'[', closeWith:']', placeHolder:'votre_image.jpg'},
 		{name:'Document', openWith:'[', closeWith:']', placeHolder:'Votre document'},
 		{name:'LienLocal', openWith:'[[[![Description:!:Description]!]', closeWith:'[![LienLocal:!:LienLocal]!]]]', placeHolder:' | '},
-		{name:'Lien', key:'L', openWith:'[[![Description:!:Description]!]', closeWith:' [![Lien:!:http://]!]]', placeHolder:''},
+		{name:'Lien', key:'L', openWith:'[[![Description:!:Description]!] ', closeWith:'[![Lien:!:http://]!]]', placeHolder:''},
 		{separator:' '},	
 		{name:'Citation', openWith:'\t'},
 		{name:'Code', openWith:'``', closeWith:'``'},

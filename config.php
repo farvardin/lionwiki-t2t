@@ -12,10 +12,10 @@ $Admin["PASSWORD"] = sha1("demo");
 //$TEMPLATE = 'templates/red.html';
 //$TEMPLATE = 'templates/blazekiss.html'; 
 $TEMPLATE = 'templates/minimaxing.html';
-$TEMPLATE = 'templates/txt2tags.html';
-$TEMPLATE = 'templates/skeleton.html'; // doesn't work well yet
+//$TEMPLATE = 'templates/txt2tags.html';
+//$TEMPLATE = 'templates/skeleton.html'; // doesn't work well yet
 //$TEMPLATE = 'templates/bootstrap.html';
-//$TEMPLATE = 'templates/ElectricObsidian/ElectricObsidian.html';
+$TEMPLATE = 'templates/ElectricObsidian/ElectricObsidian.html';
 //$TEMPLATE = 'templates/literature.html';
 //$TEMPLATE = 'templates/minimal.html';
 

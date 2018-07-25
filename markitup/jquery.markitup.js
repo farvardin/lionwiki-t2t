@@ -5,6 +5,8 @@
 // ----------------------------------------------------------------------------
 // Copyright (C) 2007-2011 Jay Salvat
 // http://markitup.jaysalvat.com/
+//
+// Modified version for the use with txt2tagsjs (2016-03-03)
 // ----------------------------------------------------------------------------
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +48,8 @@
 					onShiftEnter:			{},
 					onCtrlEnter:			{},
 					onTab:					{},
-					markupSet:			[	{ /* set */ } ]
+					markupSet:			[	{ /* set */ } ],
+					lionwiki:				true // for use with the lionwiki CMS (will load an upload iframe)
 				};
 		$.extend(options, settings, extraSettings);
 
@@ -149,7 +152,7 @@
 
 				// listen key events
 				$$.keydown(keyPressed).keyup(keyPressed);
-
+				
 				// bind an event to catch external calls
 				$$.bind("insertion", function(e, settings) {
 					if (settings.target !== false) {
@@ -188,7 +191,7 @@
 							if(button.name == "Table") {
 								$('#tabSize').css({'left': event.pageX, 'top': event.pageY, 'display': 'block'});
 							} else if(button.name == "Picture") {
-								appendStructure(true);
+							   if(options.lionwiki) { appendStructure(true); }
 								$("#pictureForm").append($("<button type='button' id='valideImg' class='button_txt2tags_false'>Valider</button>").click(function() {
 									var path = $('#nameImg').html();
 									if(regexBlacklist.test(path)) {
@@ -210,7 +213,7 @@
 								}));
 								closeStructure();
 							} else if(button.name == "Document") {
-								appendStructure(false);
+								if(options.lionwiki) { appendStructure(false);}
 								$("#pictureForm").append($("<button type='button' id='valideImg' class='button_txt2tags_false'>OK</button>").click(function() {
 									var path = $('#nameImg').html();
 									if(regexBlacklist.test(path)) {
@@ -261,6 +264,7 @@
 			}
 			
 			function appendStructure(img) {
+
 				$("#blackScreen").append($("<form></form>").attr("id", "pictureForm"));
 				$("#pictureForm").append($("<div></div>").attr("id", "iframeUpload"));
 				$("#iframeUpload").append($("<iframe></iframe>").attr("src", "index.php?page=main&template=templates/upload.html"));
@@ -376,11 +380,12 @@
 						
 						blocks.push(line);
 					}
+					
 					block = blocks.join("\n");
 				}
-				
+
 				block = openBlockWith + block + closeBlockWith;
-				
+
 				return {	block:block, 
 							openWith:openWith, 
 							replaceWith:replaceWith, 
@@ -472,6 +477,7 @@
 					caretOffset = -1;
 				}
 				get();
+
 				$.extend(hash, { line:'', selection:selection });
 
 				// callbacks after insertion
