@@ -52,7 +52,7 @@ $CONTACT_SENT = @file_get_contents("contact_sent.php");
 
 @error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @ini_set('default_charset', 'UTF-8');
-set_magic_quotes_runtime(0);
+// set_magic_quotes_runtime(0); // remove for php7
 umask(0);
 
 if(get_magic_quotes_gpc()) // magic_quotes_gpc can't be turned off
@@ -246,7 +246,7 @@ if($action == 'edit' || $preview) {
 		'<div id="panesContainer">
 		
 			<div id="leftContainer">
-				<textarea id="inputPane" class="contentTextarea" name="content" onscroll="sync(true)">'.h(str_replace("&lt;", "<", $CON)).'</textarea>
+				<textarea id="inputPane" class="contentTextarea" name="content" style="width:98%" rows="15" onscroll="sync(true)">'.h(str_replace("&lt;", "<", $CON)).'</textarea>
 			</div>
 			
 			<div id="rightContainer">
@@ -254,6 +254,9 @@ if($action == 'edit' || $preview) {
 			</div>
 			
 		</div>';
+		
+	# old version
+	#$CON_TEXTAREA = '<textarea class="contentTextarea" name="content" style="width:100%" cols="100" rows="15">'.h(str_replace("&lt;", "<", $CON)).'</textarea>';
 		
 	$CON_PREVIEW = '<input class="submit" type="submit" name="preview" value="'.$T_PREVIEW.'"/>';
 
@@ -531,7 +534,10 @@ if(!$action || $preview) { // page parsing
 	//$CON = str_replace('--', '&mdash;', $CON); // dash
 
 	$CON = preg_replace(array_fill(0, count($codes[1]) + 1, '/{CODE}/'), $codes[1], $CON, 1); // put HTML and "normal" codes back
-	$CON = preg_replace(array_fill(0, count($htmlcodes[1]) + 1, '/{HTML}/'), $htmlcodes[1], $CON, 1);
+
+	if ($htmlcodes != null) {
+		$CON = preg_replace(array_fill(0, count($htmlcodes[1]) + 1, '/{HTML}/'), $htmlcodes[1], $CON, 1);
+	}
 	
 	plugin('formatEnd');
 }
