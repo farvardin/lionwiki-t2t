@@ -1,6 +1,6 @@
-<?php // LionWiki-t2t 3.2.9e - 2015-03-22
+<?php // LionWiki-t2t 3.2.11 - 2018-07
 
-// This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.9 (c) Adam Zivner, licensed under GNU/GPL v2
+// This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.11 (c) Adam Zivner, licensed under GNU/GPL v2
 // and uses txt2tags.class.php to render the pages.
 // Don't forget to include txt2tags.class.php in the same folder as this file!
 
