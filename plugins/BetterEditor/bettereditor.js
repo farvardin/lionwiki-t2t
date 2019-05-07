@@ -50,11 +50,11 @@ function registerOnKeyDown()
 if(typeof wons == "undefined")
 	wons = new Array();
 
-wons.push(registerOnKeyDown);
+wons.push("registerOnKeyDown()");
 
 window.onload = function() {
 	for(var i = 0; i < wons.length; i++)
-		wons[i]();
+		eval(wons[i]);
 }
 
 function getElementsByClassName(classname, node)

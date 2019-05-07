@@ -99,8 +99,8 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer {
         if ($this->_split_level == 'words') {
             $prefix = '';
             while ($orig[0] !== false && $final[0] !== false &&
-                   substr($orig[0], 0, 1) == ' ' &&
-                   substr($final[0], 0, 1) == ' ') {
+                substr($orig[0], 0, 1) == ' ' &&
+                substr($final[0], 0, 1) == ' ') {
                 $prefix .= substr($orig[0], 0, 1);
                 $orig[0] = substr($orig[0], 1);
                 $final[0] = substr($final[0], 1);
@@ -117,12 +117,14 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer {
         /* We want to split on word boundaries, but we need to
          * preserve whitespace as well. Therefore we split on words,
          * but include all blocks of whitespace in the wordlist. */
-        $diff = new Text_Diff($this->_splitOnWords($text1, $nl),
-                              $this->_splitOnWords($text2, $nl));
+        $diff = new Text_Diff('native',
+            array($this->_splitOnWords($text1, $nl),
+                $this->_splitOnWords($text2, $nl)));
 
         /* Get the diff in inline format. */
-        $renderer = new Text_Diff_Renderer_inline(array_merge($this->getParams(),
-                                                              array('split_level' => 'words')));
+        $renderer = new Text_Diff_Renderer_inline
+        (array_merge($this->getParams(),
+            array('split_level' => 'words')));
 
         /* Run the diff and get the output. */
         return str_replace($nl, "\n", $renderer->render($diff)) . "\n";
@@ -150,7 +152,7 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer {
 
     function _encode(&$string)
     {
-        $string = h($string);
+        $string = htmlspecialchars($string);
     }
 
 }

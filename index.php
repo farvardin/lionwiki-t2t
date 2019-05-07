@@ -1,4 +1,4 @@
-<?php // LionWiki-t2t 3.2.11 - 2018-07
+<?php // LionWiki-t2t 3.2.11b - 2019-05-07
 
 // This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.11 (c) Adam Zivner, licensed under GNU/GPL v2
 // and uses txt2tags.class.php to render the pages.
@@ -52,7 +52,10 @@ $CONTACT_SENT = @file_get_contents("contact_sent.php");
 
 @error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @ini_set('default_charset', 'UTF-8');
-// set_magic_quotes_runtime(0); // remove for php7
+if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+    $mqr=get_magic_quotes_runtime();
+    set_magic_quotes_runtime(0); // remove for php7
+}
 umask(0);
 
 if(get_magic_quotes_gpc()) // magic_quotes_gpc can't be turned off
@@ -417,6 +420,7 @@ if(!$action || $preview) { // page parsing
 	//$CON = preg_replace("/&amp;([a-z]+;|\#[0-9]+;)/U", "&$1", $CON); // keep HTML entities
 	$CON = preg_replace("/(\r\n|\r)/", "\n", $CON); // unifying newlines to Unix ones
 
+	//TODO: should we activate this below? Without it, it casts php warnings
 	//preg_match_all("/{{(.+)}}/Ums", $CON, $codes, PREG_PATTERN_ORDER);
 	//$CON = preg_replace("/{{(.+)}}/Ums", "<pre>{CODE}</pre>", $CON);
 
@@ -533,7 +537,12 @@ if(!$action || $preview) { // page parsing
 	//$CON = preg_replace('/-----*/', '<hr/>', $CON); // horizontal line
 	//$CON = str_replace('--', '&mdash;', $CON); // dash
 
+	// TODO: should we desactivate this below? It casts php warnings. 
+	// it seems for inclusion of html code, not useful because of t2t
+
+	if ($htmlcodes != null) {
 	$CON = preg_replace(array_fill(0, count($codes[1]) + 1, '/{CODE}/'), $codes[1], $CON, 1); // put HTML and "normal" codes back
+	}
 
 	if ($htmlcodes != null) {
 		$CON = preg_replace(array_fill(0, count($htmlcodes[1]) + 1, '/{HTML}/'), $htmlcodes[1], $CON, 1);

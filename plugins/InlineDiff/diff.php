@@ -19,12 +19,25 @@ class Text_Diff {
      *                           Normally an array of two arrays, each
      *                           containing the lines from a file.
      */
-    function Text_Diff($from, $to)
+    function __construct($engine, $params)
     {
-        require_once 'native.php';
-        $native = new Text_Diff_Engine_native();
+        // Backward compatibility workaround.
+        if (!is_string($engine)) {
+            $params = array($engine, $params);
+            $engine = 'auto';
+        }
 
-        $this->_edits = $native->diff($from, $to);
+        if ($engine == 'auto') {
+            $engine = extension_loaded('xdiff') ? 'xdiff' : 'native';
+        } else {
+            $engine = basename($engine);
+        }
+
+        require_once $engine . '.php';
+        $class = 'Text_Diff_Engine_' . $engine;
+        $diff_engine = new $class();
+
+        $this->_edits = call_user_func_array(array($diff_engine, 'diff'), $params);
     }
 
     /**
@@ -37,6 +50,10 @@ class Text_Diff {
 
     /**
      * returns the number of new (added) lines in a given diff.
+     *
+     * @since Text_Diff 1.1.0
+     * @since Horde 3.2
+     *
      * @return integer The number of new lines
      */
     function countAddedLines()
@@ -53,6 +70,10 @@ class Text_Diff {
 
     /**
      * Returns the number of deleted (removed) lines in a given diff.
+     *
+     * @since Text_Diff 1.1.0
+     * @since Horde 3.2
+     *
      * @return integer The number of deleted lines
      */
     function countDeletedLines()
@@ -111,6 +132,24 @@ class Text_Diff {
     }
 
     /**
+     * Computes the length of the Longest Common Subsequence (LCS).
+     *
+     * This is mostly for diagnostic purposes.
+     *
+     * @return integer  The length of the LCS.
+     */
+    function lcs()
+    {
+        $lcs = 0;
+        foreach ($this->_edits as $edit) {
+            if (is_a($edit, 'Text_Diff_Op_copy')) {
+                $lcs += count($edit->orig);
+            }
+        }
+        return $lcs;
+    }
+
+    /**
      * Gets the original set of lines.
      *
      * This reconstructs the $from_lines parameter passed to the constructor.
@@ -153,7 +192,7 @@ class Text_Diff {
      * @param string $line  The line to trim.
      * @param integer $key  The index of the line in the array. Not used.
      */
-    function trimNewlines(&$line, $key)
+    static function trimNewlines(&$line, $key)
     {
         $line = str_replace(array("\n", "\r"), '', $line);
     }
@@ -171,7 +210,7 @@ class Text_Diff {
     function _getTempDir()
     {
         $tmp_locations = array('/tmp', '/var/tmp', 'c:\WUTemp', 'c:\temp',
-                               'c:\windows\temp', 'c:\winnt\temp');
+            'c:\windows\temp', 'c:\winnt\temp');
 
         /* Try PHP's upload_tmp_dir directive. */
         $tmp = ini_get('upload_tmp_dir');
@@ -230,6 +269,60 @@ class Text_Diff {
 
 }
 
+/**
+ * @package Text_Diff
+ * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
+ */
+class Text_MappedDiff extends Text_Diff {
+
+    /**
+     * Computes a diff between sequences of strings.
+     *
+     * This can be used to compute things like case-insensitve diffs, or diffs
+     * which ignore changes in white-space.
+     *
+     * @param array $from_lines         An array of strings.
+     * @param array $to_lines           An array of strings.
+     * @param array $mapped_from_lines  This array should have the same size
+     *                                  number of elements as $from_lines.  The
+     *                                  elements in $mapped_from_lines and
+     *                                  $mapped_to_lines are what is actually
+     *                                  compared when computing the diff.
+     * @param array $mapped_to_lines    This array should have the same number
+     *                                  of elements as $to_lines.
+     */
+    function Text_MappedDiff($from_lines, $to_lines,
+                             $mapped_from_lines, $mapped_to_lines)
+    {
+        assert(count($from_lines) == count($mapped_from_lines));
+        assert(count($to_lines) == count($mapped_to_lines));
+
+        parent::Text_Diff($mapped_from_lines, $mapped_to_lines);
+
+        $xi = $yi = 0;
+        for ($i = 0; $i < count($this->_edits); $i++) {
+            $orig = &$this->_edits[$i]->orig;
+            if (is_array($orig)) {
+                $orig = array_slice($from_lines, $xi, count($orig));
+                $xi += count($orig);
+            }
+
+            $final = &$this->_edits[$i]->final;
+            if (is_array($final)) {
+                $final = array_slice($to_lines, $yi, count($final));
+                $yi += count($final);
+            }
+        }
+    }
+
+}
+
+/**
+ * @package Text_Diff
+ * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
+ *
+ * @access private
+ */
 class Text_Diff_Op {
 
     var $orig;
@@ -252,6 +345,12 @@ class Text_Diff_Op {
 
 }
 
+/**
+ * @package Text_Diff
+ * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
+ *
+ * @access private
+ */
 class Text_Diff_Op_copy extends Text_Diff_Op {
 
     function Text_Diff_Op_copy($orig, $final = false)
@@ -265,12 +364,18 @@ class Text_Diff_Op_copy extends Text_Diff_Op {
 
     function &reverse()
     {
-        $reverse = &new Text_Diff_Op_copy($this->final, $this->orig);
+        $reverse = new Text_Diff_Op_copy($this->final, $this->orig);
         return $reverse;
     }
 
 }
 
+/**
+ * @package Text_Diff
+ * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
+ *
+ * @access private
+ */
 class Text_Diff_Op_delete extends Text_Diff_Op {
 
     function Text_Diff_Op_delete($lines)
@@ -281,12 +386,18 @@ class Text_Diff_Op_delete extends Text_Diff_Op {
 
     function &reverse()
     {
-        $reverse = &new Text_Diff_Op_add($this->orig);
+        $reverse = new Text_Diff_Op_add($this->orig);
         return $reverse;
     }
 
 }
 
+/**
+ * @package Text_Diff
+ * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
+ *
+ * @access private
+ */
 class Text_Diff_Op_add extends Text_Diff_Op {
 
     function Text_Diff_Op_add($lines)
@@ -297,12 +408,18 @@ class Text_Diff_Op_add extends Text_Diff_Op {
 
     function &reverse()
     {
-        $reverse = &new Text_Diff_Op_delete($this->final);
+        $reverse = new Text_Diff_Op_delete($this->final);
         return $reverse;
     }
 
 }
 
+/**
+ * @package Text_Diff
+ * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
+ *
+ * @access private
+ */
 class Text_Diff_Op_change extends Text_Diff_Op {
 
     function Text_Diff_Op_change($orig, $final)
@@ -313,7 +430,7 @@ class Text_Diff_Op_change extends Text_Diff_Op {
 
     function &reverse()
     {
-        $reverse = &new Text_Diff_Op_change($this->final, $this->orig);
+        $reverse = new Text_Diff_Op_change($this->final, $this->orig);
         return $reverse;
     }
 

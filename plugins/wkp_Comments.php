@@ -38,6 +38,8 @@ class Comments
 </channel>
 </rss>'; // don't change template. This exact form is needed for correct functioning.
 
+	var $strings = array();
+
 	function Comments()
 	{
 		$this->data_dir = $GLOBALS["PLUGINS_DIR"] . "Comments/"; // CSS and JS for comments
@@ -108,17 +110,17 @@ class Comments
 			$tmpl = file_get_contents($this->data_dir . $this->template);
 
 			$tmpl = strtr($tmpl, array(
-				"{FORM_NAME}" => $this->TP_FORM_NAME,
-				"{FORM_EMAIL}" => $this->TP_FORM_EMAIL,
-				"{FORM_CONTENT}" => $this->TP_FORM_CONTENT,
+				"{FORM_NAME}" => $this->strings["TP_FORM_NAME"],
+				"{FORM_EMAIL}" => $this->strings["TP_FORM_EMAIL"],
+				"{FORM_CONTENT}" => $this->strings["TP_FORM_CONTENT"],
 				// Following 3 are for failed captcha test
 				"{FORM_NAME_VALUE}" => $comment_captcha_failed ? h($_POST["name"]) : "",
 				"{FORM_EMAIL_VALUE}" => $comment_captcha_failed ? h($_POST["email"]) : "",
 				"{FORM_CONTENT_VALUE}" => $comment_captcha_failed ? h($_POST["content"]) : "",
-				"{FORM_SUBMIT}" => $this->TP_FORM_SUBMIT,
+				"{FORM_SUBMIT}" => $this->strings["TP_FORM_SUBMIT"],
 				"{FORM_SELF}" => h($self),
 				"{FORM_PAGE}" => h($page),
-				"{COMMENTS}" => $this->TP_COMMENTS
+				"{COMMENTS}" => $this->strings["TP_COMMENTS"]
 			));
 
 			$items_str = "";
@@ -165,9 +167,9 @@ class Comments
 						"{DATE}" => rev_time(basename($filename, ".txt")),
 						"{ID}" => basename($filename, ".txt"),
 						"{NUMBER}" => $comment_num,
-						"{DELETE}" => h($this->TP_DELETE),
+						"{DELETE}" => h($this->strings["TP_DELETE"]),
 						"{DELETE_LINK}" => "$self?action=admin-deletecomment&amp;page=" . u($page) . "&amp;filename=" . u($filename),
-						"{DELETE_CONFIRM}" => h($this->TP_DELETE_CONFIRM)
+						"{DELETE_CONFIRM}" => h($this->strings["TP_DELETE_CONFIRM"])
 					));
 				}
 			}
@@ -184,7 +186,7 @@ class Comments
 
 		$CON = str_replace("{NO_COMMENTS}", "", $CON);
 
-		$HEAD .= "\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS ".h($this->TP_COMMENTS)."\" href=\"$this->rss_file\" />\n";
+		$HEAD .= "\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS ".h($this->strings["TP_COMMENTS"])."\" href=\"$this->rss_file\" />\n";
 	}
 
 	function actionBegin()
@@ -276,7 +278,7 @@ class Comments
 	<description><pre>".h($content)."</pre></description>
 </item>";
 
-		$rss = str_replace('{WIKI_TITLE}', h($WIKI_TITLE) . ": " . $this->TP_COMMENTS, $this->rss_template);
+		$rss = str_replace('{WIKI_TITLE}', h($WIKI_TITLE) . ": " . $this->strings["TP_COMMENTS"], $this->rss_template);
 		$rss = str_replace('{PAGE_LINK}', h($pagelink), $rss);
 		$rss = str_replace('{LANG}', h($LANG), $rss);
 		$rss = str_replace('{WIKI_DESCRIPTION}', "RSS comments feed from " . h($WIKI_TITLE), $rss);
@@ -351,10 +353,10 @@ class Comments
 		global $LANG;
 
 		foreach($this->en_strings as $str)
-			$this->$str[0] = $str[1];
+			$this->strings[$str[0]] = $str[1];
 
 		if($LANG != "en" && isset($this->{$LANG . "_strings"}))
 			foreach($this->{$LANG . "_strings"} as $str)
-				$this->$str[0] = $str[1];
+				$this->strings[$str[0]] = $str[1];
 	}
 }
