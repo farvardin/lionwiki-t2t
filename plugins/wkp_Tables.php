@@ -49,7 +49,8 @@ class Tables {
 		$s = str_replace("\n", "", $s);
 
 		// Creation des <td></td> en se servant des |
-		$s = preg_replace('/\|(([hlrtb]* ){0,1})\s*(\d*)\s*,{0,1}(\d*)\s*(.*?)\|/e', '"<td".("$3"?" colspan=\"$3\"":" ").("$4"?" rowspan=\"$4\"":" ").$this->table_style("$1").">$5</td>"', $s);
+		$s = preg_replace_callback('/\|(([hlrtb]* ){0,1})\s*(\d*)\s*,{0,1}(\d*)\s*(.*?)\|/',
+			function($m) { return "<td".($m[3]?" colspan=\"$m[3]\"":" ").("$m[4]"?" rowspan=\"$m[4]\"":" ").Tables::table_style("$m[1]").">$m[5]</td>"; }, $s);
 
 		if($nblinks > 0)
 			$s = preg_replace_callback(array_fill(0, $nblinks, "/\[LINK\]/"), create_function('$m', 'global $matches_links;static $idxlink=0;return "[".$matches_links[1][$idxlink++]."]";'), $s);
@@ -61,6 +62,6 @@ class Tables {
 	{
 		global $CON;
 
-		$CON = preg_replace("/((^ *\|[^\n]*\| *$\n)+)/me", '"<table class=\"wikitable\">".stripslashes($this->make_table("$1"))."</table>\n"', $CON);
+		$CON = preg_replace_callback("/((^ *\|[^\n]*\| *$\n)+)/m", function($m) { return "<table class=\"wikitable\">".stripslashes(Tables::make_table($m[1]))."</table>\n"; }, $CON);
 	}
 }

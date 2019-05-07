@@ -1,7 +1,10 @@
-<?php $T2TVersion = "20161216";
+<?php $T2TVersion = "20170815";
 /**
   txt2tags.class.php
-  Written by (c) Petko Yotov 2012 www.pmwiki.org/petko
+
+  This version is for PHP >= 5.3
+
+  Written by (c) Petko Yotov 2012-2016 www.pmwiki.org/petko
   Development sponsored by Eric Forgeot.
   
   txt2tags is a lightweight markup language created by 
@@ -711,7 +714,50 @@ class T2T {
       , $line);
     $line = preg_replace_callback('/%%rand\\(([0-9]+),([0-9]+)\\)/', 
       function($m) { return rand($m[1], $m[2]); }, $line);
-    /*$line = preg_replace_callback('/%%rand\([0-9]+,[0-9]+\)/',  'create_function(return(rand($1,$2);))', $line);
+    $line = preg_replace_callback('/%%rand\\((.*?)\\)/', 
+       function($m) { 
+
+//return $that -> array($m[1])[array_rand(array($m[1]), 2)[0]];
+	
+
+$mylist = array($m[1]);
+	//shuffle($mylist);
+	//$bidule = array_splice($mylist, 0, 1);
+	return reset($mylist);
+
+//return implode(",", $bidule);
+      //return $mylist;
+//echo print_r($result);
+
+
+//$input = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
+	  //$input = array(Neo, Morpheus, Trinity, Cypher, Tank);
+	  //$input = array($m[1]);
+	  //$rand_keys = array_rand(array($m[1]), 2);
+	  //return $input[$rand_keys[0]] . "\n";
+	  //return $input[$rand_keys[0]] ;
+	// // return array($m[1])[array_rand(array($m[1]), 2)[0]]; //should be good but doesnt work
+      //return array($m[1])[array_rand(array($m[1]), 2)[0]]; //should be good but doesnt work
+  // // return array("Neo", "Morpheus", "Trinity", "Cypher", "Tank")[array_rand(array("Neo", "Morpheus", "Trinity", "Cypher", "Tank"), 2)[0]]; // this one works
+   // $truc = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank") ; // ok
+  //$truc = array($m[1]) ; 
+//return $bidule = $truc[array_rand($truc, 2)[0]];
+//$bidule = array_values($truc);
+//$bidule = print_r(array_values($bidule));
+//return $bidule;
+//return $truc;
+     // return "hello" ;
+      //return array($m[1]);
+	  //return array($m[1])[$rand_keys[0]] ;
+	  //return $m[1];
+	  //return print_r($input);
+	  }, $line);
+      //function($m) { return "test"; }, $line);
+	//$line = preg_replace_callback('/%%rand\\((.*?),([0-9]+)\\)/', 
+    //  function($m) { return array_rand($m[1], $m[2]); }, $line);
+    $line = preg_replace_callback('/%%rand/', 
+      function($m) { return (float)rand()/(float)getrandmax(); }, $line);
+/*$line = preg_replace_callback('/%%rand\([0-9]+,[0-9]+\)/',  'create_function(return(rand($1,$2);))', $line);
      $line = preg_replace('/%%rand\([0-9]+,[0-9]+\)/i', '<? rand($1,$2); ?>', $line);
     $line = preg_replace_callback('/%%rand\\(([0-9]+),([0-9]+)\\)/',  'return(rand($1,$2);)', $line);
 */
