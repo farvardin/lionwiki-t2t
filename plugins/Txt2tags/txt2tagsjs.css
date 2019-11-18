@@ -10,7 +10,7 @@ dl {
 
 
 #tabSize table tr,th,td ,thead{
-	border: 1px solid #999;
+	border: 0px solid #999;
 }
 #tabSize table {
 	border-collapse: collapse;
@@ -107,7 +107,8 @@ dl {
 
 #leftContainer, #rightContainer {
 	display: block;
-	position: absolute;
+	position: absolute;  /* for the 2 panes for txt2tagsjs preview. We can define it in individual css otherwise it might interfere */
+    /*position: relative;*/
 	width: 100%;
 }
 

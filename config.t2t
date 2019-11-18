@@ -76,3 +76,27 @@
 %!postproc: 'CONVERT-BRACKET-START'      '&#91;'
 %!postproc: 'CONVERT-BRACKET-END'      '&#93;'
 
+
+
+%% Markdown support!
+%%  headings
+%!preproc: '^# (.*?)$' '= \1 ='
+%!preproc: '^## (.*?)$' '== \1 =='
+%!preproc: '^### (.*?)$' '=== \1 ==='
+%!preproc: '^#### (.*?)$' '==== \1 ===='
+%!preproc: '^##### (.*?)$' '===== \1 ====='
+%!preproc: '^\* (.*?)$' '- \1'
+%!preproc: '^(\d+)\. (.*?)$' '+ \2'
+%%  links
+%!preproc: '\[(.*?)\]\(\http://([^ ].*?)\)' '[\1 http://\2]'
+%% images
+%!preproc: '\!\[(.*?)\]\(([^ ].*?)\)' '[\2]'
+%%TODO  ![Texte alternatif](/chemin/vers/img.jpg "Titre optionnel")
+%!preproc: '^>'  '\t'
+%!postvoodoo: '(.*?)\n=[=*]{2,}='  '<h1>\1</h1>'
+%!preproc: '-[-*]{18,}-'  'T2TBAR'
+%!preproc: '-[-*]{2,}'  'MDUNDERLINE'
+%!postproc: 'MDUNDERLINE'  '------'
+%!postproc: 'T2TBAR'  '<hr/>'
+%!postvoodoo: '(.*?)\n-[-*]{2,}-' '<h2>\1</h2>'
+
