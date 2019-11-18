@@ -1,4 +1,15 @@
 <?php
+/**
+ * * * Based on BetterEditor
+
+ * BetterEditor is plugin for LionWiki which adds:
+ * 1) toolbar with a few formatting buttons (bold, italics etc.)
+ * 2) resizing arrows which allow to resize the textarea
+ *
+ * Both are used for classical editing, Ajax editing and comments.
+ *
+ * (c) 2009, Adam Zivner, <adam.zivner@gmail.com>. GPL'd
+ */
 
 class Txt2Tags
 {
@@ -7,20 +18,38 @@ class Txt2Tags
 	);
 	
 	var $menu;
+	var $strings = array();
 	
 	function Txt2Tags()
 	{
 		$this->localize();
-		$this->menu =
+		$this->menu =		
+		/*
 		'<div id="headerContainer">
 		
 			<a href="#" class="toggle"><span class="txt2tagsMenu" id="markItUp" title="MarkItUp">MarkItUp</span></a>
-			<span class="txt2tagsMenu" id="displayPreview" onclick="previewCache()" title="'.h($this->TXT_PREVIEW).'">'.h($this->TXT_PREVIEW).'</span>
-			<span class="txt2tagsMenu" id="synchronizeButton" onclick="switchSync()" title="'.h($this->TXT_SCROLL).'">'.h($this->TXT_SCROLL).'</span>
-			<span class="txt2tagsMenu" id="displayPane" onclick="switchDisplay()" title="'.h($this->TXT_DISPLAY).'">'.h($this->TXT_DISPLAY).'</span>
-			<span class="txt2tagsMenu" id="changeButton" onclick="switchPlace()" title="'.h($this->TXT_EXCHANGE).'">'.h($this->TXT_EXCHANGE).'</span>
+
+		<span class="txt2tagsMenu" id="displayPreview" onclick="previewCache()" title="'.$this->strings["TXT_PREVIEW"][1].'">'.$this->strings["TXT_PREVIEW"][0].'</span>
+			<span class="txt2tagsMenu" id="synchronizeButton" onclick="switchSync()" title="'.$this->strings["TXT_SCROLL"][0].'">'.$this->strings["TXT_SCROLL"][0].'</span>
+			<span class="txt2tagsMenu" id="displayPane" onclick="switchDisplay()" title="'.$this->strings["TXT_DISPLAY"][2].'">'.$this->strings["TXT_DISPLAY"][2].'</span>
+			<span class="txt2tagsMenu" id="changeButton" onclick="switchPlace()" title="'.$this->strings["TXT_EXCHANGE"][1].'">'.$this->strings["TXT_EXCHANGE"][1].'</span>
 			
 		</div>';
+		*/
+		
+			/* automatic translation isn't working anymore so we hardcode the default txt to english */
+				
+		'<div id="headerContainer">
+		
+			<a href="#" class="toggle"><span class="txt2tagsMenu" id="markItUp" title="Enable / Disable MarkItUp toolbar">MarkItUp</span></a>
+
+		<span class="txt2tagsMenu" id="displayPreview" onclick="previewCache()" title="Enable / Disable Preview">Preview</span>
+			<span class="txt2tagsMenu" id="synchronizeButton" onclick="switchSync()" title="Lock Scroll">Scroll</span>
+			<span class="txt2tagsMenu" id="displayPane" onclick="switchDisplay()" title="Display preview panes below">Display</span>
+			<span class="txt2tagsMenu" id="changeButton" onclick="switchPlace()" title="Swap panes">Swap</span>
+			
+		</div>';
+		
 	}
 	
 	function template()
@@ -34,19 +63,21 @@ class Txt2Tags
 		}
 	}
 	
+	/* translation isn't working anymore*/
+	
 	var $en_strings = array(
-		array("TXT_EXCHANGE", "Exchange"),
-		array("TXT_SCROLL", "Synchronized scrolling"),
-		array("TXT_DISPLAY", "Display"),
-		array("TXT_PREVIEW", "Preview")
+		array("TXT_EXCHANGE", array("Exchange", "Exchange")),
+		array("TXT_SCROLL", array("Synchronized scrolling")),
+		array("TXT_DISPLAY", array("Display")),
+		array("TXT_PREVIEW", array("Preview"))
 		
 	);
 	
 	var $fr_strings = array(
-		array("TXT_EXCHANGE", "Echange"),
-		array("TXT_SCROLL", "Défilement synchronisé "),
+		array("TXT_EXCHANGE", array("Échange", "Échange")),
+		array("TXT_SCROLL", array("Défilement synchronisé ")),
 		array("TXT_DISPLAY", "Affichage"),
-		array("TXT_PREVIEW", "Aperçu")
+		array("TXT_PREVIEW", array("Aperçu"))
 	);
 	
 	function localize()
@@ -54,10 +85,11 @@ class Txt2Tags
 		global $LANG;
 
 		foreach($this->en_strings as $str)
-			$this->$str[0] = $str[1];
+			$this->strings[$str[0]] = $str[1];
 
 		if($LANG != "en" && isset($this->{$LANG . "_strings"}))
 			foreach($this->{$LANG . "_strings"} as $str)
-				$this->$str[0] = $str[1];
+				$this->strings = $str[1];
+				
 	}
 }

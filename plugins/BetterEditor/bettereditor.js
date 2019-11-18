@@ -50,7 +50,12 @@ function registerOnKeyDown()
 if(typeof wons == "undefined")
 	wons = new Array();
 
-wons.push("registerOnKeyDown()");
+// official lionwiki now call:
+// wons.push("registerOnKeyDown()");
+// but it crashes the lionwiki-t2t editor...
+// so we use the older call:
+
+wons.push(registerOnKeyDown);
 
 window.onload = function() {
 	for(var i = 0; i < wons.length; i++)

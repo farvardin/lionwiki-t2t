@@ -25,6 +25,51 @@
         <title>{PAGE_TITLE_HEAD - } {WIKI_TITLE}</title>
 		{HEAD}
 		<style>
+		table,
+#previewPane table {
+  border-collapse: collapse;
+  empty-cells: show;
+  border-spacing: 0;
+  border: 1px solid #999;
+}
+.form table {
+  border-collapse: collapse;
+  empty-cells: hide;
+  border-spacing: 0;
+  border: 0px solid #fff;
+}
+th,
+td,
+#previewPane th,
+#previewPane td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+.form th,
+td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 0px solid #999;
+  text-align: left;
+}
+th,
+thead,
+#previewPane th,
+#previewPane thead {
+  font-weight: bold;
+  background-color: #ddd;
+}
+[dir=rtl] td,
+[dir=rtl] th {
+  text-align: right;
+}
+.resizeTextarea a {
+  text-decoration: none;
+}
 			@font-face {font-family: 'Lato';src: url('templates/ElectricObsidian/Lato-Bol.woff') format('woff');}
 		    
 			/*-------COLOR and ASPECT-------*/
@@ -81,9 +126,95 @@
 			article textarea{padding-left:3px;margin-top:12px;}
 			article input{padding:3px;}
 			.par-div3, .par-div4, .par-div5, .par-div6{padding-left:20px;}
+			
+			/*    important for markitup :    */
+
+    .contentTextarea {
+        width: 100%;
+        font-family: @MainFontFamily;
+        font-size: 100%;
+        padding: 0px;
+        margin-left: -15px;
+		background-color: #111;
+		
+    }
+    
+     #main {
+        /*overflow: auto;*/
+    }
+	#inputPane {
+	background-color: #111;
+	padding: 5px;
+}
+
+	#previewPane {
+	background-color: #111;
+	padding: 5px;
+}
 		</style>
+		
+		 <!-- for txt2tagsjs --> 
+		<script type="text/javascript" src="txt2tags.js"></script>
+		<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
+		<script type="text/javascript" src="textallion.js"></script>
+		
+		
     </head> 
+	
     <body>
+	
+	
+	<script type="text/javascript" src="markitup/jquery-1.6.2.min.js"></script>
+		
+		<!--<script type="text/javascript" src="markitup/jquery.markitup-fr.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set-fr.js"></script>-->
+		
+		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css" />
+		<link rel="stylesheet" type="text/css" href="markitup/sets/txt2tags/style.css" />
+		<script type="text/javascript" >
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('#inputPane').markItUp(mySettings);
+	$("#markItUp").removeClass("button_txt2tags_false");
+	$("#markItUp").addClass("button_txt2tags_true");
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );	
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+	
+	// And you can add/remove markItUp! whenever you want
+	// $(textarea).markItUpRemove();
+	$('.toggle').click(function() {
+		if ($("#inputPane.markItUpEditor").length === 1) {
+ 			$("#inputPane").markItUpRemove();
+			$("#markItUp").removeClass("button_txt2tags_true");
+			$("#markItUp").addClass("button_txt2tags_false");
+		} else {
+			$('#inputPane').markItUp(mySettings);
+			$("#markItUp").removeClass("button_txt2tags_false");
+			$("#markItUp").addClass("button_txt2tags_true");
+		}
+ 		return false;
+	});
+});
+-->
+</script>
+
+	
+	
+	
+	
 		<section>
 			<header>
 				<a href="?page=home&action=&erasecookie=1"><img src="templates/ElectricObsidian/logout.png" alt="Logout" /></a>
@@ -100,14 +231,37 @@
 					{ERROR}
 					{CONTENT}
 					{CONTENT_FORM}
+					
+					<!-- old version 
 					{RENAME_TEXT}
 					{RENAME_INPUT}
 					{CONTENT_TEXTAREA}
 					<p>{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {CONTENT_PREVIEW} {CONTENT_SUBMIT}</p>
+					-->
+					
+					<!-- new version for MarkitUp -->
+		<table style="width: 100%; border:5px;" class="form" >
+			<tr>
+				<td>{RENAME_TEXT } {RENAME_INPUT }<br/>{plugin:TXT2TAGS_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" >{SHOW_PAGE}<br/>{SYNTAX}</td>
+			</tr>
+			<tr>
+				<td colspan="3">{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>	
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;">{plugin:RESIZE_TEXTAREA}</td>
+			</tr>
+		</table>
+ <!-- end new version for markitup-->
+					
+					
 					{/CONTENT_FORM}
+					
+				
 			</article>
 			<footer>
-				<p>Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a></p>
+				<p>Powered by <a href="">LionWiki-t2t</a></p>
 			</footer>		
 		</section>
     </body>

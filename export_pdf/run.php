@@ -32,7 +32,7 @@
 					system("make clean");
 					break;
 				default:
-					system("make pdf");
+					system("echo '<a href='../index.php?page=textallion'><b>edit textallion page!!</b></a><br/><br/>' && make pdf");
 					break;
 			}
 	}	

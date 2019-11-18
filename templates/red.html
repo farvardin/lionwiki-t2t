@@ -30,7 +30,7 @@ textarea{padding:3px;}
 #toc{border:1px dashed #CC3333;margin:5px 0 5px 10px;padding:6px 5px 7px 0px;float:right;list-style:none;clear:right;}
 #toc ul{list-style:none;padding:3px 0 3px 10px;}
 #toc li{font-size:11px;padding-left:10px;}
-#rightPanel{width:5px;right:0px;position:fixed;_position:absolute;height:100%;top:0px;overflow:hidden;vertical-align:top;background-color:#CC3333;color:#CC3333;padding:0px;border-left:15px solid white;}
+#rightPanel{width:15px;right:0px;position:fixed;_position:absolute;height:100%;top:0px;overflow:hidden;vertical-align:top;background-color:#CC3333;color:#CC3333;padding:0px;border-left:15px solid white;}
 #rightPanel:hover{width:180px;border-left:1px solid #CC3333;color:black;background-color:white;padding:5px 5px 5px 10px;}
 #rightPanel ul{padding-top:0px;}
 #mainContent{padding:10px;}
@@ -47,17 +47,117 @@ table.wikitable td.em{background:#ccc;font-weight:bold;}
 .tagCloud{float:right;width:200px;padding:0.5em;margin:1em;border:1px dashed #CC3333;clear:right;}
 .pageVersionsList{letter-spacing:0px;font-variant:normal;font-size:12px;}
 .resizeTextarea a{border-bottom:none;}
+
+/*    important for markitup :    */
+
+    .contentTextarea {
+        width: 100%;
+		font-size: 100%;
+        padding: 0px;
+        margin-left: -15px;
+		margin-top: -200px;
+    }
+	
+	#leftContainer {
+		position: relative;
+		margin-top: -250px;
+	}
+	
+	#rightContainer {
+		position: relative;
+		margin-top: 0px;
+	}
+	
 	</style>
 	{HEAD}
+	
+	  <!-- for txt2tagsjs --> 
+		<script type="text/javascript" src="txt2tags.js"></script>
+		<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
+		<script type="text/javascript" src="textallion.js"></script>
+		
 </head>
 <body>
+
+<script type="text/javascript" src="markitup/jquery-1.6.2.min.js"></script>
+		
+		<!--<script type="text/javascript" src="markitup/jquery.markitup-fr.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set-fr.js"></script>-->
+		
+		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css" />
+		<link rel="stylesheet" type="text/css" href="markitup/sets/txt2tags/style.css" />
+		<script type="text/javascript" >
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('#inputPane').markItUp(mySettings);
+	$("#markItUp").removeClass("button_txt2tags_false");
+	$("#markItUp").addClass("button_txt2tags_true");
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );	
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+	
+	// And you can add/remove markItUp! whenever you want
+	// $(textarea).markItUpRemove();
+	$('.toggle').click(function() {
+		if ($("#inputPane.markItUpEditor").length === 1) {
+ 			$("#inputPane").markItUpRemove();
+			$("#markItUp").removeClass("button_txt2tags_true");
+			$("#markItUp").addClass("button_txt2tags_false");
+		} else {
+			$('#inputPane').markItUp(mySettings);
+			$("#markItUp").removeClass("button_txt2tags_false");
+			$("#markItUp").addClass("button_txt2tags_true");
+		}
+ 		return false;
+	});
+});
+-->
+</script>
+
+
 <h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
 <div id="mainContent">
 {<div class="error"> ERROR </div>}
 {CONTENT}
 {plugin:TAG_LIST}
 {CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
-{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
+
+<!-- OLD VERSION 
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} 
+{CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> 
+-->
+
+<!-- new version for MarkitUp -->
+
+<table style="width: 100%; border:0px;" class="form" >
+			<tr>
+				<td>{plugin:TXT2TAGS_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" ><small>{SHOW_PAGE}<br/>{SYNTAX}</small></td>
+			</tr>
+			<tr>
+				<td colspan="3">{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>	
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}<br/>{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;"></td>
+			</tr>
+		</table>
+ <!-- end new version for markitup-->
+ 
+
+{/CONTENT_FORM}
 </div>
 <div id="rightPanel">
 	<h2 style="color:#CC3333;font-size:18px;font-style:smallcaps;">Menu</h2>
@@ -104,7 +204,7 @@ table.wikitable td.em{background:#ccc;font-weight:bold;}
 		{<li> plugin:SELECT_TEMPLATE </li>}
 	</ul>
 
-	<p style="position:absolute;bottom:20px;font-size:smaller;">Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a></p>
+	<p style="position:absolute;bottom:20px;font-size:smaller;">Powered by <a href="https://bitbucket.org/farvardin/lionwiki-t2t/">LionWiki-t2t</a></p>
 </div>
 </body>
 </html>

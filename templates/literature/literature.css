@@ -372,7 +372,65 @@ Editing
 	border:1px solid #afd7e3;
 }
 
+/*    important for markitup :    */
+
+    .contentTextarea {
+        width: 100%;
+        /*font-family: @MainFontFamily;*/
+        font-size: 100%;
+        padding: 0px;
+        margin-left: -15px;
+    }
+    
+     #main {
+        /*overflow: auto;*/
+    }
 	
+table,
+#previewPane table {
+  border-collapse: collapse;
+  empty-cells: show;
+  border-spacing: 0;
+  border: 1px solid #999;
+}
+.form table {
+  border-collapse: collapse;
+  empty-cells: hide;
+  border-spacing: 0;
+  border: 0px solid #fff;
+}
+th,
+td,
+#previewPane th,
+#previewPane td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+.form th,
+td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 0px solid #999;
+  text-align: left;
+}
+th,
+thead,
+#previewPane th,
+#previewPane thead {
+  font-weight: bold;
+  background-color: #ddd;
+}
+[dir=rtl] td,
+[dir=rtl] th {
+  text-align: right;
+}
+.resizeTextarea a {
+  text-decoration: none;
+}	
 
 #wikitext sectionedit sectionhead {
 	/*clear: none;*/
