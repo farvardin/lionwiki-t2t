@@ -60,25 +60,21 @@ a.toolbarTextareaItem{padding-right: 10px}
 </head>
 <body>
 <div id="wrapper">
-	<div id="header">
+	<div id="header">{MENU}
 		<div class="panel hover-display" style="position: fixed; width: 910px;z-index:1;">
 			<span class="hover-menu">
 				{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}
 			</span>
-			<span style="position: absolute;left:-50px;color:black;width:100px;">
-				Menu:
-			</span>
+			
 		</div>
 		<div class="panel">
-			{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}
-			<span style="position: absolute;left:-50px;color:white;z-index:1;">
-				Menu:
-			</span>
+			{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}  
 		</div>
 	</div>
 	<div id="content">
 		<h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
 		{<div class="error"> ERROR </div>}
+
 		{CONTENT}
 		{plugin:TAG_LIST}
 		{CONTENT_FORM}
@@ -97,7 +93,7 @@ a.toolbarTextareaItem{padding-right: 10px}
 		</table>
 		{/CONTENT_FORM}
 
-		{plugin:COMMENTS}
+		<!--{plugin:COMMENTS}-->
 	</div>
 	<div id="footer">
 		<div style="float:left;">

@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20170815";
+<?php $T2TVersion = "20200514";
 /**
   txt2tags.class.php
 
@@ -338,7 +338,7 @@ class T2T {
         continue;
       }
       # tables
-      if(preg_match('/^ *(\\|\\|?) /', $line, $m)) {
+      if(preg_match('/^ *(\\|\\|?) /', $line, $m) OR preg_match('/^ *(\\|_?) /', $line, $m) OR preg_match('/^ *(\\|\/?) /', $line, $m)) {
         if(!$table) { # open table
           $attr = ($line{0}==' ')? ' align="center"' : "";
           if(preg_match('/\\|\\s*$/', $line)) {
@@ -348,7 +348,7 @@ class T2T {
           $table = sprintf($snippets['tableopen'], $attr);
         }
         # fill table
-        if($m[1]=='||') $fmt = $snippets['tablehead'];
+        if($m[1]=='||' OR $m[1]=='|/') $fmt = $snippets['tablehead'];
         else $fmt = $snippets['tablecell'];
         
         $line = $this->run_inline($line);

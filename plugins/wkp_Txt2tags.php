@@ -56,7 +56,8 @@ class Txt2Tags
 	{
 		global $action, $HEAD, $preview, $html, $PLUGINS_DIR;
 
-		$HEAD .= '<link rel="stylesheet" href="'.$PLUGINS_DIR.'Txt2tags/txt2tagsjs.css" />';
+		// we will load it in the supported templates only:
+		//$HEAD .= '<link rel="stylesheet" href="'.$PLUGINS_DIR.'Txt2tags/txt2tagsjs.css" />';
 		
 		if($action == "edit" || $preview) {
 			$html = template_replace("plugin:TXT2TAGS_TEXTAREA", $this->menu, $html);

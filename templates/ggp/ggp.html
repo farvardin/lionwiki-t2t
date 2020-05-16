@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+
+	<link rel="stylesheet/less" href="templates/ggp/ggp.less" />
+	<script src="templates/js/less.js" type="text/javascript"></script>
+
+	{HEAD}
+	
+	  
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">
+		 <ul>{MENU}</ul> <br/>
+	</div>
+	<div id="content">
+	<div id="content-header">
+		<h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+		</div>
+		<div class="menu">{HOME} {&nbsp;&nbsp; EDIT} {&nbsp;&nbsp; HISTORY} {&nbsp;&nbsp; RECENT_CHANGES}</div>
+		{<div class="error"> ERROR </div>}
+		{CONTENT}
+		{plugin:TAG_LIST}
+		{CONTENT_FORM}
+
+<!-- new version for MarkitUp -->
+
+		<div id="editor"><table style="width: 100%;">
+			<tr>
+				<td>{RENAME_TEXT }{RENAME_INPUT }{plugin:TOOLBAR_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" nowrap="nowrap">{SHOW_PAGE  &nbsp; }{SYNTAX}</td>
+			</tr>
+			<tr>
+				<td colspan="3">{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;">{plugin:RESIZE_TEXTAREA}</td>
+			</tr>
+		</table>
+		{/CONTENT_FORM}</div>
+ <!-- end new version for markitup-->
+
+				<div align="right">		{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>
+</div>
+
+	</div>
+	<div id="footer">
+		<div style="float:left;">
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>

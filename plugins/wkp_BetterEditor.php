@@ -34,29 +34,29 @@ class BetterEditor
 </span>';
 		$common_toolbar = '
 <span class="toolbarTextarea">
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\\*\\\*\', \'\\\*\\\*\', \''.$this->TP_BOLD[2].'\');" title="'.$this->TP_BOLD[1].'"><b>'.$this->TP_BOLD[0].'</b></a>
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\\/\\\/\', \'\\\/\\\/\', \''.$this->TP_ITALIC[2].'\');" title="'.$this->TP_ITALIC[1].'"><i style="font-family: serif;">'.$this->TP_ITALIC[0].'</i></a>
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'__\', \'__\', \''.$this->TP_UNDERLINED[2].'\');" title="'.$this->TP_UNDERLINED[1].'" style="text-decoration: underline;">'.$this->TP_UNDERLINED[0].'</a>
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'--\', \'--\', \''.$this->TP_STRIKETHROUGH[2].'\');" title="'.$this->TP_STRIKETHROUGH[1].'" style="text-decoration: line-through;">'.$this->TP_STRIKETHROUGH[0].'</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\\*\\\*\', \'\\\*\\\*\', \''.$this->TP_BOLD[2].'\');" title="'.$this->TP_BOLD[1].'">B<b>'.$this->TP_BOLD[0].'</b></a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\\/\\\/\', \'\\\/\\\/\', \''.$this->TP_ITALIC[2].'\');" title="'.$this->TP_ITALIC[1].'">I<i style="font-family: serif;">'.$this->TP_ITALIC[0].'</i></a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'__\', \'__\', \''.$this->TP_UNDERLINED[2].'\');" title="'.$this->TP_UNDERLINED[1].'" style="text-decoration: underline;">'.$this->TP_UNDERLINED[0].'U</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'--\', \'--\', \''.$this->TP_STRIKETHROUGH[2].'\');" title="'.$this->TP_STRIKETHROUGH[1].'" style="text-decoration: line-through;">'.$this->TP_STRIKETHROUGH[0].'S</a>
 	
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'== \', \' ==\', \''.$this->TP_H2[2].'\');" title="'.$this->TP_H2[1].'"><span style="font-variant: small-caps;">'.$this->TP_H2[0].'</span></a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'== \', \' ==\', \''.$this->TP_H2[2].'\');" title="'.$this->TP_H2[1].'">H2<span style="font-variant: small-caps;">'.$this->TP_H2[0].'</span></a>
 	
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'=== \', \' ===\', \''.$this->TP_H3[2].'\');" title="'.$this->TP_H3[1].'"><span style="font-variant: small-caps;">'.$this->TP_H3[0].'</span></a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'=== \', \' ===\', \''.$this->TP_H3[2].'\');" title="'.$this->TP_H3[1].'">H3<span style="font-variant: small-caps;">'.$this->TP_H3[0].'</span></a>
 	
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[[\', \']]\', \''.$this->TP_INLINK[2].'\');" title="'.$this->TP_INLINK[1].'" style="text-decoration: none;">'.$this->TP_INLINK[0].'</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[[\', \']]\', \''.$this->TP_INLINK[2].'\');" title="'.$this->TP_INLINK[1].'" style="text-decoration: none;">'.$this->TP_INLINK[0].'wiki-link</a>
 
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[\', \' http:\/\/]\', \''.$this->TP_LINK[2].'\');" title="'.$this->TP_LINK[1].'" style="text-decoration: underline;">'.$this->TP_LINK[0].'</a>';
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[\', \' http:\/\/]\', \''.$this->TP_LINK[2].'\');" title="'.$this->TP_LINK[1].'" style="text-decoration: underline;">'.$this->TP_LINK[0].'ext-link</a>';
 
     // basic toolbar is used in comments plugin
 		$this->basic_toolbar_html = $common_toolbar . '</span>';
 
     // advanced toolbar is used in both regular editing textarea and AjaxEditing plugin
 		$this->advanced_toolbar_html = $common_toolbar . '
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \' [\', \'] \', \''.$this->TP_IMAGE[2].'\');" title="'.$this->TP_IMAGE[1].'">'.$this->TP_IMAGE[0].'</a>
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'``\', \'``\', \''.$this->TP_CODE[2].'\');" title="'.$this->TP_CODE[1].'">'.$this->TP_CODE[0].'</a>
-' . ($GLOBALS["NO_HTML"] ? "" : '<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'{html}\', \'{/html}\', \''.$this->TP_HTML[2].'\');" title="'.$this->TP_HTML[1].'">'.$this->TP_HTML[0].'</a>') . '
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\n- \', \'\', \''.$this->TP_ULIST[2].'\');" title="'.$this->TP_ULIST[1].'">'.$this->TP_ULIST[0].'</a>
-	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'|| \', \' |\', \''.$this->TP_TABLE[2].'\');" title="'.$this->TP_TABLE[1].'">'.$this->TP_TABLE[0].'</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \' [\', \'] \', \''.$this->TP_IMAGE[2].'\');" title="'.$this->TP_IMAGE[1].'">'.$this->TP_IMAGE[0].'img</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'``\', \'``\', \''.$this->TP_CODE[2].'\');" title="'.$this->TP_CODE[1].'">'.$this->TP_CODE[0].'code</a>
+' . ($GLOBALS["NO_HTML"] ? "" : '<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'{html}\', \'{/html}\', \''.$this->TP_HTML[2].'\');" title="'.$this->TP_HTML[1].'">'.$this->TP_HTML[0].'html</a>') . '
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\n- \', \'\', \''.$this->TP_ULIST[2].'\');" title="'.$this->TP_ULIST[1].'">'.$this->TP_ULIST[0].'list</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'|| \', \' |\', \''.$this->TP_TABLE[2].'\');" title="'.$this->TP_TABLE[1].'">'.$this->TP_TABLE[0].'table</a>
 </span>';
 	}
 

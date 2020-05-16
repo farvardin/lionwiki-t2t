@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" href="templates/favicon.png" type="image/png" />
+	<title>{WIKI_TITLE} - {PAGE_TITLE_HEAD}</title>
+	<link href="templates/fravashyo/fravashyo.css" rel="stylesheet" type="text/css" title="fravashyo" />
+	{HEAD}
+</head>
+<body>
+<h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+<div id="leftPanel"><br/>
+	<ul>
+		<li>{HOME}</li>
+		<li>{RECENT_CHANGES}</li>
+		{<li><i> EDIT </i></li>}
+	</ul>
+{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}
+	<br/><br/>
+	{TOC}
+	</div>
+	
+	
+<div id="nav"><ul>
+			{MENU}
+		</ul>
+		</div>
+	
+	
+<div id="mainContent">
+	
+{<div class="error"> ERROR </div>}
+{CONTENT}
+{plugin:TAG_LIST}
+{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+{plugin:TOOLBAR_TEXTAREA}
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
+</div>
+<div id="rightPanel">
+	<h2 style="color:#CC3333;font-size:18px;font-style:smallcaps;">Menu</h2>
+	<ul>
+		<li>{HOME}</li>
+		<li>{RECENT_CHANGES}</li>
+	</ul>
+
+	Article:
+	<ul>
+		{<li> EDIT </li>}
+		{<li> HISTORY </li>}
+		{<li> SYNTAX </li>}
+		{<li> plugin:WHAT_LINKS_HERE </li>}
+	</ul>
+
+	Admin functions:
+	<ul>
+		{<li> plugin:ADMIN_BLOCKED_IPS </li>}
+		{<li> plugin:ADMIN_BLACKLIST </li>}
+		{<li> plugin:ADMIN_READONLY_PAGES </li>}
+		{<li> plugin:ADMIN_DISABLED_PLUGINS </li>}
+	</ul>
+
+	Other:
+	<ul>
+		{<li> plugin:UPLOAD </li>}
+		{<li> plugin:LIST_OF_PLUGINS </li>}
+		<li>{COOKIE}</li>
+	</ul>
+
+	<p>Search:</p>
+	<ul>
+		<li>{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}</li>
+	</ul>
+
+	<p>Language:</p>
+	<ul>
+		{<li> plugin:SELECT_LANGUAGE </li>}
+	</ul>
+
+	<p>Template:</p>
+	<ul>
+		{<li> plugin:SELECT_TEMPLATE </li>}
+	</ul> 
+
+	<p style="position:absolute;bottom:20px;font-size:smaller;">Powered by <a href="https://bitbucket.org/farvardin/lionwiki-t2t/">LionWiki-t2t</a></p>
+</div>
+</body>
+</html>

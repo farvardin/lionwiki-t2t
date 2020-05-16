@@ -19,10 +19,17 @@ class SelectTemplate
 	);
 
 	var $tpls = array(
-		"templates/dandelion.html" => "Dandelion",
+		"templates/minimaxing/minimaxing.html" => "Minimaxing",
+		"templates/ggp/ggp.html" => "GGP",
+		"templates/ElectricObsidian/ElectricObsidian.html" => "ElectricObsidian",
+		"templates/literature/literature.html" => "Literature",
 		"templates/red.html" => "Red panel",
+		"templates/dandelion.html" => "Dandelion",
 		"templates/minimal.html" => "Minimal",
-		"templates/terminal.html" => "Green terminal",
+		"templates/sissou.html" => "Sissou",
+		"templates/terminal/terminal.html" => "Tron terminal",
+		"templates/terminal_green.html" => "Green terminal",
+		"templates/terminal_white.html" => "White terminal",
 		"templates/light.html" => "Light",
 		"templates/upload.html" => "Upload",
 		"templates/wikiss.html" => "WiKiss"

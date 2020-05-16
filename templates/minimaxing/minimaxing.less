@@ -45,8 +45,12 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 
 /* if you prefer to select a fixed background color, just uncomment one color from below */
 /* @MainColor: #549136; */
-@MainColor: #549136; 
+/*@MainColor: #7E2434;*/ 
+@MainColor: #7e3821;
 /*@MainColor: #549136;*/
+/*@MainColor: #549136;*/
+/*@MainColor: #D17732;*/
+@MainColor: #328cc1;
 
 /* Header color */
 
@@ -54,8 +58,8 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 @HeaderColor: (@MainColor - #111); 	
 
 /* or a complementary color: */
-@HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); 
-
+/*@HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); */
+@HeaderColor: spin(@MainColor, 180); 
 
 
 @MainFontColor: (#878e83 - #111);
@@ -378,7 +382,8 @@ th, thead, #previewPane th, #previewPane thead {
 body {
     font-size: @MainFontSize;
     font-family: sans-serif;
-    background-color: (@Bg-extra-light/1.1 + #111);
+    /*background-color: (@Bg-extra-light/1.1 + #111);*/
+	background: #fff;
     font-family: @MainFontFamily;
     color: @MainFontColor;
 }
@@ -460,7 +465,7 @@ p {
 
 
 #main-row strong, b {
-    color: #555;
+    /*color: #555;*/
 }
 
 
@@ -916,6 +921,8 @@ a.toolbarTextareaItem b  {
     #main {
         background: #fff;
         padding: 3% 0 3% 0;
+		margin-left: 8px;
+		margin-right: 4px;
     }
     #main .controls {
     }
@@ -1062,17 +1069,18 @@ a.toolbarTextareaItem b  {
 /*    important for markitup :    */
 
     .contentTextarea {
-        width: 100%;
+        width: 96%;
         font-family: @MainFontFamily;
-        font-size: 100%;
+        font-size: 105%;
         padding: 0px;
         margin-left: -15px;
     }
-	
-
     
      #main {
         /*overflow: auto;*/
+		background: #fff;
+		margin-left: 8px;
+		margin-right: 4px;
     }
 
     /* from 5grid/core.css */
@@ -1085,7 +1093,53 @@ a.toolbarTextareaItem b  {
 }
 
 
-	/* for the 2 panes for txt2tagsjs preview: */
-	#rightContainer, #leftContainer {
-	/*	position: absolute; */ /* we disable it, it's in the main txt2tagsjs.css */
-	}
+
+/* Use main color for tables */
+@TableColor: @MainColor ;
+
+/* Use complementary color for tables */
+/*@TableColor: @HeaderColor;*/
+
+
+
+
+.mycontent table {
+ width:98%;
+ margin:1%;
+ /*box-shadow:-1px 2px 5px 1px #105070*/
+ border:2px solid (@TableColor + #444);
+}
+.mycontent td, .mycontent
+th {
+ padding:4px;
+ border:1px solid #fff;
+ text-align:left
+}
+.mycontent th {
+ background: (@TableColor - #444); /*#105070;*/
+ color:#fff;
+ font-weight:bold
+}
+.mycontent tr {
+ background:(@TableColor + #787878); /*rgba(16,80,112,0.2);*/
+ color:#111
+}
+
+.mycontent tr a:hover, .mycontent #header-wrapper a:hover{
+    background-color: (@TableColor );
+    color: (@TableColor + #444);
+    }
+
+.mycontent tr a { color: (@TableColor - #444);
+font-weight: bold;
+}
+
+
+.mycontent tr:nth-child(even) {
+ background:(@TableColor + #555) /*rgba(16,80,112,0.1)*/
+}
+
+.mycontent tr:hover,
+.mycontent tr:hover td {
+ background-color: (@TableColor + #111) /*rgba(16,80,112,0.3)*/
+}

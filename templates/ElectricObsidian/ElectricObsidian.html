@@ -24,6 +24,11 @@
 		
         <title>{PAGE_TITLE_HEAD - } {WIKI_TITLE}</title>
 		{HEAD}
+				<!-- for txt2tagsjs --> 
+		<script type="text/javascript" src="txt2tags.js"></script>
+		<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
+		<script type="text/javascript" src="textallion.js"></script>
+		<link rel="stylesheet" href="templates/txt2tagsjs.css" />
 		<style>
 		table,
 #previewPane table {
@@ -153,10 +158,7 @@ thead,
 }
 		</style>
 		
-		 <!-- for txt2tagsjs --> 
-		<script type="text/javascript" src="txt2tags.js"></script>
-		<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
-		<script type="text/javascript" src="textallion.js"></script>
+
 		
 		
     </head> 
@@ -225,7 +227,7 @@ $(document).ready(function()	{
 			</header>
 			<nav>
 				<span>{HOME} / <a href="?page=pagelist">Page List</a>  / {RECENT_CHANGES} {/  SYNTAX} {/  EDIT}</span>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}
-			</nav>
+			{MENU}</nav>
 			<article>
 					{TOC}
 					{ERROR}

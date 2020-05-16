@@ -1,0 +1,329 @@
+
+
+
+
+/* B&W */
+@fg: black;
+@bg: white;
+@glow: none;
+@link: @fg;
+@link-hover: desaturate(darken(@fg,25%),40%);
+@link-visited: @fg;
+@heading: @fg;
+
+/* Green Terminal */
+@fg: #00CC00;
+@bg: black;
+//@glow: 0 0 3px darken(desaturate(@fg,15%),18%), 0 0 10px darken(desaturate(@fg,30%),35%);
+@glow: none;
+@link: @fg;
+@link-hover: desaturate(darken(@fg,10%),20%);
+@link-visited: @fg;
+@heading: @fg;
+
+
+
+/* Nord */
+// https://www.nordtheme.com/docs/colors-and-palettes
+@fg: @nord0; 
+@bg: @nord6;  
+@glow: none;
+@link: @nord10;  
+@link-hover: @nord12;
+@link-visited: @nord15; 
+@heading: @nord11;   
+  
+  
+/* Solarized light */
+
+@fg: #586e75;
+@bg: #fdf6e3;
+@glow: 0 0 3px lighten(desaturate(@fg,30%),40%), 0 0 10px lighten(desaturate(@fg,30%),50%);
+@glow: none;
+@link: @fg;
+@link-hover: desaturate(darken(@fg,25%),40%);
+@link-visited: @fg;
+@heading: @fg;
+
+/* Tron */
+@fg: #9bfafc;
+@bg: #050908;
+@fg: #aaece8;
+@bg: #0b1411;
+@glow: 0 0 3px darken(desaturate(@fg,30%),40%), 0 0 10px darken(desaturate(@fg,30%),40%);
+@link: @fg;
+@link-hover: desaturate(darken(@fg,25%),40%);
+@link-visited: @fg;
+@heading: @fg;
+
+
+
+@nord0:  #2e3440; //  Polar Night darker blue
+@nord1:  #3b4252; //  Polar Night dark blue
+@nord2:  #434c5e; //  Polar Night less dark blue
+@nord3:  #4c566a; //  Polar Night lesser dark blue
+@nord4:  #d8dee9; //  Snow Storm medium 
+@nord5:  #e5e9f0; //  Snow Storm light
+@nord6:  #eceff4; //  Snow Storm ultra light
+@nord7:  #8fbcbb; //  Frost light blue 2
+@nord8:  #88c0d0; //  Frost light blue
+@nord9:  #81a1c1; //  Frost medium blue
+@nord10: #5e81ac; //  Frost dark blue
+@nord11: #bf616a; //  Aurora red
+@nord12: #d08770; //  Aurora orange
+@nord13: #ebcb8b; //  Aurora yellow
+@nord14: #a3be8c; //  Aurora Green
+@nord15: #b48ead; //  Aurora Purple
+
+
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: monospace;
+	text-shadow: @glow ;
+	max-width: 100%;
+}
+
+body {
+	color: @fg;
+	background-color: @bg;
+	font-size: 14px;
+	line-height: 115%;
+	padding: 10px 20px 20px 20px;
+}
+
+a {
+	font-weight: bold;
+	color: @link;
+	img {
+		border: 2px;
+	}
+}
+
+a:hover
+	{ text-decoration: none;
+	color: @link-hover;
+	background-color: lighten(@bg,20%);
+	//text-shadow: 0 0 6px darken(@glow,20%), 0 0 12px @glow ;
+	}
+
+a:visited
+	{ text-decoration: none;
+	color: @link-visited;
+	}
+
+
+p {
+	margin: 5px 0 5px 0;
+}
+a.pending {
+	color: spin(@fg, 60);
+}
+a.external {
+	&:after {
+		content: "\2197";
+	}
+}
+pre {
+	border: 1px dotted @fg;
+	padding: 4px;
+	overflow: auto;
+	margin: 3px;
+}
+img {
+	border: 2px;
+}
+
+h1 {  
+	text-transform : capitalize;
+	letter-spacing: 2px;
+	font-weight: bold;
+	color: @heading;
+	margin: 18px 0 15px 15px;
+	line-height: 125%;
+	a {
+		&:hover {
+			color: @fg;
+			
+		}
+		text-decoration: none;
+	}
+}
+h2, h3, h4, h5, h6 {
+	letter-spacing: 2px;
+	line-height: 125%;
+	font-weight: bold;
+	margin: 15px 0 15px 0px;
+	color: @heading;
+	a {
+		&:hover {
+			color: @fg;
+		}
+	}
+	span.par-edit {
+		visibility: hidden;
+		font-size: x-small;
+	}
+	&:hover {
+		span.par-edit {
+			visibility: visible;
+		}
+	}
+}
+
+
+hr {
+	margin: 10px 0 10px 0;
+	height: 0px;
+	overflow: hidden;
+	border: 0px;
+	border-top: 1px solid @fg;
+}
+ul {
+	padding: 5px 0px 5px 20px;
+}
+ol {
+	padding: 5px 0px 5px 20px;
+}
+
+table {
+	text-align: left;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  margin: 10px ;
+  padding: 10px ;
+}
+
+table.main {
+	text-align: left;
+  margin: 0px ;
+  padding: 0px ;
+}
+
+th,
+td {
+  padding: .3em .5em;
+  margin: 5;
+  vertical-align: top;
+  /*border: 1px solid @fg;*/
+  text-align: left;
+}
+
+th { background-color: lighten(@bg,20%); }
+
+td.main, th.main {
+  padding: 0em;
+  margin: 0;
+  vertical-align: top;
+  border: 0px ;
+  text-align: left;
+  background-color: @bg;
+}
+
+.error {
+	color: spin(@fg, 90);
+	font-weight: bold;
+}
+form {
+	display: inline;
+}
+#renameForm {
+	display: block;
+	margin-bottom: 6px;
+}
+.submit {
+	&:hover {
+		border: 1px dashed @fg;
+		background-color: lighten(@bg,20%);
+	}
+	padding: 4px;
+	border: 1px solid @fg;
+}
+.contentTextarea {
+	width: 100%;
+}
+input {
+	border: 1px solid @fg;
+	padding: 4px;
+	font-size: 12px;
+	background-color: @bg;
+	color: @fg;
+}
+select {
+	border: 1px solid @fg;
+	padding: 2px;
+	font-size: 12px;
+	background-color: @bg;
+	color: @fg;
+}
+textarea {
+	border: 1px solid @fg;
+	padding: 2px;
+	font-size: 12px;
+	background-color: @bg;
+	color: @fg;
+	padding: 3px;
+}
+#toc {
+	border: 1px dashed @fg;
+	margin: 5px 0 5px 10px;
+	padding: 6px 5px 7px 0px;
+	float: right;
+	padding-right: 2em;
+	list-style: none;
+	ul {
+		list-style: none;
+		padding: 3px 0 3px 10px;
+	}
+	li {
+		font-size: 11px;
+		padding-left: 10px;
+	}
+}
+#diff {
+	padding: 1em;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	width: 97%;
+	ins {
+		color: spin(@fg, -60);
+		text-decoration: none;
+		font-weight: bold;
+	}
+	del {
+		color: spin(@fg, 60);
+		text-decoration: line-through;
+	}
+	.orig {
+		color: #666;
+		font-size: 90%;
+	}
+}
+.tagList {
+	padding: 0.2em 0.4em 0.2em 0.4em;
+	margin-top: 0.5em;
+	border: 1px dashed @fg;
+	clear: right;
+}
+.tagCloud {
+	float: right;
+	width: 200px;
+	padding: 0.5em;
+	margin: 1em;
+	border: 1px dashed @fg;
+	clear: right;
+}
+.pageVersionsList {
+	letter-spacing: 0px;
+	font-variant: normal;
+	font-size: 12px;
+}
+.resizeTextarea {
+	a {
+		text-decoration: none;
+	}
+}

@@ -1,25 +1,18 @@
-
-
-
-%!target: rst
-%!options: --outfile ../../ReadMe.rst
-
 - //See the [full sample page index.php?page=sample]//
 
 - //Play in the [sandbox]//
 
-- //Read the [[help|help.en]]//
+- //Read the [[help|help.en]] in English (ou [[en français|help.fr]])//
 
-- //**Download** an [archive with LionWiki and txt2tags ../lionwiki-t2t.zip] ([minimal version ../lionwiki-t2t-minimal.zip])//
+- //**Download** an [archive with LionWiki and txt2tags https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip/download] ([minimal version https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t-minimal.zip/download])//
+
+- //Access [the code https://sourceforge.net/p/lionwiki-t2t/code/ci/default/tree/] or [the issue tracker https://sourceforge.net/p/lionwiki-t2t/tickets/]// 
 
 
 
 == About LionWiki ==
  
-**LionWiki** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
-
-Its original homepage is located at http://lionwiki.0o.cz/
-
+**[LionWiki http://lionwiki.0o.cz/]** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
 
 
 
@@ -44,6 +37,9 @@ Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedi
 
 
 ------------------------------------------
+https://lionwiki-t2t.sourceforge.io/
+------------------------------------------
+
 - [[admin]]
 - [Upload content index.php?action=upload]
 - [List all the pages index.php?page=page_list]

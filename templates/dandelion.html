@@ -4,6 +4,7 @@
 	<!-- CSS based on template of Dandelion wiki engine by Radomir Dopieralski who released this
 	template under the terms of GNU GPL. http://dandelion.sheep.art.pl/ -->
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
 	<style type="text/css">
 html{font:96% sans-serif;background:#f7f7f7;line-height:1.4}
@@ -65,9 +66,11 @@ a.toolbarTextareaItem{padding-right: 10px}
 		{CONTENT}
 		{plugin:TAG_LIST}
 		{CONTENT_FORM}
-		<table style="width: 100%;">
+
+<!-- new version for MarkitUp -->
+<table style="width: 100%;">
 			<tr>
-				<td>{RENAME_TEXT }{RENAME_INPUT }{plugin:TOOLBAR_TEXTAREA}</td>
+				<td>{RENAME_TEXT }{RENAME_INPUT }{plugin:TOOLBAR_TEXTAREA}<!--{plugin:TXT2TAGS_TEXTAREA}--></td>
 				<td colspan="2" style="text-align: right;" nowrap="nowrap">{SHOW_PAGE  &nbsp; }{SYNTAX}</td>
 			</tr>
 			<tr>
@@ -80,11 +83,11 @@ a.toolbarTextareaItem{padding-right: 10px}
 		</table>
 		{/CONTENT_FORM}
 
-		{plugin:COMMENTS}
+		<!--{plugin:COMMENTS}-->
 	</div>
 	<div id="footer">
 		<div style="float:left;">
-		{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a>
+		{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>
 		</div>
 		<div style="float:right;padding:7px;">{EDIT} {&nbsp;&nbsp; HISTORY}</div>
 	</div>

@@ -1,4 +1,4 @@
-%%toc 
+
 
 //Read this [[help in French|help.fr]]. Lire cette aide [[en français|help.fr]].//
 
@@ -6,8 +6,9 @@ Lionwiki-t2t is a wiki system for the creation and maintenance of websites.
 
 Lionwiki-t2t pages looks the same as normal webpages, but in addition they have an "Edit" link which helps to edit or add new pages on a website, with a lightweight markup language, like for http://www.wikipedia.org.
 
-Based on Lionwiki-t2t, this present system has some ready to use extensions and a simplified syntax.
+//This system has some ready to use extensions and a simplified syntax.//
 
+%%toc 
 
 
 == Presentation ==
@@ -18,7 +19,7 @@ In this wiki, the default password is "//demo//". It is adviced to modify it aft
 
 When you edit a page, you see the markup which describe the content of the page. The final rendering, with the choosen formatting, will be displayed only after the page is saved.
 
-Lionwiki-t2t and txt2tags are not [WYSIWYG https://en.wikipedia.org/wiki/WYSIWYG] - When editing a page, you see the //markup text// that describes the content of the page.  The basic rules for page markup are simple (you will find them below).
+The basic rules for page markup are simple (you will find them below).
 
 
 == Editing rules (syntax) ==
@@ -73,28 +74,38 @@ Here is what is possible to do:
 
 If you're on Android and you wish to use your tablet / phone / androidtv as a server, you can use [this app https://play.google.com/store/apps/details?id=de.fun2code.android.pawserver] which is a free webserver.  Install the php plugin, and copy the files of the wiki into /sdcard/paw/html. Then visit http://localhost:8080/lionwiki-t2t from your android system.
 
+=== YunoHost ===
+
+In Yunohost, you can install it by searching for "lionwiki" in the application store.
+
+- https://github.com/YunoHost-Apps/lionwiki-t2t_ynh
+
+
+
+
+== Use ==
+
+- You can configure lionwiki-t2t by editing a few configuration files with the [pheditor.php pheditor.php] utility at the root of the installation. The default password is "admin" and you are advised to modify it after installation. (on the yunohost installation, the password set is the same as the one chosen during installation). If you think it might be a security breach, you can remove this editor from your installation.
+- top menu: you can customise your menu by editing the menu.php file in the root. 
+- general configuration: see config.php
+- special configurations, regex etc: you can add extra customisation in your wiki by using the config.t2t file
+ - you can have a look at [[sandbox_cyoa]] and its configuration file cyoa.t2t for an example of a special customisation using this feature. 
+
+
+
+
 
 == Synchronize ==
 
 To synchronise your wiki with your mobile devices, install this in addition:
 
-- (optionnal) install owncloud : http://owncloud.org/
+- (optionnal) install nextcloud : https://nextcloud.com/
 - (optionnal) share a subfolder containing your lionwiki install into owncloud
 - install [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] on an android device and synchronise the text files into var/pages/ between your server and your device (tablet, smartphone), using either ssh (recommended) or owncloud.
  - Alternatively, you can try http://git-annex.branchable.com/assistant/ instead of foldersync
 - install for example the [920 text editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] or [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] on android and edit the pages of your website from your mobile device!
 
 - __Bonus__: if you're using [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], create a new page and start your first line with either ``####`` or ``DENKZETTEL``, then enable in the option "checklist on". This way you'll be able to use your wiki as a shopping list: Items are created by the application with a + before them, and disabled with a -, and with some preprocessing in the config.t2t we are able to display it correctly in lionwiki-t2t. Check [this page to see a sample in action index.php?page=sample_shopping%23L%23%23CY%23]. (The ## characters are automatically added by denkzettel for adding a background color to the note).
-
-
-
-== Use ==
-
-- top menu: you can customise your menu by editing the menu.php file in the root. Sorry we couldn't make it editable online. Maybe later.
-- general configuration: see config.php
-- special configurations, regex etc: you can add extra customisation in your wiki by using the config.t2t file
- - you can have a look at [[sandbox_cyoa]] and its configuration file cyoa.t2t for an example of a special customisation using this feature. 
-- you can edit the whole wiki (including conf files and index.php) by extracting the editor.zip in the root. Beware, it might be a security breach so you'd better at least rename the folder to something not obvious.
 
 
 == Export as PDF ==
@@ -136,9 +147,10 @@ __Some advantages__:
 
 - On linux or mac os x, it shouldn't be a problem to double-click on a word and only highlight that word, while on windows it would select also the white space after it, so you can't properly add the syntax. So on windows: 
  - either single click after the last character of the word and press CTRL + SHIFT + LEFT ARROW
- - or if you're on mozilla firefox, in ``about:config``, just set ``layout.word_select.eat_space_to_next_word`` to ``False``.
+ - or if you're on mozilla firefox, in ``about:config``, just search for ``layout.word_select.`` and select ``eat_space_to_next_word`` to ``False``.
 
 - the ``var/pages`` folder is protected by .htaccess. Don't forget to enable it in both your ``/etc/apache2/sites-available/default`` and ``/etc/apache2/sites-available/default-ssl`` configurations!
+
 
 
 

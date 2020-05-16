@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {HEAD}
+    <link rel="shortcut icon" href="templates/favicon.png">
+
+    <title>{WIKI_TITLE  - }{PAGE_TITLE_HEAD}</title>
+
+<link rel="stylesheet" href="templates/minimaxing/5grid/core.css" />
+    <!-- Bootstrap core CSS -->
+<link href="templates/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="templates/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="templates/bootstrap/bootstrap-lionwiki.css" rel="stylesheet">
+    
+    <!-- for txt2tagsjs --> 
+		<script type="text/javascript" src="txt2tags.js"></script>
+		<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
+		<script type="text/javascript" src="textallion.js"></script>
+		<link rel="stylesheet" href="templates/txt2tagsjs.css" />
+		
+		
+
+    <!-- Custom styles for this template -->
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+		<script type="text/javascript" src="markitup/jquery-1.6.2.min.js"></script>
+
+		<!--<script type="text/javascript" src="markitup/jquery.markitup-fr.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set-fr.js"></script>-->
+
+		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css" />
+		<link rel="stylesheet" type="text/css" href="markitup/sets/txt2tags/style.css" />
+		<script type="text/javascript" >
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('#inputPane').markItUp(mySettings);
+	$("#markItUp").removeClass("button_txt2tags_false");
+	$("#markItUp").addClass("button_txt2tags_true");
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );	
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+	
+	// And you can add/remove markItUp! whenever you want
+	// $(textarea).markItUpRemove();
+	$('.toggle').click(function() {
+		if ($("#inputPane.markItUpEditor").length === 1) {
+ 			$("#inputPane").markItUpRemove();
+			$("#markItUp").removeClass("button_txt2tags_true");
+			$("#markItUp").addClass("button_txt2tags_false");
+		} else {
+			$('#inputPane').markItUp(mySettings);
+			$("#markItUp").removeClass("button_txt2tags_false");
+			$("#markItUp").addClass("button_txt2tags_true");
+		}
+ 		return false;
+	});
+});
+-->
+</script>
+
+		<noscript> <h3>JavaScript should be enabled to use this site, otherwise you won't see the graphic styles or be able to use some effects. Please enable or unblock JavaScript in your browser and refresh the page. Alternatively, for the author of this website, you can compile the .less file and use a .css file instead.</h3> </noscript>
+	<!-- ********************************************************* -->
+
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{WIKI_TITLE}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+			<li>{HOME}</li>
+			{MENU}
+          </ul>
+          
+          <ul class="nav navbar-nav">
+          
+		<li>{RECENT_CHANGES}</li>
+		{<li> EDIT </li>}
+		</ul>
+        <div class="navbar-form navbar-right">{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}</div>     
+        </div><!--/.nav-collapse -->
+        
+      </div>
+    </div>
+
+    <div class="container">
+
+
+
+
+
+
+    
+   
+<h1 id="page-title">{<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>    
+<div id='header'>
+<br/><br/>
+<!--<div id="title">{WIKI_TITLE}</div>-->
+
+	<div id="menu02">
+	
+	</div>
+    
+
+
+    
+<!--PageHeaderFmt-->
+<br/> <div id='wikilogo'><a href='index.php'><img src='templates/logo.png' alt='{WIKI_TITLE}' border='0' /></a>
+
+ </div>
+
+
+
+
+</div>
+
+
+<!--/PageHeaderFmt-->
+<div id="wrap">
+
+<div id='menu01'>
+
+
+<!--{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}-->
+	<br/><br/>
+	<!--{TOC}-->
+</div>    
+
+   
+     <!--PageActionFmt-->
+ 
+ <div id='wikicmds'><!--wiki:{$Group}.PageActions {$SiteGroup}.PageActions--></div>
+ 
+   <div id='content'>
+
+    
+<!--PageTitleFmt-->
+        <div id='wikititle'>
+          <!--<h1><a href='{$ScriptUrl}/{$Group}'>{$Group}</a> / {$Title}</h1>       -->
+          </div>
+
+
+{<div class="error"> ERROR </div>}
+{CONTENT}
+{plugin:TAG_LIST}
+{CONTENT_FORM}
+
+
+
+<!-- old version -->
+<!--
+{plugin:TOOLBAR_TEXTAREA}
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> -->
+
+<!-- new version for MarkitUp -->
+		<table style="width: 100%; border:5px;" class="form" >
+			<tr>
+				<td>{RENAME_TEXT } {RENAME_INPUT }<br/>{plugin:TXT2TAGS_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" >{SHOW_PAGE}<br/>{SYNTAX}</td>
+			</tr>
+			<tr>
+				<td colspan="3">{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>	
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;">{plugin:RESIZE_TEXTAREA}</td>
+			</tr>
+		</table>
+ <!-- end new version for markitup-->
+
+{/CONTENT_FORM}
+
+
+<br/>  
+<hr/>
+<!--PageFooterFmt-->
+  <div id='footer'>
+    <div class='footnav'>
+  {EDIT} &nbsp;&nbsp; {HISTORY} &nbsp;&nbsp; {RECENT_CHANGES}</div>
+      </div>
+      <!--wiki:{$Group}.SiteFooter {$SiteGroup}.SiteFooter-->
+     <br/>  
+	</div>
+<!--HTMLFooter-->
+</div>
+</div>
+
+
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jquery already loaded by markitup, this one causes problems: <script src="templates/bootstrap/assets/js/jquery.js"></script>-->
+    <script src="templates/bootstrap/js/bootstrap.js"></script>
+
+<div id="copyright">
+					{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} 
+					<br />
+						Design CC-BY-SA inspired by Bootstrap. Powered by <a href="https://bitbucket.org/farvardin/lionwiki-t2t/">LionWiki-t2t</a> 
+					</div>
+
+  </body>
+</html>
+
+
+
+

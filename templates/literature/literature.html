@@ -1,0 +1,169 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{WIKI_TITLE} - {PAGE_TITLE_HEAD}</title>
+  <meta http-equiv='Content-Style-Type' content='text/css' />
+  <meta name="viewport" content="width=device-width" />
+  <link rel='stylesheet' title="webfont" href='templates/literature/literature.css' type='text/css' />
+  <link rel='stylesheet' href='templates/literature/literature-maxi.css' type='text/css' />
+  <link rel='stylesheet' href='templates/literature/literature-mini.css' type='text/css' />
+  {HEAD}
+  
+		<!-- for txt2tagsjs --> 
+		<script type="text/javascript" src="txt2tags.js"></script>
+		<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
+		<script type="text/javascript" src="textallion.js"></script>
+		<link rel="stylesheet" href="templates/txt2tagsjs.css" />
+  
+</head>
+<body>
+
+<script type="text/javascript" src="markitup/jquery-1.6.2.min.js"></script>
+		
+		<!--<script type="text/javascript" src="markitup/jquery.markitup-fr.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set-fr.js"></script>-->
+		
+		<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+		<script type="text/javascript" src="markitup/sets/txt2tags/set.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css" />
+		<link rel="stylesheet" type="text/css" href="markitup/sets/txt2tags/style.css" />
+		<script type="text/javascript" >
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('#inputPane').markItUp(mySettings);
+	$("#markItUp").removeClass("button_txt2tags_false");
+	$("#markItUp").addClass("button_txt2tags_true");
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );	
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+	
+	// And you can add/remove markItUp! whenever you want
+	// $(textarea).markItUpRemove();
+	$('.toggle').click(function() {
+		if ($("#inputPane.markItUpEditor").length === 1) {
+ 			$("#inputPane").markItUpRemove();
+			$("#markItUp").removeClass("button_txt2tags_true");
+			$("#markItUp").addClass("button_txt2tags_false");
+		} else {
+			$('#inputPane').markItUp(mySettings);
+			$("#markItUp").removeClass("button_txt2tags_false");
+			$("#markItUp").addClass("button_txt2tags_true");
+		}
+ 		return false;
+	});
+});
+-->
+</script>
+
+<h1 id="page-title">{<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>    
+<div id='header'>
+
+<div id="title">{WIKI_TITLE}</div>
+
+	<div id="menu02">
+	{MENU}
+	</div>
+    
+    <div id='searchbox'>
+{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}
+    </div> 
+
+    
+<!--PageHeaderFmt-->
+ <div id='wikilogo'><a href='index.php'><img src='templates/literature/logo.png' alt='{WIKI_TITLE}' border='0' /></a>
+
+ </div>
+
+
+
+
+</div>
+
+
+<!--/PageHeaderFmt-->
+<div id="wrap">
+
+<div id='menu01'>
+
+<ul>
+		<li>{HOME}</li>
+		<li>{RECENT_CHANGES}</li>
+		<li> <br/></li>
+		{MENU}
+		{<li><i> EDIT </i></li>}
+	</ul>
+<!--{SEARCH_FORM}{SEARCH_INPUT}{/SEARCH_FORM}-->
+	<br/><br/>
+	{TOC}
+</div>    
+
+   
+     <!--PageActionFmt-->
+ 
+ <div id='wikicmds'><!--wiki:{$Group}.PageActions {$SiteGroup}.PageActions--></div>
+ 
+   <div id='content'>
+
+    
+<!--PageTitleFmt-->
+        <div id='wikititle'>
+          <!--<h1><a href='{$ScriptUrl}/{$Group}'>{$Group}</a> / {$Title}</h1>       -->
+          </div>
+
+
+{<div class="error"> ERROR </div>}
+{CONTENT}
+{plugin:TAG_LIST}
+{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+<!--{plugin:TOOLBAR_TEXTAREA}-->
+
+<!-- OLD VERSION:
+{plugin:TXT2TAGS_TEXTAREA}
+{CONTENT_TEXTAREA} <p style="float:right;margin:6px;">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT} {EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p> {/CONTENT_FORM}
+{plugin:RESIZE_TEXTAREA}
+-->
+
+<!-- new version for MarkitUp -->
+
+<table style="width: 100%; border:0px;" class="form" >
+			<tr>
+				<td>{plugin:TXT2TAGS_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" ><small>{SHOW_PAGE}<br/>{SYNTAX}</small></td>
+			</tr>
+			<tr>
+				<td colspan="3">{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>	
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}<br/>{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;"></td>
+			</tr>
+		</table>
+ <!-- end new version for markitup-->
+
+<br/>  
+<hr/>
+<!--PageFooterFmt-->
+  <div id='footer'>
+    <div class='footnav'>
+  {EDIT} &nbsp;&nbsp; {HISTORY} &nbsp;&nbsp; {RECENT_CHANGES}</div>
+      </div>
+      <!--wiki:{$Group}.SiteFooter {$SiteGroup}.SiteFooter-->
+     <br/>  
+	</div>
+<!--HTMLFooter-->
+</div>
+</div>
+</body>
+</html>

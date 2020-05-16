@@ -1,7 +1,28 @@
+== Change Theme ==
+
+- [Minimaxing index.php?&action=&permanent=1&template=templates/minimaxing/minimaxing.html]
+- [GGP index.php?&action=&permanent=1&template=templates/ggp/ggp.html]
+- [Sissou index.php?&action=&permanent=1&template=templates/sissou.html]
+- [Tron Terminal index.php?&action=&permanent=1&template=templates/terminal/terminal.html]
+- [Terminal_Green index.php?&action=&permanent=1&template=templates/terminal_green.html]
+- [Terminal_White index.php?&action=&permanent=1&template=templates/terminal_white.html]
+- [Electric Obsidian index.php?&action=&permanent=1&template=templates/ElectricObsidian/ElectricObsidian.html]
+
+//(reset with [logout index.php?erasecookie=1])//
+
+
+== Administration pages ==
 
 - [Admin plugins index.php?action=admin-plugins]
 - [Admin-blockip index.php?action=admin-blockip]
 - [Admin-blacklist index.php?action=admin-blacklist]
 - [Admin-pages index.php?action=admin-pages]
 
+
+== Diverses tools ==
+
+- [Uploads index.php?action=upload]
+- [page list index.php?page=pagelist]
+- [Last changes index.php?action=recent]
 - [Logout index.php?erasecookie=1]
+- [edit raw files (dangerous) pheditor.php] 

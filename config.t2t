@@ -1,5 +1,10 @@
 
-% You can put below those lines the pre or proc rules you may need in your lionwiki-t2t
+
+%/* Customisation file for LionWiki-t2t. */
+%/* https://lionwiki-t2t.sourceforge.io/ */
+
+
+% You can put below those lines the pre or proc rules you may need in your lionwiki-t2t, so you can have more control on your wiki
 
 % use [[the description | your_page]] syntax
 %!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 index.php?page=\2]'
@@ -78,7 +83,7 @@
 
 
 
-%% Markdown support!
+%% basic Markdown support!
 %%  headings
 %!preproc: '^# (.*?)$' '= \1 ='
 %!preproc: '^## (.*?)$' '== \1 =='
