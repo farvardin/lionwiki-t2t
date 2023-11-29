@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-sample   
+
+
+spec:
+  backend:
+    serviceName: lionwiki
+    servicePort: 10080
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: lionwiki
+          servicePort: 10080
+
+

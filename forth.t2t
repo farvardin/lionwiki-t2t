@@ -1,0 +1,17 @@
+%%                                  %% 
+%%   forth for lionwiki-t2t         %% 
+%%                                  %%
+
+%% Include this module in your lionwiki-t2t website 
+%%    (https://bitbucket.org/farvardin/lionwiki-t2t/)
+%%    and you'll be able to display forth with it!
+%%
+
+
+%% forth
+
+%!postproc: '@@UEFORTH@@' '<style type='text/css'> \n    #ueforth canvas { \n         background-color: #ffffff;\n        border: 1px solid #7f7f7f;\n    }</style>\n <script src="templates/js/ueforth.js"></script>\n<div id="ueforth"></div>'
+
+%!postproc: '@@FORTH@@' '<script type="text/forth">'
+%!postproc: '@@/FORTH@@' '</script>'
+

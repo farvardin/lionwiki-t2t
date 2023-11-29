@@ -1,0 +1,43 @@
+%%                                  %% 
+%%   abcjs for lionwiki-t2t         %% 
+%%                                  %%
+
+%% Include this module in your lionwiki-t2t website 
+%%    (https://bitbucket.org/farvardin/lionwiki-t2t/)
+%%    and you'll be able to display abc notation with it!
+%%
+
+
+%% ABCJS
+
+% for displaying abc + music
+%!postproc: '@@ABCJS-all@@' '<style type="text/css"> pre {   color: black;  background-color: white;} </style> <script src="plugins/abcjs/abcjs-plugin-min.js" type="text/javascript"></script>'
+
+% for displaying music only and display abc by clicking on the music
+%!postproc: '@@ABCJS@@' ' <style type="text/css"> pre {   color: black;  background-color: white;} .abctext { visibility: visible; display: none; }</style> <script src="plugins/abcjs/abcjs_dropdown.js" type="text/javascript"></script>  <script src="plugins/abcjs/abcjs-plugin-min.js" type="text/javascript"></script>   '
+
+% for displaying editor + midi player
+%!postproc: '@@ABCJS-EDIT@@' '<style type="text/css"> pre {   color: black;  background-color: white;} textarea { color: #222 ;  max-width: 770px; width: 100%; } </style> <script src="plugins/abcjs/abcjs-basic-min.js" type="text/javascript"></script>   <link href="plugins/abcjs/abcjs-audio.css" media="all" rel="stylesheet" type="text/css" />   <style> 		.abcjs-inline-audio { 			max-width: 770px; 		} 		@media print { 			h1, p, textarea, #selection, #audio, #warnings, hr { 				display: none; 			} 		} 		p { 			max-width: 600px; 		} 	</style>'
+
+
+%!postproc: '@@ABC@@' '<pre onClick="dropdown()">'
+%!postproc: '@@/ABC@@' '</pre>'
+
+%!postproc: '@@ABC-music@@' '<pre> <div class="abc-hide"><style type="text/css">.abc-hide { visibility: hidden; display: none; }</style>'
+%!postproc: '@@/ABC@@' '</div></pre>'
+
+%!postproc: '@@ABC-EDIT@@' '<textarea name="abc" id="abc" cols="80" rows="15">'
+%!postproc: '@@/ABC-EDIT@@' '</textarea>'
+
+% include this with the editor + midi player
+%!postproc: '@@ABCJS-INC-v0@@' '<div id="audio"></div> <div id="warnings"></div> <div id="paper0" class="paper"></div> <div id="paper1" class="paper"></div> <div id="paper2" class="paper"></div> <div id="paper3" class="paper"></div> <div id="selection"></div> <script type="text/javascript"> 	function selectionCallback(abcelem) { 		var note = {}; 		for (var key in abcelem) { 			if (abcelem.hasOwnProperty(key) && key !== "abselem") 				note(key) = abcelem(key); 		} 		console.log(abcelem); 		var el = document.getElementById("selection"); 		el.innerHTML = "<b>selectionCallback parameter:</b><br>" + JSON.stringify(note); 	}  	function initEditor() { 		new ABCJS.Editor("abc", { paper_id: "paper0", 			synth: { 				el: "#audio", 				options: { displayLoop: true, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true } 			}, 			generate_warnings: true, 			warnings_id:"warnings", 			abcjsParams: { 				generateDownload: true, 				clickListener: selectionCallback 			} 		}); 	}  	window.addEventListener("load", initEditor, false); </script> '
+
+%!postproc: '@@ABCJS-INC@@' '<div id="audio"></div> <div id="warnings"></div> <div id="paper0" class="paper"></div> <div id="paper1" class="paper"></div> <div id="paper2" class="paper"></div> <div id="paper3" class="paper"></div> <div id="selection"></div> <script src="plugins/abcjs/abcjs_inc.js" type="text/javascript">  </script> '
+
+
+%!postproc: '@@ABCTEST@@' <pre>X:3\nT:La Pernette\nR:Chanson\nO:France\nM:6/8\nL:1/8\nQ:1/4=130\nK:Bb\nz G2 | d3 c d e | d3 c z c | d z (=ef) z f | d3 {cd}c B c |\nd3-d z G | d3 c d e | d3 c2 c | d2 c B2 A | G2 A B2 c |\n[M:9/8] d2 B d3-d z B | [M:6/8] c2 d B2 A | G6 ||\nW:La pernette se lève,\nW:Tra la, la-la, la la, la la la la ;\nW:La pernette se lève\nW:Trois heures avant le jour (3x)	</pre>
+
+
+%!--postproc: '@@ABCPAPER@@' '<div id="paper" class="visible-background"></div>'
+
+

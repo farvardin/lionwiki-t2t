@@ -1,0 +1,8 @@
+docker login
+docker tag lionwiki farvardin4/lionwiki
+docker push farvardin4/lionwiki
+
+kubectl apply -f https://github.com/jetstack/cert-manager/releases/latest/download/cert-manager.yaml
+
+
+

@@ -1,0 +1,45 @@
+%%                                  %% 
+%% todotxt for lionwiki-t2t         %% 
+%%                                  %%
+
+%% Include this module in your lionwiki-t2t website 
+%%    (https://bitbucket.org/farvardin/lionwiki-t2t/)
+%%    and you'll be able to display todo.txt with it!
+%%
+
+
+%!preproc: '^x (.*?)$' '\n(x) --\1--'
+%!preproc: '@([a-zA-Z0-9]*)' '**@\1**'
+%!preproc: '^\(([^ ].*?)\) (.*?)$' '\n**(\1)** \2'
+%--!preproc: '^\(([a-zA-Z])\) (.*?)$' '\n**(\1)** \2'
+%!preproc: '\+([a-zA-Z0-9]*)' '**+\1**'
+
+% add list for every item
+%!preproc: '^(.*?)$' '- \1 '
+% remove extra - :
+%!preproc: '^- \s*$' ''
+
+% date
+%!preproc: '([0-9]{4})-([0-9]{2})-([0-9]{2})' '__\1-\2-\3__'
+
+
+%% percent and progress:
+%!postproc: 'comp:(\d+)%' '<progress value="\1" max="100"></progress> <em>comp:\1%</em>'
+%!postproc: 'comp:(\d+)\/(\d+)' '<progress value="\1" max="\2"></progress> <em>comp:\1/\2</em>'
+
+%!postproc: '\(A\)' '<span class="todotxt_A">(A)</span>'
+%!postproc: '\(B\)' '<span class="todotxt_B">(B)</span>'
+%!postproc: '\(C\)' '<span class="todotxt_C">(C)</span>'
+%!postproc: '\(D\)' '<span class="todotxt_D">(D)</span>'
+%!postproc: '\(E\)' '<span class="todotxt_E">(E)</span>'
+%!postproc: '\(([F-Z])\)' '<span class="todotxt_F">(\1)</span>'
+
+%!postproc: '@([a-zA-Z0-9]*)' '<span class="todotxt_context">@\1</span>'
+%!postproc: '\+([a-zA-Z0-9]*)' '<span class="todotxt_tag">+\1</span>'
+
+%!postproc: '<b>\(x\)(.*?)$' '<span class="todotxt_deleted"><b>(x) \1</span>'
+
+%!postproc: '([0-9]{4})-([0-9]{2})-([0-9]{2})' '<span class="todotxt_date">\1-\2-\3</span>'
+
+
+

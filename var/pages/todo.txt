@@ -1,0 +1,12 @@
+%!includeconf:todotxt.t2t
+
+
+
+(A) Call Mom @phone
+(B) Write a @blog post about todo.txt +geek
+Organize the bookshelf comp:45% @home
+(D) Clean up the garden comp:20% @home
+x 2019-08-21 @shopping Get some milk
+(E) 2021-03-08 @home Paint the fence
+(C) 2021-03-10 @phone Contact Tracy about our +contract
+(F) @phone Tell my boss he's an asshole +job
