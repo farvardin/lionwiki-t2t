@@ -1,0 +1,433 @@
+/*-----------------------
+
+	-------------
+	- Terminal  -
+	-------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on Terminal template
+	http://lionwiki.0o.cz/
+	licensed under GNU/GPL v2
+	
+
+	
+----------------------------*/
+/* Green Terminal */
+/* normal or bold */
+/* overriding default values above */
+/* Tron */
+/* Mixin Macro */
+.break {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  text-shadow: 0 0 3px #438783, 0 0 10px #438783;
+  max-width: 100%;
+}
+body {
+  color: #aaece8;
+  background-color: #0b1411;
+  font-size: 14px;
+  line-height: 115%;
+  padding: 10px 20px 20px 20px;
+}
+a {
+  font-weight: bold;
+  color: #aaece8;
+}
+a img {
+  border: 2px;
+}
+a:hover {
+  text-decoration: none;
+  /*color: @link-hover;*/
+  color: #0b1411;
+  background-color: #aaece8;
+  /*background-color: @fg;*/
+  /*text-shadow: 0 0 6px darken(@glow,20%), 0 0 12px @glow ;*/
+}
+a:visited {
+  text-decoration: none;
+  /*color: @link-visited;*/
+}
+p {
+  margin: 5px 0 5px 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+a.pending {
+  /*color: spin(@fg, 60);*/
+}
+a.external:after {
+  content: "\2197";
+}
+pre {
+  border: 1px dashed #aaece8;
+  padding: 4px;
+  overflow: auto;
+  margin: 3px;
+}
+img {
+  border: 2px;
+  margin: 10px;
+}
+h1 {
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #aaece8;
+  margin: 18px 0 15px 15px;
+  line-height: 125%;
+}
+h1 a {
+  text-decoration: none;
+}
+h1 a:hover {
+  color: #aaece8;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 2px;
+  line-height: 125%;
+  font-weight: bold;
+  margin: 15px 0 15px 0px;
+  color: #aaece8;
+}
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  color: #aaece8;
+}
+h2 span.par-edit,
+h3 span.par-edit,
+h4 span.par-edit,
+h5 span.par-edit,
+h6 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h2:hover span.par-edit,
+h3:hover span.par-edit,
+h4:hover span.par-edit,
+h5:hover span.par-edit,
+h6:hover span.par-edit {
+  visibility: visible;
+}
+hr {
+  margin: 10px 0 10px 0;
+  height: 0px;
+  overflow: hidden;
+  border: 0px;
+  border-top: 1px solid #aaece8;
+}
+ul {
+  padding: 5px 0px 5px 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+ol {
+  padding: 5px 0px 5px 20px;
+}
+li {
+  padding: 3px ;
+}
+table {
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  margin: 10px ;
+  padding: 10px ;
+}
+table.main {
+  text-align: left;
+  margin: 0px ;
+  padding: 0px ;
+}
+th,
+td {
+  padding: .3em .5em;
+  margin: 5;
+  vertical-align: top;
+  /*border: 1px solid @fg;*/
+  text-align: left;
+}
+pre code {
+  display: block;
+  overflow: auto;
+}
+pre,
+blockquote {
+  padding-left: 20px;
+}
+pre {
+  background-color: #aaece8;
+  color: #0b1411;
+  line-height: 1.5em;
+  font-family: Courier ;
+  font-size: 1em;
+  margin: 1.0em;
+}
+code,
+blockquote,
+dt {
+  background-color: #aaece8;
+  color: #0b1411;
+  font-family: Courier ;
+  font-size: 1em;
+  /*margin: 1.0em;*/
+}
+/* th { background-color: lighten(@bg,20%); } */
+th {
+  color: #0b1411;
+  background-color: #aaece8;
+}
+td.main,
+th.main {
+  padding: 0em;
+  margin: 0;
+  vertical-align: top;
+  border: 0px ;
+  text-align: left;
+  background-color: #0b1411;
+}
+.error {
+  color: #c7aaec;
+  font-weight: bold;
+}
+form {
+  display: inline;
+}
+#renameForm {
+  display: block;
+  margin-bottom: 6px;
+}
+.submit {
+  padding: 4px;
+  border: 1px solid #aaece8;
+}
+.submit:hover {
+  border: 1px dashed #aaece8;
+  background-color: #2f5649;
+}
+.contentTextarea {
+  width: 100%;
+}
+input {
+  border: 1px solid #aaece8;
+  padding: 4px;
+  font-size: 12px;
+  background-color: #0b1411;
+  color: #aaece8;
+}
+select {
+  border: 1px solid #aaece8;
+  padding: 2px;
+  font-size: 12px;
+  background-color: #0b1411;
+  color: #aaece8;
+}
+textarea {
+  border: 1px solid #aaece8;
+  padding: 2px;
+  font-size: 12px;
+  background-color: #0b1411;
+  color: #aaece8;
+  padding: 3px;
+}
+#toc {
+  border: 1px dashed #aaece8;
+  margin: 5px 0 5px 10px;
+  padding: 6px 5px 7px 0px;
+  float: right;
+  padding-right: 2em;
+  list-style: none;
+}
+#toc ul {
+  list-style: none;
+  padding: 3px 0 3px 10px;
+}
+#toc li {
+  font-size: 11px;
+  padding-left: 10px;
+}
+#diff {
+  padding: 1em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  width: 97%;
+}
+#diff ins {
+  color: #aeecaa;
+  text-decoration: none;
+  font-weight: bold;
+}
+#diff del {
+  color: #aaaeec;
+  text-decoration: line-through;
+}
+#diff .orig {
+  color: #666;
+  font-size: 90%;
+}
+.tagList {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  margin-top: 0.5em;
+  border: 1px dashed #aaece8;
+  clear: right;
+}
+.tagCloud {
+  float: right;
+  width: 200px;
+  padding: 0.5em;
+  margin: 1em;
+  border: 1px dashed #aaece8;
+  clear: right;
+}
+.pageVersionsList {
+  letter-spacing: 0px;
+  font-variant: normal;
+  font-size: 12px;
+}
+.resizeTextarea a {
+  text-decoration: none;
+}
+#headerLinks {
+  list-style-type: none;
+}
+progress {
+  color: #aaece8;
+  background-color: #0b1411;
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+}
+progress::-moz-progress-bar {
+  background: #aaece8;
+}
+progress::-webkit-progress-value {
+  background: #aaece8;
+}
+progress::-webkit-progress-bar {
+  background: #0b1411;
+}
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 1px solid #aaece8;
+  background-color: #0b1411;
+  min-height: 50px;
+  /*margin: 5px;*/
+  margin-top: 6px;
+  margin-bottom: 8px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: -2px;
+  padding-bottom: 0px;
+  font-size: 16px;
+  color: #aaece8;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0px;
+}
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding: 0px;
+  padding-top: 0px;
+  min-height: 46px;
+  line-height: 46px;
+  color: #aaece8;
+  text-decoration: none;
+  border-radius: 0px;
+}
+.block a:hover {
+  background-color: #aaece8;
+  color: #0b1411;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+}
+/* Todotxt support */
+.todotxt_A {
+  color: #95e7e2;
+}
+.todotxt_B {
+  color: #c7dae9;
+}
+.todotxt_C {
+  color: #dcdded;
+}
+.todotxt_D {
+  color: #f1eef4;
+}
+.todotxt_E {
+  color: #fefefe;
+}
+.todotxt_F {
+  color: #ffffff;
+}
+.todotxt_context {
+  color: #ecaaae;
+}
+.todotxt_tag {
+  color: #c7aaec;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  html {
+    background-color: #111;
+  }
+}

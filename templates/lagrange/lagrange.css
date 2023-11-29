@@ -1,0 +1,132 @@
+body {
+        font-family: "Nunito", "Roboto", "Source Sans 3", sans-serif;
+        font-weight: 400;
+        font-size: 15pt;
+        padding-left: 1em;
+        padding-right: 1em;
+}
+
+#container {
+        margin: auto;
+        max-width: 37em;
+}
+
+h1 {
+        font-size: 200%;
+        font-weight: 700;
+}
+
+h2 {
+        font-size: 167%;
+        font-weight: 400;
+}
+
+h3 {
+        font-size: 133%;
+        font-weight: 700;
+        margin-left: 1.1em;
+}
+
+.link-icon {
+        display: inline-block;
+        width: 1.5em;
+        font-family: Symbola;
+        text-indent: 0;
+}
+
+div.link {
+        text-indent: -1.5em;
+        padding-left: 1.5em;
+	margin-top: 0.15em;
+	margin-bottom: 0.15em;
+}
+
+a {
+        text-decoration: none;
+        font-weight: 600;
+		color: #ffc000;
+}
+
+p, ul {
+        margin-left: 1.5em;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+p:empty {
+	margin-top: 20pt;
+	margin-bottom: 20pt;
+}
+
+p.lede {
+        font-size: 120%;
+        margin-left: 1.25em;
+}
+
+ul {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 3em;
+}
+ul li {
+        margin-top: 5pt;
+        margin-bottom: 5pt;
+}
+ul li::before {
+        content: "•";
+        color: #aaffff;
+        font-weight: bold;
+        display: inline-block;
+        width: 1.1em;
+        margin-left: -1.1em;
+}
+
+blockquote {
+        margin-left: 2.25em;
+        font-style: italic;
+        font-weight: 300;
+        padding-left: 0.75em;
+        border-left: 1px solid #597f7d;
+}
+
+pre {
+        font-family: 'Fira Mono', monospace;
+        font-size: 75%;
+        margin-left: 2em;
+	max-width: 100%;
+	overflow: auto;
+}
+
+img {
+        max-width: 100%;
+}
+
+/* Colors */
+
+html, body { background: #181714; color: #fff687; }
+p.lede { color: #f9f5c3; }
+blockquote { color: #aaffff; }
+pre { color: #aaffff; }
+h1 { color: #e5fbfb; }
+h2 { color: #c8f7f7; }
+h3 { color: #aaf3f3; }
+.gemini-link .link-icon { color: #00c0ff; }
+.gemini-link a { color: #fffcd2; }
+.gemini-link a:hover { color: #00c0ff; }
+.web-link .link-icon { color: #ffc000; }
+.web-link a { color: #fffcd2; }
+.web-link a:hover { color: #ffc000; }
+
+/* Responsivity */
+
+@media only screen and (max-width: 499px) and (orientation: portrait) {
+        body { font-size: 12pt; -webkit-text-size-adjust: 100%;
+        padding-left: 0; padding-right: 0; }
+}
+@media only screen and (orientation: landscape) and (max-width: 850px) {
+        body { font-size: 12pt; -webkit-text-size-adjust: 100%;
+        padding-left: 0; padding-right: 0; }
+}

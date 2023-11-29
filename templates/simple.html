@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="templates/favicon.png" type="image/png" />
+	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+	<style type="text/css">
+
+* { margin:0;padding:0;box-sizing:border-box;text-decoration:none;color:#000 ; }
+body { padding:30px;font-family:serif;font-size:16px ;      } 
+body > * { margin-bottom:30px }
+body > * > * { margin-bottom:30px }
+
+table td, table th { vertical-align:top;padding:2.5px 5px;text-align:left }
+table td > pre, table th > pre { background:none;padding:0;margin:0 }
+
+header { float:left;margin:5px 30px 0 0 } 
+header { font-size:140% ; text-align:center ;  } 
+
+nav { max-width:624px; padding-top: 5px ; margin-bottom: 5px ; list-style: none; text-align: right;  } 
+
+nav ul { padding:0; margin:0 45px 30px 0; display:inline-block;  } 
+nav ul li { list-style-type:none;white-space:pre ;  } 
+nav ul li a:hover { background:#000;color:#fff } 
+nav p { font-size:100% ; text-align:center ;  } 
+
+nav li { font-size:100% ; display:inline-block; margin-left: 20px; margin-right: 20px}
+
+main { max-width:624px;clear:both; text-align: justify; }
+main figure:first-child img { margin-left:-30px;max-width:calc(100vw - 15px);width:900px }
+main figure > * { margin-bottom:30px }
+main figure figcaption { max-width:400px }
+ h1 { margin-top:25px ; margin-bottom:15px  } 
+ h2 { margin-top:25px  ; margin-bottom:15px ; max-width:400px } 
+ h3 { margin-top:25px ; margin-bottom:15px } 
+main h4 { font-style:italic;font-weight:normal;line-height:24px;text-decoration:underline dotted;max-width:400px } 
+main ul, main ol { line-height:160% ; margin:5px 30px 30px 30px }
+main ul ul { margin-bottom:5px }
+main p { line-height:160% ; margin-left: 15px } 
+a { color:#1b2836 } 
+main a:hover, ::selection { background-color:#000;color:#fff;text-decoration:none } 
+nav a:hover, ::selection { background-color:#000;color:#fff;text-decoration:none } 
+main a:before { content:"{" ; color:#777 }
+main a:after { content:"}" ; color:#777 }
+button a:before { content:"" }
+button a:after { content:"" }
+main a[target="_blank"]:before { content:"[" }
+main a[target="_blank"]:after { content:"]" }
+main q { font-family:serif;font-size:18px;font-style:italic;display:block;max-width:400px } 
+main img, main svg { max-width:100%;display:block;margin:0 0 15px } 
+ pre {  white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+width:100%; overflow-x:auto; overflow-wrap: anywhere; background:#efefef;padding:10px;font-size:80%;margin-bottom:30px;max-height:700px }
+main code { white-space:pre ; background:#efefef }
+main hr { clear:both; }
+footer { border-top:1.5px solid;padding:30px 0 0 0;clear:both } 
+footer img { margin:0 0 -10px 0;width:30px } 
+footer > * { display:inline-block;margin-right:5px }
+hr{max-width:624px; margin:10px 0 5px 0;height:0px;overflow:hidden;border:0px;border-top:1px solid #151515;}
+
+
+h2 span.par-edit,
+h3 span.par-edit,
+h4 span.par-edit,
+h5 span.par-edit,
+h6 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h2:hover span.par-edit,
+h3:hover span.par-edit,
+h4:hover span.par-edit,
+h5:hover span.par-edit,
+h6:hover span.par-edit {
+  visibility: visible;
+}
+
+
+
+#diff {
+  padding: 1em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  width: 97%;
+}
+#diff ins {
+  color: #58755f;
+  text-decoration: none;
+  font-weight: bold;
+}
+#diff del {
+  color: #5f5875;
+  text-decoration: line-through;
+}
+#diff .orig {
+  color: #666;
+  font-size: 90%;
+}
+.tagList {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  margin-top: 0.5em;
+  border: 1px dashed #586e75;
+  clear: right;
+}
+.tagCloud {
+  float: right;
+  width: 200px;
+  padding: 0.5em;
+  margin: 1em;
+  border: 1px dashed #586e75;
+  clear: right;
+}
+.pageVersionsList {
+  letter-spacing: 0px;
+  font-variant: normal;
+  font-size: 12px;
+}
+.resizeTextarea a {
+  text-decoration: none;
+}
+
+progress {  color: #586e75;  background-color: #eee;  border-radius: 0px; border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #586e75;}
+progress::-webkit-progress-value {  background: #586e75;}
+progress::-webkit-progress-bar {  background: #586e75;}
+
+
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #555;
+  background-color: #555;
+  min-height: 50px;
+  margin: 5px;
+  font-size: 16px;
+  color: #BBB;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding:  0px;
+  min-height: 46px;
+  line-height:46px;
+  color: #DDD;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+.block:hover, .block:hover a{
+  background-color: #BBB;
+  color: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+* {
+  background-color:#000;color:#b3b3b3;
+  }
+a {
+color: #aed1f5;
+  }
+main pre, main code { background:#4d4d4d; }
+
+}
+
+	</style>
+	
+
+	{HEAD}
+    
+</head>
+<body>
+
+<header>
+<h1> <a href='index.php'><img src='var/upload/lionwiki-t2t_logo.svg' alt='{WIKI_TITLE}' border='0' width='100px' /></a> {WIKI_TITLE}   </h1>
+
+</header>
+
+
+<main>   
+<nav><hr/>
+	{HOME}  {- &nbsp; RECENT_CHANGES}  {- &nbsp; EDIT}  {- &nbsp; SYNTAX} { &nbsp; MENU}
+</nav>
+
+
+
+
+
+<!--<hr/>-->
+
+
+<h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+
+
+    
+		{<div style="color:#F25A5A;font-weight:bold;"> ERROR </div>}
+		{CONTENT} {plugin:TAG_LIST}
+		{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br/><br/>} {CONTENT_TEXTAREA}
+		<p style="float:right;margin:6px">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT}
+		{EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p>{/CONTENT_FORM}
+        
+
+<hr/>
+
+<div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div><hr/><br/>{LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}<br/>Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>. </br>{EDIT} {SYNTAX} {HISTORY} {RECENT_CHANGES}
+
+</main>
+
+</body>
+</html>
+<!--
+Theme based on https://wiki.xxiivv.com/site/oscean.html
+-->

@@ -1,0 +1,403 @@
+/*-----------------------
+
+	----------------
+	 -  Lagrange  -
+	----------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    https://github.com/skyjake/lagrange
+	
+----------------------------*/
+/* theme 1 */
+/* gemini link */
+/* web link */
+/* normal or bold */
+@font-face {
+  font-family: nunito;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito Medium'), url(../fonts/Nunito-Medium.ttf) format('truetype');
+}
+/*  nunito medium */
+/* overriding default values */
+/* theme 3 */
+/* Source Sans Pro */
+@font-face {
+  font-family: Source Sans;
+  font-style: normal;
+  font-weight: normal;
+  src: url(../fonts/SourceSansPro-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: Source Sans;
+  font-style: italic;
+  font-weight: normal;
+  src: url(../fonts/SourceSansPro-Italic.ttf) format('truetype');
+}
+@font-face {
+  font-family: Source Sans;
+  font-weight: bold;
+  src: url(../fonts/SourceSansPro-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: Source Sans;
+  font-style: italic;
+  font-weight: bold;
+  src: url(../fonts/SourceSansPro-BoldItalic.ttf) format('truetype');
+}
+/*  source sans pro */
+/* Colorful orange */
+/* gemini link */
+/* web link */
+/* normal or bold */
+body {
+  font-family: "Source Sans", "Nunito", "Roboto", "Source Sans 3", sans-serif;
+  font-weight: 400;
+  /* font-size: 15pt;*/
+  font-size: 1.4em;
+  margin-top: 0em;
+  margin-left: 0em;
+  margin-right: 0em;
+  padding-right: 0em;
+}
+table {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#entete {
+  background-color: #f3ccbf;
+  font-size: 80%;
+  /*color: darken(@bg,15%);*/
+  padding: 1em;
+}
+#entete h1 a {
+  color: #813318;
+  font-weight: 300;
+}
+#container {
+  margin: auto;
+  max-width: 37em;
+}
+.menu {
+  text-align: center;
+}
+.menu li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 1rem;
+}
+.menu li::before {
+  content: "";
+}
+h1 {
+  font-size: 200%;
+  font-weight: 400;
+  margin-left: 0.5em;
+}
+h2 {
+  font-size: 167%;
+  font-weight: 600;
+  margin-left: 0.5em;
+}
+h2 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h2:hover span.par-edit {
+  visibility: visible;
+}
+h3 {
+  font-size: 133%;
+  font-weight: 700;
+  margin-left: 1em;
+}
+h4 {
+  margin-left: 2em;
+}
+.link-icon {
+  display: inline-block;
+  width: 1.5em;
+  font-family: Symbola;
+  text-indent: 0;
+}
+div.link {
+  text-indent: -1.5em;
+  padding-left: 1.5em;
+  margin-top: 0.15em;
+  margin-bottom: 0.15em;
+}
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #c24d24;
+}
+a:hover {
+  color: #e17e5c;
+}
+p {
+  margin-left: 1.8em;
+  margin-right: 0.5em;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+p:empty {
+  margin-top: 20pt;
+  margin-bottom: 20pt;
+}
+p.lede {
+  font-size: 120%;
+  margin-left: 1.25em;
+}
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 3em;
+}
+ol {
+  margin-left: 0;
+  padding-left: 3em;
+}
+ul li,
+ol li {
+  margin-top: 5pt;
+  margin-bottom: 5pt;
+}
+ul li::before {
+  content: "•";
+  color: #6c2a14;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.1em;
+  margin-left: -1.1em;
+}
+blockquote {
+  margin-left: 2.25em;
+  font-style: italic;
+  font-weight: 300;
+  padding-left: 0.75em;
+  border-left: 1px solid #ac4420;
+}
+pre {
+  font-family: monospace;
+  font-size: 100%;
+  margin-left: 2.5em;
+  max-width: 100%;
+  overflow: auto;
+}
+img {
+  max-width: 100%;
+}
+/* disable par-edit visibility anytime */
+h2 .par-edit,
+h3 .par-edit,
+h4 .par-edit,
+h5 .par-edit,
+h6 .par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h2:hover .par-edit,
+h3:hover .par-edit,
+h4:hover .par-edit,
+h5:hover .par-edit,
+h6:hover .par-edit {
+  visibility: visible;
+}
+/* Colors */
+html,
+body {
+  background: #efbba9;
+  color: #41190c;
+}
+p.lede {
+  color: #f9f5c3;
+}
+blockquote {
+  background: #efbba9;
+  color: #813318;
+}
+pre {
+  background: #41190c;
+  color: #efbba9;
+}
+h1 {
+  color: #6c2a14;
+}
+h1 a {
+  color: #eeeeee;
+  font-weight: 800;
+}
+h2 {
+  color: #6c2a14;
+}
+h3 {
+  color: #6c2a14;
+}
+.gemini-link .link-icon {
+  color: #00c0ff;
+}
+.gemini-link a {
+  color: #fffcd2;
+}
+.gemini-link a:hover {
+  color: #00c0ff;
+}
+.web-link .link-icon {
+  color: #ffc000;
+}
+.web-link a {
+  color: #fffcd2;
+}
+.web-link a:hover {
+  color: #ffc000;
+}
+/* Responsivity */
+@media only screen and (max-width: 499px) and (orientation: portrait) {
+  body {
+    font-size: 1.2em;
+    -webkit-text-size-adjust: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+  p {
+    margin-right: 1em;
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 850px) {
+  body {
+    font-size: 1.2em;
+    -webkit-text-size-adjust: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+  p {
+    margin-right: 1em;
+  }
+}
+/* Progress bar */
+progress {
+  color: #41190c;
+  background-color: #efbba9;
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+}
+progress::-moz-progress-bar {
+  color: #41190c;
+  background: #41190c;
+}
+progress::-webkit-progress-value {
+  color: #41190c;
+  background: #41190c;
+}
+progress::-webkit-progress-bar {
+  color: #efbba9;
+  background: #efbba9;
+}
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 1px solid #41190c;
+  background-color: #efbba9;
+  min-height: 50px;
+  /*margin: 5px;*/
+  margin-top: 6px;
+  margin-bottom: 8px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: -2px;
+  padding-bottom: 0px;
+  font-size: 1.1rem;
+  color: #41190c;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0px;
+}
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding: 0px;
+  padding-top: 0px;
+  min-height: 46px;
+  line-height: 46px;
+  color: #41190c;
+  text-decoration: none;
+  border-radius: 0px;
+}
+.block a:hover {
+  background-color: #41190c;
+  color: #efbba9;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+}
+.tagList {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  margin-top: 0.5em;
+  /*border: 1px dashed #31343A;*/
+  /*background: #eee;*/
+  clear: right;
+}
+.tagCloud {
+  float: right;
+  width: 200px;
+  padding: 0.5em;
+  margin: 1em;
+  border: 1px dashed #c24d24;
+  background: #efbba9;
+  clear: right;
+  border-radius: 0px;
+  /*font-size: 0.5em;*/
+}
+/* Todotxt support */
+.todotxt_A {
+  color: #2b1108;
+}
+.todotxt_B {
+  color: #4c401a;
+}
+.todotxt_C {
+  color: #4c5827;
+}
+.todotxt_D {
+  color: #416237;
+}
+.todotxt_E {
+  color: #446e4f;
+}
+.todotxt_F {
+  color: #795d53;
+}
+.todotxt_context {
+  color: #0c3341;
+}
+.todotxt_tag {
+  color: #19410c;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  html {
+    background-color: #111;
+  }
+}

@@ -1,0 +1,352 @@
+:root {
+  --couleur-primaire: #2a6442;
+
+  --underline-max-width: 100%;
+  --underline-hover-width: 0;
+  --underline-idle-width: var(--underline-max-width);
+  --underline-x: calc(var(--underline-max-width) * 0);
+  --underline-img: linear-gradient(0deg, currentColor, currentColor);
+  --external-link-content: "";
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: url("../fonts/Luciole-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: url("../fonts/Luciole-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: url("../fonts/Luciole-Italic.woff") format("woff");
+  font-style: italic;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: url("../fonts/Luciole-BoldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+
+
+html {
+  font-family: "Luciole", Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+header {
+  background-color: var(--couleur-primaire);
+}
+
+header .container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header a {
+  color: white;
+}
+
+header ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+header li + li {
+  margin-top: 0;
+}
+
+footer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 4px solid var(--couleur-primaire);
+}
+
+main {
+  max-width: 70ch;
+  min-height: 80vh;
+  margin: 0 auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--couleur-primaire);
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+p ~ h2,
+p ~ h3,
+p ~ h4,
+p ~ h5,
+p ~ h6 {
+  margin-top: 3rem;
+}
+
+h3 {
+  margin-bottom: 1.6rem;
+  font-size: 1.8rem;
+}
+
+h4 {
+  margin-bottom: 1.4rem;
+  font-size: 1.4rem;
+}
+
+h5 {
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+}
+
+h6 {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+a {
+  color: var(--couleur-primaire);
+  text-decoration: none;
+}
+
+a[href]:active,
+a[href]:hover {
+  --underline-hover-width: var(--underline-max-width);
+}
+
+[href] {
+  background-image: var(--underline-img), var(--underline-img);
+  background-position: var(--underline-x) 100%,
+    var(--underline-x) calc(100% - 0.0625em);
+  background-repeat: no-repeat, no-repeat;
+  background-size: var(--underline-hover-width) 0.125em,
+    var(--underline-idle-width) 0.0625em;
+  transition: background-size 0s;
+}
+
+li + li,
+li > ul,
+li > ol {
+  margin-top: 0.5rem;
+}
+
+blockquote {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid var(--couleur-primaire);
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote p + p {
+  margin-top: 1rem;
+}
+
+code {
+  padding: 0.2rem;
+  background-color: #abe1c3;
+}
+
+pre {
+  padding: 1rem;
+  color: white;
+  background-color: black;
+}
+
+pre code {
+  background: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* lionwiki */
+
+p span.full-edit,
+h2 span.par-edit,
+h3 span.par-edit,
+h4 span.par-edit,
+h5 span.par-edit,
+h6 span.par-edit {
+  float: right;
+  display: none;
+}
+p:hover span.full-edit,
+h2:hover span.par-edit,
+h3:hover span.par-edit,
+h4:hover span.par-edit,
+h5:hover span.par-edit,
+h6:hover span.par-edit {
+  display: inline;
+  font-size: small;
+}
+
+/* makes the top edit link invisible */
+.editlink a {
+  text-decoration: none;  
+  color: var(--couleur-primaire); 
+}
+
+.editlink2 a {
+  text-decoration: none;  
+  color: #eee; 
+}
+
+/* Progress bar */
+progress {
+  color: var(--couleur-primaire);
+  background-color: white;
+  /*border-radius: 4px; */
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+  -webkit-appearance: none;
+}
+progress::-moz-progress-bar {
+  background: var(--couleur-primaire);
+}
+progress::-webkit-progress-value {
+  background: var(--couleur-primaire);
+}
+progress::-webkit-progress-bar {
+  background: white;
+}
+/* Big buttons */
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid var(--couleur-primaire);
+  background-color: var(--couleur-primaire);
+  /*height: 50px;*/
+  margin-top: 8px;
+  margin-bottom: 8px;
+  /*font-family: Ubuntu;*/
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 16px;
+  color: var(--couleur-primaire);
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
+  border-radius: 0px;
+}
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding: 0px;
+  padding-top: 0px;
+  height: 46px;
+  line-height: 46px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+}
+/*.block:hover, */
+.block a:hover {
+  /*border: 2px solid @HeaderColor;*/
+  background-color: #fff;
+  color: var(--couleur-primaire);
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+/* Todotxt support */
+.todotxt_A {
+  color: #082d46;
+}
+.todotxt_B {
+  color: #1b2267;
+}
+.todotxt_C {
+  color: #462873;
+}
+.todotxt_D {
+  color: #76377d;
+}
+.todotxt_E {
+  color: #8a446e;
+}
+.todotxt_F {
+  color: #527a95;
+}
+.todotxt_context {
+  color: #5d2c0b;
+}
+.todotxt_tag {
+  color: #550b5d;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+.todotxt_date {
+  background-color: #f2f2f2;
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+ body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  
+    html {
+    background-color: #111;
+  }
+
+}
+

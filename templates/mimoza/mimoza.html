@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="templates/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="templates/mimoza/mimoza.css" />
+  <!--<link rel="stylesheet" href="templates/css/font_josefinsans.css" />-->
+  <link rel="alternate stylesheet" type="text/css" title="Josefin Sans"  href="templates/css/font_josefinsans.css" />
+
+
+  <title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+  	{HEAD}
+
+</head>
+
+<body><header>
+
+  <div class="container">
+    <nav>
+		<ul> {HOME &nbsp;}  {MENU}   
+		 { RECENT_CHANGES} <div class="editlink">  {EDIT# &nbsp;}  </div> <!-- -->
+		</ul>
+    </nav>
+  </div>
+</header>
+<span style="float: left"> <div class="editlink2">  {EDIT# &nbsp;} </div></span>
+<main>
+
+    <div class="container">
+<h1>{WIKI_TITLE}</h1>
+
+
+
+{CONTENT}
+{plugin:TAG_LIST}
+
+{CONTENT_FORM}
+					
+		<table style="width: 100%; border:5px;" class="form" >
+			<tr>
+				<td>{RENAME_TEXT } {RENAME_INPUT }<br/>{plugin:TXT2TAGS_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" ><small>{SHOW_PAGE}<br/>{SYNTAX}</small></td>
+			</tr>
+			<tr>
+				<td colspan="3"><!--{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}<br/><br/>-->
+				{plugin:TOOLBAR_TEXTAREA}{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>	
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}<br/>{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;">{plugin:RESIZE_TEXTAREA}</td>
+			</tr>
+		</table>
+		
+		{/CONTENT_FORM}
+		
+</div>
+
+
+  </main><footer>
+
+<div class="container">
+<div align="right">{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} </div>
+<ul> {EDIT &nbsp;} {HISTORY} {&nbsp; RECENT_CHANGES &nbsp;}</ul>
+
+<small>
+<ul>
+<br/>Typo <a href="http://www.luciole-vision.com">Luciole</a>
+<br/>Design based on <a href="https://github.com/Scribouilli/mimoza">Mimoza</a>
+<br/>Powered by <a href="https://lionwiki-t2t.sourceforge.io">LionWiki-t2t</a> 
+<br/>{RSS}
+</small>
+</ul>
+
+</footer>
+</body>
+
+</html>
+<!-- https://github.com/Scribouilli/mimoza -->

@@ -1,0 +1,27 @@
+/* theme 03 */
+/*  */
+
+
+@fg: #0b3c5d;       /* Dark blue */
+@bg: (#999 + (@fg/6));
+@bg: #fff;
+
+
+
+@bg2: #ddd;
+//@glow: 0 0 3px darken(desaturate(@fg,15%),18%), 0 0 10px darken(desaturate(@fg,30%),35%);
+@glow: none;
+@link: @fg;
+/*@link-hover: desaturate(darken(@fg,10%),20%);*/
+@link-hover: @bg;
+@link-visited: @fg;
+@heading: @fg;
+/* TODO should be HeaderColor: color: spin(@fg, 180);*/
+@heading-weight: bold;  /* normal or bold */
+@font: Ubuntu;
+@font-heading: Fengardo Neue; 
+
+
+@Bg-dark: (@fg - #121212);
+@Bg-light: (@fg + #121212);
+@Bg-extra-light: (#999 + (@fg/6) + #343434 + #121212);

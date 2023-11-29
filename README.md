@@ -1,7 +1,7 @@
 
 ## About LionWiki 
 
-**LionWiki* was a minimalist Wiki engine programmed in PHP, based on [WiKiss](http://www.wikiss.tuxfamily.org/), itself based on TigerWiki...
+**LionWiki** was a minimalist Wiki engine programmed in PHP, based on [WiKiss](http://www.wikiss.tuxfamily.org/), itself based on TigerWiki...
 
 It revives now in this txt2tags-based implementation.
 
@@ -11,7 +11,7 @@ It is extensible, templatable, file based (it doesn't need database like MySQL) 
 
 **[Txt2tags](http://www.txt2tags.org)** is a document generator and a lightweight markup.
 
-It reads a text file with minimal markup such as `**bold**` and `//italic//`. Its python implementation can convert to several formats such as *html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc...*
+It reads a text file with minimal markup such as `**bold**` and `//italic//`. Its python implementation can convert to several formats such as *html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, Markdown...*
 
 It is very **extensible** and **customisable**, by using regex and preprocessors.
 
@@ -21,7 +21,7 @@ Its php implementation targets only HTML but you can use it with several CMS, Bl
 
 Txt2tags and lionwiki are both following [the KISS principle](https://en.wikipedia.org/wiki/KISS_principle). They are lightweight, easy to use and extendable.
 
-*[Read more... https://lionwiki-t2t.sourceforge.io/index.php?page=help.en]*
+*[Read more...](https://lionwiki-t2t.sourceforge.io/index.php?page=help.en)*
 
 
 
