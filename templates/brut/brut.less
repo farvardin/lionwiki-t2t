@@ -1,0 +1,649 @@
+
+
+/*-----------------------
+
+	-------------
+	 -  Brut  -
+	-------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    brut theme
+	
+----------------------------*/
+
+
+
+/* theme 1 */
+
+@fg: #CCF9F7;
+@bg: #112326;
+@bg2: #112311;
+@glow: none;
+@link: #FBA6A6;
+@link-hover: desaturate(darken(@fg,25%),40%);
+@link-visited: @fg;
+@heading: @fg;
+@heading-weight: normal;  /* normal or bold */
+@font: monospace;
+
+
+@fg: #CCF9F7;
+@bg: #112326;
+@bg2: @bg;
+@glow: none;
+@link: #FBA6A6;
+@link-hover: desaturate(darken(@fg,25%),40%);
+@link-visited: @link;
+@heading: @fg;
+
+@font: monospace;
+
+
+/* overriding default values */
+
+@import "brut_temp.less";
+
+@import "../css/font_archivo.less";    /* Archivo Narrow    */
+@import "../css/font_opensans.less";   /* Open Sans         */
+
+
+* {
+	font-family: inherit;
+	
+}
+
+
+
+body {
+	font-size: 1.1rem;
+	font-family: @font;
+	background-color: @bg;
+	color: @fg;
+	letter-spacing: 1px;
+	padding-bottom: 5rem;
+	/*padding-top: 1rem;*/
+	line-height: 1.6rem;
+}
+
+#mainContent {
+
+}
+
+.break {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
+	
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}	
+
+
+.hidden {
+	display: none;
+}
+
+img {
+	border: 0px; margin:10px;
+}
+
+a {
+	&:active {
+		color: @link;
+		text-decoration: none;
+	}
+	&:focus {
+		color: @link-hover;
+		text-decoration: none;
+	}
+	&:visited {
+		color: @link-visited;
+		text-decoration: none;
+	}
+	color: @link;
+	text-decoration: none;
+	&:hover {
+		color: @link-hover;
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+	}
+}
+a.inverse {
+	color: #112326;
+	padding: 1px 5px;
+	&:active {
+		color: #112326;
+		padding: 1px 5px;
+	}
+	&:focus {
+		color: #112326;
+		padding: 1px 5px;
+	}
+}
+table {
+	width: 100%;
+	border: 0px;
+}
+
+th {
+ background: @fg;
+ color:@bg;
+ font-weight:bold
+ border: 0px;
+ 
+}
+
+tr {
+ background: @bg;
+ color:@fg;
+ border: 0px;
+ 
+}
+
+td {
+padding: 4px;
+background: @bg;
+ color:@fg;
+ border: 2px;
+ 
+}
+
+
+p {
+	font-size: 1.1rem;
+	.break();
+}
+
+header {
+	text-align: right;
+	top: 0;
+	width: 100%;
+	left: 50%;
+	/*max-width: 800px;*/
+	margin: 10px auto;
+	font-size:0.8em;
+	
+	border: 2px solid @fg;
+	border-bottom: 5px solid @fg;
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-left {
+    width: 75%;
+	background-color: @bg3;
+	text-align: left;
+    /*height: 100vh;*/
+}
+
+.flex-right {
+	background-color: @bg2;
+    width: 25%;
+	border-left: 2px solid @fg;
+}
+
+
+
+pre, blockquote {
+    padding-left: 20px;
+}
+
+pre {
+    background-color: (@bg + #121212);
+    line-height: 1.5em;
+    font-family: Courier ;
+    font-size:  1em;
+    margin: 1.0em;
+}
+
+code, blockquote, dt {
+    background-color: (@bg + #121212);
+    //background-color: (@bg + #121212);
+    //line-height: 1.5em;
+    font-family: Courier ;
+    font-size: 1em;
+    /*margin: 1.0em;*/
+}
+
+
+
+header hr {
+	/*background-color: lighten(@fg, 50%);*/
+	background-color: @link;
+}
+
+header h1 { margin-left: 1em; }
+
+h1, h2, h3, h4, h5, h6 {
+	color: @heading;
+	font-weight: @heading-weight;
+	line-height: 2rem;
+}
+
+/* maximum font size, see https://css-tricks.com/how-do-you-do-max-font-size-in-css/ */
+h1 { font-size: clamp(2em, 4vw, 6em);}
+
+h2 {
+	border: 2px solid @fg;
+	border-bottom: 5px solid @fg;
+	margin-top: 1.8em;
+	text-align: center;
+	span.par-edit {
+		visibility: hidden;
+		font-size: x-small;
+	}
+	&:hover {
+		span.par-edit {
+			visibility: visible;
+		}
+	}
+}
+nav {
+	margin-top: 1.8em;
+	text-align: center;
+}
+hr {
+	width: 40%;
+	margin: 1.5rem auto;
+	color: @fg;
+	background-color: @fg;
+	border: none;
+	height: 2px;
+}
+a.top {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	background-color: @fg;
+	color: #112326;
+	text-align: center;
+	box-shadow: 0 0 4px @bg;
+	padding: 0.25rem;
+	&:visited {
+		position: fixed;
+		bottom: 2rem;
+		right: 2rem;
+		background-color: @link;
+		color: #112326;
+		text-align: center;
+		box-shadow: 0 0 4px black;
+		padding: 0.25rem;
+	}
+	&:active {
+		transform: scale(0.9);
+	}
+}
+a.back {
+	position: absolute;
+	top: 2rem;
+	left: 2rem;
+	right: unset;
+	bottom: unset;
+	font-size: 0.9rem;
+	&:visited {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+		right: unset;
+		bottom: unset;
+		font-size: 0.9rem;
+	}
+	&:active {
+		transform: scale(0.9);
+	}
+}
+.inverse {
+	color: #112326;
+	background-color: #CCF9F7;
+}
+main {
+	max-width: 800px;
+	margin: 10px auto;
+}
+
+footer {
+	text-align:center;
+	max-width: 800px;
+	margin: 10px auto;
+	font-size: 0.6em;
+	background-color: @bg2;
+	border: 2px solid @fg;
+	border-bottom: 5px solid @fg;
+}
+
+caption {
+	font-weight: 700;
+	line-height: 2rem;
+}
+td {
+	border-bottom: 0px solid;
+}
+tr.header-row {
+	background-color: @fg;
+	color: @bg;
+}
+p.notice {
+	background-color: #CCF9F7;
+	color: #183547;
+	padding: 1rem;
+	box-shadow: 11px 11px 0px #FFFF11;
+	text-align: center;
+	a {
+		text-decoration: underline;
+	}
+}
+.menu {
+	li {
+		line-height: 2rem;
+		display: inline-block;
+		padding: 5px;
+		&::before {
+			content: "[ ";
+		}
+		&::after {
+			content: " ]";
+		}
+	}
+}
+
+ul {
+	.break();
+}
+
+ul li {
+	list-style: none;
+	&::before {
+		content: "- ";
+	}
+}
+
+h3 {
+	span.par-edit {
+		visibility: hidden;
+		font-size: x-small;
+	}
+	&:hover {
+		span.par-edit {
+			visibility: visible;
+		}
+	}
+}
+h4 {
+	span.par-edit {
+		visibility: hidden;
+		font-size: x-small;
+	}
+	&:hover {
+		span.par-edit {
+			visibility: visible;
+		}
+	}
+}
+h5 {
+	span.par-edit {
+		visibility: hidden;
+		font-size: x-small;
+	}
+	&:hover {
+		span.par-edit {
+			visibility: visible;
+		}
+	}
+}
+h6 {
+	span.par-edit {
+		visibility: hidden;
+		font-size: x-small;
+	}
+	&:hover {
+		span.par-edit {
+			visibility: visible;
+		}
+	}
+}
+#renameForm {
+	display: block;
+	margin-bottom: 6px;
+}
+.submit {
+	&:hover {
+		border: 2px solid @fg;
+		color: @bg;
+		background-color: @fg;
+	}
+	padding: 1px;
+	border: 2px solid @bg;
+	padding: 1px;
+}
+.contentTextarea {
+	width: 100%;
+}
+input {
+	border: 2px solid @fg;
+	padding: 2px;
+	font-size: 1rem;
+	background-color: @bg2;
+	color: @fg;
+	&:hover {
+		background-color: @bg;
+	}
+	&:focus {
+		background-color: @bg;
+	}
+}
+select {
+	border: 2px solid @fg;
+	padding: 2px;
+	font-size: 1rem;
+	background-color: @bg;
+	color: @fg;
+}
+textarea {
+	border: 2px solid @fg;
+	padding: 2px;
+	font-size: 1.1rem;
+	background-color: @bg;
+	color: @fg;
+	padding: 3px;
+}
+#toc {
+	border: 2px dashed @bg;
+	margin: 5px 0 5px 10px;
+	padding: 6px 5px 7px 0px;
+	float: right;
+	padding-right: 2em;
+	list-style: none;
+	background: @bg - #111;
+	ul {
+		list-style: none;
+		padding: 3px 0 3px 10px;
+	}
+	li {
+		font-size: 0.9rem;
+		padding-left: 10px;
+		display: block;
+	}
+}
+
+
+#toc {
+    border: 2px solid @fg; /*#11141A;*/
+    padding: 5px 5px 5px 5px;
+    float: right;
+    padding-right: 2em;
+    list-style: none;
+    background: @bg - #111;
+    clear: right;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 10px;
+}
+#toc li {
+    font-size: 11px;
+    padding-left: 10px;
+}
+
+
+#diff {
+	padding: 1em;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	width: 97%;
+	ins {
+		color: green;
+		text-decoration: none;
+		font-weight: bold;
+	}
+	del {
+		color: red;
+		text-decoration: line-through;
+	}
+	.orig {
+		color: #666;
+		font-size: 90%;
+	}
+}
+#headerLinks {
+	list-style-type: none;
+}
+
+/* Progress bar */
+
+
+progress {
+  color: @fg;
+  background-color: @bg;
+  border-radius: 0px; 
+  border: solid 2px;
+  width: 10em;
+  height: 1em;
+}
+
+
+
+progress {
+	&::-moz-progress-bar {
+		color: @fg;
+		background: @fg;
+	}
+	&::-webkit-progress-value {
+		color: @fg;
+		background: @fg;
+	}
+	&::-webkit-progress-bar {
+		color: @bg;
+		background: @bg;
+	}
+}
+.block {
+	display: inline-block;
+	width: 65%;
+	border: 2px solid @fg;
+	background-color: @bg;
+	min-height: 50px;
+	/*margin: 5px;*/
+	margin-top: 6px;
+	margin-bottom: 8px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: -2px;
+	padding-bottom: 0px;
+	font-size: 1.1rem;
+	color: @fg;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 0px;
+	a {
+		display: inline-block;
+  		min-width: 100%;
+  		padding:  0px;
+
+  		padding-top : 0px;
+  		min-height: 46px;
+  		line-height:46px;
+  		color: @fg;
+  		text-decoration: none;
+  		border-radius: 0px;
+		&:hover {
+			background-color: @fg;
+			border-bottom: 5px solid @fg ; 
+			margin-bottom: -5px;
+  			color: @bg;
+    			margin-left: -2px;
+  			margin-right: -2px;
+    			padding-left: 2px;
+  			padding-right: 2px;
+  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+  
+		}
+	}
+}
+
+
+
+.tagList {
+    padding: 0.2em 0.4em 0.2em 0.4em;
+    margin-top: 0.5em;
+    /*border: 1px dashed #31343A;*/
+    /*background: #eee;*/
+    clear: right;
+}
+.tagCloud {
+    float: right;
+    width: 200px;
+    padding: 0.5em;
+    margin: 1em;
+    border: 2px dashed @link;
+    background: @bg;
+    clear: right;
+	border-radius: 0px;
+	/*font-size: 0.5em;*/
+}
+
+
+
+/* Todotxt support */
+
+
+.todotxt_A {color: darken(@fg,5%);}
+.todotxt_B { color:desaturate(lighten(spin(@fg, 30),5%),20%); }
+.todotxt_C { color: desaturate(lighten(spin(@fg, 60),10%),30%); }
+.todotxt_D { color: desaturate(lighten(spin(@fg, 90),15%),40%); }
+.todotxt_E { color: desaturate(lighten(spin(@fg, 120),20%),45%); }
+.todotxt_F { color: desaturate(lighten(@fg,25%),50%); }
+
+
+.todotxt_context { color: spin(@fg, 180); }
+.todotxt_tag { color: spin(@fg, 90); }
+.todotxt_deleted {opacity: 0.4; }
+
+
+@media (prefers-color-scheme: dark) {
+
+ body {
+   filter: invert(90%) hue-rotate(90deg);
+  }
+  
+
+    html {
+    background-color: #111;
+  }
+
+}

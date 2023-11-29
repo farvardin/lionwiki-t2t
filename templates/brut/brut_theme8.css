@@ -1,0 +1,655 @@
+/*-----------------------
+
+	-------------
+	 -  Brut  -
+	-------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    brut theme
+	
+----------------------------*/
+/* theme 1 */
+/* normal or bold */
+/* overriding default values */
+/* theme 8 */
+/* paster dreams */
+/* https://www.canva.com/colors/color-palettes/pastel-dreams/ */
+/* base: #ffaebc */
+/* normal or bold */
+/* not used */
+@font-face {
+  font-family: 'Archivo Narrow';
+  font-style: bold;
+  font-weight: 300;
+  src: url(../fonts/ArchivoNarrow-Bold.woff) format('woff');
+}
+/* Archivo Narrow    */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(../fonts/OpenSans.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(../fonts/OpenSans-Semibold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/OpenSans-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(../fonts/OpenSans-Extrabold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(../fonts/OpenSansLight-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(../fonts/OpenSans-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(../fonts/OpenSans-SemiboldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(../fonts/OpenSans-BoldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(../fonts/OpenSans-ExtraboldItalic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(../fonts/OpenSans-CondensedBold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(../fonts/OpenSans-CondensedLight.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Cond Light Italic'), local('OpenSans-CondensedLightItalic'), url(../fonts/OpenSans-CondensedLightItalic.woff) format('woff');
+}
+/* Open Sans         */
+* {
+  font-family: inherit;
+}
+body {
+  font-size: 1.1rem;
+  font-family: Open Sans;
+  background-color: #fbe7c6;
+  color: #442e32;
+  letter-spacing: 1px;
+  padding-bottom: 5rem;
+  /*padding-top: 1rem;*/
+  line-height: 1.6rem;
+}
+.break {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.hidden {
+  display: none;
+}
+img {
+  border: 0px;
+  margin: 10px;
+}
+a {
+  color: #4c5270;
+  text-decoration: none;
+}
+a:active {
+  color: #4c5270;
+  text-decoration: none;
+}
+a:focus {
+  color: #000000;
+  text-decoration: none;
+}
+a:visited {
+  color: #4c5270;
+  text-decoration: none;
+}
+a:hover {
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+a.inverse {
+  color: #112326;
+  padding: 1px 5px;
+}
+a.inverse:active {
+  color: #112326;
+  padding: 1px 5px;
+}
+a.inverse:focus {
+  color: #112326;
+  padding: 1px 5px;
+}
+table {
+  width: 100%;
+  border: 0px;
+}
+th {
+  background: #442e32;
+  color: #fbe7c6;
+  font-weight: bold
+ border: 0px;
+}
+tr {
+  background: #fbe7c6;
+  color: #442e32;
+  border: 0px;
+}
+td {
+  padding: 4px;
+  background: #fbe7c6;
+  color: #442e32;
+  border: 2px;
+}
+p {
+  font-size: 1.1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+header {
+  text-align: right;
+  top: 0;
+  width: 100%;
+  left: 50%;
+  /*max-width: 800px;*/
+  margin: 10px auto;
+  font-size: 0.8em;
+  border: 2px solid #442e32;
+  border-bottom: 5px solid #442e32;
+  display: flex;
+  flex-direction: row;
+}
+.flex-left {
+  width: 75%;
+  background-color: #a0e7e5;
+  text-align: left;
+  /*height: 100vh;*/
+}
+.flex-right {
+  background-color: #b4f8c8;
+  width: 25%;
+  border-left: 2px solid #442e32;
+}
+pre,
+blockquote {
+  padding-left: 20px;
+}
+pre {
+  background-color: #fff9d8;
+  line-height: 1.5em;
+  font-family: Courier ;
+  font-size: 1em;
+  margin: 1em;
+}
+code,
+blockquote,
+dt {
+  background-color: #fff9d8;
+  font-family: Courier ;
+  font-size: 1em;
+  /*margin: 1.0em;*/
+}
+header hr {
+  /*background-color: lighten(@fg, 50%);*/
+  background-color: #4c5270;
+}
+header h1 {
+  margin-left: 1em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #442e32;
+  font-weight: bold;
+  line-height: 2rem;
+}
+/* maximum font size, see https://css-tricks.com/how-do-you-do-max-font-size-in-css/ */
+h1 {
+  font-size: clamp(2em, 4vw, 6em);
+}
+h2 {
+  border: 2px solid #442e32;
+  border-bottom: 5px solid #442e32;
+  margin-top: 1.8em;
+  text-align: center;
+}
+h2 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h2:hover span.par-edit {
+  visibility: visible;
+}
+nav {
+  margin-top: 1.8em;
+  text-align: center;
+}
+hr {
+  width: 40%;
+  margin: 1.5rem auto;
+  color: #442e32;
+  background-color: #442e32;
+  border: none;
+  height: 2px;
+}
+a.top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #442e32;
+  color: #112326;
+  text-align: center;
+  box-shadow: 0 0 4px #fbe7c6;
+  padding: 0.25rem;
+}
+a.top:visited {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #4c5270;
+  color: #112326;
+  text-align: center;
+  box-shadow: 0 0 4px black;
+  padding: 0.25rem;
+}
+a.top:active {
+  transform: scale(0.9);
+}
+a.back {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: unset;
+  bottom: unset;
+  font-size: 0.9rem;
+}
+a.back:visited {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: unset;
+  bottom: unset;
+  font-size: 0.9rem;
+}
+a.back:active {
+  transform: scale(0.9);
+}
+.inverse {
+  color: #112326;
+  background-color: #CCF9F7;
+}
+main {
+  max-width: 800px;
+  margin: 10px auto;
+}
+footer {
+  text-align: center;
+  max-width: 800px;
+  margin: 10px auto;
+  font-size: 0.6em;
+  background-color: #b4f8c8;
+  border: 2px solid #442e32;
+  border-bottom: 5px solid #442e32;
+}
+caption {
+  font-weight: 700;
+  line-height: 2rem;
+}
+td {
+  border-bottom: 0px solid;
+}
+tr.header-row {
+  background-color: #442e32;
+  color: #fbe7c6;
+}
+p.notice {
+  background-color: #CCF9F7;
+  color: #183547;
+  padding: 1rem;
+  box-shadow: 11px 11px 0px #FFFF11;
+  text-align: center;
+}
+p.notice a {
+  text-decoration: underline;
+}
+.menu li {
+  line-height: 2rem;
+  display: inline-block;
+  padding: 5px;
+}
+.menu li::before {
+  content: "[ ";
+}
+.menu li::after {
+  content: " ]";
+}
+ul {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+ul li {
+  list-style: none;
+}
+ul li::before {
+  content: "- ";
+}
+h3 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h3:hover span.par-edit {
+  visibility: visible;
+}
+h4 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h4:hover span.par-edit {
+  visibility: visible;
+}
+h5 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h5:hover span.par-edit {
+  visibility: visible;
+}
+h6 span.par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h6:hover span.par-edit {
+  visibility: visible;
+}
+#renameForm {
+  display: block;
+  margin-bottom: 6px;
+}
+.submit {
+  border: 2px solid #fbe7c6;
+  padding: 1px;
+}
+.submit:hover {
+  border: 2px solid #442e32;
+  color: #fbe7c6;
+  background-color: #442e32;
+}
+.contentTextarea {
+  width: 100%;
+}
+input {
+  border: 2px solid #442e32;
+  padding: 2px;
+  font-size: 1rem;
+  background-color: #b4f8c8;
+  color: #442e32;
+}
+input:hover {
+  background-color: #fbe7c6;
+}
+input:focus {
+  background-color: #fbe7c6;
+}
+select {
+  border: 2px solid #442e32;
+  padding: 2px;
+  font-size: 1rem;
+  background-color: #fbe7c6;
+  color: #442e32;
+}
+textarea {
+  border: 2px solid #442e32;
+  padding: 2px;
+  font-size: 1.1rem;
+  background-color: #fbe7c6;
+  color: #442e32;
+  padding: 3px;
+}
+#toc {
+  border: 2px dashed #fbe7c6;
+  margin: 5px 0 5px 10px;
+  padding: 6px 5px 7px 0px;
+  float: right;
+  padding-right: 2em;
+  list-style: none;
+  background: #ead6b5;
+}
+#toc ul {
+  list-style: none;
+  padding: 3px 0 3px 10px;
+}
+#toc li {
+  font-size: 0.9rem;
+  padding-left: 10px;
+  display: block;
+}
+#toc {
+  border: 2px solid #442e32;
+  /*#11141A;*/
+  padding: 5px 5px 5px 5px;
+  float: right;
+  padding-right: 2em;
+  list-style: none;
+  background: #ead6b5;
+  clear: right;
+}
+#toc ul {
+  list-style: none;
+  padding-left: 10px;
+}
+#toc li {
+  font-size: 11px;
+  padding-left: 10px;
+}
+#diff {
+  padding: 1em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  width: 97%;
+}
+#diff ins {
+  color: green;
+  text-decoration: none;
+  font-weight: bold;
+}
+#diff del {
+  color: red;
+  text-decoration: line-through;
+}
+#diff .orig {
+  color: #666;
+  font-size: 90%;
+}
+#headerLinks {
+  list-style-type: none;
+}
+/* Progress bar */
+progress {
+  color: #442e32;
+  background-color: #fbe7c6;
+  border-radius: 0px;
+  border: solid 2px;
+  width: 10em;
+  height: 1em;
+}
+progress::-moz-progress-bar {
+  color: #442e32;
+  background: #442e32;
+}
+progress::-webkit-progress-value {
+  color: #442e32;
+  background: #442e32;
+}
+progress::-webkit-progress-bar {
+  color: #fbe7c6;
+  background: #fbe7c6;
+}
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #442e32;
+  background-color: #fbe7c6;
+  min-height: 50px;
+  /*margin: 5px;*/
+  margin-top: 6px;
+  margin-bottom: 8px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: -2px;
+  padding-bottom: 0px;
+  font-size: 1.1rem;
+  color: #442e32;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0px;
+}
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding: 0px;
+  padding-top: 0px;
+  min-height: 46px;
+  line-height: 46px;
+  color: #442e32;
+  text-decoration: none;
+  border-radius: 0px;
+}
+.block a:hover {
+  background-color: #442e32;
+  border-bottom: 5px solid #442e32;
+  margin-bottom: -5px;
+  color: #fbe7c6;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+}
+.tagList {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  margin-top: 0.5em;
+  /*border: 1px dashed #31343A;*/
+  /*background: #eee;*/
+  clear: right;
+}
+.tagCloud {
+  float: right;
+  width: 200px;
+  padding: 0.5em;
+  margin: 1em;
+  border: 2px dashed #4c5270;
+  background: #fbe7c6;
+  clear: right;
+  border-radius: 0px;
+  /*font-size: 0.5em;*/
+}
+/* Todotxt support */
+.todotxt_A {
+  color: #352427;
+}
+.todotxt_B {
+  color: #464646;
+}
+.todotxt_C {
+  color: #525252;
+}
+.todotxt_D {
+  color: #5f5f5f;
+}
+.todotxt_E {
+  color: #6c6c6c;
+}
+.todotxt_F {
+  color: #797979;
+}
+.todotxt_context {
+  color: #2e4440;
+}
+.todotxt_tag {
+  color: #3d442e;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    filter: invert(90%) hue-rotate(90deg);
+  }
+  html {
+    background-color: #111;
+  }
+}

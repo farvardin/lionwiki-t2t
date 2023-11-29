@@ -1,0 +1,7 @@
++ ####
++ carrots
++ potatoes 
++ milk
+- eggs (6)
+- pasta
++ //Note: This shopping list is compatible with the android app called ``Denkzettel``. Here + means add this to the list, while - means already done / remove it from the list.//

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="templates/favicon.png" type="image/png" />
+	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+    
+        <link rel="stylesheet/less" href="templates/brut/brut.less" />
+		
+		<script src="templates/js/less.js" type="text/javascript"></script>
+        
+        <!-- Remove "alternate" in one of the style to make it default -->
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme1 ( green yellow blue)" href="templates/brut/brut_theme1.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme2 ( blue purple)" href="templates/brut/brut_theme2.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme3 (orange yellow)" href="templates/brut/brut_theme3.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme4 ( purple pink rosa )" href="templates/brut/brut_theme4.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme5 (orange pink cyan )" href="templates/brut/brut_theme5.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme6 (Summer shower Magenta cyan)" href="templates/brut/brut_theme6.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme7 (art nouveau)" href="templates/brut/brut_theme7.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme8 (pastel dreams)" href="templates/brut/brut_theme8.css" />
+
+	{HEAD}
+</head>
+<body>
+<header>
+<div class="flex-left"><h1>{WIKI_TITLE}</h1>
+</div>
+<div class="flex-right">
+{[&nbsp; EDIT &nbsp;]} {- [&nbsp; SYNTAX &nbsp;]} - [ {HISTORY} ] - [ {RECENT_CHANGES} ]
+<p> {SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</p>
+</div>
+
+</header>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" >
+	
+	<p><h1 style="text-align:center"> {PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+    
+    <tr >
+        
+       <div style="text-align:center" class="menu"> [ {HOME} ] - {MENU} </div><br/>
+        </tr>
+	
+	<tr>
+		<td id="mainContent" colspan="3">
+			{<div class="error"> ERROR </div>}
+			<main>{CONTENT}
+			{plugin:TAG_LIST}
+			{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br /><br />}
+			{plugin:TOOLBAR_TEXTAREA}
+			{CONTENT_TEXTAREA}
+            </main>
+			<p style="float:right;margin:6px">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT}
+			{EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p>{/CONTENT_FORM}
+		</td>
+	</tr>
+	<tr><td colspan="3"></td></tr>
+	
+</table>
+    <hr/>
+    <footer><br/>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}
+    <br/>Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>. {LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}
+    <br/>  {[&nbsp; EDIT &nbsp;]} {- [&nbsp; SYNTAX &nbsp;]} - [ {HISTORY} ] - [ {RECENT_CHANGES} ] 
+	<br /> {RSS}
+    </footer>
+</body>
+</html>

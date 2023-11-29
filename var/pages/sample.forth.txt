@@ -1,0 +1,164 @@
+
+%!includeconf:forth.t2t
+
+
+## Forth 
+
+You can embed forth code into lionwiki.
+
+Just edit this page to discover the syntax.
+
+Learn more at:
+- https://eforth.arduino-forth.com/ 
+- or https://eforth.appspot.com/
+
+
+-----------------------------------
+
+@@UEFORTH@@
+
+'''
+<script type="text/forth">
+
+web definitions
+
+JSWORD: arc { x y r a0 ax div } 
+  context.ctx.arc(x, y, r, (Math.PI * 2 * a0) / div, (Math.PI * 2 * ax) / div); 
+~ 
+
+forth definitions
+
+600 constant ctxWidth 
+400 constant ctxHeight 
+
+only web also forth
+
+variable mousex 
+variable mousey
+
+250 mousex !
+200 mousey !
+
+: truc
+gr ctxWidth ctxHeight window
+880099 color!
+313 267 380 200 line
+;
+
+: wolf 
+
+gr ctxWidth ctxHeight window
+000000 color!
+
+313 267 380 200 line
+380 200 343 136 line
+343 136 331 61 line
+331 61 270 90 line
+270 90 232 49 line
+232 49 223 89 line
+223 89 301 105 line
+301 105 223 89 line
+223 89 200 93 line
+200 93 193 99 line
+193 99 249 106 line
+249 106 301 105 line
+193 99 187 113 line
+187 113 228 122 line
+187 113 138 117 line
+138 117 228 122 line 
+138 117 128 147 line 
+128 147 210 198 line
+128 147 175 188 line
+175 188 138 192 line
+175 188 210 198 line 
+138 192 210 198 line 
+138 192 133 199 line
+133 199 145 216 line
+145 216 215 220 line
+215 220 237 249 line
+237 249 313 267 line
+215 220 267 225 line
+267 225 313 267 line
+;
+
+
+: merveilles 
+
+gr ctxWidth ctxHeight window
+000000 color!
+
+
+\ top left
+beginPath  mousex @ 150 - mousey @ 50 - 100   270  360 360 arc stroke 
+mousex @ 150 - mousey @ 50 - mousex @ 150 - mousey @ 150 - line
+mousex @ 150 - mousey @ 50 - mousex @ 50 - mousey @ 50 - line
+
+
+\ top right 
+beginPath  mousex @ 150 + mousey @ 50 - 100   180  270 360 arc stroke 
+mousex @ 150 + mousey @ 50 - mousex @ 150 + mousey @ 150 - line
+mousex @ 150 + mousey @ 50 - mousex @ 50 + mousey @ 50 - line
+
+\ center top
+
+beginPath  mousex @ 50 - mousey @ 50 - 100   270 360 60 - 360 arc stroke
+beginPath  mousex @ 50 + mousey @ 50 - 100   180 60 + 270 360 arc stroke 
+
+mousex @ 50 - mousey @ 50 -  mousex @ 50 - mousey @ 150 -  line
+mousex @ 50 + mousey @ 50 - mousex @ 50 + mousey @ 150 -  line
+mousex @ 50 - mousey @ 50 -  mousex @ 50 + mousey @ 50 - line
+
+\ center circles 
+beginPath  mousex @  100 - mousey @  50   0  360  360 arc stroke 
+beginPath  mousex @  mousey @  50   0  360  360 arc stroke 
+beginPath  mousex @  100 + mousey @  50   0  360  360 arc stroke 
+
+\ center bottom
+
+beginPath  mousex @ 50 - mousey @ 50 + 100   360 60 + 90  360 arc stroke
+beginPath  mousex @ 50 + mousey @ 50 + 100   90 180 60 - 360 arc stroke 
+
+mousex @ 50 - mousey @ 50 +  mousex @ 50 - mousey @ 150 +  line
+mousex @ 50 + mousey @ 50 + mousex @ 50 + mousey @ 150 +  line
+mousex @ 50 - mousey @ 50 + mousex @ 50 + mousey @ 50 +  line 
+
+
+
+\ bottom left
+beginPath  mousex @ 150 - mousey @ 50 + 100   360  90 360 arc stroke 
+mousex @ 150 - mousey @ 50 + mousex @ 150 - mousey @ 150 + line
+mousex @ 150 - mousey @ 50 + mousex @ 50 - mousey @ 50 + line
+
+\ bottom right 
+beginPath  mousex @ 150 + mousey @ 50 + 100   90  180 360 arc stroke 
+mousex @ 150 + mousey @ 50 + mousex @ 150 + mousey @ 150 + line
+mousex @ 150 + mousey @ 50 + mousex @ 50 + mousey @ 50 + line
+
+\ 0 0 mousex @ mousey @ line
+
+\ 313 267 380 200 line
+
+;
+
+: demo 
+CR ." Now scroll up, and reload page to start over " CR CR
+500 ms
+begin
+wolf
+2000 ms
+merveilles
+2000 ms
+0 until 
+;
+
+
+: test 4 5 + . ;
+
+: info CR ." Type 'wolf' or 'merveilles' or 'demo' " CR CR ;
+
+info
+
+
+</script>
+'''
+

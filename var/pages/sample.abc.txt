@@ -1,0 +1,80 @@
+
+
+%!includeconf:abcjs.t2t
+
+
+## abc notation 
+
+You can embed abc notation into lionwiki.
+
+Just edit this page to discover the syntax.
+
+- [see the abc editor and player page|sample.abc_audio]
+
+
+Learn more at:
+
+- https://abcnotation.com/
+- https://paulrosen.github.io/abcjs/
+
+
+----------------------------------------
+
+
+@@ABCJS@@
+
+
+
+@@ABC@@
+X:1
+T:I Wish You Would Marry Me Now (Hempson version)
+M:4/4
+L:1/8
+S:
+Z:
+K:Gmin
+DG GA B2 Bd | cB AG FG AF | GD D/2D/2D B2 Bd | cAfA G/2G/2G G2:|
+gfdg fdgd|fdcf AFcA|gfdg fdgd|fcfA G/2G/2G G2|
+gfdg fdgd|fdcf AFcA|BGcA dBgd|fdfA G/2G/2G G2||
+@@/ABC@@
+
+
+@@ABC@@
+X:2
+T:La Pernette
+R:Chanson
+O:France
+M:6/8
+L:1/8
+Q:1/4=130
+K:Bb
+z G2 | d3 c d e | d3 c z c | d z (=ef) z f | d3 {cd}c B c |
+d3-d z G | d3 c d e | d3 c2 c | d2 c B2 A | G2 A B2 c |
+ d2 B d3-d z B |  c2 d B2 A | G6 ||
+W:La pernette se lève,
+W:Tra la, la-la, la la, la la la la ;
+W:La pernette se lève
+W:Trois heures avant le jour (3x)
+@@/ABC@@
+
+
+@@ABC@@
+X:3
+T:Und unser liebe Frauen...
+B:Frau Nachtigall (Straßburg - 1928)
+N:p.20
+M:C
+L:1/4
+Q:1/4=150
+K:G
+B, | "Em" EEGG | "C" E2 "G" DD | "Em" GG "D" A-A | "G" B2 zB |
+"Em" BBBB | "Am" c2 "Em" BB/B/ | "Am" AA "B7" (GF) 
+|1 "Em" E2 z :|2 E2 "Em" z B,/ B,/ | "Em" E E/ E/ "B" F F/ F/ |
+"Em" G/ F/ G/ "D"A/ "G"B "C"e | "G" d/ c/ B/ "D7"A/ "Em"G "Am"B/ A/ |
+"B" G "B7"F/ F/ "Em" HE B, | "Em" E F "Em" G F/>E/ | "Em" B3 |]
+W:1. Und unser liebe Frauen vom kalten Bronnen, 
+W: bescher' uns armen Landsknecht' eine warme Sonnen,
+W: damit wir nicht er frieren, ziehn in des Wirtes Haus 
+W: wir ein mit vollem Beutel, mit leerem wieder aus.
+@@/ABC@@
+

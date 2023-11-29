@@ -1,0 +1,1015 @@
+/*-----------------------
+
+	-------------
+	- Newspaper -
+	-------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    GGP & al.jes - http://geekygoblin.org
+    licence Art Libre - http://www.artlibre.org
+	
+----------------------------*/
+/* 0 - Préliminaires */
+/* font colors:*/
+/* background color: */
+/* default background */
+/* special les basses terres */
+/* white */
+/* slightly grey */
+/*@bg: contrast(@FontColor) ; */
+/*@bg: mix(@fg, @link) ; */
+/* slightly grey */
+/* for diff tool */
+/* INITIAL SETTINGS
+@fg: #292929 ;
+@SecondaryColor: #42C200 ;
+@link: #328cc1 ;
+@link-hover: #d9b310 ;
+@bg: #FAFAFA ; 
+*/
+/* 1 - Typographie */
+/*@font-heading:  Aquiline;*/
+/* previous one: 2.5  */
+/* theme 04 */
+@font-face {
+  font-family: Fengardo;
+  font-style: normal;
+  font-weight: normal;
+  src: url(../fonts/fengardoneue-regular.woff) format('woff'), url(../fonts/fengardoneue-regular.otf) format('opentype'), url(../fonts/fengardoneue-regular.svg) format('svg');
+}
+@font-face {
+  font-family: Fengardo;
+  font-style: italic;
+  src: url(../fonts/fengardoneue-italic.otf) format('opentype');
+}
+@font-face {
+  font-family: Fengardo;
+  font-weight: bold;
+  src: url(../fonts/fengardoneue-black.woff) format('woff'), url(../fonts/fengardoneue-black.otf) format('opentype'), url(../fonts/fengardoneue-black.svg) format('svg');
+  
+  /*font-weight: 500;*/
+}
+@font-face {
+  font-family: 'Fengardo Neue';
+  font-style: bold;
+  font-weight: 200;
+  src: url(../fonts/fengardoneue-black.woff) format('woff');
+}
+/*  Fengardo */
+@font-face {
+  font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(../fonts/ubuntu-condensed-regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ubuntu'), url(../fonts/ubuntu.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Ubuntu Italic'), url(../fonts/ubuntu-italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: bold;
+  font-weight: bold;
+  src: local('Ubuntu Bold'), url(../fonts/ubuntu-bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  font-style: italic;
+  src: local('Ubuntu Italic Bold'), url(../fonts/ubuntu-bold-italic.woff) format('woff');
+}
+/* Ubuntu            */
+/* normal or bold */
+/* PTSerif, Waldbaum, my-courier */
+/* 2 - Général */
+#header li {
+  float: left;
+  list-style: none;
+  position: relative;
+  width: 25%;
+}
+/*ul li {list-style: none;}
+ul li::before {content: "– ";}*/
+/*hr::after {content: "⁂";}*/
+/* 3 - Titres */
+/* 4 - Menus */
+/* 5 - Colophon */
+* {
+  border: 1;
+  /*box-sizing: border-box;*/
+  font: inherit;
+  font-size: 100%;
+  line-height: 1.5 !important;
+  max-width: 100%;
+  /*outline: 0;
+	text-decoration: none;*/
+  vertical-align: baseline;
+}
+html {
+  background-color: #fff3ce;
+  color: #2d2620;
+  font-family: Ubuntu;
+  font-size: 115%;
+  text-align: justify;
+}
+body {
+  margin: 0 auto;
+  max-width: 740px;
+  width: 85%;
+}
+#wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fff9e0;
+}
+.break {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -epub-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+p {
+  /* font-size-adjust only for Waldbaum */
+  /* font-size-adjust: 0.5; */
+  text-indent: 2em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -epub-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+p::first-line {
+  /*color: red;*/
+}
+img.border {
+  border: solid 1px #2d2620;
+}
+em,
+i {
+  font-style: italic;
+}
+strong,
+b {
+  font-weight: bold;
+}
+b i {
+  font-weight: bolder;
+  font-weight: 900;
+  font-style: italic;
+}
+li {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -epub-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+li ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0rem;
+}
+li ol {
+  margin-bottom: 0;
+  margin-left: 2rem;
+}
+li dl {
+  margin-bottom: 0;
+  margin-left: 2rem;
+}
+dd ul {
+  margin-bottom: 0;
+  margin-left: 2rem;
+}
+dd ol {
+  margin-bottom: 0;
+  margin-left: 2rem;
+}
+dd dl {
+  margin-bottom: 0;
+  margin-left: 2rem;
+}
+blockquote {
+  margin-left: 1rem;
+}
+blockquote p::before {
+  content: "— ";
+}
+q::before {
+  content: "« ";
+}
+q::after {
+  content: " »";
+}
+code,
+pre {
+  font-family: monospace;
+  font-size: 0.8rem;
+  -epub-hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+  background-color: #ffedb4;
+}
+code:hover,
+pre:hover {
+  background-color: #ffe79b;
+}
+pre code {
+  display: block;
+  overflow: auto;
+}
+pre,
+blockquote {
+  padding-left: 20px;
+}
+pre {
+  background-color: #ffffe0;
+  line-height: 1.5em;
+  font-family: Courier ;
+  font-size: 1em;
+  margin: 1.0em;
+}
+code,
+blockquote,
+dt {
+  background-color: #ffffe0;
+  font-family: Courier ;
+  font-size: 1em;
+  /*margin: 1.0em;*/
+}
+a {
+  /* border-bottom: 1px solid @SecondaryColor; */
+  color: inherit;
+  margin-bottom: -1px;
+  text-decoration: none;
+  color: #7c684a;
+}
+a:hover {
+  border-color: inherit;
+  color: #554733;
+  text-decoration: underline;
+}
+a:focus {
+  border-color: inherit;
+  color: #2d2620;
+  text-decoration: none;
+}
+abbr {
+  border-bottom: 1px dashed #42c200;
+  margin-bottom: -1px;
+}
+acronym {
+  border-bottom: 1px dashed #42c200;
+  margin-bottom: -1px;
+}
+a.definition {
+  border-bottom: 1px dashed #42c200;
+  margin-bottom: -1px;
+}
+a.no-border {
+  border: 0;
+}
+hr {
+  border: 1;
+  /*height: 1rem;*/
+  margin: 1rem auto;
+  width: 90%;
+}
+.skip {
+  font-size: 0.7rem;
+  margin-bottom: 0.3rem;
+  text-align: right;
+}
+.skip p {
+  margin: 0;
+}
+.skip a {
+  margin-left: 1rem;
+}
+/* disable par-edit visibility anytime */
+h2 .par-edit,
+h3 .par-edit,
+h4 .par-edit,
+h5 .par-edit,
+h6 .par-edit {
+  visibility: hidden;
+  font-size: x-small;
+}
+h2:hover .par-edit,
+h3:hover .par-edit,
+h4:hover .par-edit,
+h5:hover .par-edit,
+h6:hover .par-edit {
+  visibility: visible;
+}
+#page-title {
+  text-transform: capitalize;
+  font-variant: small-caps;
+  font-size: 2.4em;
+}
+h1 {
+  /*font-family: @font-heading;*/
+  font-family: Fengardo;
+  text-align: center;
+  /*font-size: 2.0rem*@font-headingFactor;*/
+  font-size: clamp(2em, 4vw, 6em);
+  font-weight: bold;
+  margin: 1.1rem 0;
+  margin-bottom: 2rem;
+  margin-top: 2.5rem;
+  /*text-transform: uppercase;*/
+  /*text-transform: capitalize;*/
+}
+h2 {
+  font-family: Fengardo;
+  text-align: center;
+  font-size: 2.08rem;
+  font-weight: bold;
+  /*font-weight: 600;*/
+  /*text-shadow : 0px 0px 2px @FontColor;*/
+  letter-spacing: 0.25rem;
+  margin: 1rem 0 0.5rem 0;
+  margin-bottom: 1.2rem;
+  margin-top: 1.8rem;
+  /*font-variant: small-caps;*/
+  /*text-transform: capitalize;*/
+}
+h3 {
+  text-align: left;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0.7rem 0 0 0;
+  /*font-variant: small-caps;*/
+  /*text-transform: capitalize;*/
+}
+h4 {
+  text-align: left;
+  font-size: 1.2rem;
+  margin: 0.8rem 0 0 0;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: normal;
+  text-transform: none;
+}
+h5 {
+  text-align: left;
+  font-size: 1.1rem;
+  margin: 0.9rem 0 0 0;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: normal;
+  text-transform: none;
+}
+h6 {
+  text-align: left;
+  font-size: 1rem;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: normal;
+  text-transform: none;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  border-spacing: 1;
+  border: 2px solid #999;
+  margin: 10px 10px 20px 50px;
+  padding: 10px 10px 10px 10px;
+}
+th,
+td {
+  padding: .3em .5em;
+  margin: 5;
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+.form th,
+td {
+  padding: .3em .5em;
+  /*margin: 0;*/
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+th {
+  font-weight: bold;
+  background-color: #ddd;
+}
+[dir=rtl] td,
+[dir=rtl] th {
+  text-align: right;
+}
+.sub {
+  font-size: 1rem;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: normal;
+  text-transform: none;
+}
+.menu {
+  text-align: center;
+}
+.menu li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 1rem;
+}
+.menu li::before {
+  content: "";
+}
+.table li {
+  list-style-type: lower-roman;
+}
+.sommaire li {
+  list-style-type: none;
+}
+.colophon {
+  font-size: 0.6rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.center {
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.center a {
+  border: 0;
+}
+.center img {
+  width: 20%;
+}
+.search input:focus,
+input:hover {
+  color: #777;
+  opacity: 1.0;
+}
+nav {
+  margin: 10px 0px 14px 0;
+  /*background-color: @background01;
+    opacity: 0.8;*/
+}
+.logo {
+  font-size: 0.6rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.logo a {
+  border: 0;
+}
+.logo img {
+  width: 20%;
+}
+.logo2 {
+  font-size: 0.6rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.logo2 a {
+  border: 0;
+}
+.fraktur {
+  font-family: Fraktur;
+  font-weight: normal;
+  font-size: 4.2rem;
+  text-align: center;
+  letter-spacing: 0.25rem;
+  margin: 1rem 0 0.5rem 0;
+}
+#editor table {
+  border: 0px solid #999;
+}
+#editor td {
+  border: 0px solid #999;
+}
+/* LionWiki specific */
+a.pending {
+  color: #7f4736;
+}
+h2 span.par-edit,
+h3 span.par-edit,
+h4 span.par-edit,
+h5 span.par-edit,
+h6 span.par-edit {
+  /*float: right;*/
+  display: none;
+  font-size: small;
+}
+h2:hover span.par-edit,
+h3:hover span.par-edit,
+h4:hover span.par-edit,
+h5:hover span.par-edit,
+h6:hover span.par-edit {
+  /*display: inline;*/
+  display: none;
+  font-size: small;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  background-color: transparent;
+}
+.pageLinks {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.pageLinks a {
+  font-weight: bold;
+  text-decoration: none;
+}
+#headerLinks td {
+  border-bottom: 1px dashed #ccc !important;
+}
+#footerLinks td {
+  border-top: 1px dashed #ccc !important;
+}
+#mainContent {
+  padding: 1em;
+  background-color: white;
+}
+#mainContent h2:first-child {
+  margin-top: 0px;
+}
+.error {
+  color: #F25A5A;
+  font-weight: bold;
+}
+.contentTextarea {
+  width: 90%;
+  font-family: Ubuntu;
+  font-size: 105%;
+}
+#diff {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  width: 97%;
+}
+#diff ins {
+  color: green;
+  text-decoration: none;
+  font-weight: bold;
+}
+#diff del {
+  color: red;
+  text-decoration: line-through;
+}
+#diff .orig {
+  color: #666;
+}
+#toc {
+  /*border: 1px dashed #11141A;*/
+  margin: 2em 1em 2em 1em;
+  padding: 5px 5px 5px 5px;
+  /*float: right;*/
+  padding-right: 2em;
+  /*text-align: right;*/
+  list-style: none;
+  background: #f5e1a5;
+  clear: none;
+  display: block;
+  border-radius: 4px 4px 4px 4px;
+}
+#toc ul {
+  list-style: none;
+  padding-left: 1em;
+}
+#toc li {
+  /*font-size: 11px;*/
+  padding-left: 1em;
+}
+/* Plugins LionWiki*/
+.tagList {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  margin-top: 0.5em;
+  border: 1px dashed #31343A;
+  background: #eee;
+  clear: right;
+}
+.tagCloud {
+  float: right;
+  width: 200px;
+  padding: 0.5em;
+  margin: 1em;
+  border: 1px dashed #31343A;
+  background: #eee;
+  clear: right;
+}
+.pageVersionsList {
+  letter-spacing: 0px;
+  font-variant: normal;
+  font-size: 12px;
+}
+table.wikitable {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+table.wikitable td {
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px;
+}
+table.wikitable td.em {
+  background: #ccc;
+  font-weight: bold;
+}
+table,
+#previewPane table {
+  border-collapse: collapse;
+  empty-cells: show;
+  border-spacing: 0;
+  border: 1px solid #999;
+}
+.form table {
+  border-collapse: collapse;
+  empty-cells: hide;
+  border-spacing: 0;
+  border: 0px solid #fff;
+}
+th,
+td,
+#previewPane th,
+#previewPane td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+.form th,
+td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+th,
+thead,
+#previewPane th,
+#previewPane thead {
+  font-weight: bold;
+  background-color: #ddd;
+}
+[dir=rtl] td,
+[dir=rtl] th {
+  text-align: right;
+}
+.resizeTextarea a {
+  text-decoration: none;
+}
+.flag {
+  z-index: 2;
+  text-decoration: none;
+  font-family: Ubuntu, sans-serif;
+  font-size: 0.8em;
+  text-align: center;
+  color: #fff;
+  padding: 5px;
+  color: #EEE;
+  margin-right: 10px;
+  margin-top: 10px;
+  text-align: right;
+  float: right;
+}
+.flag a {
+  z-index: 2;
+  text-decoration: none;
+  font-family: Ubuntu, sans-serif;
+  font-size: 1.1em;
+  text-align: center;
+  color: #fff;
+  padding: 3px;
+  background: #eee2bd;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc09b;
+  color: #2d2620;
+  margin-right: 10px;
+  margin-top: 10px;
+  text-align: right;
+  float: right;
+}
+.flag a:hover {
+  /* background:  #22eeff; */
+  text-decoration: none;
+  opacity: 1.0;
+  background: #ccc09b;
+}
+.imageWrapper .cornerLink {
+  opacity: 0;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 2px 0px;
+  color: #ffffff;
+  background: #000000;
+  text-decoration: none;
+  text-align: center;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+.imageWrapper:hover .cornerLink {
+  opacity: 0.8;
+}
+.logoWrapper {
+  position: relative;
+  margin: 10px 10px 10px 50px ;
+  width: 126px;
+  height: 126px;
+  opacity: 1.0;
+  z-index: 15;
+  /*  float: left;*/
+}
+.logoWrapper img {
+  display: block;
+  opacity: 1.0;
+  z-index: 15;
+  /*float: left;*/
+}
+.logoWrapper .cornerLink {
+  opacity: 0;
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  right: 0px;
+  padding: 2px 0px;
+  color: #ffffff;
+  background: #000000;
+  text-decoration: none;
+  text-align: center;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+.logoWrapper:hover .cornerLink {
+  opacity: 0.8;
+}
+.wrap,
+.wrap_left {
+  float: left;
+  margin-top: 0;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  /*border: 1px solid #000;*/
+  padding: 2px;
+}
+.nowrap {
+  float: none;
+  clear: left;
+  overflow: auto;
+  /*margin-top: 0;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    padding: 2px;*/
+}
+div#intro table {
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  /*border-color:#777;*/
+  width: 60%;
+  border-collapse: separate;
+  border-spacing: 1;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  font-family: MyFont;
+  font-size: 1.2em;
+}
+div#intro td {
+  border-width: 1px;
+  border-style: solid;
+  /*border-color:#bbb;*/
+  width: 60%;
+  text-align: center;
+  /*background-color: #bcbcbc;*/
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+input {
+  display: inline;
+}
+input:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+#renameForm {
+  display: block;
+  margin-bottom: 6px;
+}
+.submit {
+  padding: 4px;
+  border: 1px solid #2d2620;
+}
+.submit:hover {
+  border: 1px solid #2d2620;
+  background-color: #ffffff;
+}
+.contentTextarea {
+  width: 100%;
+}
+input {
+  border: 1px solid #2d2620;
+  padding: 4px;
+  font-size: 12px;
+  background-color: #fff3ce;
+  color: #2d2620;
+}
+select {
+  border: 1px solid #2d2620;
+  padding: 2px;
+  font-size: 12px;
+  background-color: #fff3ce;
+  color: #2d2620;
+}
+textarea {
+  border: 1px solid #2d2620;
+  padding: 2px;
+  font-size: 12px;
+  background-color: #fff3ce;
+  color: #2d2620;
+  padding: 3px;
+}
+/***********************************************/
+/*         small screen                        */
+/***********************************************/
+@media only screen and (max-width: 601px) and (min-width: 300px) {
+  html {
+    font-size: 125%;
+  }
+  body {
+    max-width: 1000px;
+    width: 95%;
+  }
+  #wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* additions */
+/*  * * *  */
+progress {
+  color: #2d2620;
+  background-color: #eee2bd;
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+}
+progress::-moz-progress-bar {
+  background: #2d2620;
+}
+progress::-webkit-progress-value {
+  background: #2d2620;
+}
+progress::-webkit-progress-bar {
+  background: #fff3ce;
+}
+/* Big buttons */
+.block {
+  display: inline-block;
+  width: 75%;
+  border: 2px solid #2d2620;
+  background-color: #2d2620;
+  min-height: 50px;
+  margin: 5px;
+  font-size: 22px;
+  color: #fff;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
+  border-radius: 0px;
+}
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding: 0px;
+  padding-top: 6px;
+  min-height: 39px;
+  /*line-height:44px;*/
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+}
+.block:hover,
+.block a:hover {
+  background-color: #fff;
+  color: #2d2620;
+}
+/* Todotxt support */
+.todotxt_A {
+  color: #1e1915;
+}
+.todotxt_B {
+  color: #333333;
+}
+.todotxt_C {
+  color: #404040;
+}
+.todotxt_D {
+  color: #4d4d4d;
+}
+.todotxt_E {
+  color: #5a5a5a;
+}
+.todotxt_F {
+  color: #666666;
+}
+.todotxt_context {
+  color: #20272d;
+}
+.todotxt_tag {
+  color: #212d20;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+@media (prefers-color-scheme: dark) {
+  /* Invert all elements on the body while attempting to not alter the hue substantially. */
+  body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  /* Workarounds and optical adjustments. */
+  /* Firefox workaround: Set the background colour for the html
+     element separately because, unlike other browsers, Firefox
+     doesn’t apply the filter to the root element’s background. */
+  html {
+    background-color: #111;
+  }
+  /* Do not invert media (revert the invert). */
+  img,
+  video,
+  iframe {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  /* invert front logo2 */
+  .logo2 {
+    filter: invert(90%) hue-rotate(260deg);
+  }
+  /* Improve contrast on icons. */
+  .icon {
+    filter: invert(15%) hue-rotate(180deg);
+  }
+  /* Re-enable code block backgrounds. */
+  pre {
+    filter: invert(6%);
+  }
+  /* Improve contrast on list item markers. */
+  li::marker {
+    color: #555;
+  }
+}
