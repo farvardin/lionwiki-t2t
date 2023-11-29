@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
 	<style type="text/css">
 *{margin:0;padding:0;font-family:monospace;}
@@ -11,8 +12,8 @@ a{font-weight:bold;color:#151515;}
 p{margin: 5px 0 5px 0;}
 a.pending{color:#990000;}
 a.external:after{content: "\2197";}
-pre{border:1px dotted #ccc;padding:4px;overflow:auto;margin:3px;}
-img,a img{border:0px}
+pre{border:1px dashed #151515;padding:4px;overflow:auto;margin:3px;}
+img,a img{border:0px ; margin:10px;}
 h1,h2,h3,h4,h5,h6{letter-spacing:2px;font-weight:normal;margin:15px 0 15px 0px;color:#151515;}
 h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{color:#151515;}
 h1 a{text-decoration:none;}
@@ -38,11 +39,52 @@ textarea{padding:3px;}
 #diff ins{color:green;text-decoration:none;font-weight:bold;}
 #diff del{color:red;text-decoration:line-through;}
 #diff .orig{color:#666;font-size:90%;}
+#headerLinks {list-style-type: none;}
 /* Plugins */
 .tagList{padding:0.2em 0.4em 0.2em 0.4em;margin-top:0.5em;border:1px dashed #151515;clear:right;}
 .tagCloud{float:right;width:200px;padding:0.5em;margin:1em;border:1px dashed #151515;clear:right;}
 .pageVersionsList{letter-spacing:0px;font-variant:normal;font-size:12px;}
 .resizeTextarea a{text-decoration:none;}
+progress {  color: #333;  background-color: white;  border-radius: 0px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #333;}
+progress::-webkit-progress-value {  background: #333;}
+progress::-webkit-progress-bar {  background: #fff;}
+
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 1px solid #333;
+  background-color: #fff;
+  height: 50px;
+  margin: 5px;
+  font-size: 16px;
+  color: #333;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding:  0px;
+  height: 46px;
+  line-height:46px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+.block:hover, .block:hover a{
+  background-color: #333;
+  color: #fff;
+}
 	</style>
 	{HEAD}
 </head>

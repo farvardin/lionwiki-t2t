@@ -1,5 +1,5 @@
 - //See the [full sample page index.php?page=sample]//
-
+ 
 - //Play in the [sandbox]//
 
 - //Read the [[help|help.en]] in English (ou [[en français|help.fr]])//
@@ -12,7 +12,11 @@
 
 == About LionWiki ==
  
-**[LionWiki http://lionwiki.0o.cz/]** is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
+**[LionWiki http://lionwiki.0o.cz/]** was a minimalist Wiki engine programmed in PHP, based on [WiKiss http://www.wikiss.tuxfamily.org/], itself based on TigerWiki...
+
+It revives now in this txt2tags-based implementation.
+
+It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
 
 
 
@@ -35,9 +39,11 @@ Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedi
 
 //[Read more... index.php?page=help.en]//
 
-
+ 
 ------------------------------------------
-https://lionwiki-t2t.sourceforge.io/
+
+@@BUTTON(https://lionwiki-t2t.sourceforge.io/)@@
+
 ------------------------------------------
 
 - [[admin]]
@@ -45,5 +51,5 @@ https://lionwiki-t2t.sourceforge.io/
 - [List all the pages index.php?page=page_list]
 - //[Logout index.php?erasecookie=1]//
 
-
-
+ 
+ 

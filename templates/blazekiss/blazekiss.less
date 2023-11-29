@@ -19,6 +19,9 @@
 @MainColor: #49AE77; /* green */
 @MainColor: #792424; /* red */
 
+
+@DerivativeColor: #ffffff - @MainColor - (#ffffff - @MainColor)/4;
+
 /* webfont */
 
 
@@ -332,9 +335,9 @@ h1,h2,h3,h4,h5,h6{margin:0 0 1em; font-weight: normal;}
 
 h1 {font-size: 4.1em; 
 	letter-spacing: -0.075em; 
-	text-transform: uppercase; 
+	/*text-transform: uppercase; */
 	line-height: 0.9; 
-	 color: (#ffffff - @MainColor - (#ffffff - @MainColor)/4);
+	 color: @DerivativeColor;
 	margin: 0 0 0.5em; 
 	font-weight: normal; }
 h2 { font-size: 2.5em; margin: 0 0 20px; letter-spacing: -0.05em; color: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); line-height: 1; }
@@ -778,6 +781,10 @@ ul.page-numbers{float: right;overflow:hidden; display:block;}
 	}
 */
 
+progress {  color: @DerivativeColor;  background-color: #F2F2F2 - #111;  border-radius: 0px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: @DerivativeColor;}
+progress::-webkit-progress-value {  background: @DerivativeColor;}
+progress::-webkit-progress-bar {  background: #fff;}
 
  
 /* -------------------------------------------------------------

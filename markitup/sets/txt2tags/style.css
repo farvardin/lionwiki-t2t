@@ -75,6 +75,16 @@
 	background-image:url(images/disconnect.png);
 }
 
+/*
+.markItUp .markItUpButton21 a {
+	background-image:url(images/date.png);
+}
+*/
+
+.markItUp .dateoftheday a {
+	background-image:url(images/date.png);
+}
+
 .markItUp .preview a {
 	background-image:url(images/preview.png);
 }

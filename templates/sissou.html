@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
 	<style type="text/css">
 
@@ -57,9 +58,9 @@ h1,h2,h3,h4,h5,h6{letter-spacing:0.05em;color:#1189b7;font-weight:normal;font-fa
 h2 span.par-edit,h3 span.par-edit,h4 span.par-edit,h5 span.par-edit,h6 span.par-edit{display:none}
 h2:hover span.par-edit,h3:hover span.par-edit,h4:hover span.par-edit,h5:hover span.par-edit,h6:hover span.par-edit{display:inline;font-size:x-small}
 a{color:#1189b7;text-decoration:none}
-a:visited{color:#1189b7}
-a.pending{color:#c174a0}
-a:hover{text-decoration:none}
+a:visited{color:#1189b7;}
+a.pending{color:#c174a0;}
+a:hover{text-decoration:underline;}
 a img{border:none}
 a.external:after{content: "\2197";}
 input,textarea{font-size:94%;border:1px solid #999;background:#fff;color:#666;outline:0.2em solid #eee;padding:0px;line-height:1.2;margin:0.5em;vertical-align:middle}
@@ -91,6 +92,74 @@ form{display:inline}
 a.toolbarTextareaItem{padding-right: 10px}
 .wikitable{border-collapse:collapse}
 .wikitable td{border: 1px solid #DDDDDD;padding:1px 5px 1px 5px}
+
+progress {  color: #586e75;  background-color: #eee;  border-radius: 0px; border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #1189b7;}
+progress::-webkit-progress-value {  background: #1189b7;}
+progress::-webkit-progress-bar {  background: #fff;}
+
+
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #555;
+  background-color: #CCC8A2;
+  height: 50px;
+  margin: 5px;
+  font-size: 16px;
+  color: #555;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding:  0px;
+  height: 46px;
+  line-height:46px;
+  color: #1189b7;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+.block:hover, .block a:hover {
+  background-color: #1189b7;
+  color: #ddd;
+
+}
+
+/* Todotxt support */
+
+
+.todotxt_A { color:#035473;}
+.todotxt_B { color:#056D94; }
+.todotxt_C { color:#1189b7; }
+.todotxt_D { color:#3499BF; }
+.todotxt_E { color:#5AAECE; }
+.todotxt_F { color:#5AAECE; }
+
+
+.todotxt_context { color: #B72000; }
+.todotxt_tag { color: #B78200; }
+.todotxt_deleted {opacity: 0.4; }
+
+@media (prefers-color-scheme: dark) {
+  body {    filter: invert(100%) hue-rotate(180deg);  }
+  html {    background-color: #111;  }
+  img, video, iframe {    filter: invert(100%) hue-rotate(180deg);  }
+  .logo2 {    filter: invert(90%) hue-rotate(260deg);  }
+  .icon {    filter: invert(15%) hue-rotate(180deg);  }
+  pre {    filter: invert(6%);  }
+  li::marker {    color: #555;  }
+}
+
+
 	</style>
 	{HEAD}
 </head>

@@ -1,1 +1,1 @@
-lessc minimaxing.less > minimaxing.css
+lessc txt2tags.less > txt2tags.css

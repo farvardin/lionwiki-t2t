@@ -3,11 +3,13 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
 	<style type="text/css">
 *{margin:0;padding:0;}
 body{font-size:14px;line-height:20px;font-family:sans-serif;padding:10px 20px 20px 20px;}
 a{color:#CC3333;text-decoration:none;border-bottom:1px dotted #CC3333;}
+a.hover {text-decoration:underline;}
 p{margin : 5px 0 5px 0;}
 a.pending{color:black;}
 a.external:after{content: "\2197";}
@@ -69,6 +71,63 @@ table.wikitable td.em{background:#ccc;font-weight:bold;}
 		margin-top: 0px;
 	}
 	
+
+progress {  color: #CC3333;  background-color: #eee;  border-radius: 0px; border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #CC3333;}
+progress::-webkit-progress-value {  background: #CC3333;}
+progress::-webkit-progress-bar {  background: #fff;}
+
+
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #CC3333;
+  background-color: #CC3333;
+  height: 50px;
+  margin: 5px;
+  font-size: 16px;
+  color: #555;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding:  0px;
+  height: 46px;
+  line-height:46px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+.block:hover, .block a:hover {
+  background-color: #fff;
+  color: #CC3333;
+
+}
+
+/* Todotxt support */
+
+
+.todotxt_A { color:#800101;}
+.todotxt_B { color:#A71919; }
+.todotxt_C { color:#CC3333; }
+.todotxt_D { color:#E55959; }
+.todotxt_E { color:#FF8C8C; }
+.todotxt_F { color:#FF8C8C; }
+
+
+.todotxt_context { color: #014D4D; }
+.todotxt_tag { color: #507801; }
+.todotxt_deleted {opacity: 0.4; }
+
 	</style>
 	{HEAD}
 	

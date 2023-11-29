@@ -2,8 +2,9 @@
 // markItUp!
 // -------------------------------------------------------------------
 // Copyright (C) 2009 Florent Gallaire <fgallaire@gmail.com>  
+// Copyright (C) 2021 Eric Forgeot  
 // License GNU GPLv3 or any later version.
-// Copyright (C) 2008 Jay Salvat
+// Copyright (C) 2008-2018 Jay Salvat
 // http://markitup.jaysalvat.com/
 // -------------------------------------------------------------------
 // Txt2tags tags example
@@ -39,8 +40,30 @@ mySettings = {
 		{separator:' '},	
 		{name:'Quote', openWith:'\t'},
 		{name:'Code', openWith:'``', closeWith:'``'},
-		{name:'Raw', key:'R', openWith:'""', closeWith:'""', placeHolder:'No txt2tags in here!'},		
+		{name:'Raw', key:'R', openWith:'""', closeWith:'""', placeHolder:'No txt2tags in here!'},
+//		{name:'Date', key:'D', openWith:'===', closeWith:'===', placeHolder:' 202x-00-00 '},			
 		//{separator:'---------------' },
 		//{name:'Preview', call:'preview', className:'preview'}
+		{	name:'Date of the Day', 
+			className:"dateoftheday", 
+			replaceWith:function(h) { 
+				var date = getDate();
+				return date;
+			}
+		}
 	]
+}
+
+
+function getDate()
+{
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = '=== ' + yyyy + '-' + mm + '-' + dd + ' ===';
+	
+	return today;
+	
 }

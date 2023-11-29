@@ -27,7 +27,53 @@ class Index
 			sort($files);
 
 			foreach($files as $file)
+				
+				# green
+				if(preg_match("/#CG#/", $file))
+				{ 
+				$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+				$list[] = "<span style='background-color:#c7ecc1;'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}
+				# blue
+				elseif(preg_match("/#CB#/", $file))				
+				{
+				$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+				$list[] = "<span style='background-color:#c1dfec;'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}
+				# red
+				elseif(preg_match("/#CR#/", $file))
+				{ 
+				$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+				$list[] = "<span style='background-color:#ecb8b8;'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}
+				# yellow
+				elseif(preg_match("/#CY#/", $file))
+				{
+				$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+				$list[] = "<span style='background-color:#eceab6;'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}
+				# magenta
+				elseif(preg_match("/#CM#/", $file))
+				{
+					$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+					$list[] = "<span style='background-color:#ec9bc5;'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}
+				# violet
+				elseif(preg_match("/#CV#/", $file))
+				{
+				$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+				$list[] = "<span style='background-color:#ba96ec;'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}		
+				# orange
+				elseif(preg_match("/#CV#/", $file))
+				{
+				$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+				$list[] = "<span style='background-color:#ecbe9d;'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}		
+				
+				elseif(preg_match("/#C(\w+)#/", $file))
+				{ 
+				$mycolor = preg_replace("/[^*.]+#C(\w+)#/",'$1',$file);
+				$myfilename = preg_replace("/(\w+)#C(\w+)#/",'$1',$file);
+				$list[] = "<span style='background-color:#" . $mycolor . ";'><a href=\"$self?page=" . u($file) . "\">" . h($myfilename) . "</a></span>";	}
+				
+				else
+				{
 				$list[] = "<a href=\"$self?page=" . u($file) . "\">" . h($file) . "</a>";
+				}
 		}
 
 		if($type == "comma")
@@ -46,3 +92,4 @@ class Index
 		$CON = template_replace("INDEX_LIST", $this->pagesList("list"), $CON);
 	}
 }
+

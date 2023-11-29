@@ -1,3 +1,48 @@
+
+
+Since 2013-08-15, lionwiki-t2t is a fork of (then) lionwiki 3.2.9. It still follows the main lionwiki code when it
+gets updates, if possible. 
+
+The lionwiki author has stated "This project is dead and not recommended for use in new projects." which is a pity.
+
+lionwiki-t2t improves the way lionwiki behave, by adding some new templates and the txt2tags syntax.
+
+
+
+%%toc
+
+
+== Changes for 3.2.12 ==
+
+
+=== 3.2.12l ===
+//Released on 2023-07-01//
+
+* Added forth.t2t (program in FORTH) and abcjs.t2t (display music)
+
+
+
+=== 3.2.12k ===
+//Released on 2023-03-29//
+
+* Improved compatibility with PHP 8.1:  https://github.com/squizlabs/PHP_CodeSniffer
+
+
+=== 3.2.12c ===
+//Released on 2021-01-01//
+
+* tweaked default index theme
+
+
+== Changes for 3.2.11 ==
+
+LionWiki 3.2.11 fixes PHP 7.2 warning.
+
+
+!Changes for 3.2.10
+''Released on 6. 2. 2016''
+* Various fixes for compatibility with PHP 7.
+
 !Changes for 3.2.9
 ''Released on 11. 3. 2012''
 * Fixed bug in 3.2.8 which made ^{html} tag not working. Thanks to Jose David Cuartas Correa for reporting this bug.
@@ -25,6 +70,7 @@
 * One small bugfix in core
 * Updated Russian translation and new Ukrainian (thanks to Oleksii Tsvietnov)
 
+
 !Changes for 3.2.4a
 ''Released on 18. 10. 2010''
 * Fixed a bug in RenameFix plugin. Renaming a page with digit being firt letter of the name caused wrong fixing of links. Thank to redisthecat for reporting!
@@ -33,9 +79,11 @@
 ''Released on 20. 9. 2010''
 * Fixes a couple of small bugs.
 
+
 !Changes for 3.2.3
 ''Released on 30. 4. 2010''
 * Fixed bug which caused that login was impossible with $PROTECTED_READ = true. Thanks to Yen-Ting Chen for report!
+
 
 !Changes for 3.2.2
 ''Released on 29. 4. 2010''
@@ -44,11 +92,13 @@
 * RSS plugin used to display wrong modification times because of internal PHP caching of stat informations
 * Fixed some validity issues (but output is still not (X)HTML valid).
 
+
 !Changes for 3.2.1
 ''Released on 16. 3. 2010''
 * Fixed bug when language code was not properly set
 ** Core localization still took place but not plugins'
 * RSS plugin did not work because it relied on one variable removed in 3.2
+
 
 !Changes for 3.2
 ''Released on 13. 3. 2010''
@@ -56,6 +106,7 @@
 * Fixed bug in [ImageExt plugin|UserGuide: ImageExt plugin], which did not work when not in document root
 * PHP4 compatibility fixes
 * other small fixes
+
 
 
 !Changes for 3.2beta
@@ -68,10 +119,12 @@
 * Password hashes are stored in secured cookies on PHP 5.2 and higher and modern browsers. This greatly reduces possibility of XSS attack.
 * Like 100 other smaller and bigger changes I've already forgot
 
+
 !Changes for 3.1.2
 ''Released on 9. 12. 2009''
 * There were some error warning when creating page on some windows installations
 * Fixed $PROTECTED_READ bug (introduced in 3.1.1) - it wasn't possible to pass the authentication
+
 
 
 !Changes for 3.1.1
@@ -80,6 +133,7 @@
 * Maximum depth of lists was raised to 10 (from 3)
 * New ^{title} tag for changing title of a page
 * Handling of page versions was changed a little bit
+
 
 !Changes for 3.1.0
 ''Released on 3. 10. 2009''
@@ -92,6 +146,7 @@
 * other small changes
 
 
+
 !Changes for 3.0.11
 ''Released on 3. 10. 2009''
 * bugfix in section editing
@@ -99,6 +154,7 @@
 ![LatexImg plugin 1.0|UserGuide: LatexImg plugin]
 * initial release
 * big thanks to Matthew Leifer, matt@mattleifer.info
+
 
 !Changes for 3.0.10
 ''Released on 1. 10. 2009''
@@ -115,14 +171,18 @@
 * initial release
 * little configuration, may change dramatically in the future
 
+
+
 !Changes for 3.0.8
 ''Released on 13. 9. 2009''
 * add support for regenerating tags from all pages at once
 * various (quite a lot) tweaks of core LionWiki
 
+
 !Changes for 3.0.7a
 ''Released on 12. 9. 2009''
 * removed Upload and Script plugins due to security concerns.
+
 
 !Changes for 3.0.7
 ''Released on 31. 8. 2009''
@@ -132,6 +192,7 @@
 * removed wiki farming, was not tested since 1.0 and probably doesn't work
 * fix for section editing (including AjaxEditing plugin) in pages containing ^^^{html}
 
+
 !Changes for 3.0.6a
 ''Released on 24. 8. 2009''
 * Improved Comments plugin
@@ -139,10 +200,12 @@
 ** Deleting comments (needs Admin plugin)
 * Admin plugin now remembers login
 
+
 !Changes for 3.0.6
 ''Released on 20. 8. 2009''
 * compatibility fixes for PHP 4.3 (thanks for report to perror) to and PHP 5.3
 * Hebrew translation, thanks to Yaron
+
 
 !Changes for 3.0.5
 ''Released on 13. 8. 2009''
@@ -152,9 +215,11 @@
 * shortened captcha questions
 * external links are marked with arrow (needs CSS2 capable browser)
 
+
 !Changes for 3.0.4a
 ''Released on 4. 8. 2009''
 * includes new [Menu plugin|UserGuide: Menu plugin], no changes in core
+
 
 !Changes for 1.0.2, 2.0.1, 2.1.6, 2.2.4, 2.3.8 and 3.0.4
 ''Released on 23. 7. 2009''
@@ -162,11 +227,13 @@
 * Fixes security vulnerability in Upload plugin in 3.0, plugin is entirely removed in older versions
 * Less serious security problems were fixed in older versions (especially 1.0 and 2.0)
 
+
 !Changes for 3.0.3
 ''Released on 2. 7. 2009''
 * Croatian translation (thanks to AlexK)
 * Traditional Chinese translation (thanks to b4283)
 * Fixed bug "", see http://lionwiki.0o.cz/forum/index.php?action=vthread&forum=16&topic=119
+
 
 !Changes for 3.0.2
 ''Released on 26. 5. 2009''
@@ -174,11 +241,13 @@
 * fixed link to RSS
 * work around for strange behavior of fwrite() function (joins two adjacent backslashes into one)
 
+
 !Changes for 3.0.1
 ''Released on 13. 5. 2009''
 * COOKIE life for PROTECTED_READ = true was in 3.0 same as for PROTECTED_READ = false, fixed
 * ported forgotten changes from template dandelion
 * syntax link now links to this website as LionWiki 3 does not contain Syntax reference anymore
+
 
 !Changes for 3.0
 ''Released on 7. 5. 2009''
@@ -192,6 +261,7 @@
 * not possible to write compressed history, reading is still supported
 * few more simplifications
 
+
 !Changes for 2.3.7
 ''Released on 5. 5. 2009''
 * Fixed bad Slimbox behavior with default template, thanks to "hokej" for a fix
@@ -199,6 +269,7 @@
 * Footnotes plugin now links bi-directionally
 * Spanish and Esperanto translations of Upload plugin (thanks to Marco Cruz, besides other suggestions)
 * few more things I probably forgot
+
 
 !Changes for 2.3.6
 ''Released on 25. 4. 2009''
@@ -210,13 +281,16 @@ Thanks to Marcos Cruz for these:
 * updated Spanish translation
 * some smaller changes
 
+
 !Changes for 2.3.5
 ''Released on 15. 4. 2009''
 * new printing template and new template tag ^{PAGE_URL}
 
+
 !Changes for 2.3.4
 ''Released on 13. 4. 2009''
 * fixed new handling of languages
+
 
 !Changes for 2.3.3
 ''Released on 12. 4. 2009''
@@ -230,7 +304,7 @@ Thanks to Marcos Cruz for these:
 * implemented support for language variants
 * new behavior with read only pages and Admin plugin - if you set some page read only, you can still edit it with admin password
 * fixed several minor problems with AjaxEditing plugins
-* two new plugins written by Swen Wetzel &lt;xanatoswetzel@web.de>. Thanks!
+* two new plugins written by Swen Wetzel <xanatoswetzel@web.de>. Thanks!
 ** [Index plugin|UserGuide: Index plugin] - can insert list of all pages into page
 ** [Script plugin|UserGuide: Script plugin] - inserting both inline and external JavaScript into pages
 * [Footnotes plugin|UserGuide: Footnotes plugin]
@@ -239,14 +313,17 @@ Thanks to Marcos Cruz for these:
 * probably few other changes I can't recall now
 * This release contains quite a lot changes, so consider it to be of beta quality.
 
+
 !Changes for 2.3.2
 ''Released on 31. 3. 2009''
 * Fixed small problem with revision restoring.
+
 
 !Changes for 2.3.1
 ''Released on 29. 3. 2009''.
 * Fixed several problems with AjaxEditing
 * Fixed destructive problem with paragraph editing in core
+
 
 !Changes for 2.3
 ''Released on 28. 3. 2009''.
@@ -263,12 +340,14 @@ Thanks to Marcos Cruz for these:
 * french translation was slightly updated
 * new Dutch translation (thanks to Jeroen Lassche - Sjoer)
 
+
 !Changes for 2.2.2
 ''Released on 13. 2. 2009''.
 * Security hole in Admin plugin (default password is not encoded)
 * Bug in TOC generating (introduced in 2.2.1 as fix for nonapache servers) - thanks to Pavel Vymetálek
 * Bug in PageVersions plugin (trim vs. basename - fucking stupid) - thanks to Jerome Joy
 * Upload plugin can't upload .htaccess - thanks to Russ Phillips
+
 
 !Changes for 2.2.1
 ''Released on 8. 2. 2009''.
@@ -277,12 +356,14 @@ Thanks to Marcos Cruz for these:
 * fix for certain servers (not apache) which don't translate ?action= into index.php?action= (for example). Thanks to Klaus Wulff
 * and big thanks to Russ Phillips for informing me of a huge problem which was fixed in 2.2.1 (but I'm not gonna tell what was it yet)
 
+
 !Changes for 2.2 final
 ''Released on 3. 2. 2009''
 * updated Italian translation (thanks to Giacomo Margarito)
 * forgotten closing tag in template_dandelion.html
 * Upload plugin can now chmod' uploaded files and directories (thanks for these two to Pavel Vymetálek)
 * Forgotten shorttags in some language files
+
 
 !Changes for 2.2beta1
 ''Released on 28. 1. 2009''
@@ -291,6 +372,7 @@ Thanks to Marcos Cruz for these:
 * final solution for register_globals problem.
 * new InlineDiff plugin (from Text_Diff package) which produces way more usabled diffs than very simple builtin diff algorithm
 * probably a lot more but I don't remember it because I developed it over month ago
+
 
 !Changes for 2.1.5
 ''Released on 6. 1. 2009''
@@ -303,9 +385,11 @@ Thanks to Marcos Cruz for these:
 
 Thanks to Jerome Joy who is mainly responsible for this release, because he did quite a good at testing.
 
+
 !Changes for 2.1.4
 ''Released on 2. 1. 2009''
 * Fixed minor bug forgotten to be included in 2.1.3 which causes problems (lists, headings and few others) on last line of a page
+
 
 !Changes for 2.1.3
 ''Released on 27. 12. 2008''
@@ -314,12 +398,14 @@ Thanks to Jerome Joy who is mainly responsible for this release, because he did 
 * LAST_CHANGED_TEXT is not displayed where it doesn't make sense
 * fixed minor problem in tags plugin
 
+
 !Changes for 2.1.2
 ''Released on 24. 12. 2008''
 * fixed history bug when register_globals off
 * italian interface localization (thanks to Giacomo Margarito)
 * fixed Admin plugin bug
 * few more
+
 
 !Changes for 2.1
 ''Released on 20. 12. 2008''
@@ -332,14 +418,17 @@ Thanks to Jerome Joy who is mainly responsible for this release, because he did 
 * nofollow in edit, history etc. links
 * optional XSS protection ($NO_HTML, by default turned off)
 
+
 !Changes for 2.0
 ''Released on 14. 12. 2008''
 * some small changes and fixes
+
 
 !Changes for 2.0beta2
 ''Released on 10. 12. 2008''
 * History fix - beta1 history didn't work at all
 * removed calls to obsolete warning function in Captcha and RSS
+
 
 !Changes for 2.0beta1
 ''Released on 6. 12. 2008''
@@ -369,15 +458,18 @@ Thanks to Jerome Joy who is mainly responsible for this release, because he did 
 * (cosmetic) problem with mixed spaces is finally fixed
 * lots of other changes which I don't remember
 
+
 !Changes for 1.0.1
 ''Released on 26. 11. 2008''
 * Fixed bug introduced in 1.0 final. Headings (and may be other) things didn't work well when placed at the top of the page.
 * Workaround for installation with magic_quotes_gpc on
 * Fixed "List of all pages"
 
+
 !Changes for 1.0
 ''Released on 18. 11. 2008''
 * Corrected behavior of ^{html} tag in some situations - namely at the very beginning of the page and in situations with two adjacent ^{html} tags.
+
 
 !Changes for 1.0rc1
 ''Released on 14. 11. 2008''
@@ -386,6 +478,7 @@ Thanks to Jerome Joy who is mainly responsible for this release, because he did 
 * German translation - thanks to "dad"
 * Slovak translation - thanks to hikikomori82
 * improved French translation (experimental :) - thanks to Filip Mravec
+
 
 !Changes for 1.0beta1
 ''Released on 13. 11. 2008''

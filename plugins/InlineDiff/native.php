@@ -192,6 +192,7 @@ class Text_Diff_Engine_native {
                 }
                 $matches = $ymatches[$line];
                 reset($matches);
+                // todo php 8.1// : foreach ((Array) ($matches) as $y...
                 while (list(, $y) = each($matches)) {
                     if (empty($this->in_seq[$y])) {
                         $k = $this->_lcsPos($y);

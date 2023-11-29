@@ -1,8 +1,79 @@
 /* LionWiki specific */
 
+
+/* PTSerif */
+
+@font-face {
+	font-family: PTSerif;
+	font-style: normal;
+	font-weight: normal;
+	src: url(../fonts/PTSerif-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: PTSerif;
+	font-style: italic;
+	font-weight:normal;
+	src: url(../fonts/PTSerif-Italic.ttf) format('truetype');
+}
+
+
+
+@font-face {
+	font-family: PTSerif;
+	font-weight: bold;
+	src: url(../fonts/PTSerif-Bold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: PTSerif;
+	font-style: italic;
+	font-weight: bold;
+	src: url(../fonts/PTSerif-BoldItalic.ttf) format('truetype');
+}
+
+
+
+body {
+ /*font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+ font-family: PTSerif, Souvenir, Georgia, "Times New Roman", Times, serif;
+ font-size:18px;
+ line-height:1.42857143;
+ color:#333;
+ background-color:#fff
+}
+
+
+p,  blockquote { text-align: justify ; margin: 1em;}
+
 a.pending {
     color: @RedBrick;
 }
+
+
+a {
+    color: #428bca;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+h1 {
+  font-size:2.7rem
+ }
+
+
+h2 {
+ font-size:calc(1.7rem + .9vw);
+}
+
+h3 {
+ font-size:calc(1.5rem + .6vw);
+}
+
+
 h2 span.par-edit, h3 span.par-edit, h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {
     float: right;
     display: none;
@@ -30,8 +101,30 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
    /* margin: 3px;*/
     }
 
+.navbar {
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.navbar-nav>li {
+ position:relative;
+ display:block
+}
+.navbar-nav>li>a {
+ position:relative;
+ display:block;
+ padding:10px 15px;
+ color: #9d9d9d;
+}
+
+.navbar-nav>li>a:hover {
+ color: #eee;
+ text-decoration: none;
+}
 
 
+.wikilogo  {
+    margin: 4px;
+}
 
 /* Plugins LionWiki*/
 
@@ -108,6 +201,21 @@ th, thead, #previewPane th, #previewPane thead {
 }
 
 
+pre {
+  background-color: #fffaf7;
+  line-height: 1.5em;
+  font-family: Monospace;
+  margin: 1.0em;
+}
+code,
+blockquote,
+dt {
+  background-color: #fffaf7;
+  line-height: 1.5em;
+  font-family: mono;
+  /*margin: 1.0em;*/
+}
+
 
 
 #copyright {
@@ -128,10 +236,23 @@ th, thead, #previewPane th, #previewPane thead {
 }
 
 .txt2tagsMenu, input {
-	background-color: #aaa;
+border-radius:4px;
+   background-color: #eee;
+  border: 1px solid;
+  color: #444;
+  padding: 2px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+   margin: 4px 2px;
+  cursor: pointer;
 }
 .txt2tagsMenu:hover, input.submit:hover {
-	background-color: #bbb;
+	background-color: #fff;
+}
+
+input:hover {
+    background-color: #fff;
 }
 
 .button_txt2tags_true, input.submit {
@@ -158,20 +279,52 @@ th, thead, #previewPane th, #previewPane thead {
 .button, a.toolbarTextareaItem {
     display: inline-block;
     padding: 5px 10px 5px 10px;
-    background-color: #e38d13;
-    border-radius: 6;
+    /*background-color: #e38d13;
+    color: #fff;*/
+    border-radius: 6px;
     text-transform: lowercase;
     text-decoration: none;
-    color: #fff;
+    
     font-size: 1.0em;
-    letter-spacing: -1px;
+    letter-spacing: 1px;
     border: solid 1px ;
-    box-shadow: inset 0px 0px 0px 1px #265A88;
+    /*box-shadow: inset 0px 0px 0px 1px #265A88;*/
 }
 .button:hover, a.toolbarTextareaItem:hover {
-    background-color: #F99B14;
+    background-color: #ccc;
 
 }
+
+.block {
+ border-radius:10px;
+   background-color: #fbfbfb;
+  border: 1px solid;
+  color: #cdcdcd;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  min-width: 65%;
+  
+}
+
+button:hover {
+     background-color: #eee;
+}
+
+button.navbar-toggler:hover {
+     background-color: #333;
+}
+
+button.navbar-toggler:focus {
+
+    background-color: #444;
+     box-shadow:0 0 0 .1rem;
+}
+
 
 
 .valide {
@@ -186,9 +339,102 @@ th, thead, #previewPane th, #previewPane thead {
 /*    important for markitup ? :    */
     .contentTextarea {
         width: 100%;
-        font-family: sans;
+        /*font-family: sans;*/
+        color: #454545;
         font-size: 100%;
         padding: 0px;
-        margin-left: -15px;
+        margin-left: 0px;
     }
-	
+
+
+
+#toc {
+    /*border: 1px dashed #11141A;*/
+    margin: 1em;
+    padding: 5px 5px 5px 5px;
+    padding-left: 20px;
+    /*float: right;*/
+    padding-right: 2em;
+    list-style: none;
+    background: #eee;
+    clear: right;
+}
+#toc ul {
+    list-style: none;
+    padding-left: 10px;
+}
+#toc li {
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+
+/* Progress bar */
+progress {
+  color: #428bca;
+  background-color: white;
+  /*border-radius: 4px;*/
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+}
+progress::-moz-progress-bar {
+  background: #428bca;
+}
+progress::-webkit-progress-value {
+  background: #428bca;
+}
+
+progress::-webkit-progress-bar {
+  background: white;
+}
+
+
+
+/* Todotxt support */
+.todotxt_A {
+  color: #6a2f1c;
+}
+.todotxt_B {
+  color: #806e39;
+}
+.todotxt_C {
+  color: #78874b;
+}
+.todotxt_D {
+  color: #6b8c60;
+}
+.todotxt_E {
+  color: #72937a;
+}
+.todotxt_F {
+  color: #998a86;
+}
+.todotxt_context {
+  color: #21677e;
+}
+.todotxt_tag {
+  color: #387e21;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+
+
+/* Dark scheme / theme support   */
+@media (prefers-color-scheme: dark) {
+body {
+  background-color:#000;
+  color:#b3b3b3;
+  }
+a { color: #aed1f5;   }
+main pre, main code { background:#4d4d4d; }
+#toc {background:#111;}
+
+.block{
+	background-color: #173854;
+}
+
+
+
+}

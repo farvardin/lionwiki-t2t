@@ -4,7 +4,8 @@
  *
  * Tags plugin provides nonhiearchical categorizing. It can display Tag list and/or Tag cloud
  *
- * Syntax: insert {tags:Biography, LionWiki, Another tag}
+ * --Syntax: insert {tags:Biography, LionWiki, Another tag}--
+ * New Syntax: insert (#Biography, LionWiki, Another tag) or (#tag1) (#tag2) etc
  *
  * Tags are case insensitive
  *
@@ -28,7 +29,8 @@ class Tags
 	var $tag_cloud_max = 20; // number of tags in cloud
 	var $font_min = 10, $font_max = 14;
 
-	function Tags()
+	//function Tags()
+	function __construct()
 	{
 		$this->tagfile =  $GLOBALS["PLUGINS_DATA_DIR"] . "tags.txt";
 	}
@@ -69,7 +71,7 @@ class Tags
 		if($action == "regenerate-tags") {
 			global $PG_DIR, $page, $content, $CON;
 
-			@unlink($this->tagfile);
+			//@unlink($this->tagfile);
 
 			$dir = opendir($PG_DIR);
 
@@ -135,7 +137,10 @@ class Tags
 
 		$tags = array();
 
-		preg_match_all("/\{tags:(.+)\}/U", $content, $matches, PREG_SET_ORDER);
+		//preg_match_all("/\{tags:(.+)\}/U", $content, $matches, PREG_SET_ORDER);
+		preg_match_all("/\(#(.+)\)/U", $content, $matches, PREG_SET_ORDER);
+		//preg_match_all("/(\{tags:(.+)\})|(\(#(.+)\))/U", $content, $matches, PREG_SET_ORDER);
+		
 
 		foreach($matches as $match)
 			$tags = array_merge($tags, explode(",", $match[1]));
@@ -177,7 +182,7 @@ class Tags
 					fputs($f, $file_lines[$i] . $file_lines[$i + 1]);
 
 			fputs($f, $page . "\n");
-			fputs($f, implode(",", $tags) . "\n");
+			fputs($f, "  ".implode(",", $tags) . "\n");
 
 			fclose($f);
 		}
@@ -202,7 +207,8 @@ class Tags
 		foreach($tags as $tag)
 			$tag_array[] = "<a class=\"tagLink\" href=\"$self?action=tagsearch&amp;tag=".u(trim($tag))."\">".h($tag)."</a>";
 
-		return empty($tag_array) ? "" : "<div class=\"tagList\">Tags: \n" . implode(", ", $tag_array) . "</div>\n";
+		return empty($tag_array) ? "" : "<br/><hr/><div class=\"tagList\"> \n#" . implode(", #", $tag_array) . "</div>\n";
+
 	}
 
 	/*
@@ -276,7 +282,8 @@ class Tags
 	{
 		global $CON;
 
-		$CON = preg_replace("/\{tags:.+\}/U", "", $CON);
+		//$CON = preg_replace("/\{tags:.+\}/U", "", $CON);
+		$CON = preg_replace("/\(#(.+)\)/U", "", $CON);
 
 		if(template_match("TAG_LIST", $CON, $null))
 			$CON = template_replace("TAG_LIST", $this->tagList(), $CON);

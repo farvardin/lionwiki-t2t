@@ -24,10 +24,13 @@
 		
         <title>{PAGE_TITLE_HEAD - } {WIKI_TITLE}</title>
 		{HEAD}
+		
+		<meta name="viewport" content="width=device-width" />
 				<!-- for txt2tagsjs --> 
 		<script type="text/javascript" src="txt2tags.js"></script>
 		<script type="text/javascript" src="txt2tagsjs-gui.js"></script>
 		<script type="text/javascript" src="textallion.js"></script>
+		<link rel="icon" href="templates/favicon.png" type="image/png" />
 		<link rel="stylesheet" href="templates/txt2tagsjs.css" />
 		<style>
 		table,
@@ -128,9 +131,23 @@ thead,
 			nav form input{margin-left:6px;padding:3px 3px 1px 3px;}
 			nav form .submit{padding:2px 2px 0px 2px;}
 			nav span{padding-top:8px;}
+			nav li {list-style-type: none;}
 			article textarea{padding-left:3px;margin-top:12px;}
 			article input{padding:3px;}
 			.par-div3, .par-div4, .par-div5, .par-div6{padding-left:20px;}
+			
+			
+			/***************************************************************/
+			/* small screen                                                */
+			/**************************************************************/
+
+
+		    @media only screen and (max-width:601px) and (min-width:301px) {
+	        	section{width:95%; margin:10px auto 0px auto;}
+	        	article{margin-top:10px;padding:8px 20px 10px 20px;}
+			}
+	
+	
 			
 			/*    important for markitup :    */
 
@@ -156,6 +173,61 @@ thead,
 	background-color: #111;
 	padding: 5px;
 }
+
+progress {  color: #38A2CF;  background-color: #111;  border-radius: 0px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #38A2CF;}
+progress::-webkit-progress-value {  background: #38A2CF;}
+progress::-webkit-progress-bar {  background: #000;}
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #38A2CF;
+  background-color: #38A2CF;
+  height: 50px;
+  margin: 5px;
+  font-size: 16px;
+  color: #000;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding:  0px;
+  height: 46px;
+  line-height:46px;
+  color: #000;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+.block:hover, .block a:hover {
+  background-color: #000;
+  color: #38A2CF;
+}
+
+/* Todotxt support */
+
+
+.todotxt_A { color:#8ACDEA;}
+.todotxt_B { color:#5BB5DC; }
+.todotxt_C { color:#38A1CF; }
+.todotxt_D { color:#168EC2; }
+.todotxt_E { color:#056E9B; }
+.todotxt_F { color:#056E9B; }
+
+
+.todotxt_context { color: #F52F00; }
+.todotxt_tag { color: #F5B000; }
+.todotxt_deleted {opacity: 0.4; }
+
 		</style>
 		
 
@@ -227,7 +299,7 @@ $(document).ready(function()	{
 			</header>
 			<nav>
 				<span>{HOME} / <a href="?page=pagelist">Page List</a>  / {RECENT_CHANGES} {/  SYNTAX} {/  EDIT}</span>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}
-			{MENU}</nav>
+			{<br/> <br/> MENU}</nav>
 			<article>
 					{TOC}
 					{ERROR}
@@ -262,8 +334,8 @@ $(document).ready(function()	{
 					
 				
 			</article>
-			<footer>
-				<p>Powered by <a href="">LionWiki-t2t</a></p>
+			<footer><small>
+				<p>Powered by <a href="">LionWiki-t2t</a></p></small>
 			</footer>		
 		</section>
     </body>

@@ -1,17 +1,64 @@
-About LionWiki
-LionWiki
-Syntax reference
-syntax
-UserGuide: How to write a plugin
-plugin,userguide
-UserGuide: Admin plugin
-spam,plugin,userguide
-Original Main page
-LionWiki
-Menu
-
-
-sandbox_cyoa
-
 sample_shopping#L##CY#
-
+  
+News archive
+  
+UserGuide_ Admin plugin
+  
+About LionWiki
+  
+UserGuide: Understanding core LionWiki
+  
+help.en
+  help
+UserGuide_ How to use PROTECTED_READ
+  
+Installation and configuration
+  
+UserGuide: Admin plugin
+  
+Original Main page
+  
+your_page
+  
+UserGuide: How to use PROTECTED_READ
+  
+UserGuide: How to write a plugin
+  
+admin
+  admin
+links
+  
+sample
+  sample
+Syntax reference
+  syntax
+Changelog
+  
+UserGuide_ Understanding core LionWiki
+  
+sandbox
+  test2,test3,admin,truc,jazz,machin,rock
+subpage menu
+  
+UserGuide_ How to write a plugin
+  
+main
+  
+todo
+  
+help.fr
+  
+help.syntax.en
+  syntax
+help.syntax.fr
+  syntax
+sandbox_cyoa
+  
+page_list
+  
+sample_colored_note#Cec9bc5#
+  
+20231023-2030_blog_test
+  
+blog_2023-10-23
+  

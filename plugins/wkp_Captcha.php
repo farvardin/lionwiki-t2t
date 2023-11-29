@@ -18,7 +18,8 @@ class Captcha
 	var $cookie_password;
 	var $use_javascript_autofill = false;
 
-	function Captcha()
+	//function Captcha()
+	function __construct()
 	{
 		global $LANG, $PLUGINS_DIR;
 

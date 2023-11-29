@@ -1,15 +1,14 @@
-# Makefile for TeXtallion
+# Makefile for Textallion
 # Tiny almost-Kiss Word Processor
 # http://anamnese.online.fr/site2/textallion/docs/presentation.html
 # License: http://en.wikipedia.org/wiki/BSD_licenses
 #
-# get newest txt2tags   at http://txt2tags.googlecode.com/svn/trunk/txt2tags
-# get newest textallion at http://textallion.googlecode.com 
+# get newest textallion at https://textallion.sourceforge.io
 #
 # This is a Makefile for *GNU make*, the default for Linux.
 # On *BSD systems, you'll need to use "gmake" instead of "make"
 
-# Makefile initially generated on 2013-09-30
+# Makefile initially generated on xx DOCUMENT DATE xx
 
 
 TEXTALLIONFOLDER = /usr/share/textallion//
@@ -21,8 +20,8 @@ else
  PYTHONVER = python2
 endif
 
-TXT2TAGS = $(PYTHONVER) $(TEXTALLIONFOLDER)/contrib/txt2tags/txt2tags
-#TXT2TAGS = txt2tags
+#TXT2TAGS = python2 $(TEXTALLIONFOLDER)/contrib/txt2tags/txt2tags
+TXT2TAGS = python3 $(TEXTALLIONFOLDER)/contrib/txt2tags/txt2tags3
 
 ifdef TEXTALLIONDOC
   DOCUMENT = $(TEXTALLIONDOC)
@@ -49,12 +48,23 @@ PDFREADER = xdg-open
 EPUBREADER = ebook-viewer 
 HTMLREADER = firefox
 DIFFTOOL = meld
+RENPY = /opt/renpy/renpy.sh
+
+# for dialog system
+DIALOGC = ../contrib/dialog/dialogc
+AAMBUNDLE = ../contrib/dialog/aambundle
+DIALOGLIB=../contrib/dialog/stdlib-fr
+#DIALOGLIB=../contrib/dialog/stdlib_de
+#DIALOGLIB=../contrib/dialog/stdlib
+
+
 
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
 	EDITTOOL = open
 else
+#	EDITTOOL = gvim
 	EDITTOOL = geany
 endif
 
@@ -62,7 +72,7 @@ endif
 
 
 info:
-	echo -e "make: +  \n all \n beamer \n booklet \n clean \n cleanall \n clean-everything \n configuration-update \n cover \n cyoa-epub \n cyoa-gbl \n cyoa-graph \n cyoa-html \n cyoa-hyena \n cyoa-inform7 \n cyoa-pdf \n cyoa-play \n cyoa-ramus \n cyoa-renpy \n cyoa-togbl \n cyoa-twee \n cyoa-txt \n edit \n epub \n html \n htmlhandhelds \n info \n makefile \n pdf \n pdfsmall \n read \n readepub \n readhtml \n readindex \n readpdf \n slidy \n split \n tidy \n txt \n vignettes \n website \n xetex \n " 
+	printf "make: +  \n all \n beamer \n booklet \n clean \n cleanall \n clean-everything \n configuration-update \n cover \n cyoa-epub \n cyoa-gbl \n cyoa-graph \n cyoa-html \n cyoa-hyena \n cyoa-inform7 \n cyoa-pdf \n cyoa-play \n cyoa-ramus \n cyoa-renpy \n cyoa-togbl \n cyoa-twee \n cyoa-txt \n edit \n epub \n html \n htmlhandhelds \n info \n makefile \n pdf \n pdfsmall \n read \n readepub \n readhtml \n readindex \n readpdf \n slidy \n split \n tidy \n txt \n vignettes \n website \n xetex \n \n" 
 	
 all:    epub html pdf website clean
 
@@ -80,7 +90,7 @@ htmlhandhelds:
 	$(TXT2TAGS) -t xhtml --no-style  --style=$(TEXTALLIONFOLDER)/includes/sample_handheld.css --toc --outfile $(DOCUMENT).html $(DOCUMENT).t2t
 
 edit:
-	$(EDITTOOL) $(DOCUMENT).t2t
+	$(EDITTOOL) $(DOCUMENT).t2t &
 txt:
 	$(TXT2TAGS) --no-headers -t txt $(DOCUMENT).t2t
 
@@ -89,16 +99,24 @@ pdf:
 ifeq ($(DOCUMENT_LANGUAGE),en)
 	sed -i -e "s/,frenchb,francais//g" $(DOCUMENT).tex
 endif
-	-pdflatex -interaction batchmode $(DOCUMENT).tex
-	-makeindex $(DOCUMENT).idx
-	-pdflatex -interaction batchmode $(DOCUMENT).tex
+	/usr/bin/pdflatex -interaction batchmode $(DOCUMENT).tex
+	makeindex $(DOCUMENT).idx
+	pdflatex -interaction batchmode $(DOCUMENT).tex
 	# (the compilation of the latex document is duplicated so the TOC generated the first time will be included the second time)
-	-pdflatex -interaction batchmode $(DOCUMENT).tex
+	pdflatex -interaction batchmode $(DOCUMENT).tex
 	# and one again because of makeindex
-	#    pdfjoin is part of pdfjam. We disable this for now, it's only
-	#     for adding a special cover.pdf to our document.
-	#   -pdfjoin --fitpaper false  --rotateoversize 'false' --paper a4paper --no-landscape  cover.pdf lionwiki.pdf 
-	#   -mv lionwiki-joined.pdf lionwiki.pdf
+	
+
+pdfweb: 
+	make html
+	wkhtmltopdf --page-size A4 --margin-top 1.0cm --margin-bottom 1.0cm --margin-left 0.5cm --margin-right 0.5cm $(DOCUMENT).html $(DOCUMENT).pdf
+
+pdfwk:
+	make pdfweb
+
+pdfnolatex:
+	make pdfweb
+
 
 xetex:
 	$(TXT2TAGS) -T $(TEXTALLIONFOLDER)/templates/xetex.tex -t tex --toc --outfile $(DOCUMENT).tex $(DOCUMENT).t2t
@@ -122,19 +140,19 @@ lettre-1page:
 	mv $(DOCUMENT)b.pdf $(DOCUMENT).pdf 
 	
 readpdf:	
-	$(PDFREADER) $(DOCUMENT).pdf
+	$(PDFREADER) $(DOCUMENT).pdf &
 
 readhtml:	
-	$(HTMLREADER) $(DOCUMENT).html
+	$(HTMLREADER) $(DOCUMENT).html &
 
 readindex:	
-	$(HTMLREADER) index_$(DOCUMENT).html
+	$(HTMLREADER) index_$(DOCUMENT).html &
 
 readepub:	
-	$(EPUBREADER) $(DOCUMENT).epub
+	$(EPUBREADER) $(DOCUMENT).epub &
 
 read:
-	make readpdf
+	make readpdf &
 
 pdfsmall: pdf
 	-pdfnup $(DOCUMENT).pdf --nup 2x1
@@ -174,7 +192,7 @@ epub:
 	ebook-convert $(DOCUMENT).html $(DOCUMENT).epub --max-levels 0 --pretty-print --level1-toc //h:h1 --level2-toc //h:h2 --level3-toc //h:h3 --max-toc-links 0 --toc-threshold 3  --chapter-mark pagebreak  --cover $(DOCUMENT_COVER) --extra-css $(TEXTALLIONFOLDER)/includes/epub.css --no-default-epub-cover  --preserve-cover-aspect-ratio --no-chapters-in-toc --disable-font-rescaling
 	# --filter-css font-family
 	#
-	ebook-meta  $(DOCUMENT).epub --title "$(DOCUMENT_TITLE)" --authors "$(DOCUMENT_AUTHOR)" --tags "$(DOCUMENT_TAGS)" --language $(DOCUMENT_LANGUAGE) --book-producer 'textallion - http://textallion.googlecode.com' --comments "$(DOCUMENT_INFO)" --cover $(DOCUMENT_COVER) 
+	ebook-meta  $(DOCUMENT).epub --title "$(DOCUMENT_TITLE)" --authors "$(DOCUMENT_AUTHOR)" --tags "$(DOCUMENT_TAGS)" --language $(DOCUMENT_LANGUAGE) --book-producer 'textallion - https://textallion.sourceforge.io' --comments "$(DOCUMENT_INFO)" --cover $(DOCUMENT_COVER) 
 
 # split (not working well...)
 
@@ -189,6 +207,7 @@ website:
 cover:
 	convert $(DOCUMENT).svg $(DOCUMENT).jpg
 	convert $(DOCUMENT).svg $(DOCUMENT).png
+	#convert $(DOCUMENT).svg $(DOCUMENT)_cover.pdf
 	
 	
 configuration-update:
@@ -220,6 +239,30 @@ cyoa-ramus:
 	sed -i -e "s/xxRAMUS_INITxx/<div id=\"story\" style=\"Display: none;\">\n<div id=\"start\">\n<li>Start: <b><a rel=\"page1\">1<\/a><\/b>/g" $(DOCUMENT)_ramus.html
 	
 
+cyoa-ramus2:
+	$(TXT2TAGS) -T $(TEXTALLIONFOLDER)/templates/ramus2.html  --config-file $(TEXTALLIONFOLDER)/core/txt2cyoa.t2t  -t xhtml --no-css-inside --outfile $(DOCUMENT)_ramus2.html $(DOCUMENT).t2t
+	sed -i -e "s/href=\"#/rel=\"/g" $(DOCUMENT)_ramus2.html
+	sed -i -e "s/style=\"display:none\"//g" $(DOCUMENT)_ramus2.html
+	#sed -i -e "s/onclick\(.*\)rel/rel/" $(DOCUMENT)_ramus2.html
+	sed -i -e "s/<p><br\/><br\/><br\/><\/p><\/div>/xxCLEARLINKSxx\n<\/div>/g" $(DOCUMENT)_ramus2.html
+	# remove the 1st occurence only 
+	sed -i -e "0,/\xxCLEARLINKSxx/s/\xxCLEARLINKSxx//" $(DOCUMENT)_ramus2.html
+	# Create the do clear links
+	# If you don't like it this way, uncomment the next line first, to remove everything
+	#sed -i -e "s/rel=\"/rel=\"clear\" href=\"#/g" $(DOCUMENT)_ramus2.html
+	sed -i -e "s/rel=\"/href=\"#/g" $(DOCUMENT)_ramus2.html
+	#sed -i -e "s/\xxCLEARLINKSxx/<\?do clear_all_links\(\)\; \?\>/g" $(DOCUMENT)_ramus2.html
+	sed -i -e "s/\xxCLEARLINKSxx//g" $(DOCUMENT)_ramus2.html
+	sed -i -e "s/xxRAMUS_INITxx/<div style=\"Display: none;\">\n<div id=\"start\">\n<li>Start: <b><a href=\"#page1\">1<\/a><\/b>/g" $(DOCUMENT)_ramus2.html
+	sed -i -e "s/THE END/THE END<br\/><a rel=\"clear\" href=\"#start\"><i>Start over?<\/i><\/a>/g" $(DOCUMENT)_ramus2.html
+	cp $(DOCUMENT)_ramus2.html $(DOCUMENT)_ramus2b.html
+	sed -i -e "s/href=/rel=\"clear\" href=/g" $(DOCUMENT)_ramus2b.html
+	
+
+
+cyoa-check:
+	-cat $(DOCUMENT).t2t | grep -i "==" > check.txt 
+	-cat $(DOCUMENT).t2t | grep -i "[^.\/\?\!=]$$" >> check.txt 
 
 cyoa-txt:
 	$(TXT2TAGS) --no-headers -t txt $(DOCUMENT).t2t
@@ -229,7 +272,156 @@ cyoa-pdf:
 	#-pdflatex $(DOCUMENT).tex
 	$(TXT2TAGS) -T $(TEXTALLIONFOLDER)/templates/latex.tex --config-file $(TEXTALLIONFOLDER)/core/txt2cyoa.t2t -t tex --no-toc --outfile $(DOCUMENT).tex $(DOCUMENT).t2t
 	-pdflatex -interaction batchmode $(DOCUMENT).tex
+	
+cyoa-xetex:
+	$(TXT2TAGS) -T $(TEXTALLIONFOLDER)/templates/xetex.tex --config-file $(TEXTALLIONFOLDER)/core/txt2cyoa.t2t -t tex --no-toc --outfile $(DOCUMENT).tex $(DOCUMENT).t2t
+	-xelatex -interaction batchmode $(DOCUMENT).tex
+	#-xelatex -interaction batchmode $(DOCUMENT).tex
 
+
+cyoa-dialog:
+	# for use with dialog
+	# https://linusakesson.net/dialog/docs/timeprogress.html#choicemode
+	# @DOLLAR@T expands as $T
+	echo "(intro)	(activate node #start)\n(library links enabled)\n(label @DOLLAR@Target)\n        (current node @DOLLAR@Origin)\n        (label @DOLLAR@Origin to @DOLLAR@Target)" |\
+	perl -pe "s/\@DOL-LAR\@/'$'/g" > $(DOCUMENT)_export.dg 
+	# remove 3 first lines of the t2t doc (from line 1 to end line 3) \
+	cat $(DOCUMENT).t2t  | sed '1,4d' | \
+	# remove postproc for tex (TODO CHECK)|\
+	#perl -pe "s/\%\!postproc\(tex\): //g" |\
+	# convert ( and ): \
+	perl -pe 's/\(/\\(/g' |\
+	perl -pe 's/\)/\\)/g' |\
+	# metadata (before removing them all|\
+	perl -pe "s/\%\!postproc: \'xx DOCUMENT TITLE xx\'/\(story title\) \1/g" |\
+	perl -pe "s/\%\!postproc: \'xx DOCUMENT AUTHOR xx\'/\(story author\) \1/g" |\
+	perl -pe "s/\%\!postproc: \'xx DOCUMENT IFID xx\'/\(story ifid\) \1/g" |\
+	perl -pe 's/^\%(.*)\n//' |\
+		# for lone wolf mode: \
+	 perl -pe 's/(.*) \[(.*) (\d+)\|\#sect(\d+)\]/(label * to #node\4)\1 \2 \3 \n(* offers #node\4)\n/g' |\
+	 perl -pe 's/\[(.*) (\d+)\|\#sect(\d+)\]/(label * to #node\3)\1 \2 \n(* offers #node\3)\n/g' |\
+	  perl -pe 's/\[Illustration ([^ ].*?)\]//g' |\
+	 perl -pe 's/\[Random Number Table \#random\]/Random Number Table/g' |\
+	 perl -pe 's/(.*)\: COMBAT SKILL (.*?)   ENDURANCE (.*?)/     (par)\1:  COMBAT SKILL \2   ENDURANCE \3/g' |\
+	 #\
+	 # abbreviations |\
+	 #perl -pe 's/tt (\d+)/ \1/g' |\
+	 #lone wolf style \
+	 #perl -pe 's/\[turn to (\d+) \#sect(\d+)\]/\2/g' |\
+	 #perl -pe 's/Turn to (\d+)/\1/g' |\
+	 #perl -pe 's/turn to (\d+)/\1/g' |\
+	 perl -pe 's/rdv au (\d+)/ : \1/g' |\
+	 perl -pe 's/, rendez-vous au (\d+)/ : \1/g' |\
+	 perl -pe 's/rendez-vous au (\d+)/ : \1/g' |\
+	 perl -pe 's/ au (\d+)/ ailleurs : \1/g' |\
+	 #perl -pe 's/to the (\d+)/to somewhere else : \1/g' |\
+	 #perl -pe 's/to (\d+)/to somewhere else : \1/g' |\
+	 # replace any ="introduction" by 0 |\
+	 perl -pe "s/[I-i]ntro["duction"]*/0/g" |\
+	 perl -pe "s/\=\"[I-i]ntro["duction"]*/0/g" |\
+	 # code |\
+	 perl -pe "s/\`\`(.*?)\`\`/\1/g" |\
+	 perl -pe 's/¯/ /g' |\
+	 # remove extra textallion syntax |\
+	 perl -pe 's/[ ]*\{.{4}\}[ ]*//g' |\
+	 perl -pe 's/[ ]*\{.{3}\}[ ]*//g' |\
+	 perl -pe 's/rdv/rendez-vous/' |\
+	 # images / [[bla.jpg] 1] est pour image sur premiere page |\
+	 perl -pe 's/\[\[(.*).jpg] 1\]//' |\
+	 perl -pe 's/\[\[(.*).png] 1\]//' |\
+	 perl -pe 's/\[(.*).jpg\]/%% (define resource ## \1) /' |\
+	 perl -pe 's/\[(.*).png\]/%% /' |\
+	 # why did we remove media? |\
+	 #perl -pe 's/..\/media\///' |\
+	 perl -pe 's/\[(.*).ogg\]//' |\
+	 # choices and links (\r is for windows newline) \
+	 #perl -pe 's/- (.*?) (\d+?)( *)\n/(label #node\2)\n      (line)\1 \n(* offers #node\2)\n/g' |\
+	 perl -pe 's/- (.*?) (\d+?)( *)\n/(label * to #node\2) \1 \n(* offers #node\2)\n/g' |\
+	 perl -pe 's/- (.*?) (\d+?)( *)\r/(label * to #node\2) \1 \n(* offers #node\2)\n/g' |\
+     perl -pe 's/(.*?) \[\#(.*?)\]/(label * to #\2) \1 \n(* offers #\2)\n/g' |\
+	 # deprecated: perl -pe 's/\[(\d+) \#(.*?)\]/[[\2|\1]]/g' |\
+	 #perl -pe 's/\[([^\#].*?) \| \#(.*?)\]/[[\1|\2]]/g' |\
+	 #perl -pe 's/\[([^\#].*?)\|\#(.*?)\]/[[\1|\2]]/g' |\
+	 #perl -pe 's/\[([^\#].*?) \#(.*?)\]/[[\1|\2]]/g' |\
+	 #perl -pe 's/\[(\d+) \#(\d+)\]/[[\1]]/g' |\
+	 #perl -pe 's/ \#(\d+?) / [[\1]] /g' |\
+	 #perl -pe 's/ \#(.*?) / [[\1]] /g' |\
+	 #perl -pe 's/ \#([^ ].*) / [[\1]]/g' |\
+	 #perl -pe 's/\[\#(\d+?)\]/[[\1]]/g' |\
+	 # notes and hr \
+	 perl -pe 's/--------------------//g' |\
+	 perl -pe 's/°°(.*?)°°(.*?)°°/ \/\/\2\/\/ /' |\
+	 # chapters \
+	 # lone wolf : \
+	 perl -pe 's/== (\d+) ==/#node\1\n(disp *)(space 8)(bold)- \1 -(roman)/' |\
+	 # normal : \
+	 perl -pe 's/== (\d+) ==/#node\1\n(disp *)/' |\
+	 perl -pe 's/==(\d+)==\[(.*)\]/#node\1\n(disp *)/' |\
+	 #perl -pe 's/==(\d+)==/#node\1/\n(disp *)/' |\
+	 perl -pe 's/== (.*?) ==\[(.*?)\]/#node\2\n(disp *)/' |\
+	 perl -pe 's/== (.*?) ==/#node\1\n(disp *)/' |\
+	 # main text |\
+	perl -pe 's/^(.*)\.[ ]*\n/     (par)\1.\n/' |\
+	perl -pe 's/^(.*)[ ]*\![ ]*\n/      (par)\1 !\n/' |\
+	perl -pe 's/^(.*)[ ]*\?[ ]*\n/      (par)\1 ?\n/' |\
+	perl -pe 's/^(.*)[ ]*\:[ ]*\n/      (par)\1 \n/' |\
+	perl -pe 's/^(.*)[ ]*\"[ ]*\n/      (par)\1 "\n/' |\
+	perl -pe 's/^(.*)[ ]*\»[ ]*\n/      (par)\1 »\n/' |\
+	perl -pe 's/^(.*)[ ]*\’[ ]*\n/      (par)\1’\n/' |\
+	perl -pe 's/^(.*)[ ]*\)[ ]*\n/      (par)\1)\n/' |\
+	perl -pe 's/^(.*)[ ]*\*\*[ ]*\n/      (par)\1**\n/' |\
+	perl -pe 's/^(.*)[ ]*\/\/[ ]*\n/      (par)\1\/\/\n/' |\
+	perl -pe 's/^\"(.*)\n/      (par)"\1 \n/' |\
+	perl -pe 's/^\«(.*)\n/      (par)«\1 \n/' |\
+	#  t2t syntax \
+	perl -pe 's/\/\/(.*)\/\//(italic)\1(roman)/' |\
+	perl -pe 's/\*\*(.*)\*\*/(bold)\1(roman)/' |\
+	# special \
+		perl -pe 's/TESTLUCK/      (par) Am I lucky today? \\(throwing a dice, 5 or 6 means luck\\) /'|\
+	 perl -pe 's/THE END/     (par) THE END/'|\
+	 perl -pe 's/FIN/     (par) (game over { FIN })/'|\
+	# |\
+	# remove extra label |\
+	perl -pe 's/      \(par\)\(label/(label/' |\
+	# remove blank lines \
+	perl -pe s'/^\n|^[\ ]*\n//g' |\
+	# add extra space before nodes \
+	perl -pe 's/^#node/\n#node/' |\
+	perl -pe 's/      \(par\)\(disp \*\)/(disp *) /s' |\
+	#perl -pe 's/^     \(par\)\(offers/(offers/s' |\
+	perl -pe 's/      \(par\)\(\* offers/(* offers/g' |\
+	#øperl -pe 's/^\(disp \*\)\n     \(par\)/(disp *) /g' |\
+	perl -pe 's/     \(par\)\./ /g' |\
+	 # make twee lists \
+	 #perl -pe 's/^- /* /' |\
+	 #perl -pe 's/^+ /# /' |\
+	 # remove empty white spaces and lines\
+	 #sed -r '/^\s*$/d' |\
+	perl -pe 's/#node0/#start/' >> $(DOCUMENT)_export.dg
+	sed -i -e "s/@DOLLAR@/$$/g" $(DOCUMENT)_export.dg
+	make cyoa-dialog-z8
+	make cyoa-dialog-html
+	make cyoa-dialog-c64
+
+
+cyoa-dialog-z8:
+	$(DIALOGC) -t z8 $(DOCUMENT)_export.dg $(DIALOGLIB).dg
+
+cyoa-dialog-aa:
+	$(DIALOGC) -t aa $(DOCUMENT)_export.dg $(DIALOGLIB).dg
+
+cyoa-dialog-html:
+	make cyoa-dialog-aa
+	-rm -fr $(DOCUMENT)_export_html
+	$(AAMBUNDLE) -o $(DOCUMENT)_export_html $(DOCUMENT)_export.aastory
+
+cyoa-dialog-c64:
+	make cyoa-dialog-aa
+	-rm -fr $(DOCUMENT)_export_c64
+	$(AAMBUNDLE) -t c64 -o $(DOCUMENT)_export_c64 $(DOCUMENT)_export.aastory
+
+
+	 
 cyoa-gamebook: 
 # doesnt work yet!
 # http://www.ctan.org/tex-archive/macros/latex/contrib/gamebook
@@ -256,11 +448,11 @@ cyoa-epub:
 	#
 	ebook-convert $(DOCUMENT).html $(DOCUMENT).epub --max-levels 0 --pretty-print --level1-toc //h:h1 --level2-toc //h:h2 --level3-toc //h:h3 --max-toc-links 0 --toc-threshold 3  --chapter-mark pagebreak --page-breaks-before //h:div[@id] --cover $(DOCUMENT_COVER) --extra-css $(TEXTALLIONFOLDER)/includes/epub.css --no-default-epub-cover --no-svg-cover --preserve-cover-aspect-ratio --no-chapters-in-toc
 	#
-	ebook-meta  $(DOCUMENT).epub --title "$(DOCUMENT_TITLE)" --authors "$(DOCUMENT_AUTHOR)" --tags "$(DOCUMENT_TAGS)" --language $(DOCUMENT_LANGUAGE) --book-producer 'textallion & txt2cyoa - http://textallion.googlecode.com' --comments 'textallion - http://textallion.googlecode.com' --cover $(DOCUMENT_COVER) 
+	ebook-meta  $(DOCUMENT).epub --title "$(DOCUMENT_TITLE)" --authors "$(DOCUMENT_AUTHOR)" --tags "$(DOCUMENT_TAGS)" --language $(DOCUMENT_LANGUAGE) --book-producer 'textallion & txt2cyoa - https://textallion.sourceforge.io' --comments 'textallion - https://textallion.sourceforge.io' --cover $(DOCUMENT_COVER) 
 
 
 cyoa-graph:	
-	echo -e "\n \n \n"  > graph.txt
+	printf "\n \n \n \n"  > graph.txt
 	-cat $(TEXTALLIONFOLDER)/core/txt2cyoa.t2t $(DOCUMENT).t2t |grep -E "^#|^>|^==|^-|rdv|preproc|postproc" >> graph.txt
 	-$(TXT2TAGS) --no-headers -o graph2.txt -t txt graph.txt 
 	-echo "digraph G { " > graph.txt
@@ -279,12 +471,130 @@ cyoa-graph:
 	-mv graph.txt  $(DOCUMENT)_graph.txt
 	
 cyoa-gbl:
-	echo -e "$(DOCUMENT)\nPar YourName\n%%date(%Y-%m-%d)" > $(DOCUMENT)_gbl.t2t 
+	printf "$(DOCUMENT)\nPar YourName\n%%date(%Y-%m-%d)\n" > $(DOCUMENT)_gbl.t2t 
 	echo "%!includeconf: txt2cyoa.t2t" >> $(DOCUMENT)_gbl.t2t 
 	cat $(DOCUMENT).gbl | sed -e "s/= \(.*\) =/\n=== \1 ===\n/g" |\
 	# sed -e "s/=\(.*\)=/\n=== \1 ===\n/g" | sed -e "s/= \(.*\)=/\n=== \1 ===\n/g" | sed -e "s/=\(.*\) =/\n=== \1 ===\n/g" |\
-	 sed -e "s/^#\([0-9]*\)# \(.*\)/\n\n== \1 ==\n\n=== \2 ===\n\n/g" | sed -e "s/^>\(.*\)=\([0-9]*\)/- \1, rdv au \2/g" >> $(DOCUMENT)_gbl.t2t 
+	sed -e "s/^#\([0-9]*\)# \(.*\)/\n\n== \1 ==\n\n=== \2 ===\n\n/g" | sed -e "s/^>\(.*\)=\([0-9]*\)/- \1, rdv au \2/g" >> $(DOCUMENT)_gbl.t2t	
 
+
+
+cyoa-inkle:
+	# for use with http://www.inklestudios.com/ink/
+	cat $(DOCUMENT).t2t  | perl -pe 's/^\%(.*)\n/\/\//' | sed -e "s/== 0 ==/-> start\n\n === start ===/g" |\
+	# remove extra textallion syntax |\
+	perl -pe 's/TESTLUCK/\/\/Am I lucky today? (throwing a dice, 5 or 6 means luck)\/\//'|\
+	perl -pe 's/¯/ /g' |\
+	perl -pe 's/[ ]*\{.{4}\}[ ]*//g' |\
+	perl -pe 's/[ ]*\{.{3}\}[ ]*//g' |\
+	# images and sound not supported in ink?|\
+	perl -pe 's/\[\[(.*).jpg] 1\]//' |\
+	 perl -pe 's/\[\[(.*).png] 1\]//' |\
+	 perl -pe 's/\[(.*).jpg\]//' |\
+	 perl -pe 's/..\/media\///' |\
+	 perl -pe 's/\[(.*).ogg\]//' |\
+	# replace any ="introduction" by 0 TODO dangerous outsite heading |\
+	#perl -pe "s/[I-i]ntro["duction"]*/0/g" |\
+	#perl -pe "s/\=\"[I-i]ntro["duction"]*/0/g" |\
+	# italic and underline are the same. Only bold is different |\
+	perl -pe "s/\*\*(.*?)\*\*/''\1''/g" |\
+	# choices and links  \
+	perl -pe 's/- (.*?) (\d+?)( *)\n/* \1 -> paragraph_\2 \n/g' |\
+	perl -pe 's/^- /* /g' |\
+	perl -pe 's/\[\#(\d+?)\]/-> paragraph_\1 \n/g' |\
+	perl -pe 's/\[\#(.*?)\]/-> \1 \n/g' |\
+	perl -pe 's/\[([^\#].*?) \| \#(\d+)\]/ [\1] -> paragraph_\2 \n/g' |\
+	perl -pe 's/\[([^\#].*?)\|\#(\d+)\]/ [\1] -> paragraph_\2 \n/g' |\
+	perl -pe 's/\[([^\#].*?) \#(\d+)\]/ [\1] -> paragraph_\2 \n/g' |\
+	 perl -pe 's/\[([^\#].*?) \| \#(.*?)\]/ [\1] -> \2 \n/g' |\
+	 perl -pe 's/\[([^\#].*?)\|\#(.*?)\]/ [\1] -> \2 \n/g' |\
+	 perl -pe 's/\[([^\#].*?) \#(.*?)\]/ [\1] -> \2 \n/g' |\
+	perl -pe 's/: ->/->/g' |\
+	perl -pe 's/THE END/->END/g' |\
+	perl -pe 's/FIN/->END/g' |\
+	# abbreviations |\
+	perl -pe 's/tt ->/->/g' |\
+	perl -pe 's/, rdv au ->/->/g' |\
+	perl -pe 's/, rendez-vous au ->/->/g' |\
+	perl -pe 's/ au ->/->/g' |\
+	perl -pe 's/ to the ->/->/g' |\
+	# chapters \
+	perl -pe 's/==(\d+)==\[(.*)\]/== \1 ==/' |\
+	#perl -pe 's/== (.*?) ==\[(.*?)\]/\2/' TODO?\
+	perl -pe 's/== (.*?) ==\[(.*?)\]/== \1 ==/' |\
+	#perl -pe 's/== (.*?) == /== \1 ==/' \
+	perl -pe 's/==(\d+)==/=== paragraph_\1 ===/'  |\
+	perl -pe 's/== (\d+) ==/=== paragraph_\1 ===/' > $(DOCUMENT)_inkle.ink
+	# export to html
+	-mkdir $(DOCUMENT)_inkle/
+	cat $(TEXTALLIONFOLDER)/templates/inkle/index.html |\
+	sed -e "s/TEXTALLION STORY/$(DOCUMENT_TITLE)/g" > $(DOCUMENT)_inkle/index.html
+	cp $(TEXTALLIONFOLDER)/templates/inkle/ink.js $(DOCUMENT)_inkle/
+	cp $(TEXTALLIONFOLDER)/templates/inkle/main.js $(DOCUMENT)_inkle/
+	cp $(TEXTALLIONFOLDER)/templates/inkle/style.css $(DOCUMENT)_inkle/
+	mono $(TEXTALLIONFOLDER)/templates/inkle/inklecate.exe $(DOCUMENT)_inkle.ink 
+	echo "var storyContent = "> $(DOCUMENT)_inkle/textallion_story.js
+	cat $(DOCUMENT)_inkle.ink.json >> $(DOCUMENT)_inkle/textallion_story.js
+	echo ";" >> $(DOCUMENT)_inkle/textallion_story.js
+
+
+cyoa-tavern:
+	# for use with http://zzo38computer.org/fossil/tavern.ui/
+	cat $(DOCUMENT).t2t  |\
+ 	# replace === title === used in "who are you" |\
+	perl -pe "s/=== (.*) ===/\1/g" |\
+	# replace any ="introduction" by 0  TODO : dangerous outsite heading|\
+	#perl -pe "s/[I-i]ntro["duction"]*/0/g" |\
+	#perl -pe "s/\=\"[I-i]ntro["duction"]*/0/g" |\perl -pe 's/^\%(.*)\n/\/\//' | sed -e "s/== 0 ==/INCLUDE bookadv.inc\n\n START-PAGE INTRO/g" |\
+	# remove extra textallion syntax |\
+	perl -pe 's/TESTLUCK/\/\/Am I lucky today? (throwing a dice, 5 or 6 means luck)\/\//'|\
+	perl -pe 's/¯/ /g' |\
+	perl -pe 's/[ ]*\{.{4}\}[ ]*//g' |\
+	perl -pe 's/[ ]*\{.{3}\}[ ]*//g' |\
+	# images and sound not supported in tavern?|\
+	perl -pe 's/\[\[(.*).jpg] 1\]//' |\
+	 perl -pe 's/\[\[(.*).png] 1\]//' |\
+	 perl -pe 's/\[(.*).jpg\]//' |\
+	 perl -pe 's/..\/media\///' |\
+	 perl -pe 's/\[(.*).ogg\]//' |\
+	# remove italic, underline and bold |\
+	perl -pe "s/\*\*(.*?)\*\*/\1/g" |\
+	# choices and links  \
+	perl -pe 's/- (.*?) (\d+?)( *)\n/>|  \1 | \2 \n/g' |\
+	perl -pe 's/^- />|   /g' |\
+	perl -pe 's/\[\#(\d+?)\]/>|  \1 \n/g' |\
+	perl -pe 's/\[\#(.*?)\]/>|  \1 \n/g' |\
+	perl -pe 's/\[([^\#].*?) \| \#(\d+)\]/ [\1] -> paragraph_\2 \n/g' |\
+	perl -pe 's/\[([^\#].*?)\|\#(\d+)\]/ [\1] -> paragraph_\2 \n/g' |\
+	perl -pe 's/\[([^\#].*?) \#(\d+)\]/ [\1] -> paragraph_\2 \n/g' |\
+	 perl -pe 's/\[([^\#].*?) \| \#(.*?)\]/ [\1] -> \2 \n/g' |\
+	 perl -pe 's/\[([^\#].*?)\|\#(.*?)\]/ [\1] -> \2 \n/g' |\
+	 perl -pe 's/\[([^\#].*?) \#(.*?)\]/ [\1] -> \2 \n/g' |\
+	perl -pe 's/: ->/->/g' |\
+	perl -pe 's/THE END/->END/g' |\
+	perl -pe 's/FIN/->END/g' |\
+	# paragraphs |\
+	perl -pe 's/^[ ?]?([a-z].)/ PT| \1/g' |\
+	perl -pe 's/^[ ?]?([A-Z].)/ PT| \1/g' |\
+	perl -pe 's/(!|\?|\.)[ ?]?\r?\n/\1|/g' |\
+	# abbreviations |\
+	perl -pe 's/tt (\d+)/| \1/g' |\
+	perl -pe 's/turn to (\d+)/| \1/g' |\
+	perl -pe 's/, rdv au  (\d+)/| \1/g' |\
+	perl -pe 's/, rendez-vous au  (\d+)/| \1/g' |\
+	perl -pe 's/ au  (\d+)->/| \1/g' |\
+	perl -pe 's/ go to (\d+)/| \1/g' |\
+	# chapters \
+	perl -pe 's/==(\d+)==\[(.*)\]/PAGE>>>\n\n<<<PAGE \1 /' |\
+	#perl -pe 's/== (.*?) ==\[(.*?)\]/\2/' TODO?\
+	perl -pe 's/== (.*?) ==\[(.*?)\]/PAGE>>>\n\n<<<PAGE \1/' |\
+	perl -pe 's/== (.*?) ==/PAGE>>>\n\n<<<PAGE \1/' |\
+	perl -pe 's/==(\d+)==/PAGE>>>\n\n<<<PAGE \1/'  |\
+	perl -pe 's/== (\d+) ==/PAGE>>>\n\n<<<PAGE \1/' > $(DOCUMENT)_tavern.txt
+	# export to tavern
+	~/bin/tavernc < $(DOCUMENT)_tavern.txt > $(DOCUMENT)_tavern.tav
+	
+	
 cyoa-togbl:
 	cat $(DOCUMENT).t2t | sed -e "s/=== \1 ===/ \(.*\) =/g" |\
 	 sed -e "s/^#\([0-9]*\)# \(.*\)/\n\n== \1 ==\n\n=== \2 ===\n\n/g" | sed -e "s/^>\(.*\)=\([0-9]*\)/- \1, rdv au \2/g"  >> $(DOCUMENT)_export.gbl
@@ -292,7 +602,7 @@ cyoa-togbl:
 cyoa-twine:	cyoa-twee
 
 cyoa-twee:
-	# for use with http://gimcrackd.com/etc/src/
+	# for use with https://github.com/tweecode
 	# corrected twee parser at https://github.com/mcdemarco/twee
 	#echo "du texte et puis à la fin de la ligne, un numéro par exemple 42"|sed -e "s/\([0-9]\+\)$/\[\[\1 \1\]\]/g"
 	# try to use Unix line feed if possible
@@ -353,14 +663,15 @@ cyoa-twee:
 	$(PYTHONVER) $(TEXTALLIONFOLDER)/templates/twee/twee -t jonah $(DOCUMENT)_export.tw > $(DOCUMENT)_twee_jonah.html
 	$(PYTHONVER) $(TEXTALLIONFOLDER)/templates/twee/twee -t sugarcane $(DOCUMENT)_export.tw > $(DOCUMENT)_twee_sugarcane.html
 	$(PYTHONVER) $(TEXTALLIONFOLDER)/templates/twee/twee -t mobile $(DOCUMENT)_export.tw > $(DOCUMENT)_twee_mobile.html
+	$(PYTHONVER) $(TEXTALLIONFOLDER)/templates/twee/twee -t sugarcube $(DOCUMENT)_export.tw > $(DOCUMENT)_twee_sugarcube.html
 
 cyoa-hyena:
 	# for use with http://www.projectaon.org/staff/jens/
 	# specifications: http://www.collectingsmiles.com/wiki/index.php?title=Hyena_AudioGame_specifications
 	# implementation (player): http://www.freegameengines.org/gamebook-engine/
-	echo -e "#start \nStart the game: Click #page0" > $(DOCUMENT)_export.gamebook
+	printf "#start \nStart the game: Click #page0\n" > $(DOCUMENT)_export.gamebook
 	cat $(DOCUMENT).t2t  | perl -pe 's/^\%(.*)\n//' | perl -pe 's/(\d+)\n/Click #page\1\n/' | perl -pe 's/== (\d+) ==/#page\1/' |  perl -pe 's/==(\d+)==\[(.*)\]/page\1/' >> $(DOCUMENT)_export.gamebook 
-	echo -e "\n#script\n" >> $(DOCUMENT)_export.gamebook 
+	printf "\n#script\n\n" >> $(DOCUMENT)_export.gamebook 
 
 cyoa-choicescript:
 	# for use with http://www.choiceofgames.com/
@@ -370,8 +681,8 @@ cyoa-choicescript:
 	-cp -fr $(TEXTALLIONFOLDER)/templates/choicescript/* $(DOCUMENT)_choicescript
 	sed "s/ChoiceScript Game/`sed q $(DOCUMENT).t2t`/" $(TEXTALLIONFOLDER)/templates/choicescript/mygame/index.html > $(DOCUMENT)_choicescript/mygame/index.html
 	sed "s/ChoiceScript Game/`sed q $(DOCUMENT).t2t`/" $(TEXTALLIONFOLDER)/templates/choicescript/mygame/index_fr.html > $(DOCUMENT)_choicescript/mygame/index_fr.html
-	echo -e "*comment Made using ChoiceScript and Textallion." > $(DOCUMENT)_choicescript/mygame/scenes/textallion.txt 
-	#echo -e "Welcome \n*page_break" > choicescript/mygame/scenes/textallion.txt \
+	printf "*comment Made using ChoiceScript and Textallion.\n" > $(DOCUMENT)_choicescript/mygame/scenes/textallion.txt 
+	#printf "Welcome \n*page_break\n" > choicescript/mygame/scenes/textallion.txt \
 	cat $(DOCUMENT).t2t  | perl -pe 's/^\%(.*)\n//' | perl -pe 's/^\%(.*)\n//' |\
 	#sed can't replace multiple newlines. So we remove them, and add them back later. \
 	 perl -pe  's/\n/NEWLINE/g' |\
@@ -409,12 +720,21 @@ cyoa-cs: cyoa-choicescript
 
 cyoa-undum:
 	# for use with http://www.undum.com/
+	# pb with undum if 1 extra line break in the code
 	-rm -fr $(DOCUMENT)_undum
 	-mkdir -p $(DOCUMENT)_undum/media/
 	-cp -fr $(TEXTALLIONFOLDER)/templates/undum_media/* $(DOCUMENT)_undum/media/
 	-cat $(TEXTALLIONFOLDER)/templates/undum.html > $(DOCUMENT)_undum/$(DOCUMENT)_undum.html
 	-cat $(DOCUMENT).t2t  | perl -pe 's/^\%(.*)\n//' |\
+	# remove 1 empty useless image \
+	perl -pe 's/\{->--\}\[\[(.*)\] 1\]\{-<--\}//' |\
+	# remove 3 first lines of the t2t doc \
+	     sed '1,4d' |\
 	 perl -pe 's/^\%(.*)\n//' |\
+	# remove textallion specific syntax (and later also) \
+         perl -pe 's/[ ]*\{.{4}\}[ ]*//g' |\
+	 perl -pe 's/[ ]*\{.{3}\}[ ]*//g' |\
+	perl -pe  's/\{/NEWLINE/g' |\
 	 #sed can't replace multiple newlines. So we remove them, and add them back later. |\
 	 perl -pe  's/\n/NEWLINE/g' |\
 	 perl -pe  "s/\'/APOSTROPHE/g" |\
@@ -452,6 +772,11 @@ cyoa-undum:
 	 perl -pe 's/rdv/rendez-vous/'  >> $(DOCUMENT)_undum/$(DOCUMENT)_undum.html
 	 -echo "); </script></body></html>" >> $(DOCUMENT)_undum/$(DOCUMENT)_undum.html
 
+play-cyoa-renpy:
+	#
+	$(RENPY) $(DOCUMENT)_renpy
+
+
 cyoa-renpy:
 	# for use with http://renpy.org/
 	rm -fr $(DOCUMENT)_renpy
@@ -462,11 +787,19 @@ cyoa-renpy:
 	cat $(DOCUMENT).t2t   |\
      sed '1,4d' |\
 	 perl -pe 's/^\%(.*)\n//' |\
+	 perl -pe 's/^(.*): *\n/    "\1:"\n/'  |\
 	 perl -pe 's/\n/NEWLINE/' |\
 	 perl -pe 's/NEWLINENEWLINE-/\n\n    menu:\n-/g' |\
 	 perl -pe 's/NEWLINE/\n/g' |\
 	 perl -pe 's/^(.*):\n/    "\1:"/'  |\
 	 perl -pe 's/"    menu:\"/menu:\n/'  |\
+	 perl -pe 's/tt (\d+)/continue \1/g' |\
+	 perl -pe 's/\(rdv au (\d+)\)/ \1/g' |\
+	 perl -pe 's/rdv au (\d+)/ \1/g' |\
+	 perl -pe 's/continue[r|z] au (\d+)/continuer \1/g' |\
+	 perl -pe 's/rendez-vous au (\d+)/ \1/g' |\
+	 perl -pe 's/[A|a]lle[z|r] au (\d+)/: \1/g' |\
+	 perl -pe 's/ au (\d+)/ \1/g' |\
 	 perl -pe 's/(.*) (\d+)[ ]*\n/        "\1":\n            jump page\2\n/' |\
 	 perl -pe 's/(.*) \[(.*) #(.*)\][ ]*\n/        "\1":\n            jump page\2\n/' |\
 	 perl -pe 's/== (\d+) ==[ ]*\n/\nlabel page\1:\n    scene bg\n    with None\n/' |\
@@ -477,6 +810,7 @@ cyoa-renpy:
 	 perl -pe 's/\[(.*).jpg\]/    image \1 = "\1.jpg"\n    \x{0024} showmypic("\1")/' |\
 	 perl -pe 's/\[(.*).png\]/    image \1 = "\1.png"\n    \x{0024} showmypic("\1")/' |\
 	 perl -pe 's/\[(.*).ogg\]/    \x{0024} renpy.music.play("\1.ogg", loop=False)\n/' |\
+	 perl -pe 's/\[(.*).mid\]/    \x{0024} renpy.music.play("\1.mid", loop=False)\n/' |\
 	 perl -pe 's/..\/images\///g' |\
 	 perl -pe 's/..\/media\///g' |\
 	 perl -pe 's/¯/ /g' |\
@@ -487,17 +821,23 @@ cyoa-renpy:
 	 perl -pe 's/^(.*)»[ ]*\n/    "\1»"/' |\
 	 perl -pe 's/^(.*)![ ]*\n/    "\1!"/'  |\
 	 perl -pe 's/^(.*)\?[ ]*\n/    "\1?"/' |\
-	 perl -pe 's/^\/\/(.*)\/\/\n/    "\1"/' |\
-	 perl -pe 's/^\*\*(.*)\*\*\n/    "\1"/' |\
+	 perl -pe 's/^\/\/(.*)\/\/\n/    "\{i\}\1\{\/i\}"/' |\
+	 perl -pe 's/^\*\*(.*)\*\*\n/    "\{b\}\1\{\/b\}"/' |\
 	 perl -pe 's/^-(.*)/        "~~ missing line (please review your source code)~~"/' |\
 	 perl -pe 's/        \"- /        " /' |\
-	 perl -pe 's/\{(.*)\}(.*){(.*)\}/    "\2"/' |\
-	 perl -pe 's/\{(.*)\}//' |\
+	 #italic |\
+	 #perl -pe 's/\{ \/\/ \}/\{i\}/' |\
+	 #perl -pe 's/\{\/\/\/ \}/\{\/i\}/' |\
+	 perl -pe 's/\{ \/\/ \}//' |\
+	 perl -pe 's/\{\/\/\/ \}//' |\
+	 perl -pe 's/\/\/(.*)\/\//\{i\}\1\{\/i\}/' |\
+	 perl -pe 's/\{.{3}\}(.*){(.*)\}/    "\2"/' |\
+	 perl -pe 's/\{{3}\}//' |\
 	 perl -pe 's/TESTLUCK/    "Am I lucky today? (throwing a dice, 5 or 6 means luck)"/'|\
 	 perl -pe 's/:\":/\":/'|\
 	 perl -pe 's/\" THE END \"/jump end/' |\
 	 perl -pe 's/THE END/    jump end/'	 >> $(DOCUMENT)_renpy/game/script.rpy 
-	 echo -e "\nlabel end:\n    show expression Text(\"THE END.\", size=50, yalign=0.5, xalign=0.5, drop_shadow=(2, 2)) as text\n    with dissolve\n    \" \" " >> $(DOCUMENT)_renpy/game/script.rpy 
+	 printf "\nlabel end:\n    show expression Text(\"THE END.\", size=50, yalign=0.5, xalign=0.5, drop_shadow=(2, 2)) as text\n    with dissolve\n    \" \" \n" >> $(DOCUMENT)_renpy/game/script.rpy 
 	 
 
 cyoa-inform7-temp:
@@ -508,7 +848,7 @@ cyoa-inform7-temp:
 
 cyoa-inform7:
 	 sed 's/^$$/ /' $(DOCUMENT).t2t > $(DOCUMENT).tmp  
-	 echo -e "== 00 ==" >> $(DOCUMENT).tmp  
+	 printf  "== 00 ==\n" >> $(DOCUMENT).tmp  
 	 cat $(DOCUMENT).tmp |\
 	 perl -pe 's/==(\d+)==\[(.*)\]/== \1 ==/' |\
 	 perl -pe 's/== (\d+) ==/\n== \1 ==\n/' |\
@@ -525,8 +865,8 @@ cyoa-inform7:
 	 perl -pe 's/{~~~~}/ /g' |\
 	 perl -pe 's/¯/ /g' |\
 	 perl -pe 's/\?/\? /g' 	> $(DOCUMENT).tmp2
-	 echo -e "\"$(DOCUMENT_TITLE)\" by $(DOCUMENT_AUTHOR)\n\nInclude Adventure Book by Edward Griffiths.\n\n" > $(DOCUMENT).i7
-	 echo -e "The first Page is a page. \"Starting the game...\" It is followed by Page1.\n" >> $(DOCUMENT).i7
+	 printf "\"$(DOCUMENT_TITLE)\" by $(DOCUMENT_AUTHOR)\n\nInclude Adventure Book by Edward Griffiths.\n\n\n" > $(DOCUMENT).i7
+	 printf "The first Page is a page. \"Starting the game...\" It is followed by Page1.\n\n" >> $(DOCUMENT).i7
 	 perl $(TEXTALLIONFOLDER)/core/adventurebook.pl $(DOCUMENT).tmp2 >> $(DOCUMENT).i7
 	 cat $(DOCUMENT).i7 |\
 	 # remove extra spaces |\
@@ -537,11 +877,15 @@ cyoa-inform7:
 	 # remove extra textallion syntax |\
 	 perl -pe 's/{(.*)}\n//g' |\
 	 perl -pe 's/{(.*)}//g' > $(DOCUMENT).tmp
-	 echo -e "\nGameEnd is a page. \"** THE END **\".\n" >> $(DOCUMENT).tmp
+	 printf "\nGameEnd is a page. \"** THE END **\".\n\n" >> $(DOCUMENT).tmp
 	 #  convert French apostrophes for inform7 source
 	 cat $(DOCUMENT).tmp | sed -e "s/S'/S[\']/g" | sed -e "s/N'/N[\']/g" | sed -e "s/L'/L[\']/g" | sed -e "s/C'/C[\']/g" | sed -e "s/D'/D[\']/g" | sed -e "s/J'/J[\']/g" | sed -e "s/M'/M[\']/g"  | sed -e "s/U'/U[\']/g" | sed -e "s/s'/s[\']/g" | sed -e "s/ n'/ n[\']/g" | sed -e "s/l'/l[\']/g" | sed -e "s/ c'/ c[\']/g" | sed -e "s/d'/d[\']/g" | sed -e "s/j'/j[\']/g" | sed -e "s/m'/m[\']/g" | sed -e "s/u'/u[\']/g" > $(DOCUMENT).i7
 	 -rm $(DOCUMENT).tmp
 	 -rm $(DOCUMENT).tmp2
+	 cp -fr $(TEXTALLIONFOLDER)/templates/inform7 ./
+	 cp $(DOCUMENT).i7 inform7/cyoa.inform/Source/story.ni
+	 cd inform7
+	 make z8
 
 cyoa-inform6:
 	inform +source_path=$(TEXTALLIONFOLDER)/templates/inform6/ +include_path=./,$(TEXTALLIONFOLDER)/templates/inform6/,/usr/share/inform/include +code_path=./ "$1".inf 
@@ -568,7 +912,7 @@ clean-temp:
 	-rm  *~ 
 	-rm  .*~
 	-rm  $(DOCUMENT).toc
-	-rm  -fr $(DOCUMENT).tex
+	-rm  $(DOCUMENT).tex
 	-rm  $(DOCUMENT)_slide.tex
 	-rm  $(DOCUMENT)2.html
 	-rm  $(DOCUMENT).ps
@@ -584,6 +928,7 @@ clean-temp:
 	-rm  *.ind
 	-rm  *.fax
 	-rm  *.tns
+	-rm check.txt
 
 
 
@@ -617,9 +962,10 @@ rename:
 	@echo "Edit the DOCUMENTNEWNAME variable at the end of the makefile (no space please)"
 	@echo "(current document name to replace is $(DOCUMENT))"
 	@echo "(current document new name is $(DOCUMENTNEWNAME))"
+	@echo "(We will keep the older $(DOCUMENT).t2t as a reference)"
 	@echo "press a key to start"
 	@read PAUSE
-	-mv $(DOCUMENT).t2t $(DOCUMENTNEWNAME).t2t
+	-cp -i $(DOCUMENT).t2t $(DOCUMENTNEWNAME).t2t
 	-mv $(DOCUMENT).sty $(DOCUMENTNEWNAME).sty
 	-mv $(DOCUMENT).css $(DOCUMENTNEWNAME).css
 	-mv $(DOCUMENT).jpg $(DOCUMENTNEWNAME).jpg

@@ -13,7 +13,8 @@ class ImageExt
 	var $quality = 85;
 	var $imgs = array();
 
-	function ImageExt()
+	//function ImageExt()
+	function __construct()
 	{
 		$this->dir = $GLOBALS["VAR_DIR"] . "images/";
 	}

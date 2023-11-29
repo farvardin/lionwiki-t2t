@@ -7,7 +7,7 @@
  * Both are used for classical editing, Ajax editing and comments.
  *
  * (c) 2009, Adam Zivner, <adam.zivner@gmail.com>. GPL'd
- *     modified in 2013 by Eric Forgeot for using with txt2tags
+ *     modified in 2013-2023 by Eric Forgeot for using with txt2tags
  */
 
 class BetterEditor
@@ -23,7 +23,8 @@ class BetterEditor
 	var $basic_toolbar_html; // used for comments
 	var $advanced_toolbar_html; // used for page editing
 
-	function BetterEditor()
+	//php<8.0// function BetterEditor()
+	function __construct()
 	{
 		$this->localize();
 
@@ -57,6 +58,7 @@ class BetterEditor
 ' . ($GLOBALS["NO_HTML"] ? "" : '<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'{html}\', \'{/html}\', \''.$this->TP_HTML[2].'\');" title="'.$this->TP_HTML[1].'">'.$this->TP_HTML[0].'html</a>') . '
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\n- \', \'\', \''.$this->TP_ULIST[2].'\');" title="'.$this->TP_ULIST[1].'">'.$this->TP_ULIST[0].'list</a>
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'|| \', \' |\', \''.$this->TP_TABLE[2].'\');" title="'.$this->TP_TABLE[1].'">'.$this->TP_TABLE[0].'table</a>
+	<a class="toolbarTextareaItem" href="javascript:" onclick="getDate(); insertDate(this, \'=== \', \' ===\', \''.$this->TP_TABLE[2].'\');" title="'.$this->TP_DATE[1].'">'.$this->TP_DATE[0].'date</a>
 </span>';
 	}
 

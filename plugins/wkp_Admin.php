@@ -24,7 +24,8 @@ class Admin
 	var $expire_login = 7200;
 	var $dir;
 
-	function Admin()
+	 function Admin()
+	//function __construct()
 	{
 		global $self;
 

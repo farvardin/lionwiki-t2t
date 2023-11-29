@@ -10,9 +10,7 @@
 		<link rel="icon" href="templates/favicon.png" type="image/png" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="templates/minimaxing/5grid/core.css" />
-		<link rel="stylesheet/less" href="templates/minimaxing/minimaxing.less" />
 		
-		<script src="templates/js/less.js" type="text/javascript"></script>
 		
 		<!-- for txt2tagsjs --> 
 		<script type="text/javascript" src="txt2tags.js"></script>
@@ -34,6 +32,17 @@
 		
 		<link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css" />
 		<link rel="stylesheet" type="text/css" href="markitup/sets/txt2tags/style.css" />
+		
+		<!--<link rel="stylesheet" href="templates/minimaxing/minimaxing.css" />-->
+		<link rel="stylesheet/less" href="templates/minimaxing/minimaxing.less" />
+		<script src="templates/js/less.js" type="text/javascript"></script>
+		
+		
+		<!-- Remove "alternate" in one of the style to make it default -->
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme01 (Brick Red)" href="templates/minimaxing/minimaxing_theme01.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="theme02 (Marron)" href="templates/minimaxing/minimaxing_theme02.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="terminal solarized" href="templates/minimaxing/terminal_solarized.css" />
+		
 		<script type="text/javascript" >
 <!--
 $(document).ready(function()	{
@@ -125,7 +134,7 @@ $(document).ready(function()	{
 				<td colspan="2" style="text-align: right;" ><small>{SHOW_PAGE}<br/>{SYNTAX}</small></td>
 			</tr>
 			<tr>
-				<td colspan="3">{CONTENT_TEXTAREA}</td>
+				<td colspan="3"><!--{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}<br/><br/>-->{CONTENT_TEXTAREA}</td>
 			</tr>
 			<tr>	
 				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}<br/>{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}<br/>{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
@@ -148,7 +157,8 @@ $(document).ready(function()	{
 					<div id="copyright">
 					{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} 
 					<br />
-						Design CC-BY-SA based on <a href="http://n33.co/">n33</a>. Powered by <a href="https://sourceforge.net/p/lionwiki-t2t/code/">LionWiki-t2t</a> 
+						Design CC-BY-SA based on <a href="https://html5up.net/minimaxing">Minimaxing</a>. Powered by <a href="https://sourceforge.net/p/lionwiki-t2t/code/">LionWiki-t2t</a> 
+					<br /> {RSS}
 					</div>
 
 				</div>

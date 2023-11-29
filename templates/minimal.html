@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-	<meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
 	<style type="text/css">
 * {
@@ -15,8 +16,8 @@
 body {
   color: #586e75;
   background-color: #fefefe;
-  font-size: 14px;
-  line-height: 115%;
+  font-size: 16px;
+  line-height: 125%;
   padding: 10px 20px 20px 20px;
 }
 a {
@@ -108,20 +109,23 @@ hr {
   border-top: 1px solid #586e75;
 }
 ul {
-  padding: 5px 0px 5px 20px;
+  padding: 5px 5px 5px 20px;
+  margin: 2px;
 }
 ol {
-  padding: 5px 0px 5px 20px;
+  padding: 5px 5px 5px 20px;
+  margin: 2px;
+}
+li {
+	margin-left: 15px;
 }
 table {
-  text-align: left;
   border-collapse: collapse;
   border-spacing: 2px;
   margin: 10px ;
   padding: 10px ;
 }
 table.main {
-  text-align: left;
   margin: 0px ;
   padding: 0px ;
 }
@@ -131,7 +135,6 @@ td {
   margin: 5;
   vertical-align: top;
   /*border: 1px solid @fg;*/
-  text-align: left;
 }
 th {
   background-color: #ffffff;
@@ -142,7 +145,6 @@ th.main {
   margin: 0;
   vertical-align: top;
   border: 0px ;
-  text-align: left;
   background-color: #fdf6e3;
 }
 .error {
@@ -250,6 +252,60 @@ textarea {
   text-decoration: none;
 }
 
+progress {  color: #586e75;  background-color: #eee;  border-radius: 0px; border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #586e75;}
+progress::-webkit-progress-value {  background: #586e75;}
+progress::-webkit-progress-bar {  background: #586e75;}
+
+
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #586e75;
+  background-color: #586e75;
+  height: 50px;
+  margin: 5px;
+  font-size: 16px;
+  color: #BBB;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding:  0px;
+  height: 46px;
+  line-height:46px;
+  color: #DDD;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+.block:hover, .block:hover a{
+  background-color: #fdf6e3;
+  color: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {    filter: invert(100%) hue-rotate(180deg);  }
+  html {    background-color: #111;  }
+  img, video, iframe {    filter: invert(100%) hue-rotate(180deg);  }
+  .logo2 {    filter: invert(90%) hue-rotate(260deg);  }
+  .icon {    filter: invert(15%) hue-rotate(180deg);  }
+  pre {    filter: invert(6%);  }
+  li::marker {    color: #555;  }
+}
+
+
+
 	</style>
 	
 
@@ -263,7 +319,7 @@ textarea {
 </tr>
 <tr><th colspan="3" class="main"><hr/><h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1></th></tr>
 <tr>
-	<td id="mainContent" colspan="3"  class="main>
+	<td id="mainContent" colspan="3"  >
 		{<div style="color:#F25A5A;font-weight:bold;"> ERROR </div>}
 		{CONTENT} {plugin:TAG_LIST}
 		{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br/><br/>} {CONTENT_TEXTAREA}
@@ -273,9 +329,9 @@ textarea {
 </tr>
 <tr><td colspan="3"  class="main><hr/></td></tr>
 <tr>
-	<td class="main><div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div></td>
-	<td class="main">Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>. {LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}</td>
-	<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
+	<td class="main><hr/><div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div><hr/><br/>{LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}<br/>Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>. </br>{EDIT} {SYNTAX} {HISTORY}</td>
+	<td class="main"></td>
+	<td style="text-align:right"></td>
 </tr>
 </table>
 </body>

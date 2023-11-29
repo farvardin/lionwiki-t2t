@@ -43,13 +43,14 @@ function verifie_email($email)
         { return "$email : Email too long. <br/>";}
 	if (empty($email))
 		{ return "You havent entered your email. <br/>"; }
-	if (!ereg("@",$email))
+	//if (!ereg("@",$email))
+	if (preg_match('/#^((?!@).)*$#',$email))
 		{ return "$email : email should have an arobase (@). <br/>"; }
 	if (preg_match_all("/([^a-zA-Z0-9_\@\.\-])/i", $email, $trouve))
 		{ return "$email : forbidden character found in email adress (".implode(", ",$trouve[0])."). <br/>"; }
 	if (!preg_match("/^([a-z0-9_]|\\-|\\.)+@(([a-z0-9_]|\\-)+\\.)+[a-z]{2,4}\$/i", $email))
 		{ return "$email : email is not valid (name@hostname.com).  <br/>"; }
-	list($compte,$domaine)=split("@",$email,2);
+	list($compte,$domaine)=preg_split("/@/",$email,2);
  /* if (!checkdnsrr($domaine,"MX")) { return "$email : Ce domaine ($domaine) n'accepte pas les emails. <br/>"; }*/
 
  return $email;
@@ -79,7 +80,8 @@ if (strlen($message)>10000)
 $err=$err." Your message is too long. 10000 chars maximum<br/>";
 
 // test du code de verification
-if (!eregi("(dog)|(cat)|(wolf)|(bird)|(fish)",$verif))
+//if (!eregi("(dog)|(cat)|(wolf)|(bird)|(fish)",$verif))
+if (preg_match('/(dog)|(cat)|(wolf)|(bird)|(fish)/',$verif) == false)
 $err=$err."$verif : The verification code is not correct<br/>"; 
 
 

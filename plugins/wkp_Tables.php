@@ -54,6 +54,7 @@ class Tables {
 
 		if($nblinks > 0)
 			$s = preg_replace_callback(array_fill(0, $nblinks, "/\[LINK\]/"), create_function('$m', 'global $matches_links;static $idxlink=0;return "[".$matches_links[1][$idxlink++]."]";'), $s);
+			//TODO PHP 8.1// $s = preg_replace_callback(array_fill(0, $nblinks, "/\[LINK\]/"), function('$m') {global $matches_links;static $idxlink=0;return [".$matches_links[1][$idxlink++]."];)}, $s);
 
 		return stripslashes($s);
 	}

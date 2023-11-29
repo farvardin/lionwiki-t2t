@@ -4,11 +4,13 @@ This is the __sandbox__ page.
 
 You can [edit index.php?page=sandbox&action=edit] it using the **txt2tags** markup. The password is simply "__demo__".
 
+{LIONWIKITOC}
 
+test012
 
 == Warning ==
 
-All those //demos// websites will be automatically reset every day.
+All those //demos// websites might be automatically reset every day.
 
 
 == Sample ==
@@ -29,9 +31,43 @@ Here is [[your_page]].
  - sublist 
 
 
+[ ] checkbox sample
+[ ] checkbox completed
+[x] checkbox test 2
+[x] checkbox test 3
+[X] checkbox test 3 (big X)
+[ ] checkbox test 4
+
+[v] checkbox completed
+[*] checkbox completed (alternative)
+
+[] checkbox sample 2 no space
+
+
+
 + ord list
 + ord 2
 
+
+
+test table:
+
+
+
+|| title | title | title | title | title |
+ | item | item | item | item | item |
+ | item | item | item | item | item |
+
+
+
+
+pre-zone:
+
+```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+
+Sed non risus.
+```
 
 
 test image hotlink:
@@ -54,21 +90,36 @@ Center [var/upload/text-x-txt2tags-icon-alone.png] aligned
 Right aligned [var/upload/text-x-txt2tags-icon-alone.png]
 
 
+This one is a very long word (like some URL can be), to test how it breaks: sdfsrdssdflkjsdflksjdfgmqksjdfqslfksdfklsjfdmqlksdjfqlfjksqmfdklsjflksdmlskjfdsmlkfdsjmfdkljsdflksjfdmlsjkdfslkdjfsqlfdkjsmlfdkjsdf
+
+and also in lists:
+
+- Long line:  sdfsrdssdflkjsdflksjdfgmqksjdfqslfksdfklsjfdmqlksdjfqlfjksqmfdklsjflksdmlskjfdsmlkfdsjmfdkljsdflksjfdmlsjkdfslkdjfsqlfdkjsmlfdkjsdf
+
 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Pst canata tari est paroy malardi dalr sahit ya kho ral labass erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna. Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
 
 
 
-Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
+- Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse, cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate imperator Mediolanum ad hiberna discessit.
 
-Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
+- Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper adsit, cunctatio absit; consilium vero dare audeamus libere. Plurimum in amicitia amicorum bene suadentium valeat auctoritas, eaque et adhibeatur ad monendum non modo aperte sed etiam acriter, si res postulabit, et adhibitae pareatur.
 
-Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
-
-
+ - Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
 
 
+
+
+== Links ==
+
+- [[first link|help.en]] | [[second link | help.fr]]
+
+- [[first link|help.en]]|[[second link|help.fr]]
+
+- [[first link | help.en]] | [[second link | help.fr]]
+
+- [[Help | help.en]]
 
 
 
@@ -79,9 +130,92 @@ Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicoru
 Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
 
 
+## test level 2 b in markdown
+
+test [markdown link](http://ddg.gg)
+
+
+
+=== Cassandre Kalimba tab ===
+
+@@small@@
+```
+   |     |     |   | 5   |     |       ....  
+   |     |     |   | 5   |     |       ..  
+   |     |     |   | 5   |     |       ..  
+   |     |     |   | 5   |     |       ....  
+   |     |     |   | 5   |     |       ....  
+   |     | 6   |   |     |     |       .  
+   |     |     |   |   7 |     |       .  
+   |     1°    |   |     |     |       ..  
+   |     |     |   | 5   |     |       ..  
+   |     | 6   |   |     |     |       ..  
+   |     |     |   3     |     |       ....  
+   |     |     |   3     |     |       ....  
+   |     1°    |   |     |     |       ....  
+   |     | 6   |   |     |     |       ..  
+   |     | 6   |   |     |     |       ..  
+   |     |     |   |   7 |     |       ....  
+   |     |     |   | 5   |     |       ..  
+   |     |     |   | 5   |     |       ..  
+   |     | 6   |   |     |     |       ..  
+   |     | 6   |   |     |     |       ..  
+   |     |     |   | 5   |     |       ..  
+   |     | 6   |   |     |     |       ..  
+   |     |     |   3     |     |       ...  
+   |     |     |   3     |     |       .  
+   |     |     |   | 5   |     |       ..  
+   |     |     |   | 5   |     |       ..  
+   |     |     | 1 |     |     |       ....  
+   |     |     | 1 |     |     |       ....  
+   |     |     2   |     |     |       .  
+   |     |     |   3     |     |       .  
+   |     |   4 |   |     |     |       ..  
+   |     |     2   |     |     |       ..  
+   |     |     |   3     |     |       ..  
+   |     | 6   |   |     |     |       ....  
+   |     | 6   |   |     |     |       ....  
+```
+@@/small@@
+
+
+
 === Sample 3 ===
 
 Nec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.
 
 
- 
+- progression bar: [25%]
+
+
+- button:
+
+
+@@BUTTON(test)@@
+
+
+@@BUTTON([link http://ddg.gg])@@
+
+
+%TAGz-test
+
+
+% #TAGLIST
+
+#TAGCLOUD
+
+%{tags:test1}
+
+(#test2)
+
+(#test3)
+(#admin)
+(#truc )
+
+(#jazz, machin, rock)
+
+%{tags:spam, plugin, userguide, t2t}
+
+
+
+%{tags:trucmuche}

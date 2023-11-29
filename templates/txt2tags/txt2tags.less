@@ -11,6 +11,7 @@
 @MainFontCode: Monospace,Courier;
 @MainFontFamilyEdit: Archivo Narrow,sans-serif;
 
+@font: @MainFontFamily;
 
 
 /*
@@ -36,10 +37,6 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 
 @button-radius: 6px;
 
-.generateColor() { /* define mixin */
-@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
-}
-.generateColor(); /* call the mixin which sets the variable once */
 
 
 /* This line below will use a random main color: */
@@ -49,6 +46,11 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 /* @MainColor: #549136; */
 @MainColor: #66CC66; 
 /*@MainColor: #549136;*/
+
+
+@fg: @MainColor;
+@bg: #fefefe;
+
 
 /* Header color */
 
@@ -1127,3 +1129,107 @@ a.toolbarTextareaItem b  {
 		}
     
 }
+
+
+/* Progress bar */
+
+
+progress {
+  color: @HeaderColor;
+  background-color: white;
+  /*border-radius: 4px; */
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+}
+
+
+progress::-moz-progress-bar {
+  background: @HeaderColor;
+}
+
+
+progress::-webkit-progress-value {
+  background: @HeaderColor;
+}
+
+progress::-webkit-progress-bar {
+  background: #fff;
+}
+
+
+/* Big buttons */
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid @HeaderColor;
+  background-color: @HeaderColor;
+  height: 50px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: @font;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 16px;
+  color: @Bg-extra-light;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+  /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
+
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding:  0px;
+
+  padding-top : 0px;
+  height: 46px;
+  line-height:46px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+/*.block:hover, */
+.block a:hover {
+  /*border: 2px solid @HeaderColor;*/
+  background-color: #fff;
+  color: @HeaderColor;
+    margin-left: -2px;
+  margin-right: -2px;
+    padding-left: 2px;
+  padding-right: 2px;
+}
+
+@media only screen and (max-width:999px) and (min-width:01px) {
+.block { width: 90%;}
+}
+
+
+/* Todotxt support */
+
+
+.todotxt_A { color: darken(@fg,5%);}
+.todotxt_B { color: desaturate(lighten(spin(@fg, 30),5%),20%); }
+.todotxt_C { color: desaturate(lighten(spin(@fg, 60),10%),30%); }
+.todotxt_D { color: desaturate(lighten(spin(@fg, 90),15%),40%); }
+.todotxt_E { color: desaturate(lighten(spin(@fg, 120),20%),45%); }
+.todotxt_F { color: desaturate(lighten(@fg,25%),50%); }
+
+
+.todotxt_context { color: spin(@fg, 180); }
+.todotxt_tag { color: spin(@fg, 90); }
+.todotxt_deleted {opacity: 0.4; }
+.todotxt_date {background-color:darken(@bg,5%); }
+
+
+
+

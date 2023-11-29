@@ -1,3 +1,21 @@
+ 
+
+/*-----------------------
+
+	--------------
+	- Minimaxing -
+	--------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    https://html5up.net/minimaxing
+    licence Creative Commons Attribution 3.0 Unported
+    http://creativecommons.org/licenses/by/3.0/
+	
+----------------------------*/
 
 
 /* This CSS file was generated from the minimaxing.less template. 
@@ -6,10 +24,10 @@
 
 
 
-@MainFontFamily:  Open Sans,MyManuscript,MyFont, Ubuntu, sans-serif;
-@MainFontFamilyHeader: Open Sans Condensed,MyManuscript,MyFont,LoveYaLikeASister,Ubuntu Condensed, sans-serif;
-@MainFontCode: Monospace,Courier;
-@MainFontFamilyEdit: Open Sans,MyManuscript,MyFont,Ubuntu,sans-serif;
+
+
+@MainFontCode: Monospace;
+@fontEdit: @font;
 
 /*
 Use the part above to customise your fonts.
@@ -34,62 +52,93 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 
 @button-radius: 6px;
 
-.generateColor() { /* define mixin */
-@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
-}
-.generateColor(); /* call the mixin which sets the variable once */
-
+/* define mixin */
+/* we disable it as it's sometimes a problem with lesscss
+.generateColor() { 
+	@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
+	}
+.generateColor(); 
+*/
 
 /* This line below will use a random main color: */
- /* @MainColor: @background-color; */
+/* @fg: @background-color; */
 
 /* if you prefer to select a fixed background color, just uncomment one color from below */
-/* @MainColor: #549136; */
-/*@MainColor: #7E2434;*/ 
-@MainColor: #7e3821;
-/*@MainColor: #549136;*/
-/*@MainColor: #549136;*/
-/*@MainColor: #D17732;*/
-@MainColor: #328cc1;
 
+// @fg: #549136;     /* Green */
+// @fg: #7E2434;     /* Bordeaux */
+// @fg: #7e3821;     /* Brick Red (darker) */
+// @fg: #D17732;     /* Orange */
+// @fg: #328cc1;     /* Light Blue */
+// @fg: #847457;     /* Marron */
+
+/* For YunoHost config */
+/* @fg: #__YNH_COLOR__; */
+
+
+ 
 /* Header color */
 
 /* You can use a shade of MainColor: */
-@HeaderColor: (@MainColor - #111); 	
+@HeaderColor: (@fg - #111); 	
 
 /* or a complementary color: */
-/*@HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); */
-@HeaderColor: spin(@MainColor, 180); 
+/*@HeaderColor: (#ffffff - @fg - (#ffffff - @fg)/3); */
+@HeaderColor: spin(@fg, 180); 
 
 
-@MainFontColor: (#878e83 - #111);
+@MainFontColor: (#878e83 - #222);
 @MainFontSize: (14pt - 2);
 
 @RedBrick: #7F4736;
 
-/* used in max-width (should be renamed) */
-@BackgroundMain: (#999 + (@MainColor/6));
-@Bg-dark: (@BackgroundMain - #121212);
-@Bg-light: (@BackgroundMain + #121212);
-@Bg-extra-light: (@BackgroundMain + #343434);
-
-@MainColor-light: (@MainColor + #111);
-
-@Main2Color: @MainColor;
-
-@LinkColor: (@MainColor-light + #010101);
-
-@BackgroundHead: @MainColor-light;
 
 
 
-@Background2Head: @MainColor;
-@Background3Head: @MainColor;
-@Background4Head: @MainColor;
-@BackgroundNav: @MainColor;
-@MainColor-light: @MainColor;
-@shadow: @MainColor;
+@fg-light: (@fg + #111);
+
+@Main2Color: @fg;
+
+@LinkColor: (@fg-light + #010101);
+
+@BackgroundHead: @fg-light;
+
+
+
+@Background2Head: @fg;
+@Background3Head: @fg;
+@Background4Head: @fg;
+@BackgroundNav: @fg;
+@fg-light: @fg;
+@shadow: @fg;
 @buttonboxshadow: 0.0;
+
+
+
+
+
+/* templates */
+
+@fg: #7e3821;       /* Brick Red (darker) Default color 2021 */
+@bg: #fff;
+@bg2: @fg;
+@glow: none;
+@link: @fg;
+@link-hover: @bg;
+@link-visited: @fg;
+@heading: @fg;
+@heading-weight: bold;  /* normal or bold */
+@font: Ubuntu;
+@font-heading: Fengardo Neue; 
+
+
+@Bg-dark: (@fg - #121212);
+@Bg-light: (@fg + #121212);
+@Bg-extra-light: (#999 + (@fg/6) + #343434 + #121212);
+
+
+/* overriding default values above */
+@import "minimaxing_temp.less";
 
 
 
@@ -101,108 +150,27 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 */
 
 
-@font-face {
-    font-family: MyFont;
-    font-style: normal;
-    font-weight: 400;
-    src: url(../fonts/MyFont.ttf) format('truetype');
-}
-@font-face {
-    font-family: MyManuscript;
-    font-style: normal;
-    font-weight: 400;
-    src: url(../fonts/MyManuscript.ttf) format('truetype');
-}
-@font-face {
-    font-family: LoveYaLikeASister;
-    font-style: normal;
-    font-weight: 400;
-    src: url(../fonts/LoveYaLikeASister-Regular.woff) format('woff');
-}
-@font-face {
-    font-family: 'Ubuntu Condensed';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Ubuntu Condensed'),local('UbuntuCondensed-Regular'),url(../fonts/ubuntu-condensed-regular.woff) format('woff');
-}
-/*@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Open Sans Light'),local('OpenSans-Light'),url(../fonts/OpenSans-Light.woff) format('woff');
-}*/
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Open Sans'),local('OpenSans'),url(../fonts/OpenSans.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Open Sans Semibold'),local('OpenSans-Semibold'),url(../fonts/OpenSans-Semibold.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Open Sans Bold'),local('OpenSans-Bold'),url(../fonts/OpenSans-Bold.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 800;
-    src: local('Open Sans Extrabold'),local('OpenSans-Extrabold'),url(../fonts/OpenSans-Extrabold.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 300;
-    src: local('Open Sans Light Italic'),local('OpenSansLight-Italic'),url(../fonts/OpenSansLight-Italic.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Open Sans Italic'),local('OpenSans-Italic'),url(../fonts/OpenSans-Italic.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 600;
-    src: local('Open Sans Semibold Italic'),local('OpenSans-SemiboldItalic'),url(../fonts/OpenSans-SemiboldItalic.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 700;
-    src: local('Open Sans Bold Italic'),local('OpenSans-BoldItalic'),url(../fonts/OpenSans-BoldItalic.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 800;
-    src: local('Open Sans Extrabold Italic'),local('OpenSans-ExtraboldItalic'),url(../fonts/OpenSans-ExtraboldItalic.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans Condensed';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Open Sans Condensed Bold'),local('OpenSans-CondensedBold'),url(../fonts/OpenSans-CondensedBold.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans Condensed';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Open Sans Cond Light'),local('OpenSans-CondensedLight'),url(../fonts/OpenSans-CondensedLight.woff) format('woff');
-}
-@font-face {
-    font-family: 'Open Sans Condensed';
-    font-style: italic;
-    font-weight: 300;
-    src: local('Open Sans Cond Light Italic'),local('OpenSans-CondensedLightItalic'),url(../fonts/OpenSans-CondensedLightItalic.woff) format('woff');
-}
+
+
+@import "../css/font_ubuntu.less";     /* Ubuntu            */
+@import "../css/font_fengardo.less";   /* Fengardo Neue     */
+
+
+
+// @import "../css/font_opensans.less";   /* Open Sans         */
+// @import "../css/font_archivo.less";    /* Archivo Narrow    */
+// @import "../css/font_loveya.less";     /* LoveYaLikeASister */
+// @import "../css/font_myfont.less";     /* MyFont            */  /* MyManuscript */
+
+
+
+
+
+
+
+
+
+
 
 /*
 	Minimaxing 1.0 by nodethirtythree design
@@ -212,6 +180,9 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 	
 	Based also on the work from http://wiki.lapetitesissone.fr/index.php?page=Lionwiki
 */
+
+
+
 
 
 /* LionWiki specific */
@@ -259,9 +230,18 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 }
 .contentTextarea {
     width: 90%;
-    font-family: @MainFontFamilyEdit;
+    font-family: @fontEdit;
     font-size: 105%;
 }
+
+.markItUpEditor 
+{
+    width: 90%;
+    font-family: @fontEdit;
+    color: #444;
+    font-size: 140%;
+}
+
 #diff {
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -379,68 +359,97 @@ th, thead, #previewPane th, #previewPane thead {
 /******************************************************************/
 
 
+
+/* Mixin Macro */
+
+.break {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
+	
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}	
+
+
+
 body {
     font-size: @MainFontSize;
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
     /*background-color: (@Bg-extra-light/1.1 + #111);*/
-	background: #fff;
-    font-family: @MainFontFamily;
+	background-color: @bg;
+    font-family: @font;
     color: @MainFontColor;
 }
 
 #header h1 {
     color: #fff;
-    margin: 0;
-    padding: 0;
+    margin: 2px;
+    padding: 2px;
     border: none;
 }
 h1, h2, h3, h4 {
-    font-family: @MainFontFamilyHeader;
+    font-family: @font-heading;
     text-transform: uppercase;
     color: @HeaderColor;
     font-weight: bold;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    padding-left: 2px;
+    padding-right: 2px;
 }
-h1, h2 {
+ h2 {
     border-bottom: 1px solid grey;
 }
 h1 {
-    font-size: 155%;
+    /*font-size: 2.6em;*/
+    font-size: clamp(2em, 4vw, 6em);
+    text-align: center;
+    text-decoration: none;
 }
 h1 a {
     color: @HeaderColor;
 }
 #header-wrapper h1 {
-	color: #fff;
+	color: @bg;
     line-height: 1.3em;
 	border-bottom: none;
 }
 #header-wrapper {
-    color: (@MainColor-light + #111);
+    color: (@fg-light + #111);
 }
 #header-wrapper a {
-    color: (@MainColor-light + #222);
+    color: (@fg-light + #222);
 }
 #header-wrapper a:hover, #header-wrapper a:hover{
-    background-color: @MainColor-light;
-    color: (@MainColor - #444);
+    background-color: @fg-light;
+    color: (@fg - #444);
 }
 #header nav {
-    color: #111;
+    color: @bg;
     text-transform: lowercase;
 }
 #header nav a, #header nav li a {
     display: inline-block;
     text-decoration: none;
-    color: #fff;
+    color: @bg;
 }
 #header nav li a:hover, #header nav li a:active {
     background-color: #fff;
     border-radius: @button-radius;
-    color: #111;
+    color: @fg;
 }
 h2 {
     font-size: 1.6em;
-    letter-spacing: -1px;
+    letter-spacing: 1px;
     margin-bottom: 0.0em;
     margin-top: 1.8em;
 }
@@ -457,9 +466,14 @@ h4 {
 }
 p, ul {
     margin-bottom: 1.0em;
+    .break();
 }
 p {
     line-height: 1.7em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 
@@ -478,27 +492,32 @@ s {
 }
 
 ::selection {
-	background: @MainColor; 
-	color: #fff;
+	background: @fg; 
+	color: @bg;
 	}
 	
 ::-moz-selection {
-	background: @MainColor; 
-	color: #fff;
+	background: @fg; 
+	color: @bg;
 }
 
 pre {
     background-color: (@Bg-extra-light + #121212);
     line-height: 1.5em;
-    font-family: mono;
+    font-family: @MainFontCode;
+    font-size: @MainFontSize - 1em;
     margin: 1.0em;
+    overflow:auto;
 }
 
 code, blockquote, dt {
     background-color: (@Bg-extra-light + #121212);
-    line-height: 1.5em;
-    font-family: mono;
+    //background-color: (@bg + #121212);
+    //line-height: 1.5em;
+    font-family: @MainFontCode;
+    font-size: @MainFontSize - 1em;
     /*margin: 1.0em;*/
+    overflow:auto;
 }
 
 dd {
@@ -518,7 +537,7 @@ img {
     max-width: 50%;
     max-height: 500px;
     padding:1px;
-    border: solid 1px (@MainColor + #222);
+    border: solid 1px (@fg + #222);
     /*display: block;*/
     /*margin: 0 auto;*/
 }
@@ -538,6 +557,15 @@ img.noborder {
 		z-index: 10;
 	}
 	
+.img-circle {
+        border-radius: 50%;
+        border: solid 0px ;
+        min-width:100px;
+        max-width:200px;
+        background: @HeaderColor; 
+    }
+
+
 ol, ul {
 
 }
@@ -548,10 +576,13 @@ li {
 
 /* If you don't like color highlight when you're over a list, comment the next 2 entries */
 #main ul:hover {
-    background-color: (@Bg-extra-light + #343434);
+  //  background-color: (@Bg-extra-light + #343434);
+    background-color: @bg;
 }
 #main ul li:hover, ul li:active {
-    background-color: (@Bg-light + #343434);
+   // background-color: (@Bg-light + #343434);
+    background-color: (@bg + #111);
+    background-color: @Bg-extra-light;
 }
 
 a {
@@ -561,7 +592,9 @@ a {
 a:hover {
     text-decoration: none;
     background-color: (@Bg-light + #232323);
-    border-radius: (@button-radius - 2);
+    //background-color: @bg;
+    //border-radius: (@button-radius - 2);
+    color: @bg;
 }
 * > p:last-child {
 }
@@ -594,19 +627,19 @@ ul.link-list li:first-child {
     border-radius: @button-radius;
     text-transform: lowercase;
     text-decoration: none;
-    color: #fff;
+    color: @bg;
     font-size: 1.0em;
     letter-spacing: -1px;
-    border: solid 1px @MainColor;
-    box-shadow: inset 0px 0px 0px 1px @MainColor-light;
+    border: solid 1px @fg;
+    box-shadow: inset 0px 0px 0px 1px @fg-light;
 }
 .button:hover, a.toolbarTextareaItem:hover {
-    background-color: (@MainColor + #111);
-    color: #fff;
+    background-color: (@fg + #111);
+    color: @bg;
 }
 
 a.toolbarTextareaItem b  {
-    color: #fff;
+    color: @bg;
 }
 
 #copyright {
@@ -634,11 +667,11 @@ a.toolbarTextareaItem b  {
 }
 
 .button_txt2tags_true, input.submit {
-	background-color: @MainColor;
+	background-color: @fg;
 	color: #fff;
 }
 .button_txt2tags_true:hover, input.submit:hover {
-	background-color: (@MainColor + #222);
+	background-color: (@fg + #222);
 }
 
 .button_txt2tags_false {
@@ -650,7 +683,7 @@ a.toolbarTextareaItem b  {
 }
 
 .valide {
-	color: @MainColor;
+	color: @fg;
 	background-color: (@Bg-extra-light/1.1);
 }
 .refuse {
@@ -689,8 +722,8 @@ a.toolbarTextareaItem b  {
         margin-top: 40px;
         padding: 0 40px 0 40px;
         border-radius: @button-radius;
-        border: solid 1px @MainColor;
-        box-shadow: inset 0px 0px 0px 1px @MainColor-light,0px 1px 4px 0px rgba(0,0,0,@buttonboxshadow);
+        //border: solid 1px @fg;
+        box-shadow: inset 0px 0px 0px 1px @fg-light,0px 1px 4px 0px rgba(0,0,0,@buttonboxshadow);
         height: 66px;
     }
     #header h1 {
@@ -698,7 +731,7 @@ a.toolbarTextareaItem b  {
         left: 10px;
         top: -28px;
         font-size: 2.4em;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
         /*line-height: 6px;*/ /* pb in konqueror*/
     }
     #header h1 a {
@@ -740,7 +773,7 @@ a.toolbarTextareaItem b  {
     #banner-wrapper h1 {
         text-align: center;
         font-size: 2.2em;
-        letter-spacing: 0px;
+        letter-spacing: 1px;
         text-decoration: none;
         border-top: 0px;
         border-bottom: 15px;
@@ -764,7 +797,7 @@ a.toolbarTextareaItem b  {
         font-size: 3.3em;
         color: #fff;
         text-align: center;
-        letter-spacing: -2px;
+        letter-spacing: 1px;
     }
     #banner span {
         display: block;
@@ -781,7 +814,7 @@ a.toolbarTextareaItem b  {
         opacity: 0.8;
     }
     #main {
-        background: #fff;
+        background-color: @bg;
         padding: 2% 0 2% 0;
         padding-top: -20px;
     }
@@ -839,9 +872,9 @@ a.toolbarTextareaItem b  {
         margin-top: 40px;
         padding: 0 40px 0 40px;
         border-radius: @button-radius;
-        border: solid 1px @MainColor-light;
-        box-shadow: inset 0px 0px 0px 1px @MainColor-light,0px 1px 4px 0px rgba(0,0,0,@buttonboxshadow);
-        background-color: @Background4Head;
+        // border: solid 1px @fg-light;
+        box-shadow: inset 0px 0px 0px 1px @fg-light,0px 1px 4px 0px rgba(0,0,0,@buttonboxshadow);
+        //background-color: @Background4Head;
         height: 66px;
     }
     #header h1 {
@@ -902,7 +935,7 @@ a.toolbarTextareaItem b  {
         font-size: 3em;
         color: #fff;
         text-align: center;
-        letter-spacing: -2px;
+        letter-spacing: 1px;
     }
     #banner span {
         display: block;
@@ -919,7 +952,7 @@ a.toolbarTextareaItem b  {
         opacity: 0.8;
     }
     #main {
-        background: #fff;
+        background-color: @bg;
         padding: 3% 0 3% 0;
 		margin-left: 8px;
 		margin-right: 4px;
@@ -1024,7 +1057,7 @@ a.toolbarTextareaItem b  {
         padding: 10px 25px 10px 25px;
     }
     #banner-wrapper {
-        background: @MainColor url(images/bg1.png);
+        background: @fg url(images/bg1.png);
         display: none;
     }
     #banner {
@@ -1046,7 +1079,7 @@ a.toolbarTextareaItem b  {
         font-size: 2em;
         color: #fff;
         text-align: center;
-        letter-spacing: -2px;
+        letter-spacing: 1px;
     }
     #banner span {
         display: block;
@@ -1070,15 +1103,15 @@ a.toolbarTextareaItem b  {
 
     .contentTextarea {
         width: 96%;
-        font-family: @MainFontFamily;
+        font-family: @font;
         font-size: 105%;
         padding: 0px;
-        margin-left: -15px;
+        margin-left: -0.25px;
     }
     
      #main {
         /*overflow: auto;*/
-		background: #fff;
+		background-color: @bg;
 		margin-left: 8px;
 		margin-right: 4px;
     }
@@ -1095,7 +1128,7 @@ a.toolbarTextareaItem b  {
 
 
 /* Use main color for tables */
-@TableColor: @MainColor ;
+@TableColor: @fg ;
 
 /* Use complementary color for tables */
 /*@TableColor: @HeaderColor;*/
@@ -1143,3 +1176,152 @@ font-weight: bold;
 .mycontent tr:hover td {
  background-color: (@TableColor + #111) /*rgba(16,80,112,0.3)*/
 }
+
+
+/* Progress bar */
+
+
+progress {
+  color: @HeaderColor;
+  background-color: white;
+  /*border-radius: 4px; */
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+  -webkit-appearance: none;
+}
+
+
+progress::-moz-progress-bar {
+  background: @HeaderColor;
+}
+
+
+progress::-webkit-progress-value {
+  background: @HeaderColor;
+}
+
+progress::-webkit-progress-bar {
+  background: white;
+}
+
+
+/* Big buttons */
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid @HeaderColor;
+  background-color: @HeaderColor;
+  min-height: 50px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: @font;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 16px;
+  color: @Bg-extra-light;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+  /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
+
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding:  0px;
+
+  padding-top : 0px;
+  min-height: 46px;
+  line-height:46px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+/*.block:hover, */
+.block a:hover {
+  /*border: 2px solid @HeaderColor;*/
+  background-color: #fff;
+  color: @HeaderColor;
+    margin-left: -2px;
+  margin-right: -2px;
+    padding-left: 2px;
+  padding-right: 2px;
+}
+
+@media only screen and (max-width:999px) and (min-width:01px) {
+.block { width: 90%;}
+}
+
+
+/* Todotxt support */
+
+
+.todotxt_A { color: darken(@fg,5%);}
+.todotxt_B { color: desaturate(lighten(spin(@fg, 30),5%),20%); }
+.todotxt_C { color: desaturate(lighten(spin(@fg, 60),10%),30%); }
+.todotxt_D { color: desaturate(lighten(spin(@fg, 90),15%),40%); }
+.todotxt_E { color: desaturate(lighten(spin(@fg, 120),20%),45%); }
+.todotxt_F { color: desaturate(lighten(@fg,25%),50%); }
+
+
+.todotxt_context { color: spin(@fg, 180); }
+.todotxt_tag { color: spin(@fg, 90); }
+.todotxt_deleted {opacity: 0.4; }
+.todotxt_date {background-color:darken(@bg,5%); }
+
+
+@media (prefers-color-scheme: dark) {
+  /* Invert all elements on the body while attempting to not alter the hue substantially. */
+  body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+
+  /* Workarounds and optical adjustments. */
+
+  /* Firefox workaround: Set the background colour for the html
+     element separately because, unlike other browsers, Firefox
+     doesn’t apply the filter to the root element’s background. */
+  html {
+    background-color: #111;
+  }
+
+  /* Do not invert media (revert the invert). */
+  img, video, iframe {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  
+  #header-wrapper {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  
+  h1, h2, h3, h4 {
+    color: @fg;
+}
+
+
+  
+  /* Improve contrast on icons. */
+  .icon {
+    filter: invert(15%) hue-rotate(180deg);
+  }
+
+  /* Re-enable code block backgrounds. */
+  pre {
+    filter: invert(6%);
+  }
+
+  /* Improve contrast on list item markers. */
+  li::marker {
+    color: #555;
+  }
+}
+

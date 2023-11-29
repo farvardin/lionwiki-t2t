@@ -20,7 +20,8 @@ class Txt2Tags
 	var $menu;
 	var $strings = array();
 	
-	function Txt2Tags()
+	//function Txt2Tags()
+	function __construct()
 	{
 		$this->localize();
 		$this->menu =		

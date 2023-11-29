@@ -223,3 +223,6 @@ That's all for now.
 [img/t2tpowered.png] ([%%infile %%infile])
 
 % vim: tw=55
+
+
+(#sample)

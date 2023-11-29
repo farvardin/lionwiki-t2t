@@ -28,7 +28,8 @@ class Menu
 
 	var $menus = array();
 
-	function Menu()
+	//function Menu()
+	function __construct()
 	{
 		$this->template_dir = $GLOBALS["PLUGINS_DIR"] . "Menu/";
 	}

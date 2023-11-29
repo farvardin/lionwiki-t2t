@@ -20,7 +20,9 @@ class UploadJS
 	var $chmod_dir = 0755;
 	var $chmod_file = 0644;
 
-	function UploadJS()
+	//function UploadJS()
+	// TODO php 8.1 replace with:
+	function __construct()
 	{
 		global $VAR_DIR, $self;
 

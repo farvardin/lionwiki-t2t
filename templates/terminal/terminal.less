@@ -1,86 +1,67 @@
+/*-----------------------
 
+	-------------
+	- Terminal  -
+	-------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on Terminal template
+	http://lionwiki.0o.cz/
+	licensed under GNU/GPL v2
+	
 
+	
+----------------------------*/
 
-
-/* B&W */
-@fg: black;
-@bg: white;
-@glow: none;
-@link: @fg;
-@link-hover: desaturate(darken(@fg,25%),40%);
-@link-visited: @fg;
-@heading: @fg;
 
 /* Green Terminal */
 @fg: #00CC00;
 @bg: black;
-//@glow: 0 0 3px darken(desaturate(@fg,15%),18%), 0 0 10px darken(desaturate(@fg,30%),35%);
+@bg2: black;
 @glow: none;
 @link: @fg;
-@link-hover: desaturate(darken(@fg,10%),20%);
+@link-hover: @bg;
 @link-visited: @fg;
 @heading: @fg;
+@heading-weight: bold;  /* normal or bold */
+@font: monospace;
+
+
+/* overriding default values above */
+
+@import "terminal_temp.less";
 
 
 
-/* Nord */
-// https://www.nordtheme.com/docs/colors-and-palettes
-@fg: @nord0; 
-@bg: @nord6;  
-@glow: none;
-@link: @nord10;  
-@link-hover: @nord12;
-@link-visited: @nord15; 
-@heading: @nord11;   
-  
-  
-/* Solarized light */
 
-@fg: #586e75;
-@bg: #fdf6e3;
-@glow: 0 0 3px lighten(desaturate(@fg,30%),40%), 0 0 10px lighten(desaturate(@fg,30%),50%);
-@glow: none;
-@link: @fg;
-@link-hover: desaturate(darken(@fg,25%),40%);
-@link-visited: @fg;
-@heading: @fg;
+/* Mixin Macro */
 
-/* Tron */
-@fg: #9bfafc;
-@bg: #050908;
-@fg: #aaece8;
-@bg: #0b1411;
-@glow: 0 0 3px darken(desaturate(@fg,30%),40%), 0 0 10px darken(desaturate(@fg,30%),40%);
-@link: @fg;
-@link-hover: desaturate(darken(@fg,25%),40%);
-@link-visited: @fg;
-@heading: @fg;
+.break {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
+	
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}	
 
-
-@nord0:  #2e3440; //  Polar Night darker blue
-@nord1:  #3b4252; //  Polar Night dark blue
-@nord2:  #434c5e; //  Polar Night less dark blue
-@nord3:  #4c566a; //  Polar Night lesser dark blue
-@nord4:  #d8dee9; //  Snow Storm medium 
-@nord5:  #e5e9f0; //  Snow Storm light
-@nord6:  #eceff4; //  Snow Storm ultra light
-@nord7:  #8fbcbb; //  Frost light blue 2
-@nord8:  #88c0d0; //  Frost light blue
-@nord9:  #81a1c1; //  Frost medium blue
-@nord10: #5e81ac; //  Frost dark blue
-@nord11: #bf616a; //  Aurora red
-@nord12: #d08770; //  Aurora orange
-@nord13: #ebcb8b; //  Aurora yellow
-@nord14: #a3be8c; //  Aurora Green
-@nord15: #b48ead; //  Aurora Purple
 
 
 
 *{
 	margin: 0;
 	padding: 0;
-	font-family: monospace;
+	font-family: @font;
 	text-shadow: @glow ;
 	max-width: 100%;
 }
@@ -99,26 +80,31 @@ a {
 	img {
 		border: 2px;
 	}
+	&:hover
+	{ text-decoration: none;
+	/*color: @link-hover;*/
+	color: @bg;
+	background-color: @fg;
+	/*background-color: @fg;*/
+	/*text-shadow: 0 0 6px darken(@glow,20%), 0 0 12px @glow ;*/
+	}
 }
 
-a:hover
-	{ text-decoration: none;
-	color: @link-hover;
-	background-color: lighten(@bg,20%);
-	//text-shadow: 0 0 6px darken(@glow,20%), 0 0 12px @glow ;
-	}
+
 
 a:visited
 	{ text-decoration: none;
-	color: @link-visited;
+	/*color: @link-visited;*/
 	}
 
 
 p {
 	margin: 5px 0 5px 0;
+	.break();
 }
+
 a.pending {
-	color: spin(@fg, 60);
+	/*color: spin(@fg, 60);*/
 }
 a.external {
 	&:after {
@@ -126,13 +112,13 @@ a.external {
 	}
 }
 pre {
-	border: 1px dotted @fg;
+	border: 1px dashed @fg;
 	padding: 4px;
 	overflow: auto;
 	margin: 3px;
 }
 img {
-	border: 2px;
+	border: 2px; margin:10px;
 }
 
 h1 {  
@@ -144,7 +130,7 @@ h1 {
 	line-height: 125%;
 	a {
 		&:hover {
-			color: @fg;
+			/*color: @bg;*/  /* already defined above */
 			
 		}
 		text-decoration: none;
@@ -182,13 +168,18 @@ hr {
 }
 ul {
 	padding: 5px 0px 5px 20px;
+	.break();
 }
 ol {
 	padding: 5px 0px 5px 20px;
 }
 
+li {
+	padding: 3px ;
+}
+
 table {
-	text-align: left;
+  text-align: left;
   border-collapse: collapse;
   border-spacing: 2px;
   margin: 10px ;
@@ -196,7 +187,7 @@ table {
 }
 
 table.main {
-	text-align: left;
+  text-align: left;
   margin: 0px ;
   padding: 0px ;
 }
@@ -210,7 +201,43 @@ td {
   text-align: left;
 }
 
-th { background-color: lighten(@bg,20%); }
+
+pre {
+	code {
+		display: block;
+		overflow: auto;
+	}
+}
+
+pre, blockquote {
+    padding-left: 20px;
+}
+
+pre {
+    //background-color: (@bg + #121212);
+    background-color: @fg;
+    color: @bg;
+    line-height: 1.5em;
+    font-family: Courier ;
+    font-size:  1em;
+    margin: 1.0em;
+}
+
+code, blockquote, dt {
+     background-color: @fg;
+    color: @bg;
+    //background-color: (@bg + #121212);
+    //line-height: 1.5em;
+    font-family: Courier ;
+    font-size: 1em;
+    /*margin: 1.0em;*/
+}
+
+
+
+/* th { background-color: lighten(@bg,20%); } */
+
+th { color: @bg; background-color: @fg; }
 
 td.main, th.main {
   padding: 0em;
@@ -326,4 +353,93 @@ textarea {
 	a {
 		text-decoration: none;
 	}
+}
+
+#headerLinks {list-style-type: none;}
+
+
+progress {  color: @fg;  background-color: @bg;  border-radius: 0px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: @fg;}
+progress::-webkit-progress-value {  background: @fg;}
+progress::-webkit-progress-bar {  background: @bg;}
+
+
+
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 1px solid @fg;
+  background-color: @bg;
+  min-height: 50px;
+  /*margin: 5px;*/
+	margin-top: 6px;
+	margin-bottom: 8px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: -2px;
+	padding-bottom: 0px;
+  font-size: 16px;
+  color: @fg;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+
+  border-radius: 0px;
+  
+	a {
+		display: inline-block;
+  		min-width: 100%;
+  		padding:  0px;
+
+  		padding-top : 0px;
+  		min-height: 46px;
+  		line-height:46px;
+  		color: @fg;
+  		text-decoration: none;
+  		border-radius: 0px;
+		&:hover {
+			background-color: @fg;
+  			color: @bg;
+    			margin-left: -2px;
+  			margin-right: -2px;
+    			padding-left: 2px;
+  			padding-right: 2px;
+  transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
+  
+		}
+	}
+}
+
+
+
+
+/* Todotxt support */
+
+
+.todotxt_A {color: darken(@fg,5%);}
+.todotxt_B { color:desaturate(lighten(spin(@fg, 30),5%),20%); }
+.todotxt_C { color: desaturate(lighten(spin(@fg, 60),10%),30%); }
+.todotxt_D { color: desaturate(lighten(spin(@fg, 90),15%),40%); }
+.todotxt_E { color: desaturate(lighten(spin(@fg, 120),20%),45%); }
+.todotxt_F { color: desaturate(lighten(@fg,25%),50%); }
+
+
+.todotxt_context { color: spin(@fg, 180); }
+.todotxt_tag { color: spin(@fg, 90); }
+.todotxt_deleted {opacity: 0.4; }
+
+
+
+@media (prefers-color-scheme: dark) {
+
+ body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  
+    html {
+    background-color: #111;
+  }
+
 }

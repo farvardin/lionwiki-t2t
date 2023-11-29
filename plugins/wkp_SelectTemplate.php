@@ -19,18 +19,29 @@ class SelectTemplate
 	);
 
 	var $tpls = array(
+		"templates/bootstrap/bootstrap.html" => "Bootstrap",
 		"templates/minimaxing/minimaxing.html" => "Minimaxing",
+		"templates/minimaxing/minimaxing_links.html" => "Minimaxing links",
 		"templates/ggp/ggp.html" => "GGP",
+		"templates/newspaper/newspaper.html" => "Newspaper",
 		"templates/ElectricObsidian/ElectricObsidian.html" => "ElectricObsidian",
 		"templates/literature/literature.html" => "Literature",
 		"templates/red.html" => "Red panel",
 		"templates/dandelion.html" => "Dandelion",
 		"templates/minimal.html" => "Minimal",
 		"templates/sissou.html" => "Sissou",
-		"templates/terminal/terminal.html" => "Tron terminal",
+		"templates/geek/geek.html" => "Geek",
+		"templates/terminal/terminal.html" => "New terminal",
 		"templates/terminal_green.html" => "Green terminal",
 		"templates/terminal_white.html" => "White terminal",
+		"templates/blazekiss/blazekiss.html" => "Blazekiss",
+		"templates/lagrange/lagrange.html" => "Lagrange",
 		"templates/light.html" => "Light",
+		"templates/simple.html" => "Simple",
+		"templates/cafe.html" => "Cafe",
+		"templates/brut/brut.html" => "Brut",
+		"templates/paper/paper.html" => "Paper",
+		"templates/mimoza/mimoza.html" => "Mimoza",
 		"templates/upload.html" => "Upload",
 		"templates/wikiss.html" => "WiKiss"
 	);

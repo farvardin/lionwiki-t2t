@@ -23,6 +23,26 @@ function insertSyntax(obj, otag, ctag, content)
 	txt.selectionEnd = txt.selectionStart + content.length;
 }
 
+function insertDate(obj, otag, ctag, content)
+{
+	var txt = findClosest("contentTextarea", obj);
+	
+
+	start = txt.selectionStart,
+	end = txt.selectionEnd;
+
+	txt.focus();
+
+	if(start != end)
+		content = txt.value.substring(start, end);
+		content = getDate();
+
+	txt.value = txt.value.substring(0, start) + otag + content + ctag + txt.value.substring(end);
+	txt.selectionStart = (txt.value.substring(0, start) + otag).length;
+	txt.selectionEnd = txt.selectionStart + content.length;
+}
+
+
 function findClosest(classname, node)
 {
 	do {
@@ -78,4 +98,18 @@ function getElementsByClassName(classname, node)
 			a.push(els[i]);
 
 	return a;
+}
+
+
+function getDate()
+{
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+	
+	return today;
+	
 }

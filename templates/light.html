@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
 	<style type="text/css">
 html{font:96% sans-serif;line-height:1.4;color:#333}
@@ -26,7 +27,7 @@ hr{height:0;border:none;color:#fff;background:transparent;border-bottom:1px soli
 #diff{outline:none;border:none;background:#fff;line-height:1.25;padding:1em;white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%}
 #diff ins{color:green;text-decoration:none;font-weight:bold}
 #diff del{color:red;text-decoration:line-through}
-hr{margin:10px 0 10px 0;height:0px;overflow:hidden;border:0px;border-top:2px solid #1474CA}
+hr{margin:10px 0 10px 0;height:0px;overflow:hidden;border:0px;border-top:1px solid #1474CA}
 .error{color:#F25A5A;font-weight:bold}
 form{display:inline}
 #contentTextarea{height:44em}
@@ -55,20 +56,36 @@ a.toolbarTextareaItem{padding-right: 10px}
 .hover-display:hover .hover-menu { display: inline; }
 .hover-display:hover { background-color: #aaa; }
 .hover-display { background-color: transparent; }
+
+.panel li { display: inline; }
+
+@media (prefers-color-scheme: dark) {
+  body {    filter: invert(100%) hue-rotate(180deg);  }
+  html {    background-color: #111;  }
+  img, video, iframe {    filter: invert(100%) hue-rotate(180deg);  }
+  .logo2 {    filter: invert(90%) hue-rotate(260deg);  }
+  .icon {    filter: invert(15%) hue-rotate(180deg);  }
+  pre {    filter: invert(6%);  }
+  li::marker {    color: #555;  }
+}
+
+
 	</style>
   {HEAD}
 </head>
 <body>
 <div id="wrapper">
-	<div id="header">{MENU}
+	<div id="header">
 		<div class="panel hover-display" style="position: fixed; width: 910px;z-index:1;">
 			<span class="hover-menu">
 				{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}
+				<hr/>{MENU}
 			</span>
 			
 		</div>
 		<div class="panel">
-			{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}  
+			{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}
+				<hr/>{MENU}
 		</div>
 	</div>
 	<div id="content">

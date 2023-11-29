@@ -1,11 +1,14 @@
 //Read this [[help in English | help.en]].//
 
 
-Lionwiki-t2t est un système de type wiki pour la création et l'entretien collectif de sites Internet.
+//Lire l'aide sur la [[syntaxe complète | help_syntax.fr]].//
 
-Les pages Lionwiki-t2t ont le même aspect et fonctionnent comme des pages Internet ordinaires, sauf qu'elles possèdent un lien pour « Éditer » ce qui permet de modifier ou d'ajouter facilement des pages à un site, en utilisant les règles d'édition de base (tout comme le fait le site http://fr.wikipedia.org)
 
-//Ce système contient quelques extensions pratiques et une syntaxe simplifiée.//
+Lionwiki-t2t est un système de type wiki pour la création et l'administration de sites Web.
+
+Les pages Lionwiki-t2t ont le même aspect et fonctionnent comme des pages Web ordinaires, sauf qu'elles possèdent un lien pour « Éditer » ce qui permet de modifier ou d'ajouter facilement des pages à un site, en utilisant les règles d'édition de base (tout comme le fait le site http://fr.wikipedia.org)
+
+//Ce système contient quelques extensions pratiques et une syntaxe simplifiée et customisable.//
 
  
 %%toc
@@ -15,9 +18,9 @@ Les pages Lionwiki-t2t ont le même aspect et fonctionnent comme des pages Inter
 
 L'édition des pages peut être réalisée par plusieurs auteurs. Pour éditer une page, cliquez simplement sur « Éditer » qui existe quelque part dans la page, habituellement dans l'en-tête ou le pied de page. Quelques pages peuvent être protégées par mot de passe, en fonction de la politique de sécurité, mais beaucoup de sites permettent la libre édition de pages.
 
-Le mot de passe par défaut de cette version du wiki est « demo ». Il est conseillé de le modifier par la suite, après installation (voir plus bas).
+Le mot de passe par défaut de cette version du wiki est « demo », sauf si vous l'avez défini vous-même lors d'une installation de type YunoHost. Vous pouvez modifier le mot de passe après l'installation (voir plus bas).
 
-Lorsque vous éditez une page, vous voyez les balises qui décrivent le contenu de la page. Le rendu final, avec le formatage choisi, ne s'affiche que lorsque la page en enregistrée.
+Lorsque vous éditez une page, vous voyez les balises qui décrivent le contenu de la page. Le rendu final, avec le formatage choisi, ne s'affiche que lorsque la page est enregistrée.
 
 
 % //note : à cause de certains particularismes de lionwiki, toute la syntaxe ne s'affiche pas forcément correctement//
@@ -26,21 +29,22 @@ Les règles de base pour le balisage de la page sont très simples :
 
 - Mettez une ligne vide entre chaque paragraphe.
 
-- Pour créer une liste d'éléments, commencez chaque ligne avec ``-`` pour une liste avec des puces ou ``+`` pour une liste numérotée.
+- Pour créer une liste d'éléments, commencez chaque ligne avec ``-`` pour une liste avec des puces 
+ou ``+`` pour une liste numérotée.
 
-- Pour faire des titres de sections, entourez ce titre par des =.
+- Pour faire des titres de sections, entourez ce titre par des ``=``.
 
-- Pour mettre en valeur du texte, procédez ainsi : ``""//texte//""`` pour la mise en italique ou ``""**texte**""`` pour la mise en gras.
+- Pour mettre en valeur du texte, procédez ainsi : ``CONVERT-SLASHCONVERT-SLASHtexteCONVERT-SLASHCONVERT-SLASH`` pour la mise en italique ou ``CONVERT-ASTERISKCONVERT-ASTERISKtexteCONVERT-ASTERISKCONVERT-ASTERISK`` pour la mise en gras.
 
-- Pour créer un lien vers une autre page, entourez son nom par des crochets doubles ; par exemple ``""[[nouvelle page]]""`` crée un lien vers cette page. Un lien vers une [[page inexistante]] est affiché de façon différente, pour inviter d'autres à créer la page.
+- Pour créer un lien vers une autre page, entourez son nom par des crochets doubles ; par exemple ``CONVERT-BRACKET-STARTCONVERT-BRACKET-STARTnouvelle pageCONVERT-BRACKET-ENDCONVERT-BRACKET-END`` crée un lien vers cette page. Un lien vers une [[page inexistante | nothing]] est affiché de façon différente, pour inviter d'autres à créer la page.
 
 - Pour faire un lien vers un autre site, tapez directement son adresse, comme http://www.unsite.fr
 
- - Et pour faire un lien sur une portion de texte existante, c'est ``""[description du site http://www.site.com]""``
+ - Et pour faire un lien sur une portion de texte existante, c'est ``CONVERT-BRACKET-STARTdescription du site http://www.site.comCONVERT-BRACKET-END``
 
 - Pour faire un lien vers un fichier local, par exemple se trouvant dans le dossier /docs à la racine de l'installation de Lionwiki-t2t, c'est :
 
-``""[fichier pdf var/upload/votre-fichier.pdf]""``
+``CONVERT-BRACKET-STARTfichier pdf var/upload/votre-fichier.pdfCONVERT-BRACKET-END``
 
 Ce qui donne : 
  - [fichier pdf var/upload/votre-fichier.pdf]
@@ -51,11 +55,11 @@ Mais le plus simple, est d'utiliser la fonction d'attachement de fichiers (voir 
 
 De façon générale, vous pouvez également sélectionner votre texte à formater, et utiliser la barre d'outil pour vous aider dans la rédaction.
 
-- Pour rajouter une table des matières, rajoutez à l'emplacement souhaité le code ``""%% toc""`` (sans l'espace)
+- Pour rajouter une table des matières, rajoutez à l'emplacement souhaité le code ``CONVERT-PERCENTCONVERT-PERCENTtoc`` 
 
 - Attacher un fichier :
  + cliquer sur [Upload content index.php?action=upload]
- + ou rajouter ``""?action=upload""`` à la fin de n'importe quelle page
+ + ou rajouter ``?action=upload`` à la fin de n'importe quelle page
 
 
 
@@ -64,7 +68,7 @@ De façon générale, vous pouvez également sélectionner votre texte à format
 
 
 
-== Syntaxe complète ==
+== Syntaxe de base ==
 
 - ""**gras**""      :  **gras**
 - ""//italique//""   :  //italique//
@@ -75,17 +79,29 @@ De façon générale, vous pouvez également sélectionner votre texte à format
 - ""+ liste numérotée""
 - ""``code``""
 - ""% commentaire"" (ce qui suivra le % ne sera pas affiché)
-- ""[http://www.site.org/image.jpg]"" : [http://wiki.txt2tags.org/demos/lionwiki-t2t/var/upload/text-x-txt2tags-icon-alone.png]
+- ""[http://www.site.org/image.jpg ]"" : affichage direct d'une image depuis son lien
 - ""[lien vers un site http://www.site.com]"" :  [lien vers un site http://www.site.com]
-- ""| tableau | cellule 2 | cellule 3 |""
+- ""|| Entête titre | titre 2 | titre 3 |"" 
+""| tableau | cellule 2 | cellule 3 |""
 
+|| Entête titre | titre 2 | titre 3 |
 | table | cellule 2 | cellule 3 |
 | table | cellule 2 | cellule 3 |
 
-| table | cellule 2 | cellule 3 | cellule 4 ||
-| table | cellule 2 | cellule 3 | cellule 4 ||
+
+
+- Visitez la page de [[syntaxe lionwiki-t2t|help_syntax.fr]] complète.
+
 
 - Visitez [le site de txt2tags http://txt2tags.org/markup.html] pour apprendre la syntaxe ou utilisez les boutons pour une mise en forme rapide.
+
+
+
+
+
+
+- Markdown : Certaines balises de la syntaxe markdown sont intégrées (titres, liens...), à l'exceptions de celles qui pourraient apporter de la confusion ou des incompatibilités (comme pour l'italique).
+
 
 
 
@@ -100,8 +116,23 @@ Voici une procédure possible pour son installation :
 
 - installer serveur web + lionwiki (``apt-get install php5-sqlite apache2 libapache2-mod-php5``) 
  - cd /var/www 
- - wget http://wiki.txt2tags.org/demos/lionwiki-t2t-minimal.zip
+ - wget https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t-minimal.zip/download -O lionwiki-t2t-minimal.zip
  - unzip lionwiki-t2t-minimal.zip
+
+
+(retirez -minimal de l'adresse plus haut pour avoir la version complète, avec tous les thèmes et les extensions)
+
+
+=== Windows ===
+
+On windows system, get an HTTP server, such as [XAMPP https://www.apachefriends.org/download.html]
+
+- Then download Lionwiki-t2t from [here https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip/download] (or [here https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t-minimal.zip/download] for minimal version]
+
+- Put the uncompressed files from the previous archive into xampphtdocs
+
+
+
 
 
 === Android ===
@@ -116,17 +147,108 @@ Dans Yunohost, vous pouvez l'installer en cherchant "lionwiki" dans le magasin d
 - https://github.com/YunoHost-Apps/lionwiki-t2t_ynh
 
 
+=== Docker ===
+
+Allez dans le dossier infra/docker et tapez "make run" pour construire l'image et déployer un nouveau container. Plus d'info dans la doc dans le dossier infra/.
 
 
-== Utilisation ==
+== Utilisation et configuration ==
 
 
-- Vous pouvez configurer lionwiki-t2t en éditant quelques fichiers de configuration avec l'utilitaire [pheditor.php pheditor.php] à la racine de l'installation. Le mot de passe par défaut est "admin" et il vous est conseillé de le modifier après l'installation. (sur l'installation de yunohost, le mot de passe est le même que celui choisi lors de l'installation). Si vous pensez qu'il pourrait s'agir d'une faille de sécurité, vous pouvez supprimer cet éditeur de votre installation.
+- Vous pouvez configurer lionwiki-t2t en éditant quelques fichiers de configuration avec l'utilitaire [pheditor.php pheditor.php] à la racine de l'installation. Le mot de passe par défaut est "admin" et il vous est conseillé de le modifier après l'installation. (sur l'installation de yunohost, le mot de passe est le même que celui choisi lors de l'installation). Si vous pensez qu'il pourrait s'agir d'une faille de sécurité, vous pouvez supprimer cet éditeur de votre installation ou le renommer.
 - menu du haut (top menu) : vous pouvez le customiser en éditant le fichier menu.php à la racine du site. 
-- configuration générale : éditez config.php
-- configuration spécifique, rajout de regex, customisation avancée etc : vous pouvez rajouter tout cela dans le fichier config.t2t qui utilise la syntaxe de txt2tags, et qui sera appelé par lionwiki-t2t.
+- configuration générale : éditez config.php. Vous pouvez commenter (ignorer) une ligne en la débutant avec //. Ce fichier permet de modifier notamment :
+ - le titre du wiki
+ - le mot de passe en édition (variable $PASSWORD)
+ - le thème par défaut (variable $TEMPLATE). Seule la dernière variable renseignée est prise en compte.
+- configuration spécifique, rajout de regex, customisation avancée etc : vous pouvez rajouter tout cela dans le fichier config.t2t qui utilise la syntaxe de txt2tags, et qui sera appelé par lionwiki-t2t (voir plus bas).
  - Vous pouvez regarder la page [[sandbox_cyoa]] et son fichier de configuration cyoa.t2t pour un exemple de ce qu'il est possible de faire en utilisant cette fonctionalité.
-- Vous pouvez également choisir d'avoir la possibilité d'éditer le wiki complet (y compris les fichiers de configuration, les css etc) en décompressant le fichier editor.zip à la racine du site. Attention, cela rajoute un risque de faille de sécurité non négligeable, c'est pour cette raison qu'il n'est pas installé par défaut. Au moins, essayez de renommer ce dossier sous un autre nom pour limiter les risques. Il faudra peut-être ajuster certains chemins dans sa source en fonction de votre hébergeur pour rendre votre wiki éditable.
+
+
+=== Configuration de Txt2tags ===
+
+Le fichier config.t2t est appelé depuis le fichier principal index.php, et donc tous les remplacements et configurations qu'il contient concernera l'ensemble du wiki. Vous pouvez consulter le manuel de txt2tags pour savoir comment utiliser les directives preproc et postproc. 
+
+D'une manière générale, les preproc servent à personnaliser la syntaxe du wiki (ajout de nouvelles balises), et les postproc servent à ajouter des éléments html et css supplémentaires.
+
+Supposons que vous souhaitez ajouter les en-têtes markdown dans le wiki (c'est déjà implémenté, allez voir config.t2t à la racine de l'installation de lionwiki-t2t) :
+
+Alors nous ajoutons dans config.t2t cette syntaxe :
+
+``` %!preproc : '^# (.* ?)$' '= \1 ='
+
+cela signifie qu'il traitera tout le texte ``(.* ?)`` commençant par un # en début de ligne (^), jusqu'à la fin de la ligne ($) et le remplacera par le balisage txt2tags pour les titres de niveau 1 (``= heading =``).
+
+Maintenant, supposons que vous souhaitiez ajouter la nouvelle balise ``CONVERT-AROBASECONVERT-AROBASESLIDERCONVERT-AROBASECONVERT-AROBASE`` dans votre site web, alors ajoutez cette ligne dans config.t2t :
+
+``` %!postproc : 'CONVERT-AROBASECONVERT-AROBASESLIDERCONVERT-AROBASECONVERT-AROBASE' '<input type="range" min="1" max="100" class="slider">'
+
+il en résultera :  @@SLIDER@@
+
+Vous pourriez également affiner le balisage en ajoutant les valeurs min et max avec CONVERT-AROBASECONVERT-AROBASESLIDERCONVERT-AROBASECONVERT-AROBASECONVERT-AROBASE1/100CONVERT-AROBASECONVERT-AROBASE ce qui donnerait plus de sens. Voir l'exemple de la "progress bar" dans config.t2t pour un cas similaire.
+
+Vous pouvez également définir un ensemble de règles disponibles uniquement pour une page. Créez un fichier newrule.t2t à la racine de l'installation. Puis incluez-le dans la page avec : 
+
+``` %!includeconf:newrule.t2t
+
+
+Pour le moment, il y a :
+
+- ``cyoa.t2t`` pour créer des éléments de type "livre dont vous êtes le héros" (voir [[sandbox_cyoa]])
+
+- ``todotxt.t2t`` pour analyser les fichiers todo.txt (voir [[todo]]). Vous pouvez synchroniser et éditer ce todo.txt trouvé dans var/pages/todo.txt avec d'autres outils ([cli officiel todo.txt https://github.com/todotxt], markor ou simpletask sur Android...)
+
+- ``abcjs.t2t`` pour afficher des partitions musicales au format abc (voir [[sample.abc]]).
+
+- ``forth.t2t`` pour écrire et développer des programmes dans le langage de programmation FORTH (voir [[sample.forth]]).
+
+- Le support de Markdown aurait également pu être placé dans un tel fichier, mais il a été directement intégré dans le fichier principal ``config.t2t``
+
+
+=== Templates ===
+
+Les modèles définissent le placement général des éléments de votre wiki (menu en haut, "éditer" à droite du menu, ou en bas à la place, etc.)
+
+Ils utilisent des éléments HTML simples, que vous pouvez modifier vous-même. Les crochets sont pour les éléments spéciaux de lionwiki-t2t, comme CONVERT-CBRACKET-STARTEDITCONVERT-CBRACKET-END, CONVERT-CBRACKET-STARTCONTENTCONVERT-CBRACKET-END, CONVERT-CBRACKET-STARTHOMECONVERT-CBRACKET-END. En déplaçant ces éléments ailleurs, vous pouvez redéfinir le modèle.
+
+Comme indiqué ci-dessus, vous pouvez sélectionner le modèle par défaut dans le fichier config.php. Les modèles se trouvent dans le dossier templates/. Vous pouvez les tester et les explorer. Vous pouvez également sélectionner un modèle par défaut sur la page [[admin]], mais il ne sera modifié que localement (dans votre navigateur).
+
+Le dossier templates contient également des thèmes CSS que vous pouvez personnaliser davantage (voir ci-dessous).
+
+Quelques modèles notables (avec plusieurs schémas de couleurs) : 
+
+- minimaxing : le modèle par défaut pour le wiki. Simple et propre.
+- newspaper : un autre modèle propre, idéal pour un site web.
+- terminal : choisissez le noir sur le blanc, le vert sur le noir, pour une apparence de type console.
+- geek : quelques couleurs simples et contrastées. 
+
+
+=== Thèmes ===
+
+La plupart des modèles contiennent un fichier .less qui définit l'apparence générale (schéma de couleurs, taille et définition de la police, taille...). Ils chargent également un fichier .less temporaire qui peut changer les couleurs de premier plan (@fg) et d'arrière-plan (@bg), ainsi que les liens et les titres, et la police par défaut. Ce fichier temporaire .less est alimenté par les fichiers de définition du dossier templates/css/ et génère également des fichiers .css dans le dossier de son modèle, en utilisant le fichier makefile associé.
+
+Par exemple pour le template newspaper, vous pouvez facilement changer :
+
++ templates/newspaper/newspaper.html pour mettre le lien CONVERT-CBRACKET-STARTEDITCONVERT-CBRACKET-END en haut plutôt qu'en bas (ou en plus du bas)
++ templates/newspaper/newspaper.less pour modifier la largeur du texte principal, la hauteur des lignes et les marges.
++ templates/css/newspaper_theme01.less pour changer les couleurs et la police par défaut.
+
+
+puis générez le nouveau thème avec "make newspaper_theme01" dans le dossier /templates/newspaper (lessc est nécessaire). newspaper.less importe le fichier "newspaper_temp.less". Ensuite, newspaper.less est appelé à l'intérieur du modèle newspaper.html. Vous pouvez remplacer cette génération dynamique (qui sera légèrement moins optimisée qu'un fichier .css statique) en supprimant le script less.js, le lien newspaper.less de newspaper.html, et en appelant un lien vers newspaper_theme01.css à la place, par exemple.
+
+
+
+=== Index ===
+
+Vous pouvez créer un index de toutes vos pages en rajoutant CONVERT-CBRACKET-STARTINDEX_LISTCONVERT-CBRACKET-END sur une page (voir [page list|page_list]).
+Pour surligner certaines pages importantes, vous pouvez indiquer dans le titre :
+
+- titre#C777777# avec 'C' + code hexadécimal de la couleur pour la voir apparaître en couleur de fond
+- titre#CB# (ou 'C' (comme 'couleur') + B pour bleu, V pour violet, Y pour jaune, R pour rouge, O pour orange et G pour vert)
+
+
+Dans le cas où un lien interne avec un tel titre ne fonctionnerait pas, veuillez remplacer les # par %23, par exemple page%23CY%23 au lieu de page#CY#
+
 
 
 == Synchronisation ==
@@ -135,8 +257,8 @@ Pour son utilisation dans un contexte multi-appareils, il est possible de rajout
 
 - (optionnel) installer nextcloud : https://nextcloud.com/
 - (optionnel) partager un des sous-dossier contenant l'installation de lionwiki dans owncloud
-- installer [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] sur l'appareil android et synchronisez vos fichiers textes dans ``var/pages/`` entre votre serveur et votre appareil mobile (tablette, téléphone), en utilisant soit ssh (recommandé) ou owncloud.
-- installer [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor] ou [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] sur l'appareil android et éditez les pages de votre site directement depuis votre appareil mobile !
+- installer [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] ou syncthing sur l'appareil android et synchronisez vos fichiers textes dans ``var/pages/`` entre votre serveur et votre appareil mobile (tablette, téléphone), en utilisant soit ssh (recommandé) ou owncloud.
+- installer [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor], [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] ou [Markor https://github.com/farvardin/markor/] sur l'appareil android et éditez les pages de votre site directement depuis votre appareil mobile !
 
 
 - __Bonus__ : si vous utilisez [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], créez une nouvelle page et commencez votre première ligne par ``####`` ou ``Denkzettel``, puis activez l'option "checklist on". Vous pourrez ainsi utiliser votre wiki comme une liste de courses : Les articles sont créés par l'application avec un + devant eux, et désactivés avec un -, et avec un peu de prétraitement dans le config.t2t nous sommes capables de l'afficher correctement dans lionwiki-t2t. Consultez [cette page pour voir un exemple dans action index.php?page=sample_shopping%23L%23%23CY%23]. (Les caractères ## sont automatiquement ajoutés par denkzettel pour ajouter une couleur de fond à la note).
@@ -145,7 +267,7 @@ Pour son utilisation dans un contexte multi-appareils, il est possible de rajout
 
 == Exporter en tant que PDF ==
 
-Vous pouvez exporter certaines des pages de votre wiki en pdf, et ainsi l'utiliser comment un traitement de texte ou un générateur de documents. Nous utilisons [textallion https://bitbucket.org/farvardin/textallion] pour cela. Install textallion in your server (installed by default in /usr/share/textallion/), copy the content of ``/usr/share/textallion/contrib/latexlib/*`` into ``/var/www/lionwiki-t2t/export_pdf/``. Uncomment in ``/var/www/lionwiki-t2t/menu.php`` the part related to "Generate pdf". If textallion is correctly setup, you should be able to render a pdf document from the content of the "[[textallion]]" page from your wiki. You can edit ``/var/www/lionwiki-t2t/export_pdf/lionwiki.t2t`` to add more pages.
+Vous pouvez exporter certaines des pages de votre wiki en pdf, et ainsi l'utiliser comment un traitement de texte ou un générateur de documents. Nous utilisons [textallion https://textallion.sourceforge.io/] pour cela. Install textallion in your server (installed by default in /usr/share/textallion/), copy the content of ``/usr/share/textallion/contrib/latexlib/*`` into ``/var/www/lionwiki-t2t/export_pdf/``. Uncomment in ``/var/www/lionwiki-t2t/menu.php`` the part related to "Generate pdf". If textallion is correctly setup, you should be able to render a pdf document from the content of the "[[textallion]]" page from your wiki. You can edit ``/var/www/lionwiki-t2t/export_pdf/lionwiki.t2t`` to add more pages.
 
 Si cela ne fonctionne pas comme prévu, lancez /var/www/lionwiki-t2t/export_pdf/run.php et tracez les erreurs à partir de là. Lorsque l'application est correctement configurée, vous devriez pouvoir le faire à partir de n'importe quel navigateur qui peut accéder à votre installation de lionwiki-t2t.
 
@@ -187,7 +309,7 @@ __Quelques avantages__ de ce système :
 == Bogues connus ==
 
  - si on édite une partie du document au lieu de sa globalité, que l'on sauvegarde, il faut recharger la page (F5) pour éditer une nouvelle partie une nouvelle fois.
- - les regex de txt2tags avec caractères de remplacement spécifiques ont des problèmes (lionwiki mange les \). À la place, veuillez utiliser un fichier de configuration t2t à la racine du site, et appelez-le avec includeconf. (voir example de [[sandbox_cyoa]] qui utilise cela)
+ - les regex de txt2tags avec caractères de remplacement spécifiques ont des problèmes (entre autres, lionwiki mange les CONVERT-BACKSLASH). À la place, veuillez utiliser un fichier de configuration t2t à la racine du site, et appelez-le avec includeconf. (voir example de [[sandbox_cyoa]] qui utilise cela)
 
 
 

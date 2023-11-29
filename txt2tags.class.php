@@ -1,8 +1,8 @@
-<?php $T2TVersion = "20200514";
+<?php $T2TVersion = "20230329";
 /**
   txt2tags.class.php
 
-  This version is for PHP >= 5.3
+  This version is for PHP >= 5.3 until at least PHP 7.4 / PHP 8.1
 
   Written by (c) Petko Yotov 2012-2016 www.pmwiki.org/petko
   Development sponsored by Eric Forgeot.
@@ -59,7 +59,7 @@
   
   == Notes ==
   
-  - This is an early public release, ready to be tested.
+  - This is an early public release, ready to be used.
   - Including disk files is disabled out of the box, because of 
     potential vulnerabilities. Enabling it on systems where
     untrusted people could edit the t2t content is not recommended.
@@ -80,6 +80,7 @@ class T2T {
   var $enableraw = 1;      # enables the raw mark (""raw"")       (default=1)
   var $enableverbatim = 1; # enables the verbatim mark (``raw``)  (default=1)
   var $enablehotlinks = 1; # enables hotlinks [http://www.externalserver.com/images.jpg]  (default=1) (note: it's not enabled in the python implementation of txt2tags)
+  var $enableimgplacement = 0; # enables "automatic" placement of image according to space before or after markup. It can be confusing and annoying so we disable it by default now (default=0) 
   var $config = '';       # the full config area, including ext.ref.
   var $bodytext = '';     # the full body text after inclusions
   var $bodyhtml = '';     # the innerHTML of the body of the output, no <html>...<head>
@@ -300,7 +301,7 @@ class T2T {
         continue;
       }
       
-      if($line!='' && $line{0}=='%' && ! preg_match('/^%%(infile|outfile|date|mtime|rand|toc\\s*$)/i', $line) )
+      if($line!='' && $line[0]=='%' && ! preg_match('/^%%(infile|outfile|date|mtime|rand|toc\\s*$)/i', $line) )
         continue; # remove comment lines
         
       # special lines raw, tagged, verbatim
@@ -340,7 +341,7 @@ class T2T {
       # tables
       if(preg_match('/^ *(\\|\\|?) /', $line, $m) OR preg_match('/^ *(\\|_?) /', $line, $m) OR preg_match('/^ *(\\|\/?) /', $line, $m)) {
         if(!$table) { # open table
-          $attr = ($line{0}==' ')? ' align="center"' : "";
+          $attr = ($line[0]==' ')? ' align="center"' : "";
           if(preg_match('/\\|\\s*$/', $line)) {
             $attr .=  ' border="1"';
           }
@@ -362,7 +363,7 @@ class T2T {
         for($i=1; $i<count($m); $i+=2){
           $c = $m[$i-1];
           $attr = '';
-          if($c && $c{0}==' ') {
+          if($c && $c[0]==' ') {
             $attr = (substr($c, -1)==' ') ? ' align="center"' : ' align="right"';
           }
           $span = strlen(trim($m[$i]));
@@ -611,11 +612,13 @@ class T2T {
     $line = $this->run_macros($line);
     
     # <[img]>
-    $imgrx = "\\[([\034\\w_,.+%$#@!?+~\\/-]+\\.(?:png|jpe?g|gif|bmp))\\]";
+    $imgrx = "\\[([\034\\w_,.+%$#@!?+~\\/-]+\\.(?:png|jpe?g|gif|bmp|svg|webp))\\]";
     
     
     $that = $this;
     
+    # align left can break page appearance, so we put an option there:
+    if ($this->enableimgplacement == 1) {
     $line = preg_replace_callback("/^$imgrx(?=.)/i",
       function($m) use ($that) { return $that->Keep(sprintf($that->snippets['img'], 'left', $m[1])); }, $line);
     $line =  preg_replace_callback("/(?<=.)$imgrx$/i",
@@ -623,9 +626,23 @@ class T2T {
       
     $line =  preg_replace_callback("/$imgrx/i",
       function($m) use ($that) { return $that->Keep(sprintf($that->snippets['img'], 'right', $m[1])); }, $line);
+    } 
+    
+    else
+    
+    {
+    $line = preg_replace_callback("/^$imgrx(?=.)/i",
+      function($m) use ($that) { return $that->Keep(sprintf($that->snippets['img'], '', $m[1])); }, $line);
+    $line =  preg_replace_callback("/(?<=.)$imgrx$/i",
+      function($m) use ($that) { return $that->Keep(sprintf($that->snippets['img'], '', $m[1])); }, $line);
+      
+    $line =  preg_replace_callback("/$imgrx/i",
+      function($m) use ($that) { return $that->Keep(sprintf($that->snippets['img'], '', $m[1])); }, $line);
+    }
+    
     
     $UEX = '<>"{}|\\\\^`()\\[\\]\''; # UrlExcludeChars
-    $PRT = '(?:https?|ftp|news|telnet|gopher|wais|mailto):';
+    $PRT = '(?:https?|ftp|news|telnet|gopher|wais|gemini|mailto):';
     
     if ($this->enablehotlinks == 0) {
     $Links = array(
@@ -633,14 +650,16 @@ class T2T {
       "www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links
       "ftp\\d?\\.[^\\s$UEX]+" =>'ftp://',  # lazy links
       "\\w[\\w.-]+@[\\w-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
-      ); #     
+// TODO "\\w[\\w.-]+@[\\w\-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
+      
+); #     
     }
     else {
     $Links = array(
       //"{$PRT}[^\\s$UEX]+" =>'',  # allows hotlinks by disabling this part
       //"www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links won't work here
       "ftp\\d?\\.[^\\s$UEX]+" =>'ftp://',  # lazy links
-      "\\w[\\w.-]+@[\\w-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
+      "\\w[\\w.\-]+@[\\w\-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
       ); #  
   }
     
@@ -702,7 +721,8 @@ class T2T {
   function run_macros($line) {
     $that = $this;
     $line =  preg_replace_callback('/%%(date|mtime)(\\((.+?)\\))?/i',  
-      function($m) use ($that) { return strftime($m[2]? $m[3]:"%Y%m%d", ($m[1]=='date'? $that->date : $that->mtime)); }
+      //deprecated in php8.1// function($m) use ($that) { return strftime($m[2]? $m[3]:"%Y-%m-%d", ($m[1]=='date'? $that->date : $that->mtime)); }
+      function($m) use ($that) { return date($m[2]? $m[3]:"Y-m-d", ($m[1]=='date'? $that->date : $that->mtime)); }
       , $line);
     $line =  preg_replace_callback('/%%infile(?:\\((.*?)\\))?/i', 
       function($m) use ($that) { return $m[1] ? str_replace(array_keys($that->infile), array_values($that->infile), $m[1])
@@ -718,7 +738,7 @@ class T2T {
        function($m) { 
 
 //return $that -> array($m[1])[array_rand(array($m[1]), 2)[0]];
-	
+
 
 $mylist = array($m[1]);
 	//shuffle($mylist);
@@ -773,7 +793,7 @@ $mylist = array($m[1]);
   }
   
   function closeRTV(&$type, &$x) { # Raw, Tagged or Verbadim lines/areas
-    switch($type{0}) {
+    switch($type[0]) {
       case '%': $type = $x = ''; return '';
       case "'": 
     if ($this->enabletagged == 1) {
@@ -878,14 +898,14 @@ $mylist = array($m[1]);
       
       if(preg_match('/^%!\\s*includeconf\\s*:\\s*(.+)$/', $line, $m)) {
         $f = trim($m[1]);
-        if($f{0}!='/') $f =  $this->infile['%d'] . DIRECTORY_SEPARATOR . $f;
+        if($f[0]!='/') $f =  $this->infile['%d'] . DIRECTORY_SEPARATOR . $f;
         $r = $this->head_conf_body($this->read($f, $this->enableinclude));
         for($i=count($r['config'])-1; $i>=0; $i--)
           array_unshift($lines, $r['config'][$i]); 
         continue;
       }
       
-      if($line{0} != '%' || preg_match('/^%(%(date|mtime|toc|infile|outfile|rand)|! *include)/i', $line)) {
+      if($line[0] != '%' || preg_match('/^%(%(date|mtime|toc|infile|outfile|rand)|! *include)/i', $line)) {
         array_unshift($lines, $line); 
         break;
       }
@@ -906,12 +926,12 @@ $mylist = array($m[1]);
       if(preg_match('/^%!\\s*include(?:\\(x?html\\))?\\s*:\\s*(``|\'\'|""|)(.+)\\1\\s*$/', $line, $m)) {
       
         $f = trim($m[2]);
-        if($f{0}!='/') $f =  $this->infile['%d'] . DIRECTORY_SEPARATOR . $f;
+        if($f[0]!='/') $f =  $this->infile['%d'] . DIRECTORY_SEPARATOR . $f;
         $r = $this->head_conf_body($this->read($f, $this->enableinclude));
       
         if($m[1]) {
           $q = implode("\n", $r['body'])."\n";
-          $type = str_repeat($m[1]{1}, 3);
+          $type = str_repeat($m[1][1], 3);
           $line = $this->closeRTV($type, $q);
         }
         else {

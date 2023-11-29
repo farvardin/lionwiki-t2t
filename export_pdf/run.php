@@ -32,7 +32,8 @@
 					system("make clean");
 					break;
 				default:
-					system("echo '<a href='../index.php?page=textallion'><b>edit textallion page!!</b></a><br/><br/>' && make pdf");
+					system("echo '<a href='../index.php?page=textallion'><b>edit textallion page</b></a><br/><br/><a href='lionwiki.pdf'><b>Load PDF</b></a><br/><br/>' && make pdf");
+					//system('/usr/bin/xvfb-run --server-args="-screen 0, 1920x1080x24"  /usr/bin/wkhtmltopdf --page-size A4 --margin-top 1.0cm --margin-bottom 1.0cm --margin-left 0.5cm --margin-right 0.5cm lionwiki.html lionwiki.pdf 2>&1');
 					break;
 			}
 	}	

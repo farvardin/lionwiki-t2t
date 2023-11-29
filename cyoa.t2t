@@ -1,8 +1,8 @@
 %%                                  %%
-%% txt2cyoa module for lionwiki-efo %%
+%% txt2cyoa module for lionwiki-t2t %%
 %%                                  %%
 
-%% Include this module in your lionwiki-efo website 
+%% Include this module in your lionwiki-t2t website 
 %%    (https://bitbucket.org/farvardin/lionwiki-t2t/)
 %%    and you'll be able to create CYOA ("choose your own adventure") with it!
 %% Then you can import your creating into textallion (http://textallion.googlecode.com/)
@@ -32,7 +32,11 @@
 
 %!postproc: '&lt;' '<'
 %!postproc: '&gt;' '>'
-%!postproc: '@CHAPITRE@' '<center> ☙ ❧ </center>'
+%!postproc: '@CHAPITRE@' '<br/><br/><br/><br/><br/><center> ☙ ❧ </center><br/><br/><br/><br/><br/>'
+%!--postproc: '@CHAPITRE@' '<center> ~ ~ ~ ~ </center>'
+
+%!postproc: '<li>' '<li style="list-style-type: none"> <b>&#10139;</b> '
+%!postproc: '<h2 id="toc(\d+)">' '<h2 style="font-size:3.5rem ; margin-left:10px" id="toc\1"><br/><br/>'
 
 
 % (in textallion only:)
@@ -82,7 +86,4 @@
 
 %% disable unknown textallion syntax
 %!preproc: '\{.{4}\}'  ''
-
-
-
 

@@ -1,11 +1,20 @@
-/*-----
-  © 2012 GGP & al.jes, certains droits réservés…
-    http://geekygoblin.org
-    http://aljes.me
-  Cette oeuvre est libre, vous pouvez la copier, la diffuser et la modifier selon les termes de la licence Art Libre
-    http://www.artlibre.org
-    http://geekygoblin.org/mentions.htm
------*/
+/*-----------------------
+
+	-------------
+	- GGP -
+	-------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    GGP & al.jes - http://geekygoblin.org
+    licence Art Libre - http://www.artlibre.org
+	
+----------------------------*/
+
+
 
 /* 0 - Préliminaires */
 
@@ -28,7 +37,8 @@
 /*@BackgroundColor: mix(@MainColor, @LinkColor) ; */
  
 
-
+@fg: @MainColor;
+@bg: @BackgroundColor;
 
 
 
@@ -71,7 +81,7 @@
 
 /* 2 - Général */
 
-#header li {float: left;       list-style: none;       position: relative;  width: 25%;  }
+#header li {float: left;       list-style: none;       position: relative;  width: 25%; word-wrap: break-word; }
 
 /*ul li {list-style: none;}
 ul li::before {content: "– ";}*/
@@ -182,6 +192,31 @@ pre {
 		overflow: auto;
 	}
 }
+
+pre, blockquote {
+    padding-left: 20px;
+}
+
+pre {
+    background-color: (@bg + #121212);
+    line-height: 1.5em;
+    font-family: Courier ;
+    font-size:  1em;
+    margin: 1.0em;
+}
+
+code, blockquote, dt {
+    background-color: (@bg + #121212);
+    //background-color: (@bg + #121212);
+    //line-height: 1.5em;
+    font-family: Courier ;
+    font-size: 1em;
+    /*margin: 1.0em;*/
+}
+
+
+
+
 a {
 	/* border-bottom: 1px solid @SecondaryColor; */
 	 color: inherit;
@@ -412,6 +447,11 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 #footerLinks td {
     border-top: 1px dashed #ccc !important;
 }
+#footer {
+	font-size: 75%;
+	text-align:right;
+}
+
 #mainContent {
     padding: 1em;
     background-color: white;
@@ -543,4 +583,107 @@ th, thead, #previewPane th, #previewPane thead {
     text-decoration: none;
 }
 
+progress {  color: @MainColor;  background-color: @BackgroundColor - #111;  border-radius: 0px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: @MainColor;}
+progress::-webkit-progress-value {  background: @MainColor;}
+progress::-webkit-progress-bar {  background: @BackgroundColor;}
 
+
+/* Big buttons */
+
+.block {
+  display: inline-block;
+  width: 75%;
+  border: 2px solid @MainColor;
+  background-color: @MainColor;
+  min-height: 50px;
+  margin: 5px;
+  font-size: 20px;
+  color: #000;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  
+  /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
+
+  
+  border-radius: 0px;
+}
+
+.block a {
+  display: inline-block;
+  width: 100%;
+  padding:  0px;
+  padding-top : 4px;
+  min-height: 46px;
+  /*line-height:48px;*/
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+ }
+
+.block:hover, .block a:hover {
+  background-color: #fff;
+  color: @MainColor;
+}
+
+
+/* Todotxt support */
+
+
+.todotxt_A {color: darken(@fg,5%);}
+.todotxt_B { color:desaturate(lighten(spin(@fg, 30),5%),20%); }
+.todotxt_C { color: desaturate(lighten(spin(@fg, 60),10%),30%); }
+.todotxt_D { color: desaturate(lighten(spin(@fg, 90),15%),40%); }
+.todotxt_E { color: desaturate(lighten(spin(@fg, 120),20%),45%); }
+.todotxt_F { color: desaturate(lighten(@fg,25%),50%); }
+
+
+.todotxt_context { color: spin(@fg, 180); }
+.todotxt_tag { color: spin(@fg, 90); }
+.todotxt_deleted {opacity: 0.4; }
+
+
+
+@media (prefers-color-scheme: dark) {
+  /* Invert all elements on the body while attempting to not alter the hue substantially. */
+  body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+
+  /* Workarounds and optical adjustments. */
+
+  /* Firefox workaround: Set the background colour for the html
+     element separately because, unlike other browsers, Firefox
+     doesn’t apply the filter to the root element’s background. */
+  html {
+    background-color: #111;
+  }
+
+  /* Do not invert media (revert the invert). */
+  img, video, iframe {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+
+
+  /* invert front logo2 */
+  .logo2 {
+    filter: invert(90%) hue-rotate(260deg);
+  }
+
+
+  /* Improve contrast on icons. */
+  .icon {
+    filter: invert(15%) hue-rotate(180deg);
+  }
+
+  /* Re-enable code block backgrounds. */
+  pre {
+    filter: invert(6%);
+  }
+
+  /* Improve contrast on list item markers. */
+  li::marker {
+    color: #555;
+  }
+}

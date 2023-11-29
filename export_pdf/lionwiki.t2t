@@ -50,11 +50,11 @@ Lionwiki
 %!postproc(tex): 'BEGINCENTER' '\\begin{center}'
 %!postproc(tex): 'ENDCENTER' '\\end{center}'
 
-%-!postproc(tex):'\\includegraphics\[height=297mm\]' '\MyImages'
+%-!postproc(tex):'\\includegraphics\[height=297mm\]' '\\MyImages'
 
 %!preproc: '.gif' '.png'
 
-%!postproc(tex):'\\includegraphics{' '\MyImages{'
+%!postproc(tex):'\\includegraphics{' '\\MyImages{'
 
 
 

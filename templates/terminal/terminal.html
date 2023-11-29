@@ -3,10 +3,22 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+	
+		
 		<link rel="stylesheet/less" href="templates/terminal/terminal.less" />
 		
 		<script src="templates/js/less.js" type="text/javascript"></script>
+		
+		<!-- Remove "alternate" in one of the style to make it default -->
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="black" href="templates/terminal/terminal_black.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="white" href="templates/terminal/terminal_white.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="nord" href="templates/terminal/terminal_nord.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="tron" href="templates/terminal/terminal_tron.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="green" href="templates/terminal/terminal_green.css" />
+		<link rel="alternate stylesheet" type="text/css" media="screen" title="solarized" href="templates/terminal/terminal_solarized.css" />
+		
 	{HEAD}
 </head>
 <body>
@@ -32,7 +44,9 @@
 	<tr>
 		<td class="main"><div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div></td>
 		<td class="main">Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>. {LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}</td>
-		<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
+		<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}
+		<br /> {RSS}
+		</td>
 	</tr>
 </table>
 </body>

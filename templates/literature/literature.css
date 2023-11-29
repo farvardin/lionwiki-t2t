@@ -516,3 +516,8 @@ color:#444;
 
 h2 span.par-edit,h3 span.par-edit,h4 span.par-edit,h5 span.par-edit,h6 span.par-edit{display:none}
 h2:hover span.par-edit,h3:hover span.par-edit,h4:hover span.par-edit,h5:hover span.par-edit,h6:hover span.par-edit{display:inline;font-size:small}
+
+progress {  color: #1A8DCD;  background-color: #eee;  border-radius: 4px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #1A8DCD;}
+progress::-webkit-progress-value {  background: #1A8DCD;}
+progress::-webkit-progress-bar {  background: #1A8DCD;}
