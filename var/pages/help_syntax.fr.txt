@@ -143,6 +143,24 @@ exemple :
 [3/7]
 
 
+- Cases à cocher :
+
+ - vides : 
+
+``` CONVERT-BRACKET-START CONVERT-BRACKET-END
+ 
+ - cochées :
+
+``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
+
+affichera : 
+[ ] item
+[x] item
+
+
+//Vous devrez éditer le code de la page wiki pour cocher les cases//
+
+
 - Bouton : 
 
 ``@@``BUTTON(http://ddg.gg)``@@``

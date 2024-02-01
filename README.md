@@ -11,7 +11,7 @@ It is extensible, templatable, file based (it doesn't need database like MySQL) 
 
 **[Txt2tags](http://www.txt2tags.org)** is a document generator and a lightweight markup.
 
-It reads a text file with minimal markup such as `**bold**` and `//italic//`. Its python implementation can convert to several formats such as *html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, Markdown...*
+It reads a text file with minimal markup such as `**bold**`, `--strikethrough--` and `//italic//`. Its python implementation can convert to several formats such as *html, docbook, LaTeX, RTF, Man page, Creole, Wikipedia / MediaWiki, PmWiki, DokuWiki, MoinMoin, AsciiDoc, Markdown...*
 
 It is very **extensible** and **customisable**, by using regex and preprocessors.
 

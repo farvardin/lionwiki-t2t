@@ -1,0 +1,29 @@
+
+
+%/* Customisation file for LionWiki-t2t. */ 
+%/* https://lionwiki-t2t.sourceforge.io/ */ 
+
+
+% You can put below those lines the pre or proc rules you may need in your lionwiki-t2t, so you can have more control on your wiki
+
+
+% use [[the description | your_page]] syntax
+% (keep those preproc in this order to avoid pb.)
+
+% for static version:
+
+%!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 \2.html]'
+%!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 \2.html]'
+%!preproc: '\[(.*?)\ index.php\?page=(.*?)\]' '[\1 \2.html]'
+%!postproc: '\[([^ ].*?)\]' '<a href="\1.html">\1</a>'
+
+
+%% Markdown support
+
+% we override the config.t2t here: 
+
+%!preproc: '^# (.*?)$' '= \1 ='
+%!preproc: '^## (.*?)$' '== \1 =='
+%!preproc: '^### (.*?)$' '=== \1 ==='
+%!preproc: '^#### (.*?)$' '==== \1 ===='
+%!preproc: '^##### (.*?)$' '===== \1 ====='

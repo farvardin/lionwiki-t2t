@@ -123,13 +123,31 @@ example:
 
 [10%]
 
-``` CONVERT-BRACKET-START3%7CONVERT-BRACKET-END
+``` CONVERT-BRACKET-START3/7CONVERT-BRACKET-END
 
 will display a progress bar of 3 out of 7
 
 example:
 
-[3%7]
+[3/7]
+
+
+- Checkboxes:
+
+ - empty: 
+
+``` CONVERT-BRACKET-START CONVERT-BRACKET-END
+ 
+ - checked:
+
+``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
+
+Will display: 
+[ ] item
+[x] item
+
+
+//You will need to edit the code on the wiki page to check the boxes//
 
 
 - Big button : 
