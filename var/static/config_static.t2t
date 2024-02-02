@@ -1,6 +1,6 @@
 
 
-%/* Customisation file for LionWiki-t2t. */ 
+%/* Customisation file for LionWiki-t2t. (static version) */ 
 %/* https://lionwiki-t2t.sourceforge.io/ */ 
 
 
@@ -12,6 +12,7 @@
 
 % for static version:
 
+%% links:
 %!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 \2.html]'
 %!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 \2.html]'
 %!preproc: '\[(.*?)\ index.php\?page=(.*?)\]' '[\1 \2.html]'
@@ -27,3 +28,14 @@
 %!preproc: '^### (.*?)$' '=== \1 ==='
 %!preproc: '^#### (.*?)$' '==== \1 ===='
 %!preproc: '^##### (.*?)$' '===== \1 ====='
+
+%% Gemini support
+
+%--!preproc: '=> http([^ ].*?) (.*?)' '* [\2 http\1]'
+%!preproc: '=> http([^ ].*?) (.*?)' '* http\1 : \2'
+%--!preproc: '=> (.*?)' '* => \1'
+
+% => https://100r.co/site/uxn.html                 Site principal d'Uxn 
+
+%% Your own rules: you can add your pre and post proc rules below this line...
+
