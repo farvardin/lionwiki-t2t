@@ -1,3 +1,5 @@
+
+
 :root {
   --couleur-primaire: #2a6442;
 
@@ -17,7 +19,7 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-Regular.woff") format("woff");
+  src: url("fonts/Luciole-Regular.woff") format("woff");
   font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility;
@@ -25,7 +27,7 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-Bold.woff") format("woff");
+  src: url("fonts/Luciole-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
   text-rendering: optimizeLegibility;
@@ -33,7 +35,7 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-Italic.woff") format("woff");
+  src: url("fonts/Luciole-Italic.woff") format("woff");
   font-style: italic;
   font-weight: normal;
   text-rendering: optimizeLegibility;
@@ -41,15 +43,54 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-BoldItalic.woff") format("woff");
+  src: url("fonts/Luciole-BoldItalic.woff") format("woff");
   font-style: italic;
   font-weight: 700;
   text-rendering: optimizeLegibility;
 }
+
+
+/* alternative font */
+
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/JosefinSans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/JosefinSans-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/JosefinSans-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/JosefinSans-BoldItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ** */
 
 
 html {
   font-family: "Luciole", Arial, Helvetica, sans-serif;
+    /* font-family: "Josefin Sans", Arial, Helvetica, sans-serif; */
 }
 
 body {
@@ -117,10 +158,12 @@ h6 {
 h1 {
   font-size: 3rem;
   color: var(--couleur-primaire);
+  
 }
 
 h2 {
   font-size: 2.25rem;
+  text-transform: capitalize;
 }
 p ~ h2,
 p ~ h3,
@@ -210,6 +253,16 @@ img {
   max-width: 100%;
 }
 
+
+.filename {
+  text-align: right;
+  /*color: #ddd;*/
+  text-transform: capitalize;
+}
+
+.center {
+  text-align: center;
+}
 
 /* lionwiki */
 
@@ -349,3 +402,4 @@ progress::-webkit-progress-bar {
   }
 
 }
+
