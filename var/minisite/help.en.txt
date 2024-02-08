@@ -1,0 +1,281 @@
+//Read this [[help in French|help.fr]]. Lire cette aide [[en français|help.fr]].//
+
+//Read the [[full syntax | help_syntax.en]] help.//
+
+Lionwiki-t2t is a wiki system for the creation and maintenance of websites. 
+
+Lionwiki-t2t pages looks the same as normal webpages, but in addition they have an "Edit" link which helps to edit or add new pages on a website, with a lightweight markup language, like for http://www.wikipedia.org.
+
+//This system has some ready to use extensions and a simplified and customisable syntax.//
+
+%%toc 
+
+
+== Presentation ==
+
+The pages on this site are wiki-based pages, which means that pages can be created and edited by multiple authors. To edit a page, click on the "edit" link which exists somewhere on the page (generally at the top or in the footer). Some pages may be protected by a password.
+
+In this wiki, unless you're using an integrated system such as YunoHost, the default password is "//demo//". It is adviced to modify it after the installation (see below).
+
+When you edit a page, you see the markup which describe the content of the page. The final rendering, with the choosen formatting, will be displayed only after the page is saved.
+
+The basic rules for page markup are simple (you will find them below).
+
+
+== Editing rules (syntax) ==
+
+
+The syntax of this wiki is following the general rules of txt2tags syntax, which you can find [here as a reminder http://txt2tags.sourceforge.net/markup.html].
+The idea is you should be able to paste here your txt2tags documents without many modifications (explained in the second part of this document).
+
+
+== Basic Syntax ==
+
+
+
+- ""**bold**""      :  **bold**
+- ""//italic//""   :  //italic//
+- ""__underline__"" :  __underline__
+- ""--strike--""      :  --strike--
+- ``=`` surrounding your titles / headings (at different levels)
+- ""- list""
+- ""+ numbered list""
+- ""``code``""
+- ""% comment"" (after % won't be interpreted)
+- ""[http://www.website.org/image.jpg ]"" : hotlink image
+- ""[link to an external site http://www.site.com]"" :  [link to an external site http://www.site.com]
+- ""| table | cell 2 | cell 3 |"" 
+
+
+| table | cell 2 | cell 3 | cell 4 ||
+| table | cell 2 | cell 3 | cell 4 ||
+
+
+
+- Visit the complete [lionwiki-t2t syntax page index.php?page=help_syntax.en].
+
+
+- You can also visit [txt2tags' website http://txt2tags.org/markup.html] to learn more about the syntax, or use the buttons for quick formatting.
+
+
+
+
+
+- Markdown: Some of the markdown syntax is also supported (headings, links) except for the most incompatible ones (italic).
+
+
+
+
+
+
+== Installation ==
+
+=== Linux / Unix ===
+
+Lionwiki is easy to install, no need to setup a sql database: a webserver (Apache, Lighttpd or Nginx) + php will be enough.
+
+Here is what is possible to do:
+
+- install web server + lionwiki (``apt-get install php5-sqlite apache2 libapache2-mod-php5`` on Debian Linux systems) 
+ - cd /var/www 
+ - wget https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t-minimal.zip/download -O lionwiki-t2t-minimal.zip
+ - unzip lionwiki-t2t-minimal.zip into /var/www/html/
+
+
+(remove -minimal from the address above to get the complete version, with all templates and extensions)
+
+
+=== Windows ===
+
+On windows system, get an HTTP server, such as [XAMPP https://www.apachefriends.org/download.html]
+
+- Then download Lionwiki-t2t from [here https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip/download] (or [here https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t-minimal.zip/download] for minimal version]
+
+- Put the uncompressed files from the previous archive into xampphtdocs
+
+
+
+=== Android ===
+
+If you're on Android and you wish to use your tablet / phone / androidtv as a server, you can use [this app https://play.google.com/store/apps/details?id=de.fun2code.android.pawserver] which is a free webserver.  Install the php plugin, and copy the files of the wiki into /sdcard/paw/html. Then visit http://localhost:8080/lionwiki-t2t from your android system.
+
+=== YunoHost ===
+
+In Yunohost, you can install it by searching for "lionwiki" in the application store.
+
+- https://github.com/YunoHost-Apps/lionwiki-t2t_ynh
+
+
+=== Docker ===
+
+Go into infra/docker and type "make run" to build an image and deploy a new container. Learn more in the doc in the infra/ folder.
+
+
+== Usage and configuration ==
+
+- You can configure lionwiki-t2t by editing a few configuration files with the [pheditor.php pheditor.php] utility at the root of the installation. The default password is "admin" and you are advised to modify it after installation. (on the yunohost installation, the password set is the same as the one chosen during installation). If you think it might be a security breach, you can completely remove this editor from your installation or rename it.
+- top menu: you can customise your menu by editing the menu.php file in the root. 
+- general configuration: see config.php. You can comment (ignore) a line with //. This file can set:
+ - the title of the wiki
+ - the password ($PASSWORD variable)
+ - default theme ($TEMPLATE variable). In the case there are several variable with the same name, only the last variable is taken into account.
+- special configurations, regex etc: you can add extra customisation in your wiki by using the config.t2t file (see below)
+ - you can have a look at [[sandbox_cyoa]] and its configuration file cyoa.t2t for an example of a special customisation template using this feature. 
+
+
+=== Txt2tags configuration ===
+
+config.t2t is called from the main index.php file, and therefore all replacements and configurations in it are concerning the whole wiki. You can have a look at the txt2tags manual for how to use the preproc and postproc directives. 
+
+Generally speaking, preproc are for customising the wiki syntax (adding new markup), and postproc are for adding extra html and css.
+
+Let's say you wish to add the markdown headers in the wiki (it's already implemented, check config.t2t at the root of the lionwiki-t2t installation):
+
+Then we add into config.t2t this syntax:
+
+``` %!preproc: '^# (.*?)$' '= \1 ='
+
+it means it will process all text ``(.*?)`` starting with a # at the beginning of a line (^), until the end of the line ($) and replace it with the txt2tags markup for headings level 1 (``= heading =``).
+
+Now let's say you wish to add the new ``CONVERT-AROBASECONVERT-AROBASESLIDERCONVERT-AROBASECONVERT-AROBASE`` markup into your website, then add this line into config.t2t:
+
+``` %!postproc: 'CONVERT-AROBASECONVERT-AROBASESLIDERCONVERT-AROBASECONVERT-AROBASE' '<input type="range" min="1" max="100" class="slider">'
+
+it will result in:  @@SLIDER@@
+
+
+You could also refine the markup by adding the min and max values with CONVERT-AROBASECONVERT-AROBASESLIDERCONVERT-AROBASECONVERT-AROBASE1/100CONVERT-AROBASECONVERT-AROBASE which would give more sense. See the "progress bar" example into config.t2t for a similar case.
+
+
+You can also define a set of rules only available for one page. Create a newrule.t2t at the root of the installation. Then include it into the page with: 
+
+``` %!includeconf:newrule.t2t
+
+
+At the moment there are :
+
+- ``cyoa.t2t`` for creating choose your own adventure elements (see [[sandbox_cyoa]])
+
+- ``todotxt.t2t`` for parsing todo.txt files (see [[todo]]). You can synchronise and edit this todo.txt found in var/pages/todo.txt with other tools ([official todo.txt cli https://github.com/todotxt], markor or simpletask on Android...)
+
+- ``abcjs.t2t`` to display musical scores in abc format (see [[sample.abc]]).
+
+- forth.t2t for writing and developing programs in the FORTH programming language (see [[sample.forth]]).
+
+- Markdown support could also have been placed in such a file, but has been integrated directly into the main ``config.t2t`` file.
+
+
+
+
+
+=== Templates ===
+
+Templates are defining the general placement of elements of your wiki (menu on the top, "edit" on the right of the menu, or at the bottom instead etc.).
+
+They are using simple HTML elements, which you can edit yourself. The curly brackets are for lionwiki-t2t special elements, like CONVERT-CBRACKET-STARTEDITCONVERT-CBRACKET-END, CONVERT-CBRACKET-STARTCONTENTCONVERT-CBRACKET-END, CONVERT-CBRACKET-STARTHOMECONVERT-CBRACKET-END. By moving those elements elsewhere, you can redefine the template.
+
+As said above, you can select the default template in the config.php file. Templates can be found in the templates/ folder. You can test and explore them. You can also select a default template on the [[admin]] page, but it will only change it locally (in your browser).
+
+Templates folders also contains CSS themes which you can also customise further (see below).
+
+Some notable templates (with several color schemes): 
+
+- minimaxing: the default template for the wiki. Simple and clean.
+- newspaper: another clean template, great for a website.
+- terminal: choose black on white, green on black, for a console-like appearance.
+- geek: some simple contrasted colors. 
+
+
+=== Themes ===
+
+Most templates contain a .less file which define the general appearance (color scheme, font size and definition, size...). They also load a temporary .less file which can change foreground (@fg) and background (@bg) colors, as well as links and heading, and default font. This temporary .less file is feed by definition files from the templates/css/ folder and will also generate .css files inside its template folder, by using the associated makefile.
+
+For example for the newspaper template, you can easily change:
+
++ templates/newspaper/newspaper.html for putting the {EDIT} link on top instead of on bottom (or in addition to bottom)
++ templates/newspaper/newspaper.less for changing main text width, line height, margins
++ templates/css/newspaper_theme01.less for changing default colors and font
+
+
+then generate the new theme with "make newspaper_theme01" inside /templates/newspaper folder (lessc is needed). newspaper.less is importing the "newspaper_temp.less" file. Then newspaper.less is called from within the newspaper.html template. You can remplace this dynamic generation (which will be slightly less optimized than a static .css file) by removing the less.js script, the newspaper.less link from newspaper.html, and call a link to newspaper_theme01.css instead for example.
+
+=== Index ===
+
+You can create an index of all your pages by adding CONVERT-CBRACKET-STARTINDEX_LISTCONVERT-CBRACKET-END to a page (see [page list|page_list]).
+To highlight certain important pages, you can indicate in the title :
+
+- title#C777777# with 'C' + hexadecimal code of the color to see it appear as background color
+- title#CB# (or 'C' (as in 'color') + B for blue, V for violet, Y for yellow, R for red, O for orange and G for green)
+
+
+If an internal link with such a title does not work, please replace the # with %23, e.g. page%23CY%23 instead of page#CY#
+
+
+
+== Synchronize ==
+
+To synchronise your wiki with your mobile devices, install this in addition:
+
+- (optionnal) install nextcloud : https://nextcloud.com/
+- (optionnal) share a subfolder containing your lionwiki install into owncloud
+- install [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] or syncthing on an android device and synchronise the text files into var/pages/ between your server and your device (tablet, smartphone), using either ssh (recommended) or owncloud.
+ - Alternatively, you can try http://git-annex.branchable.com/assistant/ instead of foldersync
+- install for example the [920 text editor https://play.google.com/store/apps/details?id=com.jecelyin.editor], [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] or [Markor https://github.com/farvardin/markor/] on android and edit the pages of your website from your mobile device!
+
+- __Bonus__: if you're using [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], create a new page and start your first line with either ``####`` or ``DENKZETTEL``, then enable in the option "checklist on". This way you'll be able to use your wiki as a shopping list: Items are created by the application with a + before them, and disabled with a -, and with some preprocessing in the config.t2t we are able to display it correctly in lionwiki-t2t. Check [this page to see a sample in action index.php?page=sample_shopping%23L%23%23CY%23]. (The ## characters are automatically added by denkzettel for adding a background color to the note).
+
+
+== Export as PDF ==
+
+You can also export some of your pages in pdf and use your wiki as a word processor / document generator. We use [textallion https://textallion.sourceforge.io/] for this. Install textallion on your server (installed by default in /usr/share/textallion/), copy the content of ``/usr/share/textallion/contrib/latexlib/*`` into ``/var/www/lionwiki-t2t/export_pdf/``. Uncomment in ``/var/www/lionwiki-t2t/menu.php`` the part related to "Generate pdf". If textallion is correctly setup, you should be able to render a pdf document from the content of the "[[textallion]]" page from your wiki. You can edit ``/var/www/lionwiki-t2t/export_pdf/lionwiki.t2t`` to add more pages.
+
+If it doesn't work as expected, run /var/www/lionwiki-t2t/export_pdf/run.php and trace the errors from there. When it's correctly set up, you should be able to do this from any browser which can access your lionwiki-t2t installation.
+
+
+
+
+
+
+
+== Avantages ==
+
+__Some advantages__:
+
+- data are stored in plain text, which are human readable and can be edited from an other application (for example a text editor on your smartphone)
+- simple and sober default theme (minimaxing). CSS using responsive design (for smartphone and tablets). You can easily customise colors using [less http://lesscss.org/].
+- Another option theme is using [bootstrap http://getbootstrap.com], so you can use it as a basis for a modern website.
+
+
+
+
+
+== Tips ==
+
+- if you need to make your image left, right or centered aligned, keep this in mind:
+ - for left align, add an extra space (and/or some text) after the image mark
+ - for center align, add an extra space (and/or some text) before and after the image mark
+ - for right align, add an extra space (and/or some text) before the image mark
+
+- if you need to work further on the minimaxing design, rename in the template minimaxing.html the call to minimaxing.css to minimaxing.less
+
+- you can use you own handwriting font, just name it MyManuscript.ttf, put it in the templates/fonts folder (replace the existing one) and change the css/less file so it will be called before the other fonts.
+
+- You can also use your favorite font, rename if MyFont.ttf and put it in the templates/fonts folder (replace the existing one).
+
+- On linux or mac os x, it shouldn't be a problem to double-click on a word and only highlight that word, while on windows it would select also the white space after it, so you can't properly add the syntax. So on windows: 
+ - either single click after the last character of the word and press CTRL + SHIFT + LEFT ARROW
+ - or if you're on mozilla firefox, in ``about:config``, just search for ``layout.word_select.`` and select ``eat_space_to_next_word`` to ``False``.
+
+- the ``var/pages`` folder is protected by .htaccess. Don't forget to enable it in both your ``/etc/apache2/sites-available/default`` and ``/etc/apache2/sites-available/default-ssl`` configurations!
+
+
+
+
+== Known bugs ==
+
+- if you edit a part of the document, after saving you might need to reload the page if you want to edit a new part, otherwise the edit field will remain blank.
+- regex have problems with some replacements (among others, lionwiki doesn't keep the CONVERT-BACKSLASH in regex). Instead include a t2t file using includeconf
+
+
+
+(#help)

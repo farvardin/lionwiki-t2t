@@ -1,0 +1,416 @@
+Cette page explique la syntaxe de LionWiki-t2t, qui est basée sur [txt2tags http://www.txt2tags.org].
+
+
+
+Cette syntaxe est assez facile à apprendre, mais elle est également assez stricte : si ce que vous écrivez diffère un peu des règles, les résultats pourraient être imprévisibles et décevants. Essayez surtout de faire attention aux espaces utilisés dans la syntaxe. Pour maîtriser efficacement le balisage txt2tags, nous vous conseillons de lire [le manuel qui se trouve ici http://www.txt2tags.org/docs.html].
+
+L'aide générale sur lionwiki-t2t est [[ici | help.fr]].
+
+%%toc
+
+
+== Entêtes ==
+
+Exemple :
+
+```
+CONVERT-2EQUAL Heading H2 ==
+CONVERT-3EQUAL Heading H3 ===
+CONVERT-4EQUAL Heading H4 CONVERT-4EQUAL
+```
+
+
+Aucun caractère supplémentaire, à l'exception des espaces (même s'il est conseillé de les éviter et de commencer à écrire les balises au début de la ligne), n'est autorisé avant les balises de l'en-tête. Les espaces ne sont pas nécessaires autour de la partie à marquer comme titre, mais cela pourrait être plus lisible de cette façon.
+
+
+== Heading H2 ==
+=== Heading H3 ===
+==== Heading H4 ====
+
+
+
+
+== Listes ==
+
+=== Listes non ordonnées ===
+
+
+```
+- Fruit
+ - Pomme
+   - Granny Smith
+ - Orange
+- Légumes
+ - Ail
+ - Oignon
+```
+
+
+Vous devez ajouter exactement un espace après chaque tiret pour activer la liste.
+
+- Fruit
+ - Pomme
+   - Granny Smith
+ - Orange
+- Légumes
+ - Ail
+ - Oignon
+
+
+et passer une ligne après le dernier élément d'un liste pour la terminer (sinon l'indentation restera)
+
+
+=== Listes ordonnées ===
+
+```
++ Premier élément 
+ + Premier sous-élément 
+  + Premier sous-sous-élément
+  + Deuxième sous-sous-élément
+  + Troisième sous-sous-élément
+ + Deuxième sous-élément
+```
+
++ Premier élément 
+ + Premier sous-élément 
+  + Premier sous-sous-élément
+  + Deuxième sous-sous-élément
+  + Troisième sous-sous-élément
+ + Deuxième sous-élément
+
+
+== Styles de texte ==
+
+- ``**``Gras``**`` --> **Gras** (deux étoiles)
+- ``//``Italique``//`` --> //Italique// (deux slash)
+- ``**//``Gras et italique``//**`` --> **//Gras et italique//** (combinaison des deux)
+- ``--``Barré``--`` --> --Barré--
+- ``__``Souligné``__`` --> __Souligné__
+
+
+Vous ne pouvez pas ajouter d'espaces supplémentaires aux limites de la partie que vous voulez marquer avec les styles ci-dessus. Cette partie peut contenir des espaces (si c'est une phrase), mais pas après la première marque, ni avant la dernière : les marques doivent être collées au contenu.
+
+
+== Tableaux ==
+
+```
+|| titre 1  | titre 2 |
+|  élément 1 | élément 2 |
+|  élément 3 | élément 4 |
+```
+
+{//..}
+
+|| titre 1 | titre 2 |
+| élément 1 | élément 2 |
+| élément 3 | élément 4 |
+
+
+
+== Syntaxe supplémentaire ==
+
+En plus de la syntaxe txt2tags, voici quelques balises supplémentaires. Vous pouvez personnaliser, étendre ou configurer la plupart d'entre elles dans le fichier ``config.t2t`` à la racine du wiki, voire même dans le fichier ``txt2tags.class.php`` (mais la première solution sera plus conseillée).
+
+
+- Nombres aléatoires
+
+``` %%rand(1,100)
+
+va afficher un nombre compris entre 1 et 100
+
+exemple :
+
+%%rand(1,100) 
+
+
+
+- Barre de progression
+
+``` CONVERT-BRACKET-START10%CONVERT-BRACKET-END
+
+va afficher une barre de progression de 10% 
+
+exemple :
+
+[10%]
+
+``` CONVERT-BRACKET-START3/7CONVERT-BRACKET-END
+
+va afficher une barre de progression de 3 sur 7
+
+exemple :
+
+[3/7]
+
+
+- Cases à cocher :
+
+ - vides : 
+
+``` CONVERT-BRACKET-START CONVERT-BRACKET-END
+ 
+ - cochées :
+
+``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
+
+affichera : 
+[ ] item
+[x] item
+
+
+//Vous devrez éditer le code de la page wiki pour cocher les cases//
+
+
+- Bouton : 
+
+``@@``BUTTON(http://ddg.gg)``@@``
+
+@@BUTTON(test (pas de lien))@@
+
+@@BUTTON([lien vers le moteur de recherche http://ddg.gg])@@
+
+@@BUTTON(http://ddg.gg)@@
+
+
+- Tags : 
+
+``(CONVERT-HASHTAGmotclé)``
+
+
+
+
+
+== Emails, liens, images ==
+
+Les liens vers d'autres pages wiki locales peuvent être créés comme suit :
+``CONVERT-BRACKET-STARTCONVERT-BRACKET-STARTmainCONVERT-BRACKET-ENDCONVERT-BRACKET-END`` :  [[main]]
+
+Pour utiliser une description, utilisez cette syntaxe :
+``CONVERT-BRACKET-STARTCONVERT-BRACKET-STARTC'est la page principale | mainCONVERT-BRACKET-ENDCONVERT-BRACKET-END``
+
+[[C'est la page principale | main]]
+
+Ce qui est similaire à : 
+``CONVERT-BRACKET-STARTC'est la page principale index.php?page=mainCONVERT-BRACKET-END``
+
+[C'est la page principale index.php?page=main]
+
+Un lien externe est de la forme : 
+
+``CONVERT-BRACKET-STARTC'est le moteur de recherche duck duck go https://ddg.ggCONVERT-BRACKET-END``
+
+
+[C'est le moteur de recherche duck duck go https://ddg.gg]
+
+
+Les courriers électroniques et les liens Web sont automatiquement reconnus :
+
+
+- ``http://www.homepage.td`` --> http://www.homepage.td
+- ``lionwiki@example.com`` --> lionwiki@example.com
+
+
+%TODO
+
+Vous pouvez également utiliser des liens relatifs (à l'intérieur du wiki) :
+
+- ``[[admin]]`` --> [[admin]]
+
+
+
+= Autres =
+
+
+== Images ==
+
+Si vous avez besoin d'un moyen de télécharger des images (ou d'autres fichiers), consultez la page [d'upload index.php?action=upload].
+
+Les images sont sur le même principe que les liens :
+
+``CONVERT-BRACKET-STARThttps://duckduckgo.com/assets/icons/meta/DDG-iOS-icon_76x76.pngCONVERT-BRACKET-END``
+
+
+ [https://duckduckgo.com/assets/icons/meta/DDG-iOS-icon_76x76.png] 
+
+
+ou avec un lien interne au wiki :
+
+``CONVERT-BRACKET-STARTvar/upload/lionwiki-t2t_logo_color.pngCONVERT-BRACKET-END``
+
+
+[var/upload/lionwiki-t2t_logo_color.png]  
+
+
+Les images au format vectoriel svg sont également possible :
+
+``CONVERT-BRACKET-STARTvar/upload/lionwiki-t2t_logo.svgCONVERT-BRACKET-END``
+
+
+[var/upload/lionwiki-t2t_logo.svg]  
+
+
+% Le placement des images avant un paragraphe peut parfois être délicat, aussi il sera peut-être nécessaire de rajouter du contenu après une image.
+
+% You can use your image as your link: 
+% You can also place your image to the left or right, possibly combined with other features:
+
+
+== Sous pages ==
+
+
+Les sous-pages sont utiles lorsque vous devez insérer un contenu commun dans plusieurs pages, par exemple un menu de navigation ou un contenu répété.
+
+Syntaxe :  ``%!include:var/pages/latest.txt``
+
+
+
+== Contenu multi-lingual ==
+
+Supposons que vous avez une page nommée "Biography" avec du contenu en allemand et que vous souhaitez en faire une variante française. Renommez la page Biography en Biography.de et créez une page nommée Biography.fr et insérez-y la traduction française. Les visiteurs dont le navigateur identifie la langue principale comme étant le français verront alors Biography.fr. Il est recommandé de créer une redirection de la page Biography vers la variante linguistique par défaut. La limitation évidente est que le nom de la page doit rester le même dans chaque variante linguistique. Ce n'est pas un gros problème avec "Biography", mais cela peut être moins parlant avec d'autres noms. 
+
+Il s'agit de la méthode recommandée pour créer du contenu multilingue, mais il existe d'autres moyens de le faire.
+
+% Redirects
+% If you want to redirect from some page to other, put ^{redirect:page} at the very beginning of the page. % It's not straightforward to edit page containing redirect because every visit will cause redirecting. The only way to edit such page is from search results (as it provides direct edit links), or possibly by manually altering URL.
+
+
+
+
+
+== Table des matières ==
+
+Une table des matières générée automatiquement peut être insérée avec ``CONVERT-TOC``. 
+
+
+
+== Caractères ==
+
+Certaines séquences de caractères sont automatiquement remplacées :
+
+- Flèches : CONVERT-DASHCONVERT-DASH> : -->
+- Tirets :  CONVERT-DASHCONVERT-DASHCONVERT-DASH : ---
+
+
+== Code ==
+
+La syntaxe de code est utile lorsque vous devez conserver l'espacement et la disposition d'origine du texte.
+
+- Pour du rendu "blockquote", on utilise 
+
+CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENT{LB}
+bloc de texte
+suite du bloc{LB}
+CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENT
+
+
+```
+bloc de texte
+suite du bloc
+```
+
+
+- Pour du rendu "pre", on utilise 
+
+CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENT Du code
+
+``` Du code
+
+
+- Pour du code à l'intérieur d'une phrase 
+
+Voici CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTdu codeCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENT à l'intérieur d'une phrase.
+
+
+Voici ``du code`` à l'intérieur d'une phrase.
+
+
+== Ligne horizontale ==
+
+
+``CONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASH``
+
+--------------------
+
+
+== code HTML ==
+
+Voulez-vous insérer une vidéo youtube sur votre site ? Ou tout autre code HTML ? Il suffit de l'insérer entre``''``du code html``''``. 
+
+Si vous avez besoin d'inclure un bloc entier, entrez-le comme ça :
+
+``'''``''<br/>''
+HTML code''<br/>''
+more code''<br/>''
+``'''``
+
+Cela ne fonctionnera pas si la valeur de configuration $NO_HTML est définie sur true dans ``txt2tags.class.php``. Notez qu'il y a un risque de sécurité si vous permettez aux utilisateurs de poster du code HTML dans votre wiki.
+
+
+== Retour à la ligne  ==
+
+LionWiki joint les nouvelles lignes adjacentes ensemble, si vous avez besoin de plus d'une nouvelle ligne, utilisez
+
+ ``CONVERT-BRACKET-START//..CONVERT-BRACKET-END``.
+
+{//..}
+
+
+== Commentaires ==
+
+Vous pouvez insérer des commentaires internes non destinés à être affichés en utilisant un ``%`` au début d'une ligne.
+
+%secret comment
+
+
+== Support basique de Markdown ==
+
+Il y a aussi un support basique de Markdown. Les titres avec le hashtag #, les caractères en gras avec **, les liens, les listes sont gérés car ils risquent peu d'interférer avec le texte. Les titres avec le hashtag n'entreront pas dans la table de matière (cela sera peut-être rajouté dans le futur). L'italique, avec un seul _ ou *, n'est pas géré, car son utilisation est problématique (conflit avec un caractère simple). Nous encourageons à utiliser plutôt la balise txt2tags (``CONVERT-SLASHCONVERT-SLASHtexte en italiqueCONVERT-SLASHCONVERT-SLASH``), plus logique.
+
+Exemples : 
+
+Les titres : 
+
+``### Titre niveau 3 en markdown``
+
+### Titre niveau 3 en markdown
+
+
+Les liens : 
+  
+
+``CONVERT-BRACKET-STARTLien markdown vers duck duck goCONVERT-BRACKET-ENDCONVERT-PARENTHESIS-STARThttp://ddg.ggCONVERT-PARENTHESIS-END``
+
+[Lien markdown vers duck duck go](http://ddg.gg)
+
+
+Les listes : 
+
+```
+CONVERT-ASTERISK liste markdown
+CONVERT-ASTERISK liste markdown
+```
+
+
+* liste markdown
+* liste markdown
+
+
+Divers :
+
+``CONVERT-GREATER Commentaire façon e-mail``
+
+
+> Commentaire façon e-mail
+
+
+
+``CONVERT-TILDECONVERT-TILDETexte barréCONVERT-TILDECONVERT-TILDE``
+
+
+~~Texte barré~~
+
+
+
+
+(#syntax)
+

@@ -1,0 +1,404 @@
+This document explains all syntax features of LionWiki-t2t, which is based on [txt2tags http://www.txt2tags.org].
+
+This syntax is quite easy to learn, but it's also quite strict: if what you write differ a bit from the rules, the results might be unpredicable and deceptive. Try to especially take care of the spaces used in the syntax. To master the txt2tags markup efficiently, you are adviced to read [the manual which can be found there http://www.txt2tags.org/docs.html].
+
+The general lionwiki-t2t help is [[there | help.en]].
+
+%%toc
+
+
+== Headings ==
+
+Example:
+
+```
+CONVERT-2EQUAL Heading H2 ==
+CONVERT-3EQUAL Heading H3 ===
+CONVERT-4EQUAL Heading H4 CONVERT-4EQUAL
+```
+
+
+No extra characted, except spaces (even if I personnally  advice to avoid them, and instead to start writing the markup at the beginning of the line), are allowed before the heading markup. Spaces are not required around the part to be marked as heading, but it might be more readable this way.
+
+
+== Heading H2 ==
+=== Heading H3 ===
+==== Heading H4 ====
+
+
+
+
+== Lists ==
+
+=== Unordered list ===
+
+```
+- Fruit
+ - Apple
+   - Granny smith
+ - Orange
+- Vegetables
+ - Garlic
+ - Onion
+```
+
+You must add exactly one space after each dash to enable the list.
+
+- Fruit
+ - Apple
+   - Granny smith
+ - Orange
+- Vegetables
+ - Garlic
+ - Onion
+
+
+=== Ordered list ===
+
+```
++ First item 
+ + First subitem 
+  + First subsubitem
+  + Second subsubitem
+  + Third subsubitem
+ + Second subitem
+```
+
++ First item 
+ + First subitem 
+  + First subsubitem
+  + Second subsubitem
+  + Third subsubitem
+ + Second subitem
+
+
+== Text styles ==
+
+- ``**``Bold``**`` --> **Bold** (two stars)
+- ``//``Italic``//`` --> //Italic// (two slash)
+- ``**//``Bold and italic``//**`` --> **//Bold and italic//** (combination of the above)
+- ``--``Strikethrough``--`` --> --Strikethrough--
+- ``__``Underlined``__`` --> __Underlined__
+
+You can't add extra spaces at the boundaries of the part you want to mark with the styles above. This part can contain spaces (if it's a sentence), but not after the first mark, and not before the last mark : the marks must be glued with the contents.
+
+
+== Tables ==
+
+```
+|| title 1  | title 2 |
+|  item 1 | item 2 |
+|  item 3 | item 4 |
+```
+
+{//..}
+
+|| title 1 | title 2 |
+| item 1 | item 2 |
+| item 3 | item 4 |
+
+
+
+== Additional syntax ==
+
+In addition to the normal txt2tags syntax, here are some new markup. You can customise, extend or configure most of them in the config.t2t file in the root of the wiki, or in txt2tags.class.php file.
+
+- Random numbers 
+
+``` %%rand(1,100)
+
+will display a number between 1 and 100 
+
+example:
+
+%%rand(1,100) 
+
+- Progression bar
+
+``` CONVERT-BRACKET-START10%CONVERT-BRACKET-END
+
+will display a progress bar of 10% 
+
+example:
+
+[10%]
+
+``` CONVERT-BRACKET-START3/7CONVERT-BRACKET-END
+
+will display a progress bar of 3 out of 7
+
+example:
+
+[3/7]
+
+
+- Checkboxes:
+
+ - empty: 
+
+``` CONVERT-BRACKET-START CONVERT-BRACKET-END
+ 
+ - checked:
+
+``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
+
+Will display: 
+[ ] item
+[x] item
+
+
+//You will need to edit the code on the wiki page to check the boxes//
+
+
+- Big button : 
+
+``@@``BUTTON(http://ddg.gg)``@@``
+
+@@BUTTON(test (no link))@@
+
+@@BUTTON([link to a search engine http://ddg.gg])@@
+
+@@BUTTON(http://ddg.gg)@@
+
+
+- Tags : 
+
+``(CONVERT-HASHTAGkeyword)``
+
+
+
+
+
+== Emails, links, images ==
+
+Links to other local wiki pages can be created like this for a single word:
+CONVERT-BRACKET-STARTCONVERT-BRACKET-STARTmainCONVERT-BRACKET-ENDCONVERT-BRACKET-END --> [[main]]
+
+With some label, use this syntax:
+CONVERT-BRACKET-STARTCONVERT-BRACKET-STARTThis is the main page|mainCONVERT-BRACKET-ENDCONVERT-BRACKET-END
+
+Which is similar to: 
+CONVERT-BRACKET-STARTThis is the main page index.php?page=mainCONVERT-BRACKET-END
+
+[This is the main page index.php?page=main]
+
+An external link would be: 
+
+``CONVERT-BRACKET-STARTThis is the duck duck go search engine https://ddg.ggCONVERT-BRACKET-END``
+
+
+[This is the duck duck go search engine https://ddg.gg]
+
+Emails and web links are automatically recognized:
+
+
+- ``http://www.homepage.td`` --> http://www.homepage.td
+- ``lionwiki@example.com`` --> lionwiki@example.com
+
+
+% TODO
+
+You can use also relative links (inside the wiki):
+
+- ``[[admin]]`` --> [[admin]]
+
+
+
+
+= Other =
+
+
+== Images ==
+
+If you need a way to upload images (or other files), check the [upload action index.php?action=upload]
+
+
+The images are on the same principle as the links:
+
+``CONVERT-BRACKET-STARThttps://duckduckgo.com/assets/icons/meta/DDG-iOS-icon_76x76.pngCONVERT-BRACKET-END``
+
+
+ [https://duckduckgo.com/assets/icons/meta/DDG-iOS-icon_76x76.png] 
+
+
+or with an internal link to the wiki:
+
+``CONVERT-BRACKET-STARTvar/upload/lionwiki-t2t_logo_color.pngCONVERT-BRACKET-END``
+
+
+[var/upload/lionwiki-t2t_logo_color.png]  
+
+
+Vector svg images are also possible:
+
+``CONVERT-BRACKET-STARTvar/upload/lionwiki-t2t_logo.svgCONVERT-BRACKET-END``
+
+
+[var/upload/lionwiki-t2t_logo.svg]  
+
+
+
+
+% You can use your image as your link: 
+% You can also place your image to the left or right, possibly combined with other features:
+
+
+
+
+== Subpages ==
+
+Subpages are useful when you need to insert some common content into multiple pages, example could be a navigational menu or some repeated content.
+
+Syntax:  ``%!include:var/pages/latest.txt``
+
+
+
+== Multilingual content ==
+
+Let's say you have page named "Biography" in German and you would like to make French variant. Rename page Biography to Biography.de and create page named Biography.fr and insert French translation there. Then visitors whose browser identifies primary language as French will see Biography.fr. It's recommended to create a redirect from page Biography to default language variant. The obvious limitation is that page name has to stay the same in every language variant. That's not such a big problem with "Biography", but it can be worse with other names. 
+
+This is recommended way to create multilingual content, there are more ways to do it.
+
+% Redirects
+% If you want to redirect from some page to other, put ^{redirect:page} at the very beginning of the page. % It's not straightforward to edit page containing redirect because every visit will cause redirecting. The only way to edit such page is from search results (as it provides direct edit links), or possibly by manually altering URL.
+
+
+
+
+
+== Table of contents ==
+
+Automatically generated table of contents can be inserted with ``CONVERT-TOC`` 
+
+
+== Characters ==
+
+Some sequences of characters are automatically replaced:
+
+- Arrows : ""--""> : -->
+- Dash :  ""--""-  : ---
+
+
+== Code ==
+
+Code syntax is useful when you need to keep original spacing and layout of text
+
+- For blockquote rendering, we use 
+
+CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENT{LB}
+block of text
+block continuation{LB}
+CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENT
+
+```
+text block
+block continuation
+```
+
+
+- For "pre" rendering, we use 
+
+CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENT Some code
+
+``` Some code
+
+
+- For code within a sentence 
+
+Here is CONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTsome codeCONVERT-GRAVE-ACCENTCONVERT-GRAVE-ACCENTwithin a sentence.
+
+
+This is ``some code`` within a sentence.
+
+
+
+
+== Horizontal line ==
+
+
+``CONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASHCONVERT-DASH``
+
+--------------------
+
+
+== HTML code ==
+
+Do you want to insert youtube video to your site? Or any other HTML code? Just insert it between ``''``some html code``''``. 
+
+If you need to include a whole block, enter it like that:
+
+``'''``''<br/>''
+HTML code''<br/>''
+more code''<br/>''
+``'''``
+
+This does not have to work if config value $NO_HTML is set to true. Note that it is serious security risk if you allow users to post HTML code in your wiki.
+
+
+== Newline ==
+
+LionWiki joins adjacent newlines together, if you need more than one newline, use ``CONVERT-BRACKET-START//..CONVERT-BRACKET-END``.
+
+{//..}
+
+== Internal comments ==
+
+You can insert internal comments not intended to be displayed using a ``%`` at the beginning of a line.
+
+%secret comment
+
+
+== Basic Markdown support ==
+
+There is also basic support for Markdown. Headings with hashtag #, boldface with **, links, lists are supported as they are unlikely to interfere with the text. Titles with the hashtag will not be included in the table of contents (this may be added in the future). Italics, with a single _ or *, are not supported, as their use is problematic (conflict with a single character). We encourage the use of the more logical txt2tags (``CONVERT-SLASHCONVERT-SLASHtext in italicsCONVERT-SLASHCONVERT-SLASH``) instead.
+
+
+
+Examples : 
+
+Headings: 
+
+
+``### Heading level 3 in markdown``
+
+### Heading level 3 in markdown
+
+
+Links: 
+  
+
+``CONVERT-BRACKET-STARTMarkdown link to duck duck goCONVERT-BRACKET-ENDCONVERT-PARENTHESIS-STARThttp://ddg.ggCONVERT-PARENTHESIS-END``
+
+[Markdown link to duck duck go](http://ddg.gg)
+
+
+Lists: 
+
+```
+CONVERT-ASTERISK markdown list
+CONVERT-ASTERISK markdown list
+```
+
+
+* markdown list
+* markdown list
+
+
+Diverse:
+
+``CONVERT-GREATER E-mail like comment``
+
+
+>  E-mail like comment
+
+
+
+``CONVERT-TILDECONVERT-TILDEStriked textCONVERT-TILDECONVERT-TILDE``
+
+
+~~Striked text~~
+
+
+
+
+(#syntax)

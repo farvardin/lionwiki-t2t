@@ -1,0 +1,9 @@
+
+## Shopping list
+
+[ ] carrots
+[ ] potatoes 
+[ ] milk
+[x] eggs (6)
+[x] pasta
+

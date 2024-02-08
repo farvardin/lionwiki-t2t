@@ -1,0 +1,109 @@
+
+# 💻 Informatique : Uxn
+
+Uxn est un écosystème applicatif complet, destiné au développement de petits outils et jeux, sous forme d'une machine virtuelle programmable dans un langage assembleur dédié (uxntal) et possédant seulement 32 instructions, sur le principe d'une machine forth, dont il garde d'ailleurs la syntaxe postpositionnée (postfix), la pile (stack) et la capacité de produire une solution à partir de composants simples et basiques. 
+
+Uxn peut être vu comme un processeur, et le reste des périphériques (audio, écran, clavier, souris) est géré par une machine idéale nommée Varvara, les deux systèmes cohabitants parfaitement.
+
+Les logiciels écrits pour Uxn sont portables et destinés à des ordinateurs ayant peu de ressources, dans l'esprit du permacomputing. En effet, seul un compilateur C est nécessaire pour faire fonctionner le coeur CPU (en console). Pour l'accès aux périphériques, il existe des développements et portages vers diverses plate-formes, notamment en SDL2, ce qui lui permet de tourner sur de très nombreux OS (linux, macos, windows, haiku...). De plus il existe des versions spécifiques, citons par exemple la console Game Boy Advance, Nintendo DS, Playdate, DOS, Raspberry Pi Pico, Libretro, Web...
+
+N'espérez pas recréer des jeux en 3D ou le pare-feu d'OpenOffice avec ce système, car les spécifications sont assez frugales, avec notamment 64 ko de mémoire RAM. On retrouve un peu l'esprit de certaines consoles imaginaires (comme TIC-80).
+
+Le développeur principal d'Uxn est Devine Lu Linvega, du couple Hundred Rabbits. Rekka Bellum illustre le site et les outils développés pour Uxn, et contribue donc grandement à l'imaginaire autour de cet écosystème.
+
+
+Au niveau des outils disponibles développés pour Uxn, on retrouve notamment :
+
+* 'calc', une calculatrice graphique et centrée sur l'hexadécimal.
+* 'left', un éditeur de texte (pas utf-8 malheureusement, donc il n'est pas adapté à la prose francophone).
+* 'nasu', un éditeur de sprites.
+* 'noodle', un outil de dessin axé pixel-art.
+* 'donsol', un jeu de cartes sous forme de roguelike.
+* 'orca', un séquenceur midi assez incroyable, où les notes sont entrées dans une grille sous forme de code ascii.
+* 'turye', un éditeur de polices de caractères (en pixel, ce n'est pas l'équivalent de fontforge non plus).
+* 'dexe', un éditeur hexadécimal.
+* 'piano', un petit synthé permettant d'être utilisé avec orca par exemple.
+* 'turquoise', un langue de programmation graphique proche de la "turtue" du logo.
+* 'nebu', un tableur / éditeur .csv en 6,2 ko!
+
+Il faut garder à l'esprit que les binaires générés sont extrêmement compacts, par exemple le séquenceur orca ne fait que 11 ko dans la version Unx. Sa version console (pour terminal), écrite en C classique, prend un peu plus de 100 ko, tandis que la version pour Electron, qui a quasi les mêmes fonctionnalités, pèse plus de 400 Mo !
+
+
+En conclusion, Uxn est un outil original, développé par des passionnés et conçu dans le but de sortir des paradigmes modernes de développement.
+
+
+=> https://100r.co/site/uxn.html                 Site principal d'Uxn 
+=> https://wiki.xxiivv.com/site/varvara.html     Présentation de Varvara 
+=> https://wiki.xxiivv.com/site/uxntal.html      Le langage de programmation uxntal 
+=> https://github.com/hundredrabbits/awesome-uxn Tout sur Uxn 
+=> https://compudanzas.net/uxn_tutorial.html     Un tutoriel sous forme de leçons sur 7 jours 
+
+
+
+
+## Astuces Uxn
+
+
+* Pour créer un "lanceur" qui compilera automatiquement le code uxntal et démarrera la rom, appelez ce script 'uxn.sh' par exemple, et placez-le dans /usr/local/bin :
+
+```
+#!/bin/bash 
+## compile tal file and run rom file
+
+for file in $1; do
+
+if [ ${file: -4} == ".tal" ]
+then 
+	uxnasm $file "${file%.*}".rom && uxnemu "${file%.*}".rom
+else
+	if [ ${1: -4} == ".rom" ]	
+	then 
+		uxnemu -s 2 "${file%.*}".rom
+	fi
+fi
+
+done;
+```
+
+
+* Pour les thèmes (fichiers .theme (1)), il faut éditer le fichier en hexadécimal (avec dexe (2) par exemple), ce n'est pas un fichier au format ascii !
+
+Comme indiqué dans la notice (1), les 6 bytes se décomposent ainsi :
+
+Les bytes (ou octets) sont un ensemble de 2 valeurs hexadécimales nommées nibbles, allant de 0 à f. Les bytes sont assemblés 2 par 2 sous forme de shorts (donc 4 valeurs hexa constituées de 4 nibbles). Le premier nibble du premier short indique la valeur rouge (red) de la première couleur, le premier nibble du deuxième short indique la valeur verte (green) de la première couleur etc.
+
+Chaque élément est redoublé pour reconstituer la valeur hexa telle qu'on la connaît en HTML (5 devient 55 etc), de cette façon : 
+
+```
+0a6f 05cf 0caf ( #000000 #aa55cc #66ccaa #ffffff )
+```
+
+Exemples de thèmes :
+
+```
+cf90 7c60 7c70 ( red brick )
+9f40 7c40 cc80 ( purple )
+cf80 cf80 cf80 ( gray )
+df75 cf43 be00 ( sepia )
+bf94 af62 9e20 ( sepia alt )
+49bf 26af 029e ( sepia inverted )
+
+```
+
+
+=> https://wiki.xxiivv.com/site/theme.html  (1) Thèmes
+=> https://git.sr.ht/~rabbits/dexe          (2) Dexe
+
+
+
+* Pour compiler Uxn sous Haiku, rajouter :
+
+```
+export CC=cc-x86
+```
+
+en console avant de lancer ./build.sh, sinon ça ne compilera pas
+
+
+
+=> gemini://geminispace.info/        Site de recherche Geminispace
