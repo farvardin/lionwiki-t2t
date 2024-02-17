@@ -29,3 +29,5 @@ $T_DIFF = 'diff';
 $T_CREATE_PAGE = 'Create page';
 $T_PROTECTED_READ = 'You need to enter password to view content of site: ';
 $T_WRONG_PASSWORD = 'Password is incorrect.';
+$T_ALREADY_LOGGED_IN = 'You are already logged in!';
+

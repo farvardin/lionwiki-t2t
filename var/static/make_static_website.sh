@@ -32,7 +32,7 @@ TOC=""
 ## Choose your prefered theme:
 
 THEME=dandelion
-THEME=cafe
+#THEME=cafe
 #THEME=simple
 #THEME=mimoza
 #THEME=ten
@@ -42,22 +42,56 @@ THEME=cafe
 
 ## all in the same place ?
 
-SAME=0
+SAME=1
 
 if [ ${SAME} == 0 ] ; then
-printf "test" 
-	fi
-
-## Choose the subfolder from lionwiki/var/ (it will build the static site from this folder)
+printf "normal generation\n" 
+	
+## Choose the folder for sources (it will build the static site from this folder)
 #LOCATION=pages
-LOCATION=minisite
+LOCATION=`pwd`/../minisite
+
+# STATIC = the folder from which this script is run
+STATIC=`pwd`/
 
 ## Config files
-CONFIGFILE01=../static/config_static.t2t
-CONFIGFILE02=../../config.t2t
+# static adjustement
+CONFIGFILE01=`pwd`/../static/config_static.t2t
+# main txt2tags config file
+CONFIGFILE02=`pwd`/../../config.t2t
+
+## Lionwiki upload folder 
+UPLOAD=`pwd`/../upload/
 
 ## Output folder 
-OUTPUT=../static/output/
+OUTPUT=`pwd`/../static/output/
+
+else
+
+printf "custom generation\n"
+
+## Choose the folder from for sources (it will build the static site from this folder)
+#LOCATION=pages
+LOCATION=`pwd`/src
+#LOCATION=`pwd`/../minisite
+
+# STATIC = the folder from which this script is run
+STATIC=`pwd`/
+
+## Config files
+# static adjustement
+CONFIGFILE01=`pwd`/tools/config_static.t2t
+# main txt2tags config file
+CONFIGFILE02=`pwd`/tools/config.t2t
+
+
+## Lionwiki upload folder 
+UPLOAD=`pwd`/upload/
+
+## Output folder 
+OUTPUT=`pwd`/output/
+
+fi
 
 
 ## txt2tags version
@@ -78,30 +112,30 @@ printf "${SITENAME}\n" > /tmp/lionwikistatic.t2t
 			fi
 		printf "\n\n\n" >> /tmp/lionwikistatic.t2t ; \
 		cat "${FILENAME}" >>  /tmp/lionwikistatic.t2t ; \
-		${TXT2TAGS} -T ../static/${THEME}_static.html -t html --config-file ../static/config_static.t2t  --config-file ../../config.t2t --css-inside  ${TOC} --outfile ../static/output/"${FILENAME%.*}".html /tmp/lionwikistatic.t2t ; \
+		${TXT2TAGS} -T ${STATIC}/${THEME}_static.html -t html --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside  ${TOC} --outfile ${OUTPUT}/"${FILENAME%.*}".html /tmp/lionwikistatic.t2t ; \
 		printf "* [${FILENAME%.*} ${FILENAME%.*}.html] \n" >> /tmp/lionwikipagelist.t2t
 }
 
 generate_all() {
 
-	if [ ! -d output ]; then mkdir output ; fi
+	if [ ! -d ${OUTPUT}/ ]; then mkdir -p ${OUTPUT}/ ; fi
 	
 	printf "${SITENAME}\n" >  /tmp/lionwikipagelist.t2t
 	printf "Pages List\n\n\n" >> /tmp/lionwikipagelist.t2t
 
 
-	cd ../${LOCATION}/
-	for FILENAME in *.txt *.txt *.gmi ; do 
+	cd ${LOCATION}/
+	for FILENAME in *.txt *.t2t *.gmi ; do     # TODO : select only available extension
 		generation ; done
 
-	cd ../static/
+	cd ${STATIC}/
 
-	${TXT2TAGS} -T ${THEME}_static.html -t html --config-file config_static.t2t  --config-file ../../config.t2t --css-inside ${TOC} --outfile ./output/pagelist.html /tmp/lionwikipagelist.t2t 
+	${TXT2TAGS} -T ${STATIC}/${THEME}_static.html -t html --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside ${TOC} --outfile ./output/pagelist.html /tmp/lionwikipagelist.t2t 
 
 	cp ${THEME}.css ./output/
 
-	mkdir -p ./output/var/upload/
-	cp -fr ../upload/* ./output/var/upload/
+	mkdir -p ${OUTPUT}/var/upload/
+	cp -fr ${UPLOAD}/* ./output/var/upload/
 	
 	cp ./output/${INDEX}.html ./output/index.html
 	
@@ -124,7 +158,7 @@ generate_all() {
 		
 		
 generate_single() {
-	cd ../${LOCATION}/
+	cd ${LOCATION}/
 		for FILENAME in ${FILE} ; do 
 			generation ; 	done
 		
@@ -136,8 +170,19 @@ generate_single0() {
 		printf "${FILE%.*}" > /tmp/lionwikistatic.t2t
 		printf "\n\n\n" >> /tmp/lionwikistatic.t2t 
 		cat "${FILE}" >>  /tmp/lionwikistatic.t2t 
-		txt2tags -T ../static/${THEME}_static.html -t html --config-file ../static/config_static.t2t  --config-file ../../config.t2t --css-inside  ${TOC} --outfile ../static/output/"${FILE%.*}".html /tmp/lionwikistatic.t2t 
+		txt2tags -T ../static/${THEME}_static.html -t html --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside  ${TOC} --outfile ../static/output/"${FILE%.*}".html /tmp/lionwikistatic.t2t 
 		
+}
+
+
+prepare() {
+	printf "prepare\n"
+		if [ ! -d ./tools/ ] ; then
+			mkdir ./tools/
+		fi
+	cp ../static/config_static.t2t ./tools/
+	cp ../../config.t2t ./tools/
+	cp ${TXT2TAGS} ./tools/
 }
 
 
@@ -152,13 +197,18 @@ if [ $# -eq 1 ]
 		if [ $1 == 'all' ]
 			then
 		generate_all
-	 else
-		if [ -f ../${LOCATION}/$1 ]
-		then
-			FILE=$1
-			generate_single
-		else 
-			printf "\n File doesn't exist, please choose another one\n\n"
+		else
+			if [ $1 == 'prepare' ]
+				then
+			prepare
+		else
+		if [ -f ${LOCATION}/$1 ]
+			then
+				FILE=$1
+				generate_single
+			else 
+				printf "\n File doesn't exist, please choose another one\n\n"
+			fi
 		fi
 		fi
 fi

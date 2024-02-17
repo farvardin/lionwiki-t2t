@@ -246,12 +246,14 @@
 			zoom:.8
 		}
 		main pre{
-			overflow:auto;
+			/*overflow:auto;*/
+			white-space:pre-line;
 			padding:10px;
 			margin-bottom:30px
 		}
 		main code{
 			white-space:pre
+			word-break:  break-all ;
 		}
 		main hr{
 			clear:both;
@@ -291,7 +293,6 @@
 			-webkit-font-smoothing:antialiased;
 			font-family:serif;
 			font-size:137.5%!important;
-			touch-action:pan-x pan-y;
 			font-size:20px!important
 		}
 		p{

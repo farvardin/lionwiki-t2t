@@ -24,3 +24,5 @@ $T_CREATE_PAGE = 'Créer une page';
 $T_PROTECTED_READ = 'Vous devez entrer un mot de passe pour accéder au site: ';
 $T_EDIT_CONFLICT = 'Conflit: quelqu\'un d\'autre a sauvé cette page avant que vous ne l\'ayez enregistrée. Il est recommandé de jeter un oeil à la dernière {DIFF} avant de sauver la page. Après avoir repéré, comparé et assemblé les modifications simultanées, vous pourrez sauver la page en cliquant sur le bouton <i>enregistrer</i>.';
 $T_WRONG_PASSWORD = $T_PASSWORD . ' Le mot de passe est incorrect.';
+$T_ALREADY_LOGGED_IN = 'Vous êtes déjà connecté(e)';
+

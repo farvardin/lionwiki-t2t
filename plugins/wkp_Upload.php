@@ -105,7 +105,7 @@ class Upload
                     $CON .= "$T_PASSWORD: <input type=\"password\" name=\"sc\" />\n";
                 }
 
-                $CON .= "<input type=\"submit\" value=\"$this->TP_UPLOAD\" />";
+                $CON .= "<input type=\"submit\"  />";
 
                 $CON .= "</form>";
 
@@ -121,7 +121,7 @@ class Upload
                     $CON .= "$T_PASSWORD: <input type=\"password\" name=\"sc\" />\n";
                 }
 
-                $CON .= "<input type=\"submit\" value=\"$this->TP_CREATE\" />";
+                $CON .= "<input type=\"submit\" value=\"Create\" />";
 
                 $CON .= "</form></div>";
 
@@ -287,12 +287,13 @@ class Upload
         global $LANG;
 
         foreach($this->en_strings as $str) {
-            $this->${str[0]} = ${str[1]};
+            $this->${'str'[0]} = ${'str'[1]};
+            // Because php warning str -> 'str' for newer php
         }
 
         if($LANG != "en" && isset($this->{$LANG . "_strings"})) {
             foreach($this->{$LANG . "_strings"} as $str) {
-                $this->${str[0]} = ${str[1]};
+                $this->${'str'[0]} = ${'str'[1]};
             }
         }
     }

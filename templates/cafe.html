@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width" />
+	<meta name="HandheldFriendly" content="true" />
     <link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{WIKI_TITLE  - } {PAGE_TITLE_HEAD}</title>
     	{HEAD}
@@ -255,12 +256,14 @@
 			zoom:.8
 		}
 		main pre{
-			overflow:auto;
+			/*overflow:auto;*/
+			white-space:pre-line;
 			padding:10px;
 			margin-bottom:30px
 		}
 		main code{
 			white-space:pre
+			word-break:  break-all ;
 		}
 		main hr{
 			clear:both;
@@ -300,7 +303,7 @@
 			-webkit-font-smoothing:antialiased;
 			font-family:serif;
 			font-size:137.5%!important;
-			touch-action:pan-x pan-y;
+			/* touch-action:pan-x pan-y; */
 			font-size:20px!important
 		}
 		p{
