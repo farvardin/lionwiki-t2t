@@ -7,7 +7,7 @@
 - [Newspaper index.php?&action=&permanent=1&template=templates/newspaper/newspaper.html]
 - [Sissou index.php?&action=&permanent=1&template=templates/sissou.html]
 - [Geek index.php?&action=&permanent=1&template=templates/geek/geek.html]
-- [Lagrange index.php?&action=&permanent=1&template=templates/lagrange/lagrange.html]
+- [Lagrange index.php?&action=&permanent=1&template=templates/lagrange/lagrange.html]  //(not skipped with default installation)//
 - [Mimoza index.php?&action=&permanent=1&template=templates/mimoza/mimoza.html]
 - [Terminal index.php?&action=&permanent=1&template=templates/terminal/terminal.html] - [Old Terminal Green index.php?&action=&permanent=1&template=templates/terminal_green.html] - [Old Terminal White index.php?&action=&permanent=1&template=templates/terminal_white.html]
 - [Electric Obsidian index.php?&action=&permanent=1&template=templates/ElectricObsidian/ElectricObsidian.html]
@@ -24,7 +24,7 @@
 
 //Those themes are only set locally, on your computer with a cookie. Reset with [logout index.php?erasecookie=1]. To change the theme globally, use [pheditor pheditor.php].//
 
-
+You can get more templates from https://github.com/farvardin/lionwiki-templates
 
 
 == Administration pages ==
