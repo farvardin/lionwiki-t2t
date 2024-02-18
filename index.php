@@ -110,10 +110,10 @@ $T_PROTECTED_READ = 'You need to enter password to view content of site: ';
 $T_WRONG_PASSWORD = 'Password is incorrect.';
 $T_ALREADY_LOGGED_IN = 'You are already logged in!';
 
-if($_GET['lang']) {
+if (isset($_GET['lang'])) {
     $LANG = clear_path($_GET['lang']);
     setcookie('LW_LANG', $LANG, time() + 365 * 86400);
-} elseif($_COOKIE['LW_LANG']) {
+} elseif (isset($_COOKIE['LW_LANG'])) {
     $LANG = clear_path($_COOKIE['LW_LANG']);
 } else {
     list($LANG) = explode(',', clear_path($_SERVER['HTTP_ACCEPT_LANGUAGE']));
@@ -135,7 +135,7 @@ if(!file_exists($VAR_DIR) && !mkdir(rtrim($VAR_DIR, "/"))) {
 }
 }
 
-if($_GET['erasecookie']) { // remove cookie without reloading
+if (isset($_GET['erasecookie'])) { // remove cookie without reloading
     foreach($_COOKIE as $k => $v) {
         if(substr($k, 0, 3) == 'LW_') {
             setcookie($k);
@@ -150,8 +150,8 @@ for($plugins = array(), $dir = @opendir($PLUGINS_DIR); $dir && $f = readdir($dir
         $plugins[$m[1]] = new $m[1]();
 
 //        if(isset(${$m[1]})) {
-//            foreach(${$m[1]} as $name => $value) {
-        if(isset($$m[1])) {
+ //           foreach(${$m[1]} as $name => $value) {
+        if (isset($$m[1])) {
             foreach($$m[1] as $name => $value) {
                 $plugins[$m[1]]->$name = $value;
             }

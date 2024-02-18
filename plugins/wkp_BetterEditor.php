@@ -141,7 +141,7 @@ class BetterEditor
     {
         global $LANG;
 
-        foreach($this->en_strings as $str) {
+        foreach ($this->en_strings as $str) {
             $this->$str[0] = $str[1];
         }
 

@@ -4,6 +4,10 @@
  * package from PEAR. Thanks to its authors, it works great!
  *
  * (c) Adam Zivner 2009 adam.zivner@gmail.com, GPL'd
+ *
+ * not compatible with PHP 8.2, 
+ *  remove it (with the InlineDiff folder) if necessary
+ * upgrade with https://github.com/horde/Text_Diff/ in the future?
  */
 
 class InlineDiff
