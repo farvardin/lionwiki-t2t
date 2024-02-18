@@ -6,7 +6,8 @@
  *
  * Based on WiKiss 0.4svn
  * 
- * (broken on php > 8.0) because of __construct() cf. https://www.php.net/manual/en/language.oop5.decon.php
+ * (broken on php > 8.0) because of __construct() 
+ *      cf. https://www.php.net/manual/en/language.oop5.decon.php
  */
 
 class Upload
@@ -51,16 +52,16 @@ class Upload
         global $CON, $TITLE, $editable, $T_PASSWORD, $T_WRONG_PASSWORD, $error;
 
         
-        if($action == "upload") {
+        if ($action == "upload") {
             
             $CON = "";
             $TITLE = $this->TP_FILE_UPLOAD;
 
-            if(is_dir($this->datadir)) {
+            if (is_dir($this->datadir)) {
                 $rel_dir = ltrim(clear_path($_REQUEST['curdir']), "/");
                 $abs_dir = $this->datadir . $rel_dir;
 
-                if(authentified()) {
+                if (authentified()) {
                     if(!empty($_POST['dir2create'])) {
                         @mkdir($abs_dir . '/' . clear_path($_POST['dir2create']), $this->chmod_dir);
                     } elseif(!empty($_FILES['file']['tmp_name'])) { // anything to upload?
@@ -144,7 +145,7 @@ class Upload
                     }
                 }
 
-                /*
+                
                 function cmp_files($a, $b) // sort directories first, then files.
                 {
                 if($a[1] == $b[1])
@@ -152,7 +153,7 @@ class Upload
                 else
                 return $b[1];
                 }
-                */
+                
                 if($files) {
                     usort($files, "cmp_files");
                 }
