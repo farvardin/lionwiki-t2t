@@ -6,76 +6,82 @@
 
 function toggleComments()
 {
-	var wrap = document.getElementById("commentWrap");
+    var wrap = document.getElementById("commentWrap");
 
-	if(wrap.style.display == "none")
-		wrap.style.display = "block";
-	else
-		wrap.style.display = "none";
+    if(wrap.style.display == "none") {
+        wrap.style.display = "block";
+    } else {
+        wrap.style.display = "none";
+    }
 
-	setCookie("display-comments", wrap.style.display);
+    setCookie("display-comments", wrap.style.display);
 
-	setPlusMinus();
+    setPlusMinus();
 }
 
 function setPlusMinus()
 {
-	var wrap = document.getElementById("commentWrap");
-	var sign;
+    var wrap = document.getElementById("commentWrap");
+    var sign;
 
-	if(wrap.style.display == "none")
-		sign = "+";
-	else
-		sign = "&ndash;";
+    if(wrap.style.display == "none") {
+        sign = "+";
+    } else {
+        sign = "&ndash;";
+    }
 
-	document.getElementById("plusminus").innerHTML = sign;
+    document.getElementById("plusminus").innerHTML = sign;
 }
 
 function initCommentsDisplay()
 {
-	var wrap = document.getElementById("commentWrap");
+    var wrap = document.getElementById("commentWrap");
 
-	var display = getCookie("display-comments");
+    var display = getCookie("display-comments");
 
-	if(display.length > 0)
-		wrap.style.display = display;
+    if(display.length > 0) {
+        wrap.style.display = display;
+    }
 
-	setPlusMinus();
+    setPlusMinus();
 }
 
 function setCookie(name, value, expiredays)
 {
-	var exdate = new Date();
-	exdate.setDate(exdate.getDate() + expiredays);
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
 
-	document.cookie = name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+    document.cookie = name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
 }
 
 function getCookie(name)
 {
-	if(document.cookie.length > 0) {
-		start = document.cookie.indexOf(name + "=");
+    if(document.cookie.length > 0) {
+        start = document.cookie.indexOf(name + "=");
 
-		if(start != -1) {
-			start = start + name.length + 1;
-			end = document.cookie.indexOf(";", start);
+        if(start != -1) {
+            start = start + name.length + 1;
+            end = document.cookie.indexOf(";", start);
 
-			if(end == -1)
-			    end = document.cookie.length;
+            if(end == -1) {
+                end = document.cookie.length;
+            }
 
-			return unescape(document.cookie.substring(start, end));
-		}
-	}
+            return unescape(document.cookie.substring(start, end));
+        }
+    }
 
-	return "";
+    return "";
 }
 
-if(typeof wons == "undefined")
-	wons = new Array();
+if(typeof wons == "undefined") {
+    wons = new Array();
+}
 
 wons.push("initCommentsDisplay()");
 
-window.onload = function() {
-	for(var i = 0; i < wons.length; i++)
-		eval(wons[i]);
+window.onload = function () {
+    for(var i = 0; i < wons.length; i++) {
+        eval(wons[i]);
+    }
 }

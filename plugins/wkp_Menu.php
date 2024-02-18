@@ -19,104 +19,116 @@
 
 class Menu
 {
-	var $desc = array(
-		array("Menu", "provides syntax for simple one level menus.")
-	);
+    var $desc = array(
+    array("Menu", "provides syntax for simple one level menus.")
+    );
 
-	var $template_dir;
-	var $default_template = "default.html";
+    var $template_dir;
+    var $default_template = "default.html";
 
-	var $menus = array();
+    var $menus = array();
 
-	//function Menu()
-	function __construct()
-	{
-		$this->template_dir = $GLOBALS["PLUGINS_DIR"] . "Menu/";
-	}
+    //function Menu()
+    function __construct()
+    {
+        $this->template_dir = $GLOBALS["PLUGINS_DIR"] . "Menu/";
+    }
 
-	function formatBegin()
-	{
-		global $CON;
+    function formatBegin()
+    {
+        global $CON;
 
-		// First we need to save it, otherwise main parsing algorithm would mess with it
+        // First we need to save it, otherwise main parsing algorithm would mess with it
 
-		preg_match_all("/\{menu(\(([^)]*)\))?(\s+parent=\[([^\]\"]+)\])?\s+([^\}]*)\}/s", $CON, $this->menus, PREG_SET_ORDER);
+        preg_match_all("/\{menu(\(([^)]*)\))?(\s+parent=\[([^\]\"]+)\])?\s+([^\}]*)\}/s", $CON, $this->menus, PREG_SET_ORDER);
 
-		foreach($this->menus as $menu)
-			$CON = str_replace($menu[0], "{MENU}", $CON);
-	}
+        foreach($this->menus as $menu) {
+            $CON = str_replace($menu[0], "{MENU}", $CON);
+        }
+    }
 
-	// $str is something like [Link] or [Title|Link] or [Title|http://hskdjfhjks]
+    // $str is something like [Link] or [Title|Link] or [Title|http://hskdjfhjks]
 
-	function getLink($str)
-	{
-		$parts = explode("|", $str);
+    function getLink($str)
+    {
+        $parts = explode("|", $str);
 
-		if(empty($parts[1]))
-			$parts[1] = $parts[0];
+        if(empty($parts[1])) {
+            $parts[1] = $parts[0];
+        }
 
-		list($name, $link) = $parts;
+        list($name, $link) = $parts;
 
-		if(substr($link, 0, 4) != "http" && substr($link, 0, 4) != "http" && substr($link, 0, 2) != "./" && $link[0] != "/")
-			$link = $GLOBALS["self"] . "?page=" . u($link);
+        if(substr($link, 0, 4) != "http" && substr($link, 0, 4) != "http" && substr($link, 0, 2) != "./" && $link[0] != "/") {
+            $link = $GLOBALS["self"] . "?page=" . u($link);
+        }
 
-		return array($link, $parts[0]);
-	}
+        return array($link, $parts[0]);
+    }
 
-	function formatEnd()
-	{
-		global $CON;
-		
-		foreach($this->menus as $m) {
-			$template_file = $m[2];
-			list($parent_link, $parent_name) = $this->getLink($m[4]);
-			$item_string = $m[5];
+    function formatEnd()
+    {
+        global $CON;
+        
+        foreach($this->menus as $m) {
+            $template_file = $m[2];
+            list($parent_link, $parent_name) = $this->getLink($m[4]);
+            $item_string = $m[5];
 
-			$template_file = clear_path($template_file);
+            $template_file = clear_path($template_file);
 
-			if(empty($template_file) || !file_exists($this->template_dir . $template_file))
-				$template_file = $this->default_template; // use default.html template if none is provided or does not exist
+            if(empty($template_file) || !file_exists($this->template_dir . $template_file)) {
+                $template_file = $this->default_template; // use default.html template if none is provided or does not exist
+            }
 
-			$tmpl = file_get_contents($this->template_dir . $template_file);
+            $tmpl = file_get_contents($this->template_dir . $template_file);
 
-			$item_tmpl = "";
+            $item_tmpl = "";
 
-			if(preg_match("/\{item\}(.*)\{\/item\}/Us", $tmpl, $m))
-				$item_tmpl = $m[1];
+            if(preg_match("/\{item\}(.*)\{\/item\}/Us", $tmpl, $m)) {
+                $item_tmpl = $m[1];
+            }
 
-			$items = array();
+            $items = array();
 
-			if(preg_match_all("/\[([^\]\"]+)\]/U", $item_string, $matches))
-				$items = $matches[1];
+            if(preg_match_all("/\[([^\]\"]+)\]/U", $item_string, $matches)) {
+                $items = $matches[1];
+            }
 
-			$items_str = "";
+            $items_str = "";
 
-			for($i = 0, $c = count($items); $i < $c; $i++) {
-				$class = "";
+            for($i = 0, $c = count($items); $i < $c; $i++) {
+                $class = "";
 
-				if($i == 0)
-					$class = "first";
+                if($i == 0) {
+                    $class = "first";
+                }
 
-				if($i == $c - 1)
-					$class .= " last";
+                if($i == $c - 1) {
+                    $class .= " last";
+                }
 
-				list($link, $name) = $this->getLink($items[$i]);
+                list($link, $name) = $this->getLink($items[$i]);
 
-				$items_str .= strtr($item_tmpl, array(
-					"{class}" => $class,
-					"{name}" => h($name),
-					"{link}" => $link
-				));
-			}
+                $items_str .= strtr(
+                    $item_tmpl, array(
+                    "{class}" => $class,
+                    "{name}" => h($name),
+                    "{link}" => $link
+                    )
+                );
+            }
 
-			$menu_str = strtr($tmpl, array(
-				"{parent_name}" => $parent_name,
-				"{parent_link}" => $parent_link
-			));
+            $menu_str = strtr(
+                $tmpl, array(
+                "{parent_name}" => $parent_name,
+                "{parent_link}" => $parent_link
+                )
+            );
 
-			$menu_str = preg_replace("/\{item\}.*\{\/item\}/Us", $items_str, $menu_str);
+            $menu_str = preg_replace("/\{item\}.*\{\/item\}/Us", $items_str, $menu_str);
 
-			$CON = preg_replace("/\{MENU\}/", $menu_str, $CON, 1);
-		}
-	}
+            $CON = preg_replace("/\{MENU\}/", $menu_str, $CON, 1);
+        }
+    }
 }

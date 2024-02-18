@@ -28,7 +28,8 @@
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  * @package Text_Diff
  */
-class Text_Diff_Engine_native {
+class Text_Diff_Engine_native
+{
 
     function diff($from_lines, $to_lines)
     {
@@ -148,7 +149,7 @@ class Text_Diff_Engine_native {
      * match.  The caller must trim matching lines from the beginning and end
      * of the portions it is going to specify.
      */
-    function _diag ($xoff, $xlim, $yoff, $ylim, $nchunks)
+    function _diag($xoff, $xlim, $yoff, $ylim, $nchunks)
     {
         $flip = false;
 
@@ -269,7 +270,7 @@ class Text_Diff_Engine_native {
      * Note that XLIM, YLIM are exclusive bounds.  All line numbers are
      * origin-0 and discarded lines are not counted.
      */
-    function _compareseq ($xoff, $xlim, $yoff, $ylim)
+    function _compareseq($xoff, $xlim, $yoff, $ylim)
     {
         /* Slide down the bottom initial diagonal. */
         while ($xoff < $xlim && $yoff < $ylim
@@ -310,7 +311,7 @@ class Text_Diff_Engine_native {
             reset($seps);
             $pt1 = $seps[0];
             while ($pt2 = next($seps)) {
-                $this->_compareseq ($pt1[0], $pt2[0], $pt1[1], $pt2[1]);
+                $this->_compareseq($pt1[0], $pt2[0], $pt1[1], $pt2[1]);
                 $pt1 = $pt2;
             }
         }

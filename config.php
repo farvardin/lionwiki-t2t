@@ -23,7 +23,7 @@ $PROTECTED_READ = false;
 
 // Some of those templates are using markitup, a convenient and advanced toolbar to edit the wiki.
 
-$TEMPLATE = 'templates/minimaxing/minimaxing.html'; // this one was once the default skin for lionwiki-t2t
+//$TEMPLATE = 'templates/minimaxing/minimaxing.html'; // this one was once the default skin for lionwiki-t2t
 //$TEMPLATE = 'templates/minimaxing/minimaxing_links.html'; // this one is for a basic landpage without menu
 
 //$TEMPLATE = 'templates/red.html';
@@ -47,7 +47,7 @@ $TEMPLATE = 'templates/minimaxing/minimaxing.html'; // this one was once the def
 //$TEMPLATE = 'templates/blazekiss/blazekiss.html';  // deprecated
 //$TEMPLATE = 'templates/sissou.html';
 //$TEMPLATE = 'templates/fravashyo/fravashyo.html';
-$TEMPLATE = 'templates/dandelion.html';
+//$TEMPLATE = 'templates/dandelion.html';
 //$TEMPLATE = 'templates/flexbox.html';    // in development
 //$TEMPLATE = 'templates/minimal.html';
 //$TEMPLATE = 'templates/terminal/terminal.html';
@@ -75,8 +75,8 @@ $START_PAGE = 'main'; // Which page should be default (start page)?
 $RSS = '<a href="./var/rss.xml">RSS</a>';
 
 // if needed (if autodetection doesn't work), force language
-$LANG = en;
-//$LANG = fr;
+$LANG = 'en';
+//$LANG = 'fr';
 // (it looks like forcing another language crashes lionwiki so it's better to keep LANG=en at the moment... autodetection seems to work anyway)
 
 /* see the file config.t2t to tweak the syntax and even more! */

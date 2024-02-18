@@ -14,7 +14,8 @@
  *
  * @package Text_Diff
  */
-class Text_Diff_Renderer {
+class Text_Diff_Renderer
+{
 
     /**
      * Number of leading context "lines" to preserve.
@@ -65,7 +66,7 @@ class Text_Diff_Renderer {
     /**
      * Renders a diff.
      *
-     * @param Text_Diff $diff  A Text_Diff object.
+     * @param Text_Diff $diff A Text_Diff object.
      *
      * @return string  The formatted output.
      */
@@ -103,9 +104,11 @@ class Text_Diff_Renderer {
                             $block[] = new Text_Diff_Op_copy($context);
                         }
                         /* @todo */
-                        $output .= $this->_block($x0, $ntrail + $xi - $x0,
+                        $output .= $this->_block(
+                            $x0, $ntrail + $xi - $x0,
                             $y0, $ntrail + $yi - $y0,
-                            $block);
+                            $block
+                        );
                         $block = false;
                     }
                 }
@@ -135,9 +138,11 @@ class Text_Diff_Renderer {
         }
 
         if (is_array($block)) {
-            $output .= $this->_block($x0, $xi - $x0,
+            $output .= $this->_block(
+                $x0, $xi - $x0,
                 $y0, $yi - $y0,
-                $block);
+                $block
+            );
         }
 
         return $output . $this->_endDiff();
@@ -149,21 +154,21 @@ class Text_Diff_Renderer {
 
         foreach ($edits as $edit) {
             switch (strtolower(get_class($edit))) {
-                case 'text_diff_op_copy':
-                    $output .= $this->_context($edit->orig);
-                    break;
+            case 'text_diff_op_copy':
+                $output .= $this->_context($edit->orig);
+                break;
 
-                case 'text_diff_op_add':
-                    $output .= $this->_added($edit->final);
-                    break;
+            case 'text_diff_op_add':
+                $output .= $this->_added($edit->final);
+                break;
 
-                case 'text_diff_op_delete':
-                    $output .= $this->_deleted($edit->orig);
-                    break;
+            case 'text_diff_op_delete':
+                $output .= $this->_deleted($edit->orig);
+                break;
 
-                case 'text_diff_op_change':
-                    $output .= $this->_changed($edit->orig, $edit->final);
-                    break;
+            case 'text_diff_op_change':
+                $output .= $this->_changed($edit->orig, $edit->final);
+                break;
             }
         }
 

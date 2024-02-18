@@ -1,7 +1,8 @@
 <?php
 // LionWiki diff plugin extracted from PEAR package Text_Diff by Geoffrey T. Dairiki <dairiki@dairiki.org>
 
-class Text_Diff {
+class Text_Diff
+{
 
     /**
      * Array of changes.
@@ -13,11 +14,11 @@ class Text_Diff {
     /**
      * Computes diffs between sequences of strings.
      *
-     * @param string $engine     Name of the diffing engine to use.  'auto'
-     *                           will automatically select the best.
-     * @param array $params      Parameters to pass to the diffing engine.
-     *                           Normally an array of two arrays, each
-     *                           containing the lines from a file.
+     * @param string $engine Name of the diffing engine to use.  'auto'
+     *                       will automatically select the best.
+     * @param array  $params Parameters to pass to the diffing engine.
+     *                       Normally an array of two arrays, each
+     *                       containing the lines from a file.
      */
     function __construct($engine, $params)
     {
@@ -33,7 +34,7 @@ class Text_Diff {
             $engine = basename($engine);
         }
 
-        require_once $engine . '.php';
+        include_once $engine . '.php';
         $class = 'Text_Diff_Engine_' . $engine;
         $diff_engine = new $class();
 
@@ -60,8 +61,9 @@ class Text_Diff {
     {
         $count = 0;
         foreach ($this->_edits as $edit) {
-            if (is_a($edit, 'Text_Diff_Op_add') ||
-                is_a($edit, 'Text_Diff_Op_change')) {
+            if (is_a($edit, 'Text_Diff_Op_add') 
+                || is_a($edit, 'Text_Diff_Op_change')
+            ) {
                 $count += $edit->nfinal();
             }
         }
@@ -80,8 +82,9 @@ class Text_Diff {
     {
         $count = 0;
         foreach ($this->_edits as $edit) {
-            if (is_a($edit, 'Text_Diff_Op_delete') ||
-                is_a($edit, 'Text_Diff_Op_change')) {
+            if (is_a($edit, 'Text_Diff_Op_delete') 
+                || is_a($edit, 'Text_Diff_Op_change')
+            ) {
                 $count += $edit->norig();
             }
         }
@@ -189,7 +192,7 @@ class Text_Diff {
      * Removes trailing newlines from a line of text. This is meant to be used
      * with array_walk().
      *
-     * @param string $line  The line to trim.
+     * @param string  $line The line to trim.
      * @param integer $key  The index of the line in the array. Not used.
      */
     static function trimNewlines(&$line, $key)
@@ -273,7 +276,8 @@ class Text_Diff {
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
-class Text_MappedDiff extends Text_Diff {
+class Text_MappedDiff extends Text_Diff
+{
 
     /**
      * Computes a diff between sequences of strings.
@@ -281,19 +285,20 @@ class Text_MappedDiff extends Text_Diff {
      * This can be used to compute things like case-insensitve diffs, or diffs
      * which ignore changes in white-space.
      *
-     * @param array $from_lines         An array of strings.
-     * @param array $to_lines           An array of strings.
-     * @param array $mapped_from_lines  This array should have the same size
-     *                                  number of elements as $from_lines.  The
-     *                                  elements in $mapped_from_lines and
-     *                                  $mapped_to_lines are what is actually
-     *                                  compared when computing the diff.
-     * @param array $mapped_to_lines    This array should have the same number
-     *                                  of elements as $to_lines.
+     * @param array $from_lines        An array of strings.
+     * @param array $to_lines          An array of strings.
+     * @param array $mapped_from_lines This array should have the same size
+     *                                 number of elements as $from_lines. 
+     *                                 The elements in $mapped_from_lines
+     *                                 and $mapped_to_lines are what is
+     *                                 actually compared when computing the
+     *                                 diff.
+     * @param array $mapped_to_lines   This array should have the same number
+     *                                 of elements as $to_lines.
      */
     function Text_MappedDiff($from_lines, $to_lines,
-                             $mapped_from_lines, $mapped_to_lines)
-    {
+        $mapped_from_lines, $mapped_to_lines
+    ) {
         assert(count($from_lines) == count($mapped_from_lines));
         assert(count($to_lines) == count($mapped_to_lines));
 
@@ -323,7 +328,8 @@ class Text_MappedDiff extends Text_Diff {
  *
  * @access private
  */
-class Text_Diff_Op {
+class Text_Diff_Op
+{
 
     var $orig;
     var $final;
@@ -351,7 +357,8 @@ class Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_copy extends Text_Diff_Op {
+class Text_Diff_Op_copy extends Text_Diff_Op
+{
 
     function Text_Diff_Op_copy($orig, $final = false)
     {
@@ -376,7 +383,8 @@ class Text_Diff_Op_copy extends Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_delete extends Text_Diff_Op {
+class Text_Diff_Op_delete extends Text_Diff_Op
+{
 
     function Text_Diff_Op_delete($lines)
     {
@@ -398,7 +406,8 @@ class Text_Diff_Op_delete extends Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_add extends Text_Diff_Op {
+class Text_Diff_Op_add extends Text_Diff_Op
+{
 
     function Text_Diff_Op_add($lines)
     {
@@ -420,7 +429,8 @@ class Text_Diff_Op_add extends Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_change extends Text_Diff_Op {
+class Text_Diff_Op_change extends Text_Diff_Op
+{
 
     function Text_Diff_Op_change($orig, $final)
     {

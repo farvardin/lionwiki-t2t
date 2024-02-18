@@ -17,68 +17,71 @@
 
 class SelectLanguage
 {
-	var $desc = array(
-		array("SelectLanguage", "creates select box in which you can choose language.")
-	);
+    var $desc = array(
+    array("SelectLanguage", "creates select box in which you can choose language.")
+    );
 
-	var $lang_names = array(
-		"ar" => "العربية",
-		"bg" => "Български",
-		"ca" => "Català",
-		"cs" => "Čeština",
-		"de" => "Deutsch",
-		"de-ch" => "Schweizerdeutsch",
-		"da" => "Dansk",
-		"en" => "English",
-		"eo" => "Esperanto",
-		"es" => "Español",
-		"fi" => "Suomi",
-		"fr" => "Français",
-		"he" => "עברית",
-		"hr" => "Hrvatski",
-		"hu" => "Magyar",
-		"it" => "Italiano",
-		"nl" => "Nederlands",
-		"pl" => "Polski",
-		"pt" => "Português",
-		"pt-br" => "Português brasileiro",
-		"ro" => "Română",
-		"ru" => "Русский",
-		"sk" => "Slovenština",
-		"sv" => "Svenska",
-		"uk" => "Українська",
-		"zh-tw" => "臺灣國語"
-	);
+    var $lang_names = array(
+    "ar" => "العربية",
+    "bg" => "Български",
+    "ca" => "Català",
+    "cs" => "Čeština",
+    "de" => "Deutsch",
+    "de-ch" => "Schweizerdeutsch",
+    "da" => "Dansk",
+    "en" => "English",
+    "eo" => "Esperanto",
+    "es" => "Español",
+    "fi" => "Suomi",
+    "fr" => "Français",
+    "he" => "עברית",
+    "hr" => "Hrvatski",
+    "hu" => "Magyar",
+    "it" => "Italiano",
+    "nl" => "Nederlands",
+    "pl" => "Polski",
+    "pt" => "Português",
+    "pt-br" => "Português brasileiro",
+    "ro" => "Română",
+    "ru" => "Русский",
+    "sk" => "Slovenština",
+    "sv" => "Svenska",
+    "uk" => "Українська",
+    "zh-tw" => "臺灣國語"
+    );
 
-	function template()
-	{
-		global $self, $html, $LANG, $LANG_DIR, $CON, $action, $page;
+    function template()
+    {
+        global $self, $html, $LANG, $LANG_DIR, $CON, $action, $page;
 
-		$langs = array();
+        $langs = array();
 
-		if(is_dir($LANG_DIR) && ($dir = opendir($LANG_DIR))) // common plugins
-			while(($file = readdir($dir)) !== false)
-				if(!is_dir($LANG_DIR . $file))
-					$langs[] = basename($file, ".php");
+        if(is_dir($LANG_DIR) && ($dir = opendir($LANG_DIR))) { // common plugins
+            while(($file = readdir($dir)) !== false) {
+                if(!is_dir($LANG_DIR . $file)) {
+                    $langs[] = basename($file, ".php");
+                }
+            }
+        }
 
-		sort($langs);
+        sort($langs);
 
-		$select = "
+        $select = "
 <form action=\"$self\" id=\"formSelectLanguage\" method=\"get\">
 <input type=\"hidden\" name=\"page\" value=\"" . basename($page, ".$LANG") . "\" />
 <input type=\"hidden\" name=\"action\" value=\"" . h($action) . "\" />
 <select name=\"lang\" id=\"selectLanguage\" onchange=\"this.form.submit();\">
 ";
 
-		foreach($langs as $l) {
-			$selected = $l == $LANG ? " selected=\"selected\" " : "";
+        foreach($langs as $l) {
+            $selected = $l == $LANG ? " selected=\"selected\" " : "";
 
-			$select .= "<option value=\"".h($l)."\"$selected>" . h($this->lang_names[$l]) . "</option>\n";
-		}
+            $select .= "<option value=\"".h($l)."\"$selected>" . h($this->lang_names[$l]) . "</option>\n";
+        }
 
-		$select .= "</select></form>\n";
+        $select .= "</select></form>\n";
 
-		$html = template_replace("plugin:SELECT_LANGUAGE", $select, $html);
-		$CON = str_replace("{SELECT_LANGUAGE}", $select, $CON);
-	}
+        $html = template_replace("plugin:SELECT_LANGUAGE", $select, $html);
+        $CON = str_replace("{SELECT_LANGUAGE}", $select, $CON);
+    }
 }

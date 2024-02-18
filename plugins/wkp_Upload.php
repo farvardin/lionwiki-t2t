@@ -26,9 +26,10 @@ class Upload
     var $chmod_dir = 0755;
     var $chmod_file = 0644;
 
-    function Upload()
+    //function Upload()
     // TODO php 8.1 replace with:
     //public function __construct()
+    function __construct()
     {
         global $VAR_DIR, $self;
 
@@ -45,7 +46,7 @@ class Upload
         );
     }
 
-     function action($action)
+    function action($action)
     {
         global $CON, $TITLE, $editable, $T_PASSWORD, $T_WRONG_PASSWORD, $error;
 
