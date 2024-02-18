@@ -288,8 +288,8 @@ class Upload
     {
         global $LANG;
 
-        foreach($this->en_strings as $str) {
-            $this->${'str'[0]} = ${'str'[1]};
+        foreach ($this->en_strings as $str) {
+            $this->${"str"[0]} = ${"str"[1]};
             // Because php warning str -> 'str' for newer php
         }
 

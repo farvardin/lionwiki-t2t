@@ -1,12 +1,12 @@
 = TXT2TAGS SAMPLE = 
 == Aurelio Jargas ==
-=== %%mtime(%m/%d/%Y) ===
+=== %%mtime(m/d/Y) ===
 
 %!encoding: UTF-8
 
 This text is before the introduction.
 
-But it's OK.
+But it's OK. 
 
                   =  Introduction  =
 
