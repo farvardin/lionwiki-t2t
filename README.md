@@ -27,12 +27,14 @@ Txt2tags and lionwiki are both following [the KISS principle](https://en.wikiped
 
 -----------------------------
 
-Main website and code repository: 
+Presentation website: 
 
 * https://lionwiki-t2t.sourceforge.io/
 
 
-Mirror on:
+code repository on:
 
 * https://github.com/farvardin/lionwiki-t2t
+
+_(code is also mirrored on sourceforge, but not necessary up to date)_
 

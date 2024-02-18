@@ -6,7 +6,7 @@
 
 - //**Download** an [archive with LionWiki and txt2tags https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip/download] ([minimal version https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t-minimal.zip/download])//
 
-- //Access [the code https://sourceforge.net/p/lionwiki-t2t/code/ci/default/tree/] or [the issue tracker https://sourceforge.net/p/lionwiki-t2t/tickets/]// 
+- //Access [the code https://github.com/farvardin/lionwiki-t2t] or [the issue tracker https://github.com/farvardin/lionwiki-t2t/issues]// 
 
 
 
@@ -43,7 +43,8 @@ Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedi
 ------------------------------------------
 
 @@BUTTON(https://lionwiki-t2t.sourceforge.io/)@@
-@@BUTTON(https://github.com/farvardin/lionwiki-t2t)@@ (mirror)
+@@BUTTON(https://github.com/farvardin/lionwiki-t2t)@@ (source code)
+@@BUTTON(https://github.com/farvardin/lionwiki-templates)@@ (more templates)
 
 ------------------------------------------
 
