@@ -52,7 +52,10 @@ a.toolbarTextareaItem{padding-right: 10px}
 .panel {background-color: #777; color: white; padding: 4px 10px 4px 10px;}
 .panel a, .panel a:hover {color: white;}
 
-
+.hover-display .hover-menu { display: none; }
+.hover-display:hover .hover-menu { display: inline; }
+.hover-display:hover { background-color: #777; }
+.hover-display { background-color: transparent; }
 
 .panel li { display: inline; }
 
@@ -113,7 +116,7 @@ progress::-webkit-progress-bar {  background: #fff;}
 <body>
 <div id="wrapper">
 	<div id="header">
-		<div class="panel" style="position: fixed; width: 910px;z-index:1;">
+		<div class="panel  hover-display" style="position: fixed; width: 910px;z-index:1;">
 			<span class="hover-menu">
 				{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}
 				<hr/>{MENU}
