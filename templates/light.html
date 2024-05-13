@@ -19,7 +19,7 @@ a.pending{color:#c174a0}
 a:hover{text-decoration:underline}
 a img{border:none}
 a.external:after{content: "\2197";}
-input,textarea{font-size:94%;border:1px solid #999;background:#fff;color:#666;padding:0px;line-height:1.2;margin:0.5em;vertical-align:middle}
+input,textarea{font-size:105%;border:1px solid #999;background:#fff;color:#666;padding:0px;line-height:1.2;margin:0.5em;vertical-align:middle}
 textarea{display:block;margin:0.5em auto;width:100%}
 pre{outline:0.4em solid #fafafa;padding:0.5em;margin:0.5em;border:1px solid #ddd;background:#fafafa;color:#644e22;overflow:auto}
 img{border:1px solid #ccc;outline:0.25em solid #eee;padding:0.25em;margin:0.25em 0 0.25em 0.5em;background:#fff}
@@ -27,7 +27,7 @@ hr{height:0;border:none;color:#fff;background:transparent;border-bottom:1px soli
 #diff{outline:none;border:none;background:#fff;line-height:1.25;padding:1em;white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%}
 #diff ins{color:green;text-decoration:none;font-weight:bold}
 #diff del{color:red;text-decoration:line-through}
-hr{margin:10px 0 10px 0;height:0px;overflow:hidden;border:0px;border-top:1px solid #1474CA}
+hr{margin:10px 0 10px 0;height:0px;overflow:hidden;border:0px;border-top:1px solid #ddd}
 .error{color:#F25A5A;font-weight:bold}
 form{display:inline}
 #contentTextarea{height:44em}
@@ -49,15 +49,52 @@ a.toolbarTextareaItem{padding-right: 10px}
 .wikitable{border-collapse:collapse}
 .wikitable td{border: 1px solid #DDDDDD;padding:1px 5px 1px 5px}
 
-.panel {background-color: #aaa; color: white; padding: 4px 10px 4px 10px;}
+.panel {background-color: #777; color: white; padding: 4px 10px 4px 10px;}
 .panel a, .panel a:hover {color: white;}
 
-.hover-display .hover-menu { display: none; }
-.hover-display:hover .hover-menu { display: inline; }
-.hover-display:hover { background-color: #aaa; }
-.hover-display { background-color: transparent; }
+
 
 .panel li { display: inline; }
+
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 1px solid #555;
+  background-color: #efefef;
+  min-height: 50px;
+  margin: 5px;
+  font-size: 19px;
+  font-weight: normal;
+  color: #333;
+  text-align: center;
+
+  border-radius: 6px;
+}
+
+.block a {  color: #222;  text-decoration: none; }
+.block:hover, .block:hover a {text-decoration: underline;  background-color: #444;  color: #fff;  width: 65%;}
+
+
+/* Todotxt support */
+
+
+.todotxt_A { color:#162D57;}
+.todotxt_B { color:#2E4774; }
+.todotxt_C { color:#4E658F; }
+.todotxt_D { color:#7487AA; }
+.todotxt_E { color:#A9B6CE; }
+.todotxt_F { color:#A9B6CE; }
+
+
+.todotxt_context { color: #844516; }
+.todotxt_tag { color: #846F16; }
+.todotxt_deleted {opacity: 0.4; }
+
+progress {  color: #333;  background-color: white;  border-radius: 0px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: #333c4d;}
+progress::-webkit-progress-value {  background: #333c4d;}
+progress::-webkit-progress-bar {  background: #fff;}
+
 
 @media (prefers-color-scheme: dark) {
   body {    filter: invert(100%) hue-rotate(180deg);  }
@@ -76,7 +113,7 @@ a.toolbarTextareaItem{padding-right: 10px}
 <body>
 <div id="wrapper">
 	<div id="header">
-		<div class="panel hover-display" style="position: fixed; width: 910px;z-index:1;">
+		<div class="panel" style="position: fixed; width: 910px;z-index:1;">
 			<span class="hover-menu">
 				{HOME} &nbsp; {| &nbsp;  RECENT_CHANGES} &nbsp; {| &nbsp;  EDIT} &nbsp; {| &nbsp;  HISTORY}
 				<hr/>{MENU}

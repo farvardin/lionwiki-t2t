@@ -82,6 +82,10 @@ $LANG = 'en';
 /* see the file config.t2t to tweak the syntax and even more! */
 
 
+// disable or enable wkp_PageVersions.php
+
+$DISABLE_PageVersions = false ;
+
 /* blog */
 // All wikipages which have filename in the format 
 // YYYYMMDD-HHMM_Some_page_name.txt are considered to be blog posts

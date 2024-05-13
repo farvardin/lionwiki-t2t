@@ -1,4 +1,4 @@
-// Copyright 2021 Bradley D. Nelson
+// Copyright 2024 Bradley D. Nelson
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-'use strict'; 
+'use strict';
 
 (function() {
 
@@ -98,10 +98,12 @@ variable leaving
 : UNLOOP   r> rdrop rdrop >r ;
 : LEAVE   r> rdrop rdrop @ >r ;
 : leave   postpone LEAVE leaving, ; immediate
-: +LOOP ( n -- ) dup 0< swap r> r> rot + dup r@ < -rot >r >r xor 0=
+: +LOOP ( n -- ) r> r> dup r@ - >r rot + r> -rot
+                       dup r@ - -rot >r >r xor 0<
                  if r> cell+ rdrop rdrop >r else r> @ >r then ;
 : +loop ( n -- ) postpone +LOOP , )leaving ; immediate
-: LOOP   r> r> 1+ dup r@ < -rot >r >r 0=
+: LOOP   r> r> dup r@ - >r 1+ r> -rot
+               dup r@ - -rot >r >r xor 0<
          if r> cell+ rdrop rdrop >r else r> @ >r then ;
 : loop   postpone LOOP , )leaving ; immediate
 create I ' r@ @ ' i !  ( i is same as r@ )
@@ -147,7 +149,9 @@ defer key?
 defer terminate
 : bye   0 terminate ;
 : emit ( n -- ) >r rp@ 1 type rdrop ;
-: space bl emit ;   : cr 13 emit nl emit ;
+: space bl emit ;   
+\ : cr 13 emit nl emit ;
+: cr space 13 emit nl emit ;
 
 ( Numeric Output )
 variable hld
@@ -247,7 +251,7 @@ sp0 'stack-cells @ 2 3 */ cells + constant sp-limit
 variable boot-prompt
 : free. ( nf nu -- ) 2dup swap . ." free + " . ." used = " 2dup + . ." total ("
                      over + 100 -rot */ n. ." % free)" ;
-: raw-ok   ."  v7.0.7.9 - rev fb3db70da6d111b1fdf0" cr
+: raw-ok   ."  v7.0.7.18 - rev 65eb318f2c. 'Forth-is-fun' version" cr
            boot-prompt @ if boot-prompt @ execute then
            ." Forth dictionary: " remaining used free. cr
            ." 3 x Forth stacks: " 'stack-cells @ cells . ." bytes each" cr
@@ -379,7 +383,8 @@ long-size long-size typer long
 
 variable last-struct
 
-: struct ( "name" ) 1 0 typer latestxt >body last-struct ! ;
+: struct ( "name" ) 1 0 typer latestxt >body last-struct !
+                    1 last-align ! ;
 : align-by ( a n -- a ) 1- dup >r + r> invert and ;
 : struct-align ( n -- )
   dup last-struct @ cell+ @ max last-struct @ cell+ !
@@ -736,7 +741,7 @@ if (!globalObj.write) {
   };
 
   context.keyboard = document.createElement('div');
-  context.KEY_HEIGHT = 45;
+  context.KEY_HEIGHT = 35;
   context.KEYBOARD_HEIGHT = context.KEY_HEIGHT * 4;
   const TAB = ['&#11134;', 9, 45];
   const PIPE = [String.fromCharCode(124), 124, 45];
@@ -752,8 +757,39 @@ if (!globalObj.write) {
   const TILDE = String.fromCharCode(126);
   const PASTE = ['^V', 22, 30];
   const G1 = ['Gap', 0, 15];
-  const KEY_COLOR = 'linear-gradient(to bottom right, #ccc, #999)';
-  var keymaps = [
+  const KEY_COLOR = 'linear-gradient(to right top, #ddd, #fefefe)';
+  //const KEY_COLOR = '#fff'; // can't use a single color here
+  if (navigator.language == 'fr') {
+    var keymaps = [   // azerty keyboard
+    AddKeymap([
+      'a', 'z', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'Newline',
+       'q', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'Newline',
+      SHIFT, 'w', 'x', 'c', 'v', 'b', 'n', BACKSPACE, 'Newline',
+      NUMS, '/', [' ', 32, 5 * 30], '.', ENTER,
+    ]),
+    AddKeymap([
+      'A', 'Z', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'Newline',
+       'Q', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'Newline',
+      SHIFT2, 'W', 'X', 'C', 'V', 'B', 'N', BACKSPACE, 'Newline',
+      NUMS, '/', [' ', 32, 5 * 30], '.', ENTER,
+    ]),
+    AddKeymap([
+      '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Newline',
+      PASTE, '@', '$', '_', '&', '-', '+', '(', ')', '/', 'Newline',
+      SHIFT3, '*', '"', '\\'', ':', ';', '!', '?', BACKSPACE, 'Newline',
+      ABC, ',', [' ', 32, 5 * 30], '.', ENTER,
+    ]),
+    AddKeymap([
+      TILDE, BACKTICK, '3', '4', '5', '^', '7', '8', '9', '0', 'Newline',
+      '#', '@', '$', '_', '&', '-', '=', '{', '}', '\\\\', 'Newline',
+      NUMS, '%', '"', '\\'', ':', ';', '[', ']', BACKSPACE, 'Newline',
+      ABC, '<', [' ', 32, 5 * 30], '>', ENTER,
+    ]),
+  ] ;
+    }
+    else
+    {
+      var keymaps = [   // qwerty keyboard
     AddKeymap([
       'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'Newline',
       G1, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', G1, 'Newline',
@@ -779,6 +815,8 @@ if (!globalObj.write) {
       ABC, '<', [' ', 32, 5 * 30], '>', ENTER,
     ]),
   ];
+    }
+    
   function SwitchKeymap(n) {
     for (var i = 0; i < keymaps.length; ++i) {
       keymaps[i].style.display = i == n ? '' : 'none';
@@ -804,7 +842,9 @@ if (!globalObj.write) {
     var k = document.createElement('button');
     k.style.fontFamily = 'monospace';
     k.style.verticalAlign = 'middle';
-    k.style.border = 'none';
+    k.style.border = 'solid';
+    k.style.borderWidth = '0.5px';
+    k.style.borderColor = '#999';
     k.style.margin = '0';
     k.style.padding = '0';
     k.style.backgroundImage = KEY_COLOR;
@@ -847,10 +887,10 @@ if (!globalObj.write) {
   }
   SwitchKeymap(0);
   context.keyboard.style.position = 'fixed';
-  context.keyboard.style.width = '100%';
+  context.keyboard.style.width = '94%';
   context.keyboard.style.bottom = '0px';
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    context.mobile = -1;
+    context.mobile = -1 ;   // we would like to disable the new virtual keyboard and use native one instead but it doesn't seem possible
     context.tailer = document.createElement('div');
     context.tailer.style.width = '1px';
     context.tailer.style.height = context.KEYBOARD_HEIGHT + 'px';
@@ -917,8 +957,6 @@ if (!globalObj.write) {
     return false;
   }
   window.onkeypress = KeyPress;
-
-  
   function KeyDown(e) {
     if (e.keyCode == 8) {
       context.cursor_time = new Date().getTime();
@@ -1280,6 +1318,59 @@ JSWORD: upload-success? { -- f }
   return context.filepick_result;
 ~
 
+JSWORD: raw-download { data data_n mime mime_n filename filename_n -- }
+  var anchor = document.createElement('a');
+  var blob = new Blob([u8.slice(data, data + data_n)],
+                      {type: context.GetRawString(u8, mime, mime_n)});
+  var url = URL.createObjectURL(blob);
+  anchor.setAttribute('href', url);
+  anchor.setAttribute('download', context.GetRawString(u8, filename, filename_n));
+  anchor.click();
+~
+
+JSWORD: http-download { url url_n name name_n session done -- }
+  i32[done>>2] = -1;
+  var request = new XMLHttpRequest();
+  request.responseType = 'arraybuffer';
+  request.open('GET', context.GetRawString(u8, url, url_n));
+  var key = context.GetRawString(u8, name, name_n);
+  request.onload = function(e) {
+    if (request.status == 200) {
+      var bytes = new Uint8Array(request.response);
+      var data = context.GetRawString(bytes, 0, bytes.byteLength);
+      if (session) {
+        sessionStorage.setItem(key, data);
+      } else {
+        localStorage.setItem(key, data);
+      }
+      i32[done>>2] = 0;
+    } else {
+      i32[done>>2] = 1;
+    }
+  };
+  request.onerror = function() {
+    i32[done>>2] = 2;
+  };
+  request.send();
+~
+
+JSWORD: raw-http-upload { data data_n url url_n done -- }
+  i32[done>>2] = -1;
+  var request = new XMLHttpRequest();
+  request.open('POST', context.GetRawString(u8, url, url_n));
+  request.onload = function(e) {
+    if (request.status == 200) {
+      i32[done>>2] = 0;
+    } else {
+      i32[done>>2] = 1;
+    }
+  };
+  request.onerror = function() {
+    i32[done>>2] = 2;
+  };
+  request.send();
+~
+
 JSWORD: log { a n -- }
   console.log(GetString(a, n));
 ~
@@ -1310,6 +1401,17 @@ JSWORD: button { -- b }
 
 JSWORD: random { n -- n }
   return Math.floor(Math.random() * n);
+~
+JSWORD: keysmall { -- }
+// a few more custom words
+context.KEYBOARD_HEIGHT = context.KEY_HEIGHT * 2;
+//SwitchKeymap(0);
+//context.tailer.style.height = 
+~
+JSWORD: keybig { -- }
+context.KEYBOARD_HEIGHT = context.KEY_HEIGHT * 4;
+//SwitchKeymap(0);
+//context.tailer.style.height = 
 ~
 
 0 0 importScripts constant scripts#
@@ -1346,7 +1448,7 @@ forth
 : assert ( f -- ) 0= throw ;
 
 ( Print spaces )
-: spaces ( n -- ) for aft space then next ;
+: spaces ( n -- ) 0 max for aft space then next ;
 
 internals definitions
 
@@ -1670,6 +1772,9 @@ forth definitions tasks also internals
   task-list @ cell+ @ sp! rp!
 ;
 
+( Check if there are other tasks. )
+: pause? ( -- f ) task-list @ dup @ <> ;
+
 : task ( xt dsz rsz "name" )
    create here >r 0 , 0 , ( link, sp )
    swap here cell+ r@ cell+ ! cells allot
@@ -1706,6 +1811,8 @@ web definitions
 ' web-key? is key?
 ' web-terminate is terminate
 
+0 value session?
+
 : upload-file ( a n -- )
    upload-start
    begin yield upload-done? until
@@ -1715,17 +1822,40 @@ web definitions
 : upload ( "filename" ) bl parse dup assert upload-file ;
 
 : include-file { a n -- }
-  0 0 a n 0 getItem { len }
+  0 0 a n session? getItem { len }
   here { buf } len allot
-  buf len a n 0 getItem len = assert
-  a n 0 removeItem
+  buf len a n session? getItem len = assert
   buf len evaluate
-; 
+;
 
-: ls   0 keyCount 0 do pad 80 i 0 getKey pad swap type cr loop ;
-: rm   bl parse 0 removeItem ;
+: cat ( "filename" )
+  bl parse { name name# }
+  0 0 name name# session? getItem { len }
+  here len name name# session? getItem len = assert
+  here len type
+;
 
-: import  s" _temp.fs" 2dup upload-file include-file ;
+: download ( "filename" )
+  bl parse { name name# }
+  0 0 name name# session? getItem { len }
+  here len name name# session? getItem len = assert
+  here len s" application/octet-stream"
+    name name# raw-download
+;
+
+: ls
+  session? keyCount 0 ?do
+    pad 80 i session? getKey pad swap type cr
+  loop
+;
+
+: rm   bl parse session? removeItem ;
+
+: import
+  s" _temp.fs" 2dup upload-file
+  2dup >r >r include-file
+  r> r> session? removeItem
+;
 
 : yielding  begin 50 ms yield again ;
 ' yielding 10 10 task yielding-task
@@ -1789,11 +1919,11 @@ var context = {};  // For later use by platform.
   const g_sys_YIELD_XT = 348;
   const g_sys_DOCREATE_OP = 352;
   const g_sys_builtins = 356;
-  const OP_DOCREATE = 159;
-  const OP_DODOES = 160;
-  const OP_DOCOL = 156;
-  const OP_DOVAR = 158;
-  const OP_DOCON = 157;
+  const OP_DOCREATE = 160;
+  const OP_DODOES = 161;
+  const OP_DOCOL = 157;
+  const OP_DOVAR = 159;
+  const OP_DOCON = 158;
 
 
 function SetEval(sp) {
@@ -2323,66 +2453,67 @@ function InitDictionary() {
   Builtin("NOP", 8, 1, 117);
   Builtin("0=", 8, 0, 118);
   Builtin("0<", 8, 0, 119);
-  Builtin("+", 8, 0, 120);
-  Builtin("U/MOD", 8, 0, 121);
-  Builtin("*/MOD", 8, 0, 122);
-  Builtin("LSHIFT", 8, 0, 123);
-  Builtin("RSHIFT", 8, 0, 124);
-  Builtin("ARSHIFT", 8, 0, 125);
-  Builtin("AND", 8, 0, 126);
-  Builtin("OR", 8, 0, 127);
-  Builtin("XOR", 8, 0, 128);
-  Builtin("DUP", 8, 0, 129);
-  Builtin("SWAP", 8, 0, 130);
-  Builtin("OVER", 8, 0, 131);
-  Builtin("DROP", 8, 0, 132);
-  Builtin("@", 8, 0, 133);
-  Builtin("SL@", 8, 0, 134);
-  Builtin("UL@", 8, 0, 135);
-  Builtin("SW@", 8, 0, 136);
-  Builtin("UW@", 8, 0, 137);
-  Builtin("C@", 8, 0, 138);
-  Builtin("!", 8, 0, 139);
-  Builtin("L!", 8, 0, 140);
-  Builtin("W!", 8, 0, 141);
-  Builtin("C!", 8, 0, 142);
-  Builtin("SP@", 8, 0, 143);
-  Builtin("SP!", 8, 0, 144);
-  Builtin("RP@", 8, 0, 145);
-  Builtin("RP!", 8, 0, 146);
-  Builtin(">R", 8, 0, 147);
-  Builtin("R>", 8, 0, 148);
-  Builtin("R@", 8, 0, 149);
-  Builtin("EXECUTE", 8, 0, 150);
-  Builtin("BRANCH", 8, 1, 151);
-  Builtin("0BRANCH", 8, 1, 152);
-  Builtin("DONEXT", 8, 1, 153);
-  Builtin("DOLIT", 8, 1, 154);
-  Builtin("DOSET", 8, 1, 155);
-  Builtin("DOCOL", 8, 1, 156);
-  Builtin("DOCON", 8, 1, 157);
-  Builtin("DOVAR", 8, 1, 158);
-  Builtin("DOCREATE", 8, 1, 159);
-  Builtin("DODOES", 8, 1, 160);
-  Builtin("ALITERAL", 8, 1, 161);
-  Builtin("CELL", 8, 0, 162);
-  Builtin("LONG-SIZE", 8, 1, 163);
-  Builtin("FIND", 8, 0, 164);
-  Builtin("PARSE", 8, 0, 165);
-  Builtin("S>NUMBER?", 8, 1, 166);
-  Builtin("CREATE", 8, 0, 167);
-  Builtin("VARIABLE", 8, 0, 168);
-  Builtin("CONSTANT", 8, 0, 169);
-  Builtin("DOES>", 8, 0, 170);
-  Builtin("IMMEDIATE", 8, 0, 171);
-  Builtin(">BODY", 8, 0, 172);
-  Builtin("'SYS", 8, 1, 173);
-  Builtin("YIELD", 8, 1, 174);
-  Builtin(":", 8, 0, 175);
-  Builtin("EVALUATE1", 8, 1, 176);
-  Builtin("EXIT", 8, 0, 177);
-  Builtin("'builtins", 8, 1, 178);
-  Builtin(";", 9, 0, 179);
+  Builtin("U<", 8, 0, 120);
+  Builtin("+", 8, 0, 121);
+  Builtin("U/MOD", 8, 0, 122);
+  Builtin("*/MOD", 8, 0, 123);
+  Builtin("LSHIFT", 8, 0, 124);
+  Builtin("RSHIFT", 8, 0, 125);
+  Builtin("ARSHIFT", 8, 0, 126);
+  Builtin("AND", 8, 0, 127);
+  Builtin("OR", 8, 0, 128);
+  Builtin("XOR", 8, 0, 129);
+  Builtin("DUP", 8, 0, 130);
+  Builtin("SWAP", 8, 0, 131);
+  Builtin("OVER", 8, 0, 132);
+  Builtin("DROP", 8, 0, 133);
+  Builtin("@", 8, 0, 134);
+  Builtin("SL@", 8, 0, 135);
+  Builtin("UL@", 8, 0, 136);
+  Builtin("SW@", 8, 0, 137);
+  Builtin("UW@", 8, 0, 138);
+  Builtin("C@", 8, 0, 139);
+  Builtin("!", 8, 0, 140);
+  Builtin("L!", 8, 0, 141);
+  Builtin("W!", 8, 0, 142);
+  Builtin("C!", 8, 0, 143);
+  Builtin("SP@", 8, 0, 144);
+  Builtin("SP!", 8, 0, 145);
+  Builtin("RP@", 8, 0, 146);
+  Builtin("RP!", 8, 0, 147);
+  Builtin(">R", 8, 0, 148);
+  Builtin("R>", 8, 0, 149);
+  Builtin("R@", 8, 0, 150);
+  Builtin("EXECUTE", 8, 0, 151);
+  Builtin("BRANCH", 8, 1, 152);
+  Builtin("0BRANCH", 8, 1, 153);
+  Builtin("DONEXT", 8, 1, 154);
+  Builtin("DOLIT", 8, 1, 155);
+  Builtin("DOSET", 8, 1, 156);
+  Builtin("DOCOL", 8, 1, 157);
+  Builtin("DOCON", 8, 1, 158);
+  Builtin("DOVAR", 8, 1, 159);
+  Builtin("DOCREATE", 8, 1, 160);
+  Builtin("DODOES", 8, 1, 161);
+  Builtin("ALITERAL", 8, 1, 162);
+  Builtin("CELL", 8, 0, 163);
+  Builtin("LONG-SIZE", 8, 1, 164);
+  Builtin("FIND", 8, 0, 165);
+  Builtin("PARSE", 8, 0, 166);
+  Builtin("S>NUMBER?", 8, 1, 167);
+  Builtin("CREATE", 8, 0, 168);
+  Builtin("VARIABLE", 8, 0, 169);
+  Builtin("CONSTANT", 8, 0, 170);
+  Builtin("DOES>", 8, 0, 171);
+  Builtin("IMMEDIATE", 8, 0, 172);
+  Builtin(">BODY", 8, 0, 173);
+  Builtin("'SYS", 8, 1, 174);
+  Builtin("YIELD", 8, 1, 175);
+  Builtin(":", 8, 0, 176);
+  Builtin("EVALUATE1", 8, 1, 177);
+  Builtin("EXIT", 8, 0, 178);
+  Builtin("'builtins", 8, 1, 179);
+  Builtin(";", 9, 0, 180);
 
   SetupBuiltins();
 }
@@ -2393,7 +2524,8 @@ function Init() {
   i32[g_sys_stack_cells>>2] = STACK_CELLS;
 
   // Start heap after G_SYS area.
-  i32[g_sys_heap>>2] = i32[g_sys_heap_start>>2] + 256;
+  // Leave 256 byte gap + another 256 for G_SYS
+  i32[g_sys_heap>>2] = i32[g_sys_heap_start>>2] + 512;
   i32[g_sys_heap>>2] += 4;
 
   // Allocate stacks.
@@ -2445,9 +2577,6 @@ function Init() {
   rp += 4; i32[rp>>2] = fp;
   rp += 4; i32[rp>>2] = sp;
   i32[g_sys_rp>>2] = rp;
-  
-  
-  
 }
 
 function VM(stdlib, foreign, heap) {
@@ -2517,11 +2646,11 @@ function VM(stdlib, foreign, heap) {
   const g_sys_YIELD_XT = 348;
   const g_sys_DOCREATE_OP = 352;
   const g_sys_builtins = 356;
-  const OP_DOCREATE = 159;
-  const OP_DODOES = 160;
-  const OP_DOCOL = 156;
-  const OP_DOVAR = 158;
-  const OP_DOCON = 157;
+  const OP_DOCREATE = 160;
+  const OP_DODOES = 161;
+  const OP_DOCOL = 157;
+  const OP_DOVAR = 159;
+  const OP_DOCON = 158;
 
 
   function memset(dst, ch, n) {
@@ -3086,198 +3215,202 @@ function VM(stdlib, foreign, heap) {
           case 119:  // 0<
             tos = (tos|0) < 0 ? -1 : 0;
             break;
-          case 120:  // +
+          case 120:  // U<
+            tos = (i32[sp>>2]>>>0) < ((tos>>>0)) ? -1 : 0;
+            sp = (sp - 4) | 0;
+            break;
+          case 121:  // +
             tos = (tos + (i32[sp>>2]|0))|0;
             sp = (sp - 4) | 0;
             break;
-          case 121:  // U/MOD
+          case 122:  // U/MOD
             w = (i32[sp>>2]|0);
             i32[sp>>2] = (w>>>0) % (tos>>>0);
             tos = ((w>>>0) / (tos>>>0))|0;
             break;
-          case 122:  // */MOD
+          case 123:  // */MOD
             sp = (sp + 4)|0;
             i32[sp>>2] = (tos|0)|0;
             SSMOD(sp|0);
             tos = i32[sp>>2]|0;
             sp = (sp - 8)|0;
             break;
-          case 123:  // LSHIFT
+          case 124:  // LSHIFT
             tos = ((i32[sp>>2]|0) << (tos|0));
             sp = (sp - 4) | 0;
             break;
-          case 124:  // RSHIFT
-            tos = ((((i32[sp>>2]|0>>>0))) >> (tos|0));
+          case 125:  // RSHIFT
+            tos = ((i32[sp>>2]>>>0) >> (tos|0));
             sp = (sp - 4) | 0;
             break;
-          case 125:  // ARSHIFT
+          case 126:  // ARSHIFT
             tos = ((i32[sp>>2]|0) >> (tos|0));
             sp = (sp - 4) | 0;
             break;
-          case 126:  // AND
+          case 127:  // AND
             tos = (tos|0) & (i32[sp>>2]|0), sp = (sp - 4) | 0;
             break;
-          case 127:  // OR
+          case 128:  // OR
             tos = (tos|0) | (i32[sp>>2]|0), sp = (sp - 4) | 0;
             break;
-          case 128:  // XOR
+          case 129:  // XOR
             tos = (tos|0) ^ (i32[sp>>2]|0), sp = (sp - 4) | 0;
             break;
-          case 129:  // DUP
+          case 130:  // DUP
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             break;
-          case 130:  // SWAP
+          case 131:  // SWAP
             w = (tos|0);
             tos = (i32[sp>>2]|0);
             i32[sp>>2] = w;
             break;
-          case 131:  // OVER
+          case 132:  // OVER
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (i32[(sp - 4)>>2]|0);
             break;
-          case 132:  // DROP
+          case 133:  // DROP
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 133:  // @
+          case 134:  // @
             tos = (i32[tos>>2]|0);
             break;
-          case 134:  // SL@
+          case 135:  // SL@
             tos = (i32[tos>>2]|0);
             break;
-          case 135:  // UL@
+          case 136:  // UL@
             tos = (i32[tos>>2]>>>0);
             break;
-          case 136:  // SW@
+          case 137:  // SW@
             tos = (i16[tos>>1]|0);
             break;
-          case 137:  // UW@
+          case 138:  // UW@
             tos = (i16[tos>>1]>>>0);
             break;
-          case 138:  // C@
+          case 139:  // C@
             tos = (u8[tos]|0);
             break;
-          case 139:  // !
+          case 140:  // !
             i32[tos>>2] = (i32[sp>>2]|0), sp = (sp - 4) | 0;
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 140:  // L!
+          case 141:  // L!
             i32[tos>>2] = (i32[sp>>2]|0), sp = (sp - 4) | 0;
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 141:  // W!
+          case 142:  // W!
             i16[tos>>1] = (i32[sp>>2]|0), sp = (sp - 4) | 0;
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 142:  // C!
+          case 143:  // C!
             u8[tos] = (i32[sp>>2]|0), sp = (sp - 4) | 0;
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 143:  // SP@
+          case 144:  // SP@
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = sp;
             break;
-          case 144:  // SP!
+          case 145:  // SP!
             sp = (tos|0);
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 145:  // RP@
+          case 146:  // RP@
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = rp;
             break;
-          case 146:  // RP!
+          case 147:  // RP!
             rp = (tos|0);
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 147:  // >R
+          case 148:  // >R
             rp = (rp + 4) | 0, i32[rp>>2] = (tos|0);
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 148:  // R>
+          case 149:  // R>
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (i32[rp>>2]|0);
             rp = (rp - 4) | 0;
             break;
-          case 149:  // R@
+          case 150:  // R@
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (i32[rp>>2]|0);
             break;
-          case 150:  // EXECUTE
+          case 151:  // EXECUTE
             w = (tos|0);
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             continue decode;
             break;
-          case 151:  // BRANCH
+          case 152:  // BRANCH
             ip = (i32[ip>>2]|0);
             break;
-          case 152:  // 0BRANCH
+          case 153:  // 0BRANCH
             if (!tos) ip = (i32[ip>>2]|0);
             else ip = (ip + 4) | 0;
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 153:  // DONEXT
+          case 154:  // DONEXT
             i32[rp>>2] = (i32[rp>>2]|0) - 1;
             if (~(i32[rp>>2]|0)) ip = (i32[ip>>2]|0);
             else (rp = (rp - 4) | 0, ip = (ip + 4) | 0);
             break;
-          case 154:  // DOLIT
+          case 155:  // DOLIT
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (i32[ip>>2]|0), ip = (ip + 4) | 0;
             break;
-          case 155:  // DOSET
+          case 156:  // DOSET
             i32[i32[ip>>2]>>2] = (tos|0);
             ip = (ip + 4) | 0;
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 156:  // DOCOL
+          case 157:  // DOCOL
             rp = (rp + 4) | 0;
             i32[rp>>2] = ip;
             ip = ((w+4)|0);
             break;
-          case 157:  // DOCON
+          case 158:  // DOCON
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (i32[((w+4)|0)>>2]|0);
             break;
-          case 158:  // DOVAR
+          case 159:  // DOVAR
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (w+4)|0;
             break;
-          case 159:  // DOCREATE
+          case 160:  // DOCREATE
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (w+8)|0;
             break;
-          case 160:  // DODOES
+          case 161:  // DODOES
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = (w+8)|0;
             rp = (rp + 4) | 0;
             i32[rp>>2] = ip;
             ip = (i32[((w+4)|0)>>2]|0);
             break;
-          case 161:  // ALITERAL
+          case 162:  // ALITERAL
             COMMA((i32[g_sys_DOLIT_XT>>2]|0));
             COMMA(tos|0);
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 162:  // CELL
+          case 163:  // CELL
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = 4;
             break;
-          case 163:  // LONG-SIZE
+          case 164:  // LONG-SIZE
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = 4;
             break;
-          case 164:  // FIND
+          case 165:  // FIND
             tos = find((i32[sp>>2]|0), (tos|0))|0;
             sp = (sp - 4) | 0;
             break;
-          case 165:  // PARSE
+          case 166:  // PARSE
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = parse(tos|0, sp|0)|0;
             break;
-          case 166:  // S>NUMBER?
+          case 167:  // S>NUMBER?
             tos = convert((i32[sp>>2]|0), (tos|0), (i32[g_sys_base>>2]|0), sp|0)|0;
             if (!tos) sp = (sp - 4) | 0;
             break;
-          case 167:  // CREATE
+          case 168:  // CREATE
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = parse(32, sp|0)|0;
@@ -3285,7 +3418,7 @@ function VM(stdlib, foreign, heap) {
             COMMA(0);
             ((sp = (sp - 4) | 0), (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0));
             break;
-          case 168:  // VARIABLE
+          case 169:  // VARIABLE
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = parse(32, sp|0)|0;
@@ -3293,7 +3426,7 @@ function VM(stdlib, foreign, heap) {
             COMMA(0);
             ((sp = (sp - 4) | 0), (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0));
             break;
-          case 169:  // CONSTANT
+          case 170:  // CONSTANT
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = parse(32, sp|0)|0;
@@ -3302,22 +3435,22 @@ function VM(stdlib, foreign, heap) {
             COMMA(tos|0);
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 170:  // DOES>
+          case 171:  // DOES>
             DOES(ip|0);
             ip = (i32[rp>>2]|0);
             rp = (rp - 4) | 0;
             break;
-          case 171:  // IMMEDIATE
+          case 172:  // IMMEDIATE
             DOIMMEDIATE();
             break;
-          case 172:  // >BODY
+          case 173:  // >BODY
             tos = TOBODY(tos|0)|0;
             break;
-          case 173:  // 'SYS
+          case 174:  // 'SYS
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = g_sys;
             break;
-          case 174:  // YIELD
+          case 175:  // YIELD
             rp = (rp + 4) | 0, i32[rp>>2] = ip;
             rp = (rp + 4) | 0, i32[rp>>2] = fp;
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
@@ -3325,7 +3458,7 @@ function VM(stdlib, foreign, heap) {
             i32[g_sys_rp>>2] = rp | 0;
             return;
             break;
-          case 175:  // :
+          case 176:  // :
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = parse(32, sp|0)|0;
@@ -3334,7 +3467,7 @@ function VM(stdlib, foreign, heap) {
             sp = (sp - 4) | 0;
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             break;
-          case 176:  // EVALUATE1
+          case 177:  // EVALUATE1
             rp = (rp + 4) | 0, i32[rp>>2] = ip;
             rp = (rp + 4) | 0, i32[rp>>2] = fp;
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
@@ -3348,14 +3481,14 @@ function VM(stdlib, foreign, heap) {
             (tos = (i32[sp>>2]|0), sp = (sp - 4) | 0);
             if (w) continue decode;
             break;
-          case 177:  // EXIT
+          case 178:  // EXIT
             ip = (i32[rp>>2]|0), rp = (rp - 4) | 0;
             break;
-          case 178:  // 'builtins
+          case 179:  // 'builtins
             (sp = (sp + 4) | 0, i32[sp>>2] = (tos|0));
             tos = ((i32[g_sys_builtins>>2] + 8)|0);
             break;
-          case 179:  // ;
+          case 180:  // ;
             COMMA((i32[g_sys_DOEXIT_XT>>2]|0));
             UNSMUDGE();
             i32[g_sys_state>>2] = 0;

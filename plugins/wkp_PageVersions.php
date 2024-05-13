@@ -51,11 +51,12 @@ class PageVersions
 
     function template()
     {
-        global $CON, $html, $page, $PG_DIR, $action, $self;
+        global $CON, $html, $page, $PG_DIR, $action, $self, $DISABLE_PageVersions;
 
-        if(!empty($action)) {
+        if(!empty($action) || $DISABLE_PageVersions == true) {
             return;
         }
+
 
         if(($pos = strpos($page, ".")) !== false) {
             $p = preg_quote(substr($page, 0, $pos));
