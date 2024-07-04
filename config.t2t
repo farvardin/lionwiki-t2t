@@ -13,7 +13,11 @@
 %!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 index.php?page=\2]'
 %!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 index.php?page=\2]'
 
-
+% fixes problem with double URL on a single line:
+%!preproc: 'https:\/\/' '@@PRE-URLs@@'
+%!preproc: 'http:\/\/' '@@PRE-URL@@'
+%!postproc: '@@PRE-URLs@@' 'https://'
+%!postproc: '@@PRE-URL@@'  'http://'
 
 
 % use [[your_page]] syntax

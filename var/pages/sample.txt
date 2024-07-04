@@ -216,6 +216,14 @@ as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
 
 That's all for now.
 
+
+== Crash test ==
+
+Using two links (like http://www.duh.com and http://www.ddg.gg and even https://ddg.gg/) on the 
+same line led to some rendering errors. It should be fixed now.
+
+//what about beginning with an italic mark?//
+
 -------------------------------------------------------
 %%% TRANSLATOR: Uncomment and translate the next two lines
 %Translated by John Smith.

@@ -1,3 +1,5 @@
+%!postproc: 'https--' 'https://'
+
 - //See the [full sample page index.php?page=sample]//
  
 - //Play in the [sandbox]//
@@ -43,8 +45,8 @@ Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedi
 ------------------------------------------
 
 @@BUTTON(https://lionwiki-t2t.sourceforge.io/)@@
-@@BUTTON(https://github.com/farvardin/lionwiki-t2t)@@ (source code)
-@@BUTTON(https://github.com/farvardin/lionwiki-templates)@@ (more templates)
+@@BUTTON(https--github.com/farvardin/lionwiki-t2t   //(source code)//)@@ 
+@@BUTTON(https--github.com/farvardin/lionwiki-templates  //(more templates)//)@@ 
 
 ------------------------------------------
 

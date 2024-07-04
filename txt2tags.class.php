@@ -699,6 +699,9 @@ class T2T {
     $b = array('*', '/', '_', '-');
     foreach($b as $c) {
       $q = preg_quote($c, '/');
+# TODO : fix double url on a single line
+#      $line =  preg_replace_callback("/ ($q){2}([^\s](?:.*?\\S)?\\1*)\\1\\1 /", 
+#        function($m) use ($that, $c) { return sprintf(" " . $that->snippets["$c$c"] . " " , $m[2]); }
       $line =  preg_replace_callback("/($q){2}([^\s](?:.*?\\S)?\\1*)\\1\\1/", 
         function($m) use ($that, $c) { return sprintf($that->snippets["$c$c"], $m[2]); }
         , $line);
