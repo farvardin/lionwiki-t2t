@@ -224,6 +224,12 @@ same line led to some rendering errors. It should be fixed now.
 
 //what about beginning with an italic mark?//
 
+- hotlink test:
+
+[https://duckduckgo.com/assets/icons/meta/DDG-iOS-icon_76x76.png]
+
+[[https://duckduckgo.com/assets/icons/meta/DDG-iOS-icon_76x76.png] https://duckduckgo.com/]
+
 
 == Random test ==
 
