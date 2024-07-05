@@ -1,11 +1,11 @@
-<?php $T2TVersion = "20230329";
+<?php $T2TVersion = "20240705";
 /**
   txt2tags.class.php
 
   This version is for PHP >= 5.3 until at least PHP 7.4 / PHP 8.1
 
   Written by (c) Petko Yotov 2012-2016 www.pmwiki.org/petko
-  Development sponsored by Eric Forgeot.
+  Development sponsored and continued by Éric Forgeot.
   
   txt2tags is a lightweight markup language created by 
   Aurelio Jargas and written in Python (www.txt2tags.org).
