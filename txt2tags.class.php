@@ -699,7 +699,7 @@ class T2T {
     $b = array('*', '/', '_', '-');
     foreach($b as $c) {
       $q = preg_quote($c, '/');
-# TODO : fix double url on a single line
+# TODO : fix double url on a single line (fixed in config.t2t instead, on lionwiki)
 #      $line =  preg_replace_callback("/ ($q){2}([^\s](?:.*?\\S)?\\1*)\\1\\1 /", 
 #        function($m) use ($that, $c) { return sprintf(" " . $that->snippets["$c$c"] . " " , $m[2]); }
       $line =  preg_replace_callback("/($q){2}([^\s](?:.*?\\S)?\\1*)\\1\\1/", 
@@ -709,6 +709,7 @@ class T2T {
     return $line;
   }
   
+## TODO %%infile doesn't work as expected
   function set_macros($input, $isfile = 0) {
     $this->date=time();
     if($isfile && file_exists($input)) {
@@ -737,20 +738,16 @@ class T2T {
       , $line);
     $line = preg_replace_callback('/%%rand\\(([0-9]+),([0-9]+)\\)/', 
       function($m) { return rand($m[1], $m[2]); }, $line);
+      
+     ## %%rand(item1,item2) 
     $line = preg_replace_callback('/%%rand\\((.*?)\\)/', 
        function($m) { 
 
-//return $that -> array($m[1])[array_rand(array($m[1]), 2)[0]];
 
-
-$mylist = array($m[1]);
-	//shuffle($mylist);
-	//$bidule = array_splice($mylist, 0, 1);
-	return reset($mylist);
-
-//return implode(",", $bidule);
-      //return $mylist;
-//echo print_r($result);
+    $mylist = array($m[1]);
+        //shuffle($mylist);
+        //$bidule = array_splice($mylist, 0, 1);
+        return reset($mylist);
 
 
 //$input = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
@@ -769,15 +766,18 @@ $mylist = array($m[1]);
 //$bidule = print_r(array_values($bidule));
 //return $bidule;
 //return $truc;
-     // return "hello" ;
+      //return "hello" ;
       //return array($m[1]);
 	  //return array($m[1])[$rand_keys[0]] ;
 	  //return $m[1];
 	  //return print_r($input);
+	   ;
 	  }, $line);
       //function($m) { return "test"; }, $line);
 	//$line = preg_replace_callback('/%%rand\\((.*?),([0-9]+)\\)/', 
     //  function($m) { return array_rand($m[1], $m[2]); }, $line);
+   
+    
     $line = preg_replace_callback('/%%rand/', 
       function($m) { return (float)rand()/(float)getrandmax(); }, $line);
 /*$line = preg_replace_callback('/%%rand\([0-9]+,[0-9]+\)/',  'create_function(return(rand($1,$2);))', $line);

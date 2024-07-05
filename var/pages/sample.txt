@@ -224,13 +224,26 @@ same line led to some rendering errors. It should be fixed now.
 
 //what about beginning with an italic mark?//
 
+
+== Random test ==
+
+
+using ``%%rand`` or ``%%rand(1,100)`` markup
+
+%%rand
+
+%%rand(1,100)
+
+%%rand(item1,item2)
+
+%%truc(item0,item9)
+
 -------------------------------------------------------
 %%% TRANSLATOR: Uncomment and translate the next two lines
 %Translated by John Smith.
 %-------------------------------------------------------
-[img/t2tpowered.png] ([%%infile %%infile])
+% [img/t2tpowered.png] ([%%infile %%infile])
 
-% vim: tw=55
 
 
 (#sample)
