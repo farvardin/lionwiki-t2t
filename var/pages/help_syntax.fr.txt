@@ -112,16 +112,25 @@ Vous ne pouvez pas ajouter d'espaces supplémentaires aux limites de la partie q
 En plus de la syntaxe txt2tags, voici quelques balises supplémentaires. Vous pouvez personnaliser, étendre ou configurer la plupart d'entre elles dans le fichier ``config.t2t`` à la racine du wiki, voire même dans le fichier ``txt2tags.class.php`` (mais la première solution sera plus conseillée).
 
 
-- Nombres aléatoires
+- Nombres et valeurs aléatoires
 
 ``` %%rand(1,100)
 
-va afficher un nombre compris entre 1 et 100
+va afficher un nombre entier compris entre 1 et 100
 
-exemple :
+exemple : %%rand(1,100) 
 
-%%rand(1,100) 
+``` %%rand
 
+va afficher un nombre réel compris entre 0 et 1
+
+exemple : %%rand
+
+``` %%rand(hibou,oie,merle noir,colombe,mouette)
+
+va afficher un des éléments de la liste (délimitée par les virgules, sans espace)
+
+exemple : __%%rand(hibou,oie,merle noir,colombe,mouette)__
 
 
 - Barre de progression
@@ -133,6 +142,8 @@ va afficher une barre de progression de 10%
 exemple :
 
 [10%]
+
+On peut combiner les 2 techniques précédentes pour réaliser une barre de progression aléatoire : [%%rand(1,100)%]
 
 ``` CONVERT-BRACKET-START3/7CONVERT-BRACKET-END
 
@@ -156,7 +167,6 @@ exemple :
 affichera : 
 [ ] item
 [x] item
-
 
 //Vous devrez éditer le code de la page wiki pour cocher les cases//
 

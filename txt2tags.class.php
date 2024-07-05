@@ -736,54 +736,28 @@ class T2T {
       function($m) use ($that) { return $m[1] ? str_replace(array_keys($that->outfile), array_values($that->outfile), $m[1])
       : $that->outfile["%f"]; }
       , $line);
+      
+      // %%rand is not in the txt2tags specification but it can be useful:
+      
+      // %%rand(1,100)   // will return a value between 1 and 100
     $line = preg_replace_callback('/%%rand\\(([0-9]+),([0-9]+)\\)/', 
       function($m) { return rand($m[1], $m[2]); }, $line);
       
-     ## %%rand(item1,item2) 
+     // %%rand(item1,item2) 
     $line = preg_replace_callback('/%%rand\\((.*?)\\)/', 
        function($m) { 
 
-
-    $mylist = array($m[1]);
-        //shuffle($mylist);
-        //$bidule = array_splice($mylist, 0, 1);
-        return reset($mylist);
-
-
-//$input = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
-	  //$input = array(Neo, Morpheus, Trinity, Cypher, Tank);
-	  //$input = array($m[1]);
-	  //$rand_keys = array_rand(array($m[1]), 2);
-	  //return $input[$rand_keys[0]] . "\n";
-	  //return $input[$rand_keys[0]] ;
-	// // return array($m[1])[array_rand(array($m[1]), 2)[0]]; //should be good but doesnt work
-      //return array($m[1])[array_rand(array($m[1]), 2)[0]]; //should be good but doesnt work
-  // // return array("Neo", "Morpheus", "Trinity", "Cypher", "Tank")[array_rand(array("Neo", "Morpheus", "Trinity", "Cypher", "Tank"), 2)[0]]; // this one works
-   // $truc = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank") ; // ok
-  //$truc = array($m[1]) ; 
-//return $bidule = $truc[array_rand($truc, 2)[0]];
-//$bidule = array_values($truc);
-//$bidule = print_r(array_values($bidule));
-//return $bidule;
-//return $truc;
-      //return "hello" ;
-      //return array($m[1]);
-	  //return array($m[1])[$rand_keys[0]] ;
-	  //return $m[1];
-	  //return print_r($input);
-	   ;
+      $input =  (explode(",", $m[1]));   
+	  $rand_keys = array_rand($input, 2);
+	  return $input[$rand_keys[rand(0,1)]] ;  // will choose both first and last items...
+	  // return $input[$rand_keys[0]] . "\n" ;  // [0] won't return last item, [1] won't return first item
 	  }, $line);
-      //function($m) { return "test"; }, $line);
-	//$line = preg_replace_callback('/%%rand\\((.*?),([0-9]+)\\)/', 
-    //  function($m) { return array_rand($m[1], $m[2]); }, $line);
+
    
-    
+     // %%rand    // will return a value between 0 and 1
     $line = preg_replace_callback('/%%rand/', 
       function($m) { return (float)rand()/(float)getrandmax(); }, $line);
-/*$line = preg_replace_callback('/%%rand\([0-9]+,[0-9]+\)/',  'create_function(return(rand($1,$2);))', $line);
-     $line = preg_replace('/%%rand\([0-9]+,[0-9]+\)/i', '<? rand($1,$2); ?>', $line);
-    $line = preg_replace_callback('/%%rand\\(([0-9]+),([0-9]+)\\)/',  'return(rand($1,$2);)', $line);
-*/
+
     return $line;
   }
   

@@ -109,9 +109,20 @@ In addition to the normal txt2tags syntax, here are some new markup. You can cus
 
 will display a number between 1 and 100 
 
-example:
+example: %%rand(1,100) 
 
-%%rand(1,100) 
+``` %%rand
+
+will display a real number between 0 and 1
+
+example: %%rand
+
+``` %%rand(owl,goose,blackbird,dove,seagull)
+
+will display one of the items in the list (delimited by commas, without spaces)
+
+example: __%%rand(owl,goose,blackbird,collared dove,gull)__
+
 
 - Progression bar
 
@@ -122,6 +133,8 @@ will display a progress bar of 10%
 example:
 
 [10%]
+
+You can combine the 2 previous techniques to create a random progress bar: [%%rand(1,100)%]
 
 ``` CONVERT-BRACKET-START3/7CONVERT-BRACKET-END
 
@@ -145,7 +158,6 @@ example:
 Will display: 
 [ ] item
 [x] item
-
 
 //You will need to edit the code on the wiki page to check the boxes//
 

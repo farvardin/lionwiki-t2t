@@ -1,6 +1,6 @@
 = TXT2TAGS SAMPLE = 
 == Aurelio Jargas ==
-=== %%mtime(m/d/Y) ===
+=== %%mtime(Y-m-d) ===
 
 %!encoding: UTF-8
 
@@ -191,13 +191,13 @@ Because things were too simple.
 
                     ==  Images  ==
 
-The image mark is as simple as it can be: ``[filename]``.
+The image mark is as simple as it can be: bracket (]) ``filename.jpg`` bracket (]).
 
-                      [img/photo.jpg]  
+                      [var/upload/t2tgems.png]  
 
 And with some targets the image is linkable :
 
-                      [[img/photo.jpg] http://www.txt2tags.org]  
+                      [[var/upload/t2tgems.png] http://www.txt2tags.org]  
 
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
@@ -228,15 +228,11 @@ same line led to some rendering errors. It should be fixed now.
 == Random test ==
 
 
-using ``%%rand`` or ``%%rand(1,100)`` markup
+- using ``%%rand`` markup: %%rand
 
-%%rand
+- using ``%%rand(1,100)`` markup:  %%rand(1,100)
 
-%%rand(1,100)
-
-%%rand(item1,item2)
-
-%%truc(item0,item9)
+- using ``%%rand(item1,item2,item3)`` markup, it will display a random bird: //%%rand(owl,goose,blackbird,collared dove,gull)//
 
 -------------------------------------------------------
 %%% TRANSLATOR: Uncomment and translate the next two lines
