@@ -30,6 +30,7 @@ You can get more templates from https://github.com/farvardin/lionwiki-templates
 == Administration pages ==
 
 - [Admin plugins index.php?action=admin-plugins]
+- [List plugins index.php?action=listplugins]
 - [Admin-blockip index.php?action=admin-blockip]
 - [Admin-blacklist index.php?action=admin-blacklist]
 - [Admin-pages index.php?action=admin-pages]

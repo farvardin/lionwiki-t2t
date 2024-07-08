@@ -10,6 +10,8 @@
  *
  * Because this plugin is not really useful, it may be removed from official
  * distribution in future.
+ * 
+ * 2024 Farvardin
  */
 
 class SelectTemplate
@@ -87,7 +89,7 @@ class SelectTemplate
         
         // verify $TEMPLATE (whitelisting) added by (as) 2012-01-08
         foreach(array_keys($this->tpls) as $t_file) {
-            if ($t_file == $TEMPLATE_request) {
+            if (isset($TEMPLATE_request) && $t_file == $TEMPLATE_request ) {
                 $TEMPLATE = $TEMPLATE_request; 
                 break;
             }

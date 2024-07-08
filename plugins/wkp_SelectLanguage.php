@@ -32,6 +32,7 @@ class SelectLanguage
     "en" => "English",
     "eo" => "Esperanto",
     "es" => "Español",
+    "et" => "Estonian",
     "fi" => "Suomi",
     "fr" => "Français",
     "he" => "עברית",
@@ -42,12 +43,14 @@ class SelectLanguage
     "pl" => "Polski",
     "pt" => "Português",
     "pt-br" => "Português brasileiro",
+    "ko" => "korean",
     "ro" => "Română",
     "ru" => "Русский",
     "sk" => "Slovenština",
     "sv" => "Svenska",
     "uk" => "Українська",
-    "zh-tw" => "臺灣國語"
+    "zh-tw" => "臺灣國語",
+    "zh-simp" => "zh-simp"
     );
 
     function template()

@@ -96,4 +96,3 @@ class Index
         $CON = template_replace("INDEX_LIST", $this->pagesList("list"), $CON);
     }
 }
-

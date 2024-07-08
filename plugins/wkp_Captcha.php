@@ -5,6 +5,8 @@
  * password protection is used.
  *
  * (c) Adam Zivner 2008. GPL'd, of course.
+ *
+ * 2024 Farvardin
  */
 
 class Captcha
@@ -42,7 +44,8 @@ class Captcha
     {
         global $preview;
 
-        if($_REQUEST["qid"] && $preview) {
+       // if($_REQUEST["qid"] && $preview) {
+       if(isset($_REQUEST["qid"]) && $preview) {
             $this->checkCaptcha();
         }
     }

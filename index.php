@@ -1,4 +1,4 @@
-<?php // LionWiki-t2t 3.2.12m - 2024-02-18
+<?php // LionWiki-t2t 3.2.12n - 2024-07-08
 
 // https://lionwiki-t2t.sourceforge.io/
 //
@@ -149,10 +149,11 @@ for($plugins = array(), $dir = @opendir($PLUGINS_DIR); $dir && $f = readdir($dir
         include $PLUGINS_DIR . $f;
         $plugins[$m[1]] = new $m[1]();
 
-//        if(isset(${$m[1]})) {
- //           foreach(${$m[1]} as $name => $value) {
-        if (isset($$m[1])) {
-            foreach($$m[1] as $name => $value) {
+        // if (isset($$m[1])) {
+          if (isset(${$m[1]})) {
+        //    foreach($$m[1] as $name => $value) {
+        //    foreach(${$m[1]} as $name => $value) {
+        foreach(array(${$m[1]}) as $name => $value) {
                 $plugins[$m[1]]->$name = $value;
             }
         }
@@ -1152,5 +1153,3 @@ progress::-webkit-progress-bar {  background: #fff;}
 </body>
 </html>'; 
 }
-
-?>

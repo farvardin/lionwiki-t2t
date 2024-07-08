@@ -3,6 +3,8 @@
  * WhatLinksHere plugin for LionWiki searches for backreferences to current page
  *
  * (c) Adam Zivner 2008, 2009; adam.zivner@gmail.com, GPL'd
+ *
+ * 2024 Farvardin
  */
 
 class WhatLinksHere
@@ -65,7 +67,7 @@ class WhatLinksHere
             $html = template_replace("PAGE_TITLE", "<a href=\"$self?action=whatlinkshere&amp;page=".u($page_nolang)."\" rel=\"nofollow\" title=\"What links to this page?\">".h($page == $START_PAGE && $page == $TITLE ? $WIKI_TITLE : $TITLE)."</a>", $html);
         }
 
-        if($_GET["action"] == "whatlinkshere") {
+        if(isset($_GET["action"]) && $_GET["action"] == "whatlinkshere") {
             $html = template_replace("SHOW_PAGE", "<a href=\"$self?page=".u($page_nolang)."\" rel=\"nofollow\">$GLOBALS[T_SHOW_PAGE]</a>", $html);
         }
     }
