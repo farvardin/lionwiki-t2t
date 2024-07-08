@@ -61,7 +61,7 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/paper/paper.html';
 $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/cafe.html';
-// $TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
+//$TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
 //$TEMPLATE = 'templates/wikiss.html';
 //$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
 //$TEMPLATE = 'templates/simple.html';  //
@@ -70,7 +70,7 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 
 $NO_HTML = true; // XSS protection
 
-$START_PAGE = 'main'; // Which page should be default (start page)?
+$STARTPAGE = 'main'; // Which page should be default (start page)?
 
 $RSS = '<a href="./var/rss.xml">RSS</a>';
 

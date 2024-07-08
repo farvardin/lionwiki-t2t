@@ -162,13 +162,18 @@ exemple :
  
  - cochées :
 
+``` CONVERT-BRACKET-STARTvCONVERT-BRACKET-END
+
+ - cochées (à rayer) :
+
 ``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
 
 affichera : 
 [ ] item
+[v] item
 [x] item
 
-//Vous devrez éditer le code de la page wiki pour cocher les cases//
+Note : //Vous devrez éditer le code de la page wiki pour cocher les cases. De plus ce processus automatise certains comportements (pas de liste à puce, retour à la ligne, ligne rayée), si vous souhaitez juste afficher des cases pour un autre usage, utilisez simplement des caractères unicode !//
 
 
 - Bouton : 

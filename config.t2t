@@ -101,9 +101,11 @@
 %% checkbox
 %% [x] / [*] / [v]
 %% [ ]
-%!preproc: '^\[(x|X)\] (.*?)$' 'LINEBREAK CONVERT_CROSSMARK --\2--'
-%!preproc: '^\[(v|\*)\] (.*?)$' 'LINEBREAK CONVERT_CHECKMARK \2'
-%!preproc: '^\[ ?\] (.*?)$' 'LINEBREAK CONVERT_EMPTYMARK \1'
+% in the case already using strikethrought:
+%!preproc: '^(- )?\[(x|X)\] --(.*?)--$' 'LINEBREAK CONVERT_CROSSMARK --\3--'  
+%!preproc: '^(- )?\[(x|X)\] (.*?)$' 'LINEBREAK CONVERT_CROSSMARK --\3--'
+%!preproc: '^(- )?\[(v|\*)\] (.*?)$' 'LINEBREAK CONVERT_CHECKMARK \3'
+%!preproc: '^(- )?\[ ?\] (.*?)$' 'LINEBREAK CONVERT_EMPTYMARK \2'
 
 %!postproc: 'CONVERT_CROSSMARK' '&#9746;'
 %!postproc: 'CONVERT_CHECKMARK' '&#9745;'

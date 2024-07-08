@@ -43,6 +43,10 @@ Here is [[your_page]].
 
 [] checkbox sample 2 no space
 
+- [ ] checkbox with list
+- [x] checkbox with list
+- [x] --checkbox with strikethrought--
+
 
 
 + ord list

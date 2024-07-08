@@ -186,6 +186,9 @@ Some notable templates (with several color schemes):
 - geek: some simple contrasted colors. 
 
 
+More templates can be downloaded from https://github.com/farvardin/lionwiki-templates
+
+
 === Themes ===
 
 Most templates contain a .less file which define the general appearance (color scheme, font size and definition, size...). They also load a temporary .less file which can change foreground (@fg) and background (@bg) colors, as well as links and heading, and default font. This temporary .less file is feed by definition files from the templates/css/ folder and will also generate .css files inside its template folder, by using the associated makefile.

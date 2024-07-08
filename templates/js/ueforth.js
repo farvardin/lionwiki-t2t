@@ -717,7 +717,7 @@ if (!globalObj.write) {
           var cursor = document.createElement('span');
           cursor.classList.add('cursor');
           cursor.innerText = CURSOR;
-          cursor.style.position = 'absolute';
+          // cursor.style.position = 'absolute';
           cursor.style.left = '0px';
           cursor.style.backgroundColor = span.style.backgroundColor;
           span.appendChild(cursor);

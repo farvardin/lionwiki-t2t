@@ -223,6 +223,9 @@ Quelques modèles notables (avec plusieurs schémas de couleurs) :
 - geek : quelques couleurs simples et contrastées. 
 
 
+D'autres modèles peuvent être téléchargés sur https://github.com/farvardin/lionwiki-templates
+
+
 === Thèmes ===
 
 La plupart des modèles contiennent un fichier .less qui définit l'apparence générale (schéma de couleurs, taille et définition de la police, taille...). Ils chargent également un fichier .less temporaire qui peut changer les couleurs de premier plan (@fg) et d'arrière-plan (@bg), ainsi que les liens et les titres, et la police par défaut. Ce fichier temporaire .less est alimenté par les fichiers de définition du dossier templates/css/ et génère également des fichiers .css dans le dossier de son modèle, en utilisant le fichier makefile associé.

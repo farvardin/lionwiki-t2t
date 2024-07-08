@@ -151,15 +151,20 @@ example:
 
 ``` CONVERT-BRACKET-START CONVERT-BRACKET-END
  
- - checked:
+ - checked :
+
+``` CONVERT-BRACKET-STARTvCONVERT-BRACKET-END
+
+ - checked (deleted) :
 
 ``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
 
 Will display: 
 [ ] item
+[v] item
 [x] item
 
-//You will need to edit the code on the wiki page to check the boxes//
+//You will need to edit the code on the wiki page to check the boxes. This process automates certain behaviours (no bulleted lists, line breaks, erased lines). If you just want to display checkboxes for another purpose, use simple unicode characters!//
 
 
 - Big button : 
