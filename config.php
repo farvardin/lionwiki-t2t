@@ -38,8 +38,10 @@ $PROTECTED_READ = false;
 
 
 
-// Those templates are more minimalistic and use only a basic toolbar:
+// Those templates are more minimalistic and use only a basic toolbar,
+//  some other don't have any toolbar at all (but you can add it in the template)
 
+$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 //$TEMPLATE = 'templates/stellar/index.html';     // in development
@@ -59,7 +61,6 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/light.html';
 //$TEMPLATE = 'templates/print.html';
 //$TEMPLATE = 'templates/paper/paper.html';
-$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/cafe.html';
 //$TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
 //$TEMPLATE = 'templates/wikiss.html';

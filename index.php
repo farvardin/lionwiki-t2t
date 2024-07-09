@@ -1,10 +1,11 @@
-<?php // LionWiki-t2t 3.2.12n - 2024-07-08
+<?php // LionWiki-t2t 3.2.12n - 2024-07-09
 
 // https://lionwiki-t2t.sourceforge.io/
 //
 // This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.12 (http://lionwiki.0o.cz/)
 // (c) Adam Zivner, licensed under GNU/GPL v2
-// and uses txt2tags.class.php to render the pages. It should work on at least PHP 7.4 and PHP 8.1
+// and uses txt2tags.class.php to render the pages. 
+//     It should work on at least PHP 7.4, and PHP 8.1 and PHP 8.2 should work as well but with a few glitches because of plugins
 //
 // Don't forget to include txt2tags.class.php in the same folder as this file!
 

@@ -590,8 +590,8 @@ if (!globalObj.write) {
 
   context.ResetTerminal = function() {
     // TODO: Make this nicer.
-    document.body.style.color = context.toRGB(context.attrib[0]);
-    document.body.style.backgroundColor = context.toRGB(context.attrib[1]);
+    //document.body.style.color = context.toRGB(context.attrib[0]);
+    //document.body.style.backgroundColor = context.toRGB(context.attrib[1]);
     for (var i = 0; i < context.lines.length; ++i) {
       context.terminal.removeChild(context.lines[i][0]);
     }

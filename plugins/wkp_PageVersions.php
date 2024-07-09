@@ -46,7 +46,8 @@ class PageVersions
     "sk" => "Slovenština",
     "sv" => "Svenska",
     "uk" => "Українська",
-    "zh-tw" => "臺灣國語"
+    "zh-tw" => "臺灣國語",
+    "zh-simp" => "zh-simp"
     );
 
     function template()
