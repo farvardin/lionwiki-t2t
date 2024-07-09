@@ -7,22 +7,23 @@
 - [Newspaper index.php?&action=&permanent=1&template=templates/newspaper/newspaper.html]
 - [Sissou index.php?&action=&permanent=1&template=templates/sissou.html]
 - [Geek index.php?&action=&permanent=1&template=templates/geek/geek.html]
-- [Lagrange index.php?&action=&permanent=1&template=templates/lagrange/lagrange.html]  //(not skipped with default installation)//
 - [Mimoza index.php?&action=&permanent=1&template=templates/mimoza/mimoza.html]
 - [Terminal index.php?&action=&permanent=1&template=templates/terminal/terminal.html] - [Old Terminal Green index.php?&action=&permanent=1&template=templates/terminal_green.html] - [Old Terminal White index.php?&action=&permanent=1&template=templates/terminal_white.html]
 - [Electric Obsidian index.php?&action=&permanent=1&template=templates/ElectricObsidian/ElectricObsidian.html]
 - [Red index.php?&action=&permanent=1&template=templates/red.html]
-- [BlazeKiss index.php?&action=&permanent=1&template=templates/blazekiss/blazekiss.html]
 - [Dandelion index.php?&action=&permanent=1&template=templates/dandelion.html]
 - [Wikiss index.php?&action=&permanent=1&template=templates/wikiss.html]
 - [Light index.php?&action=&permanent=1&template=templates/light.html]
-- [Brut index.php?&action=&permanent=1&template=templates/brut/brut.html]
 - [Paper index.php?&action=&permanent=1&template=templates/paper/paper.html]
 - [Cafe index.php?&action=&permanent=1&template=templates/cafe.html]
 - [Simple index.php?&action=&permanent=1&template=templates/simple.html]
+- [Lagrange index.php?&action=&permanent=1&template=templates/lagrange/lagrange.html]  //(not skipped with default installation)//
+- [Brut index.php?&action=&permanent=1&template=templates/brut/brut.html] //(not skipped with default installation)//
+- [BlazeKiss index.php?&action=&permanent=1&template=templates/blazekiss/blazekiss.html] //(not skipped with default installation)//
 
 
 //Those themes are only set locally, on your computer with a cookie. Reset with [logout index.php?erasecookie=1]. To change the theme globally, use [pheditor pheditor.php].//
+
 
 You can get more templates from https://github.com/farvardin/lionwiki-templates
 

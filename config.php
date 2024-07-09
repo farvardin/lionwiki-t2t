@@ -44,13 +44,10 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
-//$TEMPLATE = 'templates/stellar/index.html';     // in development
-//$TEMPLATE = 'templates/editorial/index0.html';  // in development
-//$TEMPLATE = 'templates/blazekiss/blazekiss.html';  // deprecated
+
 //$TEMPLATE = 'templates/sissou.html';
 //$TEMPLATE = 'templates/fravashyo/fravashyo.html';
 //$TEMPLATE = 'templates/dandelion.html';
-//$TEMPLATE = 'templates/flexbox.html';    // in development
 //$TEMPLATE = 'templates/minimal.html';
 //$TEMPLATE = 'templates/terminal/terminal.html';
 //$TEMPLATE = 'templates/terminal_green.html';
@@ -60,14 +57,21 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/print.html';
 //$TEMPLATE = 'templates/paper/paper.html';
 //$TEMPLATE = 'templates/cafe.html';
-//$TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
 //$TEMPLATE = 'templates/wikiss.html';
-//$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
+
 //$TEMPLATE = 'templates/simple.html';  //
 
 // Some templates have been moved to https://github.com/farvardin/lionwiki-templates
 //$TEMPLATE = 'templates/lagrange/lagrange.html';      // looks like the gemini browser lagrange
 //$TEMPLATE = 'templates/brut/brut.html';        // ugly colors and brutism aesthetics
+//$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
+//$TEMPLATE = 'templates/blazekiss/blazekiss.html';  // deprecated
+
+// Some are not publicly available because they are in development:
+//$TEMPLATE = 'templates/stellar/index.html';     // in development
+//$TEMPLATE = 'templates/editorial/index0.html';  // in development
+//$TEMPLATE = 'templates/flexbox.html';    // in development
+//$TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
 
 /* **** MORE OPTIONS **** */
 
