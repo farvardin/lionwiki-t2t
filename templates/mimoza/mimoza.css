@@ -235,13 +235,21 @@ h6:hover span.par-edit {
 /* makes the top edit link invisible */
 .editlink a {
   text-decoration: none;  
-  color: var(--couleur-primaire); 
+  color: var(--couleur-primaire) ; 
 }
 
-.editlink2 a {
+.editlink2 a, .editlink2 a:visited {
   text-decoration: none;  
-  color: #eee; 
+  color: #ddd; 
+  --underline-img: linear-gradient(0deg, 0, 0);
 }
+
+.editlink2 a:hover {
+  text-decoration: underline;  
+  color: #aaa; 
+}
+
+
 
 /* Progress bar */
 progress {

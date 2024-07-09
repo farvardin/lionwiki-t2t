@@ -41,7 +41,7 @@ $PROTECTED_READ = false;
 // Those templates are more minimalistic and use only a basic toolbar,
 //  some other don't have any toolbar at all (but you can add it in the template)
 
-$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
+//$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 //$TEMPLATE = 'templates/stellar/index.html';     // in development
@@ -56,8 +56,6 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/terminal_green.html';
 //$TEMPLATE = 'templates/terminal_white.html';
 //$TEMPLATE = 'templates/geek/geek.html';
-//$TEMPLATE = 'templates/brut/brut.html';        // ugly colors and brutism aesthetics
-//$TEMPLATE = 'templates/lagrange/lagrange.html';      // looks like the gemini browser lagrange
 //$TEMPLATE = 'templates/light.html';
 //$TEMPLATE = 'templates/print.html';
 //$TEMPLATE = 'templates/paper/paper.html';
@@ -66,6 +64,10 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/wikiss.html';
 //$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
 //$TEMPLATE = 'templates/simple.html';  //
+
+// Some templates have been moved to https://github.com/farvardin/lionwiki-templates
+//$TEMPLATE = 'templates/lagrange/lagrange.html';      // looks like the gemini browser lagrange
+//$TEMPLATE = 'templates/brut/brut.html';        // ugly colors and brutism aesthetics
 
 /* **** MORE OPTIONS **** */
 
