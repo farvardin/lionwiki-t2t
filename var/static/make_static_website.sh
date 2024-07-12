@@ -35,7 +35,7 @@ THEME=dandelion
 #THEME=cafe
 #THEME=simple
 #THEME=mimoza
-#THEME=ten
+THEME=ten
 
 
 ### Files locations ###

@@ -106,3 +106,6 @@ $BLOG_ARCHIVE_TEXT="You can find all blog posts ";
 $BLOG_ARCHIVE_LINKTEXT="in archive";
 
 /* *********************************************** */
+
+// EOF
+

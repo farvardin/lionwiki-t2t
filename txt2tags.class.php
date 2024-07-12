@@ -1,9 +1,8 @@
-<?php $T2TVersion = "20240705";
+<?php $T2TVersion = "20240709";
 /**
   txt2tags.class.php
 
-  This version is for PHP >= 5.3 until at least PHP 7.4 / PHP 8.1 
-    (PHP 7.4 is prefered, PHP 8.1 has some errors and PHP 8.2 is not working)
+  This version is for PHP >= 5.3 until at least PHP 7.4 / PHP 8.2
 
   Written by (c) Petko Yotov 2012-2016 www.pmwiki.org/petko
   Development sponsored and continued by Éric Forgeot.
@@ -923,4 +922,6 @@ class T2T {
     return $R;
   }
 }
+
+// EOF
 
