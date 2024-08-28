@@ -40,6 +40,7 @@ class SelectTemplate
     "templates/lagrange/lagrange.html" => "Lagrange",
     "templates/light.html" => "Light",
     "templates/simple.html" => "Simple",
+    "templates/the-monospace-web.html" => "The monospace Web",
     "templates/cafe.html" => "Cafe",
     "templates/brut/brut.html" => "Brut",
     "templates/paper/paper.html" => "Paper",
