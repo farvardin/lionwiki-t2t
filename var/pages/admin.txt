@@ -17,6 +17,7 @@
 - [Paper index.php?&action=&permanent=1&template=templates/paper/paper.html]
 - [Cafe index.php?&action=&permanent=1&template=templates/cafe.html]
 - [Simple index.php?&action=&permanent=1&template=templates/simple.html]
+- [The monospace web index.php?&action=&permanent=1&template=templates/the-monospace-web.html]
 - [Lagrange index.php?&action=&permanent=1&template=templates/lagrange/lagrange.html]  //(not skipped with default installation)//
 - [Brut index.php?&action=&permanent=1&template=templates/brut/brut.html] //(not skipped with default installation)//
 - [BlazeKiss index.php?&action=&permanent=1&template=templates/blazekiss/blazekiss.html] //(not skipped with default installation)//

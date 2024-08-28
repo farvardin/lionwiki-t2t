@@ -6,6 +6,13 @@
 <language>en</language>
 
 	<item>
+	  <title>main</title>
+	  <pubDate>Wed, 28 Aug 2024 20:03:10 +0200</pubDate>
+	  <link>http://localhost:80/lionwiki-t2t/index.php?page=main</link>
+	  <description><pre id="diff"></pre></description>
+	</item>
+
+	<item>
 	  <title>sandbox</title>
 	  <pubDate>Mon, 08 Jul 2024 00:32:00 +0200</pubDate>
 	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
@@ -901,6 +908,7 @@ That's all for now.
 
 </pre></description>
 	</item>
+
 
 
 

@@ -45,6 +45,7 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 
+$TEMPLATE = 'templates/the-monospace-web.html';
 //$TEMPLATE = 'templates/sissou.html';
 //$TEMPLATE = 'templates/fravashyo/fravashyo.html';
 //$TEMPLATE = 'templates/dandelion.html';
