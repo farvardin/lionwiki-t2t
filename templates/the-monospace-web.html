@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
@@ -8,11 +8,31 @@
   <meta name="description" content="wiki" />
   <link rel="icon" href="templates/favicon.png" type="image/png" />
   <title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+{HEAD}
 <style type="text/css">
+
 @import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
 
+/* more examples... */
+/*
+@import url('https://fonts.cdnfonts.com/css/courier-prime-sans');
+@import url('https://fonts.cdnfonts.com/css/courier-prime');
+@import url('https://fonts.cdnfonts.com/css/mechanical');
+@import url('https://fonts.cdnfonts.com/css/thegoodmonolith');
+@import url('https://fonts.cdnfonts.com/css/eingrantch-mono');
+@import url('https://fonts.cdnfonts.com/css/ubuntu-mono');
+*/
+
 :root {
-  --font-family: "JetBrains Mono", monospace;
+  --font-family: "JetBrains Mono", monospace; 
+  /* 
+  --font-family: "Courier Prime Sans", courier, sans-serif;
+  --font-family: "Courier Prime", courier, sans-serif; 
+  --font-family: "Mecanical", courier, sans-serif;
+  --font-family: "TheGoodMonolith", monospace;
+  --font-family: 'Eingrantch Mono', sans-serif;
+  --font-family: 'Ubuntu Mono', sans-serif;
+  */ 
   --line-height: 1.20rem;
   --border-thickness: 2px;
   --text-color: #000;
@@ -518,18 +538,26 @@ progress::-webkit-progress-bar {  background: #fff;}
 <nav>
  
 </nav><br/>
-
+<main>
 {CONTENT}
-
+</main>
 
 <footer>
+
+
 
 {plugin:TAG_LIST}
 		{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br/><br/>}  {plugin:TOOLBAR_TEXTAREA}{CONTENT_TEXTAREA} <!--{plugin:TXT2TAGS_TEXTAREA}-->
 		<p style="float:right;margin:6px">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT}
 		{EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p>{/CONTENT_FORM}
-        
+        {EDIT} {SYNTAX} {HISTORY} {RECENT_CHANGES}
+<br/>
+
+<hr/>
+{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}
+
 </footer>
+
 
 </body>
 <!-- based on https://github.com/owickstrom/the-monospace-web -->

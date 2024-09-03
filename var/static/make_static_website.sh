@@ -36,6 +36,7 @@ THEME=dandelion
 #THEME=simple
 #THEME=mimoza
 THEME=ten
+THEME=the-monospace-web
 
 
 ### Files locations ###
