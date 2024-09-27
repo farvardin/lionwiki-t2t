@@ -1,15 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="lionwiki" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="keywords" content="wiki" />
-  <meta name="description" content="wiki" />
-  <link rel="icon" href="templates/favicon.png" type="image/png" />
-  <title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
-{HEAD}
-<style type="text/css">
 
 @import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
 
@@ -38,7 +26,7 @@
   --text-color: #000;
   --text-color-alt: #666;
   --background-color: #fff;
-  /* --background-color: #f2e5bc; */
+  /*--background-color: #f2e5bc;*/
   --background-color-alt: #eee;
 
   --font-weight-normal: 500;
@@ -109,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: calc(2 * var(--line-height));
   margin-bottom: calc(var(--line-height) * 2);
   text-transform: uppercase;
@@ -177,7 +165,7 @@ table {
 }
 
 th, td {
-  border: var(--border-thickness) solid var(--text-color);
+  /*border: var(--border-thickness) solid var(--text-color);*/
   padding: 
     calc((var(--line-height) / 2))
     calc(1ch - var(--border-thickness) / 2)
@@ -203,6 +191,9 @@ th {
 }
 
 .menu {  list-style-type: none;  }
+
+td.right {  width: auto;
+    float: right;}
 
 .header {
   margin-bottom: calc(var(--line-height) * 2);
@@ -256,8 +247,6 @@ pre {
   white-space: pre;
   overflow-x: auto;
   margin: var(--line-height) 0;
-  
-  // border-style: dashed; 
 }
 figure pre {
   margin: 0;
@@ -265,12 +254,10 @@ figure pre {
 
 pre, code {
   font-family: var(--font-family);
-  background-color: color-mix(in oklab, var(--background-color) 92%, var(--text-color) ) ; 
 }
 
 code {
   font-weight: var(--font-weight-medium);
-
 }
 
 figure {
@@ -524,48 +511,3 @@ progress::-webkit-progress-bar {  background: #fff;}
 
 #ueforth pre {border:0px;padding:0em;}
 
-
-</style>
-</head>
-<body>
-
-<table class="header">
-  <tr>
-    <td colspan="1" rowspan="2">
-      <h1 class="title">{PAGE_TITLE}</h1>
-      <span class="subtitle">{HOME}  {- &nbsp; RECENT_CHANGES}  {- &nbsp; EDIT}  {- &nbsp; SYNTAX}</span>
-    </td>
-
-  <tr>
-    <td class="menu">{ &nbsp; MENU}</td>
-  
-  </tr>
-</table>
-
-<nav>
- 
-</nav><br/>
-<main>
-{CONTENT}
-</main>
-
-<footer>
-
-
-
-{plugin:TAG_LIST}
-		{CONTENT_FORM} {RENAME_TEXT} {RENAME_INPUT <br/><br/>}  {plugin:TOOLBAR_TEXTAREA}{CONTENT_TEXTAREA} <!--{plugin:TXT2TAGS_TEXTAREA}-->
-		<p style="float:right;margin:6px">{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT}
-		{EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p>{/CONTENT_FORM}
-        {EDIT} {SYNTAX} {HISTORY} {RECENT_CHANGES}
-<br/>
-
-<hr/>
-{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}
-
-</footer>
-
-
-</body>
-<!-- based on https://github.com/owickstrom/the-monospace-web -->
-</html>
