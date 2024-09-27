@@ -254,6 +254,7 @@ figure pre {
 
 pre, code {
   font-family: var(--font-family);
+  background-color: color-mix(in oklab, var(--background-color) 92%, var(--text-color) ) ; 
 }
 
 code {
