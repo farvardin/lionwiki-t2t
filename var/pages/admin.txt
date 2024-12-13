@@ -46,6 +46,7 @@ You can get more templates from https://github.com/farvardin/lionwiki-templates
 - [page list index.php?page=page_list]
 - [Regenerate tag lists index.php?action=regenerate-tags]
 - [Last changes index.php?action=recent]
+- [rss var/rss.xml]
 - [Logout index.php?erasecookie=1]
 - [edit raw files (pheditor) pheditor.php] 
 

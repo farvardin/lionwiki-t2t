@@ -60,7 +60,8 @@ class RSS
             $files = array();
             while($filename = @readdir($opening_dir)) {
                 if(preg_match('/\.bak$/', $filename)) {
-                    $files[] = $filename;
+                   // crashes on php > 7.4 : 
+                  //  $files[] = $filename;
                 }
             }
 

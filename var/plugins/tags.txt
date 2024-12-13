@@ -56,9 +56,9 @@ page_list
   
 sample_colored_note#Cec9bc5#
   
-20231023-2030_blog_test
-  
 blog_2023-10-23
+  
+20231023-2030.Blog.test.this.is.very.long
   
 main
   

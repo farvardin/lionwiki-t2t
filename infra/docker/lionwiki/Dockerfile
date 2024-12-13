@@ -15,7 +15,8 @@ ARG DOCUMENTROOT="/var/www/html"
 
 ## download source
 # doesn't work: wget "https://sourceforge.net/projects/lionwiki-t2t/files/latest/download" -O lionwiki-t2t.zip
-RUN curl -L https://sourceforge.net/projects/lionwiki-t2t/files/latest/download > lionwiki-t2t.zip
+# RUN curl -L https://sourceforge.net/projects/lionwiki-t2t/files/latest/download > lionwiki-t2t.zip
+RUN curl -L https://github.com/farvardin/lionwiki-t2t/archive/refs/heads/master.zip > lionwiki-t2t.zip
 
 
 ## install additional packages
@@ -26,6 +27,9 @@ RUN apt-get update \
 # Extract the files to the actual webserver folder
 
 RUN unzip lionwiki-t2t.zip 
+
+# for github instead of sourceforge
+RUN mv lionwiki-t2t-master lionwiki-t2t
 
 RUN cp -fr lionwiki-t2t/* /var/www/html/ 
 

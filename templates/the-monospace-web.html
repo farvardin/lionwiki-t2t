@@ -187,6 +187,15 @@ th, td {
   vertical-align: top;
   text-align: left;
 }
+
+tr h1 {
+  overflow-wrap: break-word;
+  word-break: break-all;
+  /*hyphens: manual;
+  hyphenate-character: '.';
+  */  
+}
+
 table tbody tr:first-child > * {
   padding-top: calc((var(--line-height) / 2) - var(--border-thickness));
 }

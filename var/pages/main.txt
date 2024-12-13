@@ -1,6 +1,6 @@
 %!postproc: 'https--' 'https://'
 
-- //See the [full sample page index.php?page=sample]//
+- //See the [full sample page index.php?page=sample]// 
  
 - //Play in the [sandbox]//
 
@@ -9,14 +9,14 @@
 - //**Download** an [archive with LionWiki and txt2tags https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip/download] ([minimal version https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t-minimal.zip/download])//
 
 - //Access [the code https://github.com/farvardin/lionwiki-t2t] or [the issue tracker https://github.com/farvardin/lionwiki-t2t/issues]// 
-
+ 
 
 
 == About LionWiki ==
  
-**[LionWiki http://lionwiki.0o.cz/]** was a minimalist Wiki engine programmed in PHP, based on [WiKiss http://www.wikiss.tuxfamily.org/], itself based on TigerWiki...
+**[LionWiki http://lionwiki.0o.cz/]** is a minimalist Wiki engine programmed in PHP, based on [WiKiss http://www.wikiss.tuxfamily.org/], itself based on TigerWiki...
 
-It revives now in this txt2tags-based implementation.
+It was abandoned but it revives now in this txt2tags-based implementation.
 
 It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
 

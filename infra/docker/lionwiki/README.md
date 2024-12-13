@@ -77,6 +77,13 @@ Type `docker volume inspect lionwiki_lionwiki_data` to see the location of the p
 `docker-compose down`
 
 
+### Using with Coolify
+
+Create a new ressource > docker based > Dockerfile
+copy the Dockerfile from /infra/docker/lionwiki
+save
+deploy
+
 
 # Credit
 

@@ -1,12 +1,13 @@
 == Edit me ==
 
-This is the __sandbox__ page.
+This is the __sandbox__ page.  
 
 You can [edit index.php?page=sandbox&action=edit] it using the **txt2tags** markup. The password is simply "__demo__".
 
-{LIONWIKITOC}
+{LIONWIKITOC}  
 
 
+testttbcsee
 
 == Warning ==
 
