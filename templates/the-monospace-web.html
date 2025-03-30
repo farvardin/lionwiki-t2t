@@ -11,27 +11,56 @@
 {HEAD}
 <style type="text/css">
 
-@import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
 
 /* more examples... */
 /*
+@import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
 @import url('https://fonts.cdnfonts.com/css/courier-prime-sans');
 @import url('https://fonts.cdnfonts.com/css/courier-prime');
+@import url('https://fonts.cdnfonts.com/css/atkinson-hyperlegible-2');
 @import url('https://fonts.cdnfonts.com/css/mechanical');
 @import url('https://fonts.cdnfonts.com/css/thegoodmonolith');
 @import url('https://fonts.cdnfonts.com/css/eingrantch-mono');
 @import url('https://fonts.cdnfonts.com/css/ubuntu-mono');
 */
 
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('JetBrains Mono'), url('templates/fonts/JetBrainsMono-Medium.woff2') format('woff');
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: italic;
+    font-weight: 400;
+    src: local('JetBrains Mono'), url('templates/fonts/JetBrainsMono-MediumItalic.woff2') format('woff');
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 700;
+    src: local('JetBrains Mono'), url('templates/fonts/JetBrainsMono-ExtraBold.woff2') format('woff');
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: italic;
+    font-weight: 700;
+    src: local('JetBrains Mono'), url('templates/fonts/JetBrainsMono-ExtraBoldItalic.woff2') format('woff');
+}
+
 :root {
   --font-family: "JetBrains Mono", monospace; 
   /* 
+  --font-family: 'Atkinson Hyperlegible', sans-serif;
   --font-family: "Courier Prime Sans", courier, sans-serif;
   --font-family: "Courier Prime", courier, sans-serif; 
   --font-family: "Mecanical", courier, sans-serif;
   --font-family: "TheGoodMonolith", monospace;
   --font-family: 'Eingrantch Mono', sans-serif;
   --font-family: 'Ubuntu Mono', sans-serif;
+  --font-family: "Berkeley Mono", monospace; 
   */ 
   --line-height: 1.20rem;
   --border-thickness: 2px;
@@ -42,7 +71,8 @@
   --background-color-alt: #eee;
 
   --font-weight-normal: 500;
-  --font-weight-medium: 600;
+  --font-weight-medium: 500;
+  /*--font-weight-medium: 600;*/
   --font-weight-bold: 800;
 
   font-family: var(--font-family);
@@ -91,6 +121,7 @@ body {
   padding: var(--line-height) 2ch;
   max-width: calc(min(80ch, round(down, 100%, 1ch)));
   line-height: var(--line-height);
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 480px) {
@@ -154,7 +185,7 @@ strong, b {
   font-weight: var(--font-weight-bold);
 }
 
-em {
+em, i {
   font-style: italic;
 }
 
@@ -279,7 +310,6 @@ pre, code {
 
 code {
   font-weight: var(--font-weight-medium);
-
 }
 
 figure {
@@ -352,7 +382,8 @@ input, button, textarea {
   -webkit-appearance: none;
 }
 
-input[type=checkbox] {
+input[type=checkbox],
+input[type=radio] {
   display: inline-grid;
   place-content: center;
   vertical-align: top;
@@ -360,11 +391,16 @@ input[type=checkbox] {
   height: var(--line-height);
   cursor: pointer;
 }
-input[type=checkbox]:checked:before {
+input[type=checkbox]:checked:before,
+input[type=radio]:checked:before {
   content: "";
   width: 1ch;
   height: calc(var(--line-height) / 2);
   background: var(--text-color);
+}
+input[type=radio],
+input[type=radio]:before {
+  border-radius: 100%;
 }
 
 button:focus, input:focus {

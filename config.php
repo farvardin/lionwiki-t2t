@@ -41,7 +41,7 @@ $PROTECTED_READ = false;
 // Those templates are more minimalistic and use only a basic toolbar,
 //  some other don't have any toolbar at all (but you can add it in the template)
 
-$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
+//$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 

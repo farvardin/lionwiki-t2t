@@ -207,6 +207,13 @@
 %!postproc:  '@@/DIV@@'   '</div>'
 
 
+
+%!postproc: '@@DETAILS@@([^ ].*?)@@'  '<details><summary>\1</summary>'
+%!postproc: '@@details@@([^ ].*?)@@'  '<details><summary>\1</summary>'
+%!postproc: '@@/DETAILS@@'  '</details>'
+%!postproc: '@@/details@@'  '</details>'
+
+
 %% other things
 
 % we use this for writing docs in lionwiki

@@ -98,6 +98,18 @@ You can't add extra spaces at the boundaries of the part you want to mark with t
 | item 3 | item 4 |
 
 
+== Details ==
+
+The ``<details>`` markup is supported. We use this special syntax:
+
+```
+CONVERT-AROBASECONVERT-AROBASEDETAILSCONVERT-AROBASECONVERT-AROBASEClick to revealCONVERT-AROBASECONVERT-AROBASE
+This text will be hidden until you click on the parent elementCONVERT-AROBASECONVERT-AROBASE/DETAILSCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@DETAILS@@Click to reveal@@
+This text will be hidden until you click on the parent element@@/DETAILS@@
+
 
 == Additional syntax ==
 
@@ -176,6 +188,15 @@ Will display:
 @@BUTTON([link to a search engine http://ddg.gg])@@
 
 @@BUTTON(http://ddg.gg)@@
+
+
+- Ascii drawings :
+
+```
+╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯
+```
 
 
 - Tags : 

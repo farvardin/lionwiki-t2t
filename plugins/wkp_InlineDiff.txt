@@ -7,7 +7,7 @@
  *
  * not compatible with PHP 8.2, 
  *  remove it (with the InlineDiff folder) if necessary
- * upgrade with https://github.com/horde/Text_Diff/ in the future?
+ * upgrade with https://github.com/horde/Text_Diff/ in the future; or http://www.raymondhill.net/finediff/viewdiff-ex.php ?
  */
 
 class InlineDiff

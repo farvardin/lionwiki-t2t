@@ -29,6 +29,12 @@
 //   ini_set('display_startup_errors', 1);
 //   error_reporting(E_ALL);
 
+// to remove all errors message:
+//   ini_set('display_errors', 0);
+// to remove all warning:
+//   error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+
+
 
 foreach($_REQUEST as $k => $v) {
     unset($$k); // register_globals = off

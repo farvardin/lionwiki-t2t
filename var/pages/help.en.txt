@@ -28,6 +28,46 @@ The basic rules for page markup are simple (you will find them below).
 The syntax of this wiki is following the general rules of txt2tags syntax, which you can find [here as a reminder http://txt2tags.sourceforge.net/markup.html].
 The idea is you should be able to paste here your txt2tags documents without many modifications (explained in the second part of this document).
 
+- Put a blank line between each paragraph.
+
+- To create a list of items, start each line with ``-`` for a bulleted list
+or ``+`` for a numbered list.
+
+- To make section titles, surround this title with ``=``.
+
+- To highlight text, do the following: ``CONVERT-SLASHCONVERT-SLASHtextCONVERT-SLASHCONVERT-SLASH`` for italics or ``CONVERT-ASTERISKCONVERT-ASTERISKtextCONVERT-ASTERISKCONVERT-ASTERISK`` for bold.
+
+- To link to another page, surround its name with double brackets; for example, ``CONVERT-BRACKET-STARTCONVERT-BRACKET-STARTnew pageCONVERT-BRACKET-ENDCONVERT-BRACKET-END`` links to that page. A link to a [[nonexistent page | nothing]] is displayed differently, to invite others to create the page.
+
+- To link to another site, type its address directly, such as http://www.unsite.fr
+
+- And to make a link on an existing portion of text, it is ``CONVERT-BRACKET-STARTdescription of the site http://www.site.comCONVERT-BRACKET-END``
+
+- To link to a local file, for example located in the /docs folder at the root of the Lionwiki-t2t installation, it is:
+
+``CONVERT-BRACKET-STARTpdf file var/upload/your-file.pdfCONVERT-BRACKET-END``
+
+Which gives:
+- [pdf file var/upload/your-file.pdf]
+
+
+But the easiest way is to use the file attachment function (see below)
+
+
+Generally, you can also select your text to format, and use the toolbar to help you write.
+
+- To add a table of contents, add the code ``CONVERT-PERCENTCONVERT-PERCENTtoc`` at the desired location
+
+- Attach a file:
++ click on [Upload content index.php?action=upload]
++ or add ``?action=upload`` at the end of any page
+
+
+
+
+//images can be put in place either by copying them into the uploads folder or by uploading them individually with the method above.//
+
+
 
 == Basic Syntax ==
 
@@ -36,7 +76,7 @@ The idea is you should be able to paste here your txt2tags documents without man
 - ""**bold**""      :  **bold**
 - ""//italic//""   :  //italic//
 - ""__underline__"" :  __underline__
-- ""--strike--""      :  --strike--
+- ""--strikeout--""      :  --strikeout--
 - ``=`` surrounding your titles / headings (at different levels)
 - ""- list""
 - ""+ numbered list""
@@ -47,6 +87,7 @@ The idea is you should be able to paste here your txt2tags documents without man
 - ""| table | cell 2 | cell 3 |"" 
 
 
+|| Header title | title 2 | title 3 |
 | table | cell 2 | cell 3 | cell 4 ||
 | table | cell 2 | cell 3 | cell 4 ||
 
@@ -104,6 +145,9 @@ If you're on Android and you wish to use your tablet / phone / androidtv as a se
 In Yunohost, you can install it by searching for "lionwiki" in the application store.
 
 - https://github.com/YunoHost-Apps/lionwiki-t2t_ynh
+
+
+For more control you can also install it by ftp with the application ["MyWebApp" https://apps.yunohost.org/app/my_webapp], and manage the updates yourself.
 
 
 === Docker ===
@@ -180,7 +224,9 @@ Templates folders also contains CSS themes which you can also customise further 
 
 Some notable templates (with several color schemes): 
 
-- minimaxing: the default template for the wiki. Simple and clean.
+- minimaxing: the old default template for the wiki. Simple and clean.
+- mimoza: new default template
+- The monospace web: also simple and clean, great for note taking.
 - newspaper: another clean template, great for a website.
 - terminal: choose black on white, green on black, for a console-like appearance.
 - geek: some simple contrasted colors. 
@@ -219,13 +265,22 @@ If an internal link with such a title does not work, please replace the # with %
 
 To synchronise your wiki with your mobile devices, install this in addition:
 
-- (optionnal) install nextcloud : https://nextcloud.com/
-- (optionnal) share a subfolder containing your lionwiki install into owncloud
-- install [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] or syncthing on an android device and synchronise the text files into var/pages/ between your server and your device (tablet, smartphone), using either ssh (recommended) or owncloud.
- - Alternatively, you can try http://git-annex.branchable.com/assistant/ instead of foldersync
-- install for example the [920 text editor https://play.google.com/store/apps/details?id=com.jecelyin.editor], [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] or [Markor https://github.com/farvardin/markor/] on android and edit the pages of your website from your mobile device!
+- (optional) install [nextcloud https://nextcloud.com/] and/or [Yunohost https://yunohost.org/]
+- (optional) share one of the subfolders containing the lionwiki installation in owncloud or nextcloud
+- install [syncthing https://f-droid.org/en/packages/com.github.catfriend1.syncthingandroid/] on android device and sync your text files in ``var/pages/`` between your server and your mobile device (tablet, phone), using ssh or owncloud.
+- install [Markor https://github.com/farvardin/markor/] on android device and edit your site pages directly from your mobile device!
 
-- __Bonus__: if you're using [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], create a new page and start your first line with either ``####`` or ``DENKZETTEL``, then enable in the option "checklist on". This way you'll be able to use your wiki as a shopping list: Items are created by the application with a + before them, and disabled with a -, and with some preprocessing in the config.t2t we are able to display it correctly in lionwiki-t2t. Check [this page to see a sample in action index.php?page=sample_shopping%23L%23%23CY%23]. (The ## characters are automatically added by denkzettel for adding a background color to the note).
+
+%% deprecated:
+% [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] or
+% [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor], [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen]
+% https://github.com/jecelyin/920-text-editor-v2
+% - __Bonus__: If you use [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], create a new page and start your first line with ``####`` or ``Denkzettel``, then enable the "checklist on" option. This way you can use your wiki like a shopping list: The articles are created by the application with a + in front of them, and disabled with a -, and with a little preprocessing in the config.t2t we are able to display it correctly in lionwiki-t2t. See [this page for an example in action index.php?page=sample_shopping%23L%23%23CY%23]. (The ## characters are automatically added by denkzettel to add a background color to the note).
+% Alternatively, you can try http://git-annex.branchable.com/assistant/ instead of foldersync
+
+
+- On PC (Linux) you can use [this fork of Ghostwriter https://github.com/farvardin/ghostwriter] which has a title explorer that handles the txt2tags format. [Geany https://www.geany.org/] also allows it.
+
 
 
 == Export as PDF ==

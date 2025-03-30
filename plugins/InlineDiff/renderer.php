@@ -13,6 +13,8 @@
  * not receive this file, see http://opensource.org/licenses/lgpl-license.php.
  *
  * @package Text_Diff
+ * 
+ * check http://www.raymondhill.net/finediff/viewdiff-ex.php instead?
  */
 class Text_Diff_Renderer
 {

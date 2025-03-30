@@ -147,6 +147,11 @@ Dans Yunohost, vous pouvez l'installer en cherchant "lionwiki" dans le magasin d
 - https://github.com/YunoHost-Apps/lionwiki-t2t_ynh
 
 
+Pour plus de contrôle vous pouvez également l'installer par ftp avec l'application ["MyWebApp" https://apps.yunohost.org/app/my_webapp], et gérer vous-même les mises à jour.
+
+
+
+
 === Docker ===
 
 Allez dans le dossier infra/docker et tapez "make run" pour construire l'image et déployer un nouveau container. Plus d'info dans la doc dans le dossier infra/.
@@ -217,7 +222,9 @@ Le dossier templates contient également des thèmes CSS que vous pouvez personn
 
 Quelques modèles notables (avec plusieurs schémas de couleurs) : 
 
-- minimaxing : le modèle par défaut pour le wiki. Simple et propre.
+- minimaxing : l'ancien modèle par défaut pour le wiki. Simple et propre.
+- mimoza: le nouveau modèle par défaut
+- The monospace web: Simple et épuré, idéal pour des prises de note.
 - newspaper : un autre modèle propre, idéal pour un site web.
 - terminal : choisissez le noir sur le blanc, le vert sur le noir, pour une apparence de type console.
 - geek : quelques couleurs simples et contrastées. 
@@ -258,13 +265,21 @@ Dans le cas où un lien interne avec un tel titre ne fonctionnerait pas, veuille
 
 Pour son utilisation dans un contexte multi-appareils, il est possible de rajouter ceci :
 
-- (optionnel) installer nextcloud : https://nextcloud.com/
-- (optionnel) partager un des sous-dossier contenant l'installation de lionwiki dans owncloud
-- installer [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] ou syncthing sur l'appareil android et synchronisez vos fichiers textes dans ``var/pages/`` entre votre serveur et votre appareil mobile (tablette, téléphone), en utilisant soit ssh (recommandé) ou owncloud.
-- installer [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor], [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen] ou [Markor https://github.com/farvardin/markor/] sur l'appareil android et éditez les pages de votre site directement depuis votre appareil mobile !
+- (optionnel) installer [nextcloud https://nextcloud.com/] et/ou [Yunohost https://yunohost.org/]
+- (optionnel) partager un des sous-dossier contenant l'installation de lionwiki dans owncloud ou nextcloud
+- installer [syncthing https://f-droid.org/en/packages/com.github.catfriend1.syncthingandroid/] sur l'appareil android et synchronisez vos fichiers textes dans ``var/pages/`` entre votre serveur et votre appareil mobile (tablette, téléphone), en utilisant ssh ou owncloud.
+- installer [Markor https://github.com/farvardin/markor/] sur l'appareil android et éditer les pages de votre site directement depuis votre appareil mobile !
 
 
-- __Bonus__ : si vous utilisez [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], créez une nouvelle page et commencez votre première ligne par ``####`` ou ``Denkzettel``, puis activez l'option "checklist on". Vous pourrez ainsi utiliser votre wiki comme une liste de courses : Les articles sont créés par l'application avec un + devant eux, et désactivés avec un -, et avec un peu de prétraitement dans le config.t2t nous sommes capables de l'afficher correctement dans lionwiki-t2t. Consultez [cette page pour voir un exemple dans action index.php?page=sample_shopping%23L%23%23CY%23]. (Les caractères ## sont automatiquement ajoutés par denkzettel pour ajouter une couleur de fond à la note).
+%% deprecated:
+% [foldersync https://play.google.com/store/apps/details?id=dk.tacit.android.foldersync.full] ou 
+% [920 editor https://play.google.com/store/apps/details?id=com.jecelyin.editor], [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen]
+% https://github.com/jecelyin/920-text-editor-v2
+% - __Bonus__ : si vous utilisez [Denkzettel https://play.google.com/store/apps/details?id=com.silli.notizen], créez une nouvelle page et commencez votre première ligne par ``####`` ou ``Denkzettel``, puis activez l'option "checklist on". Vous pourrez ainsi utiliser votre wiki comme une liste de courses : Les articles sont créés par l'application avec un + devant eux, et désactivés avec un -, et avec un peu de prétraitement dans le config.t2t nous sommes capables de l'afficher correctement dans lionwiki-t2t. Consultez [cette page pour voir un exemple dans action index.php?page=sample_shopping%23L%23%23CY%23]. (Les caractères ## sont automatiquement ajoutés par denkzettel pour ajouter une couleur de fond à la note).
+
+
+
+- Sur PC (Linux) on peut utiliser [ce fork de Ghostwriter https://github.com/farvardin/ghostwriter] qui possède un explorateur de titres qui gère le format txt2tags. [Geany https://www.geany.org/] le permet également.
 
 
 
@@ -280,7 +295,7 @@ Si cela ne fonctionne pas comme prévu, lancez /var/www/lionwiki-t2t/export_pdf/
 __Quelques avantages__ de ce système :
 
 - base de données textuelle, lisible et compréhensible par l'utilisateur et facilement éditable depuis un autre logiciel.
-- thème par défaut (minimaxing), simple et sobre. Design CSS Responsive (s'adapte aux smartphones et tablettes). Changement des couleurs de base et des polices de caractères  facilité par l'utilisation de [less http://lesscss.org/].
+- thème par défaut (minimaxing), simple et sobre. Design CSS Responsive (s'adapte aux smartphones et tablettes). Changement des couleurs de base et des polices de caractères facilité par l'utilisation de [less http://lesscss.org/].
 - autre thème optionnel utilisant [bootstrap http://getbootstrap.com], pouvant servir de base pour un autre type de thème moderne.
 
 

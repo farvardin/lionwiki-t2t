@@ -1,17 +1,29 @@
 ## Dockerfile for lionwiki-t2t
 
 #FROM debian:stable-slim
-FROM php:7.4-apache-buster
+#FROM php:7.4-apache-buster
+#FROM php:8.2.26-zts-alpine
+FROM php:8.2-apache-bookworm
+#FROM php:8.2-apache-bullseye
+#FROM php:7.4-apache-bullseye
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 SHELL ["/bin/bash", "-c"]
+#SHELL ["/bin/sh", "-c"]
 
 ## image metadata
 LABEL version="1.0" maintainer="farvardin"
 
 ## temporary variables
 ARG DOCUMENTROOT="/var/www/html"
+
+# switch to alpine one day?
+#RUN apk update
+#RUN apk upgrade
+#RUN apk --no-cache add bash
+#RUN apk --no-cache add curl
+#RUN apk --no-cache add zip
 
 ## download source
 # doesn't work: wget "https://sourceforge.net/projects/lionwiki-t2t/files/latest/download" -O lionwiki-t2t.zip
@@ -20,8 +32,7 @@ RUN curl -L https://github.com/farvardin/lionwiki-t2t/archive/refs/heads/master.
 
 
 ## install additional packages
-RUN apt-get update \ 
-    && apt install -y less unzip nano node-less
+RUN apt-get update  && apt install -y less unzip nano node-less
 
 
 # Extract the files to the actual webserver folder
@@ -42,7 +53,9 @@ RUN cd /var/www/html/ \
 # add more files to the project
 #COPY test.html /var/www/html/
 
-
+#RUN rm -fr /var/www/html/lionwiki-t2t/plugins/wkp_Upload.php
+#RUN rm -fr /var/www/html/lionwiki-t2t/plugins/wkp_BetterEditor.php
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 # Opening HTTP(s) ports
 EXPOSE 80
