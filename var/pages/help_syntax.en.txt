@@ -98,7 +98,7 @@ You can't add extra spaces at the boundaries of the part you want to mark with t
 | item 3 | item 4 |
 
 
-== Details ==
+== Details and spoilers ==
 
 The ``<details>`` markup is supported. We use this special syntax:
 
@@ -109,6 +109,25 @@ This text will be hidden until you click on the parent elementCONVERT-AROBASECON
 
 @@DETAILS@@Click to reveal@@
 This text will be hidden until you click on the parent element@@/DETAILS@@
+
+Spoiler is similar, you just have to select the text to be able to read it. //(note: not all templates support it at the moment)//
+
+```
+CONVERT-AROBASECONVERT-AROBASESPOILERCONVERT-AROBASECONVERT-AROBASEHidden textCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@SPOILER@@Hidden text@@
+
+
+or (reddit-like spoiler)
+
+
+```
+CONVERT-GREATER!Hidden text!<
+```
+
+>!Hidden text!<
+
 
 
 == Additional syntax ==

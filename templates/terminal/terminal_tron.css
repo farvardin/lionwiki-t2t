@@ -16,6 +16,18 @@
 ----------------------------*/
 /* Green Terminal */
 /* normal or bold */
+.spoiler {
+  background-color: #aaece8;
+}
+.spoiler:active {
+  background-color: #0b1411;
+}
+.spoiler:hover {
+  background-color: #0b1411;
+}
+.spoiler::selection {
+  background-color: #0b1411;
+}
 /* overriding default values above */
 /* Tron */
 /* Mixin Macro */
@@ -109,7 +121,8 @@ h1 a {
   text-decoration: none;
 }
 h1 a:hover {
-  color: #aaece8;
+  /*color: @bg;*/
+  /* already defined above */
 }
 h2,
 h3,
@@ -186,7 +199,7 @@ table.main {
 }
 th,
 td {
-  padding: .3em .5em;
+  padding: 0.3em 0.5em;
   margin: 5;
   vertical-align: top;
   /*border: 1px solid @fg;*/
@@ -206,7 +219,7 @@ pre {
   line-height: 1.5em;
   font-family: Courier ;
   font-size: 1em;
-  margin: 1.0em;
+  margin: 1em;
 }
 code,
 blockquote,

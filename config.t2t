@@ -13,12 +13,6 @@
 %!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 index.php?page=\2]'
 %!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 index.php?page=\2]'
 
-% fixes problem with double URL on a single line:
-%!preproc: 'https:\/\/' '@@PRE-URLs@@'
-%!preproc: 'http:\/\/' '@@PRE-URL@@'
-%!postproc: '@@PRE-URLs@@' 'https://'
-%!postproc: '@@PRE-URL@@'  'http://'
-
 
 % use [[your_page]] syntax
 %!preproc: '\[\[(.*?)\]\]' '[\1]'
@@ -138,7 +132,21 @@
 %!postproc: '#TAGCLOUD' '{TAG_CLOUD}'
 %!--preproc: '^#(.*?) $' '""{tags:\1}""'  %% don't use that, it must be included at a higher level (in php)
 
- 
+
+%% Details and spoilers
+
+%!postproc: '@@DETAILS@@([^ ].*?)@@'  '<details><summary>\1</summary>'
+%!postproc: '@@details@@([^ ].*?)@@'  '<details><summary>\1</summary>'
+%!postproc: '@@/DETAILS@@'  '</details>'
+%!postproc: '@@/details@@'  '</details>'
+
+
+%!preproc:  '>!([^ ].*?)!<' '@@SPOILER@@\1@@'
+%!postproc: '@@SPOILER@@([^ ].*?)@@' '<span class="spoiler">\1</span>'
+%!--postproc: '>!([^ ].*?)!<' '<span class="spoiler">\1</span>'
+
+
+
 
 %% basic Markdown support!
 %%  headings
@@ -191,6 +199,15 @@
 
 %!postproc:  'GEMINILINK([^ ].*?)/'  '<a href="gemini://\1">gemini://\1</a>/'
 
+
+
+% fixes problem with double URL on a single line:
+%!preproc: 'https:\/\/' '@@PRE-URLs@@'
+%!preproc: 'http:\/\/' '@@PRE-URL@@'
+%!postproc: '@@PRE-URLs@@' 'https://'
+%!postproc: '@@PRE-URL@@'  'http://'
+
+
 %% extra features
 
 %!postproc: '@@small@@' <div class="small">
@@ -208,12 +225,6 @@
 
 
 
-%!postproc: '@@DETAILS@@([^ ].*?)@@'  '<details><summary>\1</summary>'
-%!postproc: '@@details@@([^ ].*?)@@'  '<details><summary>\1</summary>'
-%!postproc: '@@/DETAILS@@'  '</details>'
-%!postproc: '@@/details@@'  '</details>'
-
-
 %% other things
 
 % we use this for writing docs in lionwiki
@@ -222,6 +233,7 @@
 %!postproc: 'CONVERT-3EQUAL'      '==='
 %!postproc: 'CONVERT-4EQUAL'      '===='
 
+% >
 %!postproc: 'CONVERT-GREATER'	'&#62;'
 %!postproc: 'CONVERT-LESS'	'&#60;'
 
@@ -243,6 +255,10 @@
 % { }
 %!postproc: 'CONVERT-CBRACKET-START'      '&lcub;'
 %!postproc: 'CONVERT-CBRACKET-END'      '&rcub;'
+
+% >
+%% see CONVERT-GREATER
+
 
 % #
 %!postproc: 'CONVERT-HASHTAG'      '&#x23;'

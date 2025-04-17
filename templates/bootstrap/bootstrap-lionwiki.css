@@ -421,6 +421,13 @@ progress::-webkit-progress-bar {
 }
 
 
+.spoiler { color: black ; background-color: black ; }
+.spoiler:active { background-color: #ccc ;  }
+.spoiler:hover { background-color: #ccc ;  }
+.spoiler::selection { background-color: #777 ;  }
+
+
+
 /* Dark scheme / theme support   */
 @media (prefers-color-scheme: dark) {
 body {

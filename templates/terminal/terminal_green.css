@@ -16,6 +16,18 @@
 ----------------------------*/
 /* Green Terminal */
 /* normal or bold */
+.spoiler {
+  background-color: #00CC00;
+}
+.spoiler:active {
+  background-color: black;
+}
+.spoiler:hover {
+  background-color: black;
+}
+.spoiler::selection {
+  background-color: black;
+}
 /* overriding default values above */
 /* Green Terminal */
 @font-face {
@@ -51,15 +63,15 @@
   max-width: 100%;
 }
 body {
-  color: #00cc00;
-  background-color: #000000;
+  color: #00CC00;
+  background-color: black;
   font-size: 14px;
   line-height: 115%;
   padding: 10px 20px 20px 20px;
 }
 a {
   font-weight: bold;
-  color: #00cc00;
+  color: #00CC00;
 }
 a img {
   border: 2px;
@@ -67,8 +79,8 @@ a img {
 a:hover {
   text-decoration: none;
   /*color: @link-hover;*/
-  color: #000000;
-  background-color: #00cc00;
+  color: black;
+  background-color: #00CC00;
   /*background-color: @fg;*/
   /*text-shadow: 0 0 6px darken(@glow,20%), 0 0 12px @glow ;*/
 }
@@ -98,7 +110,7 @@ a.external:after {
   content: "\2197";
 }
 pre {
-  border: 1px dashed #00cc00;
+  border: 1px dashed #00CC00;
   padding: 4px;
   overflow: auto;
   margin: 3px;
@@ -111,7 +123,7 @@ h1 {
   text-transform: capitalize;
   letter-spacing: 2px;
   font-weight: bold;
-  color: #00cc00;
+  color: #00CC00;
   margin: 18px 0 15px 15px;
   line-height: 125%;
 }
@@ -119,7 +131,8 @@ h1 a {
   text-decoration: none;
 }
 h1 a:hover {
-  color: #00cc00;
+  /*color: @bg;*/
+  /* already defined above */
 }
 h2,
 h3,
@@ -130,14 +143,14 @@ h6 {
   line-height: 125%;
   font-weight: bold;
   margin: 15px 0 15px 0px;
-  color: #00cc00;
+  color: #00CC00;
 }
 h2 a:hover,
 h3 a:hover,
 h4 a:hover,
 h5 a:hover,
 h6 a:hover {
-  color: #00cc00;
+  color: #00CC00;
 }
 h2 span.par-edit,
 h3 span.par-edit,
@@ -159,7 +172,7 @@ hr {
   height: 0px;
   overflow: hidden;
   border: 0px;
-  border-top: 1px solid #00cc00;
+  border-top: 1px solid #00CC00;
 }
 ul {
   padding: 5px 0px 5px 20px;
@@ -196,7 +209,7 @@ table.main {
 }
 th,
 td {
-  padding: .3em .5em;
+  padding: 0.3em 0.5em;
   margin: 5;
   vertical-align: top;
   /*border: 1px solid @fg;*/
@@ -211,26 +224,26 @@ blockquote {
   padding-left: 20px;
 }
 pre {
-  background-color: #00cc00;
-  color: #000000;
+  background-color: #00CC00;
+  color: black;
   line-height: 1.5em;
   font-family: Courier ;
   font-size: 1em;
-  margin: 1.0em;
+  margin: 1em;
 }
 code,
 blockquote,
 dt {
-  background-color: #00cc00;
-  color: #000000;
+  background-color: #00CC00;
+  color: black;
   font-family: Courier ;
   font-size: 1em;
   /*margin: 1.0em;*/
 }
 /* th { background-color: lighten(@bg,20%); } */
 th {
-  color: #000000;
-  background-color: #00cc00;
+  color: black;
+  background-color: #00CC00;
 }
 td.main,
 th.main {
@@ -239,7 +252,7 @@ th.main {
   vertical-align: top;
   border: 0px ;
   text-align: left;
-  background-color: #000000;
+  background-color: black;
 }
 .error {
   color: #0066cc;
@@ -254,39 +267,39 @@ form {
 }
 .submit {
   padding: 4px;
-  border: 1px solid #00cc00;
+  border: 1px solid #00CC00;
 }
 .submit:hover {
-  border: 1px dashed #00cc00;
+  border: 1px dashed #00CC00;
   background-color: #333333;
 }
 .contentTextarea {
   width: 100%;
 }
 input {
-  border: 1px solid #00cc00;
+  border: 1px solid #00CC00;
   padding: 4px;
   font-size: 12px;
-  background-color: #000000;
-  color: #00cc00;
+  background-color: black;
+  color: #00CC00;
 }
 select {
-  border: 1px solid #00cc00;
+  border: 1px solid #00CC00;
   padding: 2px;
   font-size: 12px;
-  background-color: #000000;
-  color: #00cc00;
+  background-color: black;
+  color: #00CC00;
 }
 textarea {
-  border: 1px solid #00cc00;
+  border: 1px solid #00CC00;
   padding: 2px;
   font-size: 12px;
-  background-color: #000000;
-  color: #00cc00;
+  background-color: black;
+  color: #00CC00;
   padding: 3px;
 }
 #toc {
-  border: 1px dashed #00cc00;
+  border: 1px dashed #00CC00;
   margin: 5px 0 5px 10px;
   padding: 6px 5px 7px 0px;
   float: right;
@@ -326,7 +339,7 @@ textarea {
 .tagList {
   padding: 0.2em 0.4em 0.2em 0.4em;
   margin-top: 0.5em;
-  border: 1px dashed #00cc00;
+  border: 1px dashed #00CC00;
   clear: right;
 }
 .tagCloud {
@@ -334,7 +347,7 @@ textarea {
   width: 200px;
   padding: 0.5em;
   margin: 1em;
-  border: 1px dashed #00cc00;
+  border: 1px dashed #00CC00;
   clear: right;
 }
 .pageVersionsList {
@@ -349,27 +362,27 @@ textarea {
   list-style-type: none;
 }
 progress {
-  color: #00cc00;
-  background-color: #000000;
+  color: #00CC00;
+  background-color: black;
   border-radius: 0px;
   border: solid 1px;
   width: 10em;
   height: 1em;
 }
 progress::-moz-progress-bar {
-  background: #00cc00;
+  background: #00CC00;
 }
 progress::-webkit-progress-value {
-  background: #00cc00;
+  background: #00CC00;
 }
 progress::-webkit-progress-bar {
-  background: #000000;
+  background: black;
 }
 .block {
   display: inline-block;
   width: 65%;
-  border: 1px solid #00cc00;
-  background-color: #000000;
+  border: 1px solid #00CC00;
+  background-color: black;
   min-height: 50px;
   /*margin: 5px;*/
   margin-top: 6px;
@@ -379,7 +392,7 @@ progress::-webkit-progress-bar {
   padding-top: -2px;
   padding-bottom: 0px;
   font-size: 16px;
-  color: #00cc00;
+  color: #00CC00;
   /*cursor: pointer;*/
   text-align: center;
   vertical-align: middle;
@@ -392,13 +405,13 @@ progress::-webkit-progress-bar {
   padding-top: 0px;
   min-height: 46px;
   line-height: 46px;
-  color: #00cc00;
+  color: #00CC00;
   text-decoration: none;
   border-radius: 0px;
 }
 .block a:hover {
-  background-color: #00cc00;
-  color: #000000;
+  background-color: #00CC00;
+  color: black;
   margin-left: -2px;
   margin-right: -2px;
   padding-left: 2px;

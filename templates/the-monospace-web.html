@@ -277,6 +277,8 @@ details {
   margin-bottom: var(--line-height);
 }
 
+
+
 summary {
   font-weight: var(--font-weight-medium);
 }
@@ -569,6 +571,12 @@ progress::-webkit-progress-bar {  background: #fff;}
 .todotxt_context { color: #888; }
 .todotxt_tag { color: #777; }
 .todotxt_deleted {opacity: 0.4; }
+
+
+.spoiler { background-color: var(--text-color) ; }
+.spoiler:active { background-color: var(--background-color) ;  }
+.spoiler:hover { background-color: var(--background-color) ;  }
+.spoiler::selection { background-color: color-mix(in srgb, var(--background-color), black 10%) ;  }
 
 
 

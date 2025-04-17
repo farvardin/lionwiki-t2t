@@ -29,6 +29,11 @@
 @font: monospace;
 
 
+.spoiler { background-color: @fg ; }
+.spoiler:active { background-color: @bg ;  }
+.spoiler:hover { background-color: @bg ;  }
+.spoiler::selection { background-color: @bg ;  }
+
 /* overriding default values above */
 
 @import "terminal_temp.less";

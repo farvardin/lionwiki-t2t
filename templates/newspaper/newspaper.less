@@ -988,6 +988,12 @@ progress::-webkit-progress-bar {  background: @bg;}
 .todotxt_tag { color: spin(@fg, 90); }
 .todotxt_deleted {opacity: 0.4; }
 
+.spoiler { background-color: @fg ; }
+.spoiler:active { background-color: @bg ;  }
+.spoiler:hover { background-color: @bg ;  }
+.spoiler::selection { background-color: @bg ;  }
+
+
 
 @media (prefers-color-scheme: dark) {
   /* Invert all elements on the body while attempting to not alter the hue substantially. */

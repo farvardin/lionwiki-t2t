@@ -16,6 +16,18 @@
 ----------------------------*/
 /* Green Terminal */
 /* normal or bold */
+.spoiler {
+  background-color: #CCF9F7;
+}
+.spoiler:active {
+  background-color: #112326;
+}
+.spoiler:hover {
+  background-color: #112326;
+}
+.spoiler::selection {
+  background-color: #112326;
+}
 /* overriding default values above */
 /* theme 1 */
 /* dark rosa Theme */
@@ -43,7 +55,7 @@
   max-width: 100%;
 }
 body {
-  color: #ccf9f7;
+  color: #CCF9F7;
   background-color: #112326;
   font-size: 14px;
   line-height: 115%;
@@ -51,7 +63,7 @@ body {
 }
 a {
   font-weight: bold;
-  color: #fba6a6;
+  color: #FBA6A6;
 }
 a img {
   border: 2px;
@@ -60,7 +72,7 @@ a:hover {
   text-decoration: none;
   /*color: @link-hover;*/
   color: #112326;
-  background-color: #ccf9f7;
+  background-color: #CCF9F7;
   /*background-color: @fg;*/
   /*text-shadow: 0 0 6px darken(@glow,20%), 0 0 12px @glow ;*/
 }
@@ -90,7 +102,7 @@ a.external:after {
   content: "\2197";
 }
 pre {
-  border: 1px dashed #ccf9f7;
+  border: 1px dashed #CCF9F7;
   padding: 4px;
   overflow: auto;
   margin: 3px;
@@ -103,7 +115,7 @@ h1 {
   text-transform: capitalize;
   letter-spacing: 2px;
   font-weight: bold;
-  color: #ccf9f7;
+  color: #CCF9F7;
   margin: 18px 0 15px 15px;
   line-height: 125%;
 }
@@ -111,7 +123,8 @@ h1 a {
   text-decoration: none;
 }
 h1 a:hover {
-  color: #ccf9f7;
+  /*color: @bg;*/
+  /* already defined above */
 }
 h2,
 h3,
@@ -122,14 +135,14 @@ h6 {
   line-height: 125%;
   font-weight: bold;
   margin: 15px 0 15px 0px;
-  color: #ccf9f7;
+  color: #CCF9F7;
 }
 h2 a:hover,
 h3 a:hover,
 h4 a:hover,
 h5 a:hover,
 h6 a:hover {
-  color: #ccf9f7;
+  color: #CCF9F7;
 }
 h2 span.par-edit,
 h3 span.par-edit,
@@ -151,7 +164,7 @@ hr {
   height: 0px;
   overflow: hidden;
   border: 0px;
-  border-top: 1px solid #ccf9f7;
+  border-top: 1px solid #CCF9F7;
 }
 ul {
   padding: 5px 0px 5px 20px;
@@ -188,7 +201,7 @@ table.main {
 }
 th,
 td {
-  padding: .3em .5em;
+  padding: 0.3em 0.5em;
   margin: 5;
   vertical-align: top;
   /*border: 1px solid @fg;*/
@@ -203,17 +216,17 @@ blockquote {
   padding-left: 20px;
 }
 pre {
-  background-color: #ccf9f7;
+  background-color: #CCF9F7;
   color: #112326;
   line-height: 1.5em;
   font-family: Courier ;
   font-size: 1em;
-  margin: 1.0em;
+  margin: 1em;
 }
 code,
 blockquote,
 dt {
-  background-color: #ccf9f7;
+  background-color: #CCF9F7;
   color: #112326;
   font-family: Courier ;
   font-size: 1em;
@@ -222,7 +235,7 @@ dt {
 /* th { background-color: lighten(@bg,20%); } */
 th {
   color: #112326;
-  background-color: #ccf9f7;
+  background-color: #CCF9F7;
 }
 td.main,
 th.main {
@@ -246,39 +259,39 @@ form {
 }
 .submit {
   padding: 4px;
-  border: 1px solid #ccf9f7;
+  border: 1px solid #CCF9F7;
 }
 .submit:hover {
-  border: 1px dashed #ccf9f7;
+  border: 1px dashed #CCF9F7;
   background-color: #31646c;
 }
 .contentTextarea {
   width: 100%;
 }
 input {
-  border: 1px solid #ccf9f7;
+  border: 1px solid #CCF9F7;
   padding: 4px;
   font-size: 12px;
   background-color: #112326;
-  color: #ccf9f7;
+  color: #CCF9F7;
 }
 select {
-  border: 1px solid #ccf9f7;
+  border: 1px solid #CCF9F7;
   padding: 2px;
   font-size: 12px;
   background-color: #112326;
-  color: #ccf9f7;
+  color: #CCF9F7;
 }
 textarea {
-  border: 1px solid #ccf9f7;
+  border: 1px solid #CCF9F7;
   padding: 2px;
   font-size: 12px;
   background-color: #112326;
-  color: #ccf9f7;
+  color: #CCF9F7;
   padding: 3px;
 }
 #toc {
-  border: 1px dashed #ccf9f7;
+  border: 1px dashed #CCF9F7;
   margin: 5px 0 5px 10px;
   padding: 6px 5px 7px 0px;
   float: right;
@@ -318,7 +331,7 @@ textarea {
 .tagList {
   padding: 0.2em 0.4em 0.2em 0.4em;
   margin-top: 0.5em;
-  border: 1px dashed #ccf9f7;
+  border: 1px dashed #CCF9F7;
   clear: right;
 }
 .tagCloud {
@@ -326,7 +339,7 @@ textarea {
   width: 200px;
   padding: 0.5em;
   margin: 1em;
-  border: 1px dashed #ccf9f7;
+  border: 1px dashed #CCF9F7;
   clear: right;
 }
 .pageVersionsList {
@@ -341,7 +354,7 @@ textarea {
   list-style-type: none;
 }
 progress {
-  color: #ccf9f7;
+  color: #CCF9F7;
   background-color: #112326;
   border-radius: 0px;
   border: solid 1px;
@@ -349,10 +362,10 @@ progress {
   height: 1em;
 }
 progress::-moz-progress-bar {
-  background: #ccf9f7;
+  background: #CCF9F7;
 }
 progress::-webkit-progress-value {
-  background: #ccf9f7;
+  background: #CCF9F7;
 }
 progress::-webkit-progress-bar {
   background: #112326;
@@ -360,7 +373,7 @@ progress::-webkit-progress-bar {
 .block {
   display: inline-block;
   width: 65%;
-  border: 1px solid #ccf9f7;
+  border: 1px solid #CCF9F7;
   background-color: #112326;
   min-height: 50px;
   /*margin: 5px;*/
@@ -371,7 +384,7 @@ progress::-webkit-progress-bar {
   padding-top: -2px;
   padding-bottom: 0px;
   font-size: 16px;
-  color: #ccf9f7;
+  color: #CCF9F7;
   /*cursor: pointer;*/
   text-align: center;
   vertical-align: middle;
@@ -384,12 +397,12 @@ progress::-webkit-progress-bar {
   padding-top: 0px;
   min-height: 46px;
   line-height: 46px;
-  color: #ccf9f7;
+  color: #CCF9F7;
   text-decoration: none;
   border-radius: 0px;
 }
 .block a:hover {
-  background-color: #ccf9f7;
+  background-color: #CCF9F7;
   color: #112326;
   margin-left: -2px;
   margin-right: -2px;

@@ -16,6 +16,18 @@
 ----------------------------*/
 /* Green Terminal */
 /* normal or bold */
+.spoiler {
+  background-color: #586e75;
+}
+.spoiler:active {
+  background-color: #fdf6e3;
+}
+.spoiler:hover {
+  background-color: #fdf6e3;
+}
+.spoiler::selection {
+  background-color: #fdf6e3;
+}
 /* overriding default values above */
 /* Solarized light */
 /* normal or bold */
@@ -188,7 +200,7 @@ table.main {
 }
 th,
 td {
-  padding: .3em .5em;
+  padding: 0.3em 0.5em;
   margin: 5;
   vertical-align: top;
   /*border: 1px solid @fg;*/
@@ -208,7 +220,7 @@ pre {
   line-height: 1.5em;
   font-family: Courier ;
   font-size: 1em;
-  margin: 1.0em;
+  margin: 1em;
 }
 code,
 blockquote,

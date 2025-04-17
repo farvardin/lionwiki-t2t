@@ -14,9 +14,9 @@
 
 == About LionWiki ==
  
-**[LionWiki http://lionwiki.0o.cz/]** is a minimalist Wiki engine programmed in PHP, based on [WiKiss http://www.wikiss.tuxfamily.org/], itself based on TigerWiki...
+**The original [LionWiki http://lionwiki.0o.cz/]** was a minimalist Wiki engine programmed in PHP, based on [WiKiss http://www.wikiss.tuxfamily.org/], itself based on TigerWiki...
 
-It was abandoned but it revives now in this txt2tags-based implementation.
+It was abandoned in 2022 but it is still living in this txt2tags-based implementation, initiated in august 2013.
 
 It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
 
@@ -37,7 +37,7 @@ Its php implementation targets only HTML but you can use it with several CMS, Bl
 
 == About txt2tags and lionwiki ==
 
-Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use and extendable.
+Txt2tags and lionwiki are both following [the KISS principle https://en.wikipedia.org/wiki/KISS_principle]. They are lightweight, easy to use, fully customisable and extendable.
 
 //[Read more... index.php?page=help.en]//
 

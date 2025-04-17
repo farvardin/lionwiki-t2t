@@ -7,6 +7,8 @@
   --underline-x: calc(var(--underline-max-width) * 0);
   --underline-img: linear-gradient(0deg, currentColor, currentColor);
   --external-link-content: "";
+  --background-color: #fff;
+  --text-color: #000;
 }
 
 *,
@@ -50,6 +52,8 @@
 
 html {
   font-family: "Luciole", Arial, Helvetica, sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
 }
 
 body {
@@ -344,6 +348,12 @@ progress::-webkit-progress-bar {
 .todotxt_date {
   background-color: #f2f2f2;
 }
+
+
+.spoiler { background-color: var(--text-color) ; }
+.spoiler:active { background-color: var(--background-color) ;  }
+.spoiler:hover { background-color: var(--background-color) ;  }
+.spoiler::selection { background-color: color-mix(in srgb, var(--background-color), black 10%) ;  }
 
 
 @media (prefers-color-scheme: dark) {

@@ -187,6 +187,14 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 
 /* LionWiki specific */
 
+
+.spoiler { color: black ; background-color: black ; }
+.spoiler:active { background-color: white ;  }
+.spoiler:hover { background-color: white ;  }
+.spoiler::selection { background-color: #888 ;  }
+
+
+
 a.pending {
     color: @RedBrick;
 }
@@ -1257,6 +1265,8 @@ progress::-webkit-progress-bar {
   padding-right: 2px;
 }
 
+
+
 @media only screen and (max-width:999px) and (min-width:01px) {
 .block { width: 90%;}
 }
@@ -1277,6 +1287,10 @@ progress::-webkit-progress-bar {
 .todotxt_tag { color: spin(@fg, 90); }
 .todotxt_deleted {opacity: 0.4; }
 .todotxt_date {background-color:darken(@bg,5%); }
+
+
+
+
 
 
 @media (prefers-color-scheme: dark) {
