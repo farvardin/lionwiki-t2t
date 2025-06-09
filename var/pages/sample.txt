@@ -236,6 +236,24 @@ same line led to some rendering errors. It should be fixed now.
 
 
 
+- Ascii art test: 
+
+
+```
+Art by Joan Stark
+
+             ,`
+             ```,_
+              `` ,`
+         __,.-" =__)
+       ."        )
+    ,_/   ,    `/`_
+    `_|    )_-` `_-`
+jgs    `-----` `--`
+
+```
+
+
 == Random test ==
 
 

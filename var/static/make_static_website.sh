@@ -32,11 +32,12 @@ TOC=""
 ## Choose your prefered theme:
 
 THEME=dandelion
-#THEME=cafe
+THEME=cafe
 #THEME=simple
 #THEME=mimoza
-THEME=ten
-THEME=the-monospace-web
+#THEME=ten
+#THEME=the-monospace-web
+THEME=minimaxing_linktree
 
 
 ### Files locations ###

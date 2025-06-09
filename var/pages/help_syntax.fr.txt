@@ -107,6 +107,37 @@ Vous ne pouvez pas ajouter d'espaces supplémentaires aux limites de la partie q
 
 
 
+== Détails et spoilers ==
+
+La balise ``<details>`` peut être utilisée ainsi : 
+
+```
+CONVERT-AROBASECONVERT-AROBASEDETAILSCONVERT-AROBASECONVERT-AROBASEClick to revealCONVERT-AROBASECONVERT-AROBASE
+Ce texte sera caché jusqu'à ce que vous cliquiez sur l'élément parentCONVERT-AROBASECONVERT-AROBASE/DETAILSCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@DETAILS@@Click to reveal@@
+Ce texte sera caché jusqu'à ce que vous cliquiez sur l'élément parent@@/DETAILS@@
+
+Le spoiler est similaire, il suffit de sélectionner le texte pour pouvoir le lire. //(note : tous les modèles ne le supportent pas pour le moment)//
+
+```
+CONVERT-AROBASECONVERT-AROBASESPOILERCONVERT-AROBASECONVERT-AROBASETexte cachéCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@SPOILER@@Texte caché@@
+
+
+ou bien (spoiler de type reddit)
+
+
+```
+CONVERT-GREATER!Texte caché!<
+```
+
+>!Texte caché!<
+
+
 == Syntaxe supplémentaire ==
 
 En plus de la syntaxe txt2tags, voici quelques balises supplémentaires. Vous pouvez personnaliser, étendre ou configurer la plupart d'entre elles dans le fichier ``config.t2t`` à la racine du wiki, voire même dans le fichier ``txt2tags.class.php`` (mais la première solution sera plus conseillée).
@@ -185,6 +216,14 @@ Note : //Vous devrez éditer le code de la page wiki pour cocher les cases. De p
 @@BUTTON([lien vers le moteur de recherche http://ddg.gg])@@
 
 @@BUTTON(http://ddg.gg)@@
+
+- Ascii drawings :
+
+```
+╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯
+```
 
 
 - Tags : 

@@ -1,0 +1,1339 @@
+/*********************************************************************************/
+/* 5grid 0.1: A simple, flexible grid-based HTML5+CSS3 framework                 */
+/* By nodethirtythree design | http://nodethirtythree.com/ | @nodethirtythree    */
+/* Dual licensed under the MIT + GPLv2 license.                                  */
+/*********************************************************************************/
+
+/*********************************************************************************/
+/* Global                                                                        */
+/*********************************************************************************/
+
+	/* Resets (by meyerweb.com/eric/tools/css/reset/) */
+
+		html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, var, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			vertical-align: baseline;
+		}
+
+
+		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+
+		body {
+			line-height: 1;
+		}
+
+		blockquote, q {
+			quotes: none;
+		}
+
+		blockquote:before, blockquote:after, q:before, q:after {
+			content: '';
+			content: none;
+		}
+
+		table {
+			/*border-collapse: collapse;*/
+			border-spacing: 5px;
+		}
+
+	/* 5grid */
+
+		.\35 grid {
+			overflow: hidden;  /* prevent horizontal scroll */
+		}
+
+		.\35 grid .\31 2u { width: 100%; } .\35 grid .\31 1u { width: 91.5%; } .\35 grid .\31 0u { width: 83%; } .\35 grid .\39 u { width: 74.5%; } .\35 grid .\38 u { width: 66%; } .\35 grid .\37 u { width: 57.5%; } .\35 grid .\36 u { width: 49%; } .\35 grid .\35 u { width: 40.5%; } .\35 grid .\34 u { width: 32%; } .\35 grid .\33 u { width: 23.5%; } .\35 grid .\32 u { width: 15%; } .\35 grid .\31 u { width: 6.5%; }
+		
+		.\35 grid .\31 2u-first { width: 100%; } .\35 grid .\31 1u-first { width: 91.5%; } .\35 grid .\31 0u-first { width: 83%; } .\35 grid .\39 u-first { width: 74.5%; } .\35 grid .\38 u-first { width: 66%; } .\35 grid .\37 u-first { width: 57.5%; } .\35 grid .\36 u-first { width: 49%; } .\35 grid .\35 u-first { width: 40.5%; } .\35 grid .\34 u-first { width: 32%; } .\35 grid .\33 u-first { width: 23.5%; } .\35 grid .\32 u-first { width: 15%; } .\35 grid .\31 u-first { width: 6.5%; }
+
+		.\35 grid .\31 u, .\35 grid .\32 u, .\35 grid .\33 u, .\35 grid .\34 u, .\35 grid .\35 u, .\35 grid .\36 u, .\35 grid .\37 u, .\35 grid .\38 u, .\35 grid .\39 u, .\35 grid .\31 0u, .\35 grid .\31 1u, .\35 grid .\31 2u, .\35 grid .\31 u-first, .\35 grid .\32 u-first, .\35 grid .\33 u-first, .\35 grid .\34 u-first, .\35 grid .\35 u-first, .\35 grid .\36 u-first, .\35 grid .\37 u-first, .\35 grid .\38 u-first, .\35 grid .\39 u-first, .\35 grid .\31 0u-first, .\35 grid .\31 1u-first, .\35 grid .\31 2u-first {
+			margin: 1% 0 1% 2%;
+			/*margin: -2% 0 0% 2%;*/
+			float: left;
+		}
+
+		.\35 grid .\31 u-first, .\35 grid .\32 u-first, .\35 grid .\33 u-first, .\35 grid .\34 u-first, .\35 grid .\35 u-first, .\35 grid .\36 u-first, .\35 grid .\37 u-first, .\35 grid .\38 u-first, .\35 grid .\39 u-first, .\35 grid .\31 0u-first, .\35 grid .\31 1u-first, .\35 grid .\31 2u-first {
+			clear: left;
+			margin-left: 0;
+		}
+
+/*********************************************************************************/
+/* 1000px (>= 1000px)                                                            */
+/*********************************************************************************/
+
+	@media only screen and (min-width: 1000px) {
+		.\35 grid {
+			max-width: 850px; /* main column width */
+			margin: 0 auto;
+		}
+	}
+	
+/*********************************************************************************/
+/* 1000px (> 480px && < 1200px)                                                  */
+/*********************************************************************************/
+
+	@media only screen and (max-width: 1000px) and (min-width: 600px) {
+		.\35 grid {
+			max-width: 700px; /* main column width */
+			margin: 0 auto;
+		}
+	}
+	
+/*********************************************************************************/
+/* Mobile (<= 600px)                                                             */
+/*********************************************************************************/
+
+	@media only screen and (max-width: 600px) {
+		.\35 grid .\31 u, .\35 grid .\32 u, .\35 grid .\33 u, .\35 grid .\34 u, .\35 grid .\35 u, .\35 grid .\36 u, .\35 grid .\37 u, .\35 grid .\38 u, .\35 grid .\39 u, .\35 grid .\31 0u, .\35 grid .\31 1u, .\35 grid .\31 2u, .\35 grid .\31 u-first, .\35 grid .\32 u-first, .\35 grid .\33 u-first, .\35 grid .\34 u-first, .\35 grid .\35 u-first, .\35 grid .\36 u-first, .\35 grid .\37 u-first, .\35 grid .\38 u-first, .\35 grid .\39 u-first, .\35 grid .\31 0u-first, .\35 grid .\31 1u-first, .\35 grid .\31 2u-first {
+			float: none;
+			width: 100%;
+			margin: 1% 0 1% 0;
+		}
+
+		.\35 grid .\31 u-first, .\35 grid .\32 u-first, .\35 grid .\33 u-first, .\35 grid .\34 u-first, .\35 grid .\35 u-first, .\35 grid .\36 u-first, .\35 grid .\37 u-first, .\35 grid .\38 u-first, .\35 grid .\39 u-first, .\35 grid .\31 0u-first, .\35 grid .\31 1u-first, .\35 grid .\31 2u-first {
+			margin-top: 0;
+		}
+
+		.\35 grid {
+			width: 100%;
+			-webkit-text-size-adjust: none;
+		}
+	}
+
+
+
+
+
+/*-----------------------
+
+	--------------
+	- Minimaxing -
+	--------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    https://html5up.net/minimaxing
+    licence Creative Commons Attribution 3.0 Unported
+    http://creativecommons.org/licenses/by/3.0/
+	
+----------------------------*/
+/* This CSS file was generated from the minimaxing.less template. 
+ See http://lesscss.org/
+*/
+/*
+Use the part above to customise your fonts.
+You can create your own manuscript / handwriting font on http://www.myscriptfont.com/ or http://www.paintfont.com/
+*/
+/* we use this for random theme color. You can also choose only one color below. */
+/*
+ #8B9AB8 : lighter grey blue
+ #7B8AA8 : light grey blue
+ #56A3B5 : turquoise blue
+ #B1494D : brick red 
+ #465E7C : dark blue
+ #549136 : green 
+ #799037 : grass green
+ #D07732 : orange
+ #754496 : purple
+ #847457 : brown
+ */
+/* define mixin */
+/* we disable it as it's sometimes a problem with lesscss
+.generateColor() { 
+	@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
+	}
+.generateColor(); 
+*/
+/* This line below will use a random main color: */
+/* @fg: @background-color; */
+/* if you prefer to select a fixed background color, just uncomment one color from below */
+/* For YunoHost config */
+/* @fg: #__YNH_COLOR__; */
+/* Header color */
+/* You can use a shade of MainColor: */
+/* or a complementary color: */
+/*@HeaderColor: (#ffffff - @fg - (#ffffff - @fg)/3); */
+/* templates */
+/* Brick Red (darker) Default color 2021 */
+/* normal or bold */
+/* overriding default values above */
+/* theme 01 */
+/*  */
+/* Brick Red (darker) Default color 2021 */
+/*@link-hover: desaturate(darken(@fg,10%),20%);*/
+/* TODO should be HeaderColor: color: spin(@fg, 180);*/
+/* normal or bold */
+/*@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
+*/
+@font-face {
+  font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(fonts/ubuntu-condensed-regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ubuntu'), url(fonts/ubuntu.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Ubuntu Italic'), url(fonts/ubuntu-italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: bold;
+  font-weight: bold;
+  src: local('Ubuntu Bold'), url(fonts/ubuntu-bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  font-style: italic;
+  src: local('Ubuntu Italic Bold'), url(fonts/ubuntu-bold-italic.woff) format('woff');
+}
+/* Ubuntu            */
+@font-face {
+  font-family: Fengardo;
+  font-style: normal;
+  font-weight: normal;
+  src: url(fonts/fengardoneue-regular.woff) format('woff'), url(fonts/fengardoneue-regular.otf) format('opentype'), url(fonts/fengardoneue-regular.svg) format('svg');
+}
+@font-face {
+  font-family: Fengardo;
+  font-style: italic;
+  src: url(fonts/fengardoneue-italic.otf) format('opentype');
+}
+@font-face {
+  font-family: Fengardo;
+  font-weight: bold;
+  src: url(fonts/fengardoneue-black.woff) format('woff'), url(fonts/fengardoneue-black.otf) format('opentype'), url(fonts/fengardoneue-black.svg) format('svg');
+  
+  /*font-weight: 500;*/
+}
+@font-face {
+  font-family: 'Fengardo Neue';
+  font-style: bold;
+  font-weight: 200;
+  src: url(fonts/fengardoneue-black.woff) format('woff');
+}
+/* Fengardo Neue     */
+/*
+	Minimaxing 1.0 by nodethirtythree design
+	http://nodethirtythree.com | @nodethirtythree
+	Released under the Creative Commons Attribution 3.0 license (nodethirtythree.com/license)
+	* http://html5up.net/minimaxing/
+	
+	Based also on the work from http://wiki.lapetitesissone.fr/index.php?page=Lionwiki
+*/
+/* LionWiki specific */
+a.pending {
+  color: #7f4736;
+}
+h2 span.par-edit,
+h3 span.par-edit,
+h4 span.par-edit,
+h5 span.par-edit,
+h6 span.par-edit {
+  float: right;
+  display: none;
+}
+h2:hover span.par-edit,
+h3:hover span.par-edit,
+h4:hover span.par-edit,
+h5:hover span.par-edit,
+h6:hover span.par-edit {
+  display: inline;
+  font-size: small;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  background-color: transparent;
+}
+.pageLinks {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.pageLinks a {
+  font-weight: bold;
+  text-decoration: none;
+}
+#headerLinks td {
+  border-bottom: 1px dashed #ccc !important;
+}
+#footerLinks td {
+  border-top: 1px dashed #ccc !important;
+}
+#mainContent {
+  padding: 1em;
+  background-color: white;
+}
+#mainContent h2:first-child {
+  margin-top: 0px;
+}
+.error {
+  color: #F25A5A;
+  font-weight: bold;
+}
+.contentTextarea {
+  width: 90%;
+  font-family: Ubuntu;
+  font-size: 105%;
+}
+.markItUpEditor {
+  width: 90%;
+  font-family: Ubuntu;
+  color: #444;
+  font-size: 140%;
+}
+#diff {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  width: 97%;
+}
+#diff ins {
+  color: green;
+  text-decoration: none;
+  font-weight: bold;
+}
+#diff del {
+  color: red;
+  text-decoration: line-through;
+}
+#diff .orig {
+  color: #666;
+}
+#toc {
+  border: 1px dashed #11141A;
+  padding: 5px 5px 5px 5px;
+  float: right;
+  padding-right: 2em;
+  list-style: none;
+  background: #eee;
+  clear: right;
+}
+#toc ul {
+  list-style: none;
+  padding-left: 10px;
+}
+#toc li {
+  font-size: 11px;
+  padding-left: 10px;
+}
+/* Plugins LionWiki*/
+.tagList {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  margin-top: 0.5em;
+  border: 1px dashed #31343A;
+  background: #eee;
+  clear: right;
+}
+.tagCloud {
+  float: right;
+  width: 200px;
+  padding: 0.5em;
+  margin: 1em;
+  border: 1px dashed #31343A;
+  background: #eee;
+  clear: right;
+}
+.pageVersionsList {
+  letter-spacing: 0px;
+  font-variant: normal;
+  font-size: 12px;
+}
+table.wikitable {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+table.wikitable td {
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px;
+}
+table.wikitable td.em {
+  background: #ccc;
+  font-weight: bold;
+}
+table,
+#previewPane table {
+  border-collapse: collapse;
+  empty-cells: show;
+  border-spacing: 0;
+  border: 1px solid #999;
+}
+.form table {
+  border-collapse: collapse;
+  empty-cells: hide;
+  border-spacing: 0;
+  border: 0px solid #fff;
+}
+th,
+td,
+#previewPane th,
+#previewPane td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 1px solid #999;
+  text-align: left;
+}
+.form th,
+td {
+  padding: .3em .5em;
+  margin: 0;
+  vertical-align: top;
+  border: 0px solid #999;
+  text-align: left;
+}
+th,
+thead,
+#previewPane th,
+#previewPane thead {
+  font-weight: bold;
+  background-color: #ddd;
+}
+[dir=rtl] td,
+[dir=rtl] th {
+  text-align: right;
+}
+.resizeTextarea a {
+  text-decoration: none;
+}
+/******************************************************************/
+/* Global                                                         */
+/******************************************************************/
+/* Mixin Macro */
+.break {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+body {
+  font-size: 12pt;
+  /*font-family: sans-serif;*/
+  /*background-color: (@Bg-extra-light/1.1 + #111);*/
+  background-color: #ffffff;
+  font-family: Ubuntu;
+  color: #656c61;
+}
+#header h1 {
+  color: #fff;
+  margin: 2px;
+  padding: 2px;
+  border: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: Fengardo Neue;
+  text-transform: uppercase;
+  color: #21677e;
+  font-weight: bold;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+h2 {
+  border-bottom: 1px solid grey;
+}
+h1 {
+  /*font-size: 2.6em;*/
+  font-size: clamp(2em, 4vw, 6em);
+  text-align: center;
+  text-decoration: none;
+}
+h1 a {
+  color: #21677e;
+}
+#header-wrapper h1 {
+  color: #ffffff;
+  line-height: 1.3em;
+  border-bottom: none;
+}
+#header-wrapper {
+  color: #8f4932;
+}
+#header-wrapper a {
+  color: #a05a43;
+}
+#header-wrapper a:hover,
+#header-wrapper a:hover {
+  background-color: #7e3821;
+  color: #3a0000;
+}
+#header nav {
+  color: #ffffff;
+  text-transform: lowercase;
+}
+#header nav a,
+#header nav li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+}
+#header nav li a:hover,
+#header nav li a:active {
+  background-color: #fff;
+  border-radius: 6px;
+  color: #7e3821;
+}
+h2 {
+  font-size: 1.6em;
+  letter-spacing: 1px;
+  margin-bottom: 0.0em;
+  margin-top: 1.8em;
+}
+h3,
+h4 {
+  color: #283121;
+  margin-bottom: 0.0em;
+  margin-top: 1.4em;
+}
+h3 {
+  font-size: 1.2em;
+}
+h4 {
+  font-size: 1em;
+}
+p,
+ul {
+  margin-bottom: 1.0em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+p {
+  line-height: 1.7em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#main-row strong,
+b {
+  /*color: #555;*/
+}
+s {
+  color: #aaa;
+}
+::selection {
+  background: #7e3821;
+  color: #ffffff;
+}
+::-moz-selection {
+  background: #7e3821;
+  color: #ffffff;
+}
+pre {
+  background-color: #fffaf7;
+  line-height: 1.5em;
+  font-family: Monospace;
+  font-size: 11pt;
+  margin: 1.0em;
+  overflow: auto;
+}
+code,
+blockquote,
+dt {
+  background-color: #fffaf7;
+  font-family: Monospace;
+  font-size: 11pt;
+  /*margin: 1.0em;*/
+  overflow: auto;
+}
+dd {
+  line-height: 1.5em;
+  font-family: Monospace;
+  font-size: 0.9em;
+}
+pre,
+blockquote {
+  padding-left: 20px;
+}
+img {
+  /*float: center;*/
+  /* note: we can already center with txt2tags, just add a space before the image */
+  /*float: left;*/
+  /*margin: 2px 1.25em 0 0;*/
+  margin: 1.5em;
+  max-width: 50%;
+  max-height: 500px;
+  padding: 1px;
+  border: solid 1px #a05a43;
+  /*display: block;*/
+  /*margin: 0 auto;*/
+}
+img.left {
+  float: left;
+  margin: 2px 1.25em 0 0;
+}
+img.top {
+  margin: 4px 0 2.25em 0;
+}
+img.noborder {
+  display: block;
+  margin: 0.1em;
+  border: 0;
+  position: absolute;
+  z-index: 10;
+}
+.img-circle {
+  border-radius: 50%;
+  border: solid 0px ;
+  padding: 10px ;
+  min-width: 100px;
+  max-width: 100px;
+  background: #eee;
+}
+li {
+  line-height: 1.5em;
+}
+/* If you don't like color highlight when you're over a list, comment the next 2 entries */
+#main ul:hover {
+  background-color: #ffffff;
+}
+#main ul li:hover,
+ul li:active {
+  background-color: #ffffff;
+  background-color: #f4e8e5;
+}
+a {
+  color: #7f3922;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  background-color: #b36d56;
+  color: #ffffff;
+}
+ul.small-image-list li {
+  margin-bottom: 1.5em;
+}
+ul.big-image-list li {
+  margin-bottom: 2em;
+}
+ul.link-list li {
+  border-top: solid 1px #ced0b7;
+  padding: 0.75em 0 0 0;
+  margin: 0.75em 0 0 0;
+}
+ul.link-list li:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: 0;
+}
+.button,
+a.toolbarTextareaItem {
+  display: inline-block;
+  padding: 5px 10px 5px 10px;
+  background-color: #7e3821;
+  border-radius: 6px;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.0em;
+  letter-spacing: -1px;
+  border: solid 1px #7e3821;
+  box-shadow: inset 0px 0px 0px 1px #7e3821;
+}
+.button:hover,
+a.toolbarTextareaItem:hover {
+  background-color: #8f4932;
+  color: #ffffff;
+}
+a.toolbarTextareaItem b {
+  color: #ffffff;
+}
+#copyright {
+  font-size: 0.6em;
+  text-align: center;
+  color: #7e3821;
+  border-top: solid 1px #ced0b7;
+  line-height: 1.1em;
+  padding: 3em 0 0 0;
+  margin: 1% 0 0 0;
+}
+#copyright a {
+  color: #6d2710;
+}
+#copyright a:hover {
+  color: #ffffff;
+  background-color: #904a33;
+}
+.txt2tagsMenu,
+input {
+  background-color: #ded3d0;
+}
+.txt2tagsMenu:hover,
+input.submit:hover {
+  background-color: #efe4e1;
+}
+.button_txt2tags_true,
+input.submit {
+  background-color: #7e3821;
+  color: #fff;
+}
+.button_txt2tags_true:hover,
+input.submit:hover {
+  background-color: #a05a43;
+}
+.button_txt2tags_false {
+  background-color: #21677e;
+  color: #fff;
+}
+.button_txt2tags_false:hover {
+  background-color: #4389a0;
+}
+.valide {
+  color: #7e3821;
+  background-color: #ded3d0;
+}
+.refuse {
+  color: #21677e;
+  background-color: #ded3d0;
+}
+/********************************/
+/* 1000px (>= 1000px)           */
+/********************************/
+@media only screen and (min-width: 1000px) {
+  body {
+    font-size: 12pt;
+  }
+  section,
+  article {
+    margin: 0 0 60px 0;
+  }
+  section p + p {
+    margin-top: 1.5em;
+  }
+  #header-wrapper {
+    background-color: #7e3821;
+  }
+  #header-wrapper h1 {
+    margin-top: 0;
+    text-decoration: none;
+    border-bottom: 0px;
+  }
+  #header {
+    position: relative;
+    margin: 2.5% 0 2.5% 0;
+    margin-top: 40px;
+    padding: 0 40px 0 40px;
+    border-radius: 6px;
+    box-shadow: inset 0px 0px 0px 1px #7e3821, 0px 1px 4px 0px rgba(0, 0, 0, 0);
+    height: 66px;
+  }
+  #header h1 {
+    position: absolute;
+    left: 10px;
+    top: -28px;
+    font-size: 2.4em;
+    letter-spacing: 3px;
+    /*line-height: 6px;*/
+    /* pb in konqueror*/
+  }
+  #header h1 a {
+    text-decoration: none;
+  }
+  #header nav {
+    /*position: absolute;*/
+    float: right;
+    clear: both;
+    right: 0px;
+    top: 1px;
+    line-height: 64px;
+    font-size: 1.3em;
+    letter-spacing: -1px;
+  }
+  #header nav li {
+    float: left;
+    list-style: none;
+    position: relative;
+  }
+  #header nav a,
+  #header nav li a {
+    border: 0 none;
+    padding: 10px 35px 10px 35px;
+  }
+  #banner-wrapper h2 {
+    border-bottom: none;
+    color: white;
+    font-size: 2.0em;
+    text-align: center;
+  }
+  #banner-wrapper a {
+    border-bottom: none;
+    color: #21677e;
+  }
+  #banner-wrapper {
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+  #banner-wrapper h1 {
+    text-align: center;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-top: 0px;
+    border-bottom: 15px;
+  }
+  #banner {
+    position: relative;
+    width: 1160px;
+    height: 240px;
+    margin: 2% 0 2% 0;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 20px;
+    background-size: 1160px 265px;
+  }
+  #banner h2 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 100px;
+    left: 0;
+    font-size: 3.3em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  #banner span {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 105px;
+    left: 0;
+    font-size: 1.6em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    opacity: 0.8;
+  }
+  #main {
+    background-color: #ffffff;
+    padding: 2% 0 2% 0;
+    padding-top: -20px;
+  }
+  #main .main-row {
+    margin: 2% 0 2% 0;
+    /*overflow: hidden;*/
+    margin-top: -10px;
+  }
+  #footer-wrapper {
+    padding: 3% 0 3% 0;
+  }
+}
+/*********************************************************************************/
+/* 1000px (> 600px && < 1000px)                                                  */
+/*********************************************************************************/
+@media only screen and (max-width: 999px) and (min-width: 601px) {
+  body {
+    font-size: 13pt;
+  }
+  section,
+  article {
+    margin: 10px 10px 50px 10px;
+  }
+  section:last-child,
+  article:last-child {
+    margin-bottom: 0;
+  }
+  section.left-content {
+    padding-right: 15px;
+  }
+  section.right-content {
+    padding-left: 15px;
+  }
+  section.middle-content {
+    padding: 0 15px 0 15px;
+  }
+  ul.small-image-list img {
+    width: 50px;
+  }
+  ul.big-image-list img {
+    width: 75px;
+  }
+  .blog-post-image {
+    width: 490px;
+  }
+  #header-wrapper {
+    background-color: #7e3821;
+  }
+  #header {
+    position: relative;
+    margin: 3.5% 0 1.5% 0;
+    margin-top: 40px;
+    padding: 0 40px 0 40px;
+    border-radius: 6px;
+    box-shadow: inset 0px 0px 0px 1px #7e3821, 0px 1px 4px 0px rgba(0, 0, 0, 0);
+    height: 66px;
+  }
+  #header h1 {
+    position: absolute;
+    left: 10px;
+    top: -28px;
+    font-size: 2.4em;
+    letter-spacing: 1px;
+    /*line-height: 6px;*/
+    /* pb in konqueror*/
+  }
+  #header h1 a {
+    text-decoration: none;
+  }
+  #header nav {
+    /*position: absolute;*/
+    float: right;
+    clear: both;
+    right: 20px;
+    top: 1px;
+    line-height: 64px;
+    font-size: 1.3em;
+    letter-spacing: -1px;
+  }
+  #header nav li {
+    float: left;
+    list-style: none;
+    position: relative;
+  }
+  #header nav a,
+  #header nav li a {
+    border: 0 none;
+    padding: 10px 35px 10px 35px;
+  }
+  #banner-wrapper {
+    background: #fff;
+    margin-bottom: -20px;
+  }
+  #banner-wrapper h1 {
+    font-size: 2.1em;
+    letter-spacing: 0px;
+  }
+  #banner {
+    position: relative;
+    width: 60px;
+    height: 140px;
+    margin: 2% 0 2% 0;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 20px;
+    /*background: #fff url(images/banner.jpg) no-repeat 20px 20px;*/
+    background-size: 960px 220px;
+  }
+  #banner h2 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 80px;
+    left: 0;
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  #banner span {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 85px;
+    left: 0;
+    font-size: 1.4em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    opacity: 0.8;
+  }
+  #main {
+    background-color: #ffffff;
+    padding: 3% 0 3% 0;
+    margin-left: 8px;
+    margin-right: 4px;
+  }
+  #main .main-row {
+    margin: 2% 0 2% 0;
+    /*overflow: hidden;*/
+    margin-top: -10px;
+  }
+  #footer-wrapper {
+    padding: 5% 0 5% 0;
+  }
+}
+/*********************************************************************************/
+/* Mobile (<= 600px)                                                             */
+/*********************************************************************************/
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 13pt;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+  h4 {
+    font-size: 1em;
+  }
+  ul.small-image-list img {
+    width: 75px;
+  }
+  ul.big-image-list img {
+    width: 75px;
+  }
+  ul.link-list {
+    margin: 0 0 2em 0;
+  }
+  section,
+  article {
+    padding: 40px 20px 40px 20px;
+  }
+  #main section,
+  #main article {
+    background: #fff;
+  }
+  article.blog-post .comments {
+    display: block;
+    position: relative;
+    top: -0.5em;
+    margin: 0 0 0.5em 0;
+  }
+  .button {
+    font-size: 1em;
+  }
+  .blog-post-image {
+    width: 100%;
+  }
+  #header-wrapper {
+    background-color: #7e3821;
+  }
+  #header-wrapper h1 {
+    margin-top: 0px;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 0px;
+  }
+  #header {
+    text-align: center;
+    padding: 5px 0 5px 0;
+  }
+  #header h1 {
+    font-size: 2.4em;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+  #header h1 a {
+    text-decoration: none;
+  }
+  #header nav {
+    font-size: 1em;
+    margin: 0 auto;
+  }
+  #header nav ul {
+    float: center;
+    list-style: none;
+    position: relative;
+    right: 25px;
+  }
+  #header nav li {
+    display: inline-block;
+  }
+  #header nav li:hover {
+    text-decoration: none;
+  }
+  #header nav a,
+  #header nav li a {
+    border: 0 none;
+    padding: 10px 25px 10px 25px;
+  }
+  #banner-wrapper {
+    background: #7e3821 url(images/bg1.png);
+    display: none;
+  }
+  #banner {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    /*background: #fff url(images/banner.jpg) no-repeat;*/
+    background-size: 100% 100%;
+  }
+  #banner {
+    position: relative;
+  }
+  #banner h2 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    bottom: 80px;
+    left: 0;
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  #banner span {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 135px;
+    left: 0;
+    font-size: 1em;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    opacity: 0.8;
+  }
+  #footer-wrapper section,
+  #footer-wrapper article {
+    border-bottom: solid 1px #ced0b7;
+  }
+  /*    important for markitup :    */
+  .contentTextarea {
+    width: 96%;
+    font-family: Ubuntu;
+    font-size: 105%;
+    padding: 0px;
+    margin-left: -0.25px;
+  }
+  #main {
+    /*overflow: auto;*/
+    background-color: #ffffff;
+    margin-left: 8px;
+    margin-right: 4px;
+  }
+  /* from 5grid/core.css */
+  .\35 grid {
+    /*overflow: hidden;*/
+    /* prevent horizontal scroll */
+    overflow: visible;
+  }
+}
+/* Use main color for tables */
+/* Use complementary color for tables */
+/*@TableColor: @HeaderColor;*/
+.mycontent table {
+  width: 98%;
+  margin: 1%;
+  /*box-shadow:-1px 2px 5px 1px #105070*/
+  border: 2px solid #c27c65;
+}
+.mycontent td,
+.mycontent th {
+  padding: 4px;
+  border: 1px solid #fff;
+  text-align: left;
+}
+.mycontent th {
+  background: #3a0000;
+  /*#105070;*/
+  color: #fff;
+  font-weight: bold;
+}
+.mycontent tr {
+  background: #f6b099;
+  /*rgba(16,80,112,0.2);*/
+  color: #111111;
+}
+.mycontent tr a:hover,
+.mycontent #header-wrapper a:hover {
+  background-color: #7e3821;
+  color: #c27c65;
+}
+.mycontent tr a {
+  color: #3a0000;
+  font-weight: bold;
+}
+.mycontent tr:nth-child(even) {
+  background: #d38d76 /*rgba(16,80,112,0.1)*/;
+}
+.mycontent tr:hover,
+.mycontent tr:hover td {
+  background-color: #8f4932 /*rgba(16,80,112,0.3)*/;
+}
+/* Progress bar */
+progress {
+  color: #21677e;
+  background-color: white;
+  /*border-radius: 4px; */
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+  -webkit-appearance: none;
+}
+progress::-moz-progress-bar {
+  background: #21677e;
+}
+progress::-webkit-progress-value {
+  background: #21677e;
+}
+progress::-webkit-progress-bar {
+  background: white;
+}
+/* Big buttons */
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #21677e;
+  background-color: #21677e;
+  height: 50px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: Ubuntu;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 16px;
+  color: #f4e8e5;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
+  border-radius: 8px;
+}
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding: 0px;
+  padding-top: 0px;
+  height: 46px;
+  line-height: 46px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+/*.block:hover, */
+.block a:hover {
+  /*border: 2px solid @HeaderColor;*/
+  background-color: #fff;
+  color: #21677e;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+@media only screen and (max-width: 999px) and (min-width: 1px) {
+  .block {
+    width: 90%;
+  }
+}
+/* Todotxt support */
+.todotxt_A {
+  color: #6a2f1c;
+}
+.todotxt_B {
+  color: #806e39;
+}
+.todotxt_C {
+  color: #78874b;
+}
+.todotxt_D {
+  color: #6b8c60;
+}
+.todotxt_E {
+  color: #72937a;
+}
+.todotxt_F {
+  color: #998a86;
+}
+.todotxt_context {
+  color: #21677e;
+}
+.todotxt_tag {
+  color: #387e21;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+.todotxt_date {
+  background-color: #f2f2f2;
+}
+@media (prefers-color-scheme: dark) {
+  /* Invert all elements on the body while attempting to not alter the hue substantially. */
+  body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  /* Workarounds and optical adjustments. */
+  /* Firefox workaround: Set the background colour for the html
+     element separately because, unlike other browsers, Firefox
+     doesn’t apply the filter to the root element’s background. */
+  html {
+    background-color: #111;
+  }
+  /* Do not invert media (revert the invert). */
+  img,
+  video,
+  iframe {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  #header-wrapper {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #7e3821;
+  }
+  /* Improve contrast on icons. */
+  .icon {
+    filter: invert(15%) hue-rotate(180deg);
+  }
+  /* Re-enable code block backgrounds. */
+  pre {
+    filter: invert(6%);
+  }
+  /* Improve contrast on list item markers. */
+  li::marker {
+    color: #555;
+  }
+}

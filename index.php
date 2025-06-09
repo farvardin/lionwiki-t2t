@@ -485,6 +485,7 @@ if(!$action || $preview) { // page parsing
     //$CON = str_replace(array("<", "&"), array("&lt;", "&amp;"), $CON);
     //$CON = preg_replace("/&amp;([a-z]+;|\#[0-9]+;)/U", "&$1", $CON); // keep HTML entities
     $CON = preg_replace("/(\r\n|\r)/", "\n", $CON); // unifying newlines to Unix ones
+    
 
     //TODO: should we activate this below? Without it, it casts php warnings
     //preg_match_all("/{{(.+)}}/Ums", $CON, $codes, PREG_PATTERN_ORDER);
