@@ -1,0 +1,70 @@
+
+
+%/* Customisation file for LionWiki-t2t. (static version) */ 
+%/* https://lionwiki-t2t.sourceforge.io/ */ 
+
+
+% You can put below those lines the pre or proc rules you may need in your lionwiki-t2t, so you can have more control on your wiki
+
+
+% use [[the description | your_page]] syntax
+% (keep those preproc in this order to avoid pb.)
+
+% for static version:
+
+%% links:
+%!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 \2.html]'
+%!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 \2.html]'
+%!preproc: '\[(.*?)\ index.php\?page=(.*?)\]' '[\1 \2.html]'
+%!postproc: '\[([^ ].*?)\]' '<a href="\1.html">\1</a>'
+
+
+%% Markdown support
+
+% we override the config.t2t here: 
+
+%!preproc: '^# (.*?)$' '= \1 ='
+%!preproc: '^## (.*?)$' '== \1 =='
+%!preproc: '^### (.*?)$' '=== \1 ==='
+%!preproc: '^#### (.*?)$' '==== \1 ===='
+%!preproc: '^##### (.*?)$' '===== \1 ====='
+
+%% Gemini support
+
+%!preproc: '=> ([^ ].*?).gmi (.*?)$' '⇒ [\2 \1.html]'
+
+%!preproc: '=> http([^ ].*?) (.*?)$' '⇒ [\2 http\1]@@BR@@'
+%!preproc: '=> ([^ ].*?) (.*?)$' '⇒ \1 \2 @@BR@@'
+%!postproc: '@@BR@@' '<br/>'
+%--!preproc: '=> http([^ ].*?) (.*?)' '* http\1 : \2'
+%--!preproc: '=> (.*?)' '* => \1'
+
+
+
+%% progress bar  (fix python3 txt2tags output)
+
+%% [10%]:
+%!preproc: '\[(\d+)%\]' '@@PB@@\1%@@'
+%!postproc: '@@PB@@(\d+)%@@' '<progress value="\1" max="100"></progress> (\1%)'
+%% [2%7] = 2 out of 7:
+%!preproc: '\[(\d+)%(\d+)\]' '@@PB@@\1@\2@@'
+%% more natural: [2/7] = 2 out of 7:
+%!preproc: '\[(\d+)\/(\d+)\]' '@@PB@@\1@\2@@'
+%!postproc: '@@PB@@(\d+)@(\d+)@@' '<progress value="\1" max="\2"></progress> (\1/\2)'
+
+
+%!postproc: '@@WWW@@' <i class="fa-solid fa-globe"></i>
+%!postproc: '@@BANDCAMP@@' <i class="fa-brands fa-bandcamp"></i>
+%!postproc: '@@SPOTIFY@@' <i class="fa-brands fa-spotify"></i>
+%!postproc: '@@SOUNDCLOUD@@' <i class="fa-brands fa-soundcloud"></i>
+%!postproc: '@@DEEZER@@' <i class="fa-brands fa-deezer"></i>
+%!postproc: '@@GITHUB@@' <i class="fa-brands fa-github"></i>
+
+
+
+
+
+% => https://100r.co/site/uxn.html                 Site principal d'Uxn 
+
+%% Your own rules: you can add your pre and post proc rules below this line...
+

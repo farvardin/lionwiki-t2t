@@ -1,0 +1,252 @@
+
+
+%/* Customisation file for LionWiki-t2t. */ 
+%/* https://lionwiki-t2t.sourceforge.io/ */ 
+
+
+% You can put below those lines the pre or proc rules you may need in your lionwiki-t2t, so you can have more control on your wiki
+
+
+% use [[the description | your_page]] syntax
+% (keep those preproc in this order to avoid pb.)
+
+%!preproc: '\[\[(.*?) \| (.*?)\]\]' '[\1 index.php?page=\2]'
+%!preproc: '\[\[(.*?)\|(.*?)\]\]' '[\1 index.php?page=\2]'
+
+
+
+
+% use [[your_page]] syntax
+%!preproc: '\[\[(.*?)\]\]' '[\1]'
+
+%-!postproc: '&lt;\?' '<?'
+%-!postproc: '\?&gt;' '?>'
+
+%-!postproc: '<!--\?' '<?'
+%-!postproc: '\?-->' '?>'
+
+
+% for use with https://play.google.com/store/apps/details?id=com.silli.notizen
+
+%!preproc: "\+ ####" "+ DENKZETTEL"
+%!preproc: "\+ DENKZETTEL" "''<style type=\"text/css\">ul{text-decoration:line-through;list-style-type:disc;color:#aaa;} ul li{padding-left:1em;} ol{list-style-type:disc;} ul, ol, li {margin-bottom:1.0em;}</style>''"
+
+%-!postproc: "<title>(.*?)#L##CY#" "<title>\1"
+% note: doesn't work: we can't alter with txt2tags titles and head, only body
+
+%--!preproc: '\+ Denkzettel' '%!preproc: "^- (.*?)" "- DELETELINE "\n%-!preproc: "^\+ " "- "\n%!postproc: "DELETELINE(.*?)$" "&nbsp; <s>\1</s>"'
+
+%-!preproc: 'DELETELINE (.*?)' '--\1--' 
+
+% center tables
+%-!postproc: '<table' '<table align="center"'
+
+%% Textallion
+
+%!preproc: '\{ \*\* \}'   'CONVERTboldBEGIN'
+%!preproc: '\{\/\*\* \}'  'CONVERTboldEND'
+
+%!postproc: 'CONVERTboldBEGIN'    '<span class="bold"><b>'
+%!postproc: 'CONVERTboldEND'      '</b></span>'
+
+%!postproc: 'CONVERTcenterBEGIN' '</p><div style:"text-align="center ;margin-right:auto;margin-left:auto ">'
+%!postproc: 'CONVERTcenterEND' '</div><p>'
+
+%!preproc: '\{ ~~ \}'     'CONVERTcenterBEGIN'
+%!preproc: '\{\/~~ \}'     'CONVERTcenterEND'
+
+
+%!preproc: '\{\/\/\.\.\}'          'LINEBREAK'
+%!preproc: "\\\\"                  'LINEBREAK'
+%!preproc: "\{LB\}"	 'LINEBREAK'
+%!preproc: "\*-\*-"                  'LINEBREAK'
+%!postproc: "LINEBREAK" '<br/> '
+%!postproc: "LINEBREAK" '<br/> '
+
+%!preproc: '--------(-+)---------' 'SIMPLELINE'
+%!preproc: '---' 'QUADRATINDASH'
+%!postproc: '^QUADRATINDASH' '<br/>&mdash;'
+%!postproc: 'QUADRATINDASH' '&mdash;'
+
+%!postproc: 'SIMPLELINE' '<hr/>'
+
+%% remove textallion special markup if it's not recognized like above
+%!preproc: '\{TOC\}'   '{LIONWIKITOC}'
+%!preproc: '\{.{4}\}'   ''
+%!preproc: '\{.{3}\}'   ''
+
+%!preproc: '\{\*~~~\}'    'CONVERTlettrine' 
+%!postproc: 'CONVERTlettrine(.)' '</p><p class="initial">\1'
+
+%!postproc: '\{LIONWIKITOC\}'   '{TOC}'
+
+
+
+
+
+
+%% progress bar
+%% [10%]:
+%!postproc: '\[(\d+)%\]' '<progress value="\1" max="100"></progress> (\1%)'
+%% [2%7] = 2 out of 7:
+%!postproc: '\[(\d+)%(\d+)\]' '<progress value="\1" max="\2"></progress> (\1/\2)'
+%% more natural: [2/7] = 2 out of 7:
+%!postproc: '\[(\d+)\/(\d+)\]' '<progress value="\1" max="\2"></progress> (\1/\2)'
+
+
+%% checkbox
+%% [x] / [*] / [v]
+%% [ ]
+%!preproc: '^\[(x|X)\] (.*?)$' 'LINEBREAK CONVERT_CROSSMARK --\2--'
+%!preproc: '^\[(v|\*)\] (.*?)$' 'LINEBREAK CONVERT_CHECKMARK \2'
+%!preproc: '^\[ ?\] (.*?)$' 'LINEBREAK CONVERT_EMPTYMARK \1'
+
+%!postproc: 'CONVERT_CROSSMARK' '&#9746;'
+%!postproc: 'CONVERT_CHECKMARK' '&#9745;'
+%!postproc: 'CONVERT_EMPTYMARK' '&#9744;'
+
+
+%% big block button
+
+%!postproc: '@@BUTTON\((.*?)\)@@' ' <div style="text-align: center;"><button type="button" class="block">\1</button> </div>'
+
+
+%% slider sample
+
+%!postproc: '@@SLIDER@@' '<input type="range" min="1" max="100" value="50" class="slider" id="myRange">'
+
+
+
+%% centering
+
+%!postproc: '@@CENTER\((.*?)\)@@'  ' <div style="text-align: center;">\1</div>'
+
+%% medaillon pic
+
+%!postproc: '@@PIC\((.*?)\)@@' '<div style="text-align: center;"><img class="img-circle" src="\1" align="center"></div>'
+
+
+%% TAGS
+% uses the (#tag) (#tag2) or (#tag1, tag2) syntax
+%!postproc: '#TAGLIST' '{TAG_LIST}'
+%!postproc: '#TAGCLOUD' '{TAG_CLOUD}'
+%!--preproc: '^#(.*?) $' '""{tags:\1}""'  %% don't use that, it must be included at a higher level (in php)
+
+ 
+
+%% basic Markdown support!
+%%  headings
+%% we use the !! lionwiki markup to make it work for TOC as well
+%-!preproc: '^# (.*?)$' '= \1 ='
+%-!preproc: '^## (.*?)$' '== \1 =='
+%-!preproc: '^### (.*?)$' '=== \1 ==='
+%-!preproc: '^#### (.*?)$' '==== \1 ===='
+%-!preproc: '^##### (.*?)$' '===== \1 ====='
+
+%!preproc: '^# (.*?)$' '! \1 '
+%!preproc: '^## (.*?)$' '!! \1 '
+%!preproc: '^### (.*?)$' '!!! \1 '
+%!preproc: '^#### (.*?)$' '!!!! \1 '
+%!preproc: '^##### (.*?)$' '!!!!! \1 '
+%!preproc: '^\* (.*?)$' '- \1'
+%!preproc: '^(\d+)\. (.*?)$' '+ \2'
+%%  links
+%!preproc: '\[(.*?)\]\(http://([^ ].*?)\)' '[\1 http://\2]'
+%!preproc: '\[(.*?)\]\(https://([^ ].*?)\)' '[\1 https://\2]'
+%% links (without http)
+%!preproc: '\[(.*?)\]\(([^ ].*?)\)' '[\1 index.php?page=\2]'
+%!preproc: '\[(.*?)\]\(([^ ].*?)\)' '[\1 index.php?page=\2]'
+%% images
+%!preproc: '\!\[(.*?)\]\(([^ ].*?)\)' '[\2]'
+%%TODO  ![Texte alternatif](/chemin/vers/img.jpg "Titre optionnel")
+%!preproc: '^>'  '\t'
+% note: postvoodoo should only work with the python version of t2t, not php
+%!postvoodoo: '(.*?)\n=[=*]{2,}='  '<h1>\1</h1>'
+%!preproc: '-[-*]{18,}-'  'T2TBAR'
+%!preproc: '-[-*]{2,}'  'MDUNDERLINE'
+%!postproc: 'MDUNDERLINE'  '------'
+%!postproc: 'T2TBAR'  '<hr/>'
+%!postvoodoo: '(.*?)\n-[-*]{2,}-' '<h2>\1</h2>'
+%!preproc: '~~(.*?)~~'  '--\1--'
+
+%% Gemtext support
+
+%---!preproc: '=> \[(.*?)\] \[(.*?)\]' '- \1 : \2' 
+%---!preproc: '=> \[(.*?)\]' '- \1' 
+
+%!preproc: '^=>' 'LINEBREAK=>'
+%!postproc: 'LINEBREAK' '<br/>
+
+%!preproc: 'gemini://(.*?) ([^ ].*?)$'  GEMINILINK\1 \2
+
+%!preproc: 'gemini://(.*?)' 'GEMINILINK\1'
+
+%!postproc:  'GEMINILINK([^ ].*?) '  '<a href="gemini://\1">gemini://\1</a> '
+
+%!postproc:  'GEMINILINK([^ ].*?)/'  '<a href="gemini://\1">gemini://\1</a>/'
+
+%% extra features
+
+%!postproc: '@@small@@' <div class="small">
+%!postproc: '@@/small@@' </div>
+
+%% general div, allows the @@DIV.classname@@ syntax
+
+%---!postproc:  '@@DIV##([^ ].*?)@@' '<div id="\1" style="display:none;">'
+%!postproc:  '@@DIV#([^ ].*?)@@' '<div id="\1">'
+
+%!postproc:  '@@DIV:([^ ].*?)@@' '<div class="\1">'
+%!postproc:  '@@DIV.([^ ].*?)@@' '<div class="\1">'
+
+%!postproc:  '@@/DIV@@'   '</div>'
+
+
+%% other things
+
+% we use this for writing docs in lionwiki
+%!postproc: 'CONVERT-1EQUAL'      '='
+%!postproc: 'CONVERT-2EQUAL'      '=='
+%!postproc: 'CONVERT-3EQUAL'      '==='
+%!postproc: 'CONVERT-4EQUAL'      '===='
+
+%!postproc: 'CONVERT-GREATER'	'&#62;'
+%!postproc: 'CONVERT-LESS'	'&#60;'
+
+%!postproc: 'CONVERT-TILDE'	'&#820;'
+
+%!postproc: 'CONVERT-TOC'      '%%toc'
+
+%!preproc: '-->' '⇨'
+
+
+% ( )
+%!postproc: 'CONVERT-PARENTHESIS-START'  '&#40;'
+%!postproc: 'CONVERT-PARENTHESIS-END'   '&#41;'
+
+% [ ]
+%!postproc: 'CONVERT-BRACKET-START'      '&#91;'
+%!postproc: 'CONVERT-BRACKET-END'      '&#93;'
+
+% { }
+%!postproc: 'CONVERT-CBRACKET-START'      '&lcub;'
+%!postproc: 'CONVERT-CBRACKET-END'      '&rcub;'
+
+% #
+%!postproc: 'CONVERT-HASHTAG'      '&#x23;'
+
+%!postproc: 'CONVERT-DASH'      '-'
+
+%!postproc: 'CONVERT-AROBASE'      '@'
+%!postproc: 'CONVERT-BACKSLASH'      '&bsol;'
+%!postproc: 'CONVERT-SLASH'      '&sol;'
+
+% *
+%!postproc: 'CONVERT-ASTERISK'      '&ast;'
+
+
+%!postproc: 'CONVERT-GRAVE-ACCENT'      '`'
+
+% % 
+%!postproc: 'CONVERT-PERCENT'      '&percnt;'
+
+
