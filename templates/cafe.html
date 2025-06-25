@@ -14,7 +14,7 @@
 			}
 		@media (prefers-color-scheme:light){
 			:root{
-				--bg-color:#fdfcfb;
+				--background-color:#fdfcfb;
 				--text-color:#3a3a3a;
 				--link-color:#000;
 				--divider-color:#e5e5e5;
@@ -23,7 +23,7 @@
 		}
 		@media (prefers-color-scheme:dark){
 			:root{
-				--bg-color:#35363a;
+				--background-color:#35363a;
 				--text-color:#c5c5c5;
 				--link-color:#c5c5c5;
 				--divider-color:#595959;
@@ -130,7 +130,7 @@
 		}
 
 		body{
-			background-color:var(--bg-color);
+			background-color:var(--background-color);
 			padding:8px;
 			padding-bottom:0;
 			font-family:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;
@@ -179,7 +179,7 @@
       nav ul { padding:0; margin:0 45px 30px 0; display:inline-block;  } 
       nav ul li { list-style-type:none; white-space:pre ;  } 
       nav ul li a:hover { background:#000;color:#fff;  } 
-	  img:hover { background:var(--bg-color); border-radius: 4px;  } 
+	  img:hover { background:var(--background-color); border-radius: 4px;  } 
       nav a { padding: 6px ; border-radius: 4px;} 
       header  a:hover { background:#555;color:#fff ; /*text-decoration:underline;*/} 
       nav p { font-size:100% ; text-align:center ;  } 
@@ -445,6 +445,29 @@ progress {  color: #586e75;  background-color: #eee;  border-radius: 0px; border
 progress::-moz-progress-bar {  background: #586e75;}
 progress::-webkit-progress-value {  background: #586e75;}
 progress::-webkit-progress-bar {  background: #586e75;}
+
+
+/* Todotxt support */
+
+
+.todotxt_A { color:#162D57;}
+.todotxt_B { color:#2E4774; }
+.todotxt_C { color:#4E658F; }
+.todotxt_D { color:#7487AA; }
+.todotxt_E { color:#A9B6CE; }
+.todotxt_F { color:#A9B6CE; }
+
+
+.todotxt_context { color: #844516; }
+.todotxt_tag { color: #846F16; }
+.todotxt_deleted {opacity: 0.4; }
+
+/* Spoiler support */ 
+
+.spoiler { background-color: var(--text-color) ; }
+.spoiler:active { background-color: var(--background-color) ;  }
+.spoiler:hover { background-color: var(--background-color) ;  }
+.spoiler::selection { background-color: color-mix(in srgb, var(--background-color), black 10%) ;  }
 
 
 

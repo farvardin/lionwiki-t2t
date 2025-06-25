@@ -601,6 +601,15 @@ progress {
 .todotxt_tag { color: spin(@fg, 90); }
 .todotxt_deleted {opacity: 0.4; }
 
+/* Spoiler support */ 
+
+.spoiler { background-color: @fg ; color: @fg ;  }
+.spoiler:active { background-color: @bg ; color: @fg ; }
+.spoiler:hover { background-color: @bg  ; color: @fg ; }
+.spoiler::selection { background-color: @bg  ;  color: @fg ;  }
+
+
+
 
 @media (prefers-color-scheme: dark) {
 

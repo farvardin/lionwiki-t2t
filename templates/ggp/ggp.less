@@ -644,6 +644,15 @@ progress::-webkit-progress-bar {  background: @BackgroundColor;}
 .todotxt_deleted {opacity: 0.4; }
 
 
+/* Spoiler support */ 
+
+.spoiler { background-color: @fg ; color: @fg ;  }
+.spoiler:active { background-color: @bg ; color: @FontColor ; }
+.spoiler:hover { background-color: @bg  ; color: @FontColor ; }
+.spoiler::selection { background-color: @bg  ;  color: @FontColor ; }
+
+
+
 
 @media (prefers-color-scheme: dark) {
   /* Invert all elements on the body while attempting to not alter the hue substantially. */
