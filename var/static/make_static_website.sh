@@ -36,8 +36,8 @@ THEME=cafe
 #THEME=simple
 #THEME=mimoza
 #THEME=ten
-#THEME=the-monospace-web
-THEME=minimaxing_linktree
+THEME=the-monospace-web
+#THEME=minimaxing_linktree
 
 
 ### Files locations ###
@@ -74,8 +74,8 @@ printf "custom generation\n"
 
 ## Choose the folder from for sources (it will build the static site from this folder)
 #LOCATION=pages
-LOCATION=`pwd`/src
-#LOCATION=`pwd`/../minisite
+#LOCATION=`pwd`/src
+LOCATION=`pwd`/../minisite
 
 # STATIC = the folder from which this script is run
 STATIC=`pwd`/

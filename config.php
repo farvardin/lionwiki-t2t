@@ -78,7 +78,7 @@ $PROTECTED_READ = false;
 
 $NO_HTML = true; // XSS protection
 
-$STARTPAGE = 'main'; // Which page should be default (start page)?
+$START_PAGE = 'main'; // Which page should be default (start page)?
 
 $RSS = '<a href="./var/rss.xml">RSS</a>';
 

@@ -98,6 +98,37 @@ You can't add extra spaces at the boundaries of the part you want to mark with t
 | item 3 | item 4 |
 
 
+== Details and spoilers ==
+
+The ``<details>`` markup is supported. We use this special syntax:
+
+```
+CONVERT-AROBASECONVERT-AROBASEDETAILSCONVERT-AROBASECONVERT-AROBASEClick to revealCONVERT-AROBASECONVERT-AROBASE
+This text will be hidden until you click on the parent elementCONVERT-AROBASECONVERT-AROBASE/DETAILSCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@DETAILS@@Click to reveal@@
+This text will be hidden until you click on the parent element@@/DETAILS@@
+
+Spoiler is similar, you just have to select the text to be able to read it. //(note: not all templates support it at the moment)//
+
+```
+CONVERT-AROBASECONVERT-AROBASESPOILERCONVERT-AROBASECONVERT-AROBASEHidden textCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@SPOILER@@Hidden text@@
+
+
+or (reddit-like spoiler)
+
+
+```
+CONVERT-GREATER!Hidden text!<
+```
+
+>!Hidden text!<
+
+
 
 == Additional syntax ==
 
@@ -109,9 +140,20 @@ In addition to the normal txt2tags syntax, here are some new markup. You can cus
 
 will display a number between 1 and 100 
 
-example:
+example: %%rand(1,100) 
 
-%%rand(1,100) 
+``` %%rand
+
+will display a real number between 0 and 1
+
+example: %%rand
+
+``` %%rand(owl,goose,blackbird,dove,seagull)
+
+will display one of the items in the list (delimited by commas, without spaces)
+
+example: __%%rand(owl,goose,blackbird,collared dove,gull)__
+
 
 - Progression bar
 
@@ -122,6 +164,8 @@ will display a progress bar of 10%
 example:
 
 [10%]
+
+You can combine the 2 previous techniques to create a random progress bar: [%%rand(1,100)%]
 
 ``` CONVERT-BRACKET-START3/7CONVERT-BRACKET-END
 
@@ -138,16 +182,20 @@ example:
 
 ``` CONVERT-BRACKET-START CONVERT-BRACKET-END
  
- - checked:
+ - checked :
+
+``` CONVERT-BRACKET-STARTvCONVERT-BRACKET-END
+
+ - checked (deleted) :
 
 ``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
 
 Will display: 
 [ ] item
+[v] item
 [x] item
 
-
-//You will need to edit the code on the wiki page to check the boxes//
+//You will need to edit the code on the wiki page to check the boxes. This process automates certain behaviours (no bulleted lists, line breaks, erased lines). If you just want to display checkboxes for another purpose, use simple unicode characters!//
 
 
 - Big button : 
@@ -159,6 +207,15 @@ Will display:
 @@BUTTON([link to a search engine http://ddg.gg])@@
 
 @@BUTTON(http://ddg.gg)@@
+
+
+- Ascii drawings :
+
+```
+╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯
+```
 
 
 - Tags : 

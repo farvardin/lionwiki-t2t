@@ -107,21 +107,61 @@ Vous ne pouvez pas ajouter d'espaces supplémentaires aux limites de la partie q
 
 
 
+== Détails et spoilers ==
+
+La balise ``<details>`` peut être utilisée ainsi : 
+
+```
+CONVERT-AROBASECONVERT-AROBASEDETAILSCONVERT-AROBASECONVERT-AROBASEClick to revealCONVERT-AROBASECONVERT-AROBASE
+Ce texte sera caché jusqu'à ce que vous cliquiez sur l'élément parentCONVERT-AROBASECONVERT-AROBASE/DETAILSCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@DETAILS@@Click to reveal@@
+Ce texte sera caché jusqu'à ce que vous cliquiez sur l'élément parent@@/DETAILS@@
+
+Le spoiler est similaire, il suffit de sélectionner le texte pour pouvoir le lire. //(note : tous les modèles ne le supportent pas pour le moment)//
+
+```
+CONVERT-AROBASECONVERT-AROBASESPOILERCONVERT-AROBASECONVERT-AROBASETexte cachéCONVERT-AROBASECONVERT-AROBASE
+```
+
+@@SPOILER@@Texte caché@@
+
+
+ou bien (spoiler de type reddit)
+
+
+```
+CONVERT-GREATER!Texte caché!<
+```
+
+>!Texte caché!<
+
+
 == Syntaxe supplémentaire ==
 
 En plus de la syntaxe txt2tags, voici quelques balises supplémentaires. Vous pouvez personnaliser, étendre ou configurer la plupart d'entre elles dans le fichier ``config.t2t`` à la racine du wiki, voire même dans le fichier ``txt2tags.class.php`` (mais la première solution sera plus conseillée).
 
 
-- Nombres aléatoires
+- Nombres et valeurs aléatoires
 
 ``` %%rand(1,100)
 
-va afficher un nombre compris entre 1 et 100
+va afficher un nombre entier compris entre 1 et 100
 
-exemple :
+exemple : %%rand(1,100) 
 
-%%rand(1,100) 
+``` %%rand
 
+va afficher un nombre réel compris entre 0 et 1
+
+exemple : %%rand
+
+``` %%rand(hibou,oie,merle noir,colombe,mouette)
+
+va afficher un des éléments de la liste (délimitée par les virgules, sans espace)
+
+exemple : __%%rand(hibou,oie,merle noir,colombe,mouette)__
 
 
 - Barre de progression
@@ -133,6 +173,8 @@ va afficher une barre de progression de 10%
 exemple :
 
 [10%]
+
+On peut combiner les 2 techniques précédentes pour réaliser une barre de progression aléatoire : [%%rand(1,100)%]
 
 ``` CONVERT-BRACKET-START3/7CONVERT-BRACKET-END
 
@@ -151,14 +193,18 @@ exemple :
  
  - cochées :
 
+``` CONVERT-BRACKET-STARTvCONVERT-BRACKET-END
+
+ - cochées (à rayer) :
+
 ``` CONVERT-BRACKET-STARTxCONVERT-BRACKET-END
 
 affichera : 
 [ ] item
+[v] item
 [x] item
 
-
-//Vous devrez éditer le code de la page wiki pour cocher les cases//
+Note : //Vous devrez éditer le code de la page wiki pour cocher les cases. De plus ce processus automatise certains comportements (pas de liste à puce, retour à la ligne, ligne rayée), si vous souhaitez juste afficher des cases pour un autre usage, utilisez simplement des caractères unicode !//
 
 
 - Bouton : 
@@ -170,6 +216,14 @@ affichera :
 @@BUTTON([lien vers le moteur de recherche http://ddg.gg])@@
 
 @@BUTTON(http://ddg.gg)@@
+
+- Ascii drawings :
+
+```
+╭─────────────────╮
+│ MONOSPACE ROCKS │
+╰─────────────────╯
+```
 
 
 - Tags : 
