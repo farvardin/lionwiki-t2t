@@ -36,8 +36,6 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/bootstrap/bootstrap.html';  // bootstrap
 
 
-
-
 // Those templates are more minimalistic and use only a basic toolbar,
 //  some other don't have any toolbar at all (but you can add it in the template)
 
@@ -58,6 +56,7 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/light.html';
 //$TEMPLATE = 'templates/print.html';
 //$TEMPLATE = 'templates/paper/paper.html';
+//$TEMPLATE = 'templates/txt2tags/txt2tags.html';  // an old version of minimaxing
 //$TEMPLATE = 'templates/cafe.html';
 //$TEMPLATE = 'templates/wikiss.html';
 

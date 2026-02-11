@@ -46,6 +46,7 @@ class SelectTemplate
     "templates/brut/brut.html" => "Brut",
     "templates/paper/paper.html" => "Paper",
     "templates/mimoza/mimoza.html" => "Mimoza",
+    "templates/txt2tags/txt2tags.html" => "txt2tags",
     "templates/upload.html" => "Upload",
     "templates/gopher.html" => "Gopher",
     "templates/wikiss.html" => "WiKiss"
