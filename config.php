@@ -46,6 +46,7 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 
  $TEMPLATE = 'templates/the-monospace-web.html';
+ $TEMPLATE = 'templates/gopher.html';
 //$TEMPLATE = 'templates/sissou.html';
 //$TEMPLATE = 'templates/fravashyo/fravashyo.html';
 //$TEMPLATE = 'templates/dandelion.html';

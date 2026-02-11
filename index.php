@@ -1,6 +1,7 @@
-<?php // LionWiki-t2t 3.2.12n - 2024-07-09
+<?php // LionWiki-t2t 3.2.12o - 2026-02-11
 
 // https://lionwiki-t2t.sourceforge.io/
+// https://github.com/farvardin/lionwiki-t2t/
 //
 // This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.12 (http://lionwiki.0o.cz/)
 // (c) Adam Zivner, licensed under GNU/GPL v2
@@ -573,7 +574,7 @@ if(!$action || $preview) { // page parsing
     $CON = preg_replace("#(</ol>\n?<ol>|</ul>\n?<ul>)#", '', $CON);
     }*/
 
-    // headings
+    // lionwiki headings, we keep it for plugins
     preg_match_all('/^(!+)(.*)$/m', $CON, $matches, PREG_SET_ORDER);
     $stack = array();
 

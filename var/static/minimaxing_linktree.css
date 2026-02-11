@@ -450,6 +450,11 @@ body {
   font-family: Ubuntu;
   color: #656c61;
 }
+
+#main {
+  /*background-image: url("var/upload/picture.jpg");*/
+}
+
 #header h1 {
   color: #fff;
   margin: 2px;
@@ -667,7 +672,7 @@ ul.link-list li:first-child {
   margin-top: 0;
   border-top: 0;
 }
-.button,
+.block-button0,
 a.toolbarTextareaItem {
   display: inline-block;
   padding: 5px 10px 5px 10px;
@@ -681,7 +686,7 @@ a.toolbarTextareaItem {
   border: solid 1px #7e3821;
   box-shadow: inset 0px 0px 0px 1px #7e3821;
 }
-.button:hover,
+.block-button0:hover,
 a.toolbarTextareaItem:hover {
   background-color: #8f4932;
   color: #ffffff;
@@ -861,6 +866,7 @@ input.submit:hover {
     background-color: #ffffff;
     padding: 2% 0 2% 0;
     padding-top: -20px;
+    
   }
   #main .main-row {
     margin: 2% 0 2% 0;
@@ -1221,7 +1227,7 @@ progress::-webkit-progress-bar {
   background: white;
 }
 /* Big buttons */
-.block {
+.block-button {
   display: inline-block;
   width: 65%;
   border: 2px solid #21677e;
@@ -1240,7 +1246,7 @@ progress::-webkit-progress-bar {
   /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
   border-radius: 8px;
 }
-.block a {
+.block-button a {
   display: inline-block;
   min-width: 100%;
   padding: 0px;
@@ -1252,7 +1258,7 @@ progress::-webkit-progress-bar {
   border-radius: 6px;
 }
 /*.block:hover, */
-.block a:hover {
+.block-button a:hover {
   /*border: 2px solid @HeaderColor;*/
   background-color: #fff;
   color: #21677e;
@@ -1262,7 +1268,7 @@ progress::-webkit-progress-bar {
   padding-right: 2px;
 }
 @media only screen and (max-width: 999px) and (min-width: 1px) {
-  .block {
+  .block-button {
     width: 90%;
   }
 }

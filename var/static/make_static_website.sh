@@ -114,9 +114,11 @@ printf "${SITENAME}\n" > /tmp/lionwikistatic.t2t
 			fi
 		printf "\n\n\n" >> /tmp/lionwikistatic.t2t ; \
 		cat "${FILENAME}" >>  /tmp/lionwikistatic.t2t ; \
-		${TXT2TAGS} -T ${STATIC}/${THEME}_static.html -t html --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside  ${TOC} --outfile ${OUTPUT}/"${FILENAME%.*}".html /tmp/lionwikistatic.t2t ; \
+		${TXT2TAGS} -T ${STATIC}/${THEME}_static.html -t html --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} ${TOC} --outfile ${OUTPUT}/"${FILENAME%.*}".html /tmp/lionwikistatic.t2t ; \
 		printf "* [${FILENAME%.*} ${FILENAME%.*}.html] \n" >> /tmp/lionwikipagelist.t2t
 }
+
+# --css-inside --style=`pwd`/../${THEME}.css
 
 generate_all() {
 
@@ -132,7 +134,7 @@ generate_all() {
 
 	cd ${STATIC}/
 
-	${TXT2TAGS} -T ${STATIC}/${THEME}_static.html -t html --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside ${TOC} --outfile ./output/pagelist.html /tmp/lionwikipagelist.t2t 
+	${TXT2TAGS} -T ${STATIC}/${THEME}_static.html -t html5 --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside ${TOC} --outfile ./output/pagelist.html /tmp/lionwikipagelist.t2t 
 
 	cp ${THEME}.css ./output/
 
@@ -172,7 +174,7 @@ generate_single0() {
 		printf "${FILE%.*}" > /tmp/lionwikistatic.t2t
 		printf "\n\n\n" >> /tmp/lionwikistatic.t2t 
 		cat "${FILE}" >>  /tmp/lionwikistatic.t2t 
-		txt2tags -T ../static/${THEME}_static.html -t html --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside  ${TOC} --outfile ../static/output/"${FILE%.*}".html /tmp/lionwikistatic.t2t 
+		txt2tags -T ../static/${THEME}_static.html -t html5 --config-file ${CONFIGFILE01}  --config-file ${CONFIGFILE02} --css-inside  ${TOC} --outfile ../static/output/"${FILE%.*}".html /tmp/lionwikistatic.t2t 
 		
 }
 

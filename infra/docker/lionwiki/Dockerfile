@@ -13,7 +13,7 @@ SHELL ["/bin/bash", "-c"]
 #SHELL ["/bin/sh", "-c"]
 
 ## image metadata
-LABEL version="1.0" maintainer="farvardin"
+LABEL version="1.1" maintainer="farvardin"
 
 ## temporary variables
 ARG DOCUMENTROOT="/var/www/html"

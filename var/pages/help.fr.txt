@@ -1,4 +1,4 @@
-//Read this [[help in English | help.en]].//
+//Read this [[help in English | help.en]].//  
 
 
 //Lire l'aide sur la [[syntaxe complète | help_syntax.fr]].//
@@ -6,7 +6,7 @@
 
 Lionwiki-t2t est un système de type wiki pour la création et l'administration de sites Web.
 
-Les pages Lionwiki-t2t ont le même aspect et fonctionnent comme des pages Web ordinaires, sauf qu'elles possèdent un lien pour « Éditer » ce qui permet de modifier ou d'ajouter facilement des pages à un site, en utilisant les règles d'édition de base (tout comme le fait le site http://fr.wikipedia.org)
+Les pages Lionwiki-t2t ont le même aspect et fonctionnent comme des pages Web ordinaires, sauf qu'elles possèdent un lien pour « Éditer » ce qui permet de modifier ou d'ajouter facilement des pages à un site, en utilisant les règles d'édition de base (tout comme le fait le site http://fr.wikipedia.org )
 
 //Ce système contient quelques extensions pratiques et une syntaxe simplifiée et customisable.//
 
@@ -180,7 +180,7 @@ Supposons que vous souhaitez ajouter les en-têtes markdown dans le wiki (c'est 
 
 Alors nous ajoutons dans config.t2t cette syntaxe :
 
-``` %!preproc : '^# (.* ?)$' '= \1 ='
+``` %!preproc : '^# (.* ?)$' '=  ='
 
 cela signifie qu'il traitera tout le texte ``(.* ?)`` commençant par un # en début de ligne (^), jusqu'à la fin de la ligne ($) et le remplacera par le balisage txt2tags pour les titres de niveau 1 (``= heading =``).
 
@@ -329,6 +329,8 @@ __Quelques avantages__ de ce système :
  - si on édite une partie du document au lieu de sa globalité, que l'on sauvegarde, il faut recharger la page (F5) pour éditer une nouvelle partie une nouvelle fois.
  - les regex de txt2tags avec caractères de remplacement spécifiques ont des problèmes (entre autres, lionwiki mange les CONVERT-BACKSLASH). À la place, veuillez utiliser un fichier de configuration t2t à la racine du site, et appelez-le avec includeconf. (voir example de [[sandbox_cyoa]] qui utilise cela)
 
+
+#help #syntax (#wiki)
 
 
 

@@ -9,6 +9,7 @@
 - [Geek index.php?&action=&permanent=1&template=templates/geek/geek.html]
 - [Mimoza index.php?&action=&permanent=1&template=templates/mimoza/mimoza.html]
 - [Terminal index.php?&action=&permanent=1&template=templates/terminal/terminal.html] - [Old Terminal Green index.php?&action=&permanent=1&template=templates/terminal_green.html] - [Old Terminal White index.php?&action=&permanent=1&template=templates/terminal_white.html]
+- [Gopher index.php?&action=&permanent=1&template=templates/gopher.html]
 - [Electric Obsidian index.php?&action=&permanent=1&template=templates/ElectricObsidian/ElectricObsidian.html]
 - [Red index.php?&action=&permanent=1&template=templates/red.html]
 - [Dandelion index.php?&action=&permanent=1&template=templates/dandelion.html]
@@ -17,6 +18,7 @@
 - [Paper index.php?&action=&permanent=1&template=templates/paper/paper.html]
 - [Cafe index.php?&action=&permanent=1&template=templates/cafe.html]
 - [Simple index.php?&action=&permanent=1&template=templates/simple.html]
+- [Simple2 index.php?&action=&permanent=1&template=templates/simple2.html]
 - [The monospace web index.php?&action=&permanent=1&template=templates/the-monospace-web.html]
 - [Lagrange index.php?&action=&permanent=1&template=templates/lagrange/lagrange.html]  //(not skipped with default installation)//
 - [Brut index.php?&action=&permanent=1&template=templates/brut/brut.html] //(not skipped with default installation)//

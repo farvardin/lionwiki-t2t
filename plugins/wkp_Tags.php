@@ -145,7 +145,9 @@ class Tags
         $tags = array();
 
         //preg_match_all("/\{tags:(.+)\}/U", $content, $matches, PREG_SET_ORDER);
-        preg_match_all("/\(#(.+)\)/U", $content, $matches, PREG_SET_ORDER);
+        //preg_match_all("/\(#(.+)\)/U", $content, $matches, PREG_SET_ORDER);//  /* works */
+        preg_match_all("/(?<!\w)#([\p{L}\w-]+)\b/u", $content, $matches, PREG_SET_ORDER); /* works */ 
+        //preg_match_all("/\(?#[\p{L}]+\)?/u", $content, $matches, PREG_SET_ORDER); /* doesn't work */ 
         //preg_match_all("/(\{tags:(.+)\})|(\(#(.+)\))/U", $content, $matches, PREG_SET_ORDER);
         
 
@@ -304,7 +306,9 @@ class Tags
         global $CON;
 
         //$CON = preg_replace("/\{tags:.+\}/U", "", $CON);
-        $CON = preg_replace("/\(#(.+)\)/U", "", $CON);
+        //$CON = preg_replace("/\(#(.+)\)/U", "", $CON);
+        //$CON = preg_replace("/(?<!\w)#([\p{L}\w-]+)\b/u", "", $CON); /* works but we musn't remove #tags from the text, just add it to the tag list (see code above) */ 
+        //$CON = preg_replace("/\(?#[\p{L}]+\)?/u", "", $CON);
 
         if(template_match("TAG_LIST", $CON, $null)) {
             $CON = template_replace("TAG_LIST", $this->tagList(), $CON);

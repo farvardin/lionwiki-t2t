@@ -177,7 +177,7 @@ Let's say you wish to add the markdown headers in the wiki (it's already impleme
 
 Then we add into config.t2t this syntax:
 
-``` %!preproc: '^# (.*?)$' '= \1 ='
+``` %!preproc: '^# (.*?)$' '=  ='
 
 it means it will process all text ``(.*?)`` starting with a # at the beginning of a line (^), until the end of the line ($) and replace it with the txt2tags markup for headings level 1 (``= heading =``).
 
@@ -336,4 +336,4 @@ __Some advantages__:
 
 
 
-(#help)
+(#help) #syntax 

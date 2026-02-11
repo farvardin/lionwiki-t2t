@@ -1,19 +1,24 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-sample   
+  name: lionwiki-sample   
 
 
 spec:
   backend:
-    serviceName: lionwiki
-    servicePort: 10080
+    service:
+      name: lionwiki
+      port: 80
   rules:
-  - http:
+  - host: yourdomain.org
+    http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: lionwiki
-          servicePort: 10080
+          service:
+            name: lionwiki
+            port:
+              number: 80
 
 

@@ -14,6 +14,15 @@ lionwiki-t2t improves the way lionwiki behave, by adding some new templates and 
 
 == Changes for 3.2.12 ==
 
+=== 3.2.12o===
+//Released on 2026-02-11//
+
+* So many changes I forgot to track them all:
+ * updated to php8.2, fixed some plugins
+ * added static site generator
+ * updated and created new templates, archived some others
+ * added %%rand syntax
+
 
 === 3.2.12l ===
 //Released on 2023-07-01//

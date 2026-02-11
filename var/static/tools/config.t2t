@@ -108,7 +108,10 @@
 
 %% big block button
 
-%!postproc: '@@BUTTON\((.*?)\)@@' ' <div style="text-align: center;"><button type="button" class="block">\1</button> </div>'
+%--!postproc: '@@BUTTON\((.*?)\)@@' ' <div style="text-align: center;" class="button"><button type="button" class="block">\1</button> </div>'
+
+%!postproc: '@@BUTTON\((.*?)\)@@' ' <div style="text-align: center;"> <div class="block-button">\1 </div></div>'
+
 
 
 %% slider sample

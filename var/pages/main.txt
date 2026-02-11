@@ -1,4 +1,5 @@
 %!postproc: 'https--' 'https://'
+%!postproc: 'http://lionwiki.0o.cz/' 'https://web.archive.org/web/20220828222102/lionwiki.0o.cz/index.php?page=Main+page'
 
 - //See the [full sample page index.php?page=sample]// 
  
@@ -14,9 +15,9 @@
 
 == About LionWiki ==
  
-**The original [LionWiki http://lionwiki.0o.cz/]** was a minimalist Wiki engine programmed in PHP, based on [WiKiss http://www.wikiss.tuxfamily.org/], itself based on TigerWiki...
+**The original [LionWiki http://lionwiki.0o.cz/]** was a minimalist Wiki engine programmed in PHP, based on [WiKiss http://www.wikiss.tuxfamily.org/], itself based on [TigerWiki https://sourceforge.net/projects/tigerwiki/]...
 
-It was abandoned in 2022 but it is still living in this txt2tags-based implementation, initiated in august 2013.
+It has been abandoned in 2022 but it is still living in this txt2tags-based implementation, initiated in august 2013.
 
 It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. 
 

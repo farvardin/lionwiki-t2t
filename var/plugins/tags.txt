@@ -8,8 +8,6 @@ About LionWiki
   
 UserGuide: Understanding core LionWiki
   
-help.en
-  help
 UserGuide_ How to use PROTECTED_READ
   
 Installation and configuration
@@ -44,8 +42,6 @@ UserGuide_ How to write a plugin
   
 todo
   
-help.fr
-  
 help.syntax.en
   syntax
 help.syntax.fr
@@ -62,3 +58,9 @@ blog_2023-10-23
   
 main
   
+help.en
+  
+help.fr
+  help,syntax,wiki
+help_syntax.fr
+  tags,motsclés,syntax,wiki,help

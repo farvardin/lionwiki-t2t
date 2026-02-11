@@ -10,12 +10,14 @@ metadata:
   name: lionwiki
 spec:
   ports:
-  - name: "10080"
-    port: 10080
+  - name: "11080"
+    port: 11080
     targetPort: 80
-  - name: "10443"
-    port: 10443
+    protocol: TCP
+  - name: "11443"
+    port: 11443
     targetPort: 443
+    protocol: TCP
   selector:
     io.kompose.service: lionwiki
 status:

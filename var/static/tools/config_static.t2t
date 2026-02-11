@@ -60,8 +60,9 @@
 %!postproc: '@@DEEZER@@' <i class="fa-brands fa-deezer"></i>
 %!postproc: '@@GITHUB@@' <i class="fa-brands fa-github"></i>
 
-
-
+%!postproc:  '@@DIV:([^ ].*?)@@' '<div class="\1">'
+%!postproc:  '@@DIV.([^ ].*?)@@' '<div class="\1">'
+%!postproc:  '@@/DIV@@'   '</div>'
 
 
 % => https://100r.co/site/uxn.html                 Site principal d'Uxn 

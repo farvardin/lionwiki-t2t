@@ -228,6 +228,12 @@ Note : //Vous devrez éditer le code de la page wiki pour cocher les cases. De p
 
 - Tags : 
 
+Vous pouvez utiliser des #tags (#motsclés) dans votre texte, ils seront ensuite comptabilisés dans un nuage de tags en bas de page.
+
+``CONVERT-HASHTAGmotclé``
+
+ou 
+
 ``(CONVERT-HASHTAGmotclé)``
 
 
@@ -466,5 +472,5 @@ Divers :
 
 
 
-(#syntax)
+(#syntax) #wiki #help
 

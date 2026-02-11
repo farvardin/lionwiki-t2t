@@ -40,12 +40,14 @@ class SelectTemplate
     "templates/lagrange/lagrange.html" => "Lagrange",
     "templates/light.html" => "Light",
     "templates/simple.html" => "Simple",
+    "templates/simple2.html" => "Simple 2",
     "templates/the-monospace-web.html" => "The monospace Web",
     "templates/cafe.html" => "Cafe",
     "templates/brut/brut.html" => "Brut",
     "templates/paper/paper.html" => "Paper",
     "templates/mimoza/mimoza.html" => "Mimoza",
     "templates/upload.html" => "Upload",
+    "templates/gopher.html" => "Gopher",
     "templates/wikiss.html" => "WiKiss"
     );
 

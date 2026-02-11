@@ -25,7 +25,7 @@ spec:
         io.kompose.service: lionwiki
     spec:
       containers:
-      - image: lionwiki_t2t:latest
+      - image: farvardin4/lionwiki:latest
         imagePullPolicy: ""
         name: lionwiki
         ports:

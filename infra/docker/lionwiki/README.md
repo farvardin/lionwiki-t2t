@@ -7,7 +7,7 @@
 Simple to use and highly versatile open-source wiki... conveniently packaged as a container image
 
 > This Dockerfile contains a streamlined and not blown-up approach to run a dockerized version of lionwiki-t2t. 
-> It's based on the php:7.x-apache image which ships with apache and php7 right out of the box.
+> It's based on the php:7.x-apache image which ships with apache and php7 right out of the box (or 8.2-apache-bookworm in latest version)
 
 ## How-to use
 

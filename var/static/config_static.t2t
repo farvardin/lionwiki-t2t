@@ -53,7 +53,16 @@
 %!postproc: '@@PB@@(\d+)@(\d+)@@' '<progress value="\1" max="\2"></progress> (\1/\2)'
 
 
+%!postproc: '@@WWW@@' <i class="fa-solid fa-globe"></i>
+%!postproc: '@@BANDCAMP@@' <i class="fa-brands fa-bandcamp"></i>
+%!postproc: '@@SPOTIFY@@' <i class="fa-brands fa-spotify"></i>
+%!postproc: '@@SOUNDCLOUD@@' <i class="fa-brands fa-soundcloud"></i>
+%!postproc: '@@DEEZER@@' <i class="fa-brands fa-deezer"></i>
+%!postproc: '@@GITHUB@@' <i class="fa-brands fa-github"></i>
 
+%!postproc:  '@@DIV:([^ ].*?)@@' '<div class="\1">'
+%!postproc:  '@@DIV.([^ ].*?)@@' '<div class="\1">'
+%!postproc:  '@@/DIV@@'   '</div>'
 
 
 % => https://100r.co/site/uxn.html                 Site principal d'Uxn 
