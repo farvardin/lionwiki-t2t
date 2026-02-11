@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.6, user-scalable=yes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 	<link rel="icon" href="templates/favicon.png" type="image/png" />
 	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
 	<style type="text/css">
@@ -22,7 +22,9 @@ body{color:#FFAB27; /* --fg */
      background-color:#361A13; /* --bg */
 	/*font-size:26px;*/
 	font-size:1.6em;
-	line-height:1.0em;padding:0.5em;}
+	line-height:1.0em;padding:0.5em;
+	max-width:1200px;
+	}
 a{font-weight:normal;color:#FFC639;}
 a:hover{font-weight:normal;
 	color:#361A13;/* --bg */
@@ -34,6 +36,7 @@ a.external:after{content: "\2197";}
 pre, blockquote{border:2px dashed #361A13; /* --fg */
     padding:4px;overflow:auto;margin:10px;margin-top:14px;margin-bottom:16px;
 	color:#361A13;background-color:#FFAB27;
+	white-space: pre-wrap;   
 	}
 code{
     padding:1px;overflow:auto;margin:1px;
@@ -68,8 +71,8 @@ input,select,textarea{border:2px solid #361A13; /* --bg */
 	color:#361A13;} /* --bg */
 	.submit{padding:1px;}
 	textarea{padding:3px;}
-#toc{border:2px dashed #361A13; /* --bg */
-margin:5px 0 5px 10px;padding:6px 5px 7px 0px;float:right;padding-right:2em;list-style:none;}
+#toc{border:2px solid #FFAB27; /* --fg */
+	margin:5px 0 5px 10px;padding:6px 5px 7px 0px;float:right;padding-right:2em;list-style:none;}
 #toc ul{list-style:none;padding:3px 0 3px 10px;}
 #toc li{font-size:21px;padding-left:10px;}
 #diff{padding:1em;white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%;}
@@ -142,9 +145,9 @@ progress::-webkit-progress-bar {  background: #FFAB27;} /* --fg */
 
 #ueforth pre {border:0px;padding:0em; }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 600px) {
   :root {
-    font-size: 1.9em;
+    font-size: 1.4em;
   }
 
 }
@@ -176,7 +179,9 @@ progress::-webkit-progress-bar {  background: #FFAB27;} /* --fg */
 	<tr>
 		<td colspan="2">{LAST_CHANGED_TEXT}: {LAST_CHANGED} <br/> {COOKIE} <br/>Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t️</a> 🦁🖋️</td>
 		<td></td>
-		<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
+	</tr>
+	<tr>
+				<br/><td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
 	</tr>
 </table>
 </body>
