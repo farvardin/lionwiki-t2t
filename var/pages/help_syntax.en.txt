@@ -220,6 +220,12 @@ Will display:
 
 - Tags : 
 
+You can use #tags (#keywords) in your text, which will then be counted in a tag cloud at the bottom of the page.
+
+``CONVERT-HASHTAGkeyword``
+
+or 
+
 ``(CONVERT-HASHTAGkeyword)``
 
 

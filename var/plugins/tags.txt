@@ -58,9 +58,9 @@ blog_2023-10-23
   
 main
   
-help.en
-  
 help.fr
   help,syntax,wiki
 help_syntax.fr
   tags,motsclés,syntax,wiki,help
+help.en
+  help,syntax

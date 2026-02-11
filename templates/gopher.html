@@ -63,11 +63,11 @@ form{display:inline}
 .submit{padding:1px;border:2px dashed #FFAB27;} /* --fg */
 .contentTextarea{width:100%;}
 input,select,textarea{border:2px solid #361A13; /* --bg */
-padding:2px;font-size:22px;
-background-color:#FFAB27; /* --fg */
-color:#361A13;} /* --bg */
-.submit{padding:1px;}
-textarea{padding:3px;}
+	padding:2px;font-size:1em;
+	background-color:#FFAB27; /* --fg */
+	color:#361A13;} /* --bg */
+	.submit{padding:1px;}
+	textarea{padding:3px;}
 #toc{border:2px dashed #361A13; /* --bg */
 margin:5px 0 5px 10px;padding:6px 5px 7px 0px;float:right;padding-right:2em;list-style:none;}
 #toc ul{list-style:none;padding:3px 0 3px 10px;}
@@ -172,11 +172,13 @@ progress::-webkit-progress-bar {  background: #FFAB27;} /* --fg */
 		</td>
 	</tr>
 	<tr><td colspan="3"><hr /></td></tr>
+	<tr><td><div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div><br/></td></tr>
 	<tr>
-		<td><div>{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM}</div></td>
-		<td>Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a>. {LAST_CHANGED_TEXT}: {LAST_CHANGED} {COOKIE}</td>
+		<td colspan="2">{LAST_CHANGED_TEXT}: {LAST_CHANGED} <br/> {COOKIE} <br/>Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t️</a> 🦁🖋️</td>
+		<td></td>
 		<td style="text-align:right">{EDIT} {SYNTAX} {HISTORY}</td>
 	</tr>
 </table>
 </body>
 </html>
+<!-- gopher template, based on Terminal -->

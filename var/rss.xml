@@ -6,6 +6,15 @@
 <language>en</language>
 
 	<item>
+	  <title>help.en</title>
+	  <pubDate>Wed, 11 Feb 2026 11:09:47 +0100</pubDate>
+	  <link>https://localhost:443/lionwiki-t2t/index.php?page=help.en</link>
+	  <description><pre id="diff">
+
+</pre></description>
+	</item>
+
+	<item>
 	  <title>help_syntax.fr</title>
 	  <pubDate>Wed, 11 Feb 2026 09:10:37 +0100</pubDate>
 	  <link>https://localhost:443/lionwiki-t2t/index.php?page=help_syntax.fr</link>
@@ -281,6 +290,7 @@
 	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
 	  <description><pre id="diff"></pre></description>
 	</item>
+
 
 
 
