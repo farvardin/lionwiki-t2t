@@ -22,6 +22,7 @@ lionwiki-t2t improves the way lionwiki behave, by adding some new templates and 
  * added static site generator
  * updated and created new templates, archived some others
  * added %%rand syntax
+ * upgraded jquery to 1.12
 
 
 === 3.2.12l ===
