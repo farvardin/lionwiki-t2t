@@ -1,4 +1,4 @@
-<?php // LionWiki-t2t 3.2.12o - 2026-02-11
+<?php // LionWiki-t2t 3.2.12p - 2026-04-10
 
 // https://lionwiki-t2t.sourceforge.io/
 // https://github.com/farvardin/lionwiki-t2t/
@@ -623,14 +623,7 @@ if(!$action || $preview) { // page parsing
     //$CON = preg_replace('/-----*/', '<hr/>', $CON); // horizontal line
     //$CON = str_replace('--', '&mdash;', $CON); // dash
 
-    // TODO: should we desactivate this below? It casts php warnings. 
-    // it seems for inclusion of html code, not useful because of t2t
-
-    if ($htmlcodes != null) {
-        $CON = preg_replace(array_fill(0, count($codes[1]) + 1, '/{CODE}/'), $codes[1], $CON, 1); // put HTML and "normal" codes back
-    }
-
-    if ($htmlcodes != null) {
+    if (!$NO_HTML && isset($htmlcodes[1])) {
         $CON = preg_replace(array_fill(0, count($htmlcodes[1]) + 1, '/{HTML}/'), $htmlcodes[1], $CON, 1);
     }
     
@@ -831,17 +824,11 @@ function authentified()
 
 function setsafecookie()
 {
-    // setcookie for sensitive informations
     $args = func_get_args();
-
-    if(version_compare(PHP_VERSION, '5.2.0') >= 0) {
-        while(count($args) != 6) {
-            $args[] = '';
-        }
-
-        $args[] = true; // httponly, supported only in some browsers and PHP >= 5.2.0. Successfully prevents XSS attacks.
+    while(count($args) != 6) {
+        $args[] = '';
     }
-
+    $args[] = true; // httponly — prevents XSS cookie theft
     call_user_func_array('setcookie', $args);
 }
 

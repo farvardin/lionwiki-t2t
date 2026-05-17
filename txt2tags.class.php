@@ -721,7 +721,7 @@ class T2T {
     $that = $this;
     $line =  preg_replace_callback('/%%(date|mtime)(\\((.+?)\\))?/i',  
       //deprecated in php8.1// function($m) use ($that) { return strftime($m[2]? $m[3]:"%Y-%m-%d", ($m[1]=='date'? $that->date : $that->mtime)); }
-      function($m) use ($that) { return date($m[2]? $m[3]:"Y-m-d", ($m[1]=='date'? $that->date : $that->mtime)); }
+      function($m) use ($that) { return date(isset($m[3]) && $m[3] !== '' ? $m[3] : "Y-m-d", ($m[1]=='date'? $that->date : $that->mtime)); }
       , $line);
     $line =  preg_replace_callback('/%%infile(?:\\((.*?)\\))?/i', 
       function($m) use ($that) { return $m[1] ? str_replace(array_keys($that->infile), array_values($that->infile), $m[1])
