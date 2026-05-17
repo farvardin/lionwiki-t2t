@@ -1,0 +1,80 @@
+# CLAUDE.md — LionWiki-t2t
+
+## Présentation
+
+LionWiki-t2t est un moteur de wiki léger en PHP, sans base de données.
+Les pages sont stockées en texte brut (syntaxe txt2tags) dans `var/pages/`.
+L'historique des révisions va dans `var/history/`.
+
+## Architecture
+
+```
+index.php              — point d'entrée unique (~1000 lignes), toute la logique wiki
+txt2tags.class.php     — moteur de rendu txt2tags → HTML
+config.php             — surcharge des paramètres par défaut (non requis)
+config.t2t             — directives txt2tags globales (incluses dans chaque page)
+plugins/wkp_*.php      — plugins (chargés automatiquement depuis plugins/)
+templates/*.html       — gabarits HTML avec substitutions {PLACEHOLDER}
+lang/*.php             — traductions ($T_* variables)
+var/pages/*.txt        — contenu des pages wiki
+var/history/<page>/    — révisions .bak + meta.dat
+tests/run.php          — suite de tests de régression
+tests/fixtures/*.t2t   — entrées txt2tags
+tests/expected/*.html  — sorties HTML de référence
+```
+
+## Lancer les tests
+
+```bash
+php tests/run.php           # tous les tests
+php tests/run.php basic     # un seul fixture
+php tests/update.php        # régénérer les fichiers expected/
+```
+
+Les tests vérifient uniquement `txt2tags.class.php` (rendu).
+Il n'existe pas de tests pour `index.php` lui-même.
+
+## Vérifier la syntaxe PHP
+
+```bash
+php -l index.php
+php -l txt2tags.class.php
+php -l plugins/wkp_Upload.php
+```
+
+## Conventions de code
+
+- PHP 7.4+ requis, PHP 8.x supporté (avec quelques avertissements)
+- Pas de framework, pas de composer — tout est autonome
+- Les variables globales sont abondantes (héritage du design original)
+- Les plugins implémentent des méthodes nommées comme les hooks : `pluginsLoaded()`, `actionBegin()`, `template()`, `formatEnd()`, etc.
+- Les templates utilisent `{PLACEHOLDER}` remplacés par `template_replace()`
+
+## Sécurité
+
+- `$NO_HTML = true` : protège contre XSS en bloquant `{html}…{/html}`
+- `clear_path()` : assainit tous les noms de fichiers/pages
+- `h()` = `htmlspecialchars()`, toujours utiliser pour afficher du contenu utilisateur
+- Mot de passe stocké en SHA1 dans `config.php` — SHA1 est faible, préférer `password_hash()` pour de futures migrations
+- `setsafecookie()` : ajoute `httponly` ; pas de flag `secure` ni `samesite`
+
+## Avertissements PHP connus
+
+- `Sass::compile_file()` : warning arginfo sans impact fonctionnel (extension Sass optionnelle)
+- Vérifier `isset()` avant d'accéder aux captures optionnelles de regex dans `txt2tags.class.php`
+
+## Ajouter un plugin
+
+Créer `plugins/wkp_MonPlugin.php` avec une classe `MonPlugin`.
+Les méthodes publiques correspondent aux hooks appelés par `plugin('hookName')`.
+Hooks disponibles : `pluginsLoaded`, `actionBegin`, `writingPage`, `pageWritten`,
+`subPagesLoaded`, `formatBegin`, `formatEnd`, `formatFinished`, `template`, `diff`.
+
+## Ajouter une langue
+
+Créer `lang/xx.php` en copiant `lang/en.php` et en traduisant les `$T_*`.
+
+## Modifier un template
+
+Les templates sont des fichiers HTML avec des balises `{PLACEHOLDER}`.
+Voir la liste complète des substitutions dans `index.php` autour de `$tpl_subs`.
