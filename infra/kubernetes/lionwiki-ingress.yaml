@@ -1,14 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: lionwiki-sample   
-
-
+  name: lionwiki
+  labels:
+    app: lionwiki
+  annotations:
+    # Décommenter si vous utilisez nginx ingress controller
+    # nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    #
+    # Décommenter pour TLS automatique via cert-manager
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  backend:
-    service:
-      name: lionwiki
-      port: 80
   rules:
   - host: yourdomain.org
     http:
@@ -20,5 +22,8 @@ spec:
             name: lionwiki
             port:
               number: 80
-
-
+  # Décommenter pour activer TLS (nécessite cert-manager)
+  # tls:
+  # - hosts:
+  #   - yourdomain.org
+  #   secretName: lionwiki-tls

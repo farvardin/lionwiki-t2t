@@ -1,8 +1,28 @@
-docker login
-docker tag lionwiki farvardin4/lionwiki
-docker push farvardin4/lionwiki
+# Déploiement LionWiki-t2t sur Kubernetes
+# ==========================================
 
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/latest/download/cert-manager.yaml
+# 1. (Optionnel) Builder et pousser l'image Docker
+#    (sinon l'image publique farvardin4/lionwiki:latest est utilisée)
+cd infra/docker/lionwiki
+docker build -t monrepo/lionwiki:latest .
+docker push monrepo/lionwiki:latest
 
+# 2. Modifier lionwiki-ingress.yaml : remplacer "yourdomain.org" par votre domaine
 
+# 3. Appliquer les manifests dans l'ordre
+kubectl apply -f data-persistentvolumeclaim.yaml
+kubectl apply -f lionwiki-deployment.yaml
+kubectl apply -f lionwiki-service.yaml
+kubectl apply -f lionwiki-ingress.yaml
 
+# 4. Vérifier le déploiement
+kubectl get pods -l app=lionwiki
+kubectl logs -l app=lionwiki --follow
+kubectl get pvc lionwiki-data
+
+# 5. (Optionnel) TLS avec cert-manager
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
+# Puis créer un ClusterIssuer (Let's Encrypt) et décommenter les annotations TLS dans l'ingress
+
+# Nettoyage
+kubectl delete -f lionwiki-ingress.yaml -f lionwiki-service.yaml -f lionwiki-deployment.yaml -f data-persistentvolumeclaim.yaml

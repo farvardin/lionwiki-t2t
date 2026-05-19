@@ -21,6 +21,8 @@ var/history/<page>/    — révisions .bak + meta.dat
 tests/run.php          — suite de tests de régression
 tests/fixtures/*.t2t   — entrées txt2tags
 tests/expected/*.html  — sorties HTML de référence
+infra/docker/lionwiki/ — Dockerfile + docker-compose pour builder/lancer l'image
+infra/kubernetes/      — manifests Kubernetes (Deployment, Service, Ingress, PVC)
 ```
 
 ## Lancer les tests
@@ -78,3 +80,23 @@ Créer `lang/xx.php` en copiant `lang/en.php` et en traduisant les `$T_*`.
 
 Les templates sont des fichiers HTML avec des balises `{PLACEHOLDER}`.
 Voir la liste complète des substitutions dans `index.php` autour de `$tpl_subs`.
+
+## Déploiement Kubernetes
+
+Les manifests sont dans `infra/kubernetes/`. Ordre d'application :
+
+```bash
+kubectl apply -f infra/kubernetes/data-persistentvolumeclaim.yaml
+kubectl apply -f infra/kubernetes/lionwiki-deployment.yaml
+kubectl apply -f infra/kubernetes/lionwiki-service.yaml
+kubectl apply -f infra/kubernetes/lionwiki-ingress.yaml
+```
+
+**Persistance** — un seul PVC `lionwiki-data` (500Mi, ReadWriteOnce) contient :
+- `var/`        → pages wiki et historique des révisions
+- `config.php`  → configuration locale
+- `config.t2t`  → directives txt2tags globales
+
+Un init container copie ces fichiers depuis l'image au premier démarrage si le PVC est vierge.
+Modifier `host:` dans `lionwiki-ingress.yaml` avant de déployer.
+TLS via cert-manager : décommenter les annotations dans l'ingress.
