@@ -181,6 +181,24 @@ kubectl logs -n cert-manager deployment/cert-manager --tail=30
 
 ---
 
+## Updating the image
+
+`imagePullPolicy: Always` is set on all containers, so every pod restart pulls the latest image from Docker Hub automatically:
+
+```bash
+kubectl rollout restart deployment/lionwiki
+kubectl rollout status deployment/lionwiki
+```
+
+If the image is stuck in the node's local cache (e.g. `already present on machine`), remove it manually — microk8s uses containerd, not docker:
+
+```bash
+microk8s ctr images rm docker.io/farvardin4/lionwiki:latest
+kubectl rollout restart deployment/lionwiki
+```
+
+---
+
 ## Cleanup
 
 ```bash

@@ -125,9 +125,13 @@ ls /opt/lionwiki-data/var/pages/
 # Redémarrer le pod (sans changer la config)
 kubectl rollout restart deployment/lionwiki
 
-# Mettre à jour l'image
-kubectl set image deployment/lionwiki lionwiki=farvardin4/lionwiki:latest
+# Mettre à jour l'image (imagePullPolicy: Always — tire toujours la dernière depuis Docker Hub)
+kubectl rollout restart deployment/lionwiki
 kubectl rollout status deployment/lionwiki
+
+# Si l'image est mise en cache sur le nœud et doit être supprimée manuellement
+# (microk8s utilise containerd, pas docker) :
+microk8s ctr images rm docker.io/farvardin4/lionwiki:latest
 
 # TLS : forcer le renouvellement du certificat
 kubectl delete secret lionwiki-tls

@@ -20,7 +20,7 @@ spec:
       initContainers:
       - name: init-data
         image: farvardin4/lionwiki:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         command:
         - sh
         - -c
@@ -41,7 +41,7 @@ spec:
       containers:
       - name: lionwiki
         image: farvardin4/lionwiki:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 80

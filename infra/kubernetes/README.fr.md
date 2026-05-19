@@ -96,6 +96,17 @@ kubectl get certificaterequest
 kubectl describe challenge
 kubectl logs -n cert-manager deployment/cert-manager --tail=30
 
+# ── Mettre à jour l'image ────────────────────────────────────────────────────
+#    imagePullPolicy: Always — chaque redémarrage tire la dernière image depuis Docker Hub.
+
+kubectl rollout restart deployment/lionwiki
+kubectl rollout status deployment/lionwiki
+
+#    Si l'image est bloquée dans le cache du nœud (message "already present on machine") :
+#    microk8s utilise containerd, pas docker — utiliser microk8s ctr :
+microk8s ctr images rm docker.io/farvardin4/lionwiki:latest
+kubectl rollout restart deployment/lionwiki
+
 # ── Données ───────────────────────────────────────────────────────────────────
 #    Les fichiers wiki se trouvent dans /opt/lionwiki-data sur le nœud :
 #      /opt/lionwiki-data/var/pages/     — pages wiki
