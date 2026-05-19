@@ -11,29 +11,35 @@ docker push monrepo/lionwiki:latest
 
 # 2. Modifier lionwiki-ingress.yaml : remplacer "yourdomain.org" par votre domaine
 
-# 3. Appliquer les manifests dans l'ordre
+# 3. Persistance des données
+#    Pas de StorageClass sur un cluster bare (kubeadm) : on utilise un PV hostPath
+#    qui stocke les données dans /opt/lionwiki-data sur le nœud.
+kubectl apply -f lionwiki-pv.yaml
 kubectl apply -f data-persistentvolumeclaim.yaml
+kubectl get pvc lionwiki-data   # doit afficher Bound avant de continuer
+
+# 4. Appliquer les manifests dans l'ordre
 kubectl apply -f lionwiki-deployment.yaml
 kubectl apply -f lionwiki-service.yaml
 kubectl apply -f lionwiki-ingress.yaml
 
-# 4. Vérifier le déploiement
+# 5. Vérifier le déploiement
 kubectl get pods -l app=lionwiki
 kubectl logs -l app=lionwiki --follow
 kubectl get pvc lionwiki-data
 
-# 5. TLS avec cert-manager
+# 6. TLS avec cert-manager
 #    a) Installer cert-manager
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
 #    Attendre que les pods cert-manager soient Ready (~30s)
 kubectl wait --namespace cert-manager --for=condition=Ready pod --all --timeout=120s
 
 #    b) Tester d'abord avec le staging (quota illimité, certificat non reconnu par les navigateurs)
-#       Modifier letsencrypt-clusterissuer.yaml : changer letsencrypt-prod en letsencrypt-staging dans l'ingress
-#       puis passer en prod une fois validé
+#       Modifier lionwiki-ingress.yaml : changer letsencrypt-prod en letsencrypt-staging dans l'annotation
+#       puis repasser en letsencrypt-prod une fois validé
 kubectl apply -f letsencrypt-clusterissuer.yaml
 
-#    c) Appliquer l'ingress avec TLS (yourdomain.org doit pointer vers le cluster)
+#    c) Appliquer l'ingress avec TLS (yourdomain.org doit pointer vers le cluster avant cette étape)
 kubectl apply -f lionwiki-ingress.yaml
 
 #    d) Vérifier l'émission du certificat
@@ -45,4 +51,6 @@ kubectl get certificaterequest
 kubectl describe challenge
 
 # Nettoyage
-kubectl delete -f lionwiki-ingress.yaml -f lionwiki-service.yaml -f lionwiki-deployment.yaml -f data-persistentvolumeclaim.yaml
+kubectl delete -f lionwiki-ingress.yaml -f lionwiki-service.yaml -f lionwiki-deployment.yaml
+kubectl delete -f data-persistentvolumeclaim.yaml -f lionwiki-pv.yaml
+#    /opt/lionwiki-data reste sur le nœud (reclaimPolicy: Retain) — supprimer manuellement si besoin
