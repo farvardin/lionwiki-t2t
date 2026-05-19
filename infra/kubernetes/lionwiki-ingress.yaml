@@ -5,12 +5,10 @@ metadata:
   labels:
     app: lionwiki
   annotations:
-    # Décommenter si vous utilisez nginx ingress controller
-    # nginx.ingress.kubernetes.io/proxy-body-size: "10m"
-    #
-    # Décommenter pour TLS automatique via cert-manager
-    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
+  ingressClassName: nginx
   rules:
   - host: yourdomain.org
     http:
@@ -22,8 +20,7 @@ spec:
             name: lionwiki
             port:
               number: 80
-  # Décommenter pour activer TLS (nécessite cert-manager)
-  # tls:
-  # - hosts:
-  #   - yourdomain.org
-  #   secretName: lionwiki-tls
+  tls:
+  - hosts:
+    - yourdomain.org
+    secretName: lionwiki-tls
