@@ -108,6 +108,42 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ```
 
+## Kubernetes — opérations courantes
+
+```bash
+# État général
+kubectl get pods -l app=lionwiki
+kubectl get pvc lionwiki-data
+kubectl get ingress lionwiki
+
+# Logs applicatifs
+kubectl logs -l app=lionwiki --follow
+
+# Accéder aux données sur le nœud
+ls /opt/lionwiki-data/var/pages/
+
+# Redémarrer le pod (sans changer la config)
+kubectl rollout restart deployment/lionwiki
+
+# Mettre à jour l'image
+kubectl set image deployment/lionwiki lionwiki=farvardin4/lionwiki:latest
+kubectl rollout status deployment/lionwiki
+
+# TLS : forcer le renouvellement du certificat
+kubectl delete secret lionwiki-tls
+kubectl delete certificate lionwiki-tls
+kubectl apply -f infra/kubernetes/lionwiki-ingress.yaml
+kubectl get certificate lionwiki-tls -w
+
+# Order cert-manager bloquée en pending → forcer la recréation
+kubectl delete order --all
+
+# Diagnostics cert-manager
+kubectl describe certificate lionwiki-tls
+kubectl describe order
+kubectl logs -n cert-manager deployment/cert-manager --tail=30
+```
+
 ## Variables de configuration principales
 
 Définies dans `index.php`, surchargeables dans `config.php` :

@@ -83,20 +83,29 @@ Voir la liste complète des substitutions dans `index.php` autour de `$tpl_subs`
 
 ## Déploiement Kubernetes
 
-Les manifests sont dans `infra/kubernetes/`. Ordre d'application :
+Les manifests sont dans `infra/kubernetes/`. Voir `infra/kubernetes/README.md` (EN) ou `README.fr.md` (FR) pour la procédure complète.
 
-```bash
-kubectl apply -f infra/kubernetes/data-persistentvolumeclaim.yaml
-kubectl apply -f infra/kubernetes/lionwiki-deployment.yaml
-kubectl apply -f infra/kubernetes/lionwiki-service.yaml
-kubectl apply -f infra/kubernetes/lionwiki-ingress.yaml
+**Environnement testé** : microk8s sur Scaleway DEV1-M (Ubuntu), sans StorageClass disponible.
+
+**Fichiers manifests :**
+```
+lionwiki-pv.yaml                  — PersistentVolume hostPath (/opt/lionwiki-data)
+data-persistentvolumeclaim.yaml   — PVC lié au PV ci-dessus
+lionwiki-deployment.yaml          — Deployment avec init container
+lionwiki-service.yaml             — Service ClusterIP port 80
+lionwiki-ingress.yaml             — Ingress nginx avec TLS cert-manager
+letsencrypt-clusterissuer.yaml    — ClusterIssuers Let's Encrypt staging + prod
 ```
 
-**Persistance** — un seul PVC `lionwiki-data` (500Mi, ReadWriteOnce) contient :
+**Points critiques :**
+- L'ingress controller nginx bare metal doit être patché avec l'IP publique du nœud (`externalIPs`)
+- Supprimer `validatingwebhookconfiguration ingress-nginx-admission` sinon le webhook nginx bloque les Ingress temporaires de cert-manager (challenge ACME HTTP-01)
+- Tester TLS avec `letsencrypt-staging` avant `letsencrypt-prod` (quota 5 certs/semaine en prod)
+- Si l'Order cert-manager reste `pending` : `kubectl delete order --all` pour forcer la recréation
+
+**Persistance** — un seul PVC `lionwiki-data` (500Mi, hostPath) contient :
 - `var/`        → pages wiki et historique des révisions
 - `config.php`  → configuration locale
 - `config.t2t`  → directives txt2tags globales
 
 Un init container copie ces fichiers depuis l'image au premier démarrage si le PVC est vierge.
-Modifier `host:` dans `lionwiki-ingress.yaml` avant de déployer.
-TLS via cert-manager : décommenter les annotations dans l'ingress.

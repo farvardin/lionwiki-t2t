@@ -13,7 +13,6 @@ spec:
     - http01:
         ingress:
           ingressClassName: nginx
-          pathType: Prefix
 ---
 # ClusterIssuer Let's Encrypt — production (certificat valide pour les navigateurs)
 apiVersion: cert-manager.io/v1
@@ -30,4 +29,3 @@ spec:
     - http01:
         ingress:
           ingressClassName: nginx
-          pathType: Prefix
