@@ -133,6 +133,14 @@ kubectl rollout status deployment/lionwiki
 # (microk8s utilise containerd, pas docker) :
 microk8s ctr images rm docker.io/farvardin4/lionwiki:latest
 
+# DiskPressure / pods Evicted — diagnostic et nettoyage
+df -i                         # IUse% proche de 100% = pénurie d'inodes (cause fréquente)
+df -h                         # vérifier l'espace disque
+kubectl describe node | grep -A8 Conditions
+kubectl get pods -A | grep -E 'Evicted|Completed|Error' | awk '{print $1, $2}' | while read ns pod; do kubectl delete pod "$pod" -n "$ns"; done
+microk8s ctr images prune --all
+journalctl --vacuum-size=100M
+
 # TLS : forcer le renouvellement du certificat
 kubectl delete secret lionwiki-tls
 kubectl delete certificate lionwiki-tls

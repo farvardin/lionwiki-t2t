@@ -1,6 +1,6 @@
 # LionWiki-t2t — Kubernetes Deployment
 # ======================================
-# Tested on bare microk8s cluster, Scaleway DEV1-M (4 GB RAM, Ubuntu)
+# Tested on bare microk8s cluster, Scaleway DEV1-M (4 GB RAM, Ubuntu, disk minimum 15 Gb)
 
 ## Prerequisites: install microk8s
 
@@ -196,6 +196,39 @@ If the image is stuck in the node's local cache (e.g. `already present on machin
 microk8s ctr images rm docker.io/farvardin4/lionwiki:latest
 kubectl rollout restart deployment/lionwiki
 ```
+
+---
+
+## Troubleshooting: DiskPressure / Evicted pods
+
+Pods showing `Evicted` status are caused by the node's kubelet evicting workloads under resource pressure. The most common cause on a small instance is **inode exhaustion** — disk space may appear free but inodes run out due to the large number of small files created by containerd.
+
+Diagnose:
+
+```bash
+df -i                         # check inode usage — look for IUse% near 100%
+df -h                         # check disk space
+kubectl describe node | grep -A8 Conditions   # look for DiskPressure: True
+```
+
+Clean up evicted pods and unused images:
+
+```bash
+# Remove evicted / failed pods
+kubectl get pods -A | grep -E 'Evicted|Completed|Error' | awk '{print $1, $2}' | while read ns pod; do kubectl delete pod "$pod" -n "$ns"; done
+
+# Remove unused containerd images
+microk8s ctr images prune --all
+
+# Trim system logs
+journalctl --vacuum-size=100M
+
+# Verify after cleanup
+df -i && df -h
+kubectl describe node | grep DiskPressure
+```
+
+> **Recommendation:** Use a minimum 15 GB disk. microk8s images alone occupy 5–6 GB.
 
 ---
 

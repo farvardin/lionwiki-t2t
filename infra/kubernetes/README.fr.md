@@ -1,6 +1,6 @@
 # Déploiement LionWiki-t2t sur Kubernetes
 # ==========================================
-# Testé sur cluster bare microk8s, Scaleway DEV1-M (4 Go RAM, Ubuntu)
+# Testé sur cluster bare microk8s, Scaleway DEV1-M (4 Go RAM, Ubuntu, disque minimum 15 Go)
 
 # ── Prérequis : installer microk8s ────────────────────────────────────────────
 
@@ -113,6 +113,28 @@ kubectl rollout restart deployment/lionwiki
 #      /opt/lionwiki-data/var/history/   — historique des révisions
 #      /opt/lionwiki-data/config.php     — configuration
 #      /opt/lionwiki-data/config.t2t     — directives txt2tags
+
+# ── Dépannage : DiskPressure / pods Evicted ──────────────────────────────────
+#    Les pods Evicted s'accumulent quand le nœud est sous pression disque.
+#    Sur une petite instance, la cause est souvent l'épuisement des inodes
+#    (espace libre mais trop de petits fichiers créés par containerd).
+
+#    Diagnostic :
+df -i                         # IUse% proche de 100% = pénurie d'inodes
+df -h                         # vérifier l'espace disque
+kubectl describe node | grep -A8 Conditions   # DiskPressure: True = nœud en pression
+
+#    Nettoyage :
+kubectl get pods -A | grep -E 'Evicted|Completed|Error' | awk '{print $1, $2}' | while read ns pod; do kubectl delete pod "$pod" -n "$ns"; done
+microk8s ctr images prune --all
+journalctl --vacuum-size=100M
+
+#    Vérifier après :
+df -i && df -h
+kubectl describe node | grep DiskPressure
+
+#    Recommandation : utiliser un disque de 15 Go minimum.
+#    microk8s seul occupe 5-6 Go d'images.
 
 # ── Nettoyage ─────────────────────────────────────────────────────────────────
 kubectl delete -f lionwiki-ingress.yaml -f lionwiki-service.yaml -f lionwiki-deployment.yaml
