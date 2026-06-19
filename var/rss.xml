@@ -1,9 +1,27 @@
 <rss version="2.0">
 <channel>
 <title>LionWiki-t2t</title>
-<link>https://localhost:443/lionwiki-t2t/index.php</link>
+<link>http://127.0.0.1:8739/index.php</link>
 <description>RSS feed from LionWiki-t2t</description>
 <language>en</language>
+
+	<item>
+	  <title>zztest_ajax</title>
+	  <pubDate>Fri, 19 Jun 2026 10:25:35 +0000</pubDate>
+	  <link>http://127.0.0.1:8739/index.php?page=zztest_ajax</link>
+	  <description><pre id="diff">
+
+</pre></description>
+	</item>
+
+	<item>
+	  <title>zztest_wd_renamed</title>
+	  <pubDate>Fri, 19 Jun 2026 10:13:02 +0000</pubDate>
+	  <link>http://127.0.0.1:8738/index.php?page=zztest_wd_renamed</link>
+	  <description><pre id="diff">
+
+</pre></description>
+	</item>
 
 	<item>
 	  <title>help.en</title>
@@ -290,6 +308,8 @@
 	  <link>http://localhost:80/lionwiki-t2t/index.php?page=sandbox</link>
 	  <description><pre id="diff"></pre></description>
 	</item>
+
+
 
 
 

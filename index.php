@@ -1,4 +1,4 @@
-<?php // LionWiki-t2t 3.2.12p - 2026-04-10
+<?php // LionWiki-t2t 3.2.12q - 2026-06-19
 
 // https://lionwiki-t2t.sourceforge.io/
 // https://github.com/farvardin/lionwiki-t2t/
@@ -824,6 +824,7 @@ function authentified()
 
 function setsafecookie()
 {
+    // setcookie for sensitive informations
     $args = func_get_args();
     while(count($args) != 6) {
         $args[] = '';

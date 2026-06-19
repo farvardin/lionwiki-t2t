@@ -1,0 +1,317 @@
+<!-- Browser panel -->
+<div id="browser">
+  <div id="br-header">
+    <span id="br-title">Writhdeck</span>
+    <div id="br-header-btns">
+      <button id="br-folder-btn"  title="Watch a folder — all files editable in place (w)">📁</button>
+      <button id="br-opendisk-btn" title="Open a file from disk — edit in place (o)">📄</button>
+      <button id="br-import-btn" title="Import copy of file (Ctrl+O)">↑</button>
+      <button id="br-new-btn" title="New document (n)">+</button>
+      <details id="br-help-details">
+        <summary id="br-help-btn" title="Help">?</summary>
+        <div id="br-help-menu">
+  <div id="br-help-logo-wrap">
+    <img id="br-help-logo" src="templates/favicon.png" alt="Writhdeck">
+  </div>
+  <button id="br-help-about">About</button>
+  <div class="more-sep"></div>
+  <button id="br-help-readme">README.md</button>
+  <div class="more-sep"></div>
+  <a id="br-help-source" href="https://github.com/luginf/writhdeck-web/" target="_blank" rel="noopener">source code ↗</a>
+  <div class="more-sep"></div>
+  <button id="br-help-settings">Settings</button>
+        </div>
+      </details>
+    </div>
+  </div>
+  <div id="br-list"></div>
+  <div id="br-bar"></div>
+</div>
+
+<!-- About dialog -->
+<dialog id="about-dlg">
+  <div id="about-header">
+    <button id="about-close">✕</button>
+  </div>
+  <div id="about-body">
+    <img id="about-logo" src="templates/favicon.png" alt="Writhdeck logo">
+    <p class="about-title">About Writhdeck</p>
+    <p>Writhdeck is a distraction-free writing environment for long-form text — novels, essays, notes, scripts.</p>
+    <p>All your documents live in your browser (IndexedDB) — nothing is sent to any server. You can also edit files directly on disk.</p>
+    <p>It features a custom colour-syntax overlay, typewriter focus mode, a session timer, daily word goals, and a fully keyboard-driven interface. Compatible with the Writhdeck desktop app via shared <code>.ini</code> settings.</p>
+    <p class="about-version">Build: 2026-06-19 — Open source — <a href="https://github.com/luginf/writhdeck-web/" target="_blank" rel="noopener">github.com/luginf/writhdeck-web</a></p>
+  </div>
+  <div id="about-footer">
+    <button id="about-ok">Close</button>
+  </div>
+</dialog>
+
+<!-- Hidden file inputs -->
+<input type="file" id="file-import-input" accept=".txt,.md,.tcl,.text" hidden multiple>
+<input type="file" id="ini-import-input"  accept=".ini,.txt" hidden>
+
+<!-- Editor panel -->
+<div id="editor" hidden>
+  <div id="ed-header">
+    <div id="ed-actions">
+      <button id="ed-menu-btn" title="Menu">≡</button>
+      <button id="ed-close-btn" title="Back to browser (Ctrl+Q, or Ctrl+Shift+Q on Firefox)">✕</button>
+    </div>
+  </div>
+  <div id="ed-body">
+    <div id="ed-linenos"></div>
+    <div id="ed-wrap">
+      <pre id="ed-highlight" aria-hidden="true"></pre>
+      <textarea id="ed-input" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+    </div>
+    <!-- TOC side panel -->
+    <div id="toc-panel">
+      <div id="toc-panel-header">
+        <span id="toc-panel-title">Contents</span>
+        <span id="toc-pin-btn" class="toc-pin-btn" title="Pin TOC (stays open when selecting a chapter)">📌</span>
+      </div>
+      <div id="toc-list" tabindex="-1"></div>
+    </div>
+  </div>
+  <div id="search-bar" hidden>
+    <label>Find: <input id="search-input" type="text" autocomplete="off"></label>
+    <span id="search-count"></span>
+    <button id="search-prev">▲</button>
+    <button id="search-next">▼</button>
+    <label id="replace-row" hidden>Replace: <input id="replace-input" type="text" autocomplete="off"></label>
+    <button id="replace-one" hidden>Replace</button>
+    <button id="replace-all" hidden>All</button>
+    <button id="search-close">✕</button>
+  </div>
+  <div id="goto-bar" hidden>
+    <label>Line: <input id="goto-input" type="number" min="1" autocomplete="off"></label>
+    <button id="goto-go">Go</button>
+    <button id="goto-close">✕</button>
+  </div>
+  <div id="ed-bar">
+    <span id="ed-bar-left"></span>
+    <span id="ed-bar-center"></span>
+    <span id="ed-bar-right"></span>
+  </div>
+</div>
+
+<!-- Main editor menu -->
+<div id="ed-menu" hidden>
+  <button id="ed-more-cmd">⌨ Command mode <span class="hint">Esc / Alt+C</span></button>
+  <button data-cmd="save">💾 Save <span class="hint">Ctrl+S</span></button>
+  <button data-cmd="save-as">Save as… <span class="hint">Ctrl+Shift+S</span></button>
+  <div class="more-sep"></div>
+  <div class="more-label">View</div>
+  <button data-cmd="toc">Table of contents <span class="hint">o</span></button>
+  <button data-cmd="dark">Dark / light <span class="hint">d</span></button>
+  <button data-cmd="linenos">Line numbers <span class="hint">n</span></button>
+  <button data-cmd="typewriter">Typewriter <span class="hint">w</span></button>
+  <div class="more-sep"></div>
+  <div class="more-label">Search</div>
+  <button data-cmd="find">Find <span class="hint">f</span></button>
+  <button data-cmd="replace">Find &amp; Replace <span class="hint">r</span></button>
+  <button data-cmd="goto">Go to line <span class="hint">g</span></button>
+  <div class="more-sep"></div>
+  <div class="more-label">Format</div>
+  <button data-markup="h1"></button>
+  <button data-markup="h2"></button>
+  <button data-markup="h3"></button>
+  <button data-markup="comment"></button>
+  <button data-markup="bold"></button>
+  <button data-markup="italic"></button>
+  <button data-markup="underline"></button>
+  <button data-markup="strike"></button>
+  <div class="more-sep"></div>
+  <div class="more-label">Document</div>
+  <button data-cmd="export-txt">Export as .txt <span class="hint">e</span></button>
+  <button data-cmd="export-md">Export as .md</button>
+  <button data-cmd="stats">Statistics <span class="hint">s</span></button>
+  <button data-cmd="analyse">Analyse <span class="hint">a</span></button>
+  <button data-cmd="word-occ">Word occurrences</button>
+  <button data-cmd="info">File info <span class="hint">i</span></button>
+  <div class="more-sep"></div>
+  <div class="more-label">App</div>
+  <button data-cmd="timer">Timer <span class="hint">t</span></button>
+  <button data-cmd="block-cursor">Block cursor</button>
+  <button data-cmd="ctx-menu">Right-click menu</button>
+  <button data-cmd="config">Settings <span class="hint">c</span></button>
+</div>
+
+<!-- Settings dialog -->
+<dialog id="settings-dlg">
+  <div id="settings-tabs">
+    <button class="stab active" data-tab="profile">Profile</button>
+    <button class="stab" data-tab="display">Display</button>
+    <button class="stab" data-tab="fonts">Fonts</button>
+    <button class="stab" data-tab="schemes">Schemes</button>
+    <button class="stab" data-tab="timer">Timer</button>
+    <button class="stab" data-tab="misc">Misc</button>
+  </div>
+  <div id="settings-body">
+
+    <!-- Profile tab -->
+    <div class="stab-content active" data-tab="profile">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <label>Profile <select id="profile-select"></select></label>
+        <button id="profile-new-btn">New</button>
+        <button id="profile-delete-btn">Delete</button>
+      </div>
+      <p class="hint">Margins, fonts, scheme, dark mode, word goal, line numbers, block cursor,
+        heading marker and markdown headings are saved per profile.</p>
+      <label>Default scheme
+        <select data-key="scheme" id="scheme-select-profile"></select>
+      </label>
+      <label><input type="checkbox" data-key="darkMode"> Dark mode</label>
+      <label>Margin horiz (px)<input type="number" data-key="marginX" min="0" max="400"></label>
+      <label>Margin vert (px)<input type="number" data-key="marginY" min="0" max="400"></label>
+      <label>Line spacing<input type="number" data-key="lineSpacing" min="0.8" max="3.0" step="0.1"></label>
+      <label>Word goal (words/day, 0=off)<input type="number" data-key="wordGoal" min="0"></label>
+      <label><input type="checkbox" data-key="hemingwayMode"> Hemingway mode (no delete)</label>
+    </div>
+
+    <!-- Display tab -->
+    <div class="stab-content" data-tab="display">
+      <p class="hint">Status bar zones</p>
+      <label>Left<input type="text" data-key="statusLeft"></label>
+      <label>Center<input type="text" data-key="statusCenter"></label>
+      <label>Right<input type="text" data-key="statusRight"></label>
+      <p class="hint">Tokens: filename dirty words chars lines line col para pages percent today goal reading clock timer</p>
+      <p class="hint" style="margin-top:10px">Editor options</p>
+      <label><input type="checkbox" data-key="lineNumbers"> Line numbers (Ctrl+L)</label>
+      <label><input type="checkbox" data-key="blockCursor"> Block cursor</label>
+      <label><input type="checkbox" data-key="blinkCursor"> Blinking cursor</label>
+      <p class="hint" style="margin-top:10px">Keyboard shortcuts</p>
+      <label><input type="checkbox" data-key="interceptBrowserShortcuts">
+        Override browser shortcuts
+        <span class="hint" style="display:block;margin-top:2px">
+          Ctrl+N = new document (instead of browser new window)
+        </span>
+      </label>
+      <p class="hint" style="margin-top:10px">Syntax markers</p>
+      <label>Heading marker<input type="text" data-key="headingMarker" maxlength="4"></label>
+      <label>Comment marker<input type="text" data-key="commentMarker" maxlength="4"></label>
+      <label>Bold marker<input type="text" data-key="boldMarker" maxlength="4"></label>
+      <label>Italic marker<input type="text" data-key="italicMarker" maxlength="4"></label>
+      <label>Underline marker<input type="text" data-key="underlineMarker" maxlength="4"></label>
+      <label>Strikethrough marker<input type="text" data-key="strikeMarker" maxlength="4"></label>
+      <label><input type="checkbox" data-key="markdownHeadings"> Markdown headings (#)</label>
+    </div>
+
+    <!-- Fonts tab -->
+    <div class="stab-content" data-tab="fonts">
+      <label>Font family<input type="text" data-key="fontFamily" id="font-family-input"></label>
+      <label>Font size (px)<input type="number" data-key="fontSize" min="8" max="48"></label>
+      <div id="font-preview-wrap">
+        <span class="hint">Preview:</span>
+        <div id="font-preview">The quick brown fox</div>
+      </div>
+      <label class="hint-label"><span class="hint">Available system fonts (click to select):</span></label>
+      <div id="font-list"></div>
+    </div>
+
+    <!-- Schemes tab -->
+    <div class="stab-content" data-tab="schemes">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <label>Scheme <select data-key="scheme" id="scheme-select"></select></label>
+        <button id="scheme-new-btn">New</button>
+        <button id="scheme-delete-btn">Delete</button>
+      </div>
+      <label style="margin-top:8px"><input type="checkbox" data-key="darkMode" id="scheme-dark-check"> Dark mode</label>
+      <div id="scheme-colors"></div>
+    </div>
+
+    <!-- Timer tab -->
+    <div class="stab-content" data-tab="timer">
+      <label>Type
+        <select data-key="timerType">
+          <option value="countdown">Countdown</option>
+          <option value="stopwatch">Stopwatch</option>
+        </select>
+      </label>
+      <label>Duration (min)<input type="number" data-key="timerDuration" min="1" max="240"></label>
+      <label><input type="checkbox" data-key="timerSound"> Sound at end</label>
+      <label><input type="checkbox" data-key="timerAlert"> Alert dialog</label>
+      <label><input type="checkbox" data-key="timerShow"> Show in status bar</label>
+    </div>
+
+    <!-- Misc tab -->
+    <div class="stab-content" data-tab="misc">
+      <label><input type="checkbox" data-key="cursorRestore"> Restore cursor position on open</label>
+      <label><input type="checkbox" data-key="openLastDoc"> Open last document on startup</label>
+      <p class="hint" style="margin-top:12px">Watched folder browser</p>
+      <label>File filter<input type="text" data-key="browserFilter"></label>
+      <label><input type="checkbox" data-key="browserShowAll"> Show all files (ignore filter)</label>
+      <label><input type="checkbox" data-key="browserSubdirs"> Browse subfolders</label>
+      <p class="hint" style="margin-top:12px">writhdeck.ini — compatible with the desktop version</p>
+      <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap">
+        <button id="misc-ini-import-btn">Import writhdeck.ini</button>
+        <button id="misc-ini-export-btn">Export writhdeck.ini</button>
+      </div>
+      <p class="hint" style="margin-top:12px">Documents</p>
+      <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap">
+        <button id="misc-import-btn">Import file from disk</button>
+        <button id="misc-export-all-btn">Export all (.txt)</button>
+        <button id="misc-export-zip-btn">Export all (ZIP)</button>
+      </div>
+    </div>
+
+  </div>
+  <div id="settings-footer">
+    <button id="settings-apply">Apply</button>
+    <button id="settings-close">Close</button>
+    <button id="settings-reset" style="margin-left:auto;color:var(--comment)">Reset to defaults</button>
+  </div>
+</dialog>
+
+<!-- File info dialog -->
+<dialog id="info-dlg">
+  <div id="info-header">
+    <span>Document info</span>
+    <button id="info-close">✕</button>
+  </div>
+  <div id="info-body"></div>
+</dialog>
+
+<!-- Analyse dialog -->
+<dialog id="analyse-dlg">
+  <div id="analyse-header">
+    <span id="analyse-title">Structure</span>
+    <button id="analyse-words-btn" title="Word occurrences">abc</button>
+    <button id="analyse-close">✕</button>
+  </div>
+  <div id="analyse-body"></div>
+</dialog>
+
+<!-- Word occurrences dialog -->
+<dialog id="words-dlg">
+  <div id="words-header">
+    <span id="words-title">Word occurrences</span>
+    <button id="words-close">✕</button>
+  </div>
+  <div id="words-body"></div>
+</dialog>
+
+<!-- Stats dialog -->
+<dialog id="stats-dlg">
+  <div id="stats-header">
+    <span>Writing Stats</span>
+    <button id="stats-close">✕</button>
+  </div>
+  <div id="stats-body"></div>
+</dialog>
+
+<!-- Timer alert dialog -->
+<dialog id="timer-alert-dlg">
+  <p>Timer finished!</p>
+  <button id="timer-alert-ok">OK</button>
+</dialog>
+
+<!-- Save-before-closing confirmation (Yes = save & close, No = discard & close, Cancel = stay) -->
+<dialog id="close-confirm-dlg">
+  <p id="close-confirm-msg"></p>
+  <div class="dlg-btn-row">
+    <button id="close-confirm-yes">Yes</button>
+    <button id="close-confirm-no">No</button>
+    <button id="close-confirm-cancel">Cancel</button>
+  </div>
+</dialog>
