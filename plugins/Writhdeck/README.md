@@ -62,35 +62,57 @@ python3 plugins/Writhdeck/sync-assets.py            # or: … sync-assets.py /pa
   (the storage layer becomes swappable; `db.js` exports `IndexedDbBackend`).
 - end of `init()` (`src/app.js`): calls `window.WRITHDECK_ON_READY({Editor, …})`
   when defined, to drive the app after initialisation.
+- `Editor.browser()` (`src/editor.js`): a distinct "show the browser" action
+  (defaults to `close()` upstream), and a **Quit** + **Browser** pair in the ≡
+  menu — so a host can give them different behaviours (here: Quit leaves,
+  Browser opens the page list). The ✕ tooltip now reads simply "Quit".
 
 ## Editing UX in the wiki
 
-Saving is done with `fetch` (AJAX) so you **stay in the editor** — only the
-Close button leaves it. The adapter overrides `Editor.save` / `saveAs` / `close`
-(the shared object methods), so every trigger — menu, `Ctrl+S`, `Ctrl+Shift+S`,
-`Ctrl+Q` / `Ctrl+Shift+Q`, command mode — is covered. Upstream writhdeck-web is
-untouched.
+Saving is done with `fetch` (AJAX) so you **stay in the editor**. The adapter
+overrides `Editor.save` / `saveAs` / `close` (the shared object methods), so
+every trigger — menu, `Ctrl+S`, `Ctrl+Shift+S`, `Ctrl+Q` / `Ctrl+Shift+Q`,
+command mode — is covered. Upstream writhdeck-web is untouched (`Editor.browser`
+is left at its default — see below).
 
-- **Save** — `Ctrl+S` or the ≡ menu → **Save**. Saves the page and stays in the
-  editor (no navigation).
+- **Save** — `Ctrl+S` or the ≡ menu → **Save**. Saves the current page and
+  stays in the editor (no navigation).
 - **Save as (rename)** — the ≡ menu → **Save as (rename)** (or `Ctrl+Shift+S`).
-  Repurposed to **rename/move the page** via LionWiki's native `moveto` field:
-  prompts for a new name, saves the content under it, moves the history, and
-  keeps editing under the new name. (Upstream keeps its disk/copy "Save as".)
-- **Close** (✕, `Ctrl+Q`, `Ctrl+Shift+Q`, cmd `q`) — the only way to leave. If
-  there are unsaved changes it shows the Yes/No/Cancel "save before leaving?"
-  prompt, then returns to the reading view. The writhdeck file browser is never
-  shown (it was meaningless and unsafe for a single page).
+  Repurposed to **rename/move the page** via LionWiki's native `moveto` field.
+- **Quit** (✕, `Ctrl+Q`, `Ctrl+Shift+Q`, ≡ menu → **Quit**, cmd `q`) — leaves
+  the editor and returns to the **last edited/visited wiki page** (remembered in
+  `localStorage`). Unsaved changes trigger the Yes/No/Cancel "save before
+  leaving?" prompt first.
+- **Browser** (≡ menu → **Browser**) — opens writhdeck's own **file browser**,
+  now listing every editable page in `var/pages/`. Clicking a row edits that
+  page in place; **Quit** from the browser returns to the last visited page.
 - **Autosave is disabled** (`window.WRITHDECK_AUTOSAVE = false`) so a long edit
   doesn't flood the page history; save explicitly. The wiki password is asked
-  via `prompt()` if required (kept in the form's `sc` field for the session).
-  The native Preview is not exposed. Settings/theme persist in `localStorage`.
+  via `prompt()` on the first save that needs it (then reused for the session;
+  once authenticated the `LW_AUT` cookie keeps saves working). Settings/theme
+  persist in `localStorage`.
 
-## Limitations (phase 1) & next steps
+## Backend (JSON API)
 
-- **Single-document**: only the current page is editable; the writhdeck file
-  browser and its dialogs are present but inactive.
+The plugin's `actionBegin()` hook answers a tiny read-only JSON API (gated on
+`$WRITHDECK_EDITOR`), used by the file browser. No `index.php` change needed:
 
-**Phase 2 (planned)**: a small JSON API in `index.php` (`action=list|raw|save`
-+ `&ajax=1`) to drive the full writhdeck **page browser** (listing + namespaces)
-against the wiki backend, replacing the single-document `wiki-backend.js`.
+| Request | Response |
+|---|---|
+| `?action=writhdeck_api&op=list` | `{ok, pages:[{name, modified, size}]}` |
+| `?action=writhdeck_api&op=raw&page=Foo` | `{ok, name, content, modified}` |
+
+Saving still goes through LionWiki's native `action=save` POST (conflict
+detection via `last_changed`, password, edit summary, rename, history). Page
+names are sanitised with `clear_path()`; `op=raw` returns 404 for unknown pages.
+
+## Quit vs Browser — the seam
+
+Upstream, the ✕/close and "back to browser" are the same thing (there is only
+the browser to return to). The plugin keeps them **distinct**:
+
+- `Editor.close` is overridden → **Quit** (leave to the last wiki page).
+- `Editor.browser` is left at its upstream default (show the file browser),
+  now backed by `var/pages/` via the JSON API + the multi-document
+  `WRITHDECK_BACKEND` (`getAllDocs`/`getDoc` read the API; `saveDoc`/`deleteDoc`
+  POST native saves; page source is loaded lazily when a row is opened).

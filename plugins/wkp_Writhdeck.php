@@ -30,6 +30,66 @@ class Writhdeck
         array("Writhdeck", "replaces the edit textarea with the writhdeck-web editor.")
     );
 
+    /**
+     * Tiny JSON API driving the writhdeck file browser against var/pages/.
+     * Runs very early (actionBegin) so it can answer and exit before any of
+     * LionWiki's page-rendering machinery. Read-only here (list + raw page
+     * source); saving keeps going through LionWiki's native action=save POST
+     * (conflict detection, password, history) — see wiki-backend.js.
+     *
+     *   ?action=writhdeck_api&op=list          → {ok, pages:[{name,modified,size}]}
+     *   ?action=writhdeck_api&op=raw&page=Foo  → {ok, name, content, modified}
+     */
+    function actionBegin()
+    {
+        global $action, $WRITHDECK_EDITOR, $PG_DIR;
+
+        if (empty($WRITHDECK_EDITOR) || $action !== 'writhdeck_api') {
+            return;
+        }
+
+        $op = isset($_REQUEST['op']) ? $_REQUEST['op'] : '';
+
+        if ($op === 'list') {
+            $pages = array();
+            foreach ((array) glob($PG_DIR . '*.txt') as $file) {
+                $name = substr(basename($file), 0, -4); // strip ".txt"
+                $pages[] = array(
+                    'name'     => $name,
+                    'modified' => filemtime($file),
+                    'size'     => filesize($file),
+                );
+            }
+            $this->respond(array('ok' => true, 'pages' => $pages));
+        }
+
+        if ($op === 'raw') {
+            $name = clear_path(isset($_REQUEST['page']) ? $_REQUEST['page'] : '');
+            $path = $PG_DIR . $name . '.txt';
+            if ($name === '' || !is_file($path)) {
+                $this->respond(array('ok' => false, 'error' => 'not found'), 404);
+            }
+            $this->respond(array(
+                'ok'       => true,
+                'name'     => $name,
+                'content'  => file_get_contents($path),
+                'modified' => filemtime($path),
+            ));
+        }
+
+        $this->respond(array('ok' => false, 'error' => 'unknown op'), 400);
+    }
+
+    // Emit a JSON response and stop — the API never falls through to the wiki.
+    private function respond($data, $status = 200)
+    {
+        http_response_code($status);
+        header('Content-Type: application/json; charset=utf-8');
+        header('Cache-Control: no-store');
+        echo json_encode($data);
+        exit;
+    }
+
     function template()
     {
         global $action, $preview, $html, $PLUGINS_DIR, $WRITHDECK_EDITOR;

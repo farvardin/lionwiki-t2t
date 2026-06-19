@@ -1358,6 +1358,12 @@ const Editor = (() => {
     Browser.render();
   }
 
+  // Show the document browser. Upstream this is identical to closing the
+  // editor (there is only the browser to go back to); integrations (e.g. the
+  // LionWiki plugin) override Editor.browser to open their own file browser
+  // while keeping Editor.close as a distinct "quit / leave" action.
+  async function browser() { return close(); }
+
   // ── Save ──────────────────────────────────────────────────────────────────
 
   async function save() {
@@ -2191,7 +2197,7 @@ const Editor = (() => {
   }
 
   return {
-    open, close, save, saveAs, onInput, syncScroll, syncGutter, rehighlight, updateStatusBar, setMsg,
+    open, close, browser, save, saveAs, onInput, syncScroll, syncGutter, rehighlight, updateStatusBar, setMsg,
     syncCursorLineCache, syncBlockCursor,
     saveCursorPos, applyLineNumbers,
     toggleTypewriter, isTypewriter, typewriterScroll, toggleLineNumbers, gotoLine, gotoLineGo, gotoLineClose,
@@ -3912,6 +3918,8 @@ async function init() {
     switch (cmd) {
       case 'save':       Editor.save();             break;
       case 'save-as':    Editor.saveAs();           break;
+      case 'close':      Editor.close();            break;
+      case 'browser':    Editor.browser();          break;
       case 'toc':        TOC.toggle();              break;
       case 'dark':
         State.settings.darkMode = !State.settings.darkMode;

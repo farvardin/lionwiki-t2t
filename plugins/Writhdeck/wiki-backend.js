@@ -3,30 +3,29 @@
  * LionWiki-t2t backend + bootstrap for the embedded writhdeck editor.
  *
  * Injected by the Writhdeck plugin (plugins/wkp_Writhdeck.php) BEFORE
- * writhdeck.js, only on edit/preview pages. It:
+ * writhdeck.js, only on edit/preview pages. It binds writhdeck's storage layer
+ * to the wiki's pages on disk (var/pages/) so the full writhdeck experience —
+ * editor AND file browser — works against the wiki:
  *
- *   1. Exposes window.WRITHDECK_BACKEND — the storage interface writhdeck's
- *      `backend.js` picks up instead of IndexedDB. Phase 1 is single-document:
- *      the one "document" is the wiki page currently being edited, mirrored to
- *      the native LionWiki <textarea id="inputPane"> inside the edit <form>.
- *      Saving POSTs that form via fetch (AJAX) so the user STAYS in the editor;
- *      all native save semantics are preserved server-side (conflict detection,
- *      password, edit summary, rename, history). Settings/theme go to localStorage.
+ *   1. window.WRITHDECK_BACKEND — the storage interface writhdeck's backend.js
+ *      picks up instead of IndexedDB. getAllDocs/getDoc read the wiki page list
+ *      and page source through the plugin's JSON API (action=writhdeck_api);
+ *      saving POSTs LionWiki's native action=save (conflict detection, password,
+ *      edit summary, rename, history are all still handled server-side).
  *
- *   2. Overrides Editor.save / saveAs / close so that, in the wiki:
- *        - Save (Ctrl+S / menu)            → AJAX save, stay in the editor
- *        - Save as (Ctrl+Shift+S / menu)   → rename/move the page, stay editing
- *        - Close (✕ / Ctrl+Q / cmd 'q')    → confirm-if-dirty, then back to the page
- *      The writhdeck file browser is therefore never shown (it is meaningless
- *      and was unsafe in a single-page context — e.g. "new file" could wipe the
- *      page being edited).
+ *   2. The two leave actions are kept DISTINCT (upstream they are identical):
+ *        - Quit  (✕ / Ctrl+Q / Ctrl+Shift+Q / menu "Quit")  → Editor.close
+ *          overridden: confirm-if-dirty, then LEAVE the editor back to the last
+ *          edited/visited wiki page (location change).
+ *        - Browser (menu "Browser") → Editor.browser left at its upstream
+ *          default (show writhdeck's file browser), now populated with every
+ *          editable page in var/pages/. Opening a row edits that page in place;
+ *          quitting from the browser also returns to the last visited page.
  *
- *   3. Disables writhdeck's 60s autosave (window.WRITHDECK_AUTOSAVE = false) so a
- *      long edit doesn't flood the wiki page history with revisions; saving is
- *      explicit (Ctrl+S / Save), and Close prompts to save unsaved changes.
+ *   3. writhdeck's 60s autosave is disabled (window.WRITHDECK_AUTOSAVE = false)
+ *      so long edits don't flood the wiki page history; saving is explicit.
  *
- * Phase 2 will swap this single-doc backend for HTTP calls to an index.php
- * JSON API (list / raw / save&ajax) to drive the full writhdeck file browser.
+ * Settings/theme/cursors live in localStorage (getMeta/setMeta).
  */
 (function () {
   var input = document.getElementById('inputPane');
@@ -35,27 +34,34 @@
   // Saving is explicit here; don't let the 60s autosave spam the page history.
   window.WRITHDECK_AUTOSAVE = false;
 
-  var form     = input.form;
-  var pageName = (form && form.querySelector('[name=page]')) ? form.querySelector('[name=page]').value : '';
-  var pageUrl  = location.pathname + '?page=' + encodeURIComponent(pageName);
+  var form      = input.form;
+  var endpoint  = (form && form.getAttribute('action')) || location.pathname;
+  var entryPage = (form && form.querySelector('[name=page]')) ? form.querySelector('[name=page]').value : '';
+  var entryLast = (form && form.querySelector('[name=last_changed]')) ? +form.querySelector('[name=last_changed]').value : 0;
 
-  // The single document, identity-stable so State.doc === this object.
-  var doc = {
-    id:       'wiki-page',
-    name:     pageName || 'page',
-    content:  input.value,
-    created:  Date.now(),
-    modified: Date.now(),
-  };
+  var api = null;          // set by WRITHDECK_ON_READY; access to writhdeck modules
+  var wikiPassword = '';   // cached wiki password for the session (form sc field / prompt)
 
-  var api = null; // set by WRITHDECK_ON_READY; gives access to writhdeck modules
-
+  function pageHref(name) {
+    return location.pathname + '?page=' + encodeURIComponent(name);
+  }
   function edText() {
     var ed = document.getElementById('ed-input');
-    return ed ? ed.value : doc.content;
+    return ed ? ed.value : (api && api.State.doc ? api.State.doc.content : input.value);
   }
 
-  // --- localStorage-backed meta (settings, theme, cursors, recents…) ---
+  // --- "last edited/visited page" — where Quit returns to. -------------------
+  var LAST_KEY = 'writhdeck:wiki:lastPage';
+  var lastPage = entryPage;
+  try { lastPage = localStorage.getItem(LAST_KEY) || entryPage; } catch (e) {}
+  function rememberPage(name) {
+    if (!name) return;
+    lastPage = name;
+    try { localStorage.setItem(LAST_KEY, name); } catch (e) {}
+  }
+  rememberPage(entryPage);
+
+  // --- localStorage-backed meta (settings, theme, cursors, recents…) ---------
   var META_PREFIX = 'writhdeck:';
   function getMeta(key) {
     try {
@@ -68,45 +74,81 @@
     return Promise.resolve();
   }
 
-  // --- AJAX save: POST the native edit form without leaving the editor. ---
-  // `moveto` (optional) renames/moves the page via LionWiki's native field.
+  // --- JSON API (read-only): page list + raw page source. --------------------
+  function apiUrl(op, extra) {
+    return endpoint + (endpoint.indexOf('?') >= 0 ? '&' : '?') +
+      'action=writhdeck_api&op=' + op + (extra || '');
+  }
+  function apiList() {
+    return fetch(apiUrl('list'), { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { return (j && j.ok && j.pages) || []; })
+      .catch(function () { return []; });
+  }
+  function apiRaw(name) {
+    return fetch(apiUrl('raw', '&page=' + encodeURIComponent(name)), { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .catch(function () { return null; });
+  }
+
+  // Build a writhdeck doc object from page metadata. Content is loaded lazily
+  // (on open) for list rows — `_stub` marks a not-yet-loaded page.
+  function makeDoc(name, modifiedSec, content) {
+    return {
+      id:          name,                       // page name is the stable id
+      name:        name,
+      content:     content == null ? '' : content,
+      created:     (modifiedSec || 0) * 1000,
+      modified:    (modifiedSec || 0) * 1000,
+      lastChanged: modifiedSec || 0,           // mtime at load → conflict detection
+      _stub:       content == null,
+    };
+  }
+
+  // --- AJAX save: POST LionWiki's native action=save for an arbitrary page. --
   // Resolves true on success, false on failure (wrong password / edit conflict).
-  function ajaxSave(moveto) {
-    if (!form) return Promise.resolve(false);
-    doc.content = edText();
-    input.value = doc.content; // so FormData(form) carries the latest text
+  function ajaxSave(doc, moveto, _retried) {
+    if (!doc) return Promise.resolve(false);
 
-    // Ask for the wiki password once if the form requires it and it's empty.
-    var pw = form.querySelector('input[name=sc]');
-    if (pw && !pw.value) {
-      var entered = window.prompt('Wiki password to save this page:');
-      if (entered === null) return Promise.resolve(false); // cancelled
-      pw.value = entered;
-    }
-
-    var fd = new FormData(form);
+    var fd = new FormData();
+    fd.set('action', 'save');
+    fd.set('page', doc.name);
     fd.set('content', doc.content);
+    fd.set('last_changed', String(doc.lastChanged || Math.floor(Date.now() / 1000)));
+    fd.set('esum', '');
     if (moveto != null) fd.set('moveto', moveto);
 
-    // Don't send ajax=1: that would hand the POST to the AjaxEditing plugin.
-    // Use redirect:'manual' — LionWiki answers a successful save with a 302
-    // (→ an opaque-redirect response), and a rejected save (bad password / edit
-    // conflict) with a 200 edit page. The password also rides in the form's
-    // `sc` field, so saves stay authenticated without reading the response.
-    return fetch(form.getAttribute('action') || location.href, {
+    // Password: a session value if we have one (the form's sc field is only
+    // present when not yet authenticated; once a save succeeds the LW_AUT
+    // cookie keeps the session authenticated without it).
+    var pwField = form && form.querySelector('input[name=sc]');
+    var pw = wikiPassword || (pwField && pwField.value) || '';
+    if (pw) fd.set('sc', pw);
+
+    // redirect:'manual' — a successful save answers with a 302 (opaque redirect);
+    // a rejected save (bad password / edit conflict) answers with a 200 edit page.
+    return fetch(endpoint, {
       method: 'POST', body: fd, credentials: 'same-origin', redirect: 'manual'
     }).then(function (resp) {
       var ok = resp.type === 'opaqueredirect' || resp.redirected ||
                (resp.status >= 300 && resp.status < 400);
-      if (!ok) {                        // 200 edit page ⇒ save rejected
-        if (pw) pw.value = '';          // let the user retry the password
+      if (!ok) {
+        // 200 edit page ⇒ save rejected. Ask for the password once and retry.
+        if (!_retried && (pwField || !pw)) {
+          var entered = window.prompt('Wiki password to save this page:');
+          if (entered === null) return false;       // cancelled
+          wikiPassword = entered;
+          return ajaxSave(doc, moveto, true);
+        }
+        wikiPassword = '';
         if (api) api.Editor.setMsg('Save failed (password or edit conflict)');
         return false;
       }
-      // Success: bump last_changed so our next save doesn't self-conflict.
-      var lc = form.querySelector('[name=last_changed]');
-      if (lc) lc.value = Math.floor(Date.now() / 1000);
+      // Success: bump lastChanged so the next save of this doc doesn't conflict.
+      doc.lastChanged = Math.floor(Date.now() / 1000);
+      doc.modified    = Date.now();
       if (api) { api.State.dirty = false; api.Editor.setMsg('Saved'); }
+      rememberPage(doc.name);
       return true;
     }).catch(function () {
       if (api) api.Editor.setMsg('Save failed (network)');
@@ -114,35 +156,38 @@
     });
   }
 
-  // Save — stay in the editor.
-  function wikiSave() { return ajaxSave(null); }
+  // Save — stay in the editor (operates on the currently-open page).
+  function wikiSave() {
+    if (!api || !api.State.doc) return Promise.resolve(false);
+    api.State.doc.content = edText();
+    return ajaxSave(api.State.doc, null);
+  }
 
-  // Save as → rename/move the page, then keep editing under the new name.
+  // Save as → rename/move the current page, then keep editing under the new name.
   function renamePage() {
-    var dest = window.prompt('Save as (rename) — new page name:', pageName);
-    if (dest === null) return;          // cancelled
+    if (!api || !api.State.doc) return;
+    var doc  = api.State.doc;
+    var from = doc.name;
+    var dest = window.prompt('Save as (rename) — new page name:', from);
+    if (dest === null) return;            // cancelled
     dest = dest.replace(/^\s+|\s+$/g, '');
-    if (!dest || dest === pageName) { if (dest === pageName) ajaxSave(null); return; }
+    if (!dest) return;
+    if (dest === from) { wikiSave(); return; }
 
-    ajaxSave(dest).then(function (ok) {
-      if (!ok) return;                  // failed — message already shown, stay
-      // Adopt the new identity and keep editing.
-      pageName = dest;
-      pageUrl  = location.pathname + '?page=' + encodeURIComponent(dest);
+    doc.content = edText();
+    ajaxSave(doc, dest).then(function (ok) {
+      if (!ok) return;                    // failed — message already shown
       doc.name = dest;
-      var pageField = form && form.querySelector('[name=page]');
-      if (pageField) pageField.value = dest;
-      var moveField = form && form.querySelector('[name=moveto]');
-      if (moveField) moveField.value = ''; // page == dest now: no further move
-      if (api && api.State.doc) api.State.doc.name = dest;
+      doc.id   = dest;
+      rememberPage(dest);
       document.title = dest + ' — Writhdeck';
       if (api) api.Editor.setMsg('Renamed to ' + dest);
-      try { history.replaceState(null, '', pageUrl + '&action=edit'); } catch (e) {}
+      try { history.replaceState(null, '', pageHref(dest) + '&action=edit'); } catch (e) {}
     });
   }
 
   // Yes/No/Cancel "save before leaving?" using writhdeck's own dialog.
-  function confirmClose() {
+  function confirmClose(name) {
     return new Promise(function (resolve) {
       var dlg = document.getElementById('close-confirm-dlg');
       if (!dlg || typeof dlg.showModal !== 'function') {
@@ -153,7 +198,7 @@
       var yes = document.getElementById('close-confirm-yes');
       var no = document.getElementById('close-confirm-no');
       var cancel = document.getElementById('close-confirm-cancel');
-      if (msg) msg.textContent = 'Save "' + (pageName || 'page') + '" before leaving?';
+      if (msg) msg.textContent = 'Save "' + (name || 'page') + '" before leaving?';
       function cleanup(val) {
         yes.removeEventListener('click', onYes);
         no.removeEventListener('click', onNo);
@@ -174,32 +219,45 @@
     });
   }
 
-  // Close → confirm if dirty, then return to the wiki reading view (never the
-  // writhdeck browser). Triggered by ✕, Ctrl+Q, Ctrl+Shift+Q and cmd-mode 'q'.
+  // Quit → confirm if dirty, then LEAVE to the last edited/visited wiki page.
+  // Triggered by ✕, Ctrl+Q, Ctrl+Shift+Q, the menu "Quit" and cmd-mode 'q'.
   async function wikiClose() {
-    if (api && api.State.dirty) {
-      var choice = await confirmClose();
+    var doc = api && api.State.doc;
+    if (doc && api.State.dirty) {
+      var choice = await confirmClose(doc.name);
       if (choice === 'cancel') return;
       if (choice === 'yes') {
-        var ok = await ajaxSave(null);
-        if (!ok) return;                // save failed → stay in the editor
+        doc.content = edText();
+        var ok = await ajaxSave(doc, null);
+        if (!ok) return;                  // save failed → stay in the editor
       }
     }
-    if (api) api.State.dirty = false;   // avoid the beforeunload prompt
-    location.href = pageUrl;
+    if (api) api.State.dirty = false;     // avoid the beforeunload prompt
+    location.href = pageHref((doc && doc.name) || lastPage || entryPage);
   }
 
   window.WRITHDECK_BACKEND = {
-    open:        function ()    { return Promise.resolve(); },
-    getAllDocs:  function ()    { return Promise.resolve([doc]); },
-    getDoc:      function ()    { return Promise.resolve(doc); },
-    saveDoc:     function (d)   { if (d) doc.content = d.content; return ajaxSave(null); },
-    deleteDoc:   function ()    { return Promise.resolve(); },
+    open:        function ()      { return Promise.resolve(); },
+    // Browser list — every editable page in var/pages/ (content loaded on open).
+    getAllDocs:  function ()      {
+      return apiList().then(function (pages) {
+        return pages.map(function (p) { return makeDoc(p.name, p.modified, null); });
+      });
+    },
+    getDoc:      function (id)     {
+      return apiRaw(id).then(function (j) {
+        return j && j.ok ? makeDoc(j.name, j.modified, j.content) : null;
+      });
+    },
+    saveDoc:     function (d)      { if (!d) return Promise.resolve(false); d.content = (d.content || ''); return ajaxSave(d, null); },
+    // Delete = save empty content (LionWiki unlinks empty pages). `id` is the
+    // page name (our doc ids are page names).
+    deleteDoc:   function (id)     { return id ? ajaxSave({ name: id, content: '', lastChanged: 0 }, null) : Promise.resolve(); },
     getMeta:     getMeta,
     setMeta:     setMeta,
   };
 
-  // --- Bootstrap once writhdeck has initialised ---
+  // --- Bootstrap once writhdeck has initialised ------------------------------
   window.WRITHDECK_ON_READY = function (writhdeckApi) {
     api = writhdeckApi;
 
@@ -208,17 +266,58 @@
     if (appEl) appEl.hidden = false;
     document.body.classList.add('writhdeck-active');
 
-    // Override the shared Editor methods — this covers every trigger (menu
-    // buttons, Ctrl+S/Ctrl+Shift+S/Ctrl+Q, command mode) since they all call
-    // these properties. Upstream writhdeck-web is untouched.
+    // Override the shared Editor leave/save methods. Editor.browser is left at
+    // its upstream default (show the file browser) — now backed by var/pages/.
     api.Editor.save   = wikiSave;
     api.Editor.saveAs = renamePage;
     api.Editor.close  = wikiClose;
 
-    // Relabel the menu entry (LionWiki-only DOM tweak).
+    // Lazily load page source when a browser row (a stub) is opened, and keep
+    // track of the last page touched (for Quit). Wraps the shared open method.
+    var origOpen = api.Editor.open;
+    api.Editor.open = function (doc) {
+      if (doc && doc._stub) {
+        return apiRaw(doc.name).then(function (j) {
+          if (j && j.ok) {
+            doc.content     = j.content;
+            doc.modified    = (j.modified || 0) * 1000;
+            doc.lastChanged = j.modified || 0;
+          }
+          doc._stub = false;
+          rememberPage(doc.name);
+          return origOpen.call(api.Editor, doc);
+        });
+      }
+      rememberPage(doc && doc.name);
+      return origOpen.call(api.Editor, doc);
+    };
+
+    // Relabel the rename entry (LionWiki-only DOM tweak).
     var saBtn = document.querySelector('#ed-menu [data-cmd="save-as"]');
     if (saBtn) saBtn.innerHTML = 'Save as (rename) <span class="hint">Ctrl+Shift+S</span>';
 
-    return api.Editor.open(doc);
+    // Browser header (LionWiki-only DOM tweaks): the file browser is the root
+    // view, so upstream has no way to leave it — add a ✕ Quit that returns to
+    // the wiki. Hide the disk-only actions (watch folder / open / import file):
+    // there is no local filesystem here, only var/pages/.
+    ['br-folder-btn', 'br-opendisk-btn', 'br-import-btn'].forEach(function (id) {
+      var b = document.getElementById(id);
+      if (b) b.hidden = true;
+    });
+    var hdrBtns = document.getElementById('br-header-btns');
+    if (hdrBtns && !document.getElementById('br-quit-btn')) {
+      var quitBtn = document.createElement('button');
+      quitBtn.id = 'br-quit-btn';
+      quitBtn.title = 'Quit — back to the wiki';
+      quitBtn.textContent = '✕';
+      quitBtn.addEventListener('click', function () { wikiClose(); });
+      hdrBtns.insertBefore(quitBtn, hdrBtns.firstChild);
+    }
+
+    // Open the page we arrived to edit directly (content is already in the
+    // textarea — no fetch needed). The browser still lists every page.
+    var entryDoc = makeDoc(entryPage || 'page', 0, input.value);
+    entryDoc.lastChanged = entryLast || Math.floor(Date.now() / 1000);
+    return api.Editor.open(entryDoc);
   };
 })();
