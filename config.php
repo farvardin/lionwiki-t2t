@@ -76,6 +76,8 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 
 /* **** MORE OPTIONS **** */
 
+$WRITHDECK_EDITOR = true;  // full screen edition instead of the default one
+
 $NO_HTML = true; // XSS protection
 
 $START_PAGE = 'main'; // Which page should be default (start page)?
