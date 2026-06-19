@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="icon" href="templates/favicon.png" type="image/png"/>
+	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+
+	<!-- Theme bootstrap: set data-theme before paint to avoid a flash.
+	     Default follows the system (prefers-color-scheme); a toggle lets the
+	     reader force light/dark and remembers the choice in a cookie. -->
+	<script>
+	(function () {
+	  var MODES = ['auto', 'light', 'dark'];
+	  function getCookie(n) {
+	    var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)');
+	    return m ? decodeURIComponent(m[1]) : '';
+	  }
+	  function setCookie(n, v) {
+	    document.cookie = n + '=' + encodeURIComponent(v) + ';path=/;max-age=31536000;samesite=lax';
+	  }
+	  function label(m) {
+	    return m === 'light' ? '☀ light' : m === 'dark' ? '☾ dark' : '⊙ auto';
+	  }
+	  function apply(m) {
+	    if (m === 'auto') document.documentElement.removeAttribute('data-theme');
+	    else document.documentElement.setAttribute('data-theme', m);
+	  }
+	  var cur = getCookie('lw_theme');
+	  if (MODES.indexOf(cur) < 0) cur = 'auto';
+	  apply(cur); // runs before <body> renders
+	  window.lwThemeCycle = function () {
+	    cur = MODES[(MODES.indexOf(cur) + 1) % MODES.length];
+	    setCookie('lw_theme', cur);
+	    apply(cur);
+	    var b = document.getElementById('theme-toggle');
+	    if (b) b.textContent = label(cur);
+	  };
+	  document.addEventListener('DOMContentLoaded', function () {
+	    var b = document.getElementById('theme-toggle');
+	    if (b) b.textContent = label(cur);
+	  });
+	})();
+	</script>
+
+	<style type="text/css">
+	/* ── writerdeck template — palette ported from writhdeck "alt01" scheme ──
+	   Celebrates the Writhdeck/LionWiki integration. Light by default, dark via
+	   the system preference, and overridable with the header toggle (cookie). */
+
+	/* Light (alt01 "Alt" set) — the default */
+	:root {
+	  --bg:      #fffde9;
+	  --fg:      #363c42;
+	  --bg-bar:  #eee8d5;
+	  --fg-bar:  #93a1a1;
+	  --bg-sel:  #f0e7c1;
+	  --heading: #c8064a;
+	  --comment: #aaaaaa;
+	  --link:    #7e1c3e;
+	  --rule:    #e3dcc2;
+	  --code-bg: #f3eeda;
+	}
+	/* Dark (alt01 primary set) — when the system asks for dark and no override */
+	@media (prefers-color-scheme: dark) {
+	  :root {
+	    --bg:      #1a1214;
+	    --fg:      #e8dcc8;
+	    --bg-bar:  #241820;
+	    --fg-bar:  #9e8878;
+	    --bg-sel:  #521828;
+	    --heading: #e63060;
+	    --comment: #6e5858;
+	    --link:    #c24868;
+	    --rule:    #3a2630;
+	    --code-bg: #241820;
+	  }
+	}
+	/* Explicit overrides (toggle) — win over the media query via specificity */
+	:root[data-theme="light"] {
+	  --bg:#fffde9; --fg:#363c42; --bg-bar:#eee8d5; --fg-bar:#93a1a1;
+	  --bg-sel:#f0e7c1; --heading:#c8064a; --comment:#aaaaaa; --link:#7e1c3e;
+	  --rule:#e3dcc2; --code-bg:#f3eeda;
+	}
+	:root[data-theme="dark"] {
+	  --bg:#1a1214; --fg:#e8dcc8; --bg-bar:#241820; --fg-bar:#9e8878;
+	  --bg-sel:#521828; --heading:#e63060; --comment:#6e5858; --link:#c24868;
+	  --rule:#3a2630; --code-bg:#241820;
+	}
+
+	* { box-sizing: border-box; }
+	html { -webkit-text-size-adjust: 100%; }
+	body {
+	  margin: 0;
+	  /* --wd-* are optional overrides written by the plugin from the editor's
+	     Settings (margins, font, spacing); fallbacks = the template defaults.
+	     --wd-margin-x/y become the body's real side/vertical padding (like
+	     writhdeck), and --wd-content-max lifts the 720px column cap when margins
+	     are set, so the margin actually controls the column width. */
+	  padding: var(--wd-margin-y, 0) var(--wd-margin-x, 20px) calc(var(--wd-margin-y, 0px) + 40px);
+	  background: var(--bg);
+	  color: var(--fg);
+	  font-family: var(--wd-font, Georgia, "Iowan Old Style", "Palatino Linotype", serif);
+	  font-size: var(--wd-font-size, 18px);
+	  line-height: var(--wd-line-height, 1.6);
+	  transition: background-color .2s ease, color .2s ease;
+	}
+	::selection { background: var(--bg-sel); }
+
+	a { color: var(--link); text-decoration: none; }
+	a:hover { text-decoration: underline; }
+
+	.wrap { max-width: 720px; margin: 0 auto; }
+
+	/* Header / nav bar */
+	header {
+	  max-width: var(--wd-content-max, 720px);
+	  margin: 0 auto;
+	  display: flex;
+	  align-items: baseline;
+	  flex-wrap: wrap;
+	  gap: 8px 18px;
+	  padding: 22px 0 10px;
+	  border-bottom: 1px solid var(--rule);
+	}
+	header .brand {
+	  font-size: 1.5rem;
+	  font-weight: bold;
+	  color: var(--heading);
+	  margin-right: auto;
+	}
+	header .brand a { color: inherit; }
+	nav { font-size: .82rem; letter-spacing: .02em; }
+	nav a { color: var(--fg-bar); margin-left: 14px; }
+	nav a:hover { color: var(--heading); }
+
+	#theme-toggle {
+	  font: inherit;
+	  font-size: .78rem;
+	  cursor: pointer;
+	  color: var(--fg-bar);
+	  background: var(--bg-bar);
+	  border: 1px solid var(--rule);
+	  border-radius: 999px;
+	  padding: 2px 12px;
+	  margin-left: 14px;
+	  transition: color .2s, border-color .2s;
+	}
+	#theme-toggle:hover { color: var(--heading); border-color: var(--heading); }
+
+	/* Content */
+	main { max-width: var(--wd-content-max, 720px); margin: 0 auto; }
+	h1#page-title {
+	  color: var(--heading);
+	  font-size: 2rem;
+	  margin: 32px 0 18px;
+	  line-height: 1.2;
+	}
+	main h1, main h2, main h3, main h4 { color: var(--heading); line-height: 1.25; }
+	main h1 { font-size: 1.7rem; margin: 1.4em 0 .5em; }
+	main h2 { font-size: 1.4rem; margin: 1.3em 0 .5em; }
+	main h3 { font-size: 1.15rem; margin: 1.2em 0 .4em; }
+	main h4 { font-size: 1rem; font-style: italic; }
+	main p { margin: 0 0 1em; }
+	main ul, main ol { margin: 0 0 1em 1.4em; }
+	main blockquote {
+	  margin: 1em 0; padding: .2em 1.1em;
+	  border-left: 3px solid var(--heading);
+	  color: var(--comment);
+	  font-style: italic;
+	}
+	main img, main svg { max-width: 100%; height: auto; }
+	hr { border: 0; border-top: 1px solid var(--rule); margin: 1.6em 0; }
+
+	pre, code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
+	main code { background: var(--code-bg); padding: .1em .35em; border-radius: 3px; font-size: .85em; }
+	main pre {
+	  background: var(--code-bg);
+	  padding: 14px 16px;
+	  border-radius: 6px;
+	  overflow-x: auto;
+	  font-size: .8rem;
+	  line-height: 1.45;
+	  white-space: pre-wrap;
+	  word-wrap: break-word;
+	}
+	main pre code { background: none; padding: 0; }
+
+	table { border-collapse: collapse; margin: 1em 0; }
+	table td, table th { border: 1px solid var(--rule); padding: 5px 10px; text-align: left; vertical-align: top; }
+	table th { background: var(--bg-bar); }
+
+	/* Paragraph-edit affordance */
+	h1 span.par-edit, h2 span.par-edit, h3 span.par-edit,
+	h4 span.par-edit, h5 span.par-edit, h6 span.par-edit {
+	  visibility: hidden; font-size: x-small; font-weight: normal;
+	}
+	h1:hover span.par-edit, h2:hover span.par-edit, h3:hover span.par-edit,
+	h4:hover span.par-edit, h5:hover span.par-edit, h6:hover span.par-edit { visibility: visible; }
+
+	/* Edit form (classic editor — Writhdeck overlays fullscreen when enabled) */
+	.error-box { color: #fff; background: var(--heading); padding: 8px 12px; border-radius: 4px; margin: 14px 0; }
+	#panesContainer { display: flex; gap: 12px; flex-wrap: wrap; }
+	#leftContainer, #rightContainer { flex: 1 1 320px; }
+	.contentTextarea, #inputPane, #previewPane {
+	  width: 100%;
+	  min-height: 420px;
+	  background: var(--code-bg);
+	  color: var(--fg);
+	  border: 1px solid var(--rule);
+	  border-radius: 6px;
+	  padding: 12px;
+	  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+	  font-size: .85rem;
+	  line-height: 1.5;
+	}
+	.edit-meta { margin: 12px 0; font-size: .85rem; color: var(--comment); }
+	.edit-meta input[type=text], .edit-meta input[type=password] {
+	  background: var(--bg); color: var(--fg);
+	  border: 1px solid var(--rule); border-radius: 4px; padding: 4px 8px; font: inherit; font-size: .85rem;
+	}
+	input.submit, .edit-meta input[type=submit] {
+	  font: inherit; font-size: .85rem; cursor: pointer;
+	  background: var(--heading); color: #fff;
+	  border: 0; border-radius: 4px; padding: 5px 16px;
+	}
+	input.submit:hover { filter: brightness(1.08); }
+
+	/* Search + footer */
+	.search-row { margin: 24px 0 0; }
+	.search-row input[type=text] {
+	  background: var(--bg); color: var(--fg);
+	  border: 1px solid var(--rule); border-radius: 4px; padding: 4px 8px; font: inherit; font-size: .85rem;
+	}
+	footer {
+	  max-width: var(--wd-content-max, 720px); margin: 26px auto 0; padding: 16px 0 0;
+	  border-top: 1px solid var(--rule);
+	  font-size: .8rem; color: var(--comment);
+	}
+	footer a { color: var(--fg-bar); }
+	footer a:hover { color: var(--heading); }
+
+	/* Diff / tags / versions (plugin chrome) */
+	#diff { padding: 1em; white-space: pre-wrap; word-wrap: break-word; }
+	#diff ins { color: var(--markup, #58755f); text-decoration: none; font-weight: bold; }
+	#diff del { color: var(--heading); text-decoration: line-through; }
+	#diff .orig { color: var(--comment); font-size: 90%; }
+	.tagList, .tagCloud { padding: .3em .6em; margin: 1em 0; border: 1px dashed var(--rule); }
+	.tagCloud { float: right; width: 200px; }
+	.pageVersionsList { font-size: 12px; color: var(--comment); }
+	</style>
+
+	<!-- Optional scheme override: written by the Writhdeck plugin when a colour
+	     scheme is picked in the editor's Settings. Absent by default (→ alt01).
+	     Loaded after the inline styles so it overrides them. -->
+	<link rel="stylesheet" href="templates/writerdeck/style.css"/>
+
+	{HEAD}
+</head>
+<body>
+
+<header>
+	<span class="brand"><a href="index.php">{WIKI_TITLE}</a></span>
+	<nav>
+		{HOME} {RECENT_CHANGES} {EDIT} {SYNTAX} {HISTORY}
+	</nav>
+	<button id="theme-toggle" type="button" onclick="lwThemeCycle()" title="Switch light / dark theme">⊙ auto</button>
+</header>
+
+<main>
+	<h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+
+	{<div class="error-box"> ERROR </div>}
+
+	{CONTENT} {plugin:TAG_LIST}
+
+	{CONTENT_FORM}
+		{CONTENT_TEXTAREA}
+		<div class="edit-meta">
+			{RENAME_TEXT} {RENAME_INPUT}
+			<p>{FORM_PASSWORD} {FORM_PASSWORD_INPUT} {plugin:CAPTCHA_QUESTION} {plugin:CAPTCHA_INPUT}
+			{EDIT_SUMMARY_TEXT} {EDIT_SUMMARY_INPUT} {CONTENT_SUBMIT} {CONTENT_PREVIEW}</p>
+		</div>
+	{/CONTENT_FORM}
+
+	<div class="search-row">{SEARCH_FORM}{SEARCH_INPUT} {SEARCH_SUBMIT}{/SEARCH_FORM}</div>
+</main>
+
+<footer>
+	<div>{LAST_CHANGED_TEXT  } {LAST_CHANGED}</div>
+	<div>{EDIT} {SYNTAX} {HISTORY} {RECENT_CHANGES} &middot; {COOKIE}</div>
+	<div>Powered by <a href="https://lionwiki-t2t.sourceforge.io/">LionWiki-t2t</a> &amp;
+		<a href="https://github.com/luginf/writhdeck-web/">Writhdeck</a>.</div>
+		 {plugin:SELECT_LANGUAGE}
+</footer>
+
+</body>
+</html>
