@@ -170,4 +170,40 @@ Définies dans `index.php`, surchargeables dans `config.php` :
 | `$PROTECTED_READ` | `false` | Mot de passe requis pour lire |
 | `$DATE_FORMAT` | `'Y-m-d H:i'` | Format de date PHP |
 | `$LOCAL_HOUR` | `0` | Décalage horaire en heures |
-| `$LANG` | auto-détecté | Code langue (ex: `'fr'`) |
+| `$LANG` | auto-détecté | Code langue (ex: `'fr'`) — **ne pas forcer** dans config.php, sinon le cookie `LW_LANG` du sélecteur de langue est écrasé à chaque requête (config chargé *après* la détection) |
+| `$WRITHDECK_EDITOR` | absent (off) | `true` = éditeur plein écran Writhdeck + API `writhdeck_api` |
+
+## Éditeur Writhdeck + thème writerdeck
+
+L'éditeur plein écran **Writhdeck** (plugin `plugins/wkp_Writhdeck.php` + `plugins/Writhdeck/`)
+et le template clair/sombre **writerdeck** (`templates/writerdeck/`) forment un duo.
+
+```bash
+# Activer dans config.php
+$WRITHDECK_EDITOR = true;
+$TEMPLATE = 'templates/writerdeck/writerdeck.html';
+```
+
+**Source de vérité = dépôt upstream** `~/src/writerdeck/writhdeck-web` (voir mémoire `writhdeck-dual-repo`).
+Régénérer les assets après une modif upstream :
+
+```bash
+python3 plugins/Writhdeck/sync-assets.py    # → writhdeck.js, style.css, body.html
+```
+
+Ne **jamais** éditer à la main `writhdeck.js` / `style.css` / `body.html` (générés).
+Hand-written : `wiki-backend.js`, `wiki.css`, `wkp_Writhdeck.php`.
+
+**API JSON du plugin** (hook `actionBegin`, nécessite `$WRITHDECK_EDITOR`) :
+
+| Requête | Effet |
+|---|---|
+| `?action=writhdeck_api&op=list` | liste des pages de `var/pages/` |
+| `?action=writhdeck_api&op=raw&page=X` | source brute d'une page |
+| `POST …&op=savecss` (`vars`={scheme,light,dark,layout}) | écrit `templates/writerdeck/style.css` |
+
+- **Quitter** (`Editor.close` surchargé) → dernière page visitée ; **Browser** (`Editor.browser`) → navigateur de fichiers `var/pages/`.
+- **Synchro d'apparence** : bouton « Synchronise backend appearance to frontend » (Settings → Profile) → `op=savecss`.
+  Le CSS généré émet des **règles explicites** (pas seulement des variables) pour rester robuste quelle que soit la version du template.
+  Gardé par `authentified()` + `var/pages/` inscriptible ; couleurs validées en hex côté serveur.
+- Les assets injectés et le `style.css` du template sont **cache-bustés** (`?v=mtime`) par le plugin.

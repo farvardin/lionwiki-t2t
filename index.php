@@ -137,6 +137,11 @@ if ($_lang_real_dir && file_exists($_lang_file) && strpos(realpath($_lang_file),
     include $_lang_file;
 } elseif ($_lang_real_dir && file_exists($_lang_file_short) && strpos(realpath($_lang_file_short), $_lang_real_dir) === 0) {
     include $_lang_file_short;
+    // Browser locales are sent as "fr-FR"/"en-US": we loaded the short file
+    // (fr/en), so normalise $LANG to that short code too — otherwise $LANG keeps
+    // the full locale and never matches a language selector option (selector
+    // looks unselected / "English") nor a page.<lang>.txt variant.
+    $LANG = substr($LANG, 0, 2);
 } else {
     $LANG = 'en';
 }

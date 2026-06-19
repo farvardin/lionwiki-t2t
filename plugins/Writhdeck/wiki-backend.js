@@ -71,7 +71,133 @@
   }
   function setMeta(key, value) {
     try { localStorage.setItem(META_PREFIX + key, JSON.stringify(value)); } catch (e) {}
+    // Settings were (re)saved → mirror the chosen colour scheme to the wiki's
+    // template stylesheet (no-op unless the scheme actually changed).
+    if (key === 'iniText') syncWikiTheme();
     return Promise.resolve();
+  }
+
+  // --- Mirror the editor's colour scheme to templates/writerdeck/style.css ---
+  // The wiki keeps "alt01" as its built-in default; picking another scheme in
+  // the editor's Settings writes a style.css that overrides it (server-side,
+  // gated on auth + a writable var/pages/). Deleting that file restores alt01.
+  var lastThemeJson = null;
+
+  // Map the current writhdeck scheme (dark + light "Alt" sets) onto the
+  // writerdeck template's CSS variables. Returns {name, payload} or null.
+  function buildThemePayload() {
+    if (!api || typeof api.getScheme !== 'function') return null;
+    var name = api.State.settings.scheme;
+    var sc = api.getScheme(name) || {};
+    var pick = function (k, alt) { return sc[k] || sc[alt] || ''; };
+    var dark = {
+      'bg': sc.bg, 'fg': sc.fg, 'bg-bar': sc.bgBar, 'fg-bar': sc.fgBar,
+      'bg-sel': sc.bgSel, 'heading': sc.heading, 'comment': sc.comment,
+      'link': sc.markup, 'rule': sc.bgBar, 'code-bg': sc.bgBar,
+    };
+    var light = {
+      'bg': pick('bgAlt', 'bg'), 'fg': pick('fgAlt', 'fg'),
+      'bg-bar': pick('bgBarAlt', 'bgBar'), 'fg-bar': pick('fgBarAlt', 'fgBar'),
+      'bg-sel': pick('bgSelAlt', 'bgSel'), 'heading': pick('headingAlt', 'heading'),
+      'comment': pick('commentAlt', 'comment'), 'link': pick('markupAlt', 'markup'),
+      'rule': pick('bgBarAlt', 'bgBar'), 'code-bg': pick('bgBarAlt', 'bgBar'),
+    };
+    // Mode-independent layout/typography settings (margins, fonts, spacing) so
+    // the wiki reflects the editor's appearance, not just its colours.
+    var s = api.State.settings;
+    var layout = {
+      'margin-x': s.marginX, 'margin-y': s.marginY,
+      'font-size': s.fontSize, 'line-height': s.lineSpacing, 'font': s.fontFamily,
+    };
+    return {
+      name: name,
+      payload: JSON.stringify({ scheme: name, light: light, dark: dark, layout: layout }),
+    };
+  }
+
+  // Automatic sync on settings save. initOnly=true records the current scheme
+  // as the baseline without writing, so only a real scheme change (not any
+  // settings save) updates style.css.
+  var suppressAutoSync = false;
+  function syncWikiTheme(initOnly) {
+    if (!api || suppressAutoSync) return;
+    if (typeof api.getScheme !== 'function') {
+      // Old cached bundle without the getScheme seam — make it visible.
+      if (!initOnly) api.Editor.setMsg('Wiki theme sync unavailable — reload the editor');
+      return;
+    }
+    var p = buildThemePayload();
+    if (!p) return;
+    if (p.payload === lastThemeJson) return;  // unchanged scheme — skip the write
+    lastThemeJson = p.payload;
+    if (initOnly) return;                     // baseline recorded; nothing to write yet
+    postThemeCss(p.payload, p.name, false);
+  }
+
+  // Explicit "Synchronise backend appearance to frontend" action (the
+  // Settings → Profile button). Always writes, regardless of the baseline.
+  function applyWikiThemeNow() {
+    if (!api) return;
+    var noteEl = document.getElementById('wiki-theme-sync-msg');
+    var notify = function (text, ok) {
+      if (noteEl) { noteEl.textContent = text; noteEl.style.color = ok ? '#3a9d5a' : '#c0392b'; }
+      if (api) api.Editor.setMsg(text);       // also the status bar (visible after closing the dialog)
+    };
+    if (typeof api.getScheme !== 'function') {
+      notify('Sync unavailable — reload the editor', false);
+      return;
+    }
+    // Commit any pending Settings-dialog edits first: margins/fonts/spacing are
+    // only written to State.settings when "Apply" runs, so without this the
+    // sync would read stale values. Suppress the auto-sync it would trigger —
+    // we post explicitly below (with inline feedback).
+    var applyBtn = document.getElementById('settings-apply');
+    if (applyBtn) {
+      suppressAutoSync = true;
+      try { applyBtn.click(); } finally { suppressAutoSync = false; }
+    }
+    var p = buildThemePayload();
+    if (!p) return;
+    lastThemeJson = p.payload;                // keep the auto-sync baseline aligned
+    if (noteEl) { noteEl.textContent = 'Saving…'; noteEl.style.color = 'var(--comment)'; }
+    postThemeCss(p.payload, p.name, false, notify);
+  }
+
+  // POST the validated colours to op=savecss. Like saving a page, this needs
+  // the wiki password: on a 403 'auth' we prompt once and retry. Failures are
+  // surfaced via the editor status bar (no longer silent).
+  // `notify(text, ok)` reports the outcome. Defaults to the status bar, but
+  // callers triggered from the (modal) Settings dialog pass an inline notifier
+  // so the result — including read-only / permission errors — is actually
+  // visible, since the 2-second status-bar message is hidden behind the dialog.
+  function postThemeCss(payload, name, retried, notify) {
+    notify = notify || function (m) { if (api) api.Editor.setMsg(m); };
+    var fd = new FormData();
+    fd.set('vars', payload);
+    var pwField = form && form.querySelector('input[name=sc]');
+    var pw = wikiPassword || (pwField && pwField.value) || '';
+    if (pw) fd.set('sc', pw);
+    fetch(apiUrl('savecss'), { method: 'POST', body: fd, credentials: 'same-origin' })
+      .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'http ' + r.status }; }); })
+      .then(function (j) {
+        if (j && j.ok) { notify('Wiki theme updated (' + name + ')', true); return; }
+        var err = j && j.error;
+        if (err === 'auth' && !retried) {
+          var entered = window.prompt('Wiki password to update the site theme:');
+          if (entered === null) { notify('Wiki theme unchanged', false); return; }
+          wikiPassword = entered;
+          postThemeCss(payload, name, true, notify);
+          return;
+        }
+        notify(
+          err === 'auth'                 ? 'Wiki theme: wrong password' :
+          err === 'readonly'             ? 'Wiki theme: var/pages not writable' :
+          err === 'template not writable'? 'Wiki theme: templates/writerdeck/ not writable' :
+          'Wiki theme not saved (' + (err || 'error') + ')',
+          false
+        );
+      })
+      .catch(function () { notify('Wiki theme not saved (network)', false); });
   }
 
   // --- JSON API (read-only): page list + raw page source. --------------------
@@ -291,6 +417,35 @@
       rememberPage(doc && doc.name);
       return origOpen.call(api.Editor, doc);
     };
+
+    // Record the current scheme as the baseline so only a real scheme change
+    // (not an unrelated settings save) rewrites the wiki's style.css.
+    syncWikiTheme(true);
+
+    // Settings → Profile: add a LionWiki-only control under "Default scheme" to
+    // push the chosen scheme to the wiki template (writes style.css on demand).
+    var profSel = document.getElementById('scheme-select-profile');
+    var profLabel = profSel && profSel.closest('label');
+    if (profLabel && !document.getElementById('wiki-theme-sync-btn')) {
+      var wrap = document.createElement('div');
+      wrap.style.cssText = 'margin:6px 0 2px';
+      var btn = document.createElement('button');
+      btn.id = 'wiki-theme-sync-btn';
+      btn.type = 'button';
+      btn.textContent = 'Synchronise backend appearance to frontend';
+      btn.addEventListener('click', function (e) { e.preventDefault(); applyWikiThemeNow(); });
+      var note = document.createElement('span');
+      note.id = 'wiki-theme-sync-msg';
+      note.style.cssText = 'margin-left:8px;font-size:.85em;';
+      var hint = document.createElement('p');
+      hint.className = 'hint';
+      hint.style.margin = '2px 0 0';
+      hint.textContent = 'Applies current settings, then writes templates/writerdeck/style.css from the scheme, margins, fonts and spacing (needs the wiki password; templates/writerdeck/ must be writable).';
+      wrap.appendChild(btn);
+      wrap.appendChild(note);
+      wrap.appendChild(hint);
+      profLabel.insertAdjacentElement('afterend', wrap);
+    }
 
     // Relabel the rename entry (LionWiki-only DOM tweak).
     var saBtn = document.querySelector('#ed-menu [data-cmd="save-as"]');

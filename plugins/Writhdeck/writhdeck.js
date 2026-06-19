@@ -4234,7 +4234,7 @@ async function init() {
   // in because each <script> has its own scope (the embedder's script cannot
   // reach these consts directly).
   if (typeof window !== 'undefined' && typeof window.WRITHDECK_ON_READY === 'function') {
-    await window.WRITHDECK_ON_READY({ Editor, Browser, Settings, Stats, State, applyTheme, saveSettings });
+    await window.WRITHDECK_ON_READY({ Editor, Browser, Settings, Stats, State, applyTheme, saveSettings, getScheme });
   }
 }
 

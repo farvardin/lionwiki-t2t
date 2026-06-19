@@ -101,6 +101,15 @@ The plugin's `actionBegin()` hook answers a tiny read-only JSON API (gated on
 |---|---|
 | `?action=writhdeck_api&op=list` | `{ok, pages:[{name, modified, size}]}` |
 | `?action=writhdeck_api&op=raw&page=Foo` | `{ok, name, content, modified}` |
+| `POST …&op=savecss` (`vars` = `{scheme,light,dark}`) | `{ok}` — writes `templates/writerdeck/style.css` |
+
+**Theme export (`op=savecss`):** when you pick a colour scheme in the editor's
+Settings, `wiki-backend.js` posts the scheme's colours and the plugin writes
+`templates/writerdeck/style.css` (the `writerdeck` template loads it to override
+its built-in *alt01* palette; delete the file to restore the default). Gated on
+`authentified()` **and** a writable `var/pages/`; colour values are validated as
+hex server-side (client CSS is never written verbatim). Needs the upstream
+`getScheme` exposed via `WRITHDECK_ON_READY`.
 
 Saving still goes through LionWiki's native `action=save` POST (conflict
 detection via `last_changed`, password, edit summary, rename, history). Page
