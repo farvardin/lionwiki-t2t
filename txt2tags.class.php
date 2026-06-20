@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20260408";
+<?php $T2TVersion = "20260620";
 /**
   txt2tags.class.php
 
@@ -44,7 +44,7 @@
   # optional: some settings, after new/init, before go()
   $x->enabletoc = 1;
   $x->enableinclude = 1;
-  $x->snippets['**'] = "<strong>%s</strong>"; # instead of <b>
+  # $x->snippets['**'] = "<strong>%s</strong>"; # instead of <b>
   
   # run all processing
   $x->go();
@@ -69,6 +69,7 @@
 
 */
 
+#[\AllowDynamicProperties] // no-op (commentaire) en PHP 7.4 ; supprime la dépréciation des propriétés dynamiques en PHP 8.2+
 class T2T {
   # these variables could be read or forced
   public $title = '';         # the document title
@@ -300,8 +301,9 @@ class T2T {
         continue; # remove comment lines
         
       # special lines raw, tagged, verbatim
-      if(preg_match('/^("""|```|\'\'\') /', $line, $m)) { 
-        $lines2[] = $this->closeRTV($m[1], substr($line, 4));
+      if(preg_match('/^("""|```|\'\'\') /', $line, $m)) {
+        $rtv = substr($line, 4); // variable temp : closeRTV() attend un argument par référence
+        $lines2[] = $this->closeRTV($m[1], $rtv);
         continue;
       }
     

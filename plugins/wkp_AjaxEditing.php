@@ -28,7 +28,7 @@ class AjaxEditing
         global $CON, $content, $self, $showsource, $page, $esum, $error, $preview, $action, $html;
         global $T_PASSWORD, $T_EDIT_SUMMARY, $T_PREVIEW, $T_DONE, $T_DISCARD_CHANGES;
 
-        if(!$_REQUEST["ajax"]) {
+        if(empty($_REQUEST["ajax"])) {
             return;
         } else if($action != "edit" && !$preview) {
             $CON = substr($CON, strpos($CON, ">") + 1); // $CON contains <div class="pre-div"> ... </div> and we don't want this "wrapper"
@@ -107,6 +107,6 @@ class AjaxEditing
 
     function formatBegin()
     {
-        $GLOBALS["HEAD"] .= '<script type="text/javascript" src="'.$GLOBALS['PLUGINS_DIR'].'/AjaxEditing/ajax.js"></script>';
+        $GLOBALS["HEAD"] = ($GLOBALS["HEAD"] ?? '') . '<script type="text/javascript" src="'.$GLOBALS['PLUGINS_DIR'].'/AjaxEditing/ajax.js"></script>';
     }
 }

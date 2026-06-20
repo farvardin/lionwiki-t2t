@@ -360,7 +360,7 @@ class Text_Diff_Op
 class Text_Diff_Op_copy extends Text_Diff_Op
 {
 
-    function Text_Diff_Op_copy($orig, $final = false)
+    function __construct($orig, $final = false) // PHP 8 : plus de constructeur nommé comme la classe
     {
         if (!is_array($final)) {
             $final = $orig;
@@ -386,7 +386,7 @@ class Text_Diff_Op_copy extends Text_Diff_Op
 class Text_Diff_Op_delete extends Text_Diff_Op
 {
 
-    function Text_Diff_Op_delete($lines)
+    function __construct($lines) // PHP 8 : plus de constructeur nommé comme la classe
     {
         $this->orig = $lines;
         $this->final = false;
@@ -409,7 +409,7 @@ class Text_Diff_Op_delete extends Text_Diff_Op
 class Text_Diff_Op_add extends Text_Diff_Op
 {
 
-    function Text_Diff_Op_add($lines)
+    function __construct($lines) // PHP 8 : plus de constructeur nommé comme la classe
     {
         $this->final = $lines;
         $this->orig = false;
@@ -432,7 +432,7 @@ class Text_Diff_Op_add extends Text_Diff_Op
 class Text_Diff_Op_change extends Text_Diff_Op
 {
 
-    function Text_Diff_Op_change($orig, $final)
+    function __construct($orig, $final) // PHP 8 : plus de constructeur nommé comme la classe
     {
         $this->orig = $orig;
         $this->final = $final;

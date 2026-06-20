@@ -18,7 +18,10 @@ templates/*.html       — gabarits HTML avec substitutions {PLACEHOLDER}
 lang/*.php             — traductions ($T_* variables)
 var/pages/*.txt        — contenu des pages wiki
 var/history/<page>/    — révisions .bak + meta.dat
-tests/run.php          — suite de tests de régression
+tests/all.php          — runner combiné (run.php + plugins.php + integration.php)
+tests/run.php          — tests de rendu txt2tags (fixtures « golden »)
+tests/plugins.php      — tests de la logique PHP des plugins (compat PHP 8 incluse)
+tests/integration.php  — tests d'intégration d'index.php (serveur web + docroot isolé)
 tests/fixtures/*.t2t   — entrées txt2tags
 tests/expected/*.html  — sorties HTML de référence
 infra/docker/lionwiki/ — Dockerfile + docker-compose pour builder/lancer l'image
@@ -28,13 +31,30 @@ infra/kubernetes/      — manifests Kubernetes (Deployment, Service, Ingress, P
 ## Lancer les tests
 
 ```bash
-php tests/run.php           # tous les tests
-php tests/run.php basic     # un seul fixture
-php tests/update.php        # régénérer les fichiers expected/
+php tests/all.php           # toutes les suites (txt2tags + plugins)
+
+php tests/run.php           # rendu txt2tags : tous les fixtures
+php tests/run.php basic     # rendu txt2tags : un seul fixture
+php tests/update.php        # régénérer les fichiers expected/ (après un changement
+                            # de rendu *intentionnel* — toujours relire le diff)
+
+php tests/plugins.php       # logique des plugins : tous les groupes
+php tests/plugins.php Tables # logique des plugins : un seul groupe
+
+php tests/integration.php   # flux de requête complet d'index.php
 ```
 
-Les tests vérifient uniquement `txt2tags.class.php` (rendu).
-Il n'existe pas de tests pour `index.php` lui-même.
+`run.php` vérifie le rendu de `txt2tags.class.php` (comparaison aux fichiers
+`expected/`). `plugins.php` teste les méthodes « pures » des plugins via des
+stubs des fonctions/globales d'`index.php`. `integration.php` lance le serveur
+web intégré de PHP sur un docroot temporaire isolé (jamais le vrai `var/`) et
+effectue de vraies requêtes HTTP (view, edit, save+redirect, recent, diff…).
+Les trois suites échouent si un warning/dépréciation/fatal PHP apparaît — c'est
+le garde-fou de compatibilité PHP 7.4 → 8.4 (un écran blanc = test rouge).
+
+Pour ajouter un fixture txt2tags : créer `tests/fixtures/xxx.t2t`, lancer
+`php tests/update.php xxx`, **relire** le `expected/xxx.html` généré, puis
+`php tests/run.php xxx`.
 
 ## Vérifier la syntaxe PHP
 

@@ -21,6 +21,7 @@ class WhatLinksHere
 
         if($a == "whatlinkshere") {
             $CON = "<ul>";
+            $files = array(); // sinon count($files) plus bas = TypeError en PHP 8 si aucune page ne pointe ici
 
             $dir = opendir($PG_DIR);
 

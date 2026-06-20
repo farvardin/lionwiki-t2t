@@ -87,6 +87,8 @@ class PageVersions
             $arr_versions[] = "<a href=\"$self?page=".u(basename($art, ".txt") . ".$code")."\">".h(trim($this->lang_names[$code]))."</a>";
         }
 
+        $ul_list = $p_list = ""; // evite Undefined variable quand il n'y a aucune version
+
         if(!empty($arr_versions)) {
             $ul_list = "<ul class=\"subpage\"><li>\n" . implode("</li><li>\n", $arr_versions) . "</li></ul>";
         }

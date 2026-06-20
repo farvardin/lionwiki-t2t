@@ -1,0 +1,8 @@
+Première ligne visible.
+% cette ligne de commentaire doit disparaître
+Deuxième ligne visible.
+
+%%% bloc de commentaire ne s'applique pas ici, juste une ligne %
+
+Paragraphe final après un commentaire.
+% dernier commentaire

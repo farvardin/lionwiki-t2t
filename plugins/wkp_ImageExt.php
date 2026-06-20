@@ -66,7 +66,9 @@ class ImageExt
             if($center) { $tag = "<div style=\"text-align:center\">$tag</div>";
             }
 
-            $CON = preg_replace("/\{IMAGE\}/", $tag, $CON, 1);
+            // callback : $tag inséré littéralement (preg_replace interpréterait
+            // un $N / \N présent dans un attribut, ex. alt=Prix: $5).
+            $CON = preg_replace_callback("/\{IMAGE\}/", function() use ($tag) { return $tag; }, $CON, 1);
         }
     }
     

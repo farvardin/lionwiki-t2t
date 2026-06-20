@@ -44,7 +44,7 @@ class BetterEditor
     //php<8.0// function BetterEditor()
     function __construct()
     {
-    $action = trim($_GET["action"]); 
+    $action = trim($_GET["action"] ?? '');
     if($action == "edit" ) {
         $this->localize();
             

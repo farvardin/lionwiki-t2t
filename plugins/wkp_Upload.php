@@ -200,7 +200,7 @@ class Upload
 
     function template()
     {
-        global $html, $CON;
+        global $html, $CON, $self;
 
         $html = template_replace("plugin:UPLOAD", "<a href=\"$self?action=upload\" rel=\"nofollow\">Upload</a>", $html);
     }
@@ -296,7 +296,7 @@ class Upload
     {
         global $LANG;
 
-        $action = trim($_GET["action"]); 
+        $action = trim($_GET["action"] ?? '');
         if($action == "upload" ) {
             foreach ($this->en_strings as $str) {
                 $this->$str[0] = $str[1];

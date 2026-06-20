@@ -124,7 +124,7 @@ if (isset($_GET['lang'])) {
 } elseif (isset($_COOKIE['LW_LANG'])) {
     $LANG = preg_replace('/[^a-zA-Z0-9_\-]/', '', $_COOKIE['LW_LANG']);
 } else {
-    list($LANG) = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    list($LANG) = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '');
     $LANG = preg_replace('/[^a-zA-Z0-9_\-]/', '', $LANG);
 }
 
@@ -153,7 +153,7 @@ unset($_lang_real_dir, $_lang_file, $_lang_file_short);
 if(!file_exists($VAR_DIR) && !mkdir(rtrim($VAR_DIR, "/"))) {
     die("Can't create directory $VAR_DIR. Please create $VAR_DIR with 0777 rights.");
 } else { foreach(array($PG_DIR, $HIST_DIR, $PLUGINS_DATA_DIR) as $DIR) {
-        if(@mkdir(rtrim($DIR, '/'), 0777)) {
+        if(!is_dir(rtrim($DIR, '/')) && @mkdir(rtrim($DIR, '/'), 0777)) {
             $f = fopen($DIR . ".htaccess", "w"); fwrite($f, "deny from all"); fclose($f); 
         }
 }
@@ -173,11 +173,12 @@ for($plugins = array(), $dir = @opendir($PLUGINS_DIR); $dir && $f = readdir($dir
         include $PLUGINS_DIR . $f;
         $plugins[$m[1]] = new $m[1]();
 
-        // if (isset($$m[1])) {
-          if (isset(${$m[1]})) {
-        //    foreach($$m[1] as $name => $value) {
-        //    foreach(${$m[1]} as $name => $value) {
-        foreach(array(${$m[1]}) as $name => $value) {
+        // Surcharge des propriétés du plugin depuis une variable globale de
+        // config nommée comme le plugin (ex. $Upload = ['maxsize' => …]).
+        // L'ancien array(${$m[1]}) enveloppait la config et créait une
+        // propriété dynamique "0" (dépréciée en PHP 8.2) — feature cassée.
+        if (isset(${$m[1]}) && is_array(${$m[1]})) {
+            foreach(${$m[1]} as $name => $value) {
                 $plugins[$m[1]]->$name = $value;
             }
         }
@@ -187,7 +188,7 @@ for($plugins = array(), $dir = @opendir($PLUGINS_DIR); $dir && $f = readdir($dir
 plugin('pluginsLoaded');
 
 foreach(array('action', 'content', 'error', 'esum', 'f1', 'f2', 'last_changed', 'moveto', 'page', 'par', 'preview', 'query', 'restore', 'sc', 'showsource') as $req) {
-    $$req = $_REQUEST[$req]; // export request variables to global namespace
+    $$req = $_REQUEST[$req] ?? null; // export request variables to global namespace
 }
 
 foreach(array('par', 'restore', 'showsource') as $var) {
@@ -229,7 +230,7 @@ if($PROTECTED_READ && !authentified()) { // does user need password to read cont
     $CON = @file_get_contents("$PG_DIR$page.txt");
     $CON = $par ? get_paragraph($CON, $par) : $CON;
 
-    if(!$action && substr($CON, 0, 10) == '{redirect:' && $_REQUEST['redirect'] != 'no') {
+    if(!$action && substr($CON, 0, 10) == '{redirect:' && ($_REQUEST['redirect'] ?? '') != 'no') {
         die(header("Location:$self?page=".u(clear_path(substr($CON, 10, strpos($CON, '}') - 10)))));
     }
 }
@@ -295,7 +296,7 @@ if($action == 'save' && !$preview && authentified()) { // do we have page to sav
         }
 
         if(!plugin('pageWritten')) {
-            die(header("Location:$self?page=" . u($page) . '&redirect=no' . ($par ? "&par=$par" : '') . ($_REQUEST['ajax'] ? '&ajax=1' : '')));
+            die(header("Location:$self?page=" . u($page) . '&redirect=no' . ($par ? "&par=$par" : '') . (($_REQUEST['ajax'] ?? '') ? '&ajax=1' : '')));
         } else {
             $action = ''; // display content ...
         }
@@ -418,12 +419,17 @@ if($action == 'edit' || $preview) {
 
     arsort($files);
 
+    $recent = '';
     foreach(array_slice($files, 0, 100) as $f => $ts) { // just first 100 files
+        $m = array('', '', '', ''); // défauts si meta.dat absent ou illisible (évite Undefined array key)
         if($meta = @fopen($HIST_DIR . basename($f, '.txt') . '/meta.dat', 'r')) {
-            $m = meta_getline($meta, 1);
+            $line = meta_getline($meta, 1);
             fclose($meta);
+            if($line) {
+                $m = $line;
+            }
         }
-               
+
         $recent .= "<tr>
 		<td class=\"rc-date\" nowrap>".date($DATE_FORMAT, $ts + $LOCAL_HOUR * 3600)."</td>
 		<td class=\"rc-page\"><a href=\"$self?page=".u($f)."&amp;redirect=no\">".h($f)."</a> <span class=\"rc-size\">($m[2] B)</span><i class=\"rc-esum\"> ".h($m[3])."</i></td>
@@ -576,8 +582,8 @@ if(!$action || $preview) { // page parsing
     preg_match_all("/\[(?:([^|\]\"]+)\|)?([^\]\"#]+)(?:#([^\]\"]+))?\]/", $CON, $matches, PREG_SET_ORDER); // matching Wiki links
 
     foreach($matches as $m) {
-        $m[1] = $m[1] ? $m[1] : $m[2]; // is page label same as its name?
-        $m[3] = $m[3] ? '#'.u(preg_replace('/[^\da-z]/i', '_', $m[3])) : ''; // anchor
+        $m[1] = !empty($m[1]) ? $m[1] : $m[2]; // is page label same as its name?
+        $m[3] = !empty($m[3]) ? '#'.u(preg_replace('/[^\da-z]/i', '_', $m[3])) : ''; // anchor
 
         $attr = file_exists("$PG_DIR$m[2].txt") ? $m[3] : '&amp;action=edit" class="pending';
         $CON = str_replace($m[0], '<a href="'.$self.'?page='.u($m[2]).$attr.'">'.$m[1].'</a>', $CON);
@@ -593,6 +599,7 @@ if(!$action || $preview) { // page parsing
     // lionwiki headings, we keep it for plugins
     preg_match_all('/^(!+)(.*)$/m', $CON, $matches, PREG_SET_ORDER);
     $stack = array();
+    $TOC = ''; // évite « Undefined variable $TOC » (warning en PHP 8) sur les pages sans titre
 
     for($h_id = max($par, 1), $i = 0, $c = count($matches); $i < $c && $m = $matches[$i]; $i++, $h_id++) {
         $excl = strlen($m[1]) + 1;
@@ -657,6 +664,24 @@ plugin('template'); // plugin templating
 
 $html = preg_replace('/\{([^}]* )?plugin:.+( [^}]*)?\}/U', '', $html); // get rid of absent plugin tags
 
+// Variables de gabarit définies seulement en mode édition/aperçu : on les
+// initialise pour éviter les avertissements « Undefined variable »
+// (notice en PHP 7, mais E_WARNING affiché en PHP 8). ??= requiert PHP 7.4+.
+$HEAD ??= '';
+$TOC ??= '';
+$last_changed_ts ??= 0;
+$CON_FORM_BEGIN ??= '';
+$CON_FORM_END ??= '';
+$CON_TEXTAREA ??= '';
+$CON_SUBMIT ??= '';
+$CON_PREVIEW ??= '';
+$RENAME_TEXT ??= '';
+$RENAME_INPUT ??= '';
+$EDIT_SUMMARY_TEXT ??= '';
+$EDIT_SUMMARY ??= '';
+$FORM_PASSWORD ??= '';
+$FORM_PASSWORD_INPUT ??= '';
+
 $tpl_subs = array(
     'HEAD' => $HEAD . ($action ? '<meta name="robots" content="noindex, nofollow"/>' : ''),
     'SEARCH_FORM' => '<form action="'.$self.'" method="get"><span><input type="hidden" name="action" value="search"/><input type="submit" style="display:none;"/>',
@@ -711,11 +736,15 @@ die($html);
 
 function h($t)
 {
-    return htmlspecialchars($t); 
+    // (string) : passer null aux fonctions internes est déprécié depuis PHP 8.1.
+    // ENT_QUOTES figé explicitement : le drapeau par défaut est passé de
+    // ENT_COMPAT à ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401 en PHP 8.1 ; on garde
+    // ainsi un rendu (et une protection XSS) identique de PHP 7.4 à 8.4.
+    return htmlspecialchars((string) $t, ENT_QUOTES);
 }
 function u($t)
 {
-    return urlencode($t); 
+    return urlencode((string) $t);
 }
 
 function template_replace($what, $subs, $where)
@@ -729,6 +758,7 @@ function template_match($what, $where, &$dest)
 
 function clear_path($s)
 {
+    $s = (string) $s; // null → "" : éviter la dépréciation strlen(null) en PHP 8.1
     for($i = 0, $ret = "", $c = strlen($s); $i < $c; $i++) {
         $ret .= ctype_cntrl($s[$i]) ? "" : $s[$i];
     }
@@ -819,7 +849,7 @@ function diff_builtin($f1, $f2)
 
 function authentified()
 {
-    if(!$GLOBALS['PASSWORD'] || !strcasecmp($_COOKIE['LW_AUT'], $GLOBALS['PASSWORD']) || !strcasecmp(sha1($GLOBALS['sc']), $GLOBALS['PASSWORD'])) {
+    if(!$GLOBALS['PASSWORD'] || !strcasecmp($_COOKIE['LW_AUT'] ?? '', $GLOBALS['PASSWORD']) || !strcasecmp(sha1($GLOBALS['sc'] ?? ''), $GLOBALS['PASSWORD'])) {
         setsafecookie('LW_AUT', $GLOBALS['PASSWORD'], time() + ($GLOBALS['PROTECTED_READ'] ? 4 * 3600 : 365 * 86400));
         return true;
     } else {
