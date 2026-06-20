@@ -1,0 +1,9 @@
+Caractères spéciaux HTML : <, >, &, $.
+
+Balisage désactivé par contexte : le texte ``**pas gras**`` reste tel quel.
+
+Esperluette dans une URL : [lien https://example.com?a=1&b=2]
+
+Symbole dollar : le prix est $42.
+
+Guillemets dans du texte : dire "bonjour" et 'salut'.

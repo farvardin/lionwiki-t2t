@@ -29,7 +29,10 @@ class RenameFix
             $content = @file_get_contents($PG_DIR . $f);
 
             // "classic" link
-            $changed = preg_replace("/\[(([^|\]]+)\|)?" . preg_quote($orig_name, '/') . "(#([^\]]+))?\]/", "[${1}$moveto$3]", $content);
+            // $1 (sans accolades) reste littéral et sert de référence arrière à
+            // preg ; ${1} était interprété par PHP (var-var, déprécié 8.2) et
+            // s'évaluait à vide → le libellé du lien était perdu au renommage.
+            $changed = preg_replace("/\[(([^|\]]+)\|)?" . preg_quote($orig_name, '/') . "(#([^\]]+))?\]/", "[$1$moveto$3]", $content);
             // image link
             $changed = preg_replace("/\[([^]]*)\|link=\s*" . preg_quote($orig_name, '/') . "(#([^\]]+))?([|\]])/", "[$1|link=$moveto$2$4", $changed);
             // redirect

@@ -1,0 +1,13 @@
+Lien explicite : [texte du lien https://example.com]
+
+Lien local : [page locale /page/locale]
+
+Lien ancre : [aller à l'ancre #mon-ancre]
+
+Email : [écrire ici contact@example.com]
+
+URL nue : https://example.com/page
+
+Email nu : contact@example.com
+
+Lien avec **gras** dans le texte : [**texte gras** https://example.com]

@@ -39,7 +39,8 @@ $PROTECTED_READ = false;
 // Those templates are more minimalistic and use only a basic toolbar,
 //  some other don't have any toolbar at all (but you can add it in the template)
 
-$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
+//$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
+$TEMPLATE = 'templates/writerdeck/writerdeck.html';  // writhdeck "alt01" theme — light/dark via system or cookie toggle
 //$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 
@@ -76,16 +77,20 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 
 /* **** MORE OPTIONS **** */
 
+$WRITHDECK_EDITOR = true;  // full screen edition instead of the default one
+
 $NO_HTML = true; // XSS protection
 
 $START_PAGE = 'main'; // Which page should be default (start page)?
 
 $RSS = '<a href="./var/rss.xml">RSS</a>';
 
-// if needed (if autodetection doesn't work), force language
-$LANG = 'en';
+// if needed (if autodetection doesn't work), force language by uncommenting one
+// of these. Left commented so the auto-detected / user-selected language (the
+// LW_LANG cookie set by the language selector) is kept across navigation —
+// otherwise this would override it on every request.
+//$LANG = 'en';
 //$LANG = 'fr';
-// (it looks like forcing another language crashes lionwiki so it's better to keep LANG=en at the moment... autodetection seems to work anyway)
 
 /* see the file config.t2t to tweak the syntax and even more! */
 

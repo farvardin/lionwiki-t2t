@@ -48,7 +48,7 @@ class IndexBlog
             }
         }
         
-        if(is_array($files)) {
+        if(is_array($files ?? null)) {
             arsort($files);
 
             foreach($files as $file) {

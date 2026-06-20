@@ -1,0 +1,9 @@
+Texte en **gras**, en //italique//, __souligné__, --barré--.
+
+Combinaisons : **gras et //italique//** et __souligné et --barré--__.
+
+Mono inline : ``code inline``.
+
+Texte normal sans balisage.
+
+Un paragraphe séparé par une ligne vide.

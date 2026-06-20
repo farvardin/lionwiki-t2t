@@ -1,0 +1,10 @@
+Texte avec ''tagged inline'' au milieu d'une phrase.
+
+Le balisage est ignoré dans ''**ce gras** et //cette italique//''.
+
+'''
+Bloc tagged sur
+plusieurs lignes, **gras** non interprété.
+'''
+
+Retour au texte normal après le bloc.

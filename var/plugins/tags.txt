@@ -64,3 +64,5 @@ help_syntax.fr
   tags,motsclés,syntax,wiki,help
 help.en
   help,syntax
+zztest_wd_renamed
+  

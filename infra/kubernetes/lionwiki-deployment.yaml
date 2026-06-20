@@ -1,44 +1,81 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.21.0 (992df58d8)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: lionwiki
   name: lionwiki
+  labels:
+    app: lionwiki
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: lionwiki
+      app: lionwiki
   strategy:
+    # Recreate requis car le PVC est ReadWriteOnce (un seul pod à la fois)
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.21.0 (992df58d8)
-      creationTimestamp: null
       labels:
-        io.kompose.service: lionwiki
+        app: lionwiki
     spec:
-      containers:
-      - image: farvardin4/lionwiki:latest
-        imagePullPolicy: ""
-        name: lionwiki
-        ports:
-        - containerPort: 80
-        - containerPort: 443
-        resources: {}
+      initContainers:
+      - name: init-data
+        image: farvardin4/lionwiki:latest
+        imagePullPolicy: Always
+        command:
+        - sh
+        - -c
+        - |
+          mkdir -p /data/var
+          if [ ! -d /data/var/pages ]; then
+            cp -a /var/www/html/var/. /data/var/
+          fi
+          if [ ! -f /data/config.php ]; then
+            cp /var/www/html/config.php /data/config.php 2>/dev/null || true
+          fi
+          if [ ! -f /data/config.t2t ]; then
+            cp /var/www/html/config.t2t /data/config.t2t 2>/dev/null || true
+          fi
         volumeMounts:
-        - mountPath: /var/www/html
-          name: data
+        - name: data
+          mountPath: /data
+      containers:
+      - name: lionwiki
+        image: farvardin4/lionwiki:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: data
+          mountPath: /var/www/html/var
+          subPath: var
+        - name: data
+          mountPath: /var/www/html/config.php
+          subPath: config.php
+        - name: data
+          mountPath: /var/www/html/config.t2t
+          subPath: config.t2t
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
       restartPolicy: Always
-      serviceAccountName: ""
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: data
-status: {}
+          claimName: lionwiki-data

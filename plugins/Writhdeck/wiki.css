@@ -1,0 +1,28 @@
+/* Writhdeck plugin — integration glue.
+ *
+ * The writhdeck editor (#editor) and browser (#browser) are `height:100vh` in
+ * normal flow, so we overlay the whole #writhdeck-app on top of whatever the
+ * host LionWiki template rendered. This keeps the plugin template-agnostic:
+ * the native edit form stays in the DOM underneath (for submit) but hidden.
+ */
+#writhdeck-app[hidden] { display: none; }
+
+body.writhdeck-active {
+  overflow: hidden;
+  /* Neutralise any template's `@media (prefers-color-scheme: dark)` body
+     filter (e.g. mimoza's invert) while editing: the overlay covers the page,
+     and the writhdeck theme must render its own colours — otherwise turning
+     dark mode off would still look inverted on a dark-themed OS. */
+  filter: none !important;
+}
+
+body.writhdeck-active #writhdeck-app {
+  position: fixed;
+  inset: 0;
+  /* Below writhdeck's own body-level popups — notably the right-click menu,
+     which is appended to <body> at z-index 200 — so they stay clickable, while
+     still sitting above the host page content. */
+  z-index: 100;
+  overflow: auto;
+  background: var(--bg2, #ffffff);
+}

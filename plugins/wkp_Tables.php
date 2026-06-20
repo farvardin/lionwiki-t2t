@@ -61,9 +61,15 @@ class Tables
         );
 
         if($nblinks > 0) {
-            $s = preg_replace_callback(array_fill(0, $nblinks, "/\[LINK\]/"), create_function('$m', 'global $matches_links;static $idxlink=0;return "[".$matches_links[1][$idxlink++]."]";'), $s);
+            // preg_replace_callback remplace déjà les [LINK] de gauche à droite
+            // en un seul passage : pas besoin de array_fill ni de create_function
+            // (supprimé en PHP 8.0).
+            $idxlink = 0;
+            $s = preg_replace_callback("/\[LINK\]/", function ($m) use (&$idxlink) {
+                global $matches_links;
+                return "[".$matches_links[1][$idxlink++]."]";
+            }, $s);
         }
-        //TODO PHP 8.1// $s = preg_replace_callback(array_fill(0, $nblinks, "/\[LINK\]/"), function('$m') {global $matches_links;static $idxlink=0;return [".$matches_links[1][$idxlink++]."];)}, $s);
 
         return stripslashes($s);
     }

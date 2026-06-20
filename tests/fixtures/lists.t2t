@@ -1,0 +1,30 @@
+- item un
+- item deux
+- item trois
+
+
+- item avec **gras**
+- item avec //italique//
+
+
+- niveau 1
+  - niveau 2
+    - niveau 3
+  - retour niveau 2
+- retour niveau 1
+
+
++ premier
++ deuxième
++ troisième
+
+
++ numéroté niveau 1
+  + numéroté niveau 2
+    + numéroté niveau 3
+
+
+: terme un
+  définition un
+: terme deux
+  définition deux

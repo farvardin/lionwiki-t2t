@@ -40,16 +40,16 @@ $verif=$_POST['verif'];
 function verifie_email($email)
 {
 	if (strlen($email)>255)
-        { return "$email : Email too long. <br/>";}
+        { return htmlspecialchars($email) . " : Email too long. <br/>";}
 	if (empty($email))
 		{ return "You havent entered your email. <br/>"; }
 	//if (!ereg("@",$email))
 	if (preg_match('/#^((?!@).)*$#',$email))
-		{ return "$email : email should have an arobase (@). <br/>"; }
+		{ return htmlspecialchars($email) . " : email should have an arobase (@). <br/>"; }
 	if (preg_match_all("/([^a-zA-Z0-9_\@\.\-])/i", $email, $trouve))
-		{ return "$email : forbidden character found in email adress (".implode(", ",$trouve[0])."). <br/>"; }
+		{ return htmlspecialchars($email) . " : forbidden character found in email adress (" . htmlspecialchars(implode(", ", $trouve[0])) . "). <br/>"; }
 	if (!preg_match("/^([a-z0-9_]|\\-|\\.)+@(([a-z0-9_]|\\-)+\\.)+[a-z]{2,4}\$/i", $email))
-		{ return "$email : email is not valid (name@hostname.com).  <br/>"; }
+		{ return htmlspecialchars($email) . " : email is not valid (name@hostname.com).  <br/>"; }
 	list($compte,$domaine)=preg_split("/@/",$email,2);
  /* if (!checkdnsrr($domaine,"MX")) { return "$email : Ce domaine ($domaine) n'accepte pas les emails. <br/>"; }*/
 
@@ -57,6 +57,11 @@ function verifie_email($email)
  }
  
 //fin de fonction
+
+// strip newlines from fields used in email headers to prevent header injection
+function sanitize_email_header($str) {
+    return str_replace(array("\r", "\n", "%0a", "%0d"), '', $str);
+}
 
 // init pg
 $err="";
@@ -82,7 +87,7 @@ $err=$err." Your message is too long. 10000 chars maximum<br/>";
 // test du code de verification
 //if (!eregi("(dog)|(cat)|(wolf)|(bird)|(fish)",$verif))
 if (preg_match('/(dog)|(cat)|(wolf)|(bird)|(fish)/',$verif) == false)
-$err=$err."$verif : The verification code is not correct<br/>"; 
+$err=$err.htmlspecialchars($verif) . " : The verification code is not correct<br/>"; 
 
 
 // si la personne a fait des erreurs
@@ -96,16 +101,17 @@ echo '<br/><a href="javascript:history.go(-1)">Back</a>';
 }
 else
 {
+// sanitize header fields to prevent email header injection
+$safe_email = sanitize_email_header($email);
+$safe_name  = sanitize_email_header($name);
 // on envoie le mail
-mail("youremailaddress@hostname.com","Contact PmWiki","** Name:   $name\n\n** Message: \n\n$message \n\n\n\n-------------------------------------------------------------------------------- \nfrom IP address: $_SERVER[REMOTE_ADDR], at this date: $Jour, verif code:$verif ",
-"From: $email 
-Reply-To: $email"); 
-// copie a l'expediteur 
-mail("$email","Copy of your message sent from the website PmWiki","** Name:   $name\n\n** Message: \n\n$message \n\n\n\n-------------------------------------------------------------------------------- \nfrom IP address: $_SERVER[REMOTE_ADDR], at this date: $Jour ",
-"From: $email 
-Reply-To: $email"); 
+mail("youremailaddress@hostname.com","Contact PmWiki","** Name:   $safe_name\n\n** Message: \n\n$message \n\n\n\n-------------------------------------------------------------------------------- \nfrom IP address: $_SERVER[REMOTE_ADDR], at this date: $Jour, verif code:$verif ",
+"From: $safe_email\r\nReply-To: $safe_email");
+// copie a l'expediteur
+mail($safe_email,"Copy of your message sent from the website PmWiki","** Name:   $safe_name\n\n** Message: \n\n$message \n\n\n\n-------------------------------------------------------------------------------- \nfrom IP address: $_SERVER[REMOTE_ADDR], at this date: $Jour ",
+"From: $safe_email\r\nReply-To: $safe_email");
 echo "Your message should have been sent correctly.<br/><br/>";
-echo "A copy has been sent to $email. <br/><br/>";
+echo "A copy has been sent to " . htmlspecialchars($email) . ". <br/><br/>";
 echo '<br/><a href="index.php">Index</a>';
 
 }

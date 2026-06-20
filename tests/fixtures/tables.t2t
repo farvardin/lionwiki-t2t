@@ -1,0 +1,14 @@
+|| En-tête A || En-tête B || En-tête C ||
+
+| cellule 1 | cellule 2 | cellule 3 |
+| cellule 4 | cellule 5 | cellule 6 |
+
+
+ || Centré || En-tête || Aligné ||
+
+ | gauche | centre | droite |
+
+
+|| colspan |||| deux colonnes |
+
+| normale | deux cellules |||

@@ -1,0 +1,19 @@
+Mono inline : ``du code ici``
+
+Bloc verbatim :
+
+```
+function hello() {
+    echo "Hello World";
+}
+```
+
+Bloc raw (HTML brut) :
+
+""
+<strong>du HTML brut</strong>
+""
+
+Ligne verbatim unique : ``` echo "une ligne";
+
+Ligne raw unique : "" <em>html inline</em>

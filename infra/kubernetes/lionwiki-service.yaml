@@ -1,24 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.21.0 (992df58d8)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: lionwiki
   name: lionwiki
+  labels:
+    app: lionwiki
 spec:
+  type: ClusterIP
   ports:
-  - name: "11080"
-    port: 11080
+  - name: http
+    port: 80
     targetPort: 80
     protocol: TCP
-  - name: "11443"
-    port: 11443
-    targetPort: 443
-    protocol: TCP
   selector:
-    io.kompose.service: lionwiki
-status:
-  loadBalancer: {}
+    app: lionwiki

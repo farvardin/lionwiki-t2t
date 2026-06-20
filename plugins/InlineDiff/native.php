@@ -28,6 +28,7 @@
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  * @package Text_Diff
  */
+#[\AllowDynamicProperties] // no-op en PHP 7.4 ; supprime la dépréciation des propriétés dynamiques en PHP 8.2+
 class Text_Diff_Engine_native
 {
 
@@ -192,17 +193,22 @@ class Text_Diff_Engine_native
                     continue;
                 }
                 $matches = $ymatches[$line];
-                reset($matches);
-                // todo php 8.1// : foreach ((Array) ($matches) as $y...
-                while (list(, $y) = each($matches)) {
-                    if (empty($this->in_seq[$y])) {
-                        $k = $this->_lcsPos($y);
-                        assert($k > 0);
-                        $ymids[$k] = $ymids[$k - 1];
-                        break;
+                /* each() ayant été supprimé en PHP 8.0, les deux boucles
+                 * d'origine (qui partageaient le pointeur interne du tableau)
+                 * sont fusionnées en un seul foreach : la 1re phase cherche le
+                 * premier $y avec in_seq vide (équivalent du break), la 2nde
+                 * traite tous les éléments suivants. */
+                $found = false;
+                foreach ($matches as $y) {
+                    if (!$found) {
+                        if (empty($this->in_seq[$y])) {
+                            $k = $this->_lcsPos($y);
+                            assert($k > 0);
+                            $ymids[$k] = $ymids[$k - 1];
+                            $found = true;
+                        }
+                        continue;
                     }
-                }
-                while (list(, $y) = each($matches)) {
                     if ($y > $this->seq[$k - 1]) {
                         assert($y <= $this->seq[$k]);
                         /* Optimization: this is a common case: next match is

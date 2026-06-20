@@ -1,0 +1,7 @@
+Date par défaut : %%date
+
+Date formatée : %%date(%d/%m/%Y)
+
+Nombre aléatoire entre bornes : %%rand(1,100)
+
+Choix aléatoire : %%rand(pomme,poire,cerise)
